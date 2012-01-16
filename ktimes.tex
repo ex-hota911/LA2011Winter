@@ -15,15 +15,17 @@
   \subsection{フィードバックの弱い計算}
   フィードバックの弱い計算を定義する.
   フィードバックの弱い計算とは
-  定数 $d$, 多項式 $Q : \N \to \N$, 関数族 $(G_u)_u, (H_u)_u$ で, 
-  $(G_u)_u$ は多項式時間計算可能であるものの
- 4つ組 $M = \left< c, d, Q, (G_u)_u, (H_u)_u \right>$である.
+  定数 $d$, 関数 $P : \N \to \N$, 多項式 $Q : \N \to \N$, 
+  関数族 $(G_u)_u, (H_u)_u$ で, 
+  5つ組 $M = \left< d, P, Q, (G_u)_u, (H_u)_u \right>$である.
  \begin{itemize}
-   \item $G_u: [c \lceil \log (|u| + 1) \rceil] \times 
-	 \left[ 2^{\poly Q} \right] \times [d] \to [d]$;
-   \item $H_u: [c \lceil \log (|u| + 1) \rceil + 1] \times 
+  \item  $(G_u)_u$ は多項式時間計算可能;
+  \item $P(x) = O(\log x)$;
+  \item $G_u: [P(|u|)] \times \left[ 2^{\poly Q} \right] \times [d] 
+	\to \{-1, 0, 1\}$;
+   \item $H_u: [P(|u|) + 1] \times 
 	 \left[ 2^{\poly Q} \right] \to [d]$;
-   \item 任意の $i \in \left[c \lceil \log (|u| + 1) \rceil \right], 
+   \item 任意の $i \in \left[P(|u|) \right], 
 	 \ T \in \left[ 2^{\poly Q} \right]$ にたいして 
 	 \begin{itemize}
 	  \item $H_u(i, 0) = H_u(0, T) = 0$
@@ -32,7 +34,7 @@
  \end{itemize}
 
  フィードバックの弱い計算 $M$ が言語 $L$ を認識するとは任意の文字列 $u$ で
- $H_u(c \lceil \log (|u| + 1) \rceil, 2^{Q(|u|)}) = L(u)$ を満たすこと.
+ $H_u(P(|u|), 2^{Q(|u|)}) = L(u)$ を満たすこと.
 
  \begin{hypothesis}
   \label{Hypothesis}
