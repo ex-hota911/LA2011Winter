@@ -1,0 +1,86 @@
+\section{任意回微分可能関数と常微分方程式}
+
+ 任意回微分可能な関数の常微分方程式の解も, ある仮定のもと \PSPACE 完全でありうることを
+ 証明する.
+
+ \begin{theorem}
+  \label{KTimesIsPspace}
+  仮定 \ref{Hypothesis} のもと, 任意の自然数$k \ge 2$ にたいし, 
+  多項式時間実関数 $g(t, y)$ で, $\D{0,k}  g$ が連続であり,
+  $g$ の常微分方程式(\ref{eq:ode})の解 $h$ が \PSPACE 完全であるものが存在する.
+ \end{theorem}
+
+ 仮定については次の章で導入する.
+
+  \subsection{フィードバックの弱い計算}
+  フィードバックの弱い計算を定義する.
+  フィードバックの弱い計算とは
+  定数 $c,d$, 多項式 $Q : \N \to \N$, 関数族 $(G_u)_u, (H_u)_u$ で, 
+  $(G_u)_u$ は多項式時間計算可能であるものの
+ 4つ組 $M = \left< c, d, Q, (G_u)_u, (H_u)_u \right>$である.
+ \begin{itemize}
+   \item $G_u: [c \lceil \log (|u| + 1) \rceil] \times 
+	 \left[ 2^{\poly Q} \right] \times [d] \to [d]$;
+   \item $H_u: [c \lceil \log (|u| + 1) \rceil + 1] \times 
+	 \left[ 2^{\poly Q} \right] \to [d]$;
+   \item 任意の $i \in \left[c \lceil \log (|u| + 1) \rceil \right], 
+	 \ T \in \left[ 2^{\poly Q} \right]$ にたいして 
+	 \begin{itemize}
+	  \item $H_u(i, 0) = H_u(0, T) = 0$
+	  \item $H_u(i + 1, T + 1) = H_u(i+1, T) + G_u(i, T, Hu(i, T))$.
+	 \end{itemize} 
+ \end{itemize}
+
+ フィードバックの弱い計算 $M$ が言語 $L$ を認識するとは任意の文字列 $u$ で
+ $H_u(c \lceil \log (|u| + 1) \rceil, 2^{Q(|u|)}) = L(u)$ を満たすこと.
+
+ \begin{hypothesis}
+  \label{Hypothesis}
+  任意の言語 $L \in$ \PSPACE に対して $L$ を認識するフィードバックの弱い計算が
+  存在する.
+ \end{hypothesis}
+
+ つまりフィードバックの弱い計算が \PSPACE 完全であることを仮定する. 
+
+ \subsection{離散初期値問題を模倣する関数族}
+
+ 証明の流れは1回微分可能の時と変わらない.
+ 任意の言語 $L \in $ \PSPACE, 文字列 $u$ にたいして,
+ 上記のフィードバックの弱い計算を模倣し $L(u)$ を計算する
+ 任意回微分可能な実関数 $g_u$ を構成する.
+
+ \begin{lemma}
+  \label{KtimesFamily}
+  仮定 \ref{Hypothesis} のもと, 任意の自然数 $k \ge 2$,
+  任意の言語　$L \in $ \PSPACE にたいして,
+  多項式 $\lambda, \rho$ と 関数族 $g_u, h_u$ で,
+  $(g_u)_u$ は多項式時間計算可能であり,
+  各二進文字列 $u$ にたいして以下を満たすものが存在する.
+  \begin{enumerate}
+   \item $g_u:[0,1] \times [-1,1]\to \R, \quad h_u: [0,1] \to [-1,1]$;
+   \item 任意の $y \in [-1,1]$ にたいして $g_u(0,y) = g_u(1,y) = 0 $;
+   \item $h_u$ は $g_u$ の常微分方程式の解;
+   \item $\D{0,k} g_u$ は連続;
+   \item 任意の $i \in \{0, \dots, k\}$ にたいして
+	 $\left|\D{0,i} g_u(t,y)\right| 
+	 \le \Lambda_u^{-i}\Gamma_u^{-(i-1)}2^{-|u|}$;
+	 \label{enum:lem:differentiable}
+   \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
+  \end{enumerate}
+  ただし $\Gamma_u=2^{\gamma(|u|)}, \Lambda_u = 2^{\lambda(|u|)}$.
+ \end{lemma}
+ 
+ \begin{proof}
+  仮定 \ref{Hypothesis} より $L$ を認識する 
+  $M = \left< c,d,(G_u)_u,(H_u)_u \right>$
+  を得る.
+  さらに以下のように仮定する.
+  \begin{equation}
+   H_u(i, 2^{Q(|u|)}) = \begin{cases}
+			L(u) & (i=P(|u|)) \\
+			0 & (i<P(|u|)).
+			\end{cases}
+  \end{equation}
+  ...
+ \end{proof}
+

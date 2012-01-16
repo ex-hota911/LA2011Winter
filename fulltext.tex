@@ -1,0 +1,93 @@
+\documentclass[10pt,a4paper]{jarticle}
+
+
+%%% 個人設定 
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\bibliographystyle{alpha}
+
+\def\ifempty#1{%
+\edef\ContentsOfList{\the#1}%
+\edef\CompareTo{}%
+\ifx\ContentsOfList\CompareTo}
+\newcommand{\R}{\mathbf R}
+\newcommand{\N}{\mathbf N}
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\Z}{\mathbf Z}
+\newcommand{\D}[1]{\mathcal D^{(#1)}}
+\newcommand{\PSPACE}{{\bf PSPACE}}
+\newcommand{\qTC}{\mathbf{qTC}^0}
+\newcommand{\NC}{\mathbf{NC}^1}
+\newcommand{\poly}[1]{{#1(|u|)}}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{hypothesis}[theorem]{仮定}
+
+\renewcommand{\proofname}{\bf 証明} 
+
+%%% 数式中の大文字ギリシャ文字を斜体化
+\renewcommand{\Lambda}{\varLambda}
+\renewcommand{\Gamma}{\varGamma}
+
+%%% (i), (ii), (iii), (iv)
+\def\theenumi{\roman{enumi}}
+\def\labelenumi{(\theenumi)}
+
+
+%%% テンプレート
+
+\makeatletter
+
+\def\kouenbangou{15} %%% 数字をご自分の講演番号に書き換えて下さい．
+
+\def\ps@LAheadings{
+
+\def\@oddhead{}
+\def\@evenhead{}
+\def\@evenfoot{\hfil \kouenbangou\,--\,\thepage\hfill}
+\def\@oddfoot{\hfil \kouenbangou\,--\,\thepage\hfil}
+
+}
+
+\def\ps@LAtitleheadings{
+
+\def\@oddhead{2011年度冬のLAシンポジウム\,[\kouenbangou]\hfil}
+\def\@evenhead{}
+\def\@evenfoot{\hfil \kouenbangou\,--\,\thepage\hfill}
+\def\@oddfoot{\hfil \kouenbangou\,--\,\thepage\hfil}
+
+}
+
+\makeatother
+
+\pagestyle{LAheadings}
+
+\title{滑らかな常微分方程式の計算量}
+
+\author{太田浩行 \thanks{東京大学} \and
+河村彰星 \thanks{第1著者に同じ} \and
+マルチン・ツィーグラー \thanks{ダルムシュタット工科大学} \and
+カルステン・レースニク \thanks{第1著者に同じ}
+}
+\date{2012/1/31}
+
+\begin{document}
+
+\maketitle\thispagestyle{LAtitleheadings}
+
+%%% 以下に，予稿の本文を記述して下さい．
+
+\input{abstract}
+\input{introduction}
+\input{preliminary}
+\input{differentiable}
+\input{ktimes}
+\input{conclusion}
+
+\bibliography{la}
+
+\end{document}

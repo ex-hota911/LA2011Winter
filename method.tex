@@ -1,0 +1,147 @@
+\section{微分可能関数}
+
+\begin{theorem}
+ \label{DifferentiableIsPspace}
+ 以下の条件を満たす実関数 $g,h$ で $h$ が \PSPACE 困難 であるものが存在する.
+ \begin{enumerate}
+  \item $g: [0,1] \times \R \to \R, \quad h:[0,1] \to \R$;
+  \item $g$ は多項式時間関数; 
+  \item $h(0) = 0, \quad  h'(t) = g(t,h(t)) \; \forall t \in [0,1] $;
+  \item  $g(t,y)$ は $y$ に対して微分可能. 
+ \end{enumerate}
+\end{theorem}
+
+
+\begin{theorem}
+ \label{KTimesIsPspace}
+ \hypothesis の仮定のもと,任意の$k \ge 2$ に
+ たいして、以下の条件を満たす実関数 $g,h$ で $h$ が \textbf{PSPACE}困難 であるものが存在する.
+ \begin{enumerate}
+  \item $g: [0,1] \times \R \to \R, \quad h:[0,1] \to \R$;
+  \item $g$ は多項式時間関数;
+  \item $h(0) = 0, \quad  h'(t) = g(t,h(t)) \; \forall t \in [0,1] $;
+	\label{enum:mt2:ode}
+  \item $g(t,y)$ は $y$ に対して $k$ 回微分可能.
+	\label{enum:mt2:differentiable}
+ \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+ 定理 \ref{MainTheorem1} と 定理 \ref{MainTheorem2} を別々に証明する.
+\end{proof}
+
+
+\begin{lemma}
+ \label{PspaceFeedback}
+ \hypothesis の仮定のもと, 任意の言語　$L \in $ \PSPACE,
+ 任意の文字列 $u$ に対して, 以下を満たす, 定数 $c,d$, 
+ 多項式 $Q$, 多項式時間関数族 $(G_u)_u, (H_u)_u$
+ \begin{enumerate}
+  \item $G_u: [c \log |u|] × [2^{Q(|u|)}] × [d] → [d]$;
+  \item $H_u: [c \log |u| + 1] × [2^{Q(|u|) + 1}] → [d]$;
+  \item $\forall i, T$ に対して 
+	\begin{itemize}
+	 \item $H_u(i, 0) = H_u(0, T) = 0$
+	 \item $H_u(i + 1, T + 1)$ \\
+	       $= Hu(i+1, T) + Gu(i, T, Hu(i, T))$
+	\end{itemize} 
+  \item $H_u(c \log |u|, 2^{Q(|u|)}) = L(u)$
+ \end{enumerate}
+\end{lemma}
+
+\begin{lemma}
+ \label{PspaceFamily}
+ \hypothesis の仮定のもと,
+ 任意の言語　$L \in $ \PSPACE に対して,
+ 多項式 $\lambda, \rho$ と 関数族 $g_u, h_u$ で,
+　各二進文字列 $u$ に対して以下を満たすものが存在する.
+ $\Gamma_u=2^{\gamma(|u|}), \Lambda_u = 2^{\lambda(|u|)}$.
+ \begin{enumerate}
+  \item $g_u:[0,1] \times [-1,1]\to \R, \quad h_u: [0,1] \to [-1,1]$;
+  \item $(g_u)_u$ は多項式時間計算可能;
+  \item $\forall y \in [-1,1]$に関して$g_u(0,y) = g_u(1,y) = 0 $;
+  \item $h_u(0)=0, \quad \forall t \in [0,1]$に関して$ h'_u(t) = g_u(t,h_u(t)),$;
+  \item $0 \le i \le k$ に対して\\
+	$\left|\frac{d^i}{dy^i}g_u(t,y)\right| 
+	\le \Lambda_u^{-i}\Gamma_u^{-(i-1)}2^{-|u|}$;
+	\label{enum:lem:differentiable}
+  \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
+ \end{enumerate}
+\end{lemma}
+
+
+
+\subsection{証明}
+
+
+%\begin{proof}
+%[補題 \ref{PspaceFamily} の証明]
+% \hypothesis を仮定する.
+% 補題 \ref{PspaceFeedback} より.
+%\end{proof}
+
+\begin{proof}
+ [定理 \ref{MainTheorem2}の証明]
+ \hypothesis を仮定する.
+ \PSPACE 完全な言語 $L$ に対して補題 \ref{PspaceFamily} を用いて,
+ $\lambda, \rho, g_u, h_u$ を得る.
+ 各 $u$ に対して $\Lambda_u = 2^{\lambda(|u|)}, \Gamma_u = 2^{\gamma(|u|)}$,
+
+ \begin{equation}
+  c_u = 1-\frac{1}{2^|u|}+\frac{2\bar{u}+1}{\Lambda_u}, \quad
+   l_u^\mp=c_u\mp\frac{1}{\varLambda_u}
+ \end{equation}
+ とおく. ただし $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ は $u$ を二進数と
+ して解釈した数.
+
+ 関数 $g,h$ を $\forall t \in [0,1], y \in \R$ にたいして, 下のように定義する.
+ \begin{eqnarray}
+  g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u\Gamma_u}\right) 
+   &=& \pm \frac{g_u(t, \hat y)}{\Gamma_u}, \\
+  h(l^\mp_u \pm \frac{t}{\Lambda_u}) 
+   &=& \frac{h_u(t)}{\Lambda_u\Gamma_u}.
+ \end{eqnarray}
+ ただし $\hat y = \max\{-1, \min\{1, y\}\}$.
+ 任意の $y\in \R$ にたいして $g(1,y) = h(1) = 0$ と定義する.
+
+ $g$と$h$が定理 \ref{MainTheorem2} で求める関数であることを示す.
+
+ $h$が$g$の常微分方程式の解であることを (\ref{enum:mt2:ode}) を示す. 
+ $h(0)=0, \quad h'(1) = 0 = g(1,h(1))$ は自明. 
+ 任意の $[0,1)$ の数 は $l^\mp_u \pm t/\Lambda_u$ の形で表せる
+ $u$と$t \in [0,1]$ が存在する.
+ \begin{eqnarray}
+  \lefteqn{h'(l^\mp_u \pm t/\Lambda_u)} \\ \notag
+  &=&  \pm \frac{h'_u(t)}{\Lambda_u\Gamma_u} \\ \notag
+  &=& \pm \frac{g_u \left(t, h_u(t)\right)}{\Gamma_u} \\ \notag
+  &=& g\left(l^\mp_u \pm \frac{t}{\Lambda_u},  
+	\frac{h_u(t)}{\Lambda_u\Gamma_u}\right) \\ \notag
+  &=& g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, 
+	h\left(l^\mp_u \pm \frac{t}{\Lambda_u}\right) \right) . \notag
+ \end{eqnarray}
+
+ 次に(\ref{enum:mt2:differentiable})を示す.
+ (\ref{enum:lem:differentiable})より
+ 
+ $g$ が多項式時間計算可能であること()を示す.
+ 任意の $T \in [0,1] \cup \Q, Y \in \Q$ に対して 
+ \[
+  (T,Y) = (l^\mp_u\pm t/\Lambda_u, y/\Lambda_u\Gamma_u)
+ \]
+ を満たす$\pm, u, t, y$ は多項式時間で見つけることは可能.
+ 
+ $L$ は $h$ に還元可能であることを示す.
+ \begin{equation}
+  h(c_u) = \frac{h_u(1)}{\Lambda_u\Gamma_u} 
+   = \frac{L(u)}{2^{\lambda(|u|)+\gamma(|u|)+\rho(|u|)}}
+ \end{equation}
+ つまり $R,S,T$ を以下のように定義することで, 還元可能.
+ \begin{eqnarray}
+  R(u,v) &=& v \\
+  S(u, 0^n) &=& \lfloor 2^nc_u \rfloor \text{を表す文字列,} \\
+  T(u) &=& 0^{\lambda(|u|)+\gamma(|u|)+\rho(|u|)}
+ \end{eqnarray}
+
+ $L$ は \PSPACE 完全であるため, $h$ も \PSPACE 完全.
+\end{proof}
+

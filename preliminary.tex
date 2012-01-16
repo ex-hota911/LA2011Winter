@@ -1,0 +1,63 @@
+\section{準備}
+\subsection{実数の名}
+
+精度を与えるとある実数の近似値を返す関数をその実数の名と呼ぶ.
+
+\begin{definition}[実数の名]
+ 関数 $\phi : \{0^\N\} \to \Z $ が実数 $x \in [0,1]$ の名であるとは,
+ $\phi(0^n) = \lfloor x \cdot 2^n \rfloor$ または
+ $\phi(0^n) = \lceil x \cdot 2^n \rceil$ を満たすこと.
+\end{definition}
+
+\subsection{計算可能実関数, 多項式時間実関数}
+
+ 実関数は神託機械として表現する.
+
+ \begin{definition}
+  神託機械 $M$ が実関数 $f:A \to \R$ を計算するとは,
+  任意の実数 $x \in A$, 任意の $x$ の名 $\phi$ にたいして,
+  $M^\phi$ が $f(x)$ の名であること.
+ \end{definition}
+
+ ある実関数が計算可能であるとは, その関数を計算する神託機械が存在すること,
+ ある実関数が多項式時間計算可能であるとは, その関数を計算する多項式時間神託機械が存在することとする.
+
+
+ \begin{definition}
+  $f$ の多項式モジュラとは任意の $x_0, x_1 \in [0,1]$, $m \in N$ 
+  に対して $|x_0 - x_1| \le 2^{-p(m)}$ ならば $|f(x_0) - f(x_1)| \le 2^{-m}$
+  を満たすような多項式 $p$ のこと.
+ \end{definition}
+ 
+
+ \begin{lemma}
+  実関数 $f:[0,1] \to \R$ の多項式モジュラが存在し,
+  任意の $d \in ([0,1] \cap \Q)$, $n \in \N$ にたいして
+  \begin{equation}
+   |g(d, 0^n) - f(d)| \le 2^{-n}
+  \end{equation}
+  を満たすような多項式時間計算可能関数 
+  $g: ([0,1] \cap \Q) \times \N \to \Q$ が存在することと,
+  $f$ が多項式時間計算可能であることは同値である.
+ \end{lemma}
+
+\subsection{完全性}
+
+ \begin{definition}[還元]
+  言語 $L$ が実関数 $f$ に還元可能であるとは, 
+  任意の文字列 $u$ にたいして, 以下を満たす実数 $x_u$
+  多項式時間計算可能な関数 $R,S,T$ が存在すること.
+  \begin{itemize}
+   \item $S(u, \cdot)$ は実数 $x_u$ の名;
+   \item 任意の $f(x_u)$ の名 $\phi$ にたいして
+	 \[
+	  L(u) = R(u, \phi(T(u))).
+	 \]
+  \end{itemize}
+ \end{definition}
+
+ 計算量 $C$ にたいして, 関数 $f$ が $C$困難であるとは,
+ 任意の $C$ に含まれる言語が $f$ に還元可能であることである.
+ さらに $f$ が $C$ に含まれるとき, つまり $C$ 対応する神託機械で $f$ を計算するものが
+ 存在するとき, $f$ は $C$ 完全であると定義する.
+ 
