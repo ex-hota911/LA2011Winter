@@ -37,7 +37,7 @@
  \end{enumerate}
 \end{lemma}
 
-もと論文では $d=4$ であったが, 後の議論と統一するため, $d$ と一般化する.
+もと論文では $d=4$ であったが, 後の議論との統一のために一般化する.
 
 (図,より直感的でわかりやすい説明を入れる)
 
@@ -107,12 +107,12 @@
  \end{equation}
 
   補題 \ref{SmoothFunction} の $f$ にたいして, 
- 定数 $c$ を任意の $x \in [0,1]$ にたいして $|f'(x)| \le 2^c$ を満たす最小の自然数と定める.
+ 定数 $c$ を任意の $x \in [0,1]$ にたいして $|\D^{1}f(x)| \le 2^c$ を満たす最小の自然数と定める.
  定数 $d' = \lceil \log (4d + 1) \rceil$, 
  $B = 2^{\poly \lambda + \poly Q + |u| + c + d'}$ とおき, 
  各 $(t, y) \in [0,1] \times [-1, 1]$ にたいして,
  自然数 $N$, $\theta \in [0,1]$, 整数 $Y$, $\eta \in [-1/4, 3/4]$ を
- $t = (T + \theta)2^{Q(|u|)}$, $y = (Y + \eta)B^{-j_u(T)}$ を満たすように
+ $t = (T + \theta)2^{-Q(|u|)}$, $y = (Y + \eta)B^{-j_u(T)}$ を満たすように
  定める.
  
  そのとき,
@@ -170,7 +170,7 @@
    g_u(t, h_u(t)) 
   & = & \frac{2^\poly Q \pi \sin(\theta\pi)}{2B^{j_u(T)+1}}
    G_u(j_u(T), T, H_u(j_u(T), T)) \\
-  & = & h_u'(t).
+  & = & \D{1}h_u(t).
  \end{eqnarray}
  よって $h_u$ は $g_u$ の常微分方程式の解.
 
@@ -179,7 +179,7 @@
   \D{0,1} g(t, y)
   = \begin{cases}
      0 & (\eta \le \frac 1 4) \\
-     2B^{j_u(T)}f'(2\eta- 1/2)
+     2B^{j_u(T)}\D{1}f(2\eta- 1/2)
       \cdot (g^*_u (t, Y+1)-g^*_u(t, Y))
      & (\eta > \frac 1 4)
     \end{cases}
@@ -191,7 +191,7 @@
  \begin{eqnarray*}
   \left| \D{0,1} g \right| 
    & \le & 
-   2 B^{j_u(T)} \cdot |f'(2\eta - 1/2)| \cdot 
+   2 B^{j_u(T)} \cdot |\D{1}f(2\eta - 1/2)| \cdot 
    2 \cdot \frac{2^{\poly Q +1}}{B^{j_u(T)+1}} \\
   & \le & 
    \frac{2 B^{j_u(T)} \cdot 2^c \cdot 2^{\poly Q + 2}}{B^{j_u(T) + 1}} \\
@@ -273,8 +273,8 @@
  $l^\mp_u \pm t/\Lambda_u$ の形で表せる.
  $t \in (0,1)$ においては $\D{0,1}g_u(t, y)$は連続であるため, $t$軸方向へ連続.
  $t = 0, 1$ のとき,
- $y_0 \in [-1, 1]$ にたいして $g_u(t, y_0) = g_u(1, y_0) = 0$ より
- $\D{0,1}g(0, y_0) = \D{0,1}g(1, y_0) = 0$
+ $y \in [-1, 1]$ にたいして $g_u(t, y) = g_u(1, y) = 0$ より
+ $\D{0,1}g_u(0, y) = \D{0,1}g_u(1, y) = 0$
  よって $t = 0, 1$ においても連続.
  $g(1,y) = 0$ より $\D{0,1} g(1,y) = 0$.
  また $\left| \D{0,1}g_u \right| \le 2^{\poly \lambda - |u|}$より,
@@ -286,7 +286,7 @@
  よって $\D{0,1}g$ は連続.
 
  $h$が$g$の常微分方程式の解であることを示す. 
- $h(0)=0, \quad h'(1) = 0 = g(1,h(1))$ は自明. 
+ $h(0)=0, \quad \D{1}h(1) = 0 = g(1,h(1))$ は自明. 
  \begin{eqnarray}
   \lefteqn{h'(l^\mp_u \pm t/\Lambda_u)} \\ \notag
   &=&  \pm \frac{h'_u(t)}{\Lambda_u\Gamma_u} \\ \notag

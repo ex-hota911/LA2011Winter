@@ -83,6 +83,68 @@
 			0 & (i<P(|u|)).
 			\end{cases}
   \end{equation}
-  ...
+
+    補題 \ref{SmoothFunction} の $f$ にたいして, 
+ 定数 $c$ を任意の $i \in \{0, \dots, k\}$, 任意の $x \in [0,1]$ にたいして $|\D^{i}f(x)| \le 2^c$ を満たす最小の自然数と定める.
+ 定数 $d' = \lceil \log (4d + 1) \rceil$, 
+ $B = 2^{\poly Q + k \poly \lambda + (k - 1) \poly \gamma 
+  + |u| + c + d' + k}$ とおき, 
+ 各 $(t, y) \in [0,1] \times [-1, 1]$ にたいして,
+ 自然数 $N$, $\theta \in [0,1]$, 整数 $Y$, $\eta \in [-1/4, 3/4]$ を
+ $t = (T + \theta)2^{-Q(|u|)}$, $y = (Y + \eta)B^{-(k+1)^{j_u(T)}}$ 
+  を満たすように定める.
+ 
+ そのとき,
+ \begin{equation}
+  g^*_u(t, Y) = \frac{2^\poly Q \pi \sin (\theta\pi)}{2 B^{(k+1)^{(j_u(T)+1)}}}
+   G_u\left( j_u(T), T, Y \bmod 2^{d'} \right)
+ \end{equation}
+ とおき $g_u, h_u$ を以下のように定義する.
+ \begin{equation}
+  g_u(t,y) 
+  = \begin{cases}
+     g^*_u(t, Y)& (\eta \le \frac 1 4) \\
+     ( 1-f ( 2\eta - 1/2)) g^*_u(t, Y) 
+     + f ( 2\eta -  1/2) g^*_u(t, Y+1)
+     & (\eta > \frac 1 4)
+    \end{cases}
+  \label{eq:gu}
+ \end{equation}
+
+ \begin{equation} 
+  h_u(t) = \sum^{\poly P}_{i=0} \frac{H_u(i, T)}{B^{(k+1)^i}}
+  + \frac{1-\cos(\theta\pi)}{2} 
+  \cdot \frac{G_u(j_u(T), T, H_u(j_u(T), T))}{B^{(k+1)^{(j_u(T)+1)}}}
+  \label{eq:hu}
+ \end{equation}
+
+ 上記のように定義した $g_u, h_u$ が補題\ref{KtimesFamily} で求める
+ 性質を満たすことを示す. (i) , (iii) は自明. 
+ $(g_u)_u$ が多項式時間計算可能であることは補題によって示される.
+
+ \begin{align}
+  &\D{0,i} g(t, y) \notag \\
+  & = \begin{cases}
+     0 & (\eta \le \frac 1 4) \\
+     2^i \cdot B^{i \cdot (k+1)^{j_u(T)}} \cdot \D{i} f(2\eta - 1/2)
+      \cdot (g^*_u (t, Y+1)-g^*_u(t, Y))
+     & (\eta > \frac 1 4)
+    \end{cases}
+ \end{align}
+
+  $|g^*_u| 
+  \le \left| \frac{2^\poly Q \pi \sin (\theta\pi)}{2 B^{(k+1)^{(j_u(T)+1)}}} \right|
+  \le \frac{2^{\poly Q + 1}}{B^{(k+1)^{(j_u(T)+1)}}}$ より,
+  
+  \begin{align*}
+   | \D{0, i} g | & \le 2^i \cdot B^{i \cdot (k+1)^{j_u(T)}} \cdot 2^c \cdot
+   (g^*_u (t, Y+1)-g^*_u(t, Y)) \\
+   & \le 2^{c+k} \cdot B^{k(k+1)^{j_u(T)}} \cdot 2 \cdot \frac{2^{\poly Q + 1}}{B^{(k+1)^{(j_u(T)+1)}}} \\
+   & \le \frac{2^{\poly Q + c + k + 2}}{B} 
+   \le 2^{-i\poly \lambda -(i-1)\poly \gamma - |u|}
+    =  \Lambda_u^{-i}\Gamma_u^{-(i-1)}2^{-|u|}
+  \end{align*}
+
+  
  \end{proof}
 
