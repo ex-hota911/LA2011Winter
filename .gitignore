@@ -3,6 +3,7 @@ fulltext.bbl
 fulltext.blg
 fulltext.dvi
 fulltext.log
+#fulltext.pdf
 la.sh
 make.sh
 texput.log
