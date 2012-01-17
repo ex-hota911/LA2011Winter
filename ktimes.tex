@@ -65,11 +65,11 @@
    \item $\D{0,k} g_u$ は連続;
    \item 任意の $i \in \{0, \dots, k\}$ にたいして
 	 $\left|\D{0,i} g_u(t,y)\right| 
-		\le \Lambda_u^{-i}\Gamma_u^{-(i-1)}2^{-|u|}$;
+		\le \Lambda_u^{-i}2^{-|u|}$;
 	 \label{enum:lem:differentiable}
    \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
   \end{enumerate}
-  ただし $\Gamma_u=2^{\gamma(|u|)}, \Lambda_u = 2^{\lambda(|u|)}$.
+  ただし $\Lambda_u = 2^{\lambda(|u|)}$.
  \end{lemma}
  
  \begin{proof}
@@ -87,8 +87,7 @@
     補題 \ref{SmoothFunction} の $f$ にたいして, 
  定数 $c$ を任意の $i \in \{0, \dots, k\}$, 任意の $x \in [0,1]$ にたいして $|\D i f(x)| \le 2^c$ を満たす最小の自然数と定める.
  定数 $d' = \lceil \log (4d + 1) \rceil$, 
- $B = 2^{\poly Q + k \poly \lambda + (k - 1) \poly \gamma 
-  + |u| + c + d' + k}$ とおき, 
+ $B = 2^{\poly Q + k \poly \lambda + (k - 1) + |u| + c + d' + k}$ とおき, 
  各 $(t, y) \in [0,1] \times [-1, 1]$ にたいして,
  自然数 $N$, $\theta \in [0,1]$, 整数 $Y$, $\eta \in [-1/4, 3/4]$ を
  $t = (T + \theta)2^{-Q(|u|)}$, $y = (Y + \eta)B^{-(k+1)^{j_u(T)}}$ 
@@ -104,8 +103,8 @@
   g_u(t,y) 
   = \begin{cases}
      g^*_u(t, Y)& (\eta \le \frac 1 4) \\
-     ( 1-f ( 2\eta - 1/2)) g^*_u(t, Y) 
-     + f ( 2\eta -  1/2) g^*_u(t, Y+1)
+     ( 1-f \left( 2\eta - \frac 1 2 \right)g^*_u(t, Y) 
+     + f \left( 2\eta -  \frac 1 2 \right) g^*_u(t, Y+1)
      & (\eta > \frac 1 4)
     \end{cases}
   \label{eq:gu}
@@ -156,15 +155,15 @@
  よって $h_u$ は $g_u$ の常微分方程式の解.
 
 
-  \begin{multline}
-   \D{0,i} g(t, y)  \\
-   = \begin{cases}
+  \begin{align}
+   &\D{0,i} g(t, y)  = \\
+   & \begin{cases}
      0 & (\eta \le \frac 1 4) \\
-     2^i \cdot B^{i \cdot (k+1)^{j_u(T)}} \cdot \D{i} f(2\eta - 1/2)
+     2^i  B^{i \cdot (k+1)^{j_u(T)}} \cdot \D{i} f\left(2\eta - \frac 1 2 \right)
       \cdot (g^*_u (t, Y+1)-g^*_u(t, Y))
      & (\eta > \frac 1 4)
-    \end{cases}
-  \end{multline}
+     \end{cases} \notag
+  \end{align}
   よって $\D{0,i} g$ は連続
 
 
@@ -175,7 +174,7 @@
   \begin{equation}
    |\D{0,0} g| = | g |  
     \le \frac{2^{\poly Q + 1}}{B^{(k+1)^{(j_u(T)+1)}}} 
-    \le \frac{2^{\poly Q + 1}}{B^{(k+1)}} \le \Gamma_u 2^{-|u|}
+    \le \frac{2^{\poly Q + 1}}{B^{(k+1)}} \le 2^{-|u|}
   \end{equation}
   $i \in \{1, \dots, k\}$ において,
   \begin{align*}
@@ -183,8 +182,8 @@
    (g^*_u (t, Y+1)-g^*_u(t, Y)) \\
    & \le 2^{c+k} \cdot B^{k(k+1)^{j_u(T)}} \cdot 2 \cdot \frac{2^{\poly Q + 1}}{B^{(k+1)^{(j_u(T)+1)}}} \\
    & \le \frac{2^{\poly Q + c + k + 2}}{B} 
-   \le 2^{-i\poly \lambda -(i-1)\poly \gamma - |u|}
-    =  \Lambda_u^{-i}\Gamma_u^{-(i-1)}2^{-|u|} \taghere
+   \le 2^{-i\poly \lambda - |u|}
+    =  \Lambda_u^{-i}2^{-|u|} \taghere
   \end{align*}
 
 
@@ -192,9 +191,9 @@
   \begin{align*}
    h_u(1) &= \frac{H_u(\poly P, 2^\poly Q)}{B^{(k+1)^\poly P}}  \\
    &= \frac{L(u)}
-   {2^{(k+1)^\poly P (\poly Q + k \poly \lambda + (k - 1) \poly \gamma  + |u| + c + d' + k)}}   \taghere
+   {2^{(k+1)^\poly P (\poly Q + k \poly \lambda + |u| + c + d' + k)}}   \taghere
   \end{align*}
-  より, $\rho(x) = (k+1)^{P(x)} (Q(x) + k \lambda(x) + (k - 1) \gamma(x) + x + c + d' + k)$ とおく.
+  より, $\rho(x) = (k+1)^{P(x)} (Q(x) + k \lambda(x) + x + c + d' + k)$ とおく.
   $\poly P = O(\log |u|)$ かつ $P$ は多項式時間計算可能により, 
   $\rho$ は多項式時間計算可能.
  \end{proof}
@@ -208,38 +207,30 @@
  \subsection{定理 \ref{KTimesIsPspace} の証明}
 
 \begin{proof}
- %[定理 \ref{DifferentiableIsPspace} の証明]
  $L$ を \PSPACE 完全な言語, $\lambda(k) = 2k+2$ とおく.
- \PSPACE 完全な言語 $L$ にたいして補題 \ref{DifferentiableFamily} を用いて,
+ \PSPACE 完全な言語 $L$ にたいして補題 \ref{KTimesFamily} を用いて,
  $\rho$, $(g_u)_u$, $(h_u)_u$ を得る.
- $(g_u)_u$ は多項式時間実関数族なので, $|g_u(t, y)| \le 2^{\poly \gamma - |u|}$
- を満たすような多項式 $\gamma$ が存在する.
- 各 $u$ にたいして 
- \begin{equation}
-  \Lambda_u = 2^{\lambda(|u|)},\quad
-   \Gamma_u = 2^{\gamma(|u|)}
- \end{equation}
- \begin{equation}
-  c_u = 1-\frac{1}{2^|u|}+\frac{2\bar{u}+1}{\Lambda_u}, \quad
-   l_u^\mp=c_u\mp\frac{1}{\varLambda_u}
- \end{equation}
+ \begin{align}
+  c_u &= 1-\frac{1}{2^|u|}+\frac{2\bar{u}+1}{\Lambda_u},&
+   l_u^\mp &= c_u\mp\frac{1}{\varLambda_u}
+ \end{align}
  とおく. ただし $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ は $u$ を二進数と
  して解釈した数.
 
  関数 $g,h$ を $t \in [0,1]$, $y \in \R$ にたいして, 下のように定義する.
  \begin{equation}
-  g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u\Gamma_u}\right) \\
+  g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right) \\
    = \begin{cases}
-      \pm \frac{1}{\Gamma_u} \left( g_u(t,1) 
-      + \D{0,1}g_u(t, 1)(y-1) \right)&  (1<y)\\
-      \pm \frac{g_u(t, y)}{\Gamma_u} & (-1 \le y \le 1) \\
-      \pm \frac{1}{\Gamma_u} \left( g_u(t, -1)
-      + \D{0,1} g_u(t, -1)(y+1) \right) & (y<-1)
+      \pm g_u(t,1) \pm \D{0,1}g_u(t, 1)(y-1) 
+      &  (1<y) \\
+      \pm g_u(t, y) 
+      & (-1 \le y \le 1) \\
+      \pm g_u(t, -1) \pm \D{0,1} g_u(t, -1)(y+1)  & (y<-1)
      \end{cases}
  \end{equation}
  \begin{equation}
   h \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right) 
-   = \frac{h_u(t)}{\Lambda_u\Gamma_u}.
+   = \frac{h_u(t)}{\Lambda_u}.
  \end{equation}
  任意の $y\in \R$ にたいして $g(1,y) = h(1) = 0$ と定義する.
 
@@ -248,62 +239,61 @@
  まず $g$ が多項式時間計算可能であることを示す.
  補題\footnote{準備で導入}を用いて示す.
  各有理数 $T,Y$ について $g(T, Y)$ を求めるとき,
- $T=l_u^\mp \pm t/\Lambda_u$, $Y = y/\Lambda_u\Gamma_u$ を満たすような
+ $T=l_u^\mp \pm t/\Lambda_u$, $Y = y/\Lambda_u$ を満たすような
  $u, \pm(\mp), t, y$ は, 多項式時間で計算可能である.
 
  次に $g$ が $y$ に関して微分可能であり, 導関数は $y$, $t$ に関して
  連続になっていることをしめす. 
- 各区間で第二引数に関して微分すると,
+ 各区間で第二引数に関して微分すると $i \in {1,\dots,k}$ で
  \begin{equation}
-  \D{0,1}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u\Gamma_u} \right) = \begin{cases}
-		   \pm \Lambda_u \D{0,1}g_u(t,1) & (1 < y) \\
-		   \pm \Lambda_u \D{0,1}g_u(t,y) & (-1 < y < 1) \\
-		   \pm \Lambda_u \D{0,1}g_u(t,-1) & (y < -1).
+  \D{0,i}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u} \right) = \begin{cases}
+		   \pm \Lambda_u^i \D{0,i}g_u(t,1) & (1 < y) \\
+		   \pm \Lambda_u^i \D{0,i}g_u(t,y) & (-1 < y < 1) \\
+		   \pm \Lambda_u^i \D{0,i}g_u(t,-1) & (y < -1).
 		  \end{cases}
  \end{equation}
- よって $\frac{dg}{dy}(t,1) = \pm \Lambda_u \frac{dg_u}{gy}(t,1)$, 
- $\frac{dg}{dy}(t,-1) = \pm \Lambda_u \frac{dg_u}{gy}(t,-1)$ であり,
- $y$ に関して微分可能. $\D{0,1}g_u$は連続であるため, $y$ に関して連続は自明.
+ よって $\D{0,i}g(t, 1) = \pm \Lambda_u^i \D{0,i}g_u (t,1)$, 
+ $\D{0,i}g(t, -1) = \pm \Lambda_u^i \D{0,i}g_u (t,-1)$ であり,
+ $y$ に関して $i$ 回微分可能かつ$i$階の導関数は連続.
  
- $t$軸方向への連続性について.
+ $t$ 軸方向への $i$ 階の導関数の連続性について.
  任意の $[0,1)$ の数はある $u$ と $t \in [0,1]$ が存在して
  $l^\mp_u \pm t/\Lambda_u$ の形で表せる.
- $t \in (0,1)$ においては $\D{0,1}g_u(t, y)$は連続であるため, $t$軸方向へ連続.
- $t = 0, 1$ のとき,
- $y \in [-1, 1]$ にたいして $g_u(t, y) = g_u(1, y) = 0$ より
- $\D{0,1}g_u(0, y) = \D{0,1}g_u(1, y) = 0$
+ $t \in (0,1)$ においては $\D{0,i}g_u(t, y)$は連続であるため, $t$軸方向へ連続.
+ $t = 0, 1$ のとき, $y \in [-1, 1]$ にたいして $g_u(0, y) = g_u(1, y) = 0$ より
+ $\D{0,i}g_u(0, y) = \D{0,i}g_u(1, y) = 0$
  よって $t = 0, 1$ においても連続.
- $g(1,y) = 0$ より $\D{0,1} g(1,y) = 0$.
- また $\left| \D{0,1}g_u \right| \le 2^{\poly \lambda - |u|}$より,
+ $g(1,y) = 0$ より $\D{0,i} g(1,y) = 0$.
+ また $\left| \D{0,i}g_u \right| \le \Lambda_u^{-i} 2^{- |u|}$より,
  \begin{equation}
-  \lim_{t \to 1-0} \left| \D{0,1}g \right|
-   = \lim_{|u| \to \infty} \left| \Lambda_u\D{0,1}g_u \right| 
+  \lim_{t \to 1-0} \left| \D{0,i}g \right|
+   = \lim_{|u| \to \infty} \left| \Lambda_u^i \D{0,i}g_u \right| 
    \le \lim_{|u| \to \infty} \left| 2^{-|u|} \right|= 0.
  \end{equation}
- よって $\D{0,1}g$ は連続.
+ よって $\D{0,i}g$ は連続.
 
  $h$が$g$の常微分方程式の解であることを示す. 
  $h(0)=0, \quad \D{1}h(1) = 0 = g(1,h(1))$ は自明. 
  \begin{align*}
   \lefteqn{h'(l^\mp_u \pm t/\Lambda_u)} \\ 
-  &=  \pm \frac{h'_u(t)}{\Lambda_u\Gamma_u} \\ 
-  &= \pm \frac{g_u \left(t, h_u(t)\right)}{\Gamma_u} \\ 
+  &=  \pm \frac{h'_u(t)}{\Lambda_u} \\ 
+  &= \pm g_u \left(t, h_u(t)\right) \\ 
   &= g\left(l^\mp_u \pm \frac{t}{\Lambda_u},  
-	\frac{h_u(t)}{\Lambda_u\Gamma_u}\right) \\ 
+	\frac{h_u(t)}{\Lambda_u}\right) \\ 
   &= g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, 
 	h\left(l^\mp_u \pm \frac{t}{\Lambda_u}\right) \right) . \taghere
  \end{align*}
 
  $L$ は $h$ に還元可能であることを示す.
  \begin{equation}
-  h(c_u) = \frac{h_u(1)}{\Lambda_u\Gamma_u} 
-   = \frac{L(u)}{2^{\lambda(|u|)+\gamma(|u|)+\rho(|u|)}}
+  h(c_u) = \frac{h_u(1)}{\Lambda_u} 
+   = \frac{L(u)}{2^{\lambda(|u|)+\rho(|u|)}}
  \end{equation}
  つまり $R,S,T$ を以下のように定義することで, 還元可能.
  \begin{align}
   R(u,v) &= v \\
   S(u, 0^n) &= \lfloor 2^nc_u \rfloor \text{を表す文字列,} \\
-  T(u) &= 0^{\lambda(|u|)+\gamma(|u|)+\rho(|u|)}
+  T(u) &= 0^{\lambda(|u|)+\rho(|u|)}
  \end{align}
  $L$ は \PSPACE 完全であるため, $h$ も \PSPACE 完全.
 \end{proof}
