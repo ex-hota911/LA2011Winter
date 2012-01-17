@@ -166,12 +166,12 @@
  \end{equation}
  $B$ は $2^{d'}$ の倍数なので, $Y \bmod 2^{d'} = H_u(j_u)$. 
  (\ref{eq:gu})へ$Y$ と $\eta$ を代入すると,
- \begin{eqnarray}
+ \begin{align*}
    g_u(t, h_u(t)) 
-  & = & \frac{2^\poly Q \pi \sin(\theta\pi)}{2B^{j_u(T)+1}}
+  & =  \frac{2^\poly Q \pi \sin(\theta\pi)}{2B^{j_u(T)+1}}
    G_u(j_u(T), T, H_u(j_u(T), T)) \\
-  & = & \D{1}h_u(t).
- \end{eqnarray}
+  & =  \D{1}h_u(t).
+ \end{align*}
  よって $h_u$ は $g_u$ の常微分方程式の解.
 
  $g_u$は$y$に関して微分可能であり,
@@ -188,23 +188,23 @@
 
  $|g^*_u(t, Y)| \le 2^{\poly Q}\pi/(2B^{j_u(T)+1}) 
  \le 2^{\poly Q + 1}/B^{j_u(T) + 1}$ より, 
- \begin{eqnarray*}
+ \begin{align*}
   \left| \D{0,1} g \right| 
-   & \le & 
+   & \le  
    2 B^{j_u(T)} \cdot |\D{1}f(2\eta - 1/2)| \cdot 
    2 \cdot \frac{2^{\poly Q +1}}{B^{j_u(T)+1}} \\
-  & \le & 
+  & \le  
    \frac{2 B^{j_u(T)} \cdot 2^c \cdot 2^{\poly Q + 2}}{B^{j_u(T) + 1}} \\
-  & = & \frac{2^{\poly Q + c + 3}}{B} 
-   \quad \le \quad 2^{-\poly \lambda - |u|}
- \end{eqnarray*}
+  & =  \frac{2^{\poly Q + c + 3}}{B} 
+   \quad \le \quad 2^{-\poly \lambda - |u|} \taghere
+ \end{align*}
  
 
  (vii) は 
- \begin{eqnarray*}
-  h_u(1) &=& \frac{H_u(\poly P, 2^\poly Q)}{B^\poly P}  \\
-  &=& \frac{L(u)}{2^{\poly P(\poly \lambda + \poly Q + |u| + c + d')}}
- \end{eqnarray*}
+ \begin{align*}
+  h_u(1) &= \frac{H_u(\poly P, 2^\poly Q)}{B^\poly P}  \\
+  &= \frac{L(u)}{2^{\poly P(\poly \lambda + \poly Q + |u| + c + d')}} \taghere
+ \end{align*}
  より, $\rho(k) = P(k)(\lambda(k) + Q(k) + |u| + c + d')$ とおくと成り立つ.
 \end{proof}
 
@@ -287,15 +287,15 @@
 
  $h$が$g$の常微分方程式の解であることを示す. 
  $h(0)=0, \quad \D{1}h(1) = 0 = g(1,h(1))$ は自明. 
- \begin{eqnarray}
-  \lefteqn{h'(l^\mp_u \pm t/\Lambda_u)} \\ \notag
-  &=&  \pm \frac{h'_u(t)}{\Lambda_u\Gamma_u} \\ \notag
-  &=& \pm \frac{g_u \left(t, h_u(t)\right)}{\Gamma_u} \\ \notag
-  &=& g\left(l^\mp_u \pm \frac{t}{\Lambda_u},  
-	\frac{h_u(t)}{\Lambda_u\Gamma_u}\right) \\ \notag
-  &=& g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, 
-	h\left(l^\mp_u \pm \frac{t}{\Lambda_u}\right) \right) . \notag
- \end{eqnarray}
+ \begin{align*}
+  \lefteqn{h'(l^\mp_u \pm t/\Lambda_u)} \\ 
+  &=  \pm \frac{h'_u(t)}{\Lambda_u\Gamma_u} \\ 
+  &= \pm \frac{g_u \left(t, h_u(t)\right)}{\Gamma_u} \\ 
+  &= g\left(l^\mp_u \pm \frac{t}{\Lambda_u},  
+	\frac{h_u(t)}{\Lambda_u\Gamma_u}\right) \\ 
+  &= g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, 
+	h\left(l^\mp_u \pm \frac{t}{\Lambda_u}\right) \right) . \taghere
+ \end{align*}
 
  $L$ は $h$ に還元可能であることを示す.
  \begin{equation}
@@ -303,11 +303,11 @@
    = \frac{L(u)}{2^{\lambda(|u|)+\gamma(|u|)+\rho(|u|)}}
  \end{equation}
  つまり $R,S,T$ を以下のように定義することで, 還元可能.
- \begin{eqnarray}
-  R(u,v) &=& v \\
-  S(u, 0^n) &=& \lfloor 2^nc_u \rfloor \text{を表す文字列,} \\
-  T(u) &=& 0^{\lambda(|u|)+\gamma(|u|)+\rho(|u|)}
- \end{eqnarray}
+ \begin{align}
+  R(u,v) &= v \\
+  S(u, 0^n) &= \lfloor 2^nc_u \rfloor \text{を表す文字列,} \\
+  T(u) &= 0^{\lambda(|u|)+\gamma(|u|)+\rho(|u|)}
+ \end{align}
  $L$ は \PSPACE 完全であるため, $h$ も \PSPACE 完全.
 \end{proof}
 
