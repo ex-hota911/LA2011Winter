@@ -1,5 +1,6 @@
 \documentclass[10pt,a4paper]{jarticle}
 
+\makeatletter
 
 %%% 個人設定 
 \usepackage{amsmath}
@@ -21,6 +22,7 @@
 \newcommand{\NC}{\mathbf{NC}^1}
 \newcommand{\poly}[1]{{#1(|u|)}}
 
+
 \theoremstyle{definition}
 \newtheorem{theorem}{定理}[section]
 \newtheorem{lemma}[theorem]{補題}
@@ -37,10 +39,19 @@
 \def\theenumi{\roman{enumi}}
 \def\labelenumi{(\theenumi)}
 
+%%% 数式番号を(章.num) に
+\renewcommand{\theequation}{%
+    \thesection.\arabic{equation}}
+    \@addtoreset{equation}{section}
+
+%%% align* などで指定した場所だけ数式番号を置く
+\newcommand{\taghere}{{
+\stepcounter{equation}
+\tag{\theequation}
+}}
+
 
 %%% テンプレート
-
-\makeatletter
 
 \def\kouenbangou{15} %%% 数字をご自分の講演番号に書き換えて下さい．
 

@@ -20,7 +20,7 @@
   5つ組 $M = \left< d, P, Q, (G_u)_u, (H_u)_u \right>$である.
  \begin{itemize}
   \item  $(G_u)_u$ は多項式時間計算可能;
-  \item $P(x) = O(\log x)$;
+  \item $P(x) = O(\log x)$ かつ多項式時間計算可能;
   \item $G_u: [P(|u|)] \times \left[ 2^{\poly Q} \right] \times [d] 
 	\to \{-1, 0, 1\}$;
    \item $H_u: [P(|u|) + 1] \times 
@@ -55,15 +55,15 @@
   \label{KtimesFamily}
   仮定 \ref{Hypothesis} のもと, 任意の自然数 $k \ge 2$,
   任意の言語　$L \in $ \PSPACE にたいして,
-  多項式 $\lambda, \rho$ と 関数族 $g_u, h_u$ で,
-  $(g_u)_u$ は多項式時間計算可能であり,
+  多項式 $\lambda$, 関数 $\rho : \N \to \N$ と 関数族 $g_u, h_u$ で,
+  $\rho, (g_u)_u$ は多項式時間計算可能であり,
   各二進文字列 $u$ にたいして以下を満たすものが存在する.
   \begin{enumerate}
    \item $g_u:[0,1] \times [-1,1]\to \R, \quad h_u: [0,1] \to [-1,1]$;
    \item 任意の $y \in [-1,1]$ にたいして $g_u(0,y) = g_u(1,y) = 0 $;
    \item $h_u$ は $g_u$ の常微分方程式の解;
    \item $\D{0,k} g_u$ は連続;
-   \item 任意の $i \in \{1, \dots, k\}$ にたいして
+   \item 任意の $i \in \{0, \dots, k\}$ にたいして
 	 $\left|\D{0,i} g_u(t,y)\right| 
 		\le \Lambda_u^{-i}\Gamma_u^{-(i-1)}2^{-|u|}$;
 	 \label{enum:lem:differentiable}
@@ -74,7 +74,7 @@
  
  \begin{proof}
   仮定 \ref{Hypothesis} より $L$ を認識する 
-  $M = \left< c,d,(G_u)_u,(H_u)_u \right>$
+  $M = \left< d, P, Q,(G_u)_u,(H_u)_u \right>$
   を得る.
   さらに以下のように仮定する.
   \begin{equation}
@@ -85,7 +85,7 @@
   \end{equation}
 
     補題 \ref{SmoothFunction} の $f$ にたいして, 
- 定数 $c$ を任意の $i \in \{0, \dots, k\}$, 任意の $x \in [0,1]$ にたいして $|\D^{i}f(x)| \le 2^c$ を満たす最小の自然数と定める.
+ 定数 $c$ を任意の $i \in \{0, \dots, k\}$, 任意の $x \in [0,1]$ にたいして $|\D i f(x)| \le 2^c$ を満たす最小の自然数と定める.
  定数 $d' = \lceil \log (4d + 1) \rceil$, 
  $B = 2^{\poly Q + k \poly \lambda + (k - 1) \poly \gamma 
   + |u| + c + d' + k}$ とおき, 
@@ -119,32 +119,75 @@
  \end{equation}
 
  上記のように定義した $g_u, h_u$ が補題\ref{KtimesFamily} で求める
- 性質を満たすことを示す. (i) , (iii) は自明. 
+ 性質を満たすことを示す. (i) , (ii) は自明. 
  $(g_u)_u$ が多項式時間計算可能であることは補題によって示される.
 
- \begin{align}
-  &\D{0,i} g(t, y) \notag \\
-  & = \begin{cases}
+ $h_u$ は $g_u$ の常微分方程式の解であることを示す.
+ まず $h_u$ について解析する. (\ref{eq:hu}) の一つ目の項において
+ $i \le j_u(T)$ の合計は $B^{(k+1)^{j_u(T)}}$ の倍数. $i > j_u(T)$ の合計は, 
+ \begin{align*}
+  \sum_{i>j_u(T)}^{\poly P} \frac{H_u(i, T)}{B^{(k+1)^i}} 
+  & \le \sum_{i>j_u(T)}^\infty \frac{d-1}{B^{(k+1)^i}}  \\
+  & \le \sum_{i>j_u(T)}^\infty \frac{d-1}{B^i} 
+   = \sum_{i>j_u(T)} \frac{d-1}{B^{i-j_u(T)}}B^{-j_u(T)} \\
+  & \le \sum_{i>j_u(T)} \frac{(d-1)}{(4d+1)^{i-j_u(T)}}B^{-j_u(T)} \\
+  & = \frac{d-1}{4d}B^{-j_u(T)}
+ \end{align*}
+ 二つ目の項の絶対値は
+ \begin{equation}
+  \left| \frac{1-\cos(\theta\pi)}{2} 
+   \cdot \frac{G_u(j_u(T), T, H_u(j_u(T), T))}{B^{(k+1)^{(j_u(T)+1)}}} \right|
+  \le \frac{1}{B^{j_u(T)+1}}
+  \le \frac{B^{-j_u(T)}}{4d+1}
+ \end{equation}
+ よって $h_u(t) = (Y + \eta) B^{-j_u(T)}$ を満たす $\eta \in [-1/4, 1/4]$
+ が存在する. このとき,
+ \begin{equation}
+  Y = \sum_{i=0}^{j_u(T)}H_u(i, T) \cdot B^{j_u(T) - i} .
+ \end{equation}
+ $B$ は $2^{d'}$ の倍数なので, $Y \bmod 2^{d'} = H_u(j_u)$. 
+ (\ref{eq:gu})へ$Y$ と $\eta$ を代入すると,
+  \begin{align*}
+   g_u(t, h_u(t)) 
+  & =  \frac{2^\poly Q \pi \sin(\theta\pi)}{2B^{j_u(T)+1}}
+   G_u(j_u(T), T, H_u(j_u(T), T)) \\
+  & =  \D{1}h_u(t). \taghere
+  \end{align*}
+ よって $h_u$ は $g_u$ の常微分方程式の解.
+
+
+  \begin{multline}
+   \D{0,i} g(t, y)  \\
+   = \begin{cases}
      0 & (\eta \le \frac 1 4) \\
      2^i \cdot B^{i \cdot (k+1)^{j_u(T)}} \cdot \D{i} f(2\eta - 1/2)
       \cdot (g^*_u (t, Y+1)-g^*_u(t, Y))
      & (\eta > \frac 1 4)
     \end{cases}
- \end{align}
+  \end{multline}
+  よって $\D{0,i} g$ は連続
 
   $|g^*_u| 
   \le \left| \frac{2^\poly Q \pi \sin (\theta\pi)}{2 B^{(k+1)^{(j_u(T)+1)}}} \right|
   \le \frac{2^{\poly Q + 1}}{B^{(k+1)^{(j_u(T)+1)}}}$ より,
-  
   \begin{align*}
    | \D{0, i} g | & \le 2^i \cdot B^{i \cdot (k+1)^{j_u(T)}} \cdot 2^c \cdot
    (g^*_u (t, Y+1)-g^*_u(t, Y)) \\
    & \le 2^{c+k} \cdot B^{k(k+1)^{j_u(T)}} \cdot 2 \cdot \frac{2^{\poly Q + 1}}{B^{(k+1)^{(j_u(T)+1)}}} \\
    & \le \frac{2^{\poly Q + c + k + 2}}{B} 
    \le 2^{-i\poly \lambda -(i-1)\poly \gamma - |u|}
-    =  \Lambda_u^{-i}\Gamma_u^{-(i-1)}2^{-|u|}
+    =  \Lambda_u^{-i}\Gamma_u^{-(i-1)}2^{-|u|} \taghere
   \end{align*}
 
+  (vii) は 
+  \begin{align*}
+   h_u(1) &= \frac{H_u(\poly P, 2^\poly Q)}{B^{(k+1)^\poly P}}  \\
+   &= \frac{L(u)}
+   {2^{(k+1)^\poly P (\poly Q + k \poly \lambda + (k - 1) \poly \gamma  + |u| + c + d' + k)}}   \taghere
+  \end{align*}
+  より, $\rho(x) = (k+1)^{P(x)} (Q(x) + k \lambda(x) + (k - 1) \gamma(x) + x + c + d' + k)$ とおく.
+  $\poly P = O(\log |u|)$ かつ $P$ は多項式時間計算可能により, 
+  $\rho$ は多項式時間計算可能.
   
  \end{proof}
 
