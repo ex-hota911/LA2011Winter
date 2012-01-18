@@ -34,14 +34,14 @@ REFGREP=grep "^LaTeX Warning: Label(s) may have changed."
 #PRINTER=//server/printername
 # 標準のターゲット
 all: $(FILE).pdf 
-# 強制
+# 依存関係にかかわらず作成
 force:
 	$(TEX) $(FILE)
 	$(BIBTEX) $(FILE)
 	$(TEX) $(FILE)
 	$(TEX) $(FILE)
 	$(DVIPDF) $(FILE)
-#printps:  $(FILE).ps
+# printps:  $(FILE).ps
 #	lpr -P$(PRINTER) $(FILE).ps
 # printpdf:  $(PSFILE)
 # 	lpr -P$(PRINTER) $(FILE).ps
@@ -58,3 +58,8 @@ $(FILE).aux: $(FILE).tex $(SRC)
 clean:
 	rm -f $(FILE).aux $(FILE).log $(FILE).toc $(FILE).dvi 
 	rm -f $(FILE).pdf $(FILE).lof $(FILE).lot $(FILE).bbl
+open:
+	evince fulltext.pdf &
+diff:
+	git diff --color | nkf | less -r
+
