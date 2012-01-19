@@ -41,9 +41,11 @@
 \def\labelenumi{(\theenumi)}
 
 %%% 数式番号を(章.num) に
-\renewcommand{\theequation}{%
-    \thesection.\arabic{equation}}
-    \@addtoreset{equation}{section}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\@addtoreset{equation}{section}
+
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\@addtoreset{table}{section}
 
 %%% align* などで指定した場所だけ数式番号を置く
 \newcommand{\taghere}{{
@@ -96,8 +98,8 @@
 \input{abstract}
 \input{introduction}
 \input{preliminary}
-%\input{differentiable}
-%\input{ktimes}
+\input{differentiable}
+\input{ktimes}
 \input{conclusion}
 
 \bibliography{la}
