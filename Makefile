@@ -11,6 +11,8 @@ SRC=abstract.tex conclusion.tex differentiable.tex introduction.tex ktimes.tex p
 OHTERS=
 # 画像などのバイナリファイル
 IMG=
+# 文字数
+WCLOG=wc
 #文献データベース
 REF=la.bib
 #走らせるTeXプログラム
@@ -56,11 +58,14 @@ $(FILE).bbl: $(REF)
 $(FILE).aux: $(FILE).tex $(SRC)
 	$(TEX) $(FILE)
 clean:
-	rm -f $(FILE).aux $(FILE).log $(FILE).toc $(FILE).dvi 
-	rm -f $(FILE).pdf $(FILE).lof $(FILE).lot $(FILE).bbl
+	rm -f $(FILE).aux $(FILE).log $(FILE).toc $(FILE).dvi $(FILE).txt
+	rm -f $(FILE).pdf $(FILE).lof $(FILE).lot $(FILE).bbl $(WCLOG)
 open:
 	evince fulltext.pdf &
 diff:
 	git diff --color | nkf | less -r
-wc:
-	./word-count.pl $(FILE).tex $(SRC)
+$(FILE).txt: $(FILE).pdf
+	pdftotext $(FILE).pdf 
+$(WCLOG): $(FILE).txt
+	sed -e "s/ //g" -e "/^$$/d" fulltext.txt | tr -d \\n | wc -m > $(WCLOG)
+	cat $(WCLOG)
