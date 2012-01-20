@@ -6,7 +6,7 @@
 # 主となる原稿
 FILE=fulltext
 # 分割され、インクルードされているファイル
-SRC=abstract.tex conclusion.tex differentiable.tex introduction.tex ktimes.tex preliminary.tex
+SRC=abstract.tex conclusion.tex differentiable.tex introduction.tex ktimes.tex preliminary.tex acknowledgements.tex 
 #スタイルファイルやクラスファイルなど
 OHTERS=
 # 画像などのバイナリファイル
@@ -62,4 +62,5 @@ open:
 	evince fulltext.pdf &
 diff:
 	git diff --color | nkf | less -r
-
+wc:
+	./word-count.pl $(FILE).tex $(SRC)
