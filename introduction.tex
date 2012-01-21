@@ -65,10 +65,12 @@ $g$ が解析的であるとき, 常微分方程式の解も解析的となるため, 多項式時間計算可能で
  $g$ の常微分方程式(\ref{eq:ode})の解 $h$ が \PSPACE 完全であるものが存在する.
 \end{theorem}
 
-
  \begin{theorem}
   \label{KTimesIsPspace}
   仮定 \ref{Hypothesis} のもと, 任意の自然数$k \ge 2$ にたいし, 
   多項式時間実関数 $g(t, y)$ で, $\D{0,k}  g$ が連続であり,
   $g$ の常微分方程式(\ref{eq:ode})の解 $h$ が \PSPACE 完全であるものが存在する.
  \end{theorem}
+
+$g$ が無限回微分可能であることを要求していないことに留意したい. 
+定理 \ref{KTimesIsPspace} は任意の $k$ に対して $k$ 回微分可能な関数を考えているが,
