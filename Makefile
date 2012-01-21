@@ -67,5 +67,5 @@ diff:
 $(FILE).txt: $(FILE).pdf
 	pdftotext $(FILE).pdf 
 $(WCLOG): $(FILE).txt
-	sed -e "s/ //g" -e "/^$$/d" fulltext.txt | tr -d \\n | wc -m > $(WCLOG)
+	sed -e "s/ //g" -e "/^$$/d" $(FILE).txt | tr -d \\n | wc -m > $(WCLOG)
 	cat $(WCLOG)

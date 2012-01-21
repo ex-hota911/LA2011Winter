@@ -24,13 +24,22 @@
  実関数は入力として実数を受け取るが, 実数を符号化することは不可能である.
  そこで入力の実数は神託として与える.
  そして実関数のモデルを, 求める精度を入力として受け取り
- 関数の入力である実数の名を神託とし, 関数の値の近似値を返すような神託機械として定義する.
+ 関数の入力である実数の名を神託とし, 関数の値の近似値を返すような神託機械として定義する
+ [図 \ref{fig:model-of-function}].
  より厳密には以下のように定義する.
+
+ \begin{figure}
+  \label{fig:model-of-function}
+  \begin{center}
+   \includegraphics[height=0.15\textheight]{image/model-of-function.eps}
+  \end{center}
+  \caption{実関数のモデル化}
+ \end{figure}
 
  \begin{definition}
   神託機械 $M$ が実関数 $f:A \to \R$ を計算するとは,
   任意の実数 $x \in A$, 任意の $x$ の名 $\phi_x$ にたいして,
-  $M^\phi_x$ が $f(x)$ の名であること.
+  $M^{\phi_x}$ が $f(x)$ の名であること.
  \end{definition}
 
  多変数関数のモデルも, 変数と同じ数だけ神託を持つ神託機械によって同様に定義される.
@@ -62,8 +71,16 @@
 
 \subsection{完全性}
 
- \begin{definition}[還元]
-  言語 $L$ が実関数 $f:[0,1] \to \R$ に還元可能であるとは, 
+ 関数の下限を示すために, 困難及び完全性を定義する.
+ 言語 $L$ が実関数 $f:[0,1] \to \R$ に多項式時間還元可能であるとは,
+ $f$ を計算する機械をブラックボックスとして, 入力 $u$ にたいして,
+ 精度を $f$ に与え, ある実数 $x_u$ の神託を模倣し, $f(x_u)$ の近似値から,
+ $u$ が $L$ に含まれるか否かを多項式時間で計算可能であることである
+ [図 \ref{fig:reduction}].
+ 厳密には以下のように定義する.
+
+ \begin{definition}[多項式時間還元可能]
+  言語 $L$ が実関数 $f:[0,1] \to \R$ に多項式時間還元可能であるとは, 
   任意の文字列 $u$ にたいして, 以下を満たす実数 $x_u \in [0,1]$
   多項式時間計算可能な関数 $R,S,T$ が存在すること.
   \begin{itemize}
@@ -77,8 +94,16 @@
   \end{itemize}
  \end{definition}
 
+ \begin{figure}
+  \begin{center}
+  \label{fig:reduction}
+  \includegraphics[height=0.2\textheight]{image/reduction.eps}
+  \caption{言語 $L$ から関数 $f$ への還元}
+  \end{center}
+ \end{figure}
+
  計算量 $C$ にたいして, 関数 $f$ が $C$困難であるとは,
- 任意の $C$ に含まれる言語が $f$ に還元可能であることである.
+ 任意の $C$ に含まれる言語が $f$ に多項式時間還元可能であることである.
  さらに $f$ が $C$ に含まれるとき, つまり $C$ に対応する神託機械で $f$ を計算するものが
  存在するとき, $f$ は $C$ 完全であると定義する.
  
