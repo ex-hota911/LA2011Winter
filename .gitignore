@@ -1,1 +1,11 @@
+fulltext.aux
+fulltext.bbl
+fulltext.blg
+fulltext.dvi
+fulltext.log
+#fulltext.pdf
 fulltext.txt
+la.sh
+make.sh
+texput.log
+doc
