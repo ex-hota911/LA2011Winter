@@ -1,0 +1,4 @@
+*.tex diff=tex
+*.eps -crlf -diff
+*.svg -crlf -diff
+*.pdf diff=pdf
