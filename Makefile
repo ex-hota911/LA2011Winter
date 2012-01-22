@@ -51,24 +51,27 @@ force:
 #	lpr -P$(PRINTER) $(FILE).ps
 # printpdf:  $(PSFILE)
 # 	lpr -P$(PRINTER) $(FILE).ps
-$(FILE).pdf: $(FILE).dvi
-	$(DVIPDF) $(FILE)
+$(FILE).pdf: $(FILE).euc.pdf
+	cp $(FILE).euc.pdf $(FILE).pdf
+%.pdf: %.dvi
+	$(DVIPDF) $*
+
 # $(FILE).ps: $(FILE).dvi		#
 # 	$(DVIPS) -o $(FILE).ps $(FILE)
-$(FILE).dvi: $(FILE).aux $(FILE).bbl
-	(while $(REFGREP) $(FILE).log; do $(TEX) $(FILE); done)
-$(FILE).bbl: $(REF)
-	$(BIBTEX) $(FILE)
-$(FILE).aux: $(FILE).tex $(SRC)
-	$(TEX) $(FILE) -o $(FILE)
+%.dvi: %.aux %.bbl
+	(while $(REFGREP) $*.log; do $(TEX) $*; done)
+%.bbl: $(REF)
+	$(BIBTEX) $*
+%.aux: %.tex $(SRC)
+	$(TEX) $*
 %.euc.tex: %.tex
 	sed -e s/"\\\\input{\([^}]*\)}"/"\\\\input{\1.euc}"/g -e s/"\\\\include{\([^}]*\)}"/"\\\\include{\1.euc}"/g $< > $*.tmp
 	$(NKF) $*.tmp > $@
 	rm $*.tmp
 clean:
-	rm -f *.aux *.log *.toc *.dvi $(FILE).txt
-	rm -f *.pdf *.lof *.lot *.bbl $(WCLOG)
-open:
+	rm -f *.aux *.log *.toc *.dvi $(FILE).txt *.blg
+	rm -f *.pdf *.lof *.lot *.bbl $(WCLOG) *.euc.tex
+view:
 	evince fulltext.pdf &
 diff:
 	git diff --color | nkf | less -r
