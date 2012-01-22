@@ -9,3 +9,4 @@ la.sh
 make.sh
 texput.log
 doc
+*.euc.tex

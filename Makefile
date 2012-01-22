@@ -6,7 +6,7 @@
 # 主となる原稿
 FILE=fulltext
 # 分割され、インクルードされているファイル
-SRC=abstract.tex conclusion.tex differentiable.tex introduction.tex ktimes.tex preliminary.tex acknowledgements.tex 
+SRC=abstract.euc.tex conclusion.euc.tex differentiable.euc.tex introduction.euc.tex ktimes.euc.tex preliminary.euc.tex acknowledgements.euc.tex 
 #スタイルファイルやクラスファイルなど
 OHTERS=
 # 画像などのバイナリファイル
@@ -18,6 +18,8 @@ REF=la.bib
 #走らせるTeXプログラム
 TEX=platex
 BIBTEX=bibtex
+# UTF8 -> EUC
+NKF=nkf -e
 # Red Hat の場合
 #DVIPS=pdvips
 #XDVI=pxdvi
@@ -34,6 +36,8 @@ DVIPDF=dvipdfmx
 REFGREP=grep "^LaTeX Warning: Label(s) may have changed."
 # プリンタの設定
 #PRINTER=//server/printername
+.SUFFIXES: .euc.tex .tex
+
 # 標準のターゲット
 all: $(FILE).pdf 
 # 依存関係にかかわらず作成
@@ -56,10 +60,14 @@ $(FILE).dvi: $(FILE).aux $(FILE).bbl
 $(FILE).bbl: $(REF)
 	$(BIBTEX) $(FILE)
 $(FILE).aux: $(FILE).tex $(SRC)
-	$(TEX) $(FILE)
+	$(TEX) $(FILE) -o $(FILE)
+%.euc.tex: %.tex
+	sed -e s/"\\\\input{\([^}]*\)}"/"\\\\input{\1.euc}"/g -e s/"\\\\include{\([^}]*\)}"/"\\\\include{\1.euc}"/g $< > $*.tmp
+	$(NKF) $*.tmp > $@
+	rm $*.tmp
 clean:
-	rm -f $(FILE).aux $(FILE).log $(FILE).toc $(FILE).dvi $(FILE).txt
-	rm -f $(FILE).pdf $(FILE).lof $(FILE).lot $(FILE).bbl $(WCLOG)
+	rm -f *.aux *.log *.toc *.dvi $(FILE).txt
+	rm -f *.pdf *.lof *.lot *.bbl $(WCLOG)
 open:
 	evince fulltext.pdf &
 diff:
