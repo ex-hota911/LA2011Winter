@@ -3,7 +3,7 @@
 
 \makeatletter
 
-%%% ¸Ä¿ÍÀßÄê 
+%%% å€‹äººè¨­å®š 
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{graphicx}
@@ -25,14 +25,14 @@
 
 
 \theoremstyle{definition}
-\newtheorem{theorem}{ÄêÍı}[section]
-\newtheorem{lemma}[theorem]{ÊäÂê}
-\newtheorem{definition}[theorem]{ÄêµÁ}
-\newtheorem{hypothesis}[theorem]{²¾Äê}
+\newtheorem{theorem}{å®šç†}[section]
+\newtheorem{lemma}[theorem]{è£œé¡Œ}
+\newtheorem{definition}[theorem]{å®šç¾©}
+\newtheorem{hypothesis}[theorem]{ä»®å®š}
 
-\renewcommand{\proofname}{\bf ¾ÚÌÀ} 
+\renewcommand{\proofname}{\bf è¨¼æ˜} 
 
-%%% ¿ô¼°Ãæ¤ÎÂçÊ¸»ú¥®¥ê¥·¥ãÊ¸»ú¤ò¼ĞÂÎ²½
+%%% æ•°å¼ä¸­ã®å¤§æ–‡å­—ã‚®ãƒªã‚·ãƒ£æ–‡å­—ã‚’æ–œä½“åŒ–
 \renewcommand{\Lambda}{\varLambda}
 \renewcommand{\Gamma}{\varGamma}
 
@@ -40,28 +40,28 @@
 \def\theenumi{\roman{enumi}}
 \def\labelenumi{(\theenumi)}
 
-%%% ¿ô¼°ÈÖ¹æ¤ò(¾Ï.num) ¤Ë
+%%% æ•°å¼ç•ªå·ã‚’(ç« .num) ã«
 \renewcommand{\theequation}{\thesection.\arabic{equation}}
 \@addtoreset{equation}{section}
 
-%%% É½ÈÖ¹æ¤ò ¾Ï.num ¤Ë
+%%% è¡¨ç•ªå·ã‚’ ç« .num ã«
 \renewcommand{\thetable}{\thesection.\arabic{table}}
 \@addtoreset{table}{section}
 
-%%% ¿ŞÈÖ¹æ¤ò ¾Ï.num ¤Ë
+%%% å›³ç•ªå·ã‚’ ç« .num ã«
 \renewcommand{\thefigure}{\thesection.\arabic{figure}}
 \@addtoreset{figure}{section}
 
-%%% align* ¤Ê¤É¤Ç»ØÄê¤·¤¿¾ì½ê¤À¤±¿ô¼°ÈÖ¹æ¤òÃÖ¤¯
+%%% align* ãªã©ã§æŒ‡å®šã—ãŸå ´æ‰€ã ã‘æ•°å¼ç•ªå·ã‚’ç½®ã
 \newcommand{\taghere}{{
 \stepcounter{equation}
 \tag{\theequation}
 }}
 
 
-%%% ¥Æ¥ó¥×¥ì¡¼¥È
+%%% ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ
 
-\def\kouenbangou{15} %%% ¿ô»ú¤ò¤´¼«Ê¬¤Î¹Ö±éÈÖ¹æ¤Ë½ñ¤­´¹¤¨¤Æ²¼¤µ¤¤¡¥
+\def\kouenbangou{15} %%% æ•°å­—ã‚’ã”è‡ªåˆ†ã®è¬›æ¼”ç•ªå·ã«æ›¸ãæ›ãˆã¦ä¸‹ã•ã„ï¼
 
 \def\ps@LAheadings{
 
@@ -74,7 +74,7 @@
 
 \def\ps@LAtitleheadings{
 
-\def\@oddhead{2011Ç¯ÅÙÅß¤ÎLA¥·¥ó¥İ¥¸¥¦¥à\,[\kouenbangou]\hfil}
+\def\@oddhead{2011å¹´åº¦å†¬ã®LAã‚·ãƒ³ãƒã‚¸ã‚¦ãƒ \,[\kouenbangou]\hfil}
 \def\@evenhead{}
 \def\@evenfoot{\hfil \kouenbangou\,--\,\thepage\hfill}
 \def\@oddfoot{\hfil \kouenbangou\,--\,\thepage\hfil}
@@ -85,12 +85,12 @@
 
 \pagestyle{LAheadings}
 
-\title{³ê¤é¤«¤Ê¾ïÈùÊ¬ÊıÄø¼°¤Î·×»»ÎÌ}
+\title{æ»‘ã‚‰ã‹ãªå¸¸å¾®åˆ†æ–¹ç¨‹å¼ã®è¨ˆç®—é‡}
 
-\author{ÂÀÅÄ¹À¹Ô \thanks{ÅìµşÂç³Ø} \and
-²ÏÂ¼¾´À± \thanks{Âè1Ãø¼Ô¤ËÆ±¤¸} \and
-¥Ş¥ë¥Á¥ó¡¦¥Ä¥£¡¼¥°¥é¡¼ \thanks{¥À¥ë¥à¥·¥å¥¿¥Ã¥È¹©²ÊÂç³Ø} \and
-¥«¥ë¥¹¥Æ¥ó¡¦¥ì¡¼¥¹¥Ë¥¯ \thanks{Âè1Ãø¼Ô¤ËÆ±¤¸}
+\author{å¤ªç”°æµ©è¡Œ \thanks{æ±äº¬å¤§å­¦} \and
+æ²³æ‘å½°æ˜Ÿ \thanks{ç¬¬1è‘—è€…ã«åŒã˜} \and
+ãƒãƒ«ãƒãƒ³ãƒ»ãƒ„ã‚£ãƒ¼ã‚°ãƒ©ãƒ¼ \thanks{ãƒ€ãƒ«ãƒ ã‚·ãƒ¥ã‚¿ãƒƒãƒˆå·¥ç§‘å¤§å­¦} \and
+ã‚«ãƒ«ã‚¹ãƒ†ãƒ³ãƒ»ãƒ¬ãƒ¼ã‚¹ãƒ‹ã‚¯ \thanks{ç¬¬3è‘—è€…ã«åŒã˜}
 }
 \date{2012/1/31}
 
@@ -98,7 +98,7 @@
 
 \maketitle\thispagestyle{LAtitleheadings}
 
-%%% °Ê²¼¤Ë¡¤Í½¹Æ¤ÎËÜÊ¸¤òµ­½Ò¤·¤Æ²¼¤µ¤¤¡¥
+%%% ä»¥ä¸‹ã«ï¼Œäºˆç¨¿ã®æœ¬æ–‡ã‚’è¨˜è¿°ã—ã¦ä¸‹ã•ã„ï¼
 
 \input{abstract}
 \input{introduction}
