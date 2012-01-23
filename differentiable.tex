@@ -1,29 +1,46 @@
 \section{微分可能関数と常微分方程式}
 
-\subsection{離散初期値問題}
+  \subsection{離散初期値問題}
+  初期値問題の離散バージョンが\PSPACE 完全であるところから始める.
+  離散初期値問題とは
+  定数 $d$, 多項式 $P, Q : \N \to \N$, 
+  関数族 $(G_u)_u$ の組
+  $\left< d, P, Q, (G_u)_u \right>$で
+  以下の制限を満たすものである.
+  \begin{equation}
+    (G_u)_u \text{は多項式時間計算可能} \label{enum:discreteode1}
+  \end{equation}
+  \begin{equation}
+    G_u: [P(|u|)] \times \left[ 2^{\poly Q} \right] \times [d] 
+	\to \{-1, 0, 1\} \label{enum:discreteode2}
+  \end{equation}
+  また関数族 $(H_u)_u$ が以下を満たすとき,
+  $(H_u)_u$ を離散初期値問題  $\left< d, P, Q, (G_u)_u \right>$ の解と呼ぶ.
+  \begin{equation}
+  H_u: [P(|u|) + 1] \times 
+	\left[ 2^{\poly Q} \right] \to [d] \label{enum:discreteode3}
+  \end{equation}
+  \begin{align*}
+   H_u(i, 0) &= H_u(0, T) = 0, \\
+   H_u(i + 1, T + 1) & = H_u(i+1, T) + G_u(i, T, Hu(i, T)) \\
+   & \left(i \in \left[P(|u|) \right],
+   \ T \in \left[ 2^{\poly Q} \right]\right) \taghere
+   \label{enum:discreteode4}
+  \end{align*}
+}
 
-初期値問題の離散バージョンが\PSPACE 完全であるところから始める.
-河村の論文において以下のように定義されるフィードバックの弱い計算が
-\PSPACE 完全であることが示されている.
+ 離散初期値問題が言語 $L$ を認識するとはその解 $(H_u)_u$ が任意の文字列 $u$ で
+ $H_u(P(|u|), 2^{Q(|u|)}) = L(u)$ を満たすこと.
 
-\begin{lemma}[補題 4.7. \cite{kawamura2010lipschitz}]
- \label{WeakFeedback}
- 任意の言語 $L \in $ \PSPACE, 任意の文字列 $u$ にたいして, 以下を満たす
- 定数 $d \ge 2$ 多項式 $P, Q$, 関数族 $(G_u)_u,$ $(H_u)_u$ で,
- $(G_u)_u$ は多項式時間計算可能, $H_u(\poly P +1, 2^{Q(|u|)}) = L(u)$
- であるものが存在する.
- \begin{enumerate}
-  \item $G_u: [P(|u|)] \times [2^{Q(|u|)}] \times [d] \to \{-1, 0, 1\}$;
-  \item $H_u: [P(|u|) + 1] \times [2^{Q(|u|)} + 1] \to [d]$;
-  \item 任意の $i \in [P(|u|)], T \in [2^{Q(|u|)}]$ にたいして 
-	\begin{itemize}
-	 \item $H_u(i, 0) = H_u(0, T) = 0$
-	 \item $H_u(i + 1, T + 1) = H_u(i+1, T) + G_u(i, T, H_u(i, T))$.
-	\end{itemize} 
- \end{enumerate}
-\end{lemma}
+ 河村の論文において離散初期値問題が \PSPACE 完全であることが示されている.
 
-もと論文では $d=4$ であったが, 後の議論との統一のために一般化する.
+ \begin{lemma}[補題 4.7. \cite{kawamura2010lipschitz}]
+  \label{WeakFeedback}
+  任意の言語 $L \in $ \PSPACE にたいして,
+  $L$ を認識する離散初期値問題が存在する.
+ \end{lemma}
+
+ もと論文では $d=4$ であったが, 後の議論との統一のために一般化する.
 
 
 \subsection{離散初期値問題を模倣する関数族}
@@ -40,9 +57,9 @@
  \begin{enumerate}
   \item $g_u:[0,1] \times [-1,1]\to \R, \quad h_u: [0,1] \to [-1,1]$;
   \item 任意の $y \in [-1,1]$ にたいして $g_u(0,y) = g_u(1,y) = 0 $; 
-  \item $h_u$ は $g_u$ の常微分方程式の解; 
-  \item $\D{0,1} g$ は連続;
-  \item $|\D{0,1} g| \leq 2^{-\lambda(|u|) - |u| } $;
+  \item $h_u$ は $g_u$ の常微分方程式 \ref{ode} の解; 
+  \item $\D{0,1} g_u$ は連続;
+  \item $|\D{0,1} g_u| \leq 2^{-\lambda(|u|) - |u| } $;
   \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
  \end{enumerate}
 \end{lemma}
@@ -62,12 +79,14 @@
  \end{lemma} 
 
 \begin{proof}[\rm 補題 \ref{DifferentiableFamily} の証明]
- $d, P, Q, (G_u)_u, (H_u)_u$ を補題 \ref{WeakFeedback} と同様に定義する.
+ 補題 \ref{WeakFeedback} から, $L$ を認識する 
+ 離散初期値問題 $\left< d, P, Q,(G_u)_u,(H_u)_u \right>$
+ とその解 $(H_u)_u$ を得る.
  各ステップを $P(u)$ 個に分割することで, $G_u(i, T, Y) \not = 0$ を満たす
  $i$ を各 $T$ にたいしてたかだか1つにすることができる. そのような $i$ のことを 
  $j_ul(T)$ と表現する. 任意の $i$ で $G_u(i, T, Y) = 0$ ならば $j_u(T)$ は
  任意の値を取るとする. 
- さらに以下のように仮定できる.
+ さらに以下を満たすとしても一般性を失わない.
  \begin{equation}
   H_u(i, 2^{Q(|u|)}) = \begin{cases}
 			L(u) & (i=P(|u|)) \\
@@ -92,7 +111,7 @@
  \end{equation}
 
   補題 \ref{SmoothFunction} の $f$ にたいして, 
- 定数 $c$ を任意の $x \in [0,1]$ にたいして $|\D^{1}f(x)| \le 2^c$ を満たす最小の自然数と定める.
+ 定数 $c$ を任意の $x \in [0,1]$ にたいして $|\D{1}f(x)| \le 2^c$ を満たす最小の自然数と定める.
  定数 $d' = \lceil \log (4d + 1) \rceil$, 
  $B = 2^{\poly \lambda + \poly Q + |u| + c + d'}$ とおき, 
  各 $(t, y) \in [0,1] \times [-1, 1]$ にたいして,
@@ -124,7 +143,7 @@
  \end{equation}
 
  上記のように定義した $g_u, h_u$ が補題\ref{DifferentiableFamily} で求める
- 性質を満たすことを示す. (i) , (ii) は自明. 
+ 性質を満たすことを示す. (i), (ii) は自明. 
  $(g_u)_u$ が多項式時間計算可能であることは補題によって示される.
 
  $h_u$ は $g_u$ の常微分方程式の解であることを示す.
@@ -161,7 +180,7 @@
 
  $g_u$は$y$に関して微分可能であり,
  \begin{equation}
-  \D{0,1} g(t, y)
+  \D{0,1} g_u(t, y)
   = \begin{cases}
      0 & (\eta \le \frac 1 4) \\
      2B^{j_u(T)}\D{1}f(2\eta- 1/2)
@@ -174,14 +193,14 @@
  $|g^*_u(t, Y)| \le 2^{\poly Q}\pi/(2B^{j_u(T)+1}) 
  \le 2^{\poly Q + 1}/B^{j_u(T) + 1}$ より, 
  \begin{align*}
-  \left| \D{0,1} g \right| 
+  \left| \D{0,1} g_u \right| 
    & \le  
    2 B^{j_u(T)} \cdot |\D{1}f(2\eta - 1/2)| \cdot 
    2 \cdot \frac{2^{\poly Q +1}}{B^{j_u(T)+1}} \\
   & \le  
    \frac{2 B^{j_u(T)} \cdot 2^c \cdot 2^{\poly Q + 2}}{B^{j_u(T) + 1}} \\
   & =  \frac{2^{\poly Q + c + 3}}{B} 
-   \quad \le \quad 2^{-\poly \lambda - |u|} \taghere
+   \le 2^{-\poly \lambda - |u|} \taghere
  \end{align*}
  
 

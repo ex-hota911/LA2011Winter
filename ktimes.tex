@@ -3,49 +3,40 @@
  任意回微分可能な関数の常微分方程式の解も, ある仮定のもと \PSPACE 完全でありうることを
  証明する.
 
-  \subsection{フィードバックの弱い計算}
-  フィードバックの弱い計算を定義する.
-  フィードバックの弱い計算とは
+  \subsection{対数深さ離散初期値問題}
+  前章で定義した離散初期値問題へさらに制限を加えた問題を考える.
   定数 $d$, 関数 $P : \N \to \N$, 多項式 $Q : \N \to \N$, 
-  関数族 $(G_u)_u, (H_u)_u$ で, 
-  5つ組 $M = \left< d, P, Q, (G_u)_u, (H_u)_u \right>$である.
- \begin{itemize}
-  \item  $(G_u)_u$ は多項式時間計算可能;
-  \item $P(x) = O(\log x)$ かつ多項式時間計算可能;
-  \item $G_u: [P(|u|)] \times \left[ 2^{\poly Q} \right] \times [d] 
-	\to \{-1, 0, 1\}$;
-   \item $H_u: [P(|u|) + 1] \times 
-	 \left[ 2^{\poly Q} \right] \to [d]$;
-   \item 任意の $i \in \left[P(|u|) \right], 
-	 \ T \in \left[ 2^{\poly Q} \right]$ にたいして 
-	 \begin{itemize}
-	  \item $H_u(i, 0) = H_u(0, T) = 0$
-	  \item $H_u(i + 1, T + 1) = H_u(i+1, T) + G_u(i, T, Hu(i, T))$.
-	 \end{itemize} 
- \end{itemize}
+  関数族 $(G_u)_u$ の組 $\left< d, P, Q, (G_u)_u \right>$が
+  (\ref{enum:discreteode1}), (\ref{enum:discreteode2}) に加え,
+  \begin{equation}
+   P(x) = O(\log x) \text{かつ $P$ は多項式時間計算可能}
+  \end{equation}
+  を満たすとき対数深さ離散初期値問題であると呼ぶ.
+  対数深さ離散初期値問題の解 $(H_u)_u$ が満たすべき条件は離散初期値問題と同じく
+  (\ref{enum:discreteode3}), (\ref{enum:discreteode4}) である.
 
- フィードバックの弱い計算 $M$ が言語 $L$ を認識するとは任意の文字列 $u$ で
- $H_u(P(|u|), 2^{Q(|u|)}) = L(u)$ を満たすこと.
+  対数深さ離散初期値問題が言語 $L$ を認識するとは任意の文字列 $u$ で
+  $H_u(P(|u|), 2^{Q(|u|)}) = L(u)$ を満たすこと.
 
  \begin{hypothesis}
   \label{Hypothesis}
-  任意の言語 $L \in$ \PSPACE に対して $L$ を認識するフィードバックの弱い計算が
+  任意の言語 $L \in$ \PSPACE に対して $L$ を認識する対数深さ離散初期値問題が
   存在する.
  \end{hypothesis}
 
- つまりフィードバックの弱い計算が \PSPACE 完全であることを仮定する. 
+ つまり対数深さ離散初期値問題が \PSPACE 完全であることを仮定する. 
 
  \subsection{離散初期値問題を模倣する関数族}
 
  証明の流れは1回微分可能の時と変わらない.
  任意の言語 $L \in $ \PSPACE, 文字列 $u$ にたいして,
- 上記のフィードバックの弱い計算を模倣し $L(u)$ を計算する
+ 上記の対数深さ離散初期値問題を模倣し $L(u)$ を計算する
  任意回微分可能な実関数 $g_u$ を構成する.
 
  \begin{lemma}
   \label{KTimesFamily}
   仮定 \ref{Hypothesis} のもと, 任意の自然数 $k \ge 2$,
-  任意の言語　$L \in$ \PSPACE, 任意の多項式 $\lambda$ にたいして,
+  任意の言語 $L \in$ \PSPACE, 任意の多項式 $\lambda$ にたいして,
   関数 $\rho : \N \to \N$ と関数族 $g_u, h_u$ で,
   $\rho, (g_u)_u$ は多項式時間計算可能であり,
   各二進文字列 $u$ にたいして以下を満たすものが存在する.
@@ -63,10 +54,10 @@
   ただし $\Lambda_u = 2^{\lambda(|u|)}$.
  \end{lemma}
  
- \begin{proof}
+  \begin{proof}
   仮定 \ref{Hypothesis} より $L$ を認識する 
-  $M = \left< d, P, Q,(G_u)_u,(H_u)_u \right>$
-  を得る.
+  対数深さ離散初期値問題 $\left< d, P, Q,(G_u)_u,(H_u)_u \right>$
+  とその解 $(H_u)_u$ を得る.
   さらに以下のように仮定する.
   \begin{equation}
    H_u(i, 2^{Q(|u|)}) = \begin{cases}
@@ -86,7 +77,7 @@
  
  そのとき,
  \begin{equation}
-  g^*_u(t, Y) = \frac{2^\poly Q \pi \sin (\theta\pi)}{2 B^{(k+1)^{(j_u(T)+1)}}}
+  g^*_u(t, Y) = \frac{2^\poly Q \pi \sin (\theta\pi)}{2 B^{(k+1)^{j_u(T)+1}}}
    G_u\left( j_u(T), T, Y \bmod 2^{d'} \right)
  \end{equation}
  とおき $g_u, h_u$ を以下のように定義する.
@@ -104,12 +95,12 @@
  \begin{equation} 
   h_u(t) = \sum^{\poly P}_{i=0} \frac{H_u(i, T)}{B^{(k+1)^i}}
   + \frac{1-\cos(\theta\pi)}{2} 
-  \cdot \frac{G_u(j_u(T), T, H_u(j_u(T), T))}{B^{(k+1)^{(j_u(T)+1)}}}
+  \cdot \frac{G_u(j_u(T), T, H_u(j_u(T), T))}{B^{(k+1)^{j_u(T)+1}}}
   \label{ktimes:eq:hu}
  \end{equation}
 
  上記のように定義した $g_u, h_u$ が補題\ref{KTimesFamily} で求める
- 性質を満たすことを示す. (i) , (ii) は自明. 
+ 性質を満たすことを示す. (i), (ii) は自明. 
  $(g_u)_u$ が多項式時間計算可能であることは補題によって示される.
 
  $h_u$ は $g_u$ の常微分方程式の解であることを示す.
@@ -119,14 +110,14 @@
   \sum_{i>j_u(T)}^{\poly P} \frac{H_u(i, T)}{B^{(k+1)^i}} 
   & \le \sum_{i>j_u(T)}^\infty \frac{d-1}{B^{(k+1)^i}}  \\
   & \le \sum_{i>j_u(T)}^\infty \frac{d-1}{B^i} 
-   = \sum_{i>j_u(T)} \frac{d-1}{B^{i-j_u(T)}}B^{-j_u(T)} \\
-  & \le \sum_{i>j_u(T)} \frac{(d-1)}{(4d+1)^{i-j_u(T)}}B^{-j_u(T)} \\
+   = \sum_{i>j_u(T)}^\infty \frac{d-1}{B^{i-j_u(T)}}B^{-j_u(T)} \\
+  & \le \sum_{i>j_u(T)}^\infty \frac{d-1}{(4d+1)^{i-j_u(T)}}B^{-j_u(T)} \\
   & = \frac{d-1}{4d}B^{-j_u(T)}
  \end{align*}
  二つ目の項の絶対値は
  \begin{equation}
   \left| \frac{1-\cos(\theta\pi)}{2} 
-   \cdot \frac{G_u(j_u(T), T, H_u(j_u(T), T))}{B^{(k+1)^{(j_u(T)+1)}}} \right|
+   \cdot \frac{G_u(j_u(T), T, H_u(j_u(T), T))}{B^{(k+1)^{j_u(T)+1}}} \right|
   \le \frac{1}{B^{j_u(T)+1}}
   \le \frac{B^{-j_u(T)}}{4d+1}
  \end{equation}
@@ -159,19 +150,19 @@
 
 
   (v) を示す. $|g^*_u| 
-  \le \left| \frac{2^\poly Q \pi \sin (\theta\pi)}{2 B^{(k+1)^{(j_u(T)+1)}}} \right|
-  \le \frac{2^{\poly Q + 1}}{B^{(k+1)^{(j_u(T)+1)}}}$ より, 
+  \le \left| \frac{2^\poly Q \pi \sin (\theta\pi)}{2 B^{(k+1)^{j_u(T)+1}}} \right|
+  \le \frac{2^{\poly Q + 1}}{B^{(k+1)^{j_u(T)+1}}}$ より, 
   $i = 0$ において
   \begin{equation}
    |\D{0,0} g| = | g |  
-    \le \frac{2^{\poly Q + 1}}{B^{(k+1)^{(j_u(T)+1)}}} 
+    \le \frac{2^{\poly Q + 1}}{B^{(k+1)^{j_u(T)+1}}} 
     \le \frac{2^{\poly Q + 1}}{B^{(k+1)}} \le 2^{-|u|}
   \end{equation}
   $i \in \{1, \dots, k\}$ において,
   \begin{align*}
    | \D{0, i} g | & \le 2^i \cdot B^{i \cdot (k+1)^{j_u(T)}} \cdot 2^c \cdot
    (g^*_u (t, Y+1)-g^*_u(t, Y)) \\
-   & \le 2^{c+k} \cdot B^{k(k+1)^{j_u(T)}} \cdot 2 \cdot \frac{2^{\poly Q + 1}}{B^{(k+1)^{(j_u(T)+1)}}} \\
+   & \le 2^{c+k} \cdot B^{k(k+1)^{j_u(T)}} \cdot 2 \cdot \frac{2^{\poly Q + 1}}{B^{(k+1)^{j_u(T)+1}}} \\
    & \le \frac{2^{\poly Q + c + k + 2}}{B} 
    \le 2^{-i\poly \lambda - |u|}
     =  \Lambda_u^{-i}2^{-|u|} \taghere
@@ -187,7 +178,7 @@
   より, $\rho(x) = (k+1)^{P(x)} (Q(x) + k \lambda(x) + x + c + d' + k)$ とおく.
   $\poly P = O(\log |u|)$ かつ $P$ は多項式時間計算可能により, 
   $\rho$ は多項式時間計算可能.
- \end{proof}
+  \end{proof}
 
 
 
@@ -210,11 +201,11 @@
  \begin{equation}
   g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right) \\
    = \begin{cases}
-      \pm g_u(t,1) \pm \D{0,1}g_u(t, 1)(y-1) 
+      \pm \displaystyle \sum_{i=0}^k \frac{\D{0,i}g_u(t,1)}{i!} (y-1)^i 
       &  (1<y) \\
-      \pm g_u(t, y) 
-      & (-1 \le y \le 1) \\
-      \pm g_u(t, -1) \pm \D{0,1} g_u(t, -1)(y+1)  & (y<-1)
+      \pm g_u(t, y)      & (-1 \le y \le 1) \\
+      \pm \displaystyle \sum_{i=0}^k \frac{\D{0,i}g_u(t,-1)}{i!} (y+1)^i  
+      &  (1<y) \\
      \end{cases}
  \end{equation}
  \begin{equation}
@@ -235,14 +226,17 @@
  連続になっていることをしめす. 
  各区間で第二引数に関して微分すると $i \in {1,\dots,k}$ で
  \begin{equation}
-  \D{0,i}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u} \right) = \begin{cases}
-		   \pm \Lambda_u^i \D{0,i}g_u(t,1) & (1 < y) \\
-		   \pm \Lambda_u^i \D{0,i}g_u(t,y) & (-1 < y < 1) \\
-		   \pm \Lambda_u^i \D{0,i}g_u(t,-1) & (y < -1).
-		  \end{cases}
+  \D{0,j}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u} \right)
+   = \begin{cases}
+      \displaystyle \pm \Lambda_u^j \sum_{\left<i,j\right>\in S_k, i\ge n, j\ge m}^k 
+      \frac{\D{0,i}g_u(t,1)}{(i-j)!} (y-1)^{(i-j)} & (1 < y) \\
+      \pm \Lambda_u^j \D{0,j}g_u(t,y) & (-1 < y < 1) \\
+      \displaystyle \pm \Lambda_u^j \sum_{i=j}^k 
+      \frac{\D{0,i}g_u(t,-1)}{(i-j)!} (y+1)^{(i-j)} & (y < -1) 
+     \end{cases}
  \end{equation}
- よって $\D{0,i}g(t, 1) = \pm \Lambda_u^i \D{0,i}g_u (t,1)$, 
- $\D{0,i}g(t, -1) = \pm \Lambda_u^i \D{0,i}g_u (t,-1)$ であり,
+ よって $\D{0,j}g(t, 1) = \pm \Lambda_u^j \D{0,j}g_u (t,1)$, 
+ $\D{0,j}g(t, -1) = \pm \Lambda_u^i \D{0,j}g_u (t,-1)$ であり,
  $y$ に関して $i$ 回微分可能かつ$i$階の導関数は連続.
  
  $t$ 軸方向への $i$ 階の導関数の連続性について.

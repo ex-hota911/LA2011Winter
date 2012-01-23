@@ -29,10 +29,13 @@ NKF=nkf -e
 DVIPDF=dvipdfmx
 # 相互参照の解消のため
 REFGREP=grep "^LaTeX Warning: Label(s) may have changed."
+# 禁止ワード
+CENSORED=対して\|示す
 # プリンタの設定
 #PRINTER=//server/printername
 .SUFFIXES: .euc.tex .tex
-.PRECIOUS: $(FILE).euc.bbl $(FILE).euc.aux
+#.PRECIOUS: $(FILE).euc.bbl $(FILE).euc.aux
+.INTERMEDIATE: $(SRC) $(EFILE).tex
 
 # 標準のターゲット
 all: $(FILE).pdf $(WCLOG)
@@ -56,7 +59,6 @@ $(EFILE).bbl: $(REF)
 	$(TEX) $(EFILE)
 	$(TEX) $(EFILE)
 
-.INTERMEDIATE: $(SRC)
 %.euc.tex: %.tex
 	$(RESOLVEINPUT) $< | $(NKF) > $@
 
@@ -73,4 +75,11 @@ view:
 .PHONY: clean
 clean:
 	rm -f *.aux *.log *.toc *.dvi *.lof *.lot *.bbl *.blg
-	rm -f $(FILE).pdf $(WCLOG) *.euc.tex$(FILE).txt 
+	rm -f $(FILE).pdf $(WCLOG) *.euc.tex $(FILE).txt 
+
+.PHONY: check
+check:
+	grep -n --color=always '$(CENSORED)' *.tex
+	grep -n --color=always '$(CENSORED)' *.tex
+
+
