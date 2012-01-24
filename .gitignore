@@ -3,7 +3,8 @@
 *.blg
 *.dvi
 *.log
-*.txt
+*.bak
+fulltext.txt
 la.sh
 doc
 *.euc.tex

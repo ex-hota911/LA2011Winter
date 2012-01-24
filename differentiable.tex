@@ -332,11 +332,14 @@
   h \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right) 
   &= \frac{h_u(t)}{\Lambda_u}.
 \end{align}
-
  任意の $y \in \R$ にたいして $g(1,y) = h(1) = 0$ と定義する.
+
+
 
  この $g$ と $h$ が定理 \ref{DifferentiableIsPspace} で求める関数
  の性質を満たすことを示す.
+
+
  
  まず $g$ が多項式時間計算可能であることを
  補題 \ref{lem:type1representation} を用いて示す.
@@ -344,6 +347,8 @@
  $T=l_u^\mp \pm t/\Lambda_u$, $Y = y/\Lambda_u\Gamma_u$ を満たすような
  $u, \pm, t, y$ は, 多項式時間で計算可能であり,
  $(g_u)_u$ は多項式時間計算可能なので $g(T, Y)$ は多項式時間計算可能.
+
+
 
  $g$ が $(\infty, 1)$ 階連続的微分可能であることをしめすため,
  まず $g$ が $(\infty, 0)$ 階連続的微分可能であることをしめす.
@@ -364,19 +369,27 @@
     \end{cases}
  \end{multline}
 
+ $\D{i,0}g_u$ は連続であるため 
+ $t \in (0,1)$, $y \not = -1, 1$ の区間において連続.
+ 確認すべきなのは $g_u$ 同士をつなぐ境界 $t = 0, 1$ と
+ $g_u$ の外側との境界 $y = 0, 1$,  
+ および極限 $g_u$ の極限, つまり $g$ の第一引数が 1 へ限りなく近づくとき
+ 発散せずに連続であることである.
+
+
  $y = 1$ のとき 
  $\D{i, 0}g \left(l^\mp_u \pm t / \Lambda_u, y / \Lambda_u\right) = 
  \pm \Lambda_u^i \D{i, 0} g_u(t, 1)$,
  $y = -1$ のとき 
  $\D{i, 0}g \left(l^\mp_u \pm t / \Lambda_u, y / \Lambda_u\right) = 
- \pm \Lambda_u^i \D{i, -1} g_u(t, 1)$
+ \pm \Lambda_u^i \D{i, 0} g_u(t, -1)$
  より $\D{i,0}g$ は第二変数について連続である.
 
  第一変数が $[0,1)$ の範囲にあるとき,
  つまり $l^\mp_u \pm t/\Lambda_u$ と表される範囲において連続であることをしめす.
  $t = 1$ において $g_u$ と $-g_u$ が接続され,
  $t = 0$ において $g_u$ とつぎの文字 $u'$ の関数 $g_{u'}$ が接続されているが,
- $\D{i, 0} g_u(0, y) = \D{i, 1} g_u(1, y) = 0$ より連続に接続されている.
+ $\D{i, 0} g_u(0, y) = \D{i, 0} g_u(1, y) = 0$ より連続に接続されている.
 
  最後に第一変数が $1$ へ向かうとき発散しないことをしめす.
  \begin{align*}

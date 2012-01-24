@@ -193,8 +193,8 @@
 \subsection{定理 \ref{KTimesIsPspace} の証明}
 
 \begin{proof}
- $L$ を \PSPACE 完全な言語, $\lambda(k) = 2k+2$ とおく.
- \PSPACE 完全な言語 $L$ にたいして補題 \ref{KTimesFamily} を用いて,
+ $L$ を \PSPACE 完全な言語とおく.
+ \PSPACE 完全な言語 $L$ にたいして補題 \ref{DifferentiableFamily} を用いて,
  まず多項式 $\mu_i$ をえる.
  $\mu_i$ は $i$ を係数部にのみ持つ多項式であるため,
  $\mu_i(k) = O(k^c)$ をみたす最小の定数 $c$ が存在する.
@@ -215,79 +215,133 @@
  して解釈した数.
  $\gamma$ にたいして, 再び補題より $\rho$, $(g_u)_u$, $(h_u)_u$ を得る.
 
- 関数 $g,h$ を $t \in [0,1]$, $y \in \R$ にたいして, 下のように定義する.
- \begin{equation}
-  g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right) \\
-   = \begin{cases}
-      \pm \displaystyle \sum_{i=0}^k \frac{\D{0,i}g_u(t,1)}{i!} (y-1)^i 
+
+
+ 任意の $[0,1)$ の実数にたいして,
+ $l^\mp_u \pm \frac{t}{\Lambda_u}$ がその実数と等しくなるような
+ $u, \pm, t\in [0,1]$ が存在する.
+ 関数 $g, h$ を $t \in [0,1]$, $y \in \R$ にたいして,
+ それぞれ $[0,1) \times [-1,1]$ の範囲と $[0,1)$ の範囲で下のように定義する.
+
+
+
+ \begin{align}
+ g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
+  &= \begin{cases}
+      \pm \displaystyle \sum_{l=0}^k \frac{\D{0,l}g_u(t,1)}{l!} (y-1)^l 
       &  (1<y) \\
       \pm g_u(t, y)      & (-1 \le y \le 1) \\
-      \pm \displaystyle \sum_{i=0}^k \frac{\D{0,i}g_u(t,-1)}{i!} (y+1)^i  
+      \pm \displaystyle \sum_{l=0}^k \frac{\D{0,l}g_u(t,-1)}{l!} (y+1)^l  
       &  (1<y) \\
-     \end{cases}
- \end{equation}
- \begin{equation}
-  h \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right) 
-   = \frac{h_u(t)}{\Lambda_u}.
- \end{equation}
- 任意の $y\in \R$ にたいして $g(1,y) = h(1) = 0$ と定義する.
+    \end{cases} 
+  \\
+ h \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right) 
+  & = \frac{h_u(t)}{\Lambda_u}.
+\end{align}
+ 任意の $y \in \R$ にたいして $g(1,y) = h(1) = 0$ と定義する.
 
- $g$と$h$が定理 \ref{DifferentiableIsPspace} で求める関数の性質を満たすことを示す.
+
+
+
+ この $g$ と $h$ が定理 \ref{KTimesIsPspace} で求める関数
+ の性質を満たすことを示す.
+
+
+
  
- まず $g$ が多項式時間計算可能であることを示す.
- 補題\footnote{準備で導入}を用いて示す.
+ まず $g$ が多項式時間計算可能であることを
+ 補題 \ref{lem:type1representation} を用いて示す.
  各有理数 $T,Y$ について $g(T, Y)$ を求めるとき,
- $T=l_u^\mp \pm t/\Lambda_u$, $Y = y/\Lambda_u$ を満たすような
- $u, \pm(\mp), t, y$ は, 多項式時間で計算可能である.
+ $T=l_u^\mp \pm t/\Lambda_u$, $Y = y/\Lambda_u\Gamma_u$ を満たすような
+ $u, \pm, t, y$ は, 多項式時間で計算可能であり,
+ $(g_u)_u$ は多項式時間計算可能なので $g(T, Y)$ は多項式時間計算可能.
 
- 次に $g$ が $y$ に関して微分可能であり, 導関数は $y$, $t$ に関して
- 連続になっていることをしめす. 
- 各区間で第二引数に関して微分すると $i \in {1,\dots,k}$ で
- \begin{equation}
-  \D{0,j}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u} \right)
-   = \begin{cases}
-      \displaystyle \pm \Lambda_u^j \sum_{\left<i,j\right>\in S_k, i\ge n, j\ge m}^k 
-      \frac{\D{0,i}g_u(t,1)}{(i-j)!} (y-1)^{(i-j)} & (1 < y) \\
-      \pm \Lambda_u^j \D{0,j}g_u(t,y) & (-1 < y < 1) \\
-      \displaystyle \pm \Lambda_u^j \sum_{i=j}^k 
-      \frac{\D{0,i}g_u(t,-1)}{(i-j)!} (y+1)^{(i-j)} & (y < -1) 
-     \end{cases}
- \end{equation}
- よって $\D{0,j}g(t, 1) = \pm \Lambda_u^j \D{0,j}g_u (t,1)$, 
- $\D{0,j}g(t, -1) = \pm \Lambda_u^i \D{0,j}g_u (t,-1)$ であり,
- $y$ に関して $i$ 回微分可能かつ$i$階の導関数は連続.
+
+
+
+ $g$ が $(\infty, k)$ 階連続的微分可能であることをしめす.
  
- $t$ 軸方向への $i$ 階の導関数の連続性について.
- 任意の $[0,1)$ の数はある $u$ と $t \in [0,1]$ が存在して
- $l^\mp_u \pm t/\Lambda_u$ の形で表せる.
- $t \in (0,1)$ においては $\D{0,i}g_u(t, y)$は連続であるため, $t$軸方向へ連続.
- $t = 0, 1$ のとき, $y \in [-1, 1]$ にたいして $g_u(0, y) = g_u(1, y) = 0$ より
- $\D{0,i}g_u(0, y) = \D{0,i}g_u(1, y) = 0$
- よって $t = 0, 1$ においても連続.
- $g(1,y) = 0$ より $\D{0,i} g(1,y) = 0$.
- また $\left| \D{0,i}g_u \right| \le \Lambda_u^{-i} 2^{- |u|}$より,
- \begin{equation}
-  \lim_{t \to 1-0} \left| \D{0,i}g \right|
-   = \lim_{|u| \to \infty} \left| \Lambda_u^i \D{0,i}g_u \right| 
-   \le \lim_{|u| \to \infty} \left| 2^{-|u|} \right|= 0.
- \end{equation}
- よって $\D{0,i}g$ は連続.
+ $g_u$ は $(\infty, k)$ 階連続的微分可能であるため,
+ 各区間においては $(\infty, k)$ 階連続的微分可能である.
+ $t \in (0, 1)$ において
+
+ \begin{multline}
+  \D{i, j}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
+  \\
+   = \begin{cases}
+      \pm \Lambda_u^{i+j} \sum_{l=j}^k \frac{\D{i,l}g_u(t, 1)}{(l-j)!}
+      (y-1)^{l-j}
+      &  (1<y)\\
+      \pm \Lambda_u^{i+j} \D{i,j}g_u(t, y)
+      (y-1)^{l-j}
+      & (-1 < y < 1) \\
+      \pm \Lambda_u^{i+j} \sum_{l=j}^k \frac{\D{i,l}g_u(t, -1)}{(l-j)!}
+      (y+1)^{l-j}
+      & (y<-1)
+    \end{cases}
+ \end{multline}
+
+ $\D{i,j}g_u$ は連続であるため 
+ $t \in (0,1)$, $y \not = -1, 1$ の区間において連続.
+ 確認すべきなのは $g_u$ 同士をつなぐ境界 $t = 0, 1$ と
+ $g_u$ の外側との境界 $y = 0, 1$,  
+ および極限 $g_u$ の極限, つまり $g$ の第一引数が 1 へ限りなく近づくとき
+ 発散せずに連続であることである.
+
+ $y = 1$ のとき 
+ $\D{i, j}g \left(l^\mp_u \pm t / \Lambda_u, y / \Lambda_u\right) = 
+ \pm \Lambda_u^{i+j} \D{i, j} g_u(t, 1)$,
+ $y = -1$ のとき 
+ $\D{i, j}g \left(l^\mp_u \pm t / \Lambda_u, y / \Lambda_u\right) = 
+ \pm \Lambda_u^{i+j} \D{i, j} g_u(t, -1)$
+ より $\D{i,j}g$ は第二変数について連続である.
+
+ 第一変数が $[0,1)$ の範囲にあるとき,
+ つまり $l^\mp_u \pm t/\Lambda_u$ と表される範囲において連続であることをしめす.
+ $t = 1$ において $g_u$ と $-g_u$ が接続され,
+ $t = 0$ において $g_u$ とつぎの文字 $u'$ の関数 $g_{u'}$ が接続されている.
+ ここで $\D{i,0} g_u(0, y) = \D{i, 0} g_u(1, y) = 0$ より
+ $\D{i,j} g_u(0, y) = \D{i,j} g_u(1, y) = 0$.
+ よって  $\D{i,j} g(0, y) = \D{i,j} g(1, y) = 0$ なので $[0,1)$ で連続.
+
+ 最後に第一変数が $1$ へ向かうとき発散しないことをしめす.
+ \begin{align*}
+  \left|\D{i, j}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
+  \frac{y}{\Lambda_u}\right)\right|
+  & \le \Lambda_u^{i+j} \sum_{l=j}^k \frac{|\D{i,l}g_u|}{(l-j)!}
+      (|y|+1)^{l-j} \\
+  & \le \Lambda_u^{i+j} 2^{\mu_i(|u|) - \gamma(|u|)} \sum_{l=j}^k 
+      (2\Lambda_u)^{l-j} \\
+  & \le \Lambda_u^{i+j} 2^{\mu_i(|u|) - \gamma(|u|)}
+      (2\Lambda_u)^{k-j+1} \\
+  & = 2^{\mu_i(|u|) + (i + k + 1)\lambda(|u|) + k - j + 1 - \gamma(|u|)}
+  \taghere
+ \end{align*}
+ $\gamma$ のとり方により, $|u| \to \infty$ のとき 0 に収束する.
+ よって  $\lim_{t \to 1-0}\D{i,j} g(t,y) = 0$.
+ とくに $i=0$ のとき, $\lim_{t \to 1-0} g(t,y) = 0 = g(1, y)$ より 1 で連続.
+ 以上により $g$ が $(\infty, k)$ 階連続的微分可能であることをしめした.
+
+
+
 
  $h$が$g$の常微分方程式の解であることを示す. 
  $h(0)=0, \quad \D{1}h(1) = 0 = g(1,h(1))$ は自明. 
  \begin{align*}
-  \lefteqn{h'(l^\mp_u \pm t/\Lambda_u)} \\ 
-  &=  \pm \frac{h'_u(t)}{\Lambda_u} \\ 
-  &= \pm g_u \left(t, h_u(t)\right) \\ 
+  h' \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right)
+  &= \pm \frac{h'_u(t)}{\Lambda_u} \\ 
+  &= \pm g_u \left(t, h_u(t)\right) \\
   &= g\left(l^\mp_u \pm \frac{t}{\Lambda_u},  
 	\frac{h_u(t)}{\Lambda_u}\right) \\ 
   &= g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, 
 	h\left(l^\mp_u \pm \frac{t}{\Lambda_u}\right) \right) . \taghere
  \end{align*}
 
+
+
  $L$ は $h$ に還元可能であることを示す.
  \begin{equation}
-  h(c_u) = \frac{h_u(1)}{\Lambda_u} 
+  h(c_u) = \frac{h_u(1)}{\Lambda_u}
    = \frac{L(u)}{2^{\lambda(|u|)+\rho(|u|)}}
  \end{equation}
  つまり $R,S,T$ を以下のように定義することで, 還元可能.
@@ -297,8 +351,4 @@
   T(u) &= 0^{\lambda(|u|)+\rho(|u|)}
  \end{align}
  $L$ は \PSPACE 完全であるため, $h$ も \PSPACE 完全.
-
 \end{proof}
-
-
-
