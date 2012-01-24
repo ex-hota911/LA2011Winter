@@ -290,9 +290,11 @@
  $L$ を \PSPACE 完全な言語とおく.
  \PSPACE 完全な言語 $L$ にたいして補題 \ref{DifferentiableFamily} を用いて,
  まず多項式 $\mu_i$ をえる.
+ $\mu_i$ は $i$ を係数部にのみ持つ多項式であるため,
+ $\mu_i(k) = O(k^c)$ をみたす最小の定数 $c$ が存在する.
  \begin{align}
   \lambda(k) &= 2k + 2,&
-  \gamma(k) &= k \mu_0(k) + k \lambda(k)
+  \gamma(k) &= k^{c+1} + k \lambda(k)
  \end{align}
  とおき, 各 $u$ にたいして 
 \begin{align}
