@@ -57,7 +57,7 @@
  \begin{enumerate}
   \item $g_u:[0,1] \times [-1,1]\to \R, \quad h_u: [0,1] \to [-1,1]$;
   \item 任意の $y \in [-1,1]$ にたいして $g_u(0,y) = g_u(1,y) = 0 $; 
-  \item $h_u$ は $g_u$ の常微分方程式 \ref{ode} の解; 
+  \item $h_u$ は $g_u$ の常微分方程式 \ref{eq:ode} の解; 
   \item $\D{0,1} g_u$ は連続;
   \item $|\D{0,1} g_u| \leq 2^{-\lambda(|u|) - |u| } $;
   \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
@@ -122,7 +122,7 @@
  そのとき,
  \begin{equation}
   g^*_u(t, Y) = \frac{2^\poly Q \pi \sin (\theta\pi)}{2B^{j_u(T)+1}} 
-   G_u\left( j_u(T), T, Y \bmod 2^{d'} \right)
+   G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
  \end{equation}
  とおき $g_u, h_u$ を以下のように定義する.
  \begin{equation}
@@ -168,7 +168,8 @@
  \begin{equation}
   Y = \sum_{i=0}^{j_u(T)}H_u(i, T) \cdot B^{j_u(T) - i} .
  \end{equation}
- $B$ は $2^{d'}$ の倍数なので, $Y \bmod 2^{d'} = H_u(j_u)$. 
+ $B$ は $2^{d'}$ の倍数なので, 
+ $\min (Y \bmod 2^{d'}\!\!\!,\ d-1) = \min (H_u(j_u), d-1) = H_u(j_u)$. 
  (\ref{eq:gu})へ$Y$ と $\eta$ を代入すると,
  \begin{align*}
    g_u(t, h_u(t)) 
