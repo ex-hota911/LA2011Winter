@@ -51,8 +51,9 @@
 \begin{lemma}
  \label{DifferentiableFamily}
  任意の言語 $L \in $ \PSPACE, 多項式 $\gamma$ にたいして,
- 多項式 $\rho$, 多項式族 $(\mu_i)_i$ 関数族 $(g_u)_u, (h_u)_u$ で, 
- $(g_u)_u$ は多項式時間計算可能であり,
+ 多項式 $\rho$, $\mu_i$, 関数族 $(g_u)_u, (h_u)_u$ で, 
+ $\mu_i$ は変数 $i$ を係数にのみ含む多項式,
+ $(g_u)_u$ は多項式時間計算可能,
  各二進文字列 $u$ にたいして以下を満たすものが存在する.
  \begin{enumerate}
   \item $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$;
@@ -64,6 +65,15 @@
   \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
  \end{enumerate}
 \end{lemma}
+
+ ここで実関数族 $(g_u)_u \ (g_u \colon [0,1] \times [-1, 1] \to \R)$ 
+ が多項式時間計算可能であることを, 実関数の多項式時間計算可能性から自然に定義する.
+ つまりある神託機械 $M$ が実関数族 $(g_u)_u$ を計算するとは,
+ 実数 $t,y$ の名 $\phi, \psi$ を神託として受けとり,
+ 文字列 $u$, 求める精度 $n$ を入力として受けとったとき,
+ $|M^{\phi, \psi}(u, 0^n) - g_u(t, y)| \le 2^{-n}$ を満たすことである.
+ そして実関数族が多項式時間計算可能であるとは,
+ 実関数族を計算し, $|u|$ と $n$ の多項式時間で動作する神託機械が存在することと定義する.
 
  この補題の証明の前に, 葛によって示されている
  滑らかな多項式時間実関数 $f \colon [0,1] \to \R$ を導入する.
@@ -271,9 +281,9 @@
 
 \begin{proof}
  %[定理 \ref{DifferentiableIsPspace} の証明]
- $L$ を \PSPACE 完全な言語, $\lambda(k) = 2k+2$ とおく.
+ $L$ を \PSPACE 完全な言語, $\gamma(k) = $TODO とおく.
  \PSPACE 完全な言語 $L$ にたいして補題 \ref{DifferentiableFamily} を用いて,
- $\rho$, $(g_u)_u$, $(h_u)_u$ を得る.
+ $\rho$, $\mu_i$, $(g_u)_u$, $(h_u)_u$ を得る.
  $(g_u)_u$ は多項式時間実関数族なので, $|g_u(t, y)| \le 2^{\poly \gamma - |u|}$
  を満たすような多項式 $\gamma$ が存在する.
  各 $u$ にたいして 
