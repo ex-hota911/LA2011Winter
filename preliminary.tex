@@ -9,6 +9,8 @@
 その $i$ 階導関数を $\D{i}f$ と表記する.
 同様に二変数関数 $g$ の第一変数にたいして $i$ 階, 第二変数にたいして $j$ 階の導関数を $\D{i,j}g$ と表記する.
 
+実関数 $f \colon A \to \R$ にたいして $\max_{x \in A} f(x)$ を $|f|$ と表記する.
+
 \subsection{実数の名}
  実数は無限の長さを持つため, 有限な文字列に符号化することが不可能である.
  そこで実数を計算可能なモデルで扱うために, 
@@ -61,6 +63,7 @@
  神託機械を用いない同値な特徴付けが可能である.
 
  \begin{lemma}
+  \label{lem:type1representation}
   実関数 $f\colon [0,1] \to \R$ にたいして,
   $\phi_f\colon (\Q \cap [0, 1]) \times \T \to \Q$, $m_f\colon \N \to \N$は
   \begin{align}
@@ -74,7 +77,7 @@
    \item $f$ が計算可能であることは, 計算可能な $\phi_f, m_f$ が存在することと同値である. 
    \item $f$ が多項式時間計算可能であることは, 多項式時間計算可能な 
   $\phi_f$, 多項式 $m_f$ が存在することと同値である.
-  \end{itemize}
+  \end{itemize} 
 \end{lemma}
 
 \subsection{完全性}
