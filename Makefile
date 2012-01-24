@@ -17,7 +17,7 @@ WCLOG=wc
 #文献データベース
 REF=la.bib
 #走らせるTeXプログラム
-TEX=platex
+TEX=platex --halt-on-error
 BIBTEX=bibtex
 # \input \include コマンドを解決
 RESOLVEINPUT=sed -e s/"\\\\input{\([^}]*\)}"/"\\\\input{\1.euc}"/g -e s/"\\\\include{\([^}]*\)}"/"\\\\include{\1.euc}"/g
