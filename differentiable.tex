@@ -101,7 +101,7 @@
 
  \begin{proof}[\rm 補題 \ref{DifferentiableFamily} の証明]
   補題 \ref{WeakFeedback} から, $L$ を認識する 
-  離散初期値問題 $\left< d, P, Q,(G_u)_u,(H_u)_u \right>$
+  離散初期値問題 $\left< d, P, Q,(G_u)_u \right>$
   とその解 $(H_u)_u$ を得る.
   各ステップを $P(u)$ 個に分割することで, $G_u(i, T, Y) \not = 0$ を満たす
   $i$ を各 $T$ にたいしてたかだか1つにすることができる. そのような $i$ のことを 
@@ -132,7 +132,7 @@
  \end{equation}
 
   補題 \ref{SmoothFunction} の $f$ にたいして, 
- 自然数 $c_i$ を各自然数 $i$ にたいして 
+ 自然数 $c_i$ を各 $i \in \N$ にたいして 
   $|\D{i}f(x)| \le 2^{c_i}$ を満たす最小の自然数と定める.
  定数 $d' = \lceil \log (4d + 1) \rceil$, 
  $B = 2^{\poly \gamma + d'}$ とおき, 
@@ -143,16 +143,16 @@
  
  そのとき,
  \begin{equation}
-  \delta_{u, Y} (t) = \frac{2^\poly Q f'(\theta)}{B^{j_u(T)+1}} 
+  \delta_{u, Y} (\theta) = \frac{2^\poly Q f'(\theta)}{B^{j_u(T)+1}} 
    G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
  \end{equation}
  とおき $g_u, h_u$ を以下のように定義する.
  \begin{equation}
   g_u(t,y) 
   = \begin{cases}
-     \delta_{u, Y}(t)& (\eta \le \frac 1 4) \\
-     ( 1-f ( \frac{4\eta-1}{2})) \delta_{u, Y}(t) 
-     + f ( \frac{4\eta-1}{2}) \delta_{u,Y+1}(t)
+     \delta_{u, Y}(\theta)& (\eta \le \frac 1 4) \\
+     ( 1-f ( \frac{4\eta-1}{2})) \delta_{u, Y}(\theta) 
+     + f ( \frac{4\eta-1}{2}) \delta_{u,Y+1}(\theta)
      & (\eta > \frac 1 4)
     \end{cases}
   \label{eq:gu}
@@ -166,7 +166,8 @@
 
  上記のように定義した $g_u, h_u$ が補題\ref{DifferentiableFamily} で求める
  性質を満たすことを示す. (i) は自明. 
- $(g_u)_u$ が多項式時間計算可能であることは補題によって示される.
+ $(g_u)_u$ が多項式時間計算可能であることは
+ 補題 \ref{lem:type1representation}によって示される.
 
  $h_u$ は $g_u$ の常微分方程式の解であることを示す.
  まず $h_u$ について解析する. 
@@ -209,7 +210,7 @@
   $\eta$ が $[-1/4, 1/4]$ と $[1/4, 3/4]$ である区間それぞれにおいて微分する.
 
   \begin{equation}
-   \D{i}\delta_{u,Y}(t) 
+   \D{i}\delta_{u,Y}(\theta) 
     = \frac{2^{(i+1)\poly Q} \D{i+1}f(\theta)}{B^{j_u(T)+1}}
     G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
   \end{equation}
@@ -218,11 +219,11 @@
    \label{eq:derivativeofgu}
     \D{i,0} g_u(t, y)
      = \begin{cases}
-	\D{i} \delta_{u, Y}(t) 
+	\D{i} \delta_{u, Y}(\theta) 
 	\hfill (- \frac 1 4 < \eta < \frac 1 4) \\
 	\left( 1-f \left(\frac{4\eta-1}{2}\right)\right) 
-	\D{i} \delta_{u, Y}(t) 
-	+ f \left(\frac{4\eta-1}{2}\right) \D{i} \delta_{u,Y+1}(t) \\
+	\D{i} \delta_{u, Y}(\theta) 
+	+ f \left(\frac{4\eta-1}{2}\right) \D{i} \delta_{u,Y+1}(\theta) \\
 	\hfill (\frac 1 4 < \eta < \frac 3 4)
        \end{cases}
   \end{equation}   
@@ -232,7 +233,7 @@
      = \begin{cases}
 	0 \hfill (- \frac 1 4 < \eta < \frac 1 4) \\
 	2B^{j_u(T)}\D{1}f(\frac{4\eta - 1}2)
-	(\D{i}\delta_{u,Y+1}(t)-\D{i}\delta_{u, Y}(t)) \\
+	(\D{i}\delta_{u,Y+1}(\theta)-\D{i}\delta_{u, Y}(\theta)) \\
 	\hfill (\frac 1 4 < \eta < \frac 3 4)
        \end{cases}
   \end{equation}
@@ -249,7 +250,7 @@
   $|\D{i,0} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)}$ を示す.
 
   \begin{equation}
-   |\D{i}\delta_{u, Y}(t)| 
+   |\D{i}\delta_{u, Y}(\theta)| 
     \le \left|\frac{2^{(i+1)\poly Q}\D{i+1}f(\theta)}{B^{j_u(T)+1}} \right|
     \le \frac{2^{(i+1)\poly Q + c_i}}{B^{j_u(T)+1}}\\
   \end{equation}
@@ -261,14 +262,14 @@
   \begin{align*}
    \left| \D{i,0} g_u \right| 
    &\le 
-   |\D{i}\delta_{u, Y}(t)| 
+   |\D{i}\delta_{u, Y}(\theta)| 
     \le \frac{2^{(i+1)\poly Q + c_i}}{B} 
     \le 2^{\mu_i (|u|) - \gamma(|u|)}
    \taghere \\
    \left| \D{i,1} g_u \right| 
    & \le 
    2B^{j_u(T)} \left|\D{1}f\left(\frac{4\eta - 1}2\right)\right|
-   \cdot \left|\D{i}\delta_{u,Y+1}(t)-\D{i}\delta_{u, Y}(t)\right| \\
+   \cdot \left|\D{i}\delta_{u,Y+1}(\theta)-\D{i}\delta_{u, Y}(\theta)\right| \\
    & \le
    2 B^{j_u(T)} \cdot 2^{c_1} \cdot 
    2 \cdot \frac{2^{(i+1)\poly Q + c_i}}{B^{j_u(T)+1}}\\
