@@ -1,6 +1,7 @@
 \section{微分可能関数と常微分方程式}
 
   \subsection{離散初期値問題}
+  \label{section:discrete-initial-problem}
   初期値問題の離散バージョンが\PSPACE 完全であるところから始める.
   離散初期値問題とは
   定数 $d$, 多項式 $P, Q \colon \N \to \N$, 
@@ -50,10 +51,11 @@
 
 \begin{lemma}
  \label{DifferentiableFamily}
- 任意の言語 $L \in $ \PSPACE, 多項式 $\gamma$ にたいして,
- 多項式 $\rho$, $\mu_i$, 関数族 $(g_u)_u, (h_u)_u$ で, 
- $\mu_i$ は変数 $i$ を係数にのみ含む多項式,
- $(g_u)_u$ は多項式時間計算可能,
+ 任意の言語 $L \in $ \PSPACE にたいして, 
+ 係数のみに $i$ を含む多項式 $\mu_i$ が存在して,
+ 任意の多項式 $\gamma$ にたいして,
+ 多項式 $\rho$, 関数族 $(g_u)_u, (h_u)_u$ で, 
+ $(g_u)_u$ は多項式時間計算可能であり,
  各二進文字列 $u$ にたいして以下を満たすものが存在する.
  \begin{enumerate}
   \item $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$;
@@ -249,7 +251,8 @@
     \le \frac{2^{(i+1)\poly Q + c_i}}{B^{j_u(T)+1}}\\
   \end{equation}
 
-  $\mu_i(k) = (i+1)Q(k) + c_i + c_1 + 2$ とおくと
+  $\mu_i(k) = (i+1)Q(k) + c_i + c_1 + 2$ とおく.
+  これは $\lambda$ に依存しない.
   $B$ の定義より
 
   \begin{align*}
@@ -284,20 +287,27 @@
 \subsection{定理 \ref{DifferentiableIsPspace} の証明}
 
 \begin{proof}
- $L$ を \PSPACE 完全な言語, $\lambda(k) = 2k + 2 $, $\gamma(k) = $TODO とおく.
+ $L$ を \PSPACE 完全な言語とおく.
  \PSPACE 完全な言語 $L$ にたいして補題 \ref{DifferentiableFamily} を用いて,
- $\rho$, $\mu_i$, $(g_u)_u$, $(h_u)_u$ を得る.
- 各 $u$ にたいして 
+ まず多項式 $\mu_i$ をえる.
+ \begin{align}
+  \lambda(k) &= 2k + 2,&
+  \gamma(k) &= k \mu_0(k) + k \lambda(k)
+ \end{align}
+ とおき, 各 $u$ にたいして 
 \begin{align}
  \Lambda_u 
  &= 2^{\lambda(|u|)}, &
  c_u 
- &= 1-\frac{1}{2^|u|}+\frac{2\bar{u}+1}{\Lambda_u}, &
+ &= 1-\frac{1}{2^{|u|}}+\frac{2\bar{u}+1}{\Lambda_u}, &
  l_u^\mp 
  &= c_u\mp\frac{1}{\varLambda_u} 
 \end{align}  
  とおく. ただし $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ は $u$ を二進数と
  して解釈した数.
+ $\gamma$ にたいして, 再び補題より $\rho$, $(g_u)_u$, $(h_u)_u$ を得る.
+
+
 
  任意の $[0,1)$ の実数にたいして,
  $l^\mp_u \pm \frac{t}{\Lambda_u}$ がその実数と等しくなるような
