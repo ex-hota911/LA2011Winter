@@ -59,14 +59,17 @@
  各二進文字列 $u$ にたいして以下を満たすものが存在する.
  \begin{enumerate}
   \item $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$;
-  \item $h_u$ は $g_u$ の常微分方程式 \ref{eq:ode} の解; 
+  \item $h_u$ は $g_u$ の常微分方程式 (\ref{eq:ode}) の解; 
   \item $g_u$ は $(\infty, 1)$ 階連続微分可能;
   \item 任意の $i \in \N$, $y \in [-1,1]$ にたいして
 	\begin{equation*}
 	 \D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0 
 	\end{equation*}
-  \item $|\D{i,1} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)}$, \qquad
-	$|\D{i,0} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)}$
+  \item 任意の $i \in \N$ にたいして
+	\begin{align*}
+	 |\D{i,1} g_u| &\leq 2^{\mu_i (|u|) - \gamma(|u|)}, &
+	 |\D{i,0} g_u| &\leq 2^{\mu_i (|u|) - \gamma(|u|)}
+	\end{align*}
   \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
  \end{enumerate}
 \end{lemma}

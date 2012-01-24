@@ -3,8 +3,9 @@
  任意回微分可能な関数の常微分方程式の解も, ある仮定のもと \PSPACE 完全でありうることを
  証明する.
 
-  \subsection{対数深さ離散初期値問題}
-  前章で定義した離散初期値問題へさらに制限を加えた問題を考える.
+\subsection{対数深さ離散初期値問題}
+  \ref{section:discrete-initial-problem} 節で定義した
+  離散初期値問題へさらに制限を加えた問題を考える.
   定数 $d$, 関数 $P \colon \N \to \N$, 多項式 $Q \colon \N \to \N$, 
   関数族 $(G_u)_u$ の組 $\left< d, P, Q, (G_u)_u \right>$が
   (\ref{enum:discreteode1}), (\ref{enum:discreteode2}) に加え,
@@ -26,9 +27,9 @@
 
  つまり対数深さ離散初期値問題が \PSPACE 完全であることを仮定する. 
 
- \subsection{対数深さ離散初期値問題を模倣する関数族}
+\subsection{対数深さ離散初期値問題を模倣する関数族}
 
- 証明の流れは1回微分可能の時と変わらない.
+ 証明の流れは 節微分可能の時と変わらない.
  任意の言語 $L \in $ \PSPACE, 文字列 $u$ にたいして,
  上記の対数深さ離散初期値問題を模倣し $L(u)$ を計算する
  任意回微分可能な実関数 $g_u$ を構成する.
@@ -36,25 +37,29 @@
  \begin{lemma}
   \label{KTimesFamily}
   仮定 \ref{Hypothesis} のもと, 任意の自然数 $k \ge 2$,
-  任意の言語 $L \in$ \PSPACE, 任意の多項式 $\lambda$ にたいして,
-  関数 $\rho \colon \N \to \N$ と関数族 $g_u, h_u$ で,
+  任意の言語 $L \in$ \PSPACE にたいして,
+  係数のみに $i$ を含む多項式 $\mu_i$ が存在して,
+  任意の多項式 $\gamma$ にたいして,
+  関数 $\rho \colon \N \to \N$, 関数族 $g_u, h_u$ で,
   $\rho, (g_u)_u$ は多項式時間計算可能であり,
   各二進文字列 $u$ にたいして以下を満たすものが存在する.
   \begin{enumerate}
    \item $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$;
-   \item 任意の $y \in [-1,1]$ にたいして $g_u(0,y) = g_u(1,y) = 0 $;
-   \item $h_u$ は $g_u$ の常微分方程式の解;
-   \item $\D{0,k} g_u$ は連続;
-   \item 任意の $i \in \{0, \dots, k\}$ にたいして
-	 $\left|\D{0,i} g_u(t,y)\right| 
-		\le \Lambda_u^{-i}2^{-|u|}$;
-	 \label{enum:lem:differentiable}
+   \item $h_u$ は $g_u$ の常微分方程式 (\ref{eq:ode}) の解;
+   \item $g_u$ は $(\infty, k)$ 階連続微分可能;
+   \item 任意の $i \in \N$, $y \in [-1,1]$ にたいして
+	 \begin{equation*}
+	  \D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0 
+	 \end{equation*}
+   \item 任意の $i \in \N$, $j \in \{0, \dots, k\}$ にたいして
+	 \begin{equation*}
+	  \left|\D{i,j} g_u(t,y)\right| \le 2^{\mu_i(|u|) - \gamma(|u|)}
+	 \end{equation*}
    \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
   \end{enumerate}
-  ただし $\Lambda_u = 2^{\lambda(|u|)}$.
  \end{lemma}
  
-  \begin{proof}
+ \begin{proof}
   仮定 \ref{Hypothesis} より $L$ を認識する 
   対数深さ離散初期値問題 $\left< d, P, Q,(G_u)_u,(H_u)_u \right>$
   とその解 $(H_u)_u$ を得る.
@@ -179,24 +184,36 @@
   より, $\rho(x) = (k+1)^{P(x)} (Q(x) + k \lambda(x) + x + c + d' + k)$ とおく.
   $\poly P = O(\log |u|)$ かつ $P$ は多項式時間計算可能により, 
   $\rho$ は多項式時間計算可能.
-  \end{proof}
+ \end{proof}
 
 
 
 
 
- \subsection{定理 \ref{KTimesIsPspace} の証明}
+\subsection{定理 \ref{KTimesIsPspace} の証明}
 
 \begin{proof}
  $L$ を \PSPACE 完全な言語, $\lambda(k) = 2k+2$ とおく.
  \PSPACE 完全な言語 $L$ にたいして補題 \ref{KTimesFamily} を用いて,
- $\rho$, $(g_u)_u$, $(h_u)_u$ を得る.
+ まず多項式 $\mu_i$ をえる.
+ $\mu_i$ は $i$ を係数部にのみ持つ多項式であるため,
+ $\mu_i(k) = O(k^c)$ をみたす最小の定数 $c$ が存在する.
  \begin{align}
-  c_u &= 1-\frac{1}{2^|u|}+\frac{2\bar{u}+1}{\Lambda_u},&
-   l_u^\mp &= c_u\mp\frac{1}{\varLambda_u}
+  \lambda(k) &= 2k + 2,&
+  \gamma(k) &= k^{c+1} + k \lambda(k)
  \end{align}
+ とおき, 各 $u$ にたいして 
+\begin{align}
+ \Lambda_u 
+ &= 2^{\lambda(|u|)}, &
+ c_u 
+ &= 1-\frac{1}{2^{|u|}}+\frac{2\bar{u}+1}{\Lambda_u}, &
+ l_u^\mp 
+ &= c_u\mp\frac{1}{\varLambda_u} 
+\end{align}  
  とおく. ただし $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ は $u$ を二進数と
  して解釈した数.
+ $\gamma$ にたいして, 再び補題より $\rho$, $(g_u)_u$, $(h_u)_u$ を得る.
 
  関数 $g,h$ を $t \in [0,1]$, $y \in \R$ にたいして, 下のように定義する.
  \begin{equation}
