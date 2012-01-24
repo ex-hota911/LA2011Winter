@@ -5,7 +5,7 @@
 
   \subsection{対数深さ離散初期値問題}
   前章で定義した離散初期値問題へさらに制限を加えた問題を考える.
-  定数 $d$, 関数 $P : \N \to \N$, 多項式 $Q : \N \to \N$, 
+  定数 $d$, 関数 $P \colon \N \to \N$, 多項式 $Q \colon \N \to \N$, 
   関数族 $(G_u)_u$ の組 $\left< d, P, Q, (G_u)_u \right>$が
   (\ref{enum:discreteode1}), (\ref{enum:discreteode2}) に加え,
   \begin{equation}
@@ -37,11 +37,11 @@
   \label{KTimesFamily}
   仮定 \ref{Hypothesis} のもと, 任意の自然数 $k \ge 2$,
   任意の言語 $L \in$ \PSPACE, 任意の多項式 $\lambda$ にたいして,
-  関数 $\rho : \N \to \N$ と関数族 $g_u, h_u$ で,
+  関数 $\rho \colon \N \to \N$ と関数族 $g_u, h_u$ で,
   $\rho, (g_u)_u$ は多項式時間計算可能であり,
   各二進文字列 $u$ にたいして以下を満たすものが存在する.
   \begin{enumerate}
-   \item $g_u:[0,1] \times [-1,1]\to \R, \quad h_u: [0,1] \to [-1,1]$;
+   \item $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$;
    \item 任意の $y \in [-1,1]$ にたいして $g_u(0,y) = g_u(1,y) = 0 $;
    \item $h_u$ は $g_u$ の常微分方程式の解;
    \item $\D{0,k} g_u$ は連続;

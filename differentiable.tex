@@ -3,7 +3,7 @@
   \subsection{離散初期値問題}
   初期値問題の離散バージョンが\PSPACE 完全であるところから始める.
   離散初期値問題とは
-  定数 $d$, 多項式 $P, Q : \N \to \N$, 
+  定数 $d$, 多項式 $P, Q \colon \N \to \N$, 
   関数族 $(G_u)_u$ の組
   $\left< d, P, Q, (G_u)_u \right>$で
   以下の制限を満たすものである.
@@ -11,13 +11,13 @@
     (G_u)_u \text{は多項式時間計算可能} \label{enum:discreteode1}
   \end{equation}
   \begin{equation}
-    G_u: [P(|u|)] \times \left[ 2^{\poly Q} \right] \times [d] 
+    G_u\colon [P(|u|)] \times \left[ 2^{\poly Q} \right] \times [d] 
 	\to \{-1, 0, 1\} \label{enum:discreteode2}
   \end{equation}
   また関数族 $(H_u)_u$ が以下を満たすとき,
   $(H_u)_u$ を離散初期値問題  $\left< d, P, Q, (G_u)_u \right>$ の解と呼ぶ.
   \begin{equation}
-  H_u: [P(|u|) + 1] \times 
+  H_u\colon [P(|u|) + 1] \times 
 	\left[ 2^{\poly Q} \right] \to [d] \label{enum:discreteode3}
   \end{equation}
   \begin{align*}
@@ -55,7 +55,7 @@
  $(g_u)_u$ は多項式時間計算可能であり,
  各二進文字列 $u$ にたいして以下を満たすものが存在する.
  \begin{enumerate}
-  \item $g_u:[0,1] \times [-1,1]\to \R, \quad h_u: [0,1] \to [-1,1]$;
+  \item $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$;
   \item 任意の $y \in [-1,1]$ にたいして $g_u(0,y) = g_u(1,y) = 0 $; 
   \item $h_u$ は $g_u$ の常微分方程式 \ref{eq:ode} の解; 
   \item $g_u$ は $(\infty, 1)$ 階微分可能;
@@ -66,11 +66,11 @@
 \end{lemma}
 
  この補題の証明の前に, 葛によって示されている
- 滑らかな多項式時間実関数 $f : [0,1] \to \R$ を導入する.
+ 滑らかな多項式時間実関数 $f \colon [0,1] \to \R$ を導入する.
  
  \begin{lemma}[補題 3.6. \cite{ko1991complexity}]
   \label{SmoothFunction}
-  以下を満たす多項式時間無限回微分可能実関数 $f : [0,1] \to \R$ が存在する.
+  以下を満たす多項式時間無限回微分可能実関数 $f \colon [0,1] \to \R$ が存在する.
   \begin{enumerate}
    \item $f(0) = 0, \quad f(1) = 1$;
    \item 任意の $n \ge 1$ で $f^{(n)}(0) = f^{(n)}(1) = 0$;

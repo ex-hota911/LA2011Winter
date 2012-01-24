@@ -5,7 +5,7 @@
 (二進)自然数の集合を $\N$, 整数の集合を $\Z$, 実数の集合を $\R$, 
 有理数の集合を $\Q$, $\T = \{0^n \mid n \in \N\}$ と表記する. 
 
-一変数関数 $f:[0,1] \to \R$ が $i$ 回微分可能であるとき,
+一変数関数 $f\colon [0,1] \to \R$ が $i$ 回微分可能であるとき,
 その $i$ 階導関数を $\D{i}f$ と表記する.
 同様に二変数関数 $g$ の第一変数にたいして $i$ 階, 第二変数にたいして $j$ 階の導関数を $\D{i,j}g$ と表記する.
 
@@ -15,7 +15,7 @@
  求める精度を与えると, 実数の近似値をその精度で返すような関数を考える.
 
 \begin{definition}[実数の名]
- 関数 $\phi : \T \to \Z $ が実数 $x \in [0,1]$ の名であるとは,
+ 関数 $\phi \colon \T \to \Z $ が実数 $x \in [0,1]$ の名であるとは,
  $\phi(0^n) = \lfloor x \cdot 2^n \rfloor$ または
  $\phi(0^n) = \lceil x \cdot 2^n \rceil$ を満たすこと.
 \end{definition}
@@ -37,7 +37,7 @@
  \end{figure}
 
  \begin{definition}
-  神託機械 $M$ が実関数 $f:A \to \R$ を計算するとは,
+  神託機械 $M$ が実関数 $f\colon A \to \R$ を計算するとは,
   任意の実数 $x \in A$, 任意の $x$ の名 $\phi_x$ にたいして,
   $M^{\phi_x}$ が $f(x)$ の名であること.
  \end{definition}
@@ -61,8 +61,8 @@
  神託機械を用いない同値な特徴付けが可能である.
 
  \begin{lemma}
-  実関数 $f:[0,1] \to \R$ にたいして,
-  $\phi_f: (\Q \cap [0, 1]) \times \T \to \Q$, $m_f: \N \to \N$は
+  実関数 $f\colon [0,1] \to \R$ にたいして,
+  $\phi_f\colon (\Q \cap [0, 1]) \times \T \to \Q$, $m_f\colon \N \to \N$は
   \begin{align}
    |\phi_f(d, 0^n) - f(d)| \le 2^{-n} 
    &\qquad (d \in (\Q \cap [0,1]), \quad n \in \N)\\
@@ -80,7 +80,7 @@
 \subsection{完全性}
 
  関数の下限を示すために, 困難及び完全性を定義する.
- 言語 $L$ が実関数 $f:[0,1] \to \R$ に多項式時間還元可能であるとは,
+ 言語 $L$ が実関数 $f\colon [0,1] \to \R$ に多項式時間還元可能であるとは,
  $f$ を計算する機械をブラックボックスとして, 入力 $u$ にたいして,
  精度を $f$ に与え, ある実数 $x_u$ の神託を模倣し, $f(x_u)$ の近似値から,
  $u$ が $L$ に含まれるか否かを多項式時間で計算可能であることである
@@ -88,12 +88,12 @@
  厳密には以下のように定義する.
 
  \begin{definition}[多項式時間還元可能]
-  言語 $L$ が実関数 $f:[0,1] \to \R$ に多項式時間還元可能であるとは, 
+  言語 $L$ が実関数 $f\colon [0,1] \to \R$ に多項式時間還元可能であるとは, 
   任意の文字列 $u$ にたいして, 以下を満たす実数 $x_u \in [0,1]$
   多項式時間計算可能な関数 $R,S,T$ が存在すること.
   \begin{itemize}
-   \item $R:N \times N \to \{0,1\}, \quad S:\N\times \T \to \N, \quad
-  T:\N \to \T$;
+   \item $R\colon N \times N \to \{0,1\}, \quad S\colon \N\times \T \to \N, \quad
+  T\colon \N \to \T$;
    \item $S(u, \cdot)$ は実数 $x_u$ の名;
    \item 任意の $f(x_u)$ の名 $\phi$ にたいして
 	 \[
