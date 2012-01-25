@@ -101,7 +101,7 @@
 
  \begin{proof}[\rm 補題 \ref{DifferentiableFamily} の証明]
   補題 \ref{WeakFeedback} から, $L$ を認識する 
-  離散初期値問題 $\left< d, P, Q,(G_u)_u,(H_u)_u \right>$
+  離散初期値問題 $\left< d, P, Q,(G_u)_u \right>$
   とその解 $(H_u)_u$ を得る.
   各ステップを $P(u)$ 個に分割することで, $G_u(i, T, Y) \not = 0$ を満たす
   $i$ を各 $T$ にたいしてたかだか1つにすることができる. そのような $i$ のことを 
@@ -132,7 +132,7 @@
  \end{equation}
 
   補題 \ref{SmoothFunction} の $f$ にたいして, 
- 自然数 $c_i$ を各自然数 $i$ にたいして 
+ 自然数 $c_i$ を各 $i \in \N$ にたいして 
   $|\D{i}f(x)| \le 2^{c_i}$ を満たす最小の自然数と定める.
  定数 $d' = \lceil \log (4d + 1) \rceil$, 
  $B = 2^{\poly \gamma + d'}$ とおき, 
@@ -166,7 +166,8 @@
 
  上記のように定義した $g_u, h_u$ が補題\ref{DifferentiableFamily} で求める
  性質を満たすことを示す. (i) は自明. 
- $(g_u)_u$ が多項式時間計算可能であることは補題によって示される.
+ $(g_u)_u$ が多項式時間計算可能であることは
+ 補題 \ref{lem:type1representation}によって示される.
 
  $h_u$ は $g_u$ の常微分方程式の解であることを示す.
  まず $h_u$ について解析する. 

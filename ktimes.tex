@@ -61,7 +61,7 @@
  
  \begin{proof}
   仮定 \ref{Hypothesis} より $L$ を認識する 
-  対数深さ離散初期値問題 $\left< d, P, Q,(G_u)_u,(H_u)_u \right>$
+  対数深さ離散初期値問題 $\left< d, P, Q,(G_u)_u \right>$
   とその解 $(H_u)_u$ を得る.
   さらに以下のように仮定する.
   \begin{equation}
@@ -71,49 +71,55 @@
 			\end{cases}
   \end{equation}
 
-    補題 \ref{SmoothFunction} の $f$ にたいして, 
- 定数 $c$ を任意の $i \in \{0, \dots, k\}$, 任意の $x \in [0,1]$ にたいして $|\D i f(x)| \le 2^c$ を満たす最小の自然数と定める.
+  補題 \ref{SmoothFunction} の $f$ にたいして, 
+  自然数の族 $c_i$ を各 $i \in \N$ にたいして 
+  $|\D{i}f(x)| \le 2^{c_i}$ を満たす最小の自然数と定める.
  定数 $d' = \lceil \log (4d + 1) \rceil$, 
- $B = 2^{\poly Q + k \poly \lambda + (k - 1) + |u| + c + d' + k}$ とおき, 
+ $B = 2^{\poly \gamma + d'}$ とおき, 
  各 $(t, y) \in [0,1] \times [-1, 1]$ にたいして,
  自然数 $N$, $\theta \in [0,1]$, 整数 $Y$, $\eta \in [-1/4, 3/4]$ を
- $t = (T + \theta)2^{-Q(|u|)}$, $y = (Y + \eta)B^{-(k+1)^{j_u(T)}}$ 
-  を満たすように定める.
+ $t = (T + \theta)2^{-Q(|u|)}$, $y = (Y + \eta)B^{-k^{j_u(T)}}$ を満たすように
+ 定める.
  
  そのとき,
  \begin{equation}
-  g^*_u(t, Y) = \frac{2^\poly Q \pi \sin (\theta\pi)}{2 B^{(k+1)^{j_u(T)+1}}}
+  \delta_{u, Y} (t) = \frac{2^\poly Q f'(\theta)}{B^{k^{j_u(T)+1}}} 
    G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
  \end{equation}
  とおき $g_u, h_u$ を以下のように定義する.
  \begin{equation}
   g_u(t,y) 
   = \begin{cases}
-     g^*_u(t, Y)& (\eta \le \frac 1 4) \\
-     ( 1-f \left( 2\eta - \frac 1 2 \right)g^*_u(t, Y) 
-     + f \left( 2\eta -  \frac 1 2 \right) g^*_u(t, Y+1)
+     \delta_{u, Y}(t)
+     & (\eta \le \frac 1 4)
+     \\
+     ( 1-f ( \frac{4\eta-1}{2})) \delta_{u, Y}(t) 
+     + f ( \frac{4\eta-1}{2}) \delta_{u,Y+1}(t)
      & (\eta > \frac 1 4)
     \end{cases}
-  \label{ktimes:eq:gu}
  \end{equation}
 
  \begin{equation} 
-  h_u(t) = \sum^{\poly P}_{i=0} \frac{H_u(i, T)}{B^{(k+1)^i}}
-  + \frac{1-\cos(\theta\pi)}{2} 
-  \cdot \frac{G_u(j_u(T), T, H_u(j_u(T), T))}{B^{(k+1)^{j_u(T)+1}}}
-  \label{ktimes:eq:hu}
+  h_u(t) = \sum^{\poly P}_{i=0} \frac{H_u(i, T)}{B^{k^i}}  
+  + \frac{f(\theta)}{B^{k^{j_u(T)+1}}} G_u(j_u(T), T, H_u(j_u(T), T)) 
+  \label{eq:hu}
  \end{equation}
 
- 上記のように定義した $g_u, h_u$ が補題\ref{KTimesFamily} で求める
- 性質を満たすことを示す. (i), (ii) は自明. 
- $(g_u)_u$ が多項式時間計算可能であることは補題によって示される.
+ 上記のように定義した $g_u, h_u$ が補題\ref{DifferentiableFamily} で求める
+ 性質を満たすことを示す. (i) は自明. 
+ $(g_u)_u$ が多項式時間計算可能であることは
+  補題 \ref{lem:type1representation}によって示される.
 
  $h_u$ は $g_u$ の常微分方程式の解であることを示す.
- まず $h_u$ について解析する. (\ref{ktimes:eq:hu}) の一つ目の項において
- $i \le j_u(T)$ の合計は $B^{(k+1)^{j_u(T)}}$ の倍数. $i > j_u(T)$ の合計は, 
+ まず $h_u$ について解析する. 
+  $h_u(t) = (Y + \eta) B^{-k^{j_u(T)}}$ とおくときの, $\eta$ の範囲がどうなるか,
+  つまり式(\ref{eq:gu})のどちらのケースを使うかを考える.
+  式(\ref{eq:hu}) の一つ目の項において
+ $i \le j_u(T)$ の合計は $B^{k^{j_u(T)}}$ の倍数なので $\eta$ に影響はない.
+  $i > j_u(T)$ の合計は, 
  \begin{align*}
-  \sum_{i>j_u(T)}^{\poly P} \frac{H_u(i, T)}{B^{(k+1)^i}} 
-  & \le \sum_{i>j_u(T)}^\infty \frac{d-1}{B^{(k+1)^i}}  \\
+  \sum_{i>j_u(T)}^{\poly P} \frac{H_u(i, T)}{B^{k^i}} 
+  & \le \sum_{i>j_u(T)}^\infty \frac{d-1}{B^{k^i}}  \\
   & \le \sum_{i>j_u(T)}^\infty \frac{d-1}{B^i} 
    = \sum_{i>j_u(T)}^\infty \frac{d-1}{B^{i-j_u(T)}}B^{-j_u(T)} \\
   & \le \sum_{i>j_u(T)}^\infty \frac{d-1}{(4d+1)^{i-j_u(T)}}B^{-j_u(T)} \\
@@ -121,69 +127,112 @@
  \end{align*}
  二つ目の項の絶対値は
  \begin{equation}
-  \left| \frac{1-\cos(\theta\pi)}{2} 
-   \cdot \frac{G_u(j_u(T), T, H_u(j_u(T), T))}{B^{(k+1)^{j_u(T)+1}}} \right|
+  \left| \frac{f(\theta)}{B^{k^{j_u(T)+1}}} G_u(j_u(T), T, H_u(j_u(T), T)) \right|
   \le \frac{1}{B^{j_u(T)+1}}
   \le \frac{B^{-j_u(T)}}{4d+1}
  \end{equation}
- よって $h_u(t) = (Y + \eta) B^{-j_u(T)}$ を満たす $\eta \in [-1/4, 1/4]$
+ $(\frac{d-1}{4d} + \frac{1}{4d+1})B^{-j_u(T)} \le \frac 1 4 B^{-j_u(T)} $
+  より $h_u(t) = (Y + \eta) B^{-j_u(T)}$ を満たす $\eta \in [-1/4, 1/4]$
  が存在する. このとき,
  \begin{equation}
-  Y = \sum_{i=0}^{j_u(T)}H_u(i, T) \cdot B^{j_u(T) - i} .
+  Y = \sum_{i=0}^{j_u(T)}H_u(i, T) \cdot B^{k^{j_u(T)} - k^i} .
  \end{equation}
  $B$ は $2^{d'}$ の倍数なので, 
  $\min (Y \bmod 2^{d'}\!\!\!,\ d-1) = \min (H_u(j_u), d-1) = H_u(j_u)$. 
- (\ref{ktimes:eq:gu})へ$Y$ と $\eta$ を代入すると,
-  \begin{align*}
+ $g_u$ に代入すると,
+ \begin{align*}
    g_u(t, h_u(t)) 
-  & =  \frac{2^\poly Q \pi \sin(\theta\pi)}{2B^{j_u(T)+1}}
+  & =  \frac{2^\poly Q f'(\theta)}{B^{k^{j_u(T)+1}}}
    G_u(j_u(T), T, H_u(j_u(T), T)) \\
-  & =  \D{1}h_u(t). \taghere
-  \end{align*}
+  & =  \D{1}h_u(t).
+ \end{align*}
  よって $h_u$ は $g_u$ の常微分方程式の解.
 
+  $g_u$ が $(\infty, k)$ 階連続的微分可能であることを証明する.
+  $\eta$ が $[-1/4, 1/4]$ と $[1/4, 3/4]$ である区間それぞれにおいて微分する.
+  任意の $i \in \N$ について
 
-  \begin{align}
-   &\D{0,i} g(t, y)  = \\
-   & \begin{cases}
-     0 & (\eta \le \frac 1 4) \\
-     2^i  B^{i \cdot (k+1)^{j_u(T)}} \cdot \D{i} f\left(2\eta - \frac 1 2 \right)
-      \cdot (g^*_u (t, Y+1)-g^*_u(t, Y))
-     & (\eta > \frac 1 4)
-     \end{cases} \notag
-  \end{align}
-  よって $\D{0,i} g$ は連続
-
-
-  (v) を示す. $|g^*_u| 
-  \le \left| \frac{2^\poly Q \pi \sin (\theta\pi)}{2 B^{(k+1)^{j_u(T)+1}}} \right|
-  \le \frac{2^{\poly Q + 1}}{B^{(k+1)^{j_u(T)+1}}}$ より, 
-  $i = 0$ において
   \begin{equation}
-   |\D{0,0} g| = | g |  
-    \le \frac{2^{\poly Q + 1}}{B^{(k+1)^{j_u(T)+1}}} 
-    \le \frac{2^{\poly Q + 1}}{B^{(k+1)}} \le 2^{-|u|}
+   \D{i}\delta_{u,Y}(t) 
+    = \frac{2^{(i+1)\poly Q} \D{i+1}f(\theta)}{B^{k^{j_u(T)+1}}}
+    G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
   \end{equation}
-  $i \in \{1, \dots, k\}$ において,
+
+  \begin{equation}
+   \label{eq:derivativeofgu}
+    \D{i,0} g_u(t, y)
+     = \begin{cases}
+ 	\D{i} \delta_{u, Y}(\theta) 
+	\hfill (- \frac 1 4 < \eta < \frac 1 4) \\
+	\left( 1-f \left(\frac{4\eta-1}{2}\right)\right) 
+	\D{i} \delta_{u, Y}(\theta) 
+	+ f \left(\frac{4\eta-1}{2}\right) \D{i} \delta_{u,Y+1}(\theta) \\
+	\hfill (\frac 1 4 < \eta < \frac 3 4)
+       \end{cases}
+  \end{equation}   
+  $j \in \{1, \dots , k\}$ について,
+
+  \begin{equation}
+    \D{i,j} g_u(t, y)
+     = \begin{cases}
+	0 \hfill (- \frac 1 4 < \eta < \frac 1 4) \\
+	(2B^{j_u(T)})^j \D{j}f(\frac{4\eta - 1}2)
+	(\D{i}\delta_{u,Y+1}(\theta)-\D{i}\delta_{u, Y}(\theta)) \\
+	\hfill (\frac 1 4 < \eta < \frac 3 4)
+       \end{cases}
+  \end{equation}
+  $f$ は 無限回微分可能であるため, $\delta_{u,Y}$ も無限回微分可能である.
+  よって 区間 $(-1/4, 1/4)$, $(1/4, 3/4)$ において
+  $\D{i, 0} g_u$, $\D{i,j} g_u$ は連続. 
+  $\eta = 1/4$ および  $\eta = 3/4(-1/4)$ においても連続であることは自明.
+  $\D{i+1, 0} f(0) = \D{i+1, 0} f(1) = 0$ より $\theta = 0$ または $\theta = 1$
+  において $\D{i, 0}g_u(t, y) = 0$, $\D{i, j}g_u(t, y) = 0$,
+  よって $t$ についても連続.
+  以上により $g_u$ は $(\infty, j)$ 階連続的微分可能であることがしめされた.
+
+  式 (\ref{eq:derivativeofgu}) に $t = 0, 1$ ($\theta = 0$) を代入して
+  $\D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0$.
+
+  任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
+  $|\D{i,j} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)}$ を示す.
+
+  \begin{equation}
+   |\D{i}\delta_{u, Y}(t)| 
+    \le \left|\frac{2^{(i+1)\poly Q}\D{i+1}f(\theta)}{B^{k^{j_u(T)+1}}} \right|
+    \le \frac{2^{(i+1)\poly Q + c_i}}{B^{k^{j_u(T)+1}}}\\
+  \end{equation}
+
+  $\mu_i(k) = (i+1)Q(k) + \sum^k_{j=1}c_i + c_i + k + 1$ とおく.
+  これは $\lambda$ に依存しない.
+  $B$ の定義より
+
   \begin{align*}
-   | \D{0, i} g | & \le 2^i \cdot B^{i \cdot (k+1)^{j_u(T)}} \cdot 2^c \cdot
-   (g^*_u (t, Y+1)-g^*_u(t, Y)) \\
-   & \le 2^{c+k} \cdot B^{k(k+1)^{j_u(T)}} \cdot 2 \cdot \frac{2^{\poly Q + 1}}{B^{(k+1)^{j_u(T)+1}}} \\
-   & \le \frac{2^{\poly Q + c + k + 2}}{B} 
-   \le 2^{-i\poly \lambda - |u|}
-    =  \Lambda_u^{-i}2^{-|u|} \taghere
+   \left| \D{i,0} g_u \right| 
+   &\le 
+   |\D{i}\delta_{u, Y}(t)| 
+    \le \frac{2^{(i+1)\poly Q + c_i}}{B} 
+    \le 2^{\mu_i (|u|) - \gamma(|u|)}
+   \taghere 
+   \\
+   \left| \D{i,j} g_u \right| 
+   & \le 
+   (2B^{j_u(T)})^j \left|\D{j}f\left(\frac{4\eta - 1}2\right)\right|
+   \cdot \left|\D{i}\delta_{u,Y+1}(t)-\D{i}\delta_{u, Y}(t)\right| \\
+   & \le
+   2^k B^{k \cdot j_u(T)} \cdot 2^{c_j} \cdot 
+   2 \cdot \frac{2^{(i+1)\poly Q + c_i}}{B^{k^{j_u(T)+1}}}\\
+   & \le
+   \frac{2^{(i+1)\poly Q + \sum^k_{j=1}c_j + c_i +  k + 1}}{B}
+   \le
+   2^{\mu_i (|u|) - \gamma(|u|)} . \taghere
   \end{align*}
 
-
-  (vii) は 
-  \begin{align*}
-   h_u(1) &= \frac{H_u(\poly P, 2^\poly Q)}{B^{(k+1)^\poly P}}  \\
-   &= \frac{L(u)}
-   {2^{(k+1)^\poly P (\poly Q + k \poly \lambda + |u| + c + d' + k)}}   \taghere
-  \end{align*}
-  より, $\rho(x) = (k+1)^{P(x)} (Q(x) + k \lambda(x) + x + c + d' + k)$ とおく.
-  $\poly P = O(\log |u|)$ かつ $P$ は多項式時間計算可能により, 
-  $\rho$ は多項式時間計算可能.
+ (vii) は 
+ \begin{align*}
+  h_u(1) &= \frac{H_u(\poly P, 2^\poly Q)}{B^\poly P}  \\
+  &= \frac{L(u)}{2^{\poly P (\poly \gamma + d')}} \taghere
+ \end{align*}
+ より, $\rho(k) = P(k)(\gamma(k) + d')$ とおくと成り立つ.
  \end{proof}
 
 
