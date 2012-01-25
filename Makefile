@@ -18,7 +18,7 @@ WCLOG=wc
 REF=la.bib
 #走らせるTeXプログラム
 TEX=platex --halt-on-error
-BIBTEX=bibtex
+BIBTEX=jbibtex
 # \input \include コマンドを解決
 RESOLVEINPUT=sed -e s/"\\\\input{\([^}]*\)}"/"\\\\input{\1.euc}"/g -e s/"\\\\include{\([^}]*\)}"/"\\\\include{\1.euc}"/g
 # 空白を除去
