@@ -15,12 +15,12 @@ IMG=
 # 文字数
 WCLOG=wc
 #文献データベース
-REF=la.bib
+REF=la.euc.bib
 #走らせるTeXプログラム
 TEX=platex --halt-on-error
 BIBTEX=jbibtex
 # \input \include コマンドを解決
-RESOLVEINPUT=sed -e s/"\\\\input{\([^}]*\)}"/"\\\\input{\1.euc}"/g -e s/"\\\\include{\([^}]*\)}"/"\\\\include{\1.euc}"/g
+RESOLVEINPUT=sed -e s/"\\\\input{\([^}]*\)}"/"\\\\input{\1.euc}"/g -e s/"\\\\include{\([^}]*\)}"/"\\\\include{\1.euc}"/g -e s/"\\\\bibliography{\([^}]*\)}"/"\\\\bibliography{\1.euc}"/g 
 # 空白を除去
 REMOVESPACES=sed -e "s/ //g" -e "/^$$/d"
 # EUCへ変換
@@ -35,13 +35,13 @@ CENSORED=対して\|示す
 #PRINTER=//server/printername
 .SUFFIXES: .euc.tex .tex
 #.PRECIOUS: $(FILE).euc.bbl $(FILE).euc.aux
-.INTERMEDIATE: $(SRC) $(EFILE).tex
+.INTERMEDIATE: $(SRC) $(EFILE).tex $(REF)
 
 # 標準のターゲット
 all: $(FILE).pdf $(WCLOG)
 # 依存関係にかかわらず作成
 .PHONY: force
-force: $(EFILE).tex $(SRC)
+force: $(EFILE).tex $(SRC) $(REF)
 	$(TEX) $(EFILE)
 	$(BIBTEX) $(EFILE)
 	$(TEX) $(EFILE)
@@ -57,10 +57,14 @@ $(EFILE).dvi: $(EFILE).aux $(EFILE).bbl
 	(while $(REFGREP) $(EFILE).log; do $(TEX) $(EFILE); done)
 $(EFILE).aux: $(EFILE).tex $(SRC)
 	$(TEX) $(EFILE)
+
 $(EFILE).bbl: $(REF)
 	$(BIBTEX) $(EFILE)
 	$(TEX) $(EFILE)
 	$(TEX) $(EFILE)
+
+%.euc.bib: %.bib
+	$(NKF) $< > $@
 
 %.euc.tex: %.tex
 	$(RESOLVEINPUT) $< | $(NKF) > $@
