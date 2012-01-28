@@ -18,8 +18,8 @@
 有限の時間内で機械が完全な値を読んだり書いたりすることはできない.
 
 そこでまず実数を近似値の列で表現する.
-有理数の列 $\{r_n\}$ が $x$ を表現するとは,
-$\{r_n\}$ が $x$ へ速く収束すること, 
+有理数の列 $(r_n)_n$ が $x$ を表現するとは,
+$(r_n)_n$ が $x$ へ速く収束すること, 
 すなわち $|r_n - x| \le 2^{-n}$ を満たすこととする.
 数列は $n \in \N$ を $r_n \in \Q$ へ移す関数と考えることもできる.
 そのような関数または数列を実数の名と呼ぶ.
@@ -113,61 +113,76 @@ pp  \label{DifferentiableIsPspace}
 
 
 
-\subsection{離散初期値問題}
+\subsection{差分方程式}
 \label{section:divp}
 
-関数 $G \colon [P] \times [Q] \times [R] \to {-1, 0, 1}$ にたいして,
-関数 $H$ が以下を満たすとき,
+定理 \ref{DifferentiableIsPspace} と定理 \ref{KTimesIsPspace} の証明の流れは,
+制限された実関数の常微分方程式で模倣可能であるような離散版常微分方程式を考え, 
+その「離散版常微分方程式」が認識できる計算量クラスについて困難であることをしめしている.
+この節ではその離散版常微分方程式である, 差分方程式と対応する計算量クラスについて定義する.
+
+
+$[n] = \{0, \dots , n-1\}$ と表記する.
+関数 $G \colon [P] \times [Q] \times [R] \to \{-1, 0, 1\}$ にたいして,
+また $P, Q, R$ のことをそれぞれ, 行数, 列数, 欄の大きさと呼ぶ.
+関数 $H \colon [P + 1] \times [Q+1] \to [R]$ が
+任意の $i \in [P],\ T \in [Q]$ について以下を満たすとき,
 $H$ を $G$ の差分方程式の解と呼ぶ.
 \begin{gather}
-  H_u\colon [P(|u|) + 1] \times 
-	\bigl[ 2^{\poly Q} + 1 \bigr] \to [d] \label{enum:discreteode3}
+   H(i, 0) = H(0, T) = 0 
 \\
-   H_u(i, 0) = H_u(0, T) = 0 
-\notag
-\\
-   H_u(i + 1, T + 1) = H_u(i+1, T) + G_u(i, T, H_u(i, T)) 
-\notag
-\\
- \bigl(
-       i \in [P(|u|)],
-       \ T \in \bigl[ 2^{\poly Q} \bigr] 
- \bigr) 
-\label{enum:discreteode4}
+   H(i + 1, T + 1) = H(i+1, T) + G(i, T, H(i, T))  \label{eq:divp}
 \end{gather}
+それぞれ $G, H$ が常微分方程式の $g, h$ に対応し,
+$H(i, 0) = 0$ と言う条件が $h(0) = 0$,
+式 \ref{eq:divp} と同値である $H(i + 1, T + 1) - H(i+1, T) = G(i, T, H(i, T))$
+と言う条件が $h'(t) = g(t, h(t))$ と対応する.
 
- 離散初期値問題が言語 $L$ を認識するとはその解 $(H_u)_u$ が任意の文字列 $u$ で
- $H_u(P(|u|), 2^{Q(|u|)}) = L(u)$ を満たすことと定義する.
+
+ $(H_u)_u$ が差分方程式族 $(G_u)_u$ の解であるとは,
+ 各 $u$ にたいして $G_u$ の段数が $|u|$ の多項式で抑えられ, 
+ 列数及び欄の大きさが $|u|$ の指数$(2^{\mathrm{poly} (|u|)})$ で抑えられており,
+ $H_u$ が $G_u$ の差分方程式の解となっていることである.
+
+ 言語 $L$ にたいして, 
+ \begin{equation}
+	L(u) = \begin{cases} 
+	       1 & u \in L \\
+	       0 & u \not \in L 
+	       \end{cases}
+ \end{equation}
+ と表記する.
+ 言語 $L$ が差分方程式族 $(G_u)_u$ の解 $(H_u)_u$ によって認識されるとは,
+ 各 $u$ にたいして $G_u$ の段数と列数を $P_u, Q_u$ としたとき,
+ $H_u(P_u, Q_u) = L(u)$ をみたすこととする.
 
 
 
- 河村の論文において離散初期値問題が \PSPACE 完全であることが示されている.
+ 河村の論文において多項式時間差分方程式族によって認識される言語のクラスは
+ \PSPACE であることが示されている.
 
  \begin{lemma}[補題 4.7. \cite{kawamura2010lipschitz}]
   \label{WeakFeedback}
-  任意の言語 $L \in $ \PSPACE にたいして,
-  $L$ を認識する離散初期値問題が存在する.
+  任意の言語 $L \in  \PSPACE \Leftrightarrow$
+  その差分方程式の解が $L$ を認識する,
+  多項式時間関数族 $(G_u)_u$ が存在する.
  \end{lemma}
 
- もと論文では $d = 2$ であったが, 後の議論との統一のために一般化する.
+ 関数族 $(G_u)_u$ が多項式時間計算可能であるとは,
+ $u$ も入力であるとみなした関数 $G$ が多項式時間計算可能なことである.
 
 
 
-  離散初期値問題へさらに制限を加えた問題を考える.
-  定数 $d$, 関数 $P \colon \N \to \N$, 多項式 $Q \colon \N \to \N$, 
-  関数族 $(G_u)_u$ の組 $\left< d, P, Q, (G_u)_u \right>$が
-  (\ref{enum:discreteode1}), (\ref{enum:discreteode2}) に加え,
-  \begin{equation}
-   P(x) = O(\log x) \text{かつ $P$ は多項式時間計算可能}
-  \end{equation}
-  を満たすとき対数深さ離散初期値問題であると呼ぶ.
-  対数深さ離散初期値問題の解 $(H_u)_u$ が満たすべき条件は離散初期値問題と同じく
-  (\ref{enum:discreteode3}), (\ref{enum:discreteode4}) である.
-
-  対数深さ離散初期値問題が認識する言語の集合を \DIVPlog と呼ぶ.
-  深さが多項式である離散初期値問題が認識する言語は \PSPACE であったため,
-  $\DIVPlog \subseteq \PSPACE$ であるが, $\DIVPlog = \PSPACE$ は未解決である.
-  $\DIVPlog$ は $\sharp${\bf P} 困難？    
-  \footnote{$d$ を $2^{R(|u|)}$ で置き換えれば, $\sharp${\bf P} 困難になる.
-  しかし $d$ のままでは $\sharp${\bf P} 困難は難しそう.
-  離散初期値問題をそのように定義するか？}
+ さらに段数が対数によって制限される差分方程式を考える.
+ 段数が $|u|$ の対数で抑えられる $(G_u)_u$ の差分方程式を
+ 対数段差分方程式とよび, 多項式時間関数族 $(G_u)_u$ の対数段差分方程式
+ によって認識される言語のクラスを \DIVPlog と名付ける.
+ 
+ 段数が多項式である離散初期値問題が認識する言語は \PSPACE であったため,
+ $\DIVPlog \subseteq \PSPACE$ であるが, $\DIVPlog = \PSPACE$ は未解決である.
+ 段数が2段の差分方程式をについては,
+ $H_u$ の最後の欄に注目すると,
+ $|u|$ の多項式サイズの 各 $t \in \{0,1\}^*$ について
+ $G_u(0, t, 0) \in \{-1, 0, 1\}$ の和になっている.
+ つまり $\sharp${\bf P} と同程度の能力を持つと言える.
+ よって \DIVPlog は$\sharp${\bf P} よりも強いクラスであると考えられる.
