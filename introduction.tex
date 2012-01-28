@@ -61,13 +61,16 @@ $g$ が解析的であるとき, 常微分方程式の解も解析的となる�
  \begin{tabular}{llp{21zw}}
   制限 & 上界 & 下界 \\
   \hline
-   --- & --- & 計算不可能たりうる \cite{todo} \\
-  $h$ が $g$ の唯一解 & 計算可能 \cite{todo} & 任意の時間がかかりうる \cite{todo} \\
-  Lipschitz 条件を満たす & 多項式領域 &
-	  多項式領域困難になりうる \cite{kawamura2010lipschitz}\\
+   --- & --- & 計算不可能たりうる \cite{pour1979computable} \\
+  $h$ が $g$ の唯一解 & 計算可能 \cite{coddington1955theory}
+  & 任意の時間がかかりうる \cite{ko1983computational} \cite{miller1970recursive} \\
+  Lipschitz 条件を満たす & 多項式領域 
+      &	多項式領域困難になりうる \cite{kawamura2010lipschitz}\\
   $\D{0,1}g$ が連続 & 多項式領域 & 多項式領域困難たりうる[本稿] \\
   $\D{0,i}g$ が連続 & 多項式領域 & ある仮定のもと多項式領域困難たりうる[本稿] \\
-  $g$ が解析的 & 多項式時間 \cite{todo} & ---
+  $g$ が解析的 
+  & 多項式時間 \cite{ko1988computing} \cite{kawamura2010complexity} 
+  & ---
  \end{tabular}
 \end{center}
 \end{table}
@@ -184,4 +187,5 @@ $(H_u)_u$ を離散初期値問題  $\left< d, P, Q, (G_u)_u \right>$ の解と�
   $\DIVPlog \subseteq \PSPACE$ であるが, $\DIVPlog = \PSPACE$ は未解決である.
   $\DIVPlog$ は $\sharp${\bf P} 困難？    
   \footnote{$d$ を $2^{R(|u|)}$ で置き換えれば, $\sharp${\bf P} 困難になる.
-  離散初期値問題を定義そのように定義するか？}
+  しかし $d$ のままでは $\sharp${\bf P} 困難は難しそう.
+  離散初期値問題をそのように定義するか？}
