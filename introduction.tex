@@ -2,7 +2,7 @@
 
 \subsection{計算可能解析}
 
-計算可能解析 (Computable Analysis) とは計算可能性理論や計算量理論の手法を用いて解析学を行うものである. 
+計算可能解析 (Computable Analysis) では計算可能性理論や計算量理論の視点から解析学を扱う. 
 実数や実関数といった解析学の対象が, 機械により計算できるかを問う. 
 例えば「計算可能な実数」や「多項式時間計算可能な実関数」といった概念を定義し, 
 実数計算の本質的な難しさを分析する.
@@ -13,11 +13,9 @@
 その中でも本稿で扱うモデルにおいては,
 「機械が実関数を計算する」ことを次のように定義する.
 
-ある機械が実関数 $f \colon \R \to \R$ を計算するとき,
-機械に入力として実数を与え, 機械は実数を返す必要がある.
-しかし実数の大きさは無限であるため, 機械に与えたとしても
-すべてを読みきることはできず,
-また無限の長さを持つ実数をそのまま出力することはできない.
+実関数 $f \colon \R \to \R$ を計算するといっても,
+実数は有限の文字列で表されないから, 
+有限の時間内で機械が完全な値を読んだり書いたりすることはできない.
 
 そこでまず実数を近似値の列で表現する.
 有理数の列 $\{r_n\}$ が $x$ を表現するとは,
@@ -39,14 +37,14 @@ $\{r_n\}$ が $x$ へ速く収束すること,
 
 \subsection{問題と関連研究}
 
-連続実関数 $g \colon [0,1] \times \R \to \R$ にたいして以下のような常微分方程式を考える. 
+連続実関数 $g \colon [0,1] \times \R \to \R$ にたいして次の常微分方程式を考える. 
 \begin{align}
  \label{eq:ode}
  h(0) & = 0, &
  h'(t) & = g(t,h(t)) \quad (t \in [0,1])
 \end{align}
-この常微分方程式の難しさを, ``$g$ を単純な実関数としたとき, 
-$h$ がどれほど複雑な実関数になりうるか'' という問題によって評価する.
+本稿では「$g$ を単純な実関数としたとき, 
+$h$ がどれほど複雑な実関数になりうるか」を考える.
 
 様々な制限のもと常微分方程式の解の計算量が研究されている[表 \ref{table:related}].
 $g$ に何の制限も設けない場合, その解は計算不能たりうる.
@@ -74,14 +72,12 @@ $g$ が解析的であるとき, 常微分方程式の解も解析的となる�
 \end{center}
 \end{table}
 
-
-
 我々は制限と下界の関係について調べ, 以下の知見を得た.
 
  \begin{theorem}
   \label{DifferentiableIsPspace}
   多項式時間実関数 $g \colon [0,1] \times \R \to \R$ で,
-  $(\infty, 1)$ 階連続的微分可能であり,
+  $(\infty, 1)$ 回連続的微分可能であり,
   $g$ の常微分方程式(\ref{eq:ode})の解 $h$ が \PSPACE 完全であるものが存在する.
  \end{theorem}
 
@@ -89,13 +85,11 @@ $g$ が解析的であるとき, 常微分方程式の解も解析的となる�
   \label{KTimesIsPspace}
   任意の自然数 $k \ge 2$ にたいして, 
   多項式時間実関数 $g \colon [0,1] \times \R \to \R$ で, 
-  $(\infty, k)$ 階連続的微分可能であり,
+  $(\infty, k)$ 回連続的微分可能であり,
   $g$ の常微分方程式(\ref{eq:ode})の解 $h$ が \DIVPlog 困難であるものが存在する.
  \end{theorem}
 
-
-
- \DIVPlog とは本稿において定義される計算量クラスであり,
+ $\DIVPlog$ とは本稿において定義される計算量クラスであり,
  $\DIVPlog \subseteq \PSPACE$ であるが, $\DIVPlog = \PSPACE$ は未解決であるため,
  $(\infty, k)$階連続的微分可能関数の常微分方程式の解が \PSPACE 完全になりうるかは
  未解決である.
@@ -116,33 +110,37 @@ $g$ が解析的であるとき, 常微分方程式の解も解析的となる�
 
 
 
-  \subsection{離散初期値問題}
-  \label{section:divp}
+\subsection{離散初期値問題}
+\label{section:divp}
 
-  離散初期値問題とは
-  定数 $d$, 多項式 $P, Q$,  関数族 $(G_u)_u$ の組
-  $\left< d, P, Q, (G_u)_u \right>$ で
-  以下の制限を満たすものである.
-  \begin{equation}
+離散初期値問題とは
+定数 $d$, 多項式 $P, Q$,  関数族 $(G_u)_u$ の組
+$\left< d, P, Q, (G_u)_u \right>$ で
+以下の制限を満たすものである.
+\begin{gather}
     (G_u)_u \text{は多項式時間計算可能} \label{enum:discreteode1}
-  \end{equation}
-  \begin{equation}
-    G_u\colon [P(|u|)] \times \left[ 2^{\poly Q} \right] \times [d] 
+\\
+    G_u\colon [P(|u|)] \times \bigl[ 2^{\poly Q} \bigr] \times [d] 
 	\to \{-1, 0, 1\} \label{enum:discreteode2}
-  \end{equation}
-  また関数族 $(H_u)_u$ が以下を満たすとき,
-  $(H_u)_u$ を離散初期値問題  $\left< d, P, Q, (G_u)_u \right>$ の解と呼ぶ.
-  \begin{equation}
+\end{gather}
+また関数族 $(H_u)_u$ が以下を満たすとき,
+$(H_u)_u$ を離散初期値問題  $\left< d, P, Q, (G_u)_u \right>$ の解と呼ぶ.
+\begin{gather}
   H_u\colon [P(|u|) + 1] \times 
-	\left[ 2^{\poly Q} + 1 \right] \to [d] \label{enum:discreteode3}
-  \end{equation}
-  \begin{align*}
-   H_u(i, 0) &= H_u(0, T) = 0, \\
-   H_u(i + 1, T + 1) & = H_u(i+1, T) + G_u(i, T, Hu(i, T)) \\
-   &\left(i \in \left[P(|u|) \right],
-   \ T \in \left[ 2^{\poly Q} \right]\right) \taghere
-   \label{enum:discreteode4}
-  \end{align*}
+	\bigl[ 2^{\poly Q} + 1 \bigr] \to [d] \label{enum:discreteode3}
+\\
+   H_u(i, 0) = H_u(0, T) = 0 
+\notag
+\\
+   H_u(i + 1, T + 1) = H_u(i+1, T) + G_u(i, T, H_u(i, T)) 
+\notag
+\\
+ \bigl(
+       i \in [P(|u|)],
+       \ T \in \bigl[ 2^{\poly Q} \bigr] 
+ \bigr) 
+\label{enum:discreteode4}
+\end{gather}
 
  離散初期値問題が言語 $L$ を認識するとはその解 $(H_u)_u$ が任意の文字列 $u$ で
  $H_u(P(|u|), 2^{Q(|u|)}) = L(u)$ を満たすことと定義する.
