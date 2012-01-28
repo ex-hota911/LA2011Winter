@@ -38,12 +38,12 @@
  
  \begin{proof}
   $L \in \DIVPlog$ を認識する
-  対数深さ離散初期値問題 $\left< d, P, Q,(G_u)_u \right>$
+  対数深さ離散初期値問題 $\left< d, p, q,(G_u)_u \right>$
   とその解 $(H_u)_u$ を得る. さらに以下のように仮定する.
   \begin{equation}
-   H_u(i, 2^{Q(|u|)}) = \begin{cases}
-			L(u) & (i=P(|u|)) \\
-			0 & (i<P(|u|)).
+   H_u(i, 2^{q(|u|)}) = \begin{cases}
+			L(u) & (i=p(|u|)) \\
+			0 & (i<p(|u|)).
 			\end{cases}
   \end{equation}
 
@@ -54,12 +54,12 @@
  $B = 2^{\poly \gamma + d'}$ とおき, 
  各 $(t, y) \in [0,1] \times [-1, 1]$ にたいして,
  自然数 $N$, $\theta \in [0,1]$, 整数 $Y$, $\eta \in [-1/4, 3/4]$ を
- $t = (T + \theta)2^{-Q(|u|)}$, $y = (Y + \eta)B^{-k^{j_u(T)}}$ を満たすように
+ $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-k^{j_u(T)}}$ を満たすように
  定める.
  
  そのとき,
  \begin{equation}
-  \delta_{u, Y} (t) = \frac{2^\poly Q f'(\theta)}{B^{k^{j_u(T)+1}}} 
+  \delta_{u, Y} (t) = \frac{2^{q(|u|)} f'(\theta)}{B^{k^{j_u(T)+1}}} 
    G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
  \end{equation}
  とおき $g_u, h_u$ を以下のように定義する.
@@ -76,7 +76,7 @@
  \end{equation}
 
  \begin{equation} 
-  h_u(t) = \sum^{\poly P}_{i=0} \frac{H_u(i, T)}{B^{k^i}}  
+  h_u(t) = \sum^{p(|u|)}_{i=0} \frac{H_u(i, T)}{B^{k^i}}  
   + \frac{f(\theta)}{B^{k^{j_u(T)+1}}} G_u(j_u(T), T, H_u(j_u(T), T)) 
   \label{eq:hu}
  \end{equation}
@@ -94,7 +94,7 @@
  $i \le j_u(T)$ の合計は $B^{k^{j_u(T)}}$ の倍数なので $\eta$ に影響はない.
   $i > j_u(T)$ の合計は, 
  \begin{align*}
-  \sum_{i>j_u(T)}^{\poly P} \frac{H_u(i, T)}{B^{k^i}} 
+  \sum_{i>j_u(T)}^{p(|u|)} \frac{H_u(i, T)}{B^{k^i}} 
   & \le \sum_{i>j_u(T)}^\infty \frac{d-1}{B^{k^i}}  \\
   & \le \sum_{i>j_u(T)}^\infty \frac{d-1}{B^i} 
    = \sum_{i>j_u(T)}^\infty \frac{d-1}{B^{i-j_u(T)}}B^{-j_u(T)} \\
@@ -118,7 +118,7 @@
  $g_u$ に代入すると,
  \begin{align*}
    g_u(t, h_u(t)) 
-  & =  \frac{2^\poly Q f'(\theta)}{B^{k^{j_u(T)+1}}}
+  & =  \frac{2^{q(|u|)} f'(\theta)}{B^{k^{j_u(T)+1}}}
    G_u(j_u(T), T, H_u(j_u(T), T)) \\
   & =  \D{1}h_u(t).
  \end{align*}
@@ -130,7 +130,7 @@
 
   \begin{equation}
    \D{i}\delta_{u,Y}(t) 
-    = \frac{2^{(i+1)\poly Q} \D{i+1}f(\theta)}{B^{k^{j_u(T)+1}}}
+    = \frac{2^{(i+1)q(|u|)} \D{i+1}f(\theta)}{B^{k^{j_u(T)+1}}}
     G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
   \end{equation}
 
@@ -174,11 +174,11 @@
 
   \begin{equation}
    |\D{i}\delta_{u, Y}(t)| 
-    \le \left|\frac{2^{(i+1)\poly Q}\D{i+1}f(\theta)}{B^{k^{j_u(T)+1}}} \right|
-    \le \frac{2^{(i+1)\poly Q + c_i}}{B^{k^{j_u(T)+1}}}\\
+    \le \left|\frac{2^{(i+1)q(|u|)}\D{i+1}f(\theta)}{B^{k^{j_u(T)+1}}} \right|
+    \le \frac{2^{(i+1)q(|u|) + c_i}}{B^{k^{j_u(T)+1}}}\\
   \end{equation}
 
-  $\mu_i(k) = (i+1)Q(k) + \sum^k_{j=1}c_i + c_i + k + 1$ とおく.
+  $\mu_i(k) = (i+1)q(k) + \sum^k_{j=1}c_i + c_i + k + 1$ とおく.
   これは $\lambda$ に依存しない.
   $B$ の定義より
 
@@ -186,7 +186,7 @@
    \left| \D{i,0} g_u \right| 
    &\le 
    |\D{i}\delta_{u, Y}(t)| 
-    \le \frac{2^{(i+1)\poly Q + c_i}}{B} 
+    \le \frac{2^{(i+1)q(|u|) + c_i}}{B} 
     \le 2^{\mu_i (|u|) - \gamma(|u|)}
    \taghere 
    \\
@@ -196,19 +196,19 @@
    \cdot \left|\D{i}\delta_{u,Y+1}(t)-\D{i}\delta_{u, Y}(t)\right| \\
    & \le
    2^k B^{k \cdot j_u(T)} \cdot 2^{c_j} \cdot 
-   2 \cdot \frac{2^{(i+1)\poly Q + c_i}}{B^{k^{j_u(T)+1}}}\\
+   2 \cdot \frac{2^{(i+1)q(|u|) + c_i}}{B^{k^{j_u(T)+1}}}\\
    & \le
-   \frac{2^{(i+1)\poly Q + \sum^k_{j=1}c_j + c_i +  k + 1}}{B}
+   \frac{2^{(i+1)q(|u|) + \sum^k_{j=1}c_j + c_i +  k + 1}}{B}
    \le
    2^{\mu_i (|u|) - \gamma(|u|)} . \taghere
   \end{align*}
 
  (vii) は 
  \begin{align*}
-  h_u(1) &= \frac{H_u(\poly P, 2^\poly Q)}{B^\poly P}  \\
-  &= \frac{L(u)}{2^{\poly P (\poly \gamma + d')}} \taghere
+  h_u(1) &= \frac{H_u(p(|u|), 2^{q(|u|)})}{B^{p(|u|)}}  \\
+  &= \frac{L(u)}{2^{p(|u|) (\poly \gamma + d')}} \taghere
  \end{align*}
- より, $\rho(k) = P(k)(\gamma(k) + d')$ とおくと成り立つ.
+ より, $\rho(k) = p(k)(\gamma(k) + d')$ とおくと成り立つ.
  \end{proof}
 
 

@@ -59,33 +59,33 @@
 
  \begin{proof}[\rm 補題 \ref{DifferentiableFamily} の証明]
   補題 \ref{WeakFeedback} から, $L$ を認識する 
-  離散初期値問題 $\left< d, P, Q,(G_u)_u \right>$
+  離散初期値問題 $\left< d, p, q,(G_u)_u \right>$
   とその解 $(H_u)_u$ を得る.
-  各ステップを $P(u)$ 個に分割することで, $G_u(i, T, Y) \not = 0$ を満たす
+  各ステップを $p(u)$ 個に分割することで, $G_u(i, T, Y) \not = 0$ を満たす
   $i$ を各 $T$ にたいしてたかだか1つにすることができる. そのような $i$ のことを 
   $j_ul(T)$ と表現する. 任意の $i$ で $G_u(i, T, Y) = 0$ ならば $j_u(T)$ は
   任意の値を取るとする. 
   さらに以下を満たすとしても一般性を失わない.
   \begin{equation}
-   H_u(i, 2^{Q(|u|)}) = \begin{cases}
-			 L(u) & (i=P(|u|)) \\
-			0 & (i<P(|u|))
+   H_u(i, 2^{q(|u|)}) = \begin{cases}
+			 L(u) & (i=p(|u|)) \\
+			0 & (i<p(|u|))
 			\end{cases}
   \end{equation}
 
  \begin{equation}
-  G_u(i, 2\cdot 2^{Q(|u|)} - 1 - T, Y) 
+  G_u(i, 2\cdot 2^{q(|u|)} - 1 - T, Y) 
    = \begin{cases}
-      0 & (i=P(|u|)-1) \\
-      -G_u(i,T,Y) & (i<P(|u|)-1)
+      0 & (i=p(|u|)-1) \\
+      -G_u(i,T,Y) & (i<p(|u|)-1)
      \end{cases}
  \end{equation}
 
  \begin{equation}
-  H_u(i, 2 \cdot 2^\poly Q - T) 
+  H_u(i, 2 \cdot 2^{q(|u|)} - T) 
   = \begin{cases}
-    H_u(P(|u|), 2^{Q(|u|)}) & (i=\poly P) \\
-    H_u(i, T) &  (i<P(|u|))
+    H_u(p(|u|), 2^{q(|u|)}) & (i=p(|u|)) \\
+    H_u(i, T) &  (i<p(|u|))
     \end{cases}
  \end{equation}
 
@@ -96,12 +96,12 @@
  $B = 2^{\poly \gamma + d'}$ とおき, 
  各 $(t, y) \in [0,1] \times [-1, 1]$ にたいして,
  自然数 $N$, $\theta \in [0,1]$, 整数 $Y$, $\eta \in [-1/4, 3/4]$ を
- $t = (T + \theta)2^{-Q(|u|)}$, $y = (Y + \eta)B^{-j_u(T)}$ を満たすように
+ $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-j_u(T)}$ を満たすように
  定める.
  
  そのとき,
  \begin{equation}
-  \delta_{u, Y} (t) = \frac{2^\poly Q f'(\theta)}{B^{j_u(T)+1}} 
+  \delta_{u, Y} (t) = \frac{2^{q(|u|)} f'(\theta)}{B^{j_u(T)+1}} 
    G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
  \end{equation}
  とおき $g_u, h_u$ を以下のように定義する.
@@ -117,7 +117,7 @@
  \end{equation}
 
  \begin{equation} 
-  h_u(t) = \sum^{\poly P}_{i=0} \frac{H_u(i, T)}{B^i}  
+  h_u(t) = \sum^{p(|u|)}_{i=0} \frac{H_u(i, T)}{B^i}  
   + \frac{f(\theta)}{B^{j_u(T)+1}} G_u(j_u(T), T, H_u(j_u(T), T)) 
   \label{eq:hu}
  \end{equation}
@@ -158,7 +158,7 @@
  (\ref{eq:gu})へ$Y$ と $\eta$ を代入すると,
  \begin{align*}
    g_u(t, h_u(t)) 
-  & =  \frac{2^\poly Q f'(\theta)}{B^{j_u(T)+1}}
+  & =  \frac{2^{q(|u|)} f'(\theta)}{B^{j_u(T)+1}}
    G_u(j_u(T), T, H_u(j_u(T), T)) \\
   & =  \D{1}h_u(t).
  \end{align*}
@@ -169,7 +169,7 @@
 
   \begin{equation}
    \D{i}\delta_{u,Y}(t) 
-    = \frac{2^{(i+1)\poly Q} \D{i+1}f(\theta)}{B^{j_u(T)+1}}
+    = \frac{2^{(i+1)q(|u|)} \D{i+1}f(\theta)}{B^{j_u(T)+1}}
     G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
   \end{equation}
 
@@ -209,11 +209,11 @@
 
   \begin{equation}
    |\D{i}\delta_{u, Y}(t)| 
-    \le \left|\frac{2^{(i+1)\poly Q}\D{i+1}f(\theta)}{B^{j_u(T)+1}} \right|
-    \le \frac{2^{(i+1)\poly Q + c_i}}{B^{j_u(T)+1}}\\
+    \le \left|\frac{2^{(i+1)q(|u|)}\D{i+1}f(\theta)}{B^{j_u(T)+1}} \right|
+    \le \frac{2^{(i+1)q(|u|) + c_i}}{B^{j_u(T)+1}}\\
   \end{equation}
 
-  $\mu_i(k) = (i+1)Q(k) + c_i + c_1 + 2$ とおく.
+  $\mu_i(k) = (i+1)q(k) + c_i + c_1 + 2$ とおく.
   これは $\lambda$ に依存しない.
   $B$ の定義より
 
@@ -221,7 +221,7 @@
    \left| \D{i,0} g_u \right| 
    &\le 
    |\D{i}\delta_{u, Y}(t)| 
-    \le \frac{2^{(i+1)\poly Q + c_i}}{B} 
+    \le \frac{2^{(i+1)q(|u|) + c_i}}{B} 
     \le 2^{\mu_i (|u|) - \gamma(|u|)}
    \taghere \\
    \left| \D{i,1} g_u \right| 
@@ -230,9 +230,9 @@
    \cdot \left|\D{i}\delta_{u,Y+1}(t)-\D{i}\delta_{u, Y}(t)\right| \\
    & \le
    2 B^{j_u(T)} \cdot 2^{c_1} \cdot 
-   2 \cdot \frac{2^{(i+1)\poly Q + c_i}}{B^{j_u(T)+1}}\\
+   2 \cdot \frac{2^{(i+1)q(|u|) + c_i}}{B^{j_u(T)+1}}\\
    & =
-   \frac{2^{(i+1)\poly Q + c_i + c_1 + 2}}{B}
+   \frac{2^{(i+1)q(|u|) + c_i + c_1 + 2}}{B}
    \le
    2^{\mu_i (|u|) - \gamma(|u|)} . \taghere
   \end{align*}
@@ -240,10 +240,10 @@
 
  (vii) は 
  \begin{align*}
-  h_u(1) &= \frac{H_u(\poly P, 2^\poly Q)}{B^\poly P}  \\
-  &= \frac{L(u)}{2^{\poly P (\poly \gamma + d')}} \taghere
+  h_u(1) &= \frac{H_u(p(|u|), 2^{q(|u|)})}{B^{p(|u|)}}  \\
+  &= \frac{L(u)}{2^{p(|u|) (\poly \gamma + d')}} \taghere
  \end{align*}
- より, $\rho(k) = P(k)(\gamma(k) + d')$ とおくと成り立つ.
+ より, $\rho(k) = p(k)(\gamma(k) + d')$ とおくと成り立つ.
  \end{proof}
 
 \subsection{定理 \ref{DifferentiableIsPspace} の証明}
