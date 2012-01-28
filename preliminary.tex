@@ -2,58 +2,68 @@
 \label{section: preliminaries}
 
 \subsection{表記}
-(二進)自然数の集合を $\N$, 整数の集合を $\Z$, 実数の集合を $\R$, 
-有理数の集合を $\Q$, $\T = \{0^n \mid n \in \N\}$ と表記する. 
+自然数の集合を $\N$, 整数の集合を $\Z$, 実数の集合を $\R$, 
+有理数の集合を $\Q$, $\T = \{0^n \mid n \in \N\}$ で表す. 
 
 $A \subset \R$ とする. 一変数関数 $f\colon A \to \R$ が $i$ 回微分可能であるとき,
 その $i$ 階導関数を $\D{i}f$ と表記する.
 
 二変数関数 $g \colon A \times B \to \R$ が
- $(i, j)$ 階連続的微分可能であるとき,
-第一変数にたいして $i$ 階, 第二変数にたいして $j$ 階の導関数
-はその微分の順序によらず等しい \cite{takagi1968analysis}.
-よってその導関数を $\D{i,j}g$ と表記する.
+$(i, j)$ 回連続微分可能であるとき,
+第一変数について $i$ 階, 第二変数について $j$ 階の導関数は
+その微分の順序によらず等しい \cite{takagi1968analysis}.
+その導関数を $\D{i,j}g$ で表す.
 
-実関数 $f \colon A \to \R$ にたいして $|f| = \max_{x \in A} f(x)$ と表記する.
+実関数 $f \colon A \to \R$ にたいして $|f| = \sup_{x \in A} f(x)$ と書く.
 
 \subsection{実数の名}
- 実数は無限の長さを持つため, 有限な文字列に符号化することが不可能である.
+ 実数は有限な文字列に符号化できない. 
  そこで文字列から文字列への関数に符号化する.
  \begin{definition}[実数の名]
   関数 $\phi \colon \T \to \Z $ が実数 $x \in [0,1]$ の名であるとは,
   $\phi(0^n) = \lfloor x \cdot 2^n \rfloor$ または
   $\phi(0^n) = \lceil x \cdot 2^n \rceil$ を満たすこと.
  \end{definition}
-  ここで $\lfloor \cdot \rfloor, \lceil \cdot \rceil$ とはそれぞれ切り捨て関数と
- 切り上げ関数である.
- つまり実数 $x$ の名とはサイズ $n$ の入力を受け取ると, $x$ の $n$ 桁精度を持つ
- 近似値を返すような関数である.
- 
+ここで $\lfloor \cdot \rfloor, \lceil \cdot \rceil$ とはそれぞれ
+整数への切り捨て関数と
+切り上げ関数である.
+つまり実質的には実数 $x$ の名は, 
+サイズ $n$ の入力を受け取ると, 精度 $n$ 桁の $x$ の
+近似値を返す.
+以下では$\phi$ の値を二進数で表すことにし, 
+$\phi$ を文字列から文字列への関数として扱う. 
 
 \subsection{計算可能実関数, 多項式時間実関数}
 
- 実関数は実数を受け取り, 実数を返す関数であるが,
- 実数自体が関数として符号化されているため,
- 実関数の計算する機械を神託機械として定義する.
- つまり関数の入力である実数の名を神託として与えられ,
- 求める精度を入力として受け取ったとき,
- 神託の表現する実数での関数の値の近似値を返すような神託機械を
- 実関数を計算する機械と定義する[図 \ref{fig:model-of-function}].
- より厳密には以下のように定義する.
+実数を受け取り実数を返す関数を
+機械が計算するとはどういうことか定義しよう. 
+実数自体が関数として符号化されているため, 
+それを読み書きする機構として, 
+神託チューリング機械 (以下単に機械という) を使う[図 \ref{fig:model-of-function}].
 
  \begin{figure}
   \label{fig:model-of-function}
   \begin{center}
    \includegraphics[height=0.15\textheight]{image/model-of-function.eps}
   \end{center}
-  \caption{実関数のモデル化}
+  \caption{実関数を計算する機械}
  \end{figure}
 
- \begin{definition}
-  神託機械 $M$ が実関数 $f\colon A \to \R$ を計算するとは,
-  任意の実数 $x \in A$, 任意の $x$ の名 $\phi_x$ にたいして,
-  $M^{\phi_x}$ が $f(x)$ の名であること.
- \end{definition}
+機械$M$に, 
+文字列から文字列への関数$\phi$を神託として与え, 
+文字列$0 ^n$を入力として与えたとき, 
+出力される文字列を$M ^\phi (0 ^n)$で表す. 
+つまり$M ^\phi$をやはり文字列から文字列への関数とみる. 
+
+\begin{definition}
+$A$を$\R$の有界閉区間とする. 
+神託機械 $M$ が実関数 $f\colon A \to \R$ を計算するとは,
+任意の実数 $x \in A$, 任意の $x$ の名 $\phi_x$ にたいして,
+$M^{\phi_x}$ が $f(x)$ の名であること.
+\end{definition}
+
+$f$が二変数関数であるときには神託を二つ取る機械を考えて同様に定義する. 
+
  計算可能な実関数は Grzegorczyk によって初めて形式的に定義され,
  \cite{grzegorczyk1955computable}.
  多変数関数のモデルも, 変数と同じ数だけ神託を持つ神託機械によって同様に定義される.
