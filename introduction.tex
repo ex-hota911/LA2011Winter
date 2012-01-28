@@ -55,11 +55,12 @@ Lipschitz 条件は常微分方程式の解の一意性を保証する重要な�
 Lipschitz 条件を満たすとき, 解は多項式領域計算可能であり, 多項式領域計算完全たりうる.
 $g$ が解析的であるとき, 常微分方程式の解も解析的となるため, 多項式時間計算可能である.
 
-{\renewcommand\arraystretch{1.5}
 \begin{table}
+\renewcommand\arraystretch{1.5}
+\begin{center}
  \caption{関連研究}
  \label{table:related}
- \begin{tabular}{llp{15zw}}
+ \begin{tabular}{llp{21zw}}
   制限 & 上界 & 下界 \\
   \hline
    --- & --- & 計算不可能たりうる \cite{todo} \\
@@ -70,6 +71,7 @@ $g$ が解析的であるとき, 常微分方程式の解も解析的となる�
   $\D{0,i}g$ が連続 & 多項式領域 & ある仮定のもと多項式領域困難たりうる[本稿] \\
   $g$ が解析的 & 多項式時間 \cite{todo} & ---
  \end{tabular}
+\end{center}
 \end{table}
 
 
@@ -141,7 +143,6 @@ $g$ が解析的であるとき, 常微分方程式の解も解析的となる�
    \ T \in \left[ 2^{\poly Q} \right]\right) \taghere
    \label{enum:discreteode4}
   \end{align*}
-  }
 
  離散初期値問題が言語 $L$ を認識するとはその解 $(H_u)_u$ が任意の文字列 $u$ で
  $H_u(P(|u|), 2^{Q(|u|)}) = L(u)$ を満たすことと定義する.
