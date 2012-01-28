@@ -47,6 +47,9 @@ force: $(EFILE).tex $(SRC)
 	$(TEX) $(EFILE)
 	$(TEX) $(EFILE)
 	$(DVIPDF) -o $(FILE).pdf $(EFILE).dvi
+	pdftotext $(FILE).pdf 
+	$(REMOVESPACES) $(FILE).txt | tr -d \\n | wc -m > $(WCLOG)
+	cat $(WCLOG)
 
 $(FILE).pdf: $(EFILE).dvi
 	$(DVIPDF) -o $(FILE).pdf $(EFILE).dvi

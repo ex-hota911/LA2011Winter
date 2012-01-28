@@ -59,18 +59,20 @@ $g$ が解析的であるとき, 常微分方程式の解も解析的となる�
 \begin{table}
  \caption{関連研究}
  \label{table:related}
- \begin{tabular}{ccp{15zw}}
-  制限 & 上界 & \hfil 下界 \hfil \\
+ \begin{tabular}{llp{15zw}}
+  制限 & 上界 & 下界 \\
   \hline
    --- & --- & 計算不可能たりうる \cite{todo} \\
   $h$ が $g$ の唯一解 & 計算可能 \cite{todo} & 任意の時間がかかりうる \cite{todo} \\
   Lipschitz 条件を満たす & 多項式領域 &
 	  多項式領域困難になりうる \cite{kawamura2010lipschitz}\\
-  $\D{0,1}g$ が連続 & 多項式領域 & 多項式領域困難たりうる[本紙] \\
-  $\D{0,i}g$ が連続 & 多項式領域 & ある仮定のもと多項式領域困難たりうる[本紙] \\
+  $\D{0,1}g$ が連続 & 多項式領域 & 多項式領域困難たりうる[本稿] \\
+  $\D{0,i}g$ が連続 & 多項式領域 & ある仮定のもと多項式領域困難たりうる[本稿] \\
   $g$ が解析的 & 多項式時間 \cite{todo} & ---
  \end{tabular}
 \end{table}
+
+
 
 我々は制限と下界の関係について調べ, 以下の知見を得た.
 
@@ -83,22 +85,95 @@ $g$ が解析的であるとき, 常微分方程式の解も解析的となる�
 
  \begin{theorem}
   \label{KTimesIsPspace}
-  仮定 \ref{Hypothesis} のもと, 任意の自然数 $k \ge 2$ にたいして, 
+  任意の自然数 $k \ge 2$ にたいして, 
   多項式時間実関数 $g \colon [0,1] \times \R \to \R$ で, 
   $(\infty, k)$ 階連続的微分可能であり,
-  $g$ の常微分方程式(\ref{eq:ode})の解 $h$ が \PSPACE 完全であるものが存在する.
+  $g$ の常微分方程式(\ref{eq:ode})の解 $h$ が \DIVPlog 困難であるものが存在する.
  \end{theorem}
 
-二変数関数 $g$ が $(i, j)$ 階連続的微分可能であるとは,
-第一変数について $i$ 回, 第二変数について $j$ 回微分可能であり,
-その導関数が連続であることと定義する.
-これは任意の $i_1, \dots, i_n(\sum i_j = k)$ にたいして,
-$\D^{i_1, \dots, i_n}$ が連続である関数類 $C^k$ とは異なり
-(包含される), 
-$g$ を注目する変数のみの関数とみなしたときの連続的微分可能とも異なる.
+
+
+ \DIVPlog とは本稿において定義される計算量クラスであり,
+ $\DIVPlog \subseteq \PSPACE$ であるが, $\DIVPlog = \PSPACE$ は未解決であるため,
+ $(\infty, k)$階連続的微分可能関数の常微分方程式の解が \PSPACE 完全になりうるかは
+ 未解決である.
+ 厳密な定義は \ref{section:divp} 節で導入する.
+
+ 二変数関数 $g$ が $(i, j)$ 階連続的微分可能であるとは,
+ 第一変数について $i$ 回, 第二変数について $j$ 回微分可能であり,
+ その導関数が連続であることと定義する.
+ これは多変数関数における $k$ 階連続的微分可能の定義とは異なる.
 
 また定理 \ref{KTimesIsPspace} において
 任意の $k$ に対して $(\infty, k)$ 階微分可能な関数を考えているが,
 一つ関数が任意の $k$ にたいして $k$ 階微分ではない.
-つまり $g$ が無限回微分可能であると制限しているわけではないことに留意したい. 
+つまり $g$ が無限回微分可能であると制限しているわけではない. 
 無限回微分可能な関数に対する常微分方程式の計算量は今後の課題である.
+
+
+
+
+
+  \subsection{離散初期値問題}
+  \label{section:divp}
+
+  離散初期値問題とは
+  定数 $d$, 多項式 $P, Q$,  関数族 $(G_u)_u$ の組
+  $\left< d, P, Q, (G_u)_u \right>$ で
+  以下の制限を満たすものである.
+  \begin{equation}
+    (G_u)_u \text{は多項式時間計算可能} \label{enum:discreteode1}
+  \end{equation}
+  \begin{equation}
+    G_u\colon [P(|u|)] \times \left[ 2^{\poly Q} \right] \times [d] 
+	\to \{-1, 0, 1\} \label{enum:discreteode2}
+  \end{equation}
+  また関数族 $(H_u)_u$ が以下を満たすとき,
+  $(H_u)_u$ を離散初期値問題  $\left< d, P, Q, (G_u)_u \right>$ の解と呼ぶ.
+  \begin{equation}
+  H_u\colon [P(|u|) + 1] \times 
+	\left[ 2^{\poly Q} + 1 \right] \to [d] \label{enum:discreteode3}
+  \end{equation}
+  \begin{align*}
+   H_u(i, 0) &= H_u(0, T) = 0, \\
+   H_u(i + 1, T + 1) & = H_u(i+1, T) + G_u(i, T, Hu(i, T)) \\
+   &\left(i \in \left[P(|u|) \right],
+   \ T \in \left[ 2^{\poly Q} \right]\right) \taghere
+   \label{enum:discreteode4}
+  \end{align*}
+  }
+
+ 離散初期値問題が言語 $L$ を認識するとはその解 $(H_u)_u$ が任意の文字列 $u$ で
+ $H_u(P(|u|), 2^{Q(|u|)}) = L(u)$ を満たすことと定義する.
+
+
+
+ 河村の論文において離散初期値問題が \PSPACE 完全であることが示されている.
+
+ \begin{lemma}[補題 4.7. \cite{kawamura2010lipschitz}]
+  \label{WeakFeedback}
+  任意の言語 $L \in $ \PSPACE にたいして,
+  $L$ を認識する離散初期値問題が存在する.
+ \end{lemma}
+
+ もと論文では $d = 2$ であったが, 後の議論との統一のために一般化する.
+
+
+
+  離散初期値問題へさらに制限を加えた問題を考える.
+  定数 $d$, 関数 $P \colon \N \to \N$, 多項式 $Q \colon \N \to \N$, 
+  関数族 $(G_u)_u$ の組 $\left< d, P, Q, (G_u)_u \right>$が
+  (\ref{enum:discreteode1}), (\ref{enum:discreteode2}) に加え,
+  \begin{equation}
+   P(x) = O(\log x) \text{かつ $P$ は多項式時間計算可能}
+  \end{equation}
+  を満たすとき対数深さ離散初期値問題であると呼ぶ.
+  対数深さ離散初期値問題の解 $(H_u)_u$ が満たすべき条件は離散初期値問題と同じく
+  (\ref{enum:discreteode3}), (\ref{enum:discreteode4}) である.
+
+  対数深さ離散初期値問題が認識する言語の集合を \DIVPlog と呼ぶ.
+  深さが多項式である離散初期値問題が認識する言語は \PSPACE であったため,
+  $\DIVPlog \subseteq \PSPACE$ であるが, $\DIVPlog = \PSPACE$ は未解決である.
+  $\DIVPlog$ は $\sharp${\bf P} 困難？    
+  \footnote{$d$ を $2^{R(|u|)}$ で置き換えれば, $\sharp${\bf P} 困難になる.
+  離散初期値問題を定義そのように定義するか？}

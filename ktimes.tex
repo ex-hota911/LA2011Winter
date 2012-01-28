@@ -1,43 +1,20 @@
 \section{任意回微分可能関数と常微分方程式}
 
- 任意回微分可能な関数の常微分方程式の解も, ある仮定のもと \PSPACE 完全でありうることを
- 証明する.
+ 第二変数について任意回微分可能な関数の常微分方程式の解は, 
+ \DIVPlog 困難でありうることを証明する.
 
-\subsection{対数深さ離散初期値問題}
-  \ref{section:discrete-initial-problem} 節で定義した
-  離散初期値問題へさらに制限を加えた問題を考える.
-  定数 $d$, 関数 $P \colon \N \to \N$, 多項式 $Q \colon \N \to \N$, 
-  関数族 $(G_u)_u$ の組 $\left< d, P, Q, (G_u)_u \right>$が
-  (\ref{enum:discreteode1}), (\ref{enum:discreteode2}) に加え,
-  \begin{equation}
-   P(x) = O(\log x) \text{かつ $P$ は多項式時間計算可能}
-  \end{equation}
-  を満たすとき対数深さ離散初期値問題であると呼ぶ.
-  対数深さ離散初期値問題の解 $(H_u)_u$ が満たすべき条件は離散初期値問題と同じく
-  (\ref{enum:discreteode3}), (\ref{enum:discreteode4}) である.
-
-  対数深さ離散初期値問題が言語 $L$ を認識するとは任意の文字列 $u$ で
-  $H_u(P(|u|), 2^{Q(|u|)}) = L(u)$ を満たすこと.
-
- \begin{hypothesis}
-  \label{Hypothesis}
-  任意の言語 $L \in$ \PSPACE に対して $L$ を認識する対数深さ離散初期値問題が
-  存在する.
- \end{hypothesis}
-
- つまり対数深さ離散初期値問題が \PSPACE 完全であることを仮定する. 
 
 \subsection{対数深さ離散初期値問題を模倣する関数族}
 
- 証明の流れは 節微分可能の時と変わらない.
- 任意の言語 $L \in $ \PSPACE, 文字列 $u$ にたいして,
+ 証明の流れは $(\infty, 1)$ 階連続的微分可能の時と変わらない.
+ 任意の言語 $L \in $ \DIVPlog, 文字列 $u$ にたいして,
  上記の対数深さ離散初期値問題を模倣し $L(u)$ を計算する
  任意回微分可能な実関数 $g_u$ を構成する.
 
  \begin{lemma}
   \label{KTimesFamily}
-  仮定 \ref{Hypothesis} のもと, 任意の自然数 $k \ge 2$,
-  任意の言語 $L \in$ \PSPACE にたいして,
+  任意の自然数 $k \ge 2$,
+  任意の言語 $L \in \DIVPlog$ にたいして,
   係数のみに $i$ を含む多項式 $\mu_i$ が存在して,
   任意の多項式 $\gamma$ にたいして,
   関数 $\rho \colon \N \to \N$, 関数族 $g_u, h_u$ で,
@@ -60,10 +37,9 @@
  \end{lemma}
  
  \begin{proof}
-  仮定 \ref{Hypothesis} より $L$ を認識する 
+  $L \in \DIVPlog$ を認識する
   対数深さ離散初期値問題 $\left< d, P, Q,(G_u)_u \right>$
-  とその解 $(H_u)_u$ を得る.
-  さらに以下のように仮定する.
+  とその解 $(H_u)_u$ を得る. さらに以下のように仮定する.
   \begin{equation}
    H_u(i, 2^{Q(|u|)}) = \begin{cases}
 			L(u) & (i=P(|u|)) \\
@@ -242,8 +218,9 @@
 \subsection{定理 \ref{KTimesIsPspace} の証明}
 
 \begin{proof}
- $L$ を \PSPACE 完全な言語とおく.
- \PSPACE 完全な言語 $L$ にたいして補題 \ref{DifferentiableFamily} を用いて,
+ $L$ を \DIVPlog に含まれる言語,
+ つまり対数深さ離散初期値問題によって認識される言語とおく.
+ $L$ にたいして補題 \ref{DifferentiableFamily} を用いて,
  まず多項式 $\mu_i$ をえる.
  $\mu_i$ は $i$ を係数部にのみ持つ多項式であるため,
  $\mu_i(k) = O(k^c)$ をみたす最小の定数 $c$ が存在する.
@@ -399,5 +376,5 @@
   S(u, 0^n) &= \lfloor 2^nc_u \rfloor \text{を表す文字列,} \\
   T(u) &= 0^{\lambda(|u|)+\rho(|u|)}
  \end{align}
- $L$ は \PSPACE 完全であるため, $h$ も \PSPACE 完全.
+ 任意の $L \in \DIVPlog$ について $h$ へ還元可能であるため, $h$ は \DIVPlog 困難.
 \end{proof}

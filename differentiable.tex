@@ -1,47 +1,5 @@
 \section{微分可能関数と常微分方程式}
 
-  \subsection{離散初期値問題}
-  \label{section:discrete-initial-problem}
-  初期値問題の離散バージョンが\PSPACE 完全であるところから始める.
-  離散初期値問題とは
-  定数 $d$, 多項式 $P, Q \colon \N \to \N$, 
-  関数族 $(G_u)_u$ の組
-  $\left< d, P, Q, (G_u)_u \right>$で
-  以下の制限を満たすものである.
-  \begin{equation}
-    (G_u)_u \text{は多項式時間計算可能} \label{enum:discreteode1}
-  \end{equation}
-  \begin{equation}
-    G_u\colon [P(|u|)] \times \left[ 2^{\poly Q} \right] \times [d] 
-	\to \{-1, 0, 1\} \label{enum:discreteode2}
-  \end{equation}
-  また関数族 $(H_u)_u$ が以下を満たすとき,
-  $(H_u)_u$ を離散初期値問題  $\left< d, P, Q, (G_u)_u \right>$ の解と呼ぶ.
-  \begin{equation}
-  H_u\colon [P(|u|) + 1] \times 
-	\left[ 2^{\poly Q} \right] \to [d] \label{enum:discreteode3}
-  \end{equation}
-  \begin{align*}
-   H_u(i, 0) &= H_u(0, T) = 0, \\
-   H_u(i + 1, T + 1) & = H_u(i+1, T) + G_u(i, T, Hu(i, T)) \\
-   & \left(i \in \left[P(|u|) \right],
-   \ T \in \left[ 2^{\poly Q} \right]\right) \taghere
-   \label{enum:discreteode4}
-  \end{align*}
-}
-
- 離散初期値問題が言語 $L$ を認識するとはその解 $(H_u)_u$ が任意の文字列 $u$ で
- $H_u(P(|u|), 2^{Q(|u|)}) = L(u)$ を満たすこと.
-
- 河村の論文において離散初期値問題が \PSPACE 完全であることが示されている.
-
- \begin{lemma}[補題 4.7. \cite{kawamura2010lipschitz}]
-  \label{WeakFeedback}
-  任意の言語 $L \in $ \PSPACE にたいして,
-  $L$ を認識する離散初期値問題が存在する.
- \end{lemma}
-
- もと論文では $d=4$ であったが, 後の議論との統一のために一般化する.
 
 
 \subsection{離散初期値問題を模倣する関数族}
