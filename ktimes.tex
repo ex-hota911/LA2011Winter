@@ -35,7 +35,7 @@
    \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
   \end{enumerate}
  \end{lemma}
- 
+
  \begin{proof}
   $L \in \DIVPlog$ を認識する
   対数深さ離散初期値問題 $\left< d, p, q,(G_u)_u \right>$
@@ -216,6 +216,17 @@
 
 
 \subsection{定理 \ref{KTimesIsPspace} の証明}
+
+補題 \ref{DifferentiableFamily} とくらべて補題 \ref{KTimesFamily} は
+\PSPACE が \DIVPlog に置き換わり,
+$(\infty, 1)$ 回連続微分可能が $(\infty, k)$回連続微分可能に一般化されている
+こと以外は変わらない. この関係は定理 \ref{DifferentiableIsPspace} と定理
+\ref{KTimesIsPspace} との間の関係と等しい.
+よって証明も \PSPACE を \DIVPlog で置き換え,
+$(\infty, 1)$ 回連続微分可能を $(\infty, k)$回連続微分可能に一般化させることで,
+定理 \ref{DifferentiableIsPspace} の証明から定理 \ref{KTimesIsPspace} の証明が
+構成できる.
+
 
 \begin{proof}
  $L$ を \DIVPlog に含まれる言語,
