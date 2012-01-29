@@ -15,7 +15,6 @@
 実関数 $f \colon \R \to \R$ を計算するといっても,
 実数は有限の文字列で表されないため,
 機械がその完全な値を読み書きすることはできない.
-
 そこで実数を近似値の列で表現する.
 有理数の列 $(r_n)_n$ が $x$ を表現するとは,
 $(r_n)_n$ が $x$ へ速く収束すること, 
@@ -29,8 +28,9 @@ $(r_n)_n$ が $x$ へ速く収束すること,
 求める精度 $n$ を入力として与えられたとき,
 有理数 $s_n$ で $|s_n - f(x)| \le 2^{-n}$ を満たすものを出力することとする.
 
-この神託機械の資源を制限することで, 多項式時間({\bf P})や多項式領域(\PSPACE)に
-対応する実関数のクラスを定義できる (\ref{section: preliminaries}節).
+この神託機械の資源を制限することで, 
+実関数が多項式時間計算可能, 或いは多項式領域計算可能であることを
+定義できる (\ref{section: preliminaries}節).
 
 \subsection{問題と関連研究}
 
@@ -41,81 +41,91 @@ $(r_n)_n$ が $x$ へ速く収束すること,
  h'(t) & = g(t,h(t)) \quad (t \in [0,1])
 \end{align}
 本稿では $g$ が多項式時間計算可能であるとき, 
-解 $h$ がどれほど複雑な実関数になりうるかを考える.
+解 $h$ がどれほど複雑でありうるかを考える.
 
 $g$ に他に何の制限も設けない場合, 解 $h$ (一般に一意でない) は計算不能たりうるため,
-様々な制限のもと常微分方程式の解の計算量が研究されている[表 \ref{table:related}].
-Lipschitz 条件とは常微分方程式の解の一意性を保証する十分条件である.
-Lipschitz 条件を満たすとき, 解は多項式領域計算可能であり, 
-$\PSPACE$ 困難 (\ref{section: preliminaries}節で定義) でありうる.
-つまり上界と下界が多項式領域で一致しており, 多項式領域完全といえる.
-一方で $g$ が解析的であるとき, 常微分方程式の解も解析的となり, 多項式時間計算可能である.
+様々な制限のもと $h$ の計算量が研究されている (表 \ref{table:related}).
+この表では下に向うにつれて左列の条件が強まっている. 
+Lipschitz 条件とは解 $h$ が一意であるための十分条件であり, 
+これが満たされるときには, 解 $h$ は多項式領域計算可能であり, 
+$\PSPACE$ 困難 (\ref{section: preliminaries}節で定義) でありうることがわかっている. 
+つまり上界と下界が一致しているといえる (詳しくは河村 \cite{kawamura2010lipschitz}).
+一方で $g$ が解析的であるとき, 解 $h$ も解析的となり, 
+このとき $h$ は多項式時間計算可能である.
 
 \begin{table}
 \renewcommand\arraystretch{1.5}
 \begin{center}
- \caption{多項式時間計算可能関数 $g$ の常微分方程式 (\ref{eq:ode})の解 $h$ の計算量}
+ \caption{多項式時間計算可能関数 $g$ の常微分方程式 (\ref{eq:ode}) の解 $h$ の計算量}
  \label{table:related}
- \begin{tabular}{llp{21zw}}
+ \begin{tabular}{lll}
   制限 & 上界 & 下界 \\
   \hline
    --- & --- & 計算不可能たりうる \cite{pour1979computable} \\
   $h$ が $g$ の唯一解 & 計算可能 \cite{coddington1955theory}
   & 任意の時間がかかりうる \cite{ko1983computational} \cite{miller1970recursive} \\
-  Lipschitz 条件を満たす & \PSPACE
+  $g$ が Lipschitz 条件を満たす & 多項式領域計算可能
       &	\PSPACE 困難になりうる \cite{kawamura2010lipschitz}\\
-  $\D{0,1}g$ が連続 & \PSPACE & \PSPACE 困難たりうる[本稿] \\
-  $\D{0,i}g$ が連続 & \PSPACE & \DIVPlog 困難たりうる[本稿] \\
+  $g$ が $(0, 1)$ 回連続微分可能 & 多項式領域計算可能 & \parbox[t]{14zw}{\PSPACE 困難になりうる\\{}[本稿定理\ref{DifferentiableIsPspace}]} \\
+  $g$ が $(0, k)$ 回連続微分可能 & 多項式領域計算可能 & \parbox[t]{14zw}{\DIVPlog 困難たりうる\\{}[本稿定理\ref{KTimesIsPspace}]} \\
   $g$ が解析的 
-  & 多項式時間 \cite{ko1988computing} \cite{kawamura2010complexity} 
+  & 多項式時間計算可能 \cite{ko1988computing} \cite{kawamura2010complexity} 
   & ---
  \end{tabular}
 \end{center}
 \end{table}
 
-そこで我々はこの隔たりを埋めることを目的として, 滑らかな関数, 
+そこで本稿ではこの隔たりを埋めるため, 滑らかな関数, 
 つまり微分可能な $g$ について $h$ の計算量がどれほどになりうるかを調べ,
 以下の結果を得た.
 
  \begin{theorem}
   \label{DifferentiableIsPspace}
-  多項式時間実関数 $g \colon [0,1] \times [-1,1] \to \R$ で,
-  $(\infty, 1)$ 回連続的微分可能であり,
-  $g$ の常微分方程式(\ref{eq:ode})の解 $h$ が \PSPACE 困難であるものが存在する.
+  多項式時間計算可能かつ $(\infty, 1)$ 回連続的微分可能な
+  実関数 $g \colon [0,1] \times [-1,1] \to \R$ であって, 
+  常微分方程式(\ref{eq:ode})が
+  $\PSPACE$ 困難な解 $h \colon [0, 1] \to \R$ をもつものが存在する.
  \end{theorem}
 
  \begin{theorem}
   \label{KTimesIsPspace}
   任意の自然数 $k \ge 2$ にたいして, 
-  多項式時間実関数 $g \colon [0,1] \times [-1,1] \to \R$ で, 
-  $(\infty, k)$ 回連続的微分可能であり,
-  $g$ の常微分方程式(\ref{eq:ode})の解 $h$ が \DIVPlog 困難であるものが存在する.
+  多項式時間計算可能かつ $(\infty, k)$ 回連続的微分可能な
+  実関数 $g \colon [0,1] \times [-1,1] \to \R$ であって, 
+  常微分方程式(\ref{eq:ode})が
+  $\DIVPlog$ 困難な解 $h \colon [0, 1] \to \R$ をもつものが存在する.
  \end{theorem}
 
- 本稿では実関数の多項式時間計算可能性を定義域が有界閉区間のときについてのみ定義するため,
- 一般の常微分方程式の関数 $g \colon [0,1] \times \R \to \R$ 
- について考えることができない.
- しかし 唯一解 $h$ が $g$ の定義域をはみ出さない, つまり
- $t \in [0, 1]$ について $-1 \le h(t) \le 1$ をみたすような $g$ を構成する.
+ここで $g \colon [0,1] \times \R \to \R$ でなく
+$g \colon [0,1] \times [-1, 1] \to \R$ と書いたのは, 
+本稿では実関数の多項式時間計算可能性を, 
+定義域が有界閉領域のときにのみ定義するからである. 
+このため $h$ が区間 $[-1, 1]$ の外に値を取ることがあると
+方程式(\ref{eq:ode})が意味をなさなくなるが, 
+定理\ref{DifferentiableIsPspace}, \ref{KTimesIsPspace}において $h$ が
+解であるというのは, 
+任意の $t \in [0, 1]$ について $h (t) \in [-1, 1]$ が満たされることも含めて述べている.
+なお両定理とも Lipschitz 条件よりも強い仮定を置いているため, 
+そのような $h$ は $g$ に対して, 存在すれば唯一である. 
 
  $\DIVPlog$ とは本稿において定義される計算量クラスであり,
- $\DIVPlog \subseteq \PSPACE$ であるが, $\DIVPlog = \PSPACE$ は未解決であるため,
- $(\infty, k)$階連続的微分可能関数の常微分方程式の解が \PSPACE 困難になりうるかは
- 未解決である.
+ $\DIVPlog \subseteq \PSPACE$ であるが, $\DIVPlog = \PSPACE$ か否かは未解決であるため,
+ $(\infty, k)$回連続微分可能関数の常微分方程式の解が \PSPACE 困難になりうるかは
+ わからない.
  厳密な定義は次節で導入する.
 
- 二変数関数 $g$ が $(i, j)$ 階連続的微分可能であるとは,
+ 二変数関数 $g$ が $(i, j)$ 階連続微分可能であるとは,
  第一変数について $i$ 回, 第二変数について $j$ 回微分可能であり,
  その導関数が連続であることと定義する.
  この定義は一般的な多変数関数における $k$ 階連続的微分可能の定義
  (任意の $k$ 階導関数が存在し, それらがすべて連続)とは異なる.
- $i \ge j$ とすると $(i,j)$ 回連続的微分可能であれば $j$ 回連続的微分可能であるため,
+ $(i,j)$ 回連続微分可能であれば $\min \{i, j\}$ 回連続微分可能であるため,
  定理 \ref{DifferentiableIsPspace}, \ref{KTimesIsPspace} は
- それぞれ 1 回連続的微分可能, $k$ 階連続的微分可能と置き換えても成り立つ.
+ それぞれ $1$ 回連続微分可能, $k$ 回連続微分可能と置き換えても成り立つ.
 
  また定理 \ref{KTimesIsPspace} において
  任意の $k$ に対して $(\infty, k)$ 階微分可能な関数を考えているが,
- 一つ関数が任意の $k$ にたいして $k$ 階微分ではない.
+ 一つの関数が任意の $k$ にたいして $k$ 階微分であることを求めているわけではない.
  つまり $g$ が無限回微分可能であると制限しているわけではない. 
  無限回微分可能な関数に対する常微分方程式の計算量は今後の課題である.
 
@@ -127,7 +137,7 @@ $\PSPACE$ 困難 (\ref{section: preliminaries}節で定義) でありうる.
 \label{section:divp}
 
 定理 \ref{DifferentiableIsPspace} と定理 \ref{KTimesIsPspace} の証明の中では,
-まず滑らかな実関数の常微分方程式で模倣可能であるような離散版常微分方程式を考え, 
+まず滑らかな実関数の常微分方程式で模倣できる離散版常微分方程式を考え, 
 その「離散版常微分方程式」がある計算量クラスについて困難であることを示している.
 この節ではその離散版常微分方程式である, 
 差分方程式と差分方程式に対応する計算量クラスについて定義する.
