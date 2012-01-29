@@ -2,7 +2,8 @@
 
 \subsection{計算可能解析}
 
-計算可能解析 (Computable Analysis) では計算可能性理論や計算量理論の視点から解析学を扱う. 
+計算可能解析 (Computable Analysis) \cite{weihrauch00:_comput_analy} では
+計算可能性理論や計算量理論の視点から解析学を扱う. 
 「計算可能な実数」や「多項式時間計算可能な実関数」といった概念を定義し, 
 解析学に現れる様々な実数や実関数の本質的な難しさを分析する. 
 
@@ -27,7 +28,6 @@ $(r_n)_n$ が $x$ へ速く収束すること,
 入力となる実数 $x$ の名を神託として与えられ,
 求める精度 $n$ を入力として与えられたとき,
 有理数 $s_n$ で $|s_n - f(x)| \le 2^{-n}$ を満たすものを出力することとする.
-
 この神託機械の資源を制限することで, 
 実関数が多項式時間計算可能, 或いは多項式領域計算可能であることを
 定義できる (\ref{section: preliminaries}節).
@@ -63,13 +63,13 @@ $\PSPACE$ 困難 (\ref{section: preliminaries}節で定義) でありうるこ�
   \hline
    --- & --- & 計算不可能たりうる \cite{pour1979computable} \\
   $h$ が $g$ の唯一解 & 計算可能 \cite{coddington1955theory}
-  & 任意の時間がかかりうる \cite{ko1983computational} \cite{miller1970recursive} \\
+  & 任意の時間がかかりうる \cite{ko1983computational, miller1970recursive} \\
   $g$ が Lipschitz 条件を満たす & 多項式領域計算可能
       &	\PSPACE 困難になりうる \cite{kawamura2010lipschitz}\\
   $g$ が $(0, 1)$ 回連続微分可能 & 多項式領域計算可能 & \parbox[t]{14zw}{\PSPACE 困難になりうる\\{}[本稿定理\ref{DifferentiableIsPspace}]} \\
   $g$ が $(0, k)$ 回連続微分可能 & 多項式領域計算可能 & \parbox[t]{14zw}{\DIVPlog 困難たりうる\\{}[本稿定理\ref{KTimesIsPspace}]} \\
   $g$ が解析的 
-  & 多項式時間計算可能 \cite{ko1988computing} \cite{kawamura2010complexity} 
+  & 多項式時間計算可能 \cite{ko1988computing, kawamura2010complexity} 
   & ---
  \end{tabular}
 \end{center}
