@@ -58,7 +58,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  任意の多項式 $\gamma$ に対して,
  多項式 $\rho$, 関数族 $(g_u)_u, (h_u)_u$ で, 
  $(g_u)_u$ は多項式時間計算可能であり,
- 各二進文字列 $u$ に対して以下を満たすものが存在する.
+ 各文字列 $u$ に対して以下を満たすものが存在する.
  \begin{enumerate}
   \item $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$;
   \item $h_u$ は $g_u$ の常微分方程式 (\ref{eq:ode}) の解; 
@@ -68,11 +68,10 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 	 \D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0;
 	\end{equation*}
   \item \label{enum:infty1}
-	任意の $i \in \N$ に対して
-	\begin{align*}
-	 |\D{i,1} g_u| &\leq 2^{\mu_i (|u|) - \gamma(|u|)}, &
-	 |\D{i,0} g_u| &\leq 2^{\mu_i (|u|) - \gamma(|u|)};
-	\end{align*}
+	任意の $i \in \N$, $j \in \{0,1\}$ に対して
+	\begin{equation*}
+	 |\D{i,j} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)};
+	\end{equation*}
   \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
  \end{enumerate}
 \end{lemma}
@@ -89,7 +88,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  補題 \ref{WeakFeedback} を用いて $L$ を認識する $(G_u)_u$ 
  及びその差分方程式の解 $(H_u)_u$ を得る.
  各 $G_u, H_u$ を模倣する
- $(\infty, 1)$階連続微分可能な $g_u \colon [0,1] \times [-1, 1] \to \R$ 
+ 滑らかなな $g_u \colon [0,1] \times [-1, 1] \to \R$ 
  とその常微分方程式の解 $h_u \colon [0,1] \to \R$ を構成する.
  また $(G_u)_u$ の一様性から $(g_u)_u$ の多項式時間計算可能性を示す.
 

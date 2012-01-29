@@ -3,7 +3,7 @@
 この節では定理 \ref{KTimesIsPspace}, 
 つまり$(\infty, k)$階連続微分可能な関数の常微分方程式の解は
 \DIVPlog 困難でありうることを示す.
-証明の流れは節 \ref{section:differentiable}とほぼ同じである.
+証明の流れは \ref{section:differentiable} 節とほぼ同じである.
 \ifnum \proc = 1
 ただし紙面の都合上, 詳細な証明は省き, 証明の概略を説明するに止める.
 \fi
@@ -20,19 +20,19 @@
   任意の多項式 $\gamma$ に対して,
   関数 $\rho \colon \N \to \N$, 関数族 $g_u, h_u$ で,
   $\rho, (g_u)_u$ は多項式時間計算可能であり,
-  各二進文字列 $u$ に対して以下を満たすものが存在する.
+  各文字列 $u$ に対して以下を満たすものが存在する.
   \begin{enumerate}
    \item $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$;
    \item $h_u$ は $g_u$ の常微分方程式 (\ref{eq:ode}) の解;
    \item $g_u$ は $(\infty, k)$ 階連続微分可能;
    \item 任意の $i \in \N$, $y \in [-1,1]$ に対して
 	 \begin{equation*}
-	  \D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0 
+	  \D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0 ;
 	 \end{equation*}
    \item \label{enum:inftyk}
 	 任意の $i \in \N$, $j \in \{0, \dots, k\}$ に対して
 	 \begin{equation*}
-	  \left|\D{i,j} g_u(t,y)\right| \le 2^{\mu_i(|u|) - \gamma(|u|)}
+	  \left|\D{i,j} g_u(t,y)\right| \le 2^{\mu_i(|u|) - \gamma(|u|)};
 	 \end{equation*}
    \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
   \end{enumerate}
