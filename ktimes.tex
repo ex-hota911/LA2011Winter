@@ -1,7 +1,17 @@
 \section{任意回微分可能関数と常微分方程式}
 
- 第二変数について任意回微分可能な関数の常微分方程式の解は, 
- \DIVPlog 困難でありうることを証明する.
+この節では定理 \ref{KTimesIsPspace}, 
+つまり$(\infty, k)$階連続微分可能な関数の常微分方程式の解は
+\DIVPlog 困難でありうることを証明する.
+証明の流れは節 \ref{section:differentiable}とほぼ同じく, 
+まず補題 \ref{DifferentiableFamily} をしめしたあと,
+補題 \ref{KTimesFamily} から定理 \ref{KTimesIsPspace} をしめす.
+補題 \ref{KTimesFamily} は節 \ref{section:differentiable} の
+補題 \ref{DifferentiableFamily} に相当するもので,
+\DIVPlog 困難な関数族 $(G_u)_u, (H_u)_u$ を模倣する
+実関数族 $(g_u)_u, (h_u)_u$ の存在を述べている.
+定理 \ref{KTimesIsPspace} の証明では
+$(g_u)_u, (h_u)_u$ から求める $g, h$を構成する.
 
 
 \subsection{対数深さ離散初期値問題を模倣する関数族}
@@ -36,6 +46,7 @@
   \end{enumerate}
  \end{lemma}
 
+\ifnum \proc = 0
  \begin{proof}
   $L \in \DIVPlog$ を認識する
   対数深さ離散初期値問題 $\left< d, p, q,(G_u)_u \right>$
@@ -210,6 +221,7 @@
  \end{align*}
  より, $\rho(k) = p(k)(\gamma(k) + d')$ とおくと成り立つ.
  \end{proof}
+\fi
 
 
 
@@ -229,7 +241,7 @@ $(\infty, 1)$ 回連続微分可能を $(\infty, k)$回連続微分可能に一�
 \footnote{なのでこの章まるまる必要ない.しかしこちらの証明のほうが1回微分可能のときの
 証明より一般化されているため, どちらを採用するか要検討}
 
-
+\ifnum \proc = 0
 \begin{proof}
  $L$ を \DIVPlog に含まれる言語,
  つまり対数深さ離散初期値問題によって認識される言語とおく.
@@ -391,3 +403,4 @@ $(\infty, 1)$ 回連続微分可能を $(\infty, k)$回連続微分可能に一�
  \end{align}
  任意の $L \in \DIVPlog$ について $h$ へ還元可能であるため, $h$ は \DIVPlog 困難.
 \end{proof}
+\fi

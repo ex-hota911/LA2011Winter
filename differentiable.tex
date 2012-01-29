@@ -1,6 +1,21 @@
 \section{微分可能関数と常微分方程式}
+\label{section:differentiable}
+
+この節では定理 \ref{DifferentiableIsPspace},
+つまり$(\infty, 1)$階連続微分可能な関数の常微分方程式の解は
+\PSPACE 困難でありうることを証明する.
+証明の流れとして, まず補題 \ref{WeakFeedback} から補題 \ref{DifferentiableFamily} をしめしたあと,
+補題 \ref{DifferentiableFamily} から定理 \ref{DifferentiableIsPspace} をしめす.
+補題 \ref{DifferentiableFamily} では
+補題 \ref{WeakFeedback} の関数族$(G_u)_u, (H_u)_u$ を模倣する
+実関数族 $(g_u)_u, (h_u)_u$ の存在を述べている.
+定理 \ref{DifferentiableIsPspace} の証明では
+$(g_u)_u, (h_u)_u$ から求める $g, h$を構成する.
+
+
 
 \subsection{多項式段一様関数族の差分方程式と\PSPACE}
+
 
 任意の \PSPACE に含まれる言語 $L$ について, 
 その差分方程式が $L$ を認識する
@@ -8,19 +23,23 @@
 河村の論文のなかで示されているが, その証明の概略をしめす.
 
 任意の $L$ ではなく \PSPACE 完全な言語である
-量化論理式 \textsf{QBF} を認識する $(G_u)_u$ を構成することを考える.
+\textsf{QBF} を認識する $(G_u)_u$ を構成することにより,
+任意の $L$ を認識する多項式段一様な関数族 $(G_u)_u$ が存在することをしめす.
 ここで \textsf{QBF} とは,
-文字列 $u$ を $Q_1 x_1 \cdots Q_n x_n \phi(x_1, \dots, x_n)$ と解釈
-したとき 
-$u \in \textsf{QBF} \Leftrightarrow Q_1 x_1 \cdots Q_n x_n \phi(x_1, \dots, x_n) = T$ によって定義される言語である. 
+文字列 $u$ を $\psi = Q_1 x_1 \cdots Q_n x_n \phi(x_1, \dots, x_n)$ と解釈したとき 
+$u \in \textsf{QBF} \Leftrightarrow \psi = T$ によって定義される言語である. 
 ただし$Q_i \in \{\exists, \forall\}$,  $\phi(x_1, \dots, x_n)$ は $x_i$ 以外の変数を含まない論理式. 
 
-論理式 $Q_1 x_1 \cdots Q_n x_n \phi(x_1, \dots, x_n)$ の値を二分木によって
-計算することを考える. $x_1$ を $T$ と $F$ に置き換えた式の値
-$Q_2 x_2 \cdots Q_n x_n \phi(T, x_2, \dots, x_n)$ と
-$Q_2 x_2 \cdots Q_n x_n \phi(F, x_2, \dots, x_n)$ によって
-もとの論理式の値は決まる. つまり変数を真偽値で置き換えた2つの論理式の値と量化子によって
-もとの論理式の値も決まるため, 深さ $n$ の二分木を葉からたどっていくことで計算可能である.
+論理式 $\psi = Q_1 x_1 \cdots Q_n x_n \phi(x_1, \dots, x_n)$ の値を
+$\vee, \wedge$によってラベル付された二分木によって計算することを考える. 
+量化子$Q_1$ を除き $x_1$ を $T$ と $F$ に置き換えた式をそれぞれ
+$\psi_T = Q_2 x_2 \cdots Q_n x_n \phi(T, x_2, \dots, x_n)$,
+$\psi_F = Q_2 x_2 \cdots Q_n x_n \phi(F, x_2, \dots, x_n)$ と置くと
+$Q_1=\forall$ ならば $\psi = \psi_T \wedge \psi_F$, 
+$Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
+つまり変数の1つ少ない2つの論理式と量化子によってもとの論理式の値も決まる.
+再帰的に繰り返すことで計算可能であり,
+それは深さ $n$ の二分木を葉からたどっていくこと同じである.
 この過程は二分木の深さが段数に, 幅が列数に対応する形で
 多項式段一様な関数による差分方程式で模倣可能であるため,
 \textsf{QBF} を認識する多項式段一様関数の差分方程式が存在する.
@@ -28,11 +47,11 @@ $Q_2 x_2 \cdots Q_n x_n \phi(F, x_2, \dots, x_n)$ によって
 
 \subsection{離散初期値問題を模倣する関数族}
 
- 証明の基本的な流れは,
- 任意の言語 $L \in \PSPACE$ にたいし, 
+ 証明の基本的な流れとして,
+ まず任意の言語 $L \in \PSPACE$ にたいし, 
  補題 \ref{WeakFeedback} を用いて $L$ を認識する差分方程式 $(G_u)_u$ 
  及びその解 $(H_u)_u$ を得る.
- 各 $G_u, H_u$ にから, その差分方程式の計算過程を模倣する
+ そして各 $G_u, H_u$ から, その差分方程式の計算過程を模倣する
  $(\infty, 1)$階連続微分可能な $g_u \colon [0,1] \times [-1, 1] \to \R$ 
  とその常微分方程式の解 $h_u \colon [0,1] \to \R$ を構成する.
  $(G_u)_u$ の一様性から $(g_u)_u$ の多項式時間計算可能性をしめす.
@@ -106,7 +125,7 @@ $Q_2 x_2 \cdots Q_n x_n \phi(F, x_2, \dots, x_n)$ によって
  \end{lemma} 
 
 
-
+\ifnum \proc = 0
  \begin{proof}[\rm 補題 \ref{DifferentiableFamily} の証明]
   補題 \ref{WeakFeedback} から, $L$ を認識する 
   離散初期値問題 $\left< d, p, q,(G_u)_u \right>$
@@ -295,9 +314,11 @@ $Q_2 x_2 \cdots Q_n x_n \phi(F, x_2, \dots, x_n)$ によって
  \end{align*}
  より, $\rho(k) = p(k)(\gamma(k) + d')$ とおくと成り立つ.
  \end{proof}
+\fi
 
 \subsection{定理 \ref{DifferentiableIsPspace} の証明}
 
+\ifnum \proc = 0
 \begin{proof}
  $L$ を \PSPACE 完全な言語とおく.
  \PSPACE 完全な言語 $L$ にたいして補題 \ref{DifferentiableFamily} を用いて,
@@ -481,4 +502,5 @@ $Q_2 x_2 \cdots Q_n x_n \phi(F, x_2, \dots, x_n)$ によって
  \end{align}
  $L$ は \PSPACE 完全であるため, $h$ は \PSPACE 困難.
 \end{proof}
+\fi
 

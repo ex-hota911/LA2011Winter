@@ -32,6 +32,10 @@
 
 \renewcommand{\proofname}{\bf 証明} 
 
+%%% \proc != 0 ならば証明などをとばす.
+\newcommand{\proc}{1}
+
+
 %%% 数式中の大文字ギリシャ文字を斜体化
 \renewcommand{\Lambda}{\varLambda}
 \renewcommand{\Gamma}{\varGamma}
@@ -105,7 +109,7 @@
 \input{preliminary}
 \input{differentiable}
 \input{ktimes}
-\input{conclusion}
+%\input{conclusion}
 \input{acknowledgements}
 
 \bibliography{la}
