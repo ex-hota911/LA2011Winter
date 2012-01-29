@@ -3,11 +3,10 @@
 
 \subsection{表記}
 自然数の集合を $\N$, 整数の集合を $\Z$, 実数の集合を $\R$, 
-有理数の集合を $\Q$, $\T = \{0^n \mid n \in \N\}$ で表す. 
+有理数の集合を $\Q$, $\T = \{0^n \mid n \in \N\}$ と表す.
 
-$A \subset \R$ とする. 一変数関数 $f\colon A \to \R$ が $i$ 回微分可能であるとき,
+$A, B$ を $\R$ の有界閉区間とする. 一変数関数 $f\colon A \to \R$ が $i$ 回連続微分可能であるとき,
 その $i$ 階導関数を $\D{i}f$ と表記する.
-
 二変数関数 $g \colon A \times B \to \R$ が
 $(i, j)$ 回連続微分可能であるとき,
 第一変数について $i$ 階, 第二変数について $j$ 階の導関数は
@@ -20,7 +19,7 @@ $(i, j)$ 回連続微分可能であるとき,
  実数は有限な文字列に符号化できない. 
  そこで文字列から文字列への関数に符号化する.
  \begin{definition}[実数の名]
-  関数 $\phi \colon \T \to \Z $ が実数 $x \in [0,1]$ の名であるとは,
+  関数 $\phi \colon \T \to \Z $ が実数 $x \in [0,1]$ の\emph{名}であるとは,
   $\phi(0^n) = \lfloor x \cdot 2^n \rfloor$ または
   $\phi(0^n) = \lceil x \cdot 2^n \rceil$ を満たすこと.
  \end{definition}
@@ -40,13 +39,15 @@ $\phi$ を文字列から文字列への関数として扱う.
 実数自体が関数として符号化されているため, 
 それを読み書きする機構として, 
 神託チューリング機械 (以下単に機械という) を使う[図 \ref{fig:model-of-function}].
+計算可能な実関数は Grzegorczyk によって初めて形式的に定義された
+\cite{grzegorczyk1955computable}.
 
  \begin{figure}
-  \label{fig:model-of-function}
   \begin{center}
    \includegraphics[height=0.15\textheight]{image/model-of-function.eps}
   \end{center}
   \caption{実関数を計算する機械}
+  \label{fig:model-of-function}
  \end{figure}
 
 機械$M$に, 
@@ -65,11 +66,9 @@ $M^{\phi_x}$ が $f(x)$ の名であること.
 $A$ が $\R ^2$ の有界閉領域であるときにも, 
 神託を二つ取る機械を考えて同様に定義する. 
 
- 計算可能な実関数は Grzegorczyk によって初めて形式的に定義され,
- \cite{grzegorczyk1955computable}.
 
- ある実関数が計算可能であるとは, その関数を計算する神託機械が存在することである.
- 同様に, ある実関数が多項式時間計算可能であるとは, その関数を計算する多項式時間神託機械が存在することである.
+ ある実関数が\emph{計算可能}であるとは, その関数を計算する神託機械が存在することである.
+ 同様に, ある実関数が\emph{多項式時間計算可能}であるとは, その関数を計算する多項式時間神託機械が存在することである.
 
 文字列$u$で添字づけられた実関数$f _u \colon A \to \R$の
 族 $(f_u)_u$ を機械 $M$ が計算するとは,
@@ -96,7 +95,7 @@ $f _u (x)$ の名であることをいう.
    |x-y| \le 2^{-p_f(m)} \Rightarrow |f(x) - f(y)| \le 2^{-m}
    &\qquad (x, y \in [0, 1], \quad m \in \N)
   \end{align}
- をみたす関数とする.
+ を満たす関数とする.
   \begin{itemize}
    \item $f$ が計算可能であることは, 計算可能な $\phi_f, m_f$ が存在することと同値である. 
    \item $f$ が多項式時間計算可能であることは, 多項式時間計算可能な 
@@ -119,7 +118,7 @@ $f _u (x)$ の名であることをいう.
  厳密には以下のように定義する.
 
  \begin{definition}[多項式時間還元可能]
-  言語 $L$ が実関数 $f\colon [0,1] \to \R$ に多項式時間還元可能であるとは, 
+  言語 $L$ が実関数 $f\colon [0,1] \to \R$ に\emph{多項式時間還元可能}であるとは, 
   多項式時間計算可能な関数 $R,S,T$ が存在し, 
   任意の文字列 $u$ に対して以下を満たすことをいう. 
   \begin{itemize}
@@ -131,7 +130,7 @@ $f _u (x)$ の名であることをいう.
   \end{itemize}
  \end{definition}
  以下単に言語が実関数に還元可能といった場合, 多項式時間還元可能を指す.
- 計算量 $C$ に対して, 関数 $f$ が $C$ 困難であるとは,
+ 計算量 $C$ に対して, 関数 $f$ が \emph{$C$ 困難}であるとは,
  $C$ に属する任意の言語が $f$ に還元可能であることと定義する.
 
  \begin{figure}

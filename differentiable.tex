@@ -5,29 +5,27 @@
 つまり$(\infty, 1)$階連続微分可能な関数の常微分方程式の解は
 \PSPACE 困難でありうることを示す.
 \ifnum \proc = 1
-ただし紙面の都合上, 詳細な証明は省き, 証明の概略を説明するに止める.
+ただし紙面の都合上, 詳細な証明は省き, 証明の概略を述べるに止める.
 \fi
 
-証明の流れとして, まず補題 \ref{WeakFeedback} から補題 \ref{DifferentiableFamily} を示したあと,
-補題 \ref{DifferentiableFamily} から定理 \ref{DifferentiableIsPspace} を示す.
-補題 \ref{DifferentiableFamily} では
-補題 \ref{WeakFeedback} の関数族$(G_u)_u, (H_u)_u$ を模倣する
-実関数族 $(g_u)_u, (h_u)_u$ の存在を述べている.
-定理 \ref{DifferentiableIsPspace} の証明では
-$(g_u)_u, (h_u)_u$ から求める $g, h$を構成する.
+証明の流れとして, まず補題 \ref{WeakFeedback} によりの
+$L \in \PSPACE$ を認識する関数族$(G_u)_u, (H_u)_u$ を得る.
+そして $(G_u)_u, (H_u)_u$ を模倣する
+実関数族 $(g_u)_u, (h_u)_u$ を構成し(補題 \ref{DifferentiableFamily}),
+$(g_u)_u, (h_u)_u$ から定理 \ref{DifferentiableIsPspace} で求める $g, h$を構成する.
 
 
 \subsection{多項式段一様関数族の差分方程式と\PSPACE}
 
 
-任意の \PSPACE に含まれる言語 $L$ について, 
+任意の言語 $L \in \PSPACE$ について, 
 その差分方程式が $L$ を認識する
 多項式段一様な関数族 $(G_u)_u$ が存在すること(補題 \ref{WeakFeedback})は
-河村の論文のなかで示されているが, その証明の概略を示す.
+河村によって示されているがその証明の概略を示す.
 
-任意の $L$ ではなく \PSPACE 完全な言語である
+\PSPACE 完全な言語である
 \textsf{QBF} を認識する $(G_u)_u$ を構成することにより,
-任意の $L$ を認識する多項式段一様な関数族 $(G_u)_u$ が存在することを示す.
+任意の $L \in \PSPACE$ を認識する多項式段一様な関数族 $(G_u)_u$ が存在することを示す.
 ここで \textsf{QBF} とは,
 文字列 $u$ を $\psi = Q_1 x_1 \cdots Q_n x_n \phi(x_1, \dots, x_n)$ と解釈したとき 
 $u \in \textsf{QBF} \Leftrightarrow \psi = T$ によって定義される言語である. 
@@ -52,16 +50,6 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 
 \subsection{多項式段差分方程式を模倣する関数族}
 
- 補題 \ref{DifferentiableFamily} を述べるため, 
- 実関数族 $(g_u)_u \ (g_u \colon [0,1] \times [-1, 1] \to \R)$ 
- が多項式時間計算可能であることを定義する.
- ある神託機械 $M$ が実関数族 $(g_u)_u$ を計算するとは,
- 実数 $t,y$ の名 $\phi, \psi$ を神託として受けとり,
- 文字列 $u$, 求める精度 $n$ を入力として受けとったとき,
- $|M^{\phi, \psi}(u, 0^n) - g_u(t, y)| \le 2^{-n}$ を満たすことである.
- そして実関数族が多項式時間計算可能であるとは,
- その実関数族を計算し, $|u|$ と $n$ の多項式時間で動作する神託機械が存在することと定義する.
-
 
 \begin{lemma}
  \label{DifferentiableFamily}
@@ -77,36 +65,36 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
   \item $g_u$ は $(\infty, 1)$ 階連続微分可能;
   \item 任意の $i \in \N$, $y \in [-1,1]$ に対して
 	\begin{equation*}
-	 \D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0 
+	 \D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0;
 	\end{equation*}
-  \item 任意の $i \in \N$ に対して
+  \item \label{enum:infty1}
+	任意の $i \in \N$ に対して
 	\begin{align*}
 	 |\D{i,1} g_u| &\leq 2^{\mu_i (|u|) - \gamma(|u|)}, &
-	 |\D{i,0} g_u| &\leq 2^{\mu_i (|u|) - \gamma(|u|)}
-	\end{align*} \label{enum:infty1}
+	 |\D{i,0} g_u| &\leq 2^{\mu_i (|u|) - \gamma(|u|)};
+	\end{align*}
   \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
  \end{enumerate}
 \end{lemma}
 
  この補題より関数族 $(g_u)_u, (h_u)_u$ で $h_u$ は $g_u$ の常微分方程式の解であり,
- $h_u(1)$ に $L(u)$ の情報を持つものの存在が示される.
-
- 条件 (iii) -- (v) はすべて定理 \ref{DifferentiableIsPspace} の $g$ が
+ $g_u$は滑らかであり, 各 $h_u(1)$ に $L(u)$ の情報を持つものの存在が示される.
+ 条件 (iii) -- (v) はすべて定理 \ref{DifferentiableIsPspace} の $g$ を
  滑らかな関数とするために必要となる条件である.
  詳細については定理の証明の際に説明する.
  
 
  この補題の証明の基本的な流れを説明する.
- まず任意の言語 $L \in \PSPACE$ に対し, 
- 補題 \ref{WeakFeedback} を用いて $L$ を認識する差分方程式 $(G_u)_u$ 
- 及びその解 $(H_u)_u$ を得る.
- そして各 $G_u, H_u$ から, その差分方程式の計算過程を模倣する
+ 任意の言語 $L \in \PSPACE$ に対し, 
+ 補題 \ref{WeakFeedback} を用いて $L$ を認識する $(G_u)_u$ 
+ 及びその差分方程式の解 $(H_u)_u$ を得る.
+ 各 $G_u, H_u$ を模倣する
  $(\infty, 1)$階連続微分可能な $g_u \colon [0,1] \times [-1, 1] \to \R$ 
  とその常微分方程式の解 $h_u \colon [0,1] \to \R$ を構成する.
  また $(G_u)_u$ の一様性から $(g_u)_u$ の多項式時間計算可能性を示す.
 
 
- ここまでの証明の流れは基本的に, リプシッツ連続条件の場合の証明とかわらない.
+ 上記の証明は基本的に, リプシッツ連続条件の場合の証明と変わらない.
  違いは $g_u$ を滑らかな関数にするため, 
  以下のような滑らかな多項式時間実関数 $f \colon [0,1] \to \R$ を用いて
  $g_u$ を構成している点である.
@@ -122,34 +110,34 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
   \end{enumerate}
  \end{lemma} 
 
-%%% 証明は削除, master に残っているものを後でマージする.
+
+%%% 証明は削除, 残っているバージョン tag:proof
 
 
 \subsection{定理 \ref{DifferentiableIsPspace} の証明}
 
- 補題 \ref{DifferentiableFamily} から得られる
- $(g_u)_u$ と $(h_u)_u$ から滑らかな $g$ とその常微分方程式の解で
+ \PSPACE 完全な言語 {\sf QBF} 補題 \ref{DifferentiableFamily} から得られる
+ $(g_u)_u$ と $(h_u)_u$ から滑らかな $g$ と
  その常微分方程式の解で \PSPACE 困難な $h$ を構成する.
  各 $h_u(1)$ には $L(u)$ の情報が含まれるため,
- すべての $h_u$ を一つの関数 $h$ に埋め込みたい,
+ すべての $h_u$ を一つの関数 $h$ に埋め込みたい.
  そこで [0,1] を無限の区間に分割し, $h$ の各文字列 $u$ に対応する区間
  $[l^-_u, c_u]$ に $h_u$ を
  縮小して埋め込む. 
  ただし次の文字列 $u'$ の計算に影響を与えないために,
  $h_u$ を定義域方向について反転したものを
  区間 $[c_u, l^+_u]$ に埋め込むことで影響を相殺する.
- つまり $h(l^-_u) = 0,\ h(c_u) = 2^{-\rho'(|u|)} L(u),\ h(l^+_u) = 0$ をみたす
+ つまり $h(l^-_u) = 0,\ h(c_u) = 2^{-\rho'(|u|)} L(u),\ h(l^+_u) = 0$ を満たす
  ように $h_u(t)$埋め込む.
  ただし $\rho'$ とは $\rho$ に縮小率をかけたものとする.
  同様に $g$ は $h$ が常微分方程式の解となるよう,
  各文字列 $u$ に対応する区間に $g_u$ を縮小して埋め込む.
 
- リプシッツ連続条件と異なる点は, $g_u$ を構成する時点で
+ リプシッツ連続条件の場合と異なる点は, $g_u$ を構成する時点で
  $(\infty, 1)$ 階連続微分可能にするために,
  $|\D{i,0} g_u|, |\D{i,0} g_u|$ の大きさを制限する点である
- [補題 \ref{DifferentiableFamily} の (\ref{enum:infty1})].
- $t=1$ 付近, つまり $|u| \to \infty$ のときに
- $\D{i,0} g_u, \D{i,1} g_u$ が発散しないためにこのような条件をつけている.
+ (補題 \ref{DifferentiableFamily} の (\ref{enum:infty1})).
  
 
-%%% 証明は削除, master に残っているものを後でマージする.
+%%% 証明は削除, 残っているバージョン tag:proof
+

@@ -3,20 +3,10 @@
 この節では定理 \ref{KTimesIsPspace}, 
 つまり$(\infty, k)$階連続微分可能な関数の常微分方程式の解は
 \DIVPlog 困難でありうることを示す.
+証明の流れは節 \ref{section:differentiable}とほぼ同じである.
 \ifnum \proc = 1
 ただし紙面の都合上, 詳細な証明は省き, 証明の概略を説明するに止める.
 \fi
-
-
-証明の流れは節 \ref{section:differentiable}とほぼ同じく, 
-まず補題 \ref{DifferentiableFamily} を示したあと,
-補題 \ref{KTimesFamily} から定理 \ref{KTimesIsPspace} を示す.
-補題 \ref{KTimesFamily} は節 \ref{section:differentiable} の
-補題 \ref{DifferentiableFamily} に相当するもので,
-\DIVPlog 困難な関数族 $(G_u)_u, (H_u)_u$ を模倣する
-実関数族 $(g_u)_u, (h_u)_u$ の存在を述べている.
-定理 \ref{KTimesIsPspace} の証明では
-$(g_u)_u, (h_u)_u$ から求める $g, h$を構成する.
 
 
 
@@ -39,11 +29,11 @@ $(g_u)_u, (h_u)_u$ から求める $g, h$を構成する.
 	 \begin{equation*}
 	  \D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0 
 	 \end{equation*}
-   \item 任意の $i \in \N$, $j \in \{0, \dots, k\}$ に対して
+   \item \label{enum:inftyk}
+	 任意の $i \in \N$, $j \in \{0, \dots, k\}$ に対して
 	 \begin{equation*}
 	  \left|\D{i,j} g_u(t,y)\right| \le 2^{\mu_i(|u|) - \gamma(|u|)}
 	 \end{equation*}
-	 \label{enum:inftyk}
    \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
   \end{enumerate}
  \end{lemma}
@@ -52,9 +42,7 @@ $(g_u)_u, (h_u)_u$ から求める $g, h$を構成する.
 補題 \ref{DifferentiableFamily} とくらべて補題 \ref{KTimesFamily} は,
 \PSPACE が \DIVPlog に置き換わり, $(\infty, 1)$ 回連続微分可能が 
 $(\infty, k)$回連続微分可能に一般化されている.
-
-補題 \ref{DifferentiableFamily} との本質的な違いは
-条件 (\ref{enum:inftyk}) によって, $h$ に対するフィードバックの大きさ,
+本質的な違いは条件 (\ref{enum:inftyk}) によって, $h$ に対するフィードバックの大きさ,
 つまり $g(t,y)$ に対する $y$ の値の影響がかなり制限されてしまう点にある.
 それにより, 模倣できる差分方程式が多項式段ではなく対数段に制限され,
 \PSPACE 困難が \DIVPlog 困難へと置き換わる.
@@ -69,8 +57,7 @@ $(\infty, k)$回連続微分可能に一般化されている.
 補題 \ref{DifferentiableFamily} と補題 \ref{KTimesFamily} の関係と等しい.
 つまり \PSPACE が \DIVPlog に置き換わり,
 $(\infty, 1)$ 回連続微分可能が $(\infty, k)$回連続微分可能に一般化されている.
-よって定理 \ref{DifferentiableIsPspace} の証明を, \PSPACE を \DIVPlog で置き換え,
-$(\infty, 1)$ 回連続微分可能を $(\infty, k)$回連続微分可能に一般化させることで,
+よって定理 \ref{DifferentiableIsPspace} の証明から
 定理 \ref{KTimesIsPspace} の証明が構成できる.
 
 %%% 証明は削除, master に残っているものを後でマージする.
