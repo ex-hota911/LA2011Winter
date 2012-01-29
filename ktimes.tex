@@ -14,12 +14,8 @@
 $(g_u)_u, (h_u)_u$ から求める $g, h$を構成する.
 
 
-\subsection{対数深さ離散初期値問題を模倣する関数族}
 
- 証明の流れは $(\infty, 1)$ 階連続的微分可能の時と変わらない.
- 任意の言語 $L \in $ \DIVPlog, 文字列 $u$ にたいして,
- 上記の対数深さ離散初期値問題を模倣し $L(u)$ を計算する
- 任意回微分可能な実関数 $g_u$ を構成する.
+\subsection{対数段差分方程式を模倣する関数族}
 
  \begin{lemma}
   \label{KTimesFamily}
@@ -42,9 +38,25 @@ $(g_u)_u, (h_u)_u$ から求める $g, h$を構成する.
 	 \begin{equation*}
 	  \left|\D{i,j} g_u(t,y)\right| \le 2^{\mu_i(|u|) - \gamma(|u|)}
 	 \end{equation*}
+	 \label{enum:inftyk}
    \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
   \end{enumerate}
  \end{lemma}
+
+
+補題 \ref{DifferentiableFamily} とくらべて補題 \ref{KTimesFamily} は,
+\PSPACE が \DIVPlog に置き換わり, $(\infty, 1)$ 回連続微分可能が 
+$(\infty, k)$回連続微分可能に一般化されている.
+
+補題 \ref{DifferentiableFamily} との本質的な違いは
+条件 (\ref{enum:inftyk}) によって, $h$ にたいするフィードバックの大きさ,
+つまり $g(t,y)$ にたいする $y$ の値の影響がかなり制限されてしまう点にある.
+それにより, 模倣できる差分方程式が多項式段ではなく対数段に制限され,
+\PSPACE 困難ではなく \DIVPlog 困難となる.
+
+
+
+
 
 \ifnum \proc = 0
  \begin{proof}
@@ -229,17 +241,15 @@ $(g_u)_u, (h_u)_u$ から求める $g, h$を構成する.
 
 \subsection{定理 \ref{KTimesIsPspace} の証明}
 
-補題 \ref{DifferentiableFamily} とくらべて補題 \ref{KTimesFamily} は
-\PSPACE が \DIVPlog に置き換わり,
-$(\infty, 1)$ 回連続微分可能が $(\infty, k)$回連続微分可能に一般化されている
-こと以外は変わらない. この関係は定理 \ref{DifferentiableIsPspace} と定理
-\ref{KTimesIsPspace} との間の関係と等しい.
-よって証明も \PSPACE を \DIVPlog で置き換え,
+定理 \ref{DifferentiableIsPspace} と定理 \ref{KTimesIsPspace} の関係は
+補題 \ref{DifferentiableFamily} と補題 \ref{KTimesFamily} の関係と等しい.
+つまり \PSPACE が \DIVPlog に置き換わり,
+$(\infty, 1)$ 回連続微分可能が $(\infty, k)$回連続微分可能に一般化されている.
+よって定理 \ref{DifferentiableIsPspace} の証明を, \PSPACE を \DIVPlog で置き換え,
 $(\infty, 1)$ 回連続微分可能を $(\infty, k)$回連続微分可能に一般化させることで,
-定理 \ref{DifferentiableIsPspace} の証明から定理 \ref{KTimesIsPspace} の証明が
-構成できる.
-\footnote{なのでこの章まるまる必要ない.しかしこちらの証明のほうが1回微分可能のときの
-証明より一般化されているため, どちらを採用するか要検討}
+定理 \ref{KTimesIsPspace} の証明が構成できる.
+
+
 
 \ifnum \proc = 0
 \begin{proof}
