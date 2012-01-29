@@ -4,8 +4,8 @@
 つまり$(\infty, k)$階連続微分可能な関数の常微分方程式の解は
 \DIVPlog 困難でありうることを証明する.
 証明の流れは節 \ref{section:differentiable}とほぼ同じく, 
-まず補題 \ref{DifferentiableFamily} をしめしたあと,
-補題 \ref{KTimesFamily} から定理 \ref{KTimesIsPspace} をしめす.
+まず補題 \ref{DifferentiableFamily} を示したあと,
+補題 \ref{KTimesFamily} から定理 \ref{KTimesIsPspace} を示す.
 補題 \ref{KTimesFamily} は節 \ref{section:differentiable} の
 補題 \ref{DifferentiableFamily} に相当するもので,
 \DIVPlog 困難な関数族 $(G_u)_u, (H_u)_u$ を模倣する
@@ -20,21 +20,21 @@ $(g_u)_u, (h_u)_u$ から求める $g, h$を構成する.
  \begin{lemma}
   \label{KTimesFamily}
   任意の自然数 $k \ge 2$,
-  任意の言語 $L \in \DIVPlog$ にたいして,
+  任意の言語 $L \in \DIVPlog$ に対して,
   係数のみに $i$ を含む多項式 $\mu_i$ が存在して,
-  任意の多項式 $\gamma$ にたいして,
+  任意の多項式 $\gamma$ に対して,
   関数 $\rho \colon \N \to \N$, 関数族 $g_u, h_u$ で,
   $\rho, (g_u)_u$ は多項式時間計算可能であり,
-  各二進文字列 $u$ にたいして以下を満たすものが存在する.
+  各二進文字列 $u$ に対して以下を満たすものが存在する.
   \begin{enumerate}
    \item $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$;
    \item $h_u$ は $g_u$ の常微分方程式 (\ref{eq:ode}) の解;
    \item $g_u$ は $(\infty, k)$ 階連続微分可能;
-   \item 任意の $i \in \N$, $y \in [-1,1]$ にたいして
+   \item 任意の $i \in \N$, $y \in [-1,1]$ に対して
 	 \begin{equation*}
 	  \D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0 
 	 \end{equation*}
-   \item 任意の $i \in \N$, $j \in \{0, \dots, k\}$ にたいして
+   \item 任意の $i \in \N$, $j \in \{0, \dots, k\}$ に対して
 	 \begin{equation*}
 	  \left|\D{i,j} g_u(t,y)\right| \le 2^{\mu_i(|u|) - \gamma(|u|)}
 	 \end{equation*}
@@ -70,12 +70,12 @@ $(\infty, k)$回連続微分可能に一般化されている.
 			\end{cases}
   \end{equation}
 
-  補題 \ref{SmoothFunction} の $f$ にたいして, 
-  自然数の族 $c_i$ を各 $i \in \N$ にたいして 
+  補題 \ref{SmoothFunction} の $f$ に対して, 
+  自然数の族 $c_i$ を各 $i \in \N$ に対して 
   $|\D{i}f(x)| \le 2^{c_i}$ を満たす最小の自然数と定める.
  定数 $d' = \lceil \log (4d + 1) \rceil$, 
  $B = 2^{\poly \gamma + d'}$ とおき, 
- 各 $(t, y) \in [0,1] \times [-1, 1]$ にたいして,
+ 各 $(t, y) \in [0,1] \times [-1, 1]$ に対して,
  自然数 $N$, $\theta \in [0,1]$, 整数 $Y$, $\eta \in [-1/4, 3/4]$ を
  $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-k^{j_u(T)}}$ を満たすように
  定める.
@@ -187,7 +187,7 @@ $(\infty, k)$回連続微分可能に一般化されている.
   $\D{i+1, 0} f(0) = \D{i+1, 0} f(1) = 0$ より $\theta = 0$ または $\theta = 1$
   において $\D{i, 0}g_u(t, y) = 0$, $\D{i, j}g_u(t, y) = 0$,
   よって $t$ についても連続.
-  以上により $g_u$ は $(\infty, j)$ 階連続的微分可能であることがしめされた.
+  以上により $g_u$ は $(\infty, j)$ 階連続的微分可能であることが示された.
 
   式 (\ref{eq:derivativeofgu}) に $t = 0, 1$ ($\theta = 0$) を代入して
   $\D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0$.
@@ -255,7 +255,7 @@ $(\infty, 1)$ 回連続微分可能を $(\infty, k)$回連続微分可能に一�
 \begin{proof}
  $L$ を \DIVPlog に含まれる言語,
  つまり対数深さ離散初期値問題によって認識される言語とおく.
- $L$ にたいして補題 \ref{DifferentiableFamily} を用いて,
+ $L$ に対して補題 \ref{DifferentiableFamily} を用いて,
  まず多項式 $\mu_i$ をえる.
  $\mu_i$ は $i$ を係数部にのみ持つ多項式であるため,
  $\mu_i(k) = O(k^c)$ をみたす最小の定数 $c$ が存在する.
@@ -263,7 +263,7 @@ $(\infty, 1)$ 回連続微分可能を $(\infty, k)$回連続微分可能に一�
   \lambda(k) &= 2k + 2,&
   \gamma(k) &= k^{c+1} + k \lambda(k)
  \end{align}
- とおき, 各 $u$ にたいして 
+ とおき, 各 $u$ に対して 
 \begin{align}
  \Lambda_u 
  &= 2^{\lambda(|u|)}, &
@@ -274,14 +274,14 @@ $(\infty, 1)$ 回連続微分可能を $(\infty, k)$回連続微分可能に一�
 \end{align}  
  とおく. ただし $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ は $u$ を二進数と
  して解釈した数.
- $\gamma$ にたいして, 再び補題より $\rho$, $(g_u)_u$, $(h_u)_u$ を得る.
+ $\gamma$ に対して, 再び補題より $\rho$, $(g_u)_u$, $(h_u)_u$ を得る.
 
 
 
- 任意の $[0,1)$ の実数にたいして,
+ 任意の $[0,1)$ の実数に対して,
  $l^\mp_u \pm \frac{t}{\Lambda_u}$ がその実数と等しくなるような
  $u, \pm, t\in [0,1]$ が存在する.
- 関数 $g, h$ を $t \in [0,1]$, $y \in \R$ にたいして,
+ 関数 $g, h$ を $t \in [0,1]$, $y \in \R$ に対して,
  それぞれ $[0,1) \times [-1,1]$ の範囲と $[0,1)$ の範囲で下のように定義する.
 
 
@@ -299,7 +299,7 @@ $(\infty, 1)$ 回連続微分可能を $(\infty, k)$回連続微分可能に一�
  h \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right) 
   & = \frac{h_u(t)}{\Lambda_u}.
 \end{align}
- 任意の $y \in \R$ にたいして $g(1,y) = h(1) = 0$ と定義する.
+ 任意の $y \in \R$ に対して $g(1,y) = h(1) = 0$ と定義する.
 
 
 
@@ -320,7 +320,7 @@ $(\infty, 1)$ 回連続微分可能を $(\infty, k)$回連続微分可能に一�
 
 
 
- $g$ が $(\infty, k)$ 階連続的微分可能であることをしめす.
+ $g$ が $(\infty, k)$ 階連続的微分可能であることを示す.
  
  $g_u$ は $(\infty, k)$ 階連続的微分可能であるため,
  各区間においては $(\infty, k)$ 階連続的微分可能である.
@@ -358,14 +358,14 @@ $(\infty, 1)$ 回連続微分可能を $(\infty, k)$回連続微分可能に一�
  より $\D{i,j}g$ は第二変数について連続である.
 
  第一変数が $[0,1)$ の範囲にあるとき,
- つまり $l^\mp_u \pm t/\Lambda_u$ と表される範囲において連続であることをしめす.
+ つまり $l^\mp_u \pm t/\Lambda_u$ と表される範囲において連続であることを示す.
  $t = 1$ において $g_u$ と $-g_u$ が接続され,
  $t = 0$ において $g_u$ とつぎの文字 $u'$ の関数 $g_{u'}$ が接続されている.
  ここで $\D{i,0} g_u(0, y) = \D{i, 0} g_u(1, y) = 0$ より
  $\D{i,j} g_u(0, y) = \D{i,j} g_u(1, y) = 0$.
  よって  $\D{i,j} g(0, y) = \D{i,j} g(1, y) = 0$ なので $[0,1)$ で連続.
 
- 最後に第一変数が $1$ へ向かうとき発散しないことをしめす.
+ 最後に第一変数が $1$ へ向かうとき発散しないことを示す.
  \begin{align*}
   \left|\D{i, j}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
   \frac{y}{\Lambda_u}\right)\right|
@@ -381,7 +381,7 @@ $(\infty, 1)$ 回連続微分可能を $(\infty, k)$回連続微分可能に一�
  $\gamma$ のとり方により, $|u| \to \infty$ のとき 0 に収束する.
  よって  $\lim_{t \to 1-0}\D{i,j} g(t,y) = 0$.
  とくに $i=0$ のとき, $\lim_{t \to 1-0} g(t,y) = 0 = g(1, y)$ より 1 で連続.
- 以上により $g$ が $(\infty, k)$ 階連続的微分可能であることをしめした.
+ 以上により $g$ が $(\infty, k)$ 階連続的微分可能であることを示した.
 
 
 

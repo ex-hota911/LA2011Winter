@@ -4,8 +4,8 @@
 この節では定理 \ref{DifferentiableIsPspace},
 つまり$(\infty, 1)$階連続微分可能な関数の常微分方程式の解は
 \PSPACE 困難でありうることを証明する.
-証明の流れとして, まず補題 \ref{WeakFeedback} から補題 \ref{DifferentiableFamily} をしめしたあと,
-補題 \ref{DifferentiableFamily} から定理 \ref{DifferentiableIsPspace} をしめす.
+証明の流れとして, まず補題 \ref{WeakFeedback} から補題 \ref{DifferentiableFamily} を示したあと,
+補題 \ref{DifferentiableFamily} から定理 \ref{DifferentiableIsPspace} を示す.
 補題 \ref{DifferentiableFamily} では
 補題 \ref{WeakFeedback} の関数族$(G_u)_u, (H_u)_u$ を模倣する
 実関数族 $(g_u)_u, (h_u)_u$ の存在を述べている.
@@ -20,11 +20,11 @@ $(g_u)_u, (h_u)_u$ から求める $g, h$を構成する.
 任意の \PSPACE に含まれる言語 $L$ について, 
 その差分方程式が $L$ を認識する
 多項式段一様な関数族 $(G_u)_u$ が存在すること(補題 \ref{WeakFeedback})は
-河村の論文のなかで示されているが, その証明の概略をしめす.
+河村の論文のなかで示されているが, その証明の概略を示す.
 
 任意の $L$ ではなく \PSPACE 完全な言語である
 \textsf{QBF} を認識する $(G_u)_u$ を構成することにより,
-任意の $L$ を認識する多項式段一様な関数族 $(G_u)_u$ が存在することをしめす.
+任意の $L$ を認識する多項式段一様な関数族 $(G_u)_u$ が存在することを示す.
 ここで \textsf{QBF} とは,
 文字列 $u$ を $\psi = Q_1 x_1 \cdots Q_n x_n \phi(x_1, \dots, x_n)$ と解釈したとき 
 $u \in \textsf{QBF} \Leftrightarrow \psi = T$ によって定義される言語である. 
@@ -61,21 +61,21 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 
 \begin{lemma}
  \label{DifferentiableFamily}
- 任意の言語 $L \in $ \PSPACE にたいして, 
+ 任意の言語 $L \in $ \PSPACE に対して, 
  係数のみに $i$ を含む多項式 $\mu_i$ が存在して,
- 任意の多項式 $\gamma$ にたいして,
+ 任意の多項式 $\gamma$ に対して,
  多項式 $\rho$, 関数族 $(g_u)_u, (h_u)_u$ で, 
  $(g_u)_u$ は多項式時間計算可能であり,
- 各二進文字列 $u$ にたいして以下を満たすものが存在する.
+ 各二進文字列 $u$ に対して以下を満たすものが存在する.
  \begin{enumerate}
   \item $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$;
   \item $h_u$ は $g_u$ の常微分方程式 (\ref{eq:ode}) の解; 
   \item $g_u$ は $(\infty, 1)$ 階連続微分可能;
-  \item 任意の $i \in \N$, $y \in [-1,1]$ にたいして
+  \item 任意の $i \in \N$, $y \in [-1,1]$ に対して
 	\begin{equation*}
 	 \D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0 
 	\end{equation*}
-  \item 任意の $i \in \N$ にたいして
+  \item 任意の $i \in \N$ に対して
 	\begin{align*}
 	 |\D{i,1} g_u| &\leq 2^{\mu_i (|u|) - \gamma(|u|)}, &
 	 |\D{i,0} g_u| &\leq 2^{\mu_i (|u|) - \gamma(|u|)}
@@ -85,20 +85,20 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 \end{lemma}
 
  この補題より関数族 $(g_u)_u, (h_u)_U$ で $h_u$ は $g_u$ の常微分方程式の解であり,
- $h_u(1)$ に $L(u)$ の情報を持つものの存在がしめされる.
+ $h_u(1)$ に $L(u)$ の情報を持つものの存在が示される.
 
  条件 (iii) -- (v) はすべて $g$ が滑らかな関数とするために必要となる条件である.
  詳細については定理の証明の際に説明する.
  
 
  この補題の証明の基本的な流れを説明する.
- まず任意の言語 $L \in \PSPACE$ にたいし, 
+ まず任意の言語 $L \in \PSPACE$ に対し, 
  補題 \ref{WeakFeedback} を用いて $L$ を認識する差分方程式 $(G_u)_u$ 
  及びその解 $(H_u)_u$ を得る.
  そして各 $G_u, H_u$ から, その差分方程式の計算過程を模倣する
  $(\infty, 1)$階連続微分可能な $g_u \colon [0,1] \times [-1, 1] \to \R$ 
  とその常微分方程式の解 $h_u \colon [0,1] \to \R$ を構成する.
- また $(G_u)_u$ の一様性から $(g_u)_u$ の多項式時間計算可能性をしめす.
+ また $(G_u)_u$ の一様性から $(g_u)_u$ の多項式時間計算可能性を示す.
 
 
  ここまでの証明の流れは基本的に,河村によるリプシッツ連続な関数の常微分方程式の解が
@@ -125,7 +125,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
   離散初期値問題 $\left< d, p, q,(G_u)_u \right>$
   とその解 $(H_u)_u$ を得る.
   各ステップを $p(u)$ 個に分割することで, $G_u(i, T, Y) \not = 0$ を満たす
-  $i$ を各 $T$ にたいしてたかだか1つにすることができる. そのような $i$ のことを 
+  $i$ を各 $T$ に対してたかだか1つにすることができる. そのような $i$ のことを 
   $j_ul(T)$ と表現する. 任意の $i$ で $G_u(i, T, Y) = 0$ ならば $j_u(T)$ は
   任意の値を取るとする. 
   さらに以下を満たすとしても一般性を失わない.
@@ -152,12 +152,12 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
     \end{cases}
  \end{equation}
 
-  補題 \ref{SmoothFunction} の $f$ にたいして, 
- 自然数 $c_i$ を各 $i \in \N$ にたいして 
+  補題 \ref{SmoothFunction} の $f$ に対して, 
+ 自然数 $c_i$ を各 $i \in \N$ に対して 
   $|\D{i}f(x)| \le 2^{c_i}$ を満たす最小の自然数と定める.
  定数 $d' = \lceil \log (4d + 1) \rceil$, 
  $B = 2^{\poly \gamma + d'}$ とおき, 
- 各 $(t, y) \in [0,1] \times [-1, 1]$ にたいして,
+ 各 $(t, y) \in [0,1] \times [-1, 1]$ に対して,
  自然数 $N$, $\theta \in [0,1]$, 整数 $Y$, $\eta \in [-1/4, 3/4]$ を
  $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-j_u(T)}$ を満たすように
  定める.
@@ -340,7 +340,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 \ifnum \proc = 0
 \begin{proof}
  $L$ を \PSPACE 完全な言語とおく.
- \PSPACE 完全な言語 $L$ にたいして補題 \ref{DifferentiableFamily} を用いて,
+ \PSPACE 完全な言語 $L$ に対して補題 \ref{DifferentiableFamily} を用いて,
  まず多項式 $\mu_i$ をえる.
  $\mu_i$ は $i$ を係数部にのみ持つ多項式であるため,
  $\mu_i(k) = O(k^c)$ をみたす最小の定数 $c$ が存在する.
@@ -348,7 +348,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
   \lambda(k) &= 2k + 2,&
   \gamma(k) &= k^{c+1} + k \lambda(k)
  \end{align}
- とおき, 各 $u$ にたいして 
+ とおき, 各 $u$ に対して 
 \begin{align}
  \Lambda_u 
  &= 2^{\lambda(|u|)}, &
@@ -359,14 +359,14 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 \end{align}  
  とおく. ただし $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ は $u$ を二進数と
  して解釈した数.
- $\gamma$ にたいして, 再び補題より $\rho$, $(g_u)_u$, $(h_u)_u$ を得る.
+ $\gamma$ に対して, 再び補題より $\rho$, $(g_u)_u$, $(h_u)_u$ を得る.
 
 
 
- 任意の $[0,1)$ の実数にたいして,
+ 任意の $[0,1)$ の実数に対して,
  $l^\mp_u \pm \frac{t}{\Lambda_u}$ がその実数と等しくなるような
  $u, \pm, t\in [0,1]$ が存在する.
- 関数 $g, h$ を $t \in [0,1]$, $y \in \R$ にたいして,
+ 関数 $g, h$ を $t \in [0,1]$, $y \in \R$ に対して,
  それぞれ $[0,1) \times [-1,1]$ の範囲と $[0,1)$ の範囲で下のように定義する.
 
  \begin{align}
@@ -381,7 +381,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
   h \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right) 
   &= \frac{h_u(t)}{\Lambda_u}.
 \end{align}
- 任意の $y \in \R$ にたいして $g(1,y) = h(1) = 0$ と定義する.
+ 任意の $y \in \R$ に対して $g(1,y) = h(1) = 0$ と定義する.
 
 
 
@@ -399,8 +399,8 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 
 
 
- $g$ が $(\infty, 1)$ 階連続的微分可能であることをしめすため,
- まず $g$ が $(\infty, 0)$ 階連続的微分可能であることをしめす.
+ $g$ が $(\infty, 1)$ 階連続的微分可能であることを示すため,
+ まず $g$ が $(\infty, 0)$ 階連続的微分可能であることを示す.
  
  $g_u$ は $(\infty, 1)$ 階連続的微分可能であるため,
  各区間においては$(\infty, 1)$ 階連続的微分可能である.
@@ -435,12 +435,12 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  より $\D{i,0}g$ は第二変数について連続である.
 
  第一変数が $[0,1)$ の範囲にあるとき,
- つまり $l^\mp_u \pm t/\Lambda_u$ と表される範囲において連続であることをしめす.
+ つまり $l^\mp_u \pm t/\Lambda_u$ と表される範囲において連続であることを示す.
  $t = 1$ において $g_u$ と $-g_u$ が接続され,
  $t = 0$ において $g_u$ とつぎの文字 $u'$ の関数 $g_{u'}$ が接続されているが,
  $\D{i, 0} g_u(0, y) = \D{i, 0} g_u(1, y) = 0$ より連続に接続されている.
 
- 最後に第一変数が $1$ へ向かうとき発散しないことをしめす.
+ 最後に第一変数が $1$ へ向かうとき発散しないことを示す.
  \begin{align*}
   \left|\D{i, 0}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
   \frac{y}{\Lambda_u}\right)\right|
@@ -454,10 +454,10 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  式 (\ref{eq:sizeofderivative}) は 0 に収束する.
  よって  $\lim_{t \to 1-0}\D{i,0} g(t,y) = 0$.
  とくに $i=0$ のとき, $\lim_{t \to 1-0} g(t,y) = 0 = g(1, y)$ より 1 で連続.
- 以上により $g$ が $(\infty, 0)$ 階連続的微分可能であることをしめした.
+ 以上により $g$ が $(\infty, 0)$ 階連続的微分可能であることを示した.
  
 
- $g$ が $(\infty, 1)$ 階連続的微分可能であることをしめす.
+ $g$ が $(\infty, 1)$ 階連続的微分可能であることを示す.
  $(\infty, 0)$ 階連続的微分可能と同様に,
  各区間において, $(\infty, 1)$ 階連続的微分可能であるためそれぞれ導関数を求める.
  $t \in (0, 1)$ において
@@ -474,13 +474,13 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  $\D{0,1}g(t,-1) = \pm \Lambda_u \D{0,1}g_u(t,-1)$ であり,
  第二変数について連続.
  
- 第一変数について連続性をしめす.
+ 第一変数について連続性を示す.
  $[0,1)$ 区間において
  $t \in (0,1)$ ならば $\D{i,1}g_u$ が連続であるため $\D{i,1}g$ も連続.
  $g_u(0,y) = g_u(1,y) = 1$ より $\D{i,1} g_u(0, y) = \D{i, 1} g_u(1,y) = 0$
  なので $\D{i,1} g(0, y) = \D{i, 1} g(1,y) = 0$ のため $t = 0, 1$ においても連続.
 
- 最後に第一変数が $1$ へ向かうとき発散しないことをしめす.
+ 最後に第一変数が $1$ へ向かうとき発散しないことを示す.
  \begin{align*}
   \left|\D{i, 1}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
   \frac{y}{\Lambda_u}\right)\right|
@@ -490,7 +490,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  $\gamma$ のとり方により $|u| \to \infty$ のとき 
  $2^{(i+1)\lambda(|u|) + \mu_i(|u|) - \gamma(|u|)}$ は 0 へ収束する.
  よって  $\displaystyle \lim_{t \to 1-0}\D{i,0} g(t,y) = 0$.
- 以上により $g$ が $(\infty, 1)$ 階連続的微分可能であることをしめした.
+ 以上により $g$ が $(\infty, 1)$ 階連続的微分可能であることを示した.
 
 
 
