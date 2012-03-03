@@ -63,7 +63,7 @@ $\PSPACE$ 困難 (\ref{section: preliminaries}節で定義) でありうるこ�
   $g$ が Lipschitz 条件を満たす & 多項式領域計算可能
       &	\PSPACE 困難になりうる \cite{kawamura2010lipschitz}\\
   $g$ が $(0, 1)$ 回連続微分可能 & 多項式領域計算可能 & \parbox[t]{14zw}{\PSPACE 困難になりうる\\{}[本稿定理\ref{DifferentiableIsPspace}]} \\
-  $g$ が $(0, k)$ 回連続微分可能 & 多項式領域計算可能 & \parbox[t]{14zw}{\CH 困難たりうる\\{}[本稿定理\ref{KTimesIsPspace}]} \\
+  $g$ が $(0, k)$ 回連続微分可能 & 多項式領域計算可能 & \parbox[t]{14zw}{\CH 困難たりうる\\{}[本稿定理\ref{KTimesIsCH}]} \\
   $g$ が解析的 
   & 多項式時間計算可能 \cite{ko1988computing, kawamura2010complexity} 
   & ---
@@ -84,7 +84,7 @@ $\PSPACE$ 困難 (\ref{section: preliminaries}節で定義) でありうるこ�
  \end{theorem}
 
  \begin{theorem}
-  \label{KTimesIsPspace}
+  \label{KTimesIsCH}
   任意の自然数 $k \ge 2$ に対して, 
   多項式時間計算可能かつ $(\infty, k)$ 回連続微分可能な
   実関数 $g \colon [0,1] \times [-1,1] \to \R$ であって, 
@@ -98,7 +98,7 @@ $g \colon [0,1] \times [-1, 1] \to \R$ と書いたのは,
 定義域が有界閉領域のときにのみ定義するからである. 
 このため $h$ が区間 $[-1, 1]$ の外に値を取ることがあると
 方程式(\ref{eq:ode})が意味をなさなくなるが, 
-定理\ref{DifferentiableIsPspace}, \ref{KTimesIsPspace}において $h$ が
+定理\ref{DifferentiableIsPspace}, \ref{KTimesIsCH}において $h$ が
 解であるというのは, 
 任意の $t \in [0, 1]$ について $h (t) \in [-1, 1]$ が満たされることも含めて述べている.
 なお両定理とも Lipschitz 条件よりも強い仮定を置いているため, 
@@ -127,7 +127,7 @@ $g \colon [0,1] \times [-1, 1] \to \R$ と書いたのは,
  \end{collorary}
 
 
- また定理 \ref{KTimesIsPspace} において
+ また定理 \ref{KTimesIsCH} において
  任意の $k$ に対して $(\infty, k)$ 階微分可能な関数を考えているが,
  一つの関数が任意の $k$ に対して $k$ 階微分であることを求めているわけではない.
  つまり $g$ が無限回微分可能であると制限しているわけではない. 
