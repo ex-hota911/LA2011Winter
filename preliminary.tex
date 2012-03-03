@@ -15,6 +15,57 @@ $(i, j)$ 回連続微分可能であるとき,
 
 実関数 $f \colon A \to \R$ に対して $|f| = \sup_{x \in A} f(x)$ と書く.
 
+
+
+\subsection{計数階層}
+
+計数階層(Counting Hierarchy(\CH)) は
+Wagner によって定義された計算量クラスである\cite{wagner1986complexity}.
+多項式階層({\bf PH})が {\bf NP} と神託機械を用いて,
+\begin{align*}
+ \Sigma^p_0 
+ &= \P \\
+ \Sigma^p_{k+1}
+ &= \mathbf{NP}^{\Sigma^p_k}
+\end{align*}
+\[
+ \mathbf{PH} = \bigcup_k \Sigma^p_k
+\]
+のように定義されるのに対して,
+計数階層は多項式階層の {\bf NP} を {\bf PP} で置き換えたものと定義できる. つまり
+\begin{align*}
+ \C_0 \P  
+ &= \P \\
+ \C_{k+1} \P
+ &= \PP^{\C_k \P}
+\end{align*}
+\[
+ \CH = \bigcup_k \C_k \P
+\]
+
+ただし上記の特徴付けは Tor{\'a}n によるものである\cite{toran1991complexity}.
+もとの Wagner による定義では、 神託機械ではなくオペレーター \C を用いて定義している.
+$L \in \C \cdot \mathcal C$ とはある言語 $A \in \mathcal C$ が存在して,
+\[
+x \in L \Leftrightarrow
+ \Bigl| \{y \mid |y| \le p(|x|), \langle x, y \rangle \in A \}\Bigr|
+ \ge 2^{p(|x|)-1}
+\]
+と定義する.
+\begin{align*}
+ \C_0 \P
+ &= \P \\
+ \C_{k+1} \P
+ &= \C \cdot \C_k \P
+\end{align*}
+\[
+ \CH = \bigcup_k \C_k \P
+\]
+定理 \ref{KTimesIsPspace} の証明では後者の定義を用いて, 
+常微分方程式の解の \CH 困難性を示す.
+
+
+
 \subsection{実数の名}
  実数は有限な文字列に符号化できない. 
  そこで文字列から文字列への関数に符号化する.
@@ -31,6 +82,8 @@ $(i, j)$ 回連続微分可能であるとき,
 近似値を返す.
 以下では$\phi$ の値を二進数で表すことにし, 
 $\phi$ を文字列から文字列への関数として扱う. 
+
+
 
 \subsection{計算可能実関数, 多項式時間実関数}
 
@@ -102,6 +155,8 @@ $f _u (x)$ の名であることをいう.
   $\phi_f$, 多項式 $m_f$ が存在することと同値である.
   \end{itemize} 
 \end{lemma}
+
+
 
 \subsection{困難性}
 
