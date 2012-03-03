@@ -151,9 +151,9 @@ $f _u (x)$ の名であることをいう.
 
 \subsection{計数階層}
 
-計数階層(Counting Hierarchy(\CH)) は
-Wagner によって定義された計算量クラスである\cite{wagner1986complexity}.
-多項式階層({\bf PH})が {\bf NP} と神託機械を用いて,
+\emph{計数階層}(Counting Hierarchy(\CH)) とは
+Wagner によって導入された計算量クラスである\cite{wagner1986complexity}.
+多項式階層({\bf PH})が {\bf NP} の神託機械を用いて,
 \begin{align*}
  \Sigma^p_0 
  &= \P \\
@@ -163,7 +163,7 @@ Wagner によって定義された計算量クラスである\cite{wagner1986com
 \[
  \mathbf{PH} = \bigcup_k \Sigma^p_k
 \]
-のように定義されるのに対して,
+と定義されるのに対し,
 計数階層は多項式階層の {\bf NP} を {\bf PP} で置き換えたものと定義できる. つまり
 \begin{align*}
  \C_0 \P  
@@ -172,18 +172,21 @@ Wagner によって定義された計算量クラスである\cite{wagner1986com
  &= \PP^{\C_k \P}
 \end{align*}
 \[
- \CH = \bigcup_k \C_k \P
+ \CH = \bigcup_k \C_k \P.
 \]
 
-ただし上記の特徴付けは Tor{\'a}n によるものである\cite{toran1991complexity}.
-もとの Wagner による定義では、 神託機械ではなくオペレーター \C を用いて定義している.
-$L \in \C \cdot \mathcal C$ とはある言語 $A \in \mathcal C$ が存在して,
+上記の特徴付けは Tor{\'a}n によるものである\cite{toran1991complexity}.
+Wagner によるオリジナルの定義では神託機械ではなく,
+計算量クラスに対するオペレーター \C を用いて定義している.
+
+以下を満たす言語 $L$ のクラスを $\C \cdot \mathcal C$ と表記する.
+ある言語 $A \in \mathcal C$ と多項式 $p$ が存在して,
 \[
 x \in L \Leftrightarrow
  \Bigl| \{y \mid |y| \le p(|x|), \langle x, y \rangle \in A \}\Bigr|
- \ge 2^{p(|x|)-1}
+ \ge 2^{p(|x|)-1}.
 \]
-と定義する.
+計数階層をオペレーター \C を \P へ定数回施して得られるクラスの合併と定義する.
 \begin{align*}
  \C_0 \P
  &= \P \\
@@ -191,8 +194,14 @@ x \in L \Leftrightarrow
  &= \C \cdot \C_k \P
 \end{align*}
 \[
- \CH = \bigcup_k \C_k \P
+ \CH = \bigcup_k \C_k \P.
 \]
+
+どちらの \CH の定義を用いても、 任意の$\mathcal C \in \CH$について,
+\[
+ \PP^\mathcal C = \C \cdot \mathcal C.
+\]
+が成り立つため, 2つの定義は等しい.
 定理 \ref{KTimesIsPspace} の証明では後者の定義を用いて, 
 常微分方程式の解の \CH 困難性を示す.
 
