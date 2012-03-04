@@ -9,25 +9,21 @@
 
 \bibliographystyle{plain}
 
-\def\ifempty#1{%
-\edef\ContentsOfList{\the#1}%
-\edef\CompareTo{}%
-\ifx\ContentsOfList\CompareTo}
 \newcommand{\R}{\mathbf R}
 \newcommand{\N}{\mathbf N}
 \newcommand{\Q}{\mathbf Q}
 \newcommand{\Z}{\mathbf Z}
 \newcommand{\T}{\{0\}^*}
 \newcommand{\D}[1]{\mathcal D^{(#1)}}
-\renewcommand{\P}{{\bf P}}
-\newcommand{\PP}{{\bf PP}}
-\newcommand{\PSPACE}{{\bf PSPACE}}
-\newcommand{\CH}{{\bf CH}}
+\newcommand{\classP}{\mathbf{P}}
+\newcommand{\classPSPACE}{\mathbf{PSPACE}}
+\newcommand{\classNP}{\mathbf{NP}}
+\newcommand{\classPH}{\mathbf{PH}}
+\newcommand{\classPP}{\mathbf{PP}}
+\newcommand{\classCH}{\mathbf{CH}}
 \newcommand{\C}{{\bf C}}
 \newcommand{\DIVPpoly}{\text{\bf DIVP(poly)}}
 \newcommand{\DIVPlog}{\text{\bf DIVP(log)}}
-
-
 
 \theoremstyle{definition}
 \newtheorem{theorem}{定理}[section]
@@ -68,32 +64,7 @@
 \tag{\theequation}
 }}
 
-
-%%% テンプレート
-
-\def\kouenbangou{15} %%% 数字をご自分の講演番号に書き換えて下さい．
-
-\def\ps@LAheadings{
-
-\def\@oddhead{}
-\def\@evenhead{}
-\def\@evenfoot{\hfil \kouenbangou\,--\,\thepage\hfill}
-\def\@oddfoot{\hfil \kouenbangou\,--\,\thepage\hfil}
-
-}
-
-\def\ps@LAtitleheadings{
-
-\def\@oddhead{2011年度冬のLAシンポジウム\,[\kouenbangou]\hfil}
-\def\@evenhead{}
-\def\@evenfoot{\hfil \kouenbangou\,--\,\thepage\hfill}
-\def\@oddfoot{\hfil \kouenbangou\,--\,\thepage\hfil}
-
-}
-
 \makeatother
-
-\pagestyle{LAheadings}
 
 \title{滑らかな常微分方程式の計算量}
 
@@ -108,11 +79,11 @@
 \and
 カルステン・レースニク\thanks{Carsten R\"osnick, ダルムシュタット工科大学}
 }
-\date{平成24年1月31日}
+\和暦
 
 \begin{document}
 
-\maketitle\thispagestyle{LAtitleheadings}
+\maketitle
 
 %%% 以下に，予稿の本文を記述して下さい．
 

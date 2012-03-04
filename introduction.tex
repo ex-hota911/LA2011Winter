@@ -44,7 +44,7 @@ $g$ に他に何の制限も設けない場合, 解 $h$ (一般に一意でな�
 この表では下に向うにつれて左列の条件が強まっている. 
 Lipschitz 条件とは解 $h$ が一意であるための十分条件であり, 
 これが満たされるときには, 解 $h$ は多項式領域計算可能であり, 
-$\PSPACE$ 困難 (\ref{section: preliminaries}節で定義) でありうることがわかっている. 
+$\classPSPACE$ 困難 (\ref{section: preliminaries}節で定義) でありうることがわかっている. 
 つまり上界と下界が一致しているといえる (詳しくは河村 \cite{kawamura2010lipschitz}).
 一方で $g$ が解析的であるとき, 解 $h$ も解析的となり, 
 このとき $h$ は多項式時間計算可能である.
@@ -61,9 +61,9 @@ $\PSPACE$ 困難 (\ref{section: preliminaries}節で定義) でありうるこ�
   $h$ が $g$ の唯一解 & 計算可能 \cite{coddington1955theory}
   & 任意の時間がかかりうる \cite{ko1983computational, miller1970recursive} \\
   $g$ が Lipschitz 条件を満たす & 多項式領域計算可能
-      &	\PSPACE 困難になりうる \cite{kawamura2010lipschitz}\\
-  $g$ が $(0, 1)$ 回連続微分可能 & 多項式領域計算可能 & \parbox[t]{14zw}{\PSPACE 困難になりうる\\{}[本稿定理\ref{DifferentiableIsPspace}]} \\
-  $g$ が $(0, k)$ 回連続微分可能 & 多項式領域計算可能 & \parbox[t]{14zw}{\CH 困難たりうる\\{}[本稿定理\ref{KTimesIsPspace}]} \\
+      &	$\classPSPACE$ 困難になりうる \cite{kawamura2010lipschitz}\\
+  $g$ が $(0, 1)$ 回連続微分可能 & 多項式領域計算可能 & \parbox[t]{14zw}{$\classPSPACE$ 困難になりうる\\{}[本稿定理\ref{DifferentiableIsPspace}]} \\
+  $g$ が $(0, k)$ 回連続微分可能 & 多項式領域計算可能 & \parbox[t]{14zw}{$\classCH$ 困難たりうる\\{}[本稿定理\ref{KTimesIsPspace}]} \\
   $g$ が解析的 
   & 多項式時間計算可能 \cite{ko1988computing, kawamura2010complexity} 
   & ---
@@ -80,7 +80,7 @@ $\PSPACE$ 困難 (\ref{section: preliminaries}節で定義) でありうるこ�
   多項式時間計算可能かつ $(\infty, 1)$ 回連続微分可能な
   実関数 $g \colon [0,1] \times [-1,1] \to \R$ であって, 
   常微分方程式(\ref{eq:ode})が
-  $\PSPACE$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
+  $\classPSPACE$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
  \end{theorem}
 
  \begin{theorem}
@@ -89,7 +89,7 @@ $\PSPACE$ 困難 (\ref{section: preliminaries}節で定義) でありうるこ�
   多項式時間計算可能かつ $(\infty, k)$ 回連続微分可能な
   実関数 $g \colon [0,1] \times [-1,1] \to \R$ であって, 
   常微分方程式(\ref{eq:ode})が
-  $\CH$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
+  $\classCH$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
  \end{theorem}
 
 ここで $g \colon [0,1] \times \R \to \R$ でなく
@@ -115,7 +115,7 @@ $g \colon [0,1] \times [-1, 1] \to \R$ と書いたのは,
   多項式時間計算可能かつ $1$ 回連続微分可能な
   実関数 $g \colon [0,1] \times [-1,1] \to \R$ であって, 
   常微分方程式(\ref{eq:ode})が
-  $\PSPACE$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
+  $\classPSPACE$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
  \end{collorary}
 
  \begin{collorary}
@@ -123,7 +123,7 @@ $g \colon [0,1] \times [-1, 1] \to \R$ と書いたのは,
   多項式時間計算可能かつ $k$ 回連続微分可能な
   実関数 $g \colon [0,1] \times [-1,1] \to \R$ であって, 
   常微分方程式(\ref{eq:ode})が
-  $\CH$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
+  $\classCH$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
  \end{collorary}
 
 

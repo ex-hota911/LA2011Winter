@@ -19,28 +19,28 @@ $(i, j)$ 回連続微分可能であるとき,
 
 \subsection{計数階層}
 
-計数階層(Counting Hierarchy(\CH)) は
+計数階層(Counting Hierarchy) $\classCH$は
 Wagner によって定義された計算量クラスである\cite{wagner1986complexity}.
-多項式階層({\bf PH})が {\bf NP} と神託機械を用いて,
+多項式階層$\classPH$が$\classNP$と神託機械を用いて,
 \begin{align*}
  \Sigma^p_0 
- &= \P \\
+ &= \classP \\
  \Sigma^p_{k+1}
- &= \mathbf{NP}^{\Sigma^p_k}
+ &= \classNP ^{\Sigma^p_k}
 \end{align*}
 \[
- \mathbf{PH} = \bigcup_k \Sigma^p_k
+ \classPH = \bigcup_k \Sigma^p_k
 \]
 のように定義されるのに対して,
-計数階層は多項式階層の {\bf NP} を {\bf PP} で置き換えたものと定義できる. つまり
+計数階層は多項式階層の $\classNP$ を $\classPP$ で置き換えたものと定義できる. つまり
 \begin{align*}
- \C_0 \P  
- &= \P \\
- \C_{k+1} \P
- &= \PP^{\C_k \P}
+ \C_0 \classP  
+ &= \classP \\
+ \C_{k+1} \classP
+ &= \classPP^{\C_k \classP}
 \end{align*}
 \[
- \CH = \bigcup_k \C_k \P
+ \classCH = \bigcup_k \C_k \classP
 \]
 
 ただし上記の特徴付けは Tor{\'a}n によるものである\cite{toran1991complexity}.
@@ -53,16 +53,16 @@ x \in L \Leftrightarrow
 \]
 と定義する.
 \begin{align*}
- \C_0 \P
- &= \P \\
- \C_{k+1} \P
- &= \C \cdot \C_k \P
+ \C_0 \classP
+ &= \classP \\
+ \C_{k+1} \classP
+ &= \C \cdot \C_k \classP
 \end{align*}
 \[
- \CH = \bigcup_k \C_k \P
+ \classCH = \bigcup_k \C_k \classP
 \]
 定理 \ref{KTimesIsPspace} の証明では後者の定義を用いて, 
-常微分方程式の解の \CH 困難性を示す.
+常微分方程式の解の $\classCH$ 困難性を示す.
 
 
 
