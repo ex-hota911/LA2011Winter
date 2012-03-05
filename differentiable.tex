@@ -3,29 +3,29 @@
 
 この節では定理 \ref{DifferentiableIsPspace},
 つまり$(\infty, 1)$階連続微分可能な関数の常微分方程式の解は
-\PSPACE 困難でありうることを示す.
+$\classPSPACE$ 困難でありうることを示す.
 \ifnum \proc = 1
 ただし紙面の都合上, 詳細な証明は省き, 証明の概略を述べるに止める.
 \fi
 
 証明の流れとして, まず補題 \ref{WeakFeedback} によりの
-$L \in \PSPACE$ を認識する関数族$(G_u)_u, (H_u)_u$ を得る.
+$L \in \classPSPACE$ を認識する関数族$(G_u)_u, (H_u)_u$ を得る.
 そして $(G_u)_u, (H_u)_u$ を模倣する
 実関数族 $(g_u)_u, (h_u)_u$ を構成し(補題 \ref{DifferentiableFamily}),
 $(g_u)_u, (h_u)_u$ から定理 \ref{DifferentiableIsPspace} で求める $g, h$を構成する.
 
 
-\subsection{多項式段一様関数族の差分方程式と\PSPACE}
+\subsection{多項式段一様関数族の差分方程式と$\classPSPACE$}
 
 
-任意の言語 $L \in \PSPACE$ について, 
+任意の言語 $L \in \classPSPACE$ について, 
 その差分方程式が $L$ を認識する
 多項式段一様な関数族 $(G_u)_u$ が存在すること(補題 \ref{WeakFeedback})は
 河村によって示されているがその証明の概略を示す.
 
-\PSPACE 完全な言語である
+$\classPSPACE$ 完全な言語である
 \textsf{QBF} を認識する $(G_u)_u$ を構成することにより,
-任意の $L \in \PSPACE$ を認識する多項式段一様な関数族 $(G_u)_u$ が存在することを示す.
+任意の $L \in \classPSPACE$ を認識する多項式段一様な関数族 $(G_u)_u$ が存在することを示す.
 ここで \textsf{QBF} とは,
 文字列 $u$ を $\psi = Q_1 x_1 \cdots Q_n x_n \phi(x_1, \dots, x_n)$ と解釈したとき 
 $u \in \textsf{QBF} \Leftrightarrow \psi = T$ によって定義される言語である. 
@@ -53,7 +53,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 
 \begin{lemma}
  \label{DifferentiableFamily}
- 任意の言語 $L \in $ \PSPACE に対して, 
+ 任意の言語 $L \in \classPSPACE$ に対して, 
  係数のみに $i$ を含む多項式 $\mu_i$ が存在して,
  任意の多項式 $\gamma$ に対して,
  多項式 $\rho$, 関数族 $(g_u)_u, (h_u)_u$ で, 
@@ -84,7 +84,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  
 
  この補題の証明の基本的な流れを説明する.
- 任意の言語 $L \in \PSPACE$ に対し, 
+ 任意の言語 $L \in \classPSPACE$ に対し, 
  補題 \ref{WeakFeedback} を用いて $L$ を認識する $(G_u)_u$ 
  及びその差分方程式の解 $(H_u)_u$ を得る.
  各 $G_u, H_u$ を模倣する
@@ -302,9 +302,9 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 
 \subsection{定理 \ref{DifferentiableIsPspace} の証明}
 
- \PSPACE 完全な言語 {\sf QBF} 補題 \ref{DifferentiableFamily} から得られる
+ $\classPSPACE$ 完全な言語 {\sf QBF} 補題 \ref{DifferentiableFamily} から得られる
  $(g_u)_u$ と $(h_u)_u$ から滑らかな $g$ と
- その常微分方程式の解で \PSPACE 困難な $h$ を構成する.
+ その常微分方程式の解で $\classPSPACE$ 困難な $h$ を構成する.
  各 $h_u(1)$ には $L(u)$ の情報が含まれるため,
  すべての $h_u$ を一つの関数 $h$ に埋め込みたい.
  そこで [0,1] を無限の区間に分割し, $h$ の各文字列 $u$ に対応する区間
@@ -326,8 +326,8 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  
 
 \begin{proof}
- $L$ を \PSPACE 完全な言語とおく.
- \PSPACE 完全な言語 $L$ に対して補題 \ref{DifferentiableFamily} を用いて,
+ $L$ を $\classPSPACE$ 完全な言語とおく.
+ $\classPSPACE$ 完全な言語 $L$ に対して補題 \ref{DifferentiableFamily} を用いて,
  まず多項式 $\mu_i$ をえる.
  $\mu_i$ は $i$ を係数部にのみ持つ多項式であるため,
  $\mu_i(k) = O(k^c)$ をみたす最小の定数 $c$ が存在する.
@@ -506,7 +506,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
   S(u, 0^n) &= \lfloor 2^nc_u \rfloor \text{を表す文字列,} \\
   T(u) &= 0^{\lambda(|u|)+\rho(|u|)}
  \end{align}
- $L$ は \PSPACE 完全であるため, $h$ は \PSPACE 困難.
+ $L$ は $\classPSPACE$ 完全であるため, $h$ は $\classPSPACE$ 困難.
 \end{proof}
 
 

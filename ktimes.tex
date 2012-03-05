@@ -9,9 +9,9 @@
 \fi
 
 
-\subsection{\CH 困難な言語}
+\subsection{$\classCH$ 困難な言語}
 
-各 $\C_n \P$ に対して完全問題が存在する.
+各 $\C_n \classP$ に対して完全問題が存在する.
 言語 $\C_n B_{be}$ を以下のように定義する.
 \[
  \langle F(\vec x_1, \dots, \vec x_n), m_1, \dots, m_n \rangle \in \C_n B_{be}
@@ -20,11 +20,11 @@
 \]
 
 \begin{lemma}[\cite{wagner1986complexity}]
- $\C_n B_{be}$ は $\C_n\P$ にたいして対数領域多対一完全.
+ $\C_n B_{be}$ は $\C_n\classP$ にたいして対数領域多対一完全.
 \end{lemma}
 
 \begin{lemma}
- $\C_n B_{be}$ は $\C_n\P$ にたいして多項式時間完全.
+ $\C_n B_{be}$ は $\C_n\classP$ にたいして多項式時間完全.
  \footnote{証明で使うとき、補題の強さはこの程度で十分}
 \end{lemma}
 
@@ -36,11 +36,11 @@
 \]
 
 \begin{lemma}
- $\C_{\log} B_{be}$ は \CH 困難.
+ $\C_{\log} B_{be}$ は $\classCH$ 困難.
 \end{lemma}
 
 \begin{proof}
- $\forall A \in \CH$, $\exists n \in \N$, $\exists f \in \mathbf{FP}$
+ $\forall A \in \classCH$, $\exists n \in \N$, $\exists f \in \mathbf{FP}$
  \begin{align}
   u \in A 
   & \longleftrightarrow f(u) \in \C_n B_{be}\\
@@ -55,9 +55,9 @@
 
 
 \begin{collorary}
- $\CH  \subseteq \bf DIVP(const)$.
+ $\classCH  \subseteq \bf DIVP(const)$.
 \end{collorary}
-$\CH = \bf DIVP(const)$ だが本稿では証明はしない.
+$\classCH = \bf DIVP(const)$ だが本稿では証明はしない.
 
 
 \subsection{対数段差分方程式を模倣する関数族}
@@ -90,12 +90,12 @@ $\CH = \bf DIVP(const)$ だが本稿では証明はしない.
 
 
 補題 \ref{DifferentiableFamily} とくらべて補題 \ref{KTimesFamily} は,
-\PSPACE が \DIVPlog に置き換わり, $(\infty, 1)$ 回連続微分可能が 
+$\classPSPACE$ が \DIVPlog に置き換わり, $(\infty, 1)$ 回連続微分可能が 
 $(\infty, k)$回連続微分可能に一般化されている.
 本質的な違いは条件 (\ref{enum:inftyk}) によって, $h$ に対するフィードバックの大きさ,
 つまり $g(t,y)$ に対する $y$ の値の影響がかなり制限されてしまう点にある.
 それにより, 模倣できる差分方程式が多項式段ではなく対数段に制限され,
-\PSPACE 困難が \DIVPlog 困難へと置き換わる.
+$\classPSPACE$ 困難が \DIVPlog 困難へと置き換わる.
 
 
 
@@ -280,7 +280,7 @@ $(\infty, k)$回連続微分可能に一般化されている.
 
 定理 \ref{DifferentiableIsPspace} と定理 \ref{KTimesIsCH} の関係は
 補題 \ref{DifferentiableFamily} と補題 \ref{KTimesFamily} の関係と等しい.
-つまり \PSPACE が \DIVPlog に置き換わり,
+つまり $\classPSPACE$ が \DIVPlog に置き換わり,
 $(\infty, 1)$ 回連続微分可能が $(\infty, k)$回連続微分可能に一般化されている.
 よって定理 \ref{DifferentiableIsPspace} の証明から
 定理 \ref{KTimesIsCH} の証明が構成できる.
