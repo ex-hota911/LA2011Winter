@@ -14,18 +14,17 @@
 各 $\C_n \classP$ に対して完全問題が存在する.
 言語 $\C_n B_{be}$ を以下のように定義する.
 \[
- \langle F(\vec x_1, \dots, \vec x_n), m_1, \dots, m_n \rangle \in \C_n B_{be}
+ \langle \phi(x_1, \dots, x_n), m_1, \dots, m_n \rangle \in \C_n B_{be}
  \longleftrightarrow
- \C^{m_1}_{\vec \alpha_1} \cdots \C^{m_n}_{\vec \alpha_n} F(\vec \alpha_1, \dots, \vec \alpha_n) 
+ \C^{m_1}{\alpha_1} \cdots \C^{m_n}{\alpha_n} \phi(\alpha_1, \dots, \alpha_n) 
 \]
 
-\begin{lemma}[\cite{wagner1986complexity}]
- $\C_n B_{be}$ は $\C_n\classP$ にたいして対数領域多対一完全.
-\end{lemma}
+%\begin{lemma}[\cite{wagner1986complexity}]
+% $\C_n B_{be}$ は $\C_n\classP$ にたいして対数領域多対一完全.
+%\end{lemma}
 
-\begin{lemma}
+\begin{lemma}[\cite{wagner1986complexity}]
  $\C_n B_{be}$ は $\C_n\classP$ にたいして多項式時間完全.
- \footnote{証明で使うとき、補題の強さはこの程度で十分}
 \end{lemma}
 
 言語 $\C_{\log} B_{be}$ を以下のように定義する.
@@ -50,9 +49,69 @@
 \end{proof}
 
 \begin{lemma}
- $\C_{\log} B_{be} \in \DIVPlog$.
+ $\C_{\log} B_{be}$ を認識する対数段一様関数族 $(G_u)_u$ が存在する.
 \end{lemma}
 
+\begin{proof}
+ 関数族 $(G_u)_u$, $(H_u)_u$, 関数 $p$, 多項式 $q,r$ を構成する.
+ $u  = \langle 0^{2^n}, 
+ \langle \phi(x_1, \dots, x_n), m_1, \dots, m_n \rangle \rangle$
+ と仮定する.
+ \begin{align}
+  l_i &= |x_i| &
+  s_i &= \sum^i_{j=1}l_j + 2i
+ \end{align}
+ $T \in \N$ に対し, $T_i$ を $T$ の2進表記における $i$ 桁目, 
+ $T_{[i,j]} = T_{j-1} T_{j-2} \cdots T_{i+1} T_{i}$ と表記する.
+ 任意の $i = 0, \dots, n$ と $n-i$ 個の文字列 
+ $\beta_{i+1} \in \{0,1\}^{l_{i+1}}, \dots, \beta_n \in \{0,1\}^{l_n}$ 
+ について部分式
+ $\C^{m_{i}}{\alpha_i} \cdots \C^{m_1}{\alpha_1}
+ \phi(\alpha_1, \dots, \alpha_i, \beta_{i+1}, \dots, \beta_n)$
+ の真偽値を $\phi_i(\alpha_{i+1}, \dots, \alpha_n)$ と表記する.
+ ここで $\phi_0 = \phi$, $\phi_n() = L(u)$
+ 
+ $C^m \colon \N \to \{0,1\}$ を
+ $C^m(Y) = 1 \leftrightarrow Y \ge m $ と定義する.
+ 一段目つまり $i=0$ のとき,
+ \begin{equation}
+  G_u(0,T,Y) = (-1)^{T_{s_1}} \cdot 
+   \phi(T_{[1,S_1]} \oplus T_{s_1}, T_{[s_1+1,s_2]} \oplus T_{s_2},
+   \dots, T_{[s_{n-1}+1,s_n]} \oplus T_{s_n})
+ \end{equation}
+ ただし $\oplus$ は排他的論理和であり, 文字列と文字の排他的論理和を,
+ \[
+  A_i \cdots A_2 A_1 \oplus B
+ = A_i \! \oplus \! B \cdots A_2 \! \oplus \! B 
+ \ A_1 \! \oplus \! B
+ \]
+ と定義する.
+ $i \ge 1$ について, $T_{[1,s_i]} = 10 \cdots 0$ ならば
+ \begin{equation}
+  G_u(i,T,Y) = (-1)^{T_{s_{i+1}}} C^{m_i}(Y) 
+ \end{equation}
+ $T_{[1,s_i]} \not= 10 \cdots 0$ ならば $G_u(i,T,Y) = 0$ と定義する.
+
+
+ 任意の $i, T$ について,
+ $0 \le H_u(i,T) \le 2^{l_i}$ が成りたつこと,
+ および $T_{[1,s_i]} = 10 \cdots 0$ ならば
+ \begin{equation} \label{eq:subformula}
+  G_u(i,T,H_u(i,T)) = (-1)^{T_{s_{i+1}}} 
+   \phi_i(T_{[s_i+1, s_{i+1}]} \oplus T_{s_{i+1}}, 
+          \dots, T_{[s_{n-1}+1, s_n]} \oplus T_{s_n})
+ \end{equation}
+ を満たすことを示す.
+ 上記が成り立つとき,
+ $i=n$ において $G_u(n, 2^{2s_n}, H_u(n,2^{2n})) = \phi_n() = L(u)$
+ とって $H_u(n+1, 2^{2s_n}+1) = L(u)$.
+ ここで $n+1 \le \log(|0^{2^n}|) + 1 = O(\log(|u|))$,
+ $2^{2s_n}+1 \le 2^{2s_n+1}$ より $H_u(p(|u|), 2^{q(|u|)}) = L(u)$
+ となる $p,q$ が存在する.
+
+ 
+ hogehoge
+ \end{proof}
 
 \begin{collorary}
  $\classCH  \subseteq \bf DIVP(const)$.
