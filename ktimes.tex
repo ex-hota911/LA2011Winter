@@ -9,6 +9,56 @@
 \fi
 
 
+\subsection{\CH 困難な言語}
+
+各 $\C_n \P$ に対して完全問題が存在する.
+言語 $\C_n B_{be}$ を以下のように定義する.
+\[
+ \langle F(\vec x_1, \dots, \vec x_n), m_1, \dots, m_n \rangle \in \C_n B_{be}
+ \longleftrightarrow
+ \C^{m_1}_{\vec \alpha_1} \cdots \C^{m_n}_{\vec \alpha_n} F(\vec \alpha_1, \dots, \vec \alpha_n) 
+\]
+
+\begin{lemma}[\cite{wagner1986complexity}]
+ $\C_n B_{be}$ は $\C_n\P$ にたいして対数領域多対一完全.
+\end{lemma}
+
+\begin{lemma}
+ $\C_n B_{be}$ は $\C_n\P$ にたいして多項式時間完全.
+ \footnote{証明で使うとき、補題の強さはこの程度で十分}
+\end{lemma}
+
+言語 $\C_{\log} B_{be}$ を以下のように定義する.
+\[
+ \langle 0^{2^n}, u \rangle \in \C_{\log} B_{be}
+ \longleftrightarrow
+ u \in \C_n B_{be}
+\]
+
+\begin{lemma}
+ $\C_{\log} B_{be}$ は \CH 困難.
+\end{lemma}
+
+\begin{proof}
+ $\forall A \in \CH$, $\exists n \in \N$, $\exists f \in \mathbf{FP}$
+ \begin{align}
+  u \in A 
+  & \longleftrightarrow f(u) \in \C_n B_{be}\\
+  & \longleftrightarrow \langle 0^{2^n}, f(u) \rangle \in \C_{\log} B_{be}
+ \end{align}
+ $n$ は定数であるため $\langle 0^{2^n}, f(\cdot) \rangle \in \mathbf{FP}$.
+\end{proof}
+
+\begin{lemma}
+ $\C_{\log} B_{be} \in \DIVPlog$.
+\end{lemma}
+
+
+\begin{collorary}
+ $\CH  \subseteq \bf DIVP(const)$.
+\end{collorary}
+$\CH = \bf DIVP(const)$ だが本稿では証明はしない.
+
 
 \subsection{対数段差分方程式を模倣する関数族}
 
