@@ -134,4 +134,39 @@ $g \colon [0,1] \times [-1, 1] \to \R$ と書いたのは,
  無限回微分可能な関数に対する常微分方程式の計算量は今後の課題である.
 
 
+\subsection{演算子の計算量}
 
+定理\ref{DifferentiableIsPspace}, 
+\ref{KTimesIsPspace}はいづれも
+関数$g$を多項式時間計算可能と仮定した上で
+解$h$の計算量について述べている. 
+しかし微分方程式を「解く」困難さ, 
+すなわち与えられた$g$から$h$を求める演算子の計算量は
+如何程であろうか. 
+この問に答えるには先ず
+実関数を実関数へ写す演算子の計算量を
+定義することを要する. 
+実数の名を実数の名へ変換する機械を以て実関数の計算を定義したのと同じように, 
+実関数の名を実関数の名へ変換することになる. 
+ほげほげ……
+
+\newcommand{\OpDiffIVP}{\mathit{ODE}}
+\newcommand{\deltabox}{\delta _\square}
+\newcommand{\classtwofont}[1]{\text{\bfseries \sffamily \upshape #1}}
+\newcommand{\classFPSPACEtwo}{\classtwofont{FPSPACE}}
+\newcommand{\classCHtwo}{\classtwofont{CH}}
+\newcommand{\redW}{\leq _{\mathrm W}}
+\newcommand{\redSW}{\leq _{\mathrm{sW}}}
+
+\begin{theorem}
+$\OpDiffIVP _1$は$(\deltabox, \deltabox)$-$\classFPSPACEtwo$-$\redW$完全. 
+\end{theorem}
+
+\begin{theorem}
+$\OpDiffIVP _k$は$(\deltabox, \deltabox)$-$\classFPSPACEtwo$に属し, 
+$(\deltabox, \deltabox)$-$\classCHtwo$-$\redW$困難. 
+\end{theorem}
+
+\begin{theorem}
+$\OpDiffIVP _\infty$は$\classFPSPACEtwo$-$\redSW$完全. 
+\end{theorem}
