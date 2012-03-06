@@ -17,55 +17,6 @@ $(i, j)$ 回連続微分可能であるとき,
 
 
 
-\subsection{計数階層}
-
-計数階層(Counting Hierarchy) $\classCH$は
-Wagner によって定義された計算量クラスである\cite{wagner1986complexity}.
-多項式階層$\classPH$が$\classNP$と神託機械を用いて,
-\begin{align*}
- \Sigma^p_0 
- &= \classP \\
- \Sigma^p_{k+1}
- &= \classNP ^{\Sigma^p_k}
-\end{align*}
-\[
- \classPH = \bigcup_k \Sigma^p_k
-\]
-のように定義されるのに対して,
-計数階層は多項式階層の $\classNP$ を $\classPP$ で置き換えたものと定義できる. つまり
-\begin{align*}
- \C_0 \classP  
- &= \classP \\
- \C_{k+1} \classP
- &= \classPP^{\C_k \classP}
-\end{align*}
-\[
- \classCH = \bigcup_k \C_k \classP
-\]
-
-ただし上記の特徴付けは Tor{\'a}n によるものである\cite{toran1991complexity}.
-もとの Wagner による定義では、 神託機械ではなくオペレーター $\C$ を用いて定義している.
-$L \in \C \cdot \mathcal C$ とはある言語 $A \in \mathcal C$ が存在して,
-\[
-x \in L \Leftrightarrow
- \Bigl| \{y \mid |y| \le p(|x|), \langle x, y \rangle \in A \}\Bigr|
- \ge 2^{p(|x|)-1}
-\]
-と定義する.
-\begin{align*}
- \C_0 \classP
- &= \classP \\
- \C_{k+1} \classP
- &= \C \cdot \C_k \classP
-\end{align*}
-\[
- \classCH = \bigcup_k \C_k \classP
-\]
-定理 \ref{KTimesIsPspace} の証明では後者の定義を用いて, 
-常微分方程式の解の $\classCH$ 困難性を示す.
-
-
-
 \subsection{実数の名}
  実数は有限な文字列に符号化できない. 
  そこで文字列から文字列への関数に符号化する.
@@ -223,34 +174,9 @@ Wagner によって導入された計算量クラスである\cite{wagner1986com
 \[
  \classCH = \bigcup_k \C_k \classP.
 \]
+上記の特徴付けは Tor{\'a}n によるものであり,
+Wagner によるオリジナルの定義とは異なる\cite{toran1991complexity}.
 
-上記の特徴付けは Tor{\'a}n によるものである\cite{toran1991complexity}.
-Wagner によるオリジナルの定義では神託機械ではなく,
-計算量クラスに対するオペレーター $\C$ を用いて定義している.
-
-以下を満たす言語 $L$ のクラスを $\C \cdot \mathcal C$ と表記する.
-ある言語 $A \in \mathcal C$ と多項式 $p$ が存在して,
-\[
-x \in L \Leftrightarrow
- \Bigl| \{y \mid |y| \le p(|x|), \langle x, y \rangle \in A \}\Bigr|
- \ge 2^{p(|x|)-1}.
-\]
-計数階層をオペレーター $\C$ を $\classP$ へ定数回施して得られるクラスの合併と定義する.
-\begin{align*}
- \C_0 \classP
- &= \classP \\
- \C_{k+1} \classP
- &= \C \cdot \C_k \classP
-\end{align*}
-\[
- \classCH = \bigcup_k \C_k \classP.
-\]
-
-どちらの $\classCH$ の定義を用いても、 任意の$\mathcal C \in \classCH$について,
-\[
- \classPP^\mathcal C = \C \cdot \mathcal C.
-\]
-が成り立つため, 2つの定義は等しい.
-定理 \ref{KTimesIsCH} の証明では後者の定義を用いて, 
-常微分方程式の解の $\classCH$ 困難性を示す.
-
+$\mathbf{PH} \subseteq \classCH \subseteq \classPSPACE$ だが,
+$\mathbf{PH} \not = \classCH$, $\classCH \not = \classPSPACE$
+か否かは未解決である.
