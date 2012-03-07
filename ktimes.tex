@@ -12,12 +12,15 @@ $\classCH$ 困難でありうることを示す.
 \subsection{$\classCH$ 困難な言語}
 
 Wagner によって $\classCH$ の各階層 $\C_n \classP$ に対してそれぞれ完全問題が存在することが示されている\cite{wagner1986complexity}.
-量化子 $\C$ を自然数 $m$, 論理式 $A(x_1, \dots, x_l)$ について以下のように定義する.
+量化子 $\C$ を自然数 $m$, 論理式 $A(x_1, \dots, x_l)$, 
+$l$ 個の論理変数の組 $\alpha$ について以下のように定義する.
 \begin{equation}
  \C^m \alpha A(\alpha) 
   \longleftrightarrow 
   \Bigl|\{\alpha \in \{0,1\}^l \mid A(\alpha) = 1\}\Bigr| \ge m.
 \end{equation}
+$\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ の
+一般化と言える.
 言語 $\C_n B_{be}$ を以下のように定義する.
 \begin{equation}
  \langle \phi(x_1, \dots, x_n), m_1, \dots, m_n \rangle \in \C_n B_{be}
@@ -25,11 +28,11 @@ Wagner によって $\classCH$ の各階層 $\C_n \classP$ に対してそれぞ
  \C^{m_1}{\alpha_1} \cdots \C^{m_n}{\alpha_n} \phi(\alpha_1, \dots, \alpha_n) 
 \end{equation}
 ただし $\langle y_1, \dots, y_i \rangle$ は組み合わせ関数,
-それぞれ $x_i$, $\alpha_i$ は $l_i$ 個の論理変数の集合とする.
+それぞれ $x_i$, $\alpha_i$ は $l_i$ 個の論理変数の組とする.
 
 
-\begin{lemma}[\cite{wagner1986complexity}]
- $\C_n B_{be}$ は $\C_n\classP$ にたいして多項式時間完全.
+\begin{lemma}[\cite{wagner1986complexity}] \label{lemma:CnP-complete}
+ $\C_n B_{be}$ は $\C_n\classP$ 完全.
 \end{lemma}
 
 
@@ -45,13 +48,16 @@ Wagner によって $\classCH$ の各階層 $\C_n \classP$ に対してそれぞ
 \end{lemma}
 
 \begin{proof}
- $\forall A \in \classCH$, $\exists n \in \N$, $\exists f \in \mathbf{FP}$
+ 任意の $\classCH$ の言語 $A$ はある階層 $\C_n \classP$ に属する. 
+ 補題 \ref{lemma:CnP-complete} より任意の $u \in \{0,1\}^*$ について
+ $u \in A \leftrightarrow f(u) \in \C_n B_{be}$ 
+ を満たす多項式時間関数 $f$ が存在する.
  \begin{align}
   u \in A 
-  & \longleftrightarrow f(u) \in \C_n B_{be}\\
   & \longleftrightarrow \langle 0^{2^n}, f(u) \rangle \in \C_{\log} B_{be}
  \end{align}
- $n$ は定数であるため $\langle 0^{2^n}, f(\cdot) \rangle \in \mathbf{FP}$.
+ $n$ は定数であるため $\langle 0^{2^n}, f(\cdot) \rangle$ は多項式時間関数.
+ よって $A$ は $\C_n B_{be}$ に多項式時間還元可能.
 \end{proof}
 
 \begin{lemma}
@@ -63,11 +69,10 @@ Wagner によって $\classCH$ の各階層 $\C_n \classP$ に対してそれぞ
  $u  = \langle 0^{2^n}, 
  \langle \phi(x_1, \dots, x_n), m_1, \dots, m_n \rangle \rangle$
  と仮定する.
- \begin{align}
-  l_i &= |x_i| &
-  s_i &= \sum^i_{j=1}l_j + 2i
- \end{align}
  
+ $L = C_{\log} B_{be}$,
+ $l_i = |x_i|$,
+ $s_i = \sum^i_{j=1}l_j + 2i$  と表記する.
  関数 $C^m \colon \N \to \{0,1\}$ を
  \begin{equation}
   C^m(Y) 
@@ -82,7 +87,6 @@ Wagner によって $\classCH$ の各階層 $\C_n \classP$ に対してそれぞ
  $\C^{m_{i}}{\alpha_i} \cdots \C^{m_1}{\alpha_1}
  \phi(\alpha_1, \dots, \alpha_i, \beta_{i+1}, \dots, \beta_n)$
  の真偽値を $\phi_i(\beta_{i+1}, \dots, \beta_n)$ と表記する.
- ここで
  \begin{align}
   \phi_0 &= \phi 
   \\ \label{eq:phi-step}
@@ -96,23 +100,22 @@ Wagner によって $\classCH$ の各階層 $\C_n \classP$ に対してそれぞ
  $T_{[i,j]} = T_{j-1} T_{j-2} \cdots T_{i+1} T_{i}$ と表記する.
 
 
- 一段目つまり $i=0$ のとき,
+ $G_u$ を $(i, T, Y) \in [n+1] \times [2^{s_n}+1] \times [2^{|u|}]$ の範囲で
+ を以下のように定義する. 一段目つまり $i=0$ ならば
  \begin{equation}
   G_u(0,T,Y) = 
-   (-1)^{T_{s_1}}\phi(T_{[1,S_1]}, T_{[s_1+1,s_2]},
+   (-1)^{T_{s_1}}\phi(T_{[1,s_1]}, T_{[s_1+1,s_2]},
     \dots, T_{[s_{n-1}+1,s_n]}) 
  \end{equation}
- と定義する.
- $i \ge 1$ について, 
+ $i \ge 1$ ならば
  \begin{equation} \label{eq:def-Gu:case0}
   G_u(i,T,Y) = 
    \begin{cases}
     (-1)^{T_{s_{i+1}}} C^{m_i}(Y) 
     & (T_{[1,s_i]} = 10 \cdots 0) \\
-    0 & (\text{othewise})
+    0 & (\text{othewise}).
    \end{cases} 
  \end{equation}
- と定義する.
 
 
  任意の $i \in [n+1]$, $T \in [2^{s_n}+1]$ について,
@@ -125,10 +128,15 @@ Wagner によって $\classCH$ の各階層 $\C_n \classP$ に対してそれぞ
  を満たすことを $i$ についての帰納法により示す.
  上記が成り立つとき,
  $i=n$, $T=2^{s_n}$ において $G_u(n, 2^{s_n}, H_u(n,2^{s_n})) = \phi_n() = L(u)$
- とって $H_u(n+1, 2^{s_n}+1) = L(u)$.
- ここで $n+1 \le \log(|0^{2^n}|) + 1 = O(\log(|u|))$,
- $2^{s_n}+1 \le 2^{s_n+1}$ より $H_u(p(|u|), 2^{q(|u|)}) = L(u)$
- となる $p,q$ が存在する.
+ よって $H_u(n+1, 2^{s_n}+1) = L(u)$.
+ ここで 
+ \begin{gather}
+  n+1 \le \log(|0^{2^n}|) + 1 = O(\log(|u|)) \\
+  2^{s_n}+1 \le 2^{s_n+1} \le 2^{|u|}
+ \end{gather}
+ より $p(u) = n+1, q(x) = r(x) = x$ とおき $G_u$ を
+ $[p(u)] \times [2^{q(|u|)}] \times [2^{r(|u|)}]$ の範囲に拡大すると
+ $H_u(p(u), 2^{q(|u|)}) = L(u)$.
 
  $i=0$ のとき, 式(\ref{eq:def-Gu:case0})より成り立つ.
  $i=j$ のとき, 成り立つと仮定する, $Y = H_u(i+1, T)$ とおくと

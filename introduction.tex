@@ -91,15 +91,11 @@ $g \colon [0,1] \times [-1, 1] \to \R$ と書いたのは,
 定義域が有界閉領域のときにのみ定義するからである. 
 このため $h$ が区間 $[-1, 1]$ の外に値を取ることがあると
 方程式(\ref{eq:ode})が意味をなさなくなるが, 
-定理\ref{DifferentiableIsPspace}, \ref{KTimesIsPspace}において $h$ が
+定理\ref{DifferentiableIsPspace}, \ref{KTimesIsCH}において $h$ が
 解であるというのは, 
 任意の $t \in [0, 1]$ について $h (t) \in [-1, 1]$ が満たされることも含めて述べている.
 なお両定理とも Lipschitz 条件よりも強い仮定を置いているため, 
 そのような $h$ は $g$ に対して, 存在すれば唯一である. 
-
- $\DIVPlog$ とは本稿 \ref{section: preliminaries} 節で定義する計算量クラスであり,
- $\DIVPlog \subseteq \classPSPACE$ であるが, $\DIVPlog = \classPSPACE$ か否かは
- わからない. 
 
  二変数関数 $g$ が $(i, j)$ 階連続微分可能であるとは,
  第一変数について $i$ 回, 第二変数について $j$ 回微分可能であり,
@@ -122,7 +118,7 @@ $g \colon [0,1] \times [-1, 1] \to \R$ と書いたのは,
   $\classCH$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
  \end{collorary}
 
- また定理 \ref{KTimesIsPspace} において
+ また定理 \ref{KTimesIsCH} において
  任意の $k$ に対して $(\infty, k)$ 階微分可能な関数を考えているが,
  一つの関数が任意の $k$ に対して $k$ 階微分であることを求めているわけではない.
  つまり $g$ が無限回微分可能であると制限しているわけではない. 
@@ -132,7 +128,7 @@ $g \colon [0,1] \times [-1, 1] \to \R$ と書いたのは,
 \subsection{演算子の計算量}
 
 定理\ref{DifferentiableIsPspace}, 
-\ref{KTimesIsPspace}はいづれも
+\ref{KTimesIsCH}はいづれも
 関数$g$を多項式時間計算可能と仮定した上で
 解$h$の計算量について述べている. 
 しかし微分方程式を「解く」困難さ, 
