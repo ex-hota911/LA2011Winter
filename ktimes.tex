@@ -159,8 +159,8 @@ Wagner によって $\classCH$ の各階層 $\C_n \classP$ に対してそれぞ
 
  \begin{lemma}
   \label{KTimesFamily}
-  任意の自然数 $k \ge 2$,
-  任意の言語 $L \in \DIVPlog$ に対して,
+  任意の自然数 $k \ge 2$ に対して,
+  $\classCH$ 困難な言語 $L$,
   係数のみに $i$ を含む多項式 $\mu_i$ が存在して,
   任意の多項式 $\gamma$ に対して,
   関数 $\rho \colon \N \to \N$, 関数族 $g_u, h_u$ で,
@@ -185,17 +185,17 @@ Wagner によって $\classCH$ の各階層 $\C_n \classP$ に対してそれぞ
 
 
 補題 \ref{DifferentiableFamily} とくらべて補題 \ref{KTimesFamily} は,
-$\classPSPACE$ が \DIVPlog に置き換わり, $(\infty, 1)$ 回連続微分可能が 
+$\classPSPACE$ が $\classCH$ に置き換わり, $(\infty, 1)$ 回連続微分可能が 
 $(\infty, k)$回連続微分可能に一般化されている.
 本質的な違いは条件 (\ref{enum:inftyk}) によって, $h$ に対するフィードバックの大きさ,
 つまり $g(t,y)$ に対する $y$ の値の影響がかなり制限されてしまう点にある.
 それにより, 模倣できる差分方程式が多項式段ではなく対数段に制限され,
-$\classPSPACE$ 困難が \DIVPlog 困難へと置き換わる.
+$\classPSPACE$ 困難が $\classCH$ 困難へと置き換わる.
 
 
 
  \begin{proof}
-  $L \in \DIVPlog$ を認識する
+  $\classCH$ 困難な問題 $\C_{\log} B_{be}$ を認識する
   対数深さ離散初期値問題 $\left< d, p, q,(G_u)_u \right>$
   とその解 $(H_u)_u$ を得る. さらに以下のように仮定する.
   \begin{equation}
@@ -375,7 +375,7 @@ $\classPSPACE$ 困難が \DIVPlog 困難へと置き換わる.
 
 定理 \ref{DifferentiableIsPspace} と定理 \ref{KTimesIsCH} の関係は
 補題 \ref{DifferentiableFamily} と補題 \ref{KTimesFamily} の関係と等しい.
-つまり $\classPSPACE$ が \DIVPlog に置き換わり,
+つまり $\classPSPACE$ が $\classCH$ に置き換わり,
 $(\infty, 1)$ 回連続微分可能が $(\infty, k)$回連続微分可能に一般化されている.
 よって定理 \ref{DifferentiableIsPspace} の証明から
 定理 \ref{KTimesIsCH} の証明が構成できる.
