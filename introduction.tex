@@ -56,7 +56,6 @@ $\classPSPACE$ 困難 (\ref{section: preliminaries}節で定義) でありうる
   $g$ が Lipschitz 条件を満たす & 多項式領域計算可能
       &	$\classPSPACE$ 困難になりうる \cite{kawamura2010lipschitz}\\
   $g$ が $(\infty, 1)$ 回連続微分可能 & 多項式領域計算可能 & \parbox[t]{14zw}{$\classPSPACE$ 困難になりうる\\{}[本稿定理\ref{DifferentiableIsPspace}]} \\
-  $g$ が $(\infty, k)$ 回連続微分可能 & 多項式領域計算可能 & \parbox[t]{14zw}{$\classCH$ 困難たりうる\\{}[本稿定理\ref{KTimesIsCH}]} \\
   $g$ が解析的 
   & 多項式時間計算可能 \cite{ko1988computing, kawamura2010complexity} 
   & ---
@@ -76,15 +75,6 @@ $\classPSPACE$ 困難 (\ref{section: preliminaries}節で定義) でありうる
   $\classPSPACE$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
  \end{theorem}
 
- \begin{theorem}
-  \label{KTimesIsCH}
-  任意の自然数 $k \ge 2$ に対して, 
-  多項式時間計算可能かつ $(\infty, k)$ 回連続微分可能な
-  実関数 $g \colon [0,1] \times [-1,1] \to \R$ であって, 
-  常微分方程式(\ref{eq:ode})が
-  $\classCH$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
- \end{theorem}
-
 ここで $g \colon [0,1] \times \R \to \R$ でなく
 $g \colon [0,1] \times [-1, 1] \to \R$ と書いたのは, 
 本稿では実関数の多項式時間計算可能性を, 
@@ -94,7 +84,7 @@ $g \colon [0,1] \times [-1, 1] \to \R$ と書いたのは,
 定理\ref{DifferentiableIsPspace}, \ref{KTimesIsCH}において $h$ が
 解であるというのは, 
 任意の $t \in [0, 1]$ について $h (t) \in [-1, 1]$ が満たされることも含めて述べている.
-なお両定理とも Lipschitz 条件よりも強い仮定を置いているため, 
+Lipschitz 条件よりも強い仮定を置いているため, 
 そのような $h$ は $g$ に対して, 存在すれば唯一である. 
 
  二変数関数 $g$ が $(i, j)$ 階連続微分可能であるとは,
@@ -110,55 +100,4 @@ $g \colon [0,1] \times [-1, 1] \to \R$ と書いたのは,
   $\classPSPACE$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
  \end{collorary}
 
- \begin{collorary}
-  任意の自然数 $k \ge 2$ に対して, 
-  多項式時間計算可能かつ $k$ 回連続微分可能な
-  実関数 $g \colon [0,1] \times [-1,1] \to \R$ であって, 
-  常微分方程式(\ref{eq:ode})が
-  $\classCH$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
- \end{collorary}
-
- また定理 \ref{KTimesIsCH} において
- 任意の $k$ に対して $(\infty, k)$ 階微分可能な関数を考えているが,
- 一つの関数が任意の $k$ に対して $k$ 階微分であることを求めているわけではない.
- つまり $g$ が無限回微分可能であると制限しているわけではない. 
- 無限回微分可能な関数に対する常微分方程式の計算量は今後の課題である.
-
-
-\subsection{演算子の計算量}
-
-定理\ref{DifferentiableIsPspace}, 
-\ref{KTimesIsCH}はいづれも
-関数$g$を多項式時間計算可能と仮定した上で
-解$h$の計算量について述べている. 
-しかし微分方程式を「解く」困難さ, 
-すなわち与えられた$g$から$h$を求める演算子の計算量は
-如何程であろうか. 
-この問に答えるには先ず
-実関数を実関数へ写す演算子の計算量を
-定義することを要する. 
-実数の名を実数の名へ変換する機械を以て実関数の計算を定義したのと同じように, 
-実関数の名を実関数の名へ変換することになる. 
-ほげほげ……
-
-\newcommand{\OpDiffIVP}{\mathit{ODE}}
-\newcommand{\deltabox}{\delta _\square}
-\newcommand{\classtwofont}[1]{\text{\bfseries \sffamily \upshape #1}}
-\newcommand{\classFPSPACEtwo}{\classtwofont{FPSPACE}}
-\newcommand{\classCHtwo}{\classtwofont{CH}}
-\newcommand{\redW}{\leq _{\mathrm W}}
-\newcommand{\redSW}{\leq _{\mathrm{sW}}}
-
-\begin{theorem}
-$\OpDiffIVP _1$は$(\deltabox, \deltabox)$-$\classFPSPACEtwo$-$\redW$完全. 
-\end{theorem}
-
-\begin{theorem}
-$\OpDiffIVP _k$は$(\deltabox, \deltabox)$-$\classFPSPACEtwo$に属し, 
-$(\deltabox, \deltabox)$-$\classCHtwo$-$\redW$困難. 
-\end{theorem}
-
-\begin{theorem}
-$\OpDiffIVP _\infty$は$\classFPSPACEtwo$-$\redSW$完全. 
-\end{theorem}
 
