@@ -70,6 +70,37 @@ $G_u$ の段数がさらに $|u|$ の多項式で抑えられるとき,
  \end{lemma}
 
 
+\subsection{多項式段一様関数族の差分方程式と$\classPSPACE$}
+
+
+任意の言語 $L \in \classPSPACE$ について, 
+その差分方程式が $L$ を認識する
+多項式段一様な関数族 $(G_u)_u$ が存在すること(補題 \ref{WeakFeedback})は
+河村によって示されているがその証明の概略を示す.
+
+$\classPSPACE$ 完全な言語である
+\textsf{QBF} を認識する $(G_u)_u$ を構成することにより,
+任意の $L \in \classPSPACE$ を認識する多項式段一様な関数族 $(G_u)_u$ が存在することを示す.
+ここで \textsf{QBF} とは,
+文字列 $u$ を $\psi = Q_1 x_1 \cdots Q_n x_n \phi(x_1, \dots, x_n)$ と解釈したとき 
+$u \in \textsf{QBF} \Leftrightarrow \psi = T$ によって定義される言語である. 
+ただし$Q_i$ は$\exists$ または $\forall$,  
+$\phi(x_1, \dots, x_n)$ は $x_i$ 以外の変数を含まない論理式とする. 
+
+論理式 $\psi = Q_1 x_1 \cdots Q_n x_n \phi(x_1, \dots, x_n)$ の値を
+$\vee, \wedge$によってラベル付された二分木によって計算することを考える. 
+量化子$Q_1 x_1$ を除き $x_1$ を $T$ と $F$ に置き換えた式をそれぞれ
+$\psi_T = Q_2 x_2 \cdots Q_n x_n \phi(T, x_2, \dots, x_n)$,
+$\psi_F = Q_2 x_2 \cdots Q_n x_n \phi(F, x_2, \dots, x_n)$ と置くと
+$Q_1=\forall$ ならば $\psi = \psi_T \wedge \psi_F$, 
+$Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
+つまり変数の1つ少ない2つの論理式と量化子によってもとの論理式の値も決まる.
+これを再帰的に繰り返すことで $\psi$ は計算可能であり, 
+それは深さ $n$ の二分木を葉から根へ値を定めていくことと同じである.
+この過程は二分木の深さが段数に, 幅が列数に対応する形で
+多項式段一様な関数による差分方程式で模倣可能であるため,
+\textsf{QBF} を認識する多項式段一様関数の差分方程式が存在する.
+
 
 \subsection{多項式段差分方程式を模倣する関数族}
 
