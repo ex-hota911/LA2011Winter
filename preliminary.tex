@@ -93,13 +93,15 @@ $f _u (x)$ の名であることをいう.
   \label{lem:type1representation}
   実関数 $f\colon [0,1] \to \R$ に対して,
   $\phi_f\colon (\Q \cap [0, 1]) \times \T \to \Q$, $m_f\colon \N \to \N$は
-  \begin{align}
-   |\phi_f(d, 0^n) - f(d)| \le 2^{-n} 
-   &\qquad (d \in (\Q \cap [0,1]), \quad n \in \N)\\
-   |x-y| \le 2^{-p_f(m)} \Rightarrow |f(x) - f(y)| \le 2^{-m}
-   &\qquad (x, y \in [0, 1], \quad m \in \N)
-  \end{align}
- を満たす関数とする.
+  任意の $d \in (\Q \cap [0,1]), \quad n \in \N$ について,
+  \begin{equation}
+   |\phi_f(d, 0^n) - f(d)| \le 2^{-n} \\
+  \end{equation}
+  任意の $x, y \in [0, 1], \quad m \in \N$ について
+  \begin{equation}
+   |x-y| \le 2^{-p_f(m)} \Rightarrow |f(x) - f(y)| \le 2^{-m} 
+  \end{equation}
+  を満たす関数とする.
   \begin{itemize}
    \item $f$ が計算可能であることは, 計算可能な $\phi_f, m_f$ が存在することと同値である. 
    \item $f$ が多項式時間計算可能であることは, 多項式時間計算可能な 
