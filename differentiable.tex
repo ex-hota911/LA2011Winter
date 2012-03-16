@@ -2,13 +2,13 @@
 \label{section:differentiable}
 
 この節では定理 \ref{DifferentiableIsPspace},
-つまり$(\infty, 1)$回連続微分可能な関数の常微分方程式の解は
+つまり$(\infty, 1)$回連続微分可能な関数の常微分方程式の解が
 $\classPSPACE$ 困難でありうることを示す.
 \ifnum \proc = 1
 ただし紙面の都合上, 詳細な証明は省き, 証明の概略を述べるに止める.
 \fi
 
-証明の流れとして, まず補題 \ref{WeakFeedback} により任意の言語
+証明の流れとして, まず補題 \ref{WeakFeedback} により任意の言語\ 
 $L \in \classPSPACE$ を認識する関数族$(G_u)_u, (H_u)_u$ を得る.
 そして $(G_u)_u, (H_u)_u$ を模倣する
 実関数族 $(g_u)_u, (h_u)_u$ を構成し(補題 \ref{DifferentiableFamily}),
@@ -71,27 +71,24 @@ $G_u$ の段数がさらに $|u|$ の多項式, 対数で抑えられるとき,
  \begin{lemma}[補題 4.7 \cite{kawamura2010lipschitz}]
   \label{WeakFeedback}
   任意の言語 $L \in \classPSPACE$ に対して,
-  その言語を認識する多項式段一様な関数族 $(G_u)_u$ が存在する.
+  その言語を認識する多項式段の一様な関数族 $(G_u)_u$ が存在する.
  \end{lemma}
 
  $\classCH \subseteq \DIVPlog \subseteq \DIVPpoly = \classPSPACE$ であるが, 
  $\classCH = \DIVPlog$, $\DIVPlog = \classPSPACE$ か否かは未解決である.
 
-\subsection{多項式段一様関数族の差分方程式と$\classPSPACE$}
+\subsection{多項式段一様関数族と$\classPSPACE$}
 
 
-任意の言語 $L \in \classPSPACE$ について, 
-その差分方程式が $L$ を認識する
-多項式段一様な関数族 $(G_u)_u$ が存在すること(補題 \ref{WeakFeedback})は
+補題\ref{WeakFeedback}は
 河村によって示されているがその証明の概略を示す.
-
 $\classPSPACE$ 完全な言語である
 \textsf{QBF} を認識する $(G_u)_u$ を構成することにより,
 任意の $L \in \classPSPACE$ を認識する多項式段一様な関数族 $(G_u)_u$ が存在することを示す.
 ここで \textsf{QBF} とは,
 文字列 $u$ を $\psi = Q_1 x_1 \cdots Q_n x_n \phi(x_1, \dots, x_n)$ と解釈したとき 
 $u \in \textsf{QBF} \Leftrightarrow \psi = T$ によって定義される言語である. 
-ただし$Q_i$ は$\exists$ または $\forall$,  
+ただし$Q_i$ は$\exists$ または $\forall$であり,  
 $\phi(x_1, \dots, x_n)$ は $x_i$ 以外の変数を含まない論理式とする. 
 
 論理式 $\psi = Q_1 x_1 \cdots Q_n x_n \phi(x_1, \dots, x_n)$ の値を
@@ -106,7 +103,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 それは深さ $n$ の二分木を葉から根へ値を定めていくことと同じである.
 この過程は二分木の深さが段数に, 幅が列数に対応する形で
 多項式段一様な関数による差分方程式で模倣可能であるため,
-\textsf{QBF} を認識する多項式段一様関数の差分方程式が存在する.
+\textsf{QBF} を認識する多項式段一様関数族が存在する.
 
 
 
@@ -122,7 +119,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  $(g_u)_u$ は多項式時間計算可能であり,
  各文字列 $u$ に対して以下を満たすものが存在する.
  \begin{enumerate}
-  \item $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$;
+  \item $g_u\colon [0,1] \times [-1,1]\to \R$, $h_u\colon [0,1] \to [-1,1]$;
   \item $h_u$ は $g_u$ の常微分方程式 (\ref{eq:ode}) の解; 
   \item $g_u$ は $(\infty, 1)$ 回連続微分可能;
   \item 任意の $i \in \N$, $y \in [-1,1]$ に対して
@@ -163,7 +160,8 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 
  \begin{lemma}[補題 3.6. \cite{ko1991complexity}]
   \label{SmoothFunction}
-  以下を満たす多項式時間無限回微分可能実関数 $f \colon [0,1] \to \R$ が存在する.
+  以下を満たす多項式時間計算可能で無限回微分可能な
+  実関数 $f \colon [0,1] \to \R$ が存在する.
   \begin{enumerate}
    \item $f(0) = 0, \quad f(1) = 1$;
    \item 任意の $n \ge 1$ で $f^{(n)}(0) = f^{(n)}(1) = 0$;
