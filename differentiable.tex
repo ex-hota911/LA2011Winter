@@ -126,12 +126,12 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
   \item $g_u$ は $(\infty, 1)$ 階連続微分可能;
   \item 任意の $i \in \N$, $y \in [-1,1]$ に対して
 	\begin{equation*}
-	 \D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0;
+	 \D ^{(i, 0)} g_u(0,y) = \D ^{(i, 0)} g_u(1,y) = 0;
 	\end{equation*}
   \item \label{enum:infty1}
 	任意の $i \in \N$, $j \in \{0,1\}$ に対して
 	\begin{equation*}
-	 |\D{i,j} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)};
+	 |\D ^{(i,j)} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)};
 	\end{equation*}
   \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
  \end{enumerate}
@@ -382,7 +382,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 
  リプシッツ連続条件の場合と異なる点は, $g_u$ を構成する時点で
  $(\infty, 1)$ 階連続微分可能にするために,
- $|\D{i,0} g_u|, |\D{i,0} g_u|$ の大きさを制限する点である
+ $|\D ^{(i, 0)} g_u|, |\D ^{(i, 0)} g_u|$ の大きさを制限する点である
  (補題 \ref{DifferentiableFamily} の (\ref{enum:infty1})).
  
 
