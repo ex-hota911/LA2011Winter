@@ -1,8 +1,8 @@
-\section{1回連続微分可能関数と常微分方程式}
+\section{連続微分可能関数と常微分方程式}
 \label{section:differentiable}
 
 この節では定理 \ref{DifferentiableIsPspace},
-つまり$(\infty, 1)$階連続微分可能な関数の常微分方程式の解は
+つまり$(\infty, 1)$回連続微分可能な関数の常微分方程式の解は
 $\classPSPACE$ 困難でありうることを示す.
 \ifnum \proc = 1
 ただし紙面の都合上, 詳細な証明は省き, 証明の概略を述べるに止める.
@@ -124,7 +124,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  \begin{enumerate}
   \item $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$;
   \item $h_u$ は $g_u$ の常微分方程式 (\ref{eq:ode}) の解; 
-  \item $g_u$ は $(\infty, 1)$ 階連続微分可能;
+  \item $g_u$ は $(\infty, 1)$ 回連続微分可能;
   \item 任意の $i \in \N$, $y \in [-1,1]$ に対して
 	\begin{equation*}
 	 \D ^{(i, 0)} g_u(0,y) = \D ^{(i, 0)} g_u(1,y) = 0;
@@ -383,7 +383,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  各文字列 $u$ に対応する区間に $g_u$ を縮小して埋め込む.
 
  Lipschitz条件の場合と異なる点は, $g_u$ を構成する時点で
- $(\infty, 1)$ 階連続微分可能にするために,
+ $(\infty, 1)$ 回連続微分可能にするために,
  $|\D ^{(i, 0)} g_u|, |\D ^{(i, 0)} g_u|$ の大きさを制限する点である
  (補題 \ref{DifferentiableFamily} の (\ref{enum:infty1})).
  
