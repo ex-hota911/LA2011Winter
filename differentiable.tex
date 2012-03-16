@@ -28,11 +28,13 @@ $[n] = \{0, \dots , n-1\}$ と表記する.
 関数 $H \colon [P + 1] \times [Q+1] \to [R]$ が
 任意の $i \in [P],\ T \in [Q]$ について以下を満たすとき,
 $H$ を $G$ の \emph{差分方程式} の解と呼ぶ.
-\begin{gather}
-   H(i, 0) = H(0, T) = 0 
+\begin{align}
+ &H(i, 0) = H(0, T) = 0 
 \\
-   H(i + 1, T + 1) = H(i+1, T) + G(i, T, H(i, T))  \label{eq:divp}
-\end{gather}
+ &H(i + 1, T + 1) \notag
+ \\
+ & \quad \quad = H(i+1, T) + G(i, T, H(i, T))  \label{eq:divp}
+\end{align}
 $P, Q, R$ をそれぞれ\emph{段数}, \emph{列数}, \emph{欄の大きさ}と呼ぶ.
 $G$ と $H$ が常微分方程式の $g$ と $h$ に対応し,
 $H(i, 0) = 0$ が $h(0) = 0$ に,

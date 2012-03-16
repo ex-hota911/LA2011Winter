@@ -53,7 +53,7 @@ force: $(EFILE).tex $(SRC) $(REF)
 
 $(FILE).pdf: $(EFILE).dvi
 	$(DVIPDF) -o $(FILE).pdf $(EFILE).dvi
-$(EFILE).dvi: $(EFILE).aux $(EFILE).bbl
+$(EFILE).dvi: $(EFILE).aux #$(EFILE).bbl
 	(while $(REFGREP) $(EFILE).log; do $(TEX) $(EFILE); done)
 $(EFILE).aux: $(EFILE).tex $(SRC)
 	$(TEX) $(EFILE)
