@@ -3,16 +3,16 @@
 
 この節では定理 \ref{DifferentiableIsPspace},
 つまり$(\infty, 1)$回連続微分可能な関数の常微分方程式の解が
-$\classPSPACE$ 困難でありうることを示す.
+$\classPSPACE$ 困難になりうることを示す.
 \ifnum \proc = 1
 ただし紙面の都合上, 詳細な証明は省き, 証明の概略を述べるに止める.
 \fi
 
-証明の流れとして, まず補題 \ref{WeakFeedback} により任意の言語\ 
+証明の流れは, まず補題 \ref{WeakFeedback} により任意の言語\
 $L \in \classPSPACE$ を認識する関数族$(G_u)_u, (H_u)_u$ を得る.
-そして $(G_u)_u, (H_u)_u$ を模倣する
-実関数族 $(g_u)_u, (h_u)_u$ を構成し(補題 \ref{DifferentiableFamily}),
-$(g_u)_u, (h_u)_u$ から定理 \ref{DifferentiableIsPspace} で求める $g, h$を構成する.
+そして 補題\ref{DifferentiableFamily} では $(G_u)_u, (H_u)_u$ を模倣する
+実関数族 $(g_u)_u, (h_u)_u$ を構成し,
+それらから定理 \ref{DifferentiableIsPspace} で求める $g, h$を構成する.
 
 
 \subsection{差分方程式}
@@ -40,8 +40,8 @@ $H(i, 0) = 0$ が $h(0) = 0$ に,
 が $h'(t) = g(t, h(t))$ と対応する.
 
 以下では文字列 $u$ ごとに差分方程式 $G _u$ を一つ定めた族 $(G _u) _u$ を考える. 
-言語 $L$ がこの族 $(G_u)_u$ によって認識されるとは,
 各 $u$ に対して $G_u$ の段数と列数, 解をそれぞれ $P_u, Q_u, H_u$ としたとき,
+言語 $L$ がこの族 $(G_u)_u$ によって認識されるとは,
 $H_u(P_u, Q_u) = L(u)$ を満たすこととする(表 \ref{fig:divp}).
 ここで言語 $L \subseteq \{0, 1\} ^*$ は
 関数 $L \colon \{0, 1\} ^* \to \{0, 1\}$ と同一視し, 
@@ -69,18 +69,13 @@ $G_u$ の段数がさらに $|u|$ の多項式で抑えられるとき,
   その言語を認識する多項式段の一様な関数族 $(G_u)_u$ が存在する.
  \end{lemma}
 
-
-\subsection{多項式段一様関数族と$\classPSPACE$}
-
-
-補題\ref{WeakFeedback}は
-河村によって示されているがその証明の概略を示す.
+証明の概略を示す.
 $\classPSPACE$ 完全な言語である
 \textsf{QBF} を認識する $(G_u)_u$ を構成することにより,
 任意の $L \in \classPSPACE$ を認識する多項式段一様な関数族 $(G_u)_u$ が存在することを示す.
 ここで \textsf{QBF} とは,
 文字列 $u$ を $\psi = Q_1 x_1 \cdots Q_n x_n \phi(x_1, \dots, x_n)$ と解釈したとき 
-$u \in \textsf{QBF} \Leftrightarrow \psi = T$ によって定義される言語である. 
+$u \in \textsf{QBF} \leftrightarrow \psi = T$ によって定義される言語である. 
 ただし$Q_i$ は$\exists$ または $\forall$であり,  
 $\phi(x_1, \dots, x_n)$ は $x_i$ 以外の変数を含まない論理式とする. 
 
@@ -93,7 +88,7 @@ $Q_1=\forall$ ならば $\psi = \psi_T \wedge \psi_F$,
 $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 つまり変数の1つ少ない2つの論理式と量化子によってもとの論理式の値も決まる.
 これを再帰的に繰り返すことで $\psi$ は計算可能であり, 
-それは深さ $n$ の二分木を葉から根へ値を定めていくことと同じである.
+それは深さ $n$ の二分木を葉から根へ値を定めていくことと等しい.
 この過程は二分木の深さが段数に, 幅が列数に対応する形で
 多項式段一様な関数による差分方程式で模倣可能であるため,
 \textsf{QBF} を認識する多項式段一様関数族が存在する.
@@ -145,10 +140,10 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  また $(G_u)_u$ の一様性から $(g_u)_u$ の多項式時間計算可能性を示す.
 
 
- 上記の証明は基本的に, Lipschitz条件の場合の証明と変わらない.
- 違いは $g_u$ を滑らかな関数にするため, 
+ 上記の証明は基本的に, Lipschitz条件の場合と変わらない.
+ 異なる点は $g_u$ を滑らかな関数にするため, 
  以下のような無限回微分可能な多項式時間実関数 $f \colon [0,1] \to \R$ を用いて
- $g_u$ を構成している点である.
+ $g_u$ を構成していることである.
 
  \begin{lemma}[補題 3.6. \cite{ko1991complexity}]
   \label{SmoothFunction}
