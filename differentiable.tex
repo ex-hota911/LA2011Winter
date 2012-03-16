@@ -8,7 +8,7 @@ $\classPSPACE$ 困難でありうることを示す.
 ただし紙面の都合上, 詳細な証明は省き, 証明の概略を述べるに止める.
 \fi
 
-証明の流れとして, まず補題 \ref{WeakFeedback} によりの
+証明の流れとして, まず補題 \ref{WeakFeedback} により任意の言語
 $L \in \classPSPACE$ を認識する関数族$(G_u)_u, (H_u)_u$ を得る.
 そして $(G_u)_u, (H_u)_u$ を模倣する
 実関数族 $(g_u)_u, (h_u)_u$ を構成し(補題 \ref{DifferentiableFamily}),
@@ -35,14 +35,14 @@ $H$ を $G$ の \emph{差分方程式} の解と呼ぶ.
 \end{gather}
 $P, Q, R$ をそれぞれ\emph{段数}, \emph{列数}, \emph{欄の大きさ}と呼ぶ.
 $G$ と $H$ が常微分方程式の $g$ と $h$ に対応し,
-$H(i, 0) = 0$ と言う条件が $h(0) = 0$ に,
-式 (\ref{eq:divp}) と同値である $H(i + 1, T + 1) - H(i+1, T) = G(i, T, H(i, T))$
-と言う条件が $h'(t) = g(t, h(t))$ と対応する.
+$H(i, 0) = 0$ が $h(0) = 0$ に,
+式 (\ref{eq:divp}) と同値である式 $H(i + 1, T + 1) - H(i+1, T) = G(i, T, H(i, T))$
+が $h'(t) = g(t, h(t))$ と対応する.
 
 以下では文字列 $u$ ごとに差分方程式 $G _u$ を一つ定めた族 $(G _u) _u$ を考える. 
 言語 $L$ がこの族 $(G_u)_u$ によって認識されるとは,
 各 $u$ に対して $G_u$ の段数と列数, 解をそれぞれ $P_u, Q_u, H_u$ としたとき,
-$H_u(P_u, Q_u) = L(u)$ を満たすこととする[表 \ref{fig:divp}].
+$H_u(P_u, Q_u) = L(u)$ を満たすこととする(表 \ref{fig:divp}).
 ここで言語 $L \subseteq \{0, 1\} ^*$ は
 関数 $L \colon \{0, 1\} ^* \to \{0, 1\}$ と同一視し, 
 $u \in L$ のとき $L (u) = 1$ としている. 
@@ -63,10 +63,10 @@ $G_u$ の段数がさらに $|u|$ の多項式で抑えられるとき,
 族 $(G_u) _u$ は\emph{多項式段}であるという. 
 河村の論文では次が示されている.
 
- \begin{lemma}[補題 4.7. \cite{kawamura2010lipschitz}]
+ \begin{lemma}[補題 4.7 \cite{kawamura2010lipschitz}]
   \label{WeakFeedback}
   任意の言語 $L \in \classPSPACE$ に対して,
-  その言語を認識する多項式段一様な $(G_u)_u$ が存在する.
+  その言語を認識する多項式段一様な関数族 $(G_u)_u$ が存在する.
  \end{lemma}
 
 
@@ -110,7 +110,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  任意の言語 $L \in \classPSPACE$ に対して, 
  係数のみに $i$ を含む多項式 $\mu_i$ が存在して,
  任意の多項式 $\gamma$ に対して,
- 多項式 $\rho$, 関数族 $(g_u)_u, (h_u)_u$ で, 
+ 多項式 $\rho$, 実関数族 $(g_u)_u, (h_u)_u$ で, 
  $(g_u)_u$ は多項式時間計算可能であり,
  各文字列 $u$ に対して以下を満たすものが存在する.
  \begin{enumerate}
