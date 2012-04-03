@@ -199,7 +199,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 
   補題 \ref{SmoothFunction} の $f$ に対して, 
  自然数 $c_i$ を各 $i \in \N$ に対して 
-  $|\D{i}f(x)| \le 2^{c_i}$ を満たす最小の自然数と定める.
+  $|\D^i f(x)| \le 2^{c_i}$ を満たす最小の自然数と定める.
  定数 $d' = \lceil \log (4d + 1) \rceil$, 
  $B = 2^{\gamma(|u|) + d'}$ とおき, 
  各 $(t, y) \in [0,1] \times [-1, 1]$ に対して,
@@ -268,7 +268,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
    g_u(t, h_u(t)) 
   & =  \frac{2^{q(|u|)} f'(\theta)}{B^{j_u(T)+1}}
    G_u(j_u(T), T, H_u(j_u(T), T)) \\
-  & =  \D{1}h_u(t).
+  & =  \D^{(1)}h_u(t).
  \end{align*}
  よって $h_u$ は $g_u$ の常微分方程式の解.
 
@@ -276,48 +276,48 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
   $\eta$ が $[-1/4, 1/4]$ と $[1/4, 3/4]$ である区間それぞれにおいて微分する.
 
   \begin{equation}
-   \D{i}\delta_{u,Y}(t) 
-    = \frac{2^{(i+1)q(|u|)} \D{i+1}f(\theta)}{B^{j_u(T)+1}}
+   \D^i \delta_{u,Y}(t) 
+    = \frac{2^{(i+1)q(|u|)} \D^{(i+1)}f(\theta)}{B^{j_u(T)+1}}
     G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
   \end{equation}
 
   \begin{equation}
    \label{eq:derivativeofgu}
-    \D{i,0} g_u(t, y)
+    \D^{(i,0)} g_u(t, y)
      = \begin{cases}
-	\D{i} \delta_{u, Y}(t) 
+	\D^i \delta_{u, Y}(t) 
 	\hfill (- \frac 1 4 < \eta < \frac 1 4) \\
 	\left( 1-f \left(\frac{4\eta-1}{2}\right)\right) 
-	\D{i} \delta_{u, Y}(t) 
-	+ f \left(\frac{4\eta-1}{2}\right) \D{i} \delta_{u,Y+1}(t) \\
+	\D^i \delta_{u, Y}(t) 
+	+ f \left(\frac{4\eta-1}{2}\right) \D^i \delta_{u,Y+1}(t) \\
 	\hfill (\frac 1 4 < \eta < \frac 3 4)
        \end{cases}
   \end{equation}   
 
   \begin{equation}
-    \D{i,1} g_u(t, y)
+    \D^{(i,1)} g_u(t, y)
      = \begin{cases}
 	0 \hfill (- \frac 1 4 < \eta < \frac 1 4) \\
-	2B^{j_u(T)}\D{1}f(\frac{4\eta - 1}2)
-	(\D{i}\delta_{u,Y+1}(t)-\D{i}\delta_{u, Y}(t)) \\
+	2B^{j_u(T)}\D^{(1)}f(\frac{4\eta - 1}2)
+	(\D^i \delta_{u,Y+1}(t)-\D^i \delta_{u, Y}(t)) \\
 	\hfill (\frac 1 4 < \eta < \frac 3 4)
        \end{cases}
   \end{equation}
   $f$ は 無限回微分可能であるため, $\delta_{u,Y}$ も無限回微分可能である.
   よって 区間 $[-1/4, 1/4]$, $[1/4, 3/4]$ において
-  $\D{i,0} g_u$, $\D{i,1} g_u$ は連続. 
+  $\D^{(i,0)} g_u$, $\D^{(i,1)} g_u$ は連続. 
   $\eta = 1/4$ および  $\eta = 3/4(-1/4)$ においても連続であることは自明.
   よって $g_u$ は $(\infty, 1)$ 階連続的微分可能.
 
   式 (\ref{eq:derivativeofgu}) に $t = 0$ を代入して
-  $\D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0$.
+  $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$.
 
-  $|\D{i,1} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)}$ および
-  $|\D{i,0} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)}$ を示す.
+  $|\D^{(i,1)} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)}$ および
+  $|\D^{(i,0)} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)}$ を示す.
 
   \begin{equation}
-   |\D{i}\delta_{u, Y}(t)| 
-    \le \left|\frac{2^{(i+1)q(|u|)}\D{i+1}f(\theta)}{B^{j_u(T)+1}} \right|
+   |\D^i \delta_{u, Y}(t)| 
+    \le \left|\frac{2^{(i+1)q(|u|)}\D^{(i+1)}f(\theta)}{B^{j_u(T)+1}} \right|
     \le \frac{2^{(i+1)q(|u|) + c_i}}{B^{j_u(T)+1}}\\
   \end{equation}
 
@@ -326,16 +326,16 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
   $B$ の定義より
 
   \begin{align*}
-   \left| \D{i,0} g_u \right| 
+   \left| \D^{(i,0)} g_u \right| 
    &\le 
-   |\D{i}\delta_{u, Y}(t)| 
+   |\D^i \delta_{u, Y}(t)| 
     \le \frac{2^{(i+1)q(|u|) + c_i}}{B} 
     \le 2^{\mu_i (|u|) - \gamma(|u|)}
    \taghere \\
-   \left| \D{i,1} g_u \right| 
+   \left| \D^{(i,1)} g_u \right| 
    & \le 
-   2B^{j_u(T)} \left|\D{1}f\left(\frac{4\eta - 1}2\right)\right|
-   \cdot \left|\D{i}\delta_{u,Y+1}(t)-\D{i}\delta_{u, Y}(t)\right| \\
+   2B^{j_u(T)} \left|\D^{(1)}f\left(\frac{4\eta - 1}2\right)\right|
+   \cdot \left|\D^i \delta_{u,Y+1}(t)-\D^i \delta_{u, Y}(t)\right| \\
    & \le
    2 B^{j_u(T)} \cdot 2^{c_1} \cdot 
    2 \cdot \frac{2^{(i+1)q(|u|) + c_i}}{B^{j_u(T)+1}}\\
@@ -415,9 +415,9 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
   g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
   &= \begin{cases}
       \pm \left( g_u(t,1) 
-      + \D{0,1}g_u(t, 1)(y-1) \right)&  (1<y)\\
+      + \D^{(0,1)}g_u(t, 1)(y-1) \right)&  (1<y)\\
       \pm g_u(t, y) & (-1 \le y \le 1) \\
-      \pm \left( g_u(t, -1) + \D{0,1} g_u(t, -1)(y+1) \right) & (y<-1)
+      \pm \left( g_u(t, -1) + \D^{(0,1)} g_u(t, -1)(y+1) \right) & (y<-1)
      \end{cases}
   \\
   h \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right) 
@@ -449,18 +449,18 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  $t \in (0, 1)$ において
 
  \begin{multline}
-  \D{i, 0}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
+  \D^{(i, 0)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
   \\
    = \begin{cases}
-      \pm \Lambda_u^i \left( \D{i, 0} g_u(t,1) 
-       + \D{i,1}g_u(t, 1)(y-1) \right)&  (1<y)\\
-      \pm \Lambda_u^i \D{i, 0} g_u(t, y) & (-1 < y < 1) \\
-      \pm \Lambda_u^i \left( \D{i, 0} g_u(t, -1) 
-       + \D{i,1} g_u(t, -1)(y+1) \right) & (y<-1)
+      \pm \Lambda_u^i \left( \D^{(i, 0)} g_u(t,1) 
+       + \D^{(i,1)}g_u(t, 1)(y-1) \right)&  (1<y)\\
+      \pm \Lambda_u^i \D^{(i, 0)} g_u(t, y) & (-1 < y < 1) \\
+      \pm \Lambda_u^i \left( \D^{(i, 0)} g_u(t, -1) 
+       + \D^{(i,1)} g_u(t, -1)(y+1) \right) & (y<-1)
     \end{cases}
  \end{multline}
 
- $\D{i,0}g_u$ は連続であるため 
+ $\D^{(i,0)}g_u$ は連続であるため 
  $t \in (0,1)$, $y \not = -1, 1$ の区間において連続.
  確認すべきなのは $g_u$ 同士をつなぐ境界 $t = 0, 1$ と
  $g_u$ の外側との境界 $y = 0, 1$,  
@@ -469,24 +469,24 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 
 
  $y = 1$ のとき 
- $\D{i, 0}g \left(l^\mp_u \pm t / \Lambda_u, y / \Lambda_u\right) = 
- \pm \Lambda_u^i \D{i, 0} g_u(t, 1)$,
+ $\D^{(i, 0)}g \left(l^\mp_u \pm t / \Lambda_u, y / \Lambda_u\right) = 
+ \pm \Lambda_u^i \D^{(i, 0)} g_u(t, 1)$,
  $y = -1$ のとき 
- $\D{i, 0}g \left(l^\mp_u \pm t / \Lambda_u, y / \Lambda_u\right) = 
- \pm \Lambda_u^i \D{i, 0} g_u(t, -1)$
- より $\D{i,0}g$ は第二変数について連続である.
+ $\D^{(i, 0)}g \left(l^\mp_u \pm t / \Lambda_u, y / \Lambda_u\right) = 
+ \pm \Lambda_u^i \D^{(i, 0)} g_u(t, -1)$
+ より $\D^{(i,0)}g$ は第二変数について連続である.
 
  第一変数が $[0,1)$ の範囲にあるとき,
  つまり $l^\mp_u \pm t/\Lambda_u$ と表される範囲において連続であることを示す.
  $t = 1$ において $g_u$ と $-g_u$ が接続され,
  $t = 0$ において $g_u$ とつぎの文字 $u'$ の関数 $g_{u'}$ が接続されているが,
- $\D{i, 0} g_u(0, y) = \D{i, 0} g_u(1, y) = 0$ より連続に接続されている.
+ $\D^{(i, 0)} g_u(0, y) = \D^{(i, 0)} g_u(1, y) = 0$ より連続に接続されている.
 
  最後に第一変数が $1$ へ向かうとき発散しないことを示す.
  \begin{align*}
-  \left|\D{i, 0}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
+  \left|\D^{(i, 0)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
   \frac{y}{\Lambda_u}\right)\right|
-  & \le \Lambda_u^i (|\D{i, 0}g_u| + |\D{i, 1}g_u| (\Lambda_u + 1)) \\
+  & \le \Lambda_u^i (|\D^{(i, 0)}g_u| + |\D^{(i, 1)}g_u| (\Lambda_u + 1)) \\
   & \le \Lambda_u^i (\Lambda_u + 2) 2^{\mu_i(|u|) - \gamma(|u|)} \\
   & \le \Lambda_u^{(i+1)} 2^{\mu_i(|u|) - \gamma(|u|) + 1} \\
   & =  2^{(i+1)\lambda(|u|) + \mu_i(|u|) + 1 - \gamma(|u|)}  \taghere
@@ -494,7 +494,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  \end{align*}
  $\gamma$ のとり方により, $|u| \to \infty$ のとき 
  式 (\ref{eq:sizeofderivative}) は 0 に収束する.
- よって  $\lim_{t \to 1-0}\D{i,0} g(t,y) = 0$.
+ よって  $\lim_{t \to 1-0}\D^{(i,0)} g(t,y) = 0$.
  とくに $i=0$ のとき, $\lim_{t \to 1-0} g(t,y) = 0 = g(1, y)$ より 1 で連続.
  以上により $g$ が $(\infty, 0)$ 階連続的微分可能であることを示した.
  
@@ -505,39 +505,39 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  $t \in (0, 1)$ において
 
  \begin{equation}
-   \D{i,1}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},  \frac{y}{\Lambda_u} \right)
+   \D^{(i,1)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},  \frac{y}{\Lambda_u} \right)
    = \begin{cases}
-		   \pm \Lambda_u^{i+1} \D{i,1}g_u(t,1) & (1 < y) \\
-		   \pm \Lambda_u^{i+1} \D{i,1}g_u(t,y) & (-1 < y < 1) \\
-		   \pm \Lambda_u^{i+1} \D{i,1}g_u(t,-1) & (y < -1).
+		   \pm \Lambda_u^{i+1} \D^{(i,1)}g_u(t,1) & (1 < y) \\
+		   \pm \Lambda_u^{i+1} \D^{(i,1)}g_u(t,y) & (-1 < y < 1) \\
+		   \pm \Lambda_u^{i+1} \D^{(i,1)}g_u(t,-1) & (y < -1).
     \end{cases}
  \end{equation}
- $\D{0,1}g(t,1) = \pm \Lambda_u \D{0,1}g_u(t,1)$, 
- $\D{0,1}g(t,-1) = \pm \Lambda_u \D{0,1}g_u(t,-1)$ であり,
+ $\D^{(0,1)}g(t,1) = \pm \Lambda_u \D^{(0,1)}g_u(t,1)$, 
+ $\D^{(0,1)}g(t,-1) = \pm \Lambda_u \D^{(0,1)}g_u(t,-1)$ であり,
  第二変数について連続.
  
  第一変数について連続性を示す.
  $[0,1)$ 区間において
- $t \in (0,1)$ ならば $\D{i,1}g_u$ が連続であるため $\D{i,1}g$ も連続.
- $g_u(0,y) = g_u(1,y) = 1$ より $\D{i,1} g_u(0, y) = \D{i, 1} g_u(1,y) = 0$
- なので $\D{i,1} g(0, y) = \D{i, 1} g(1,y) = 0$ のため $t = 0, 1$ においても連続.
+ $t \in (0,1)$ ならば $\D^{(i,1)}g_u$ が連続であるため $\D^{(i,1)}g$ も連続.
+ $g_u(0,y) = g_u(1,y) = 1$ より $\D^{(i,1)} g_u(0, y) = \D^{(i, 1)} g_u(1,y) = 0$
+ なので $\D^{(i,1)} g(0, y) = \D^{(i, 1)} g(1,y) = 0$ のため $t = 0, 1$ においても連続.
 
  最後に第一変数が $1$ へ向かうとき発散しないことを示す.
  \begin{align*}
-  \left|\D{i, 1}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
+  \left|\D^{(i, 1)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
   \frac{y}{\Lambda_u}\right)\right|
-  & \le \Lambda_u^{i+1} |\D{i, 1}g_u| \\
+  & \le \Lambda_u^{i+1} |\D^{(i, 1)}g_u| \\
   & \le  2^{(i+1)\lambda(|u|) + \mu_i(|u|) - \gamma(|u|)}  \taghere
  \end{align*}
  $\gamma$ のとり方により $|u| \to \infty$ のとき 
  $2^{(i+1)\lambda(|u|) + \mu_i(|u|) - \gamma(|u|)}$ は 0 へ収束する.
- よって  $\displaystyle \lim_{t \to 1-0}\D{i,0} g(t,y) = 0$.
+ よって  $\displaystyle \lim_{t \to 1-0}\D^{(i,0)} g(t,y) = 0$.
  以上により $g$ が $(\infty, 1)$ 階連続的微分可能であることを示した.
 
 
 
  $h$が$g$の常微分方程式の解であることを示す. 
- $h(0)=0, \quad \D{1}h(1) = 0 = g(1,h(1))$ は自明. 
+ $h(0)=0, \quad \D^{(1)}h(1) = 0 = g(1,h(1))$ は自明. 
  \begin{align*}
   h' \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right)
   &= \pm \frac{h'_u(t)}{\Lambda_u} \\ 

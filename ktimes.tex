@@ -180,12 +180,12 @@ $\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ �
    \item $g_u$ は $(\infty, k)$ 階連続微分可能;
    \item 任意の $i \in \N$, $y \in [-1,1]$ に対して
 	 \begin{equation*}
-	  \D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0 ;
+	  \D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0 ;
 	 \end{equation*}
    \item \label{enum:inftyk}
 	 任意の $i \in \N$, $j \in \{0, \dots, k\}$ に対して
 	 \begin{equation*}
-	  \left|\D{i,j} g_u(t,y)\right| \le 2^{\mu_i(|u|) - \gamma(|u|)};
+	  \left|\D^{(i,j)} g_u(t,y)\right| \le 2^{\mu_i(|u|) - \gamma(|u|)};
 	 \end{equation*}
    \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
   \end{enumerate}
@@ -215,7 +215,7 @@ $\classPSPACE$ 困難が $\classCH$ 困難へと置き換わる.
 
   補題 \ref{SmoothFunction} の $f$ に対して, 
   自然数の族 $c_i$ を各 $i \in \N$ に対して 
-  $|\D{i}f(x)| \le 2^{c_i}$ を満たす最小の自然数と定める.
+  $|\D^i f(x)| \le 2^{c_i}$ を満たす最小の自然数と定める.
  定数 $d' = \lceil \log (4d + 1) \rceil$, 
  $B = 2^{\gamma(|u|) + d'}$ とおき, 
  各 $(t, y) \in [0,1] \times [-1, 1]$ に対して,
@@ -286,7 +286,7 @@ $\classPSPACE$ 困難が $\classCH$ 困難へと置き換わる.
    g_u(t, h_u(t)) 
   & =  \frac{2^{q(|u|)} f'(\theta)}{B^{k^{j_u(T)+1}}}
    G_u(j_u(T), T, H_u(j_u(T), T)) \\
-  & =  \D{1}h_u(t).
+  & =  \D^{(1)}h_u(t).
  \end{align*}
  よって $h_u$ は $g_u$ の常微分方程式の解.
 
@@ -295,52 +295,52 @@ $\classPSPACE$ 困難が $\classCH$ 困難へと置き換わる.
   任意の $i \in \N$ について
 
   \begin{equation}
-   \D{i}\delta_{u,Y}(t) 
-    = \frac{2^{(i+1)q(|u|)} \D{i+1}f(\theta)}{B^{k^{j_u(T)+1}}}
+   \D^i \delta_{u,Y}(t) 
+    = \frac{2^{(i+1)q(|u|)} \D^{(i+1)}f(\theta)}{B^{k^{j_u(T)+1}}}
     G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
   \end{equation}
 
   \begin{equation}
    \label{eq:derivativeofgu}
-    \D{i,0} g_u(t, y)
+    \D^{(i,0)} g_u(t, y)
      = \begin{cases}
- 	\D{i} \delta_{u, Y}(\theta) 
+ 	\D^i \delta_{u, Y}(\theta) 
 	\hfill (- \frac 1 4 < \eta < \frac 1 4) \\
 	\left( 1-f \left(\frac{4\eta-1}{2}\right)\right) 
-	\D{i} \delta_{u, Y}(\theta) 
-	+ f \left(\frac{4\eta-1}{2}\right) \D{i} \delta_{u,Y+1}(\theta) \\
+	\D^i \delta_{u, Y}(\theta) 
+	+ f \left(\frac{4\eta-1}{2}\right) \D^i \delta_{u,Y+1}(\theta) \\
 	\hfill (\frac 1 4 < \eta < \frac 3 4)
        \end{cases}
   \end{equation}   
   $j \in \{1, \dots , k\}$ について,
 
   \begin{equation}
-    \D{i,j} g_u(t, y)
+    \D^{(i,j)} g_u(t, y)
      = \begin{cases}
 	0 \hfill (- \frac 1 4 < \eta < \frac 1 4) \\
-	(2B^{j_u(T)})^j \D{j}f(\frac{4\eta - 1}2)
-	(\D{i}\delta_{u,Y+1}(\theta)-\D{i}\delta_{u, Y}(\theta)) \\
+	(2B^{j_u(T)})^j \D^j f(\frac{4\eta - 1}2)
+	(\D^i \delta_{u,Y+1}(\theta)-\D^i \delta_{u, Y}(\theta)) \\
 	\hfill (\frac 1 4 < \eta < \frac 3 4)
        \end{cases}
   \end{equation}
   $f$ は 無限回微分可能であるため, $\delta_{u,Y}$ も無限回微分可能である.
   よって 区間 $(-1/4, 1/4)$, $(1/4, 3/4)$ において
-  $\D{i, 0} g_u$, $\D{i,j} g_u$ は連続. 
+  $\D^{(i, 0)} g_u$, $\D^{(i,j)} g_u$ は連続. 
   $\eta = 1/4$ および  $\eta = 3/4(-1/4)$ においても連続であることは自明.
-  $\D{i+1, 0} f(0) = \D{i+1, 0} f(1) = 0$ より $\theta = 0$ または $\theta = 1$
-  において $\D{i, 0}g_u(t, y) = 0$, $\D{i, j}g_u(t, y) = 0$,
+  $\D^{(i+1, 0)} f(0) = \D^{(i+1, 0)} f(1) = 0$ より $\theta = 0$ または $\theta = 1$
+  において $\D^{(i, 0)}g_u(t, y) = 0$, $\D^{(i, j)}g_u(t, y) = 0$,
   よって $t$ についても連続.
   以上により $g_u$ は $(\infty, j)$ 階連続的微分可能であることが示された.
 
   式 (\ref{eq:derivativeofgu}) に $t = 0, 1$ ($\theta = 0$) を代入して
-  $\D{i, 0} g_u(0,y) = \D{i, 0} g_u(1,y) = 0$.
+  $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$.
 
   任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
-  $|\D{i,j} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)}$ を示す.
+  $|\D^{(i,j)} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)}$ を示す.
 
   \begin{equation}
-   |\D{i}\delta_{u, Y}(t)| 
-    \le \left|\frac{2^{(i+1)q(|u|)}\D{i+1}f(\theta)}{B^{k^{j_u(T)+1}}} \right|
+   |\D^i \delta_{u, Y}(t)| 
+    \le \left|\frac{2^{(i+1)q(|u|)}\D^{(i+1)}f(\theta)}{B^{k^{j_u(T)+1}}} \right|
     \le \frac{2^{(i+1)q(|u|) + c_i}}{B^{k^{j_u(T)+1}}}\\
   \end{equation}
 
@@ -349,17 +349,17 @@ $\classPSPACE$ 困難が $\classCH$ 困難へと置き換わる.
   $B$ の定義より
 
   \begin{align*}
-   \left| \D{i,0} g_u \right| 
+   \left| \D^{(i,0)} g_u \right| 
    &\le 
-   |\D{i}\delta_{u, Y}(t)| 
+   |\D^i \delta_{u, Y}(t)| 
     \le \frac{2^{(i+1)q(|u|) + c_i}}{B} 
     \le 2^{\mu_i (|u|) - \gamma(|u|)}
    \taghere 
    \\
-   \left| \D{i,j} g_u \right| 
+   \left| \D^{(i,j)} g_u \right| 
    & \le 
-   (2B^{j_u(T)})^j \left|\D{j}f\left(\frac{4\eta - 1}2\right)\right|
-   \cdot \left|\D{i}\delta_{u,Y+1}(t)-\D{i}\delta_{u, Y}(t)\right| \\
+   (2B^{j_u(T)})^j \left|\D^j f\left(\frac{4\eta - 1}2\right)\right|
+   \cdot \left|\D^i \delta_{u,Y+1}(t)-\D^i \delta_{u, Y}(t)\right| \\
    & \le
    2^k B^{k \cdot j_u(T)} \cdot 2^{c_j} \cdot 
    2 \cdot \frac{2^{(i+1)q(|u|) + c_i}}{B^{k^{j_u(T)+1}}}\\
