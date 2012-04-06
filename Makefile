@@ -29,8 +29,6 @@ NKF=nkf -e
 DVIPDF=dvipdfmx
 # 相互参照の解消のため
 REFGREP=grep "^LaTeX Warning: Label(s) may have changed."
-# 禁止ワード
-CENSORED=対して\|示す
 # プリンタの設定
 #PRINTER=//server/printername
 .SUFFIXES: .euc.tex .tex
