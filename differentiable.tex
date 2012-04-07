@@ -268,7 +268,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
    g_u(t, h_u(t)) 
   & =  \frac{2^{q(|u|)} f'(\theta)}{B^{j_u(T)+1}}
    G_u(j_u(T), T, H_u(j_u(T), T)) \\
-  & =  \D^{(1)}h_u(t).
+  & =  \D^{1}h_u(t).
  \end{align*}
  よって $h_u$ は $g_u$ の常微分方程式の解.
 
@@ -277,7 +277,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 
   \begin{equation}
    \D^i \delta_{u,Y}(t) 
-    = \frac{2^{(i+1)q(|u|)} \D^{(i+1)}f(\theta)}{B^{j_u(T)+1}}
+    = \frac{2^{(i+1)q(|u|)} \D^{i+1}f(\theta)}{B^{j_u(T)+1}}
     G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
   \end{equation}
 
@@ -298,7 +298,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
     \D^{(i,1)} g_u(t, y)
      = \begin{cases}
 	0 \hfill (- \frac 1 4 < \eta < \frac 1 4) \\
-	2B^{j_u(T)}\D^{(1)}f(\frac{4\eta - 1}2)
+	2B^{j_u(T)}\D^{1}f(\frac{4\eta - 1}2)
 	(\D^i \delta_{u,Y+1}(t)-\D^i \delta_{u, Y}(t)) \\
 	\hfill (\frac 1 4 < \eta < \frac 3 4)
        \end{cases}
@@ -317,7 +317,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 
   \begin{equation}
    |\D^i \delta_{u, Y}(t)| 
-    \le \left|\frac{2^{(i+1)q(|u|)}\D^{(i+1)}f(\theta)}{B^{j_u(T)+1}} \right|
+    \le \left|\frac{2^{(i+1)q(|u|)}\D^{i+1}f(\theta)}{B^{j_u(T)+1}} \right|
     \le \frac{2^{(i+1)q(|u|) + c_i}}{B^{j_u(T)+1}}\\
   \end{equation}
 
@@ -334,7 +334,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
    \taghere \\
    \left| \D^{(i,1)} g_u \right| 
    & \le 
-   2B^{j_u(T)} \left|\D^{(1)}f\left(\frac{4\eta - 1}2\right)\right|
+   2B^{j_u(T)} \left|\D^{1}f\left(\frac{4\eta - 1}2\right)\right|
    \cdot \left|\D^i \delta_{u,Y+1}(t)-\D^i \delta_{u, Y}(t)\right| \\
    & \le
    2 B^{j_u(T)} \cdot 2^{c_1} \cdot 
@@ -537,7 +537,7 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 
 
  $h$が$g$の常微分方程式の解であることを示す. 
- $h(0)=0, \quad \D^{(1)}h(1) = 0 = g(1,h(1))$ は自明. 
+ $h(0)=0, \quad \D^{1}h(1) = 0 = g(1,h(1))$ は自明. 
  \begin{align*}
   h' \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right)
   &= \pm \frac{h'_u(t)}{\Lambda_u} \\ 
