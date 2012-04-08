@@ -1,18 +1,13 @@
 \section{連続微分可能関数と常微分方程式}
 \label{section:differentiable}
 
-この節では定理 \ref{DifferentiableIsPspace},
-つまり$(\infty, 1)$回連続微分可能な関数の常微分方程式の解は
-$\classPSPACE$ 困難になりうることを示す.
-\ifnum \proc = 1
-ただし紙面の都合上, 詳細な証明は省き, 証明の概略を述べるに止める.
-\fi
-
-証明の流れは, まず補題 \ref{WeakFeedback} により任意の言語
+基本的な証明の流れは河村によるものと等しい \cite{Kawamura2010lipschitz}
+まず補題 \ref{WeakFeedback} により任意の言語
 $L \in \classPSPACE$ を認識する関数族$(G_u)_u, (H_u)_u$ を得る.
 そして 補題\ref{DifferentiableFamily} では $(G_u)_u, (H_u)_u$ を模倣する
 実関数族 $(g_u)_u, (h_u)_u$ を構成し,
 それらから定理 \ref{DifferentiableIsPspace} で求める $g, h$を構成する.
+
 
 
 \subsection{差分方程式}
@@ -98,6 +93,161 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
 この過程は二分木の深さが段数に, 幅が列数に対応する形で
 多項式段一様な関数による差分方程式で模倣可能であるため,
 \textsf{QBF} を認識する多項式段一様関数族が存在する.
+
+
+
+\subsection{$\classCH$ 困難な言語}
+
+Wagner によって $\classCH$ の各階層 $\C_n \classP$ に対してそれぞれ完全問題が存在することが示されている\cite{wagner1986complexity}.
+量化子 $\C$ を自然数 $m$, 論理式 $A(x_1, \dots, x_l)$, 
+$l$ 個の論理変数の組 $\alpha$ について以下のように定義する.
+\begin{equation}
+ \C^m \alpha A(\alpha) 
+  \longleftrightarrow 
+  \Bigl|\{\alpha \in \{0,1\}^l \mid A(\alpha) = 1\}\Bigr| \ge m.
+\end{equation}
+$\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ の
+一般化と言える.
+言語 $\C_n B_{be}$ を以下のように定義する.
+\begin{equation}
+ \langle \phi(x_1, \dots, x_n), m_1, \dots, m_n \rangle \in \C_n B_{be}
+ \longleftrightarrow
+ \C^{m_1}{\alpha_1} \cdots \C^{m_n}{\alpha_n} \phi(\alpha_1, \dots, \alpha_n) 
+\end{equation}
+ただし $\langle y_1, \dots, y_i \rangle$ は組み合わせ関数,
+それぞれ $x_i$, $\alpha_i$ は $l_i$ 個の論理変数の組とする.
+
+
+\begin{lemma}[Theorem 7 \cite{wagner1986complexity}] \label{lemma:CnP-complete}
+ $\C_n B_{be}$ は $\C_n\classP$ 完全.
+\end{lemma}
+
+
+各 $\C_n B_{be}$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように定義する.
+\[
+ \langle 0^{2^n}, u \rangle \in \C_{\log} B_{be}
+ \longleftrightarrow
+ u \in \C_n B_{be}
+\]
+
+\begin{lemma}
+ $\C_{\log} B_{be}$ は $\classCH$ 困難.
+\end{lemma}
+
+\begin{proof}
+ 任意の $\classCH$ の言語 $A$ はある階層 $\C_n \classP$ に属する. 
+ 補題 \ref{lemma:CnP-complete} より任意の $u \in \{0,1\}^*$ について
+ $u \in A \leftrightarrow f(u) \in \C_n B_{be}$ 
+ を満たす多項式時間関数 $f$ が存在する.
+ \begin{align}
+  u \in A 
+  & \longleftrightarrow \langle 0^{2^n}, f(u) \rangle \in \C_{\log} B_{be}
+ \end{align}
+ $n$ は定数であるため $\langle 0^{2^n}, f(\cdot) \rangle$ は多項式時間関数.
+ よって $A$ は $\C_n B_{be}$ に多項式時間還元可能.
+\end{proof}
+
+\begin{lemma}
+ $\C_{\log} B_{be}$ を認識する対数段一様関数族 $(G_u)_u$ が存在する.
+\end{lemma}
+
+\begin{proof}
+ 関数族 $(G_u)_u$, $(H_u)_u$, 関数 $p$, 多項式 $q,r$ を構成する.
+ $u  = \langle 0^{2^n}, 
+ \langle \phi(x_1, \dots, x_n), m_1, \dots, m_n \rangle \rangle$
+ と仮定する.
+ 
+ $L = C_{\log} B_{be}$,
+ $l_i = |x_i|$,
+ $s_i = \sum^i_{j=1}l_j + 2i$  と表記する.
+ 関数 $C^m \colon \N \to \{0,1\}$ を
+ \begin{equation}
+  C^m(Y) 
+     = \begin{cases}
+       1 & (Y \ge m) \\
+       0 & (Y < m) \end{cases}
+ \end{equation}
+ と定義する. 
+ 任意の $i = 0, \dots, n$ と $n-i$ 個の文字列 
+ $\beta_{i+1} \in \{0,1\}^{l_{i+1}}, \dots, \beta_n \in \{0,1\}^{l_n}$ 
+ について部分式
+ $\C^{m_{i}}{\alpha_i} \cdots \C^{m_1}{\alpha_1}
+ \phi(\alpha_1, \dots, \alpha_i, \beta_{i+1}, \dots, \beta_n)$
+ の真偽値を $\phi_i(\beta_{i+1}, \dots, \beta_n)$ と表記する.
+ \begin{align}
+  \phi_0 &= \phi 
+  \\ \label{eq:phi-step}
+  \phi_{i+1}(\beta_{i+2}, \dots, \beta_n) 
+  &= C^{m_{i+1}}\left(\sum\nolimits_{\alpha_i \in \{0,1\}^{l_i}} 
+  \phi_i(\alpha_{i+1}, \beta_{i+2}, \dots, \beta_{n})\right) 
+  \\
+  \phi_n() &= L(u) 
+ \end{align}
+ $T \in \N$ に対し, $T_i$ を $T$ の2進表記における $i$ 桁目, 
+ $T_{[i,j]} = T_{j-1} T_{j-2} \cdots T_{i+1} T_{i}$ と表記する.
+
+
+ $G_u$ を $(i, T, Y) \in [n+1] \times [2^{s_n}+1] \times [2^{|u|}]$ の範囲で
+ を以下のように定義する. 一段目つまり $i=0$ ならば
+ \begin{equation}
+  G_u(0,T,Y) = 
+   (-1)^{T_{s_1}}\phi(T_{[1,s_1]}, T_{[s_1+1,s_2]},
+    \dots, T_{[s_{n-1}+1,s_n]}) 
+ \end{equation}
+ $i \ge 1$ ならば
+ \begin{equation} \label{eq:def-Gu:case0}
+  G_u(i,T,Y) = 
+   \begin{cases}
+    (-1)^{T_{s_{i+1}}} C^{m_i}(Y) 
+    & (T_{[1,s_i]} = 10 \cdots 0) \\
+    0 & (\text{othewise}).
+   \end{cases} 
+ \end{equation}
+
+
+ 任意の $i \in [n+1]$, $T \in [2^{s_n}+1]$ について,
+ $H_u(i,T) \in [2^{l_i}+1]$ が成りたつこと,
+ および $T_{[1,s_i]} = 10 \cdots 0$ ならば
+ \begin{equation} \label{eq:subformula}
+  G_u(i,T,H_u(i,T)) = (-1)^{T_{s_{i+1}}} 
+   \phi_i(T_{[s_i+1, s_{i+1}]}, \dots, T_{[s_{n-1}+1, s_n]})
+ \end{equation}
+ を満たすことを $i$ についての帰納法により示す.
+ 上記が成り立つとき,
+ $i=n$, $T=2^{s_n}$ において $G_u(n, 2^{s_n}, H_u(n,2^{s_n})) = \phi_n() = L(u)$
+ よって $H_u(n+1, 2^{s_n}+1) = L(u)$.
+ ここで 
+ \begin{gather}
+  n+1 \le \log(|0^{2^n}|) + 1 = O(\log(|u|)) \\
+  2^{s_n}+1 \le 2^{s_n+1} \le 2^{|u|}
+ \end{gather}
+ より $p(u) = n+1, q(x) = r(x) = x$ とおき $G_u$ を
+ $[p(u)] \times [2^{q(|u|)}] \times [2^{r(|u|)}]$ の範囲に拡大すると
+ $H_u(p(u), 2^{q(|u|)}) = L(u)$.
+
+ $i=0$ のとき, 式(\ref{eq:def-Gu:case0})より成り立つ.
+ $i=j$ のとき, 成り立つと仮定する, $Y = H_u(i+1, T)$ とおくと
+ \begin{align}
+  Y 
+  &= \sum_{V = 1}^{T-1} G_u(i, V, H_u(i, V)) \\
+  &= \sum (-1)^{V_{s_{i+1}}} \phi_i(V_{[s_i+1, s_{i+1}]}, 
+   \dots, V_{[s_{n-1}+1, s_n]})
+ \end{align}
+ $T_{[1, s_{i+1}]} = 10 \cdots 0$ のとき,
+ $V_{[1, s_n]} = T_{[s_{i+1}+1,s_n]} 0 \alpha 1 0 \cdots 0$ であるとき
+ 以外の値は打ち消し合うので,
+ \begin{equation}
+  Y = \sum\nolimits_{\alpha \in \{0,1\}^{l_i}} 
+  \phi_i(\alpha, T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]})
+ \end{equation}
+ 式(\ref{eq:phi-step})より
+ \begin{align}
+  G_u(i+1,T,H_u(i+1,T)) 
+  &= (-1)^{T_{s_{i+2}}} C^{m_{i+1}} (Y)\\
+  &= (-1)^{T_{s_{i+2}}} \phi_{i+1}(T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]})
+ \end{align}
+ よって $i=j+1$ でも成り立つ.
+ \end{proof}
 
 
 
@@ -355,380 +505,6 @@ $Q_1=\exists$ ならば $\psi = \psi_T \vee \psi_F$.
  \end{proof}
 
 
-\subsection{定理 \ref{DifferentiableIsPspace} の証明}
-
- $\classPSPACE$ 完全な言語 {\sf QBF} 補題 \ref{DifferentiableFamily} から得られる
- $(g_u)_u$ と $(h_u)_u$ から滑らかな $g$ と
- その常微分方程式の解で $\classPSPACE$ 困難な $h$ を構成する.
- 各 $h_u(1)$ には $L(u)$ の情報が含まれるため,
- すべての $h_u$ を一つの関数 $h$ に埋め込みたい.
- そこで [0,1] を無限の区間に分割し, $h$ の各文字列 $u$ に対応する区間
- $[l^-_u, c_u]$ に $h_u$ を
- 縮小して埋め込む. 
- ただし次の文字列 $u'$ の計算に影響を与えないために,
- $h_u$ を定義域方向について反転したものを
- 区間 $[c_u, l^+_u]$ に埋め込むことで影響を相殺する.
- つまり $h(l^-_u) = 0,\ h(c_u) = 2^{-\rho'(|u|)} L(u),\ h(l^+_u) = 0$ を満たす
- ように $h_u(t)$埋め込む.
- ただし $\rho'$ とは $\rho$ に縮小率をかけたものとする.
- 同様に $g$ は $h$ が常微分方程式の解となるよう,
- 各文字列 $u$ に対応する区間に $g_u$ を縮小して埋め込む.
-
- Lipschitz条件の場合と異なる点は, $g_u$ を構成する時点で
- $(\infty, 1)$ 回連続微分可能にするために,
- $|\D ^{(i, 0)} g_u|, |\D ^{(i, 0)} g_u|$ の大きさを制限する点である
- (補題 \ref{DifferentiableFamily} の (\ref{enum:infty1})).
- 
-
-\begin{proof}
- $L$ を $\classPSPACE$ 完全な言語とおく.
- $\classPSPACE$ 完全な言語 $L$ に対して補題 \ref{DifferentiableFamily} を用いて,
- まず多項式 $\mu_i$ をえる.
- $\mu_i$ は $i$ を係数部にのみ持つ多項式であるため,
- $\mu_i(k) = O(k^c)$ をみたす最小の定数 $c$ が存在する.
- \begin{align}
-  \lambda(k) &= 2k + 2,&
-  \gamma(k) &= k^{c+1} + k \lambda(k)
- \end{align}
- とおき, 各 $u$ に対して 
-\begin{align}
- \Lambda_u 
- &= 2^{\lambda(|u|)}, &
- c_u 
- &= 1-\frac{1}{2^{|u|}}+\frac{2\bar{u}+1}{\Lambda_u}, &
- l_u^\mp 
- &= c_u\mp\frac{1}{\varLambda_u} 
-\end{align}  
- とおく. ただし $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ は $u$ を二進数と
- して解釈した数.
- $\gamma$ に対して, 再び補題より $\rho$, $(g_u)_u$, $(h_u)_u$ を得る.
-
-
-
- 任意の $[0,1)$ の実数に対して,
- $l^\mp_u \pm \frac{t}{\Lambda_u}$ がその実数と等しくなるような
- $u, \pm, t\in [0,1]$ が存在する.
- 関数 $g, h$ を $t \in [0,1]$, $y \in \R$ に対して,
- それぞれ $[0,1) \times [-1,1]$ の範囲と $[0,1)$ の範囲で下のように定義する.
-
- \begin{align}
-  g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
-  &= \begin{cases}
-      \pm \left( g_u(t,1) 
-      + \D^{(0,1)}g_u(t, 1)(y-1) \right)&  (1<y)\\
-      \pm g_u(t, y) & (-1 \le y \le 1) \\
-      \pm \left( g_u(t, -1) + \D^{(0,1)} g_u(t, -1)(y+1) \right) & (y<-1)
-     \end{cases}
-  \\
-  h \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right) 
-  &= \frac{h_u(t)}{\Lambda_u}.
-\end{align}
- 任意の $y \in \R$ に対して $g(1,y) = h(1) = 0$ と定義する.
-
-
-
- この $g$ と $h$ が定理 \ref{DifferentiableIsPspace} で求める関数
- の性質を満たすことを示す.
-
-
- 
- まず $g$ が多項式時間計算可能であることを
- 補題 \ref{lem:type1representation} を用いて示す.
- 各有理数 $T,Y$ について $g(T, Y)$ を求めるとき,
- $T=l_u^\mp \pm t/\Lambda_u$, $Y = y/\Lambda_u\Gamma_u$ を満たすような
- $u, \pm, t, y$ は, 多項式時間で計算可能であり,
- $(g_u)_u$ は多項式時間計算可能なので $g(T, Y)$ は多項式時間計算可能.
-
-
-
- $g$ が $(\infty, 1)$ 階連続的微分可能であることを示すため,
- まず $g$ が $(\infty, 0)$ 階連続的微分可能であることを示す.
- 
- $g_u$ は $(\infty, 1)$ 階連続的微分可能であるため,
- 各区間においては$(\infty, 1)$ 階連続的微分可能である.
- $t \in (0, 1)$ において
-
- \begin{multline}
-  \D^{(i, 0)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
-  \\
-   = \begin{cases}
-      \pm \Lambda_u^i \left( \D^{(i, 0)} g_u(t,1) 
-       + \D^{(i,1)}g_u(t, 1)(y-1) \right)&  (1<y)\\
-      \pm \Lambda_u^i \D^{(i, 0)} g_u(t, y) & (-1 < y < 1) \\
-      \pm \Lambda_u^i \left( \D^{(i, 0)} g_u(t, -1) 
-       + \D^{(i,1)} g_u(t, -1)(y+1) \right) & (y<-1)
-    \end{cases}
- \end{multline}
-
- $\D^{(i,0)}g_u$ は連続であるため 
- $t \in (0,1)$, $y \not = -1, 1$ の区間において連続.
- 確認すべきなのは $g_u$ 同士をつなぐ境界 $t = 0, 1$ と
- $g_u$ の外側との境界 $y = 0, 1$,  
- および極限 $g_u$ の極限, つまり $g$ の第一引数が 1 へ限りなく近づくとき
- 発散せずに連続であることである.
-
-
- $y = 1$ のとき 
- $\D^{(i, 0)}g \left(l^\mp_u \pm t / \Lambda_u, y / \Lambda_u\right) = 
- \pm \Lambda_u^i \D^{(i, 0)} g_u(t, 1)$,
- $y = -1$ のとき 
- $\D^{(i, 0)}g \left(l^\mp_u \pm t / \Lambda_u, y / \Lambda_u\right) = 
- \pm \Lambda_u^i \D^{(i, 0)} g_u(t, -1)$
- より $\D^{(i,0)}g$ は第二変数について連続である.
-
- 第一変数が $[0,1)$ の範囲にあるとき,
- つまり $l^\mp_u \pm t/\Lambda_u$ と表される範囲において連続であることを示す.
- $t = 1$ において $g_u$ と $-g_u$ が接続され,
- $t = 0$ において $g_u$ とつぎの文字 $u'$ の関数 $g_{u'}$ が接続されているが,
- $\D^{(i, 0)} g_u(0, y) = \D^{(i, 0)} g_u(1, y) = 0$ より連続に接続されている.
-
- 最後に第一変数が $1$ へ向かうとき発散しないことを示す.
- \begin{align*}
-  \left|\D^{(i, 0)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
-  \frac{y}{\Lambda_u}\right)\right|
-  & \le \Lambda_u^i (|\D^{(i, 0)}g_u| + |\D^{(i, 1)}g_u| (\Lambda_u + 1)) \\
-  & \le \Lambda_u^i (\Lambda_u + 2) 2^{\mu_i(|u|) - \gamma(|u|)} \\
-  & \le \Lambda_u^{(i+1)} 2^{\mu_i(|u|) - \gamma(|u|) + 1} \\
-  & =  2^{(i+1)\lambda(|u|) + \mu_i(|u|) + 1 - \gamma(|u|)}  \taghere
-  \label{eq:sizeofderivative}
- \end{align*}
- $\gamma$ のとり方により, $|u| \to \infty$ のとき 
- 式 (\ref{eq:sizeofderivative}) は 0 に収束する.
- よって  $\lim_{t \to 1-0}\D^{(i,0)} g(t,y) = 0$.
- とくに $i=0$ のとき, $\lim_{t \to 1-0} g(t,y) = 0 = g(1, y)$ より 1 で連続.
- 以上により $g$ が $(\infty, 0)$ 階連続的微分可能であることを示した.
- 
-
- $g$ が $(\infty, 1)$ 階連続的微分可能であることを示す.
- $(\infty, 0)$ 階連続的微分可能と同様に,
- 各区間において, $(\infty, 1)$ 階連続的微分可能であるためそれぞれ導関数を求める.
- $t \in (0, 1)$ において
-
- \begin{equation}
-   \D^{(i,1)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},  \frac{y}{\Lambda_u} \right)
-   = \begin{cases}
-		   \pm \Lambda_u^{i+1} \D^{(i,1)}g_u(t,1) & (1 < y) \\
-		   \pm \Lambda_u^{i+1} \D^{(i,1)}g_u(t,y) & (-1 < y < 1) \\
-		   \pm \Lambda_u^{i+1} \D^{(i,1)}g_u(t,-1) & (y < -1).
-    \end{cases}
- \end{equation}
- $\D^{(0,1)}g(t,1) = \pm \Lambda_u \D^{(0,1)}g_u(t,1)$, 
- $\D^{(0,1)}g(t,-1) = \pm \Lambda_u \D^{(0,1)}g_u(t,-1)$ であり,
- 第二変数について連続.
- 
- 第一変数について連続性を示す.
- $[0,1)$ 区間において
- $t \in (0,1)$ ならば $\D^{(i,1)}g_u$ が連続であるため $\D^{(i,1)}g$ も連続.
- $g_u(0,y) = g_u(1,y) = 1$ より $\D^{(i,1)} g_u(0, y) = \D^{(i, 1)} g_u(1,y) = 0$
- なので $\D^{(i,1)} g(0, y) = \D^{(i, 1)} g(1,y) = 0$ のため $t = 0, 1$ においても連続.
-
- 最後に第一変数が $1$ へ向かうとき発散しないことを示す.
- \begin{align*}
-  \left|\D^{(i, 1)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
-  \frac{y}{\Lambda_u}\right)\right|
-  & \le \Lambda_u^{i+1} |\D^{(i, 1)}g_u| \\
-  & \le  2^{(i+1)\lambda(|u|) + \mu_i(|u|) - \gamma(|u|)}  \taghere
- \end{align*}
- $\gamma$ のとり方により $|u| \to \infty$ のとき 
- $2^{(i+1)\lambda(|u|) + \mu_i(|u|) - \gamma(|u|)}$ は 0 へ収束する.
- よって  $\displaystyle \lim_{t \to 1-0}\D^{(i,0)} g(t,y) = 0$.
- 以上により $g$ が $(\infty, 1)$ 階連続的微分可能であることを示した.
-
-
-
- $h$が$g$の常微分方程式の解であることを示す. 
- $h(0)=0, \quad \D^{1}h(1) = 0 = g(1,h(1))$ は自明. 
- \begin{align*}
-  h' \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right)
-  &= \pm \frac{h'_u(t)}{\Lambda_u} \\ 
-  &= \pm g_u \left(t, h_u(t)\right) \\
-  &= g\left(l^\mp_u \pm \frac{t}{\Lambda_u},  
-	\frac{h_u(t)}{\Lambda_u}\right) \\ 
-  &= g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, 
-	h\left(l^\mp_u \pm \frac{t}{\Lambda_u}\right) \right) . \taghere
- \end{align*}
-
-
-
- $L$ は $h$ に還元可能であることを示す.
- \begin{equation}
-  h(c_u) = \frac{h_u(1)}{\Lambda_u}
-   = \frac{L(u)}{2^{\lambda(|u|)+\rho(|u|)}}
- \end{equation}
- つまり $R,S,T$ を以下のように定義することで, 還元可能.
- \begin{align}
-  R(u,v) &= v \\
-  S(u, 0^n) &= \lfloor 2^nc_u \rfloor \text{を表す文字列,} \\
-  T(u) &= 0^{\lambda(|u|)+\rho(|u|)}
- \end{align}
- $L$ は $\classPSPACE$ 完全であるため, $h$ は $\classPSPACE$ 困難.
-\end{proof}
-
-
-\section{任意回連続微分可能関数と常微分方程式}
-
-この節では定理 \ref{KTimesIsCH}, 
-つまり$(\infty, k)$階連続微分可能な関数の常微分方程式の解は
-$\classCH$ 困難でありうることを示す.
-証明の流れは \ref{section:differentiable} 節とほぼ同じである.
-\ifnum \proc = 1
-ただし紙面の都合上, 詳細な証明は省き, 証明の概略を説明するに止める.
-\fi
-
-
-\subsection{$\classCH$ 困難な言語}
-
-Wagner によって $\classCH$ の各階層 $\C_n \classP$ に対してそれぞれ完全問題が存在することが示されている\cite{wagner1986complexity}.
-量化子 $\C$ を自然数 $m$, 論理式 $A(x_1, \dots, x_l)$, 
-$l$ 個の論理変数の組 $\alpha$ について以下のように定義する.
-\begin{equation}
- \C^m \alpha A(\alpha) 
-  \longleftrightarrow 
-  \Bigl|\{\alpha \in \{0,1\}^l \mid A(\alpha) = 1\}\Bigr| \ge m.
-\end{equation}
-$\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ の
-一般化と言える.
-言語 $\C_n B_{be}$ を以下のように定義する.
-\begin{equation}
- \langle \phi(x_1, \dots, x_n), m_1, \dots, m_n \rangle \in \C_n B_{be}
- \longleftrightarrow
- \C^{m_1}{\alpha_1} \cdots \C^{m_n}{\alpha_n} \phi(\alpha_1, \dots, \alpha_n) 
-\end{equation}
-ただし $\langle y_1, \dots, y_i \rangle$ は組み合わせ関数,
-それぞれ $x_i$, $\alpha_i$ は $l_i$ 個の論理変数の組とする.
-
-
-\begin{lemma}[Theorem 7 \cite{wagner1986complexity}] \label{lemma:CnP-complete}
- $\C_n B_{be}$ は $\C_n\classP$ 完全.
-\end{lemma}
-
-
-各 $\C_n B_{be}$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように定義する.
-\[
- \langle 0^{2^n}, u \rangle \in \C_{\log} B_{be}
- \longleftrightarrow
- u \in \C_n B_{be}
-\]
-
-\begin{lemma}
- $\C_{\log} B_{be}$ は $\classCH$ 困難.
-\end{lemma}
-
-\begin{proof}
- 任意の $\classCH$ の言語 $A$ はある階層 $\C_n \classP$ に属する. 
- 補題 \ref{lemma:CnP-complete} より任意の $u \in \{0,1\}^*$ について
- $u \in A \leftrightarrow f(u) \in \C_n B_{be}$ 
- を満たす多項式時間関数 $f$ が存在する.
- \begin{align}
-  u \in A 
-  & \longleftrightarrow \langle 0^{2^n}, f(u) \rangle \in \C_{\log} B_{be}
- \end{align}
- $n$ は定数であるため $\langle 0^{2^n}, f(\cdot) \rangle$ は多項式時間関数.
- よって $A$ は $\C_n B_{be}$ に多項式時間還元可能.
-\end{proof}
-
-\begin{lemma}
- $\C_{\log} B_{be}$ を認識する対数段一様関数族 $(G_u)_u$ が存在する.
-\end{lemma}
-
-\begin{proof}
- 関数族 $(G_u)_u$, $(H_u)_u$, 関数 $p$, 多項式 $q,r$ を構成する.
- $u  = \langle 0^{2^n}, 
- \langle \phi(x_1, \dots, x_n), m_1, \dots, m_n \rangle \rangle$
- と仮定する.
- 
- $L = C_{\log} B_{be}$,
- $l_i = |x_i|$,
- $s_i = \sum^i_{j=1}l_j + 2i$  と表記する.
- 関数 $C^m \colon \N \to \{0,1\}$ を
- \begin{equation}
-  C^m(Y) 
-     = \begin{cases}
-       1 & (Y \ge m) \\
-       0 & (Y < m) \end{cases}
- \end{equation}
- と定義する. 
- 任意の $i = 0, \dots, n$ と $n-i$ 個の文字列 
- $\beta_{i+1} \in \{0,1\}^{l_{i+1}}, \dots, \beta_n \in \{0,1\}^{l_n}$ 
- について部分式
- $\C^{m_{i}}{\alpha_i} \cdots \C^{m_1}{\alpha_1}
- \phi(\alpha_1, \dots, \alpha_i, \beta_{i+1}, \dots, \beta_n)$
- の真偽値を $\phi_i(\beta_{i+1}, \dots, \beta_n)$ と表記する.
- \begin{align}
-  \phi_0 &= \phi 
-  \\ \label{eq:phi-step}
-  \phi_{i+1}(\beta_{i+2}, \dots, \beta_n) 
-  &= C^{m_{i+1}}\left(\sum\nolimits_{\alpha_i \in \{0,1\}^{l_i}} 
-  \phi_i(\alpha_{i+1}, \beta_{i+2}, \dots, \beta_{n})\right) 
-  \\
-  \phi_n() &= L(u) 
- \end{align}
- $T \in \N$ に対し, $T_i$ を $T$ の2進表記における $i$ 桁目, 
- $T_{[i,j]} = T_{j-1} T_{j-2} \cdots T_{i+1} T_{i}$ と表記する.
-
-
- $G_u$ を $(i, T, Y) \in [n+1] \times [2^{s_n}+1] \times [2^{|u|}]$ の範囲で
- を以下のように定義する. 一段目つまり $i=0$ ならば
- \begin{equation}
-  G_u(0,T,Y) = 
-   (-1)^{T_{s_1}}\phi(T_{[1,s_1]}, T_{[s_1+1,s_2]},
-    \dots, T_{[s_{n-1}+1,s_n]}) 
- \end{equation}
- $i \ge 1$ ならば
- \begin{equation} \label{eq:def-Gu:case0}
-  G_u(i,T,Y) = 
-   \begin{cases}
-    (-1)^{T_{s_{i+1}}} C^{m_i}(Y) 
-    & (T_{[1,s_i]} = 10 \cdots 0) \\
-    0 & (\text{othewise}).
-   \end{cases} 
- \end{equation}
-
-
- 任意の $i \in [n+1]$, $T \in [2^{s_n}+1]$ について,
- $H_u(i,T) \in [2^{l_i}+1]$ が成りたつこと,
- および $T_{[1,s_i]} = 10 \cdots 0$ ならば
- \begin{equation} \label{eq:subformula}
-  G_u(i,T,H_u(i,T)) = (-1)^{T_{s_{i+1}}} 
-   \phi_i(T_{[s_i+1, s_{i+1}]}, \dots, T_{[s_{n-1}+1, s_n]})
- \end{equation}
- を満たすことを $i$ についての帰納法により示す.
- 上記が成り立つとき,
- $i=n$, $T=2^{s_n}$ において $G_u(n, 2^{s_n}, H_u(n,2^{s_n})) = \phi_n() = L(u)$
- よって $H_u(n+1, 2^{s_n}+1) = L(u)$.
- ここで 
- \begin{gather}
-  n+1 \le \log(|0^{2^n}|) + 1 = O(\log(|u|)) \\
-  2^{s_n}+1 \le 2^{s_n+1} \le 2^{|u|}
- \end{gather}
- より $p(u) = n+1, q(x) = r(x) = x$ とおき $G_u$ を
- $[p(u)] \times [2^{q(|u|)}] \times [2^{r(|u|)}]$ の範囲に拡大すると
- $H_u(p(u), 2^{q(|u|)}) = L(u)$.
-
- $i=0$ のとき, 式(\ref{eq:def-Gu:case0})より成り立つ.
- $i=j$ のとき, 成り立つと仮定する, $Y = H_u(i+1, T)$ とおくと
- \begin{align}
-  Y 
-  &= \sum_{V = 1}^{T-1} G_u(i, V, H_u(i, V)) \\
-  &= \sum (-1)^{V_{s_{i+1}}} \phi_i(V_{[s_i+1, s_{i+1}]}, 
-   \dots, V_{[s_{n-1}+1, s_n]})
- \end{align}
- $T_{[1, s_{i+1}]} = 10 \cdots 0$ のとき,
- $V_{[1, s_n]} = T_{[s_{i+1}+1,s_n]} 0 \alpha 1 0 \cdots 0$ であるとき
- 以外の値は打ち消し合うので,
- \begin{equation}
-  Y = \sum\nolimits_{\alpha \in \{0,1\}^{l_i}} 
-  \phi_i(\alpha, T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]})
- \end{equation}
- 式(\ref{eq:phi-step})より
- \begin{align}
-  G_u(i+1,T,H_u(i+1,T)) 
-  &= (-1)^{T_{s_{i+2}}} C^{m_{i+1}} (Y)\\
-  &= (-1)^{T_{s_{i+2}}} \phi_{i+1}(T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]})
- \end{align}
- よって $i=j+1$ でも成り立つ.
- \end{proof}
-
 
 \subsection{対数段差分方程式を模倣する関数族}
 
@@ -944,6 +720,215 @@ $\classPSPACE$ 困難が $\classCH$ 困難へと置き換わる.
  より, $\rho(k) = p(k)(\gamma(k) + d')$ とおくと成り立つ.
  \end{proof}
 
+
+\subsection{定理 \ref{DifferentiableIsPspace} の証明}
+
+ $\classPSPACE$ 完全な言語 {\sf QBF} 補題 \ref{DifferentiableFamily} から得られる
+ $(g_u)_u$ と $(h_u)_u$ から滑らかな $g$ と
+ その常微分方程式の解で $\classPSPACE$ 困難な $h$ を構成する.
+ 各 $h_u(1)$ には $L(u)$ の情報が含まれるため,
+ すべての $h_u$ を一つの関数 $h$ に埋め込みたい.
+ そこで [0,1] を無限の区間に分割し, $h$ の各文字列 $u$ に対応する区間
+ $[l^-_u, c_u]$ に $h_u$ を
+ 縮小して埋め込む. 
+ ただし次の文字列 $u'$ の計算に影響を与えないために,
+ $h_u$ を定義域方向について反転したものを
+ 区間 $[c_u, l^+_u]$ に埋め込むことで影響を相殺する.
+ つまり $h(l^-_u) = 0,\ h(c_u) = 2^{-\rho'(|u|)} L(u),\ h(l^+_u) = 0$ を満たす
+ ように $h_u(t)$埋め込む.
+ ただし $\rho'$ とは $\rho$ に縮小率をかけたものとする.
+ 同様に $g$ は $h$ が常微分方程式の解となるよう,
+ 各文字列 $u$ に対応する区間に $g_u$ を縮小して埋め込む.
+
+ Lipschitz条件の場合と異なる点は, $g_u$ を構成する時点で
+ $(\infty, 1)$ 回連続微分可能にするために,
+ $|\D ^{(i, 0)} g_u|, |\D ^{(i, 0)} g_u|$ の大きさを制限する点である
+ (補題 \ref{DifferentiableFamily} の (\ref{enum:infty1})).
+ 
+
+\begin{proof}
+ $L$ を $\classPSPACE$ 完全な言語とおく.
+ $\classPSPACE$ 完全な言語 $L$ に対して補題 \ref{DifferentiableFamily} を用いて,
+ まず多項式 $\mu_i$ をえる.
+ $\mu_i$ は $i$ を係数部にのみ持つ多項式であるため,
+ $\mu_i(k) = O(k^c)$ をみたす最小の定数 $c$ が存在する.
+ \begin{align}
+  \lambda(k) &= 2k + 2,&
+  \gamma(k) &= k^{c+1} + k \lambda(k)
+ \end{align}
+ とおき, 各 $u$ に対して 
+\begin{align}
+ \Lambda_u 
+ &= 2^{\lambda(|u|)}, &
+ c_u 
+ &= 1-\frac{1}{2^{|u|}}+\frac{2\bar{u}+1}{\Lambda_u}, &
+ l_u^\mp 
+ &= c_u\mp\frac{1}{\varLambda_u} 
+\end{align}  
+ とおく. ただし $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ は $u$ を二進数と
+ して解釈した数.
+ $\gamma$ に対して, 再び補題より $\rho$, $(g_u)_u$, $(h_u)_u$ を得る.
+
+
+
+ 任意の $[0,1)$ の実数に対して,
+ $l^\mp_u \pm \frac{t}{\Lambda_u}$ がその実数と等しくなるような
+ $u, \pm, t\in [0,1]$ が存在する.
+ 関数 $g, h$ を $t \in [0,1]$, $y \in \R$ に対して,
+ それぞれ $[0,1) \times [-1,1]$ の範囲と $[0,1)$ の範囲で下のように定義する.
+
+ \begin{align}
+  g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
+  &= \begin{cases}
+      \pm \left( g_u(t,1) 
+      + \D^{(0,1)}g_u(t, 1)(y-1) \right)&  (1<y)\\
+      \pm g_u(t, y) & (-1 \le y \le 1) \\
+      \pm \left( g_u(t, -1) + \D^{(0,1)} g_u(t, -1)(y+1) \right) & (y<-1)
+     \end{cases}
+  \\
+  h \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right) 
+  &= \frac{h_u(t)}{\Lambda_u}.
+\end{align}
+ 任意の $y \in \R$ に対して $g(1,y) = h(1) = 0$ と定義する.
+
+
+
+ この $g$ と $h$ が定理 \ref{DifferentiableIsPspace} で求める関数
+ の性質を満たすことを示す.
+
+
+ 
+ まず $g$ が多項式時間計算可能であることを
+ 補題 \ref{lem:type1representation} を用いて示す.
+ 各有理数 $T,Y$ について $g(T, Y)$ を求めるとき,
+ $T=l_u^\mp \pm t/\Lambda_u$, $Y = y/\Lambda_u\Gamma_u$ を満たすような
+ $u, \pm, t, y$ は, 多項式時間で計算可能であり,
+ $(g_u)_u$ は多項式時間計算可能なので $g(T, Y)$ は多項式時間計算可能.
+
+
+
+ $g$ が $(\infty, 1)$ 階連続的微分可能であることを示すため,
+ まず $g$ が $(\infty, 0)$ 階連続的微分可能であることを示す.
+ 
+ $g_u$ は $(\infty, 1)$ 階連続的微分可能であるため,
+ 各区間においては$(\infty, 1)$ 階連続的微分可能である.
+ $t \in (0, 1)$ において
+
+ \begin{multline}
+  \D^{(i, 0)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
+  \\
+   = \begin{cases}
+      \pm \Lambda_u^i \left( \D^{(i, 0)} g_u(t,1) 
+       + \D^{(i,1)}g_u(t, 1)(y-1) \right)&  (1<y)\\
+      \pm \Lambda_u^i \D^{(i, 0)} g_u(t, y) & (-1 < y < 1) \\
+      \pm \Lambda_u^i \left( \D^{(i, 0)} g_u(t, -1) 
+       + \D^{(i,1)} g_u(t, -1)(y+1) \right) & (y<-1)
+    \end{cases}
+ \end{multline}
+
+ $\D^{(i,0)}g_u$ は連続であるため 
+ $t \in (0,1)$, $y \not = -1, 1$ の区間において連続.
+ 確認すべきなのは $g_u$ 同士をつなぐ境界 $t = 0, 1$ と
+ $g_u$ の外側との境界 $y = 0, 1$,  
+ および極限 $g_u$ の極限, つまり $g$ の第一引数が 1 へ限りなく近づくとき
+ 発散せずに連続であることである.
+
+
+ $y = 1$ のとき 
+ $\D^{(i, 0)}g \left(l^\mp_u \pm t / \Lambda_u, y / \Lambda_u\right) = 
+ \pm \Lambda_u^i \D^{(i, 0)} g_u(t, 1)$,
+ $y = -1$ のとき 
+ $\D^{(i, 0)}g \left(l^\mp_u \pm t / \Lambda_u, y / \Lambda_u\right) = 
+ \pm \Lambda_u^i \D^{(i, 0)} g_u(t, -1)$
+ より $\D^{(i,0)}g$ は第二変数について連続である.
+
+ 第一変数が $[0,1)$ の範囲にあるとき,
+ つまり $l^\mp_u \pm t/\Lambda_u$ と表される範囲において連続であることを示す.
+ $t = 1$ において $g_u$ と $-g_u$ が接続され,
+ $t = 0$ において $g_u$ とつぎの文字 $u'$ の関数 $g_{u'}$ が接続されているが,
+ $\D^{(i, 0)} g_u(0, y) = \D^{(i, 0)} g_u(1, y) = 0$ より連続に接続されている.
+
+ 最後に第一変数が $1$ へ向かうとき発散しないことを示す.
+ \begin{align*}
+  \left|\D^{(i, 0)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
+  \frac{y}{\Lambda_u}\right)\right|
+  & \le \Lambda_u^i (|\D^{(i, 0)}g_u| + |\D^{(i, 1)}g_u| (\Lambda_u + 1)) \\
+  & \le \Lambda_u^i (\Lambda_u + 2) 2^{\mu_i(|u|) - \gamma(|u|)} \\
+  & \le \Lambda_u^{(i+1)} 2^{\mu_i(|u|) - \gamma(|u|) + 1} \\
+  & =  2^{(i+1)\lambda(|u|) + \mu_i(|u|) + 1 - \gamma(|u|)}  \taghere
+  \label{eq:sizeofderivative}
+ \end{align*}
+ $\gamma$ のとり方により, $|u| \to \infty$ のとき 
+ 式 (\ref{eq:sizeofderivative}) は 0 に収束する.
+ よって  $\lim_{t \to 1-0}\D^{(i,0)} g(t,y) = 0$.
+ とくに $i=0$ のとき, $\lim_{t \to 1-0} g(t,y) = 0 = g(1, y)$ より 1 で連続.
+ 以上により $g$ が $(\infty, 0)$ 階連続的微分可能であることを示した.
+ 
+
+ $g$ が $(\infty, 1)$ 階連続的微分可能であることを示す.
+ $(\infty, 0)$ 階連続的微分可能と同様に,
+ 各区間において, $(\infty, 1)$ 階連続的微分可能であるためそれぞれ導関数を求める.
+ $t \in (0, 1)$ において
+
+ \begin{equation}
+   \D^{(i,1)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},  \frac{y}{\Lambda_u} \right)
+   = \begin{cases}
+		   \pm \Lambda_u^{i+1} \D^{(i,1)}g_u(t,1) & (1 < y) \\
+		   \pm \Lambda_u^{i+1} \D^{(i,1)}g_u(t,y) & (-1 < y < 1) \\
+		   \pm \Lambda_u^{i+1} \D^{(i,1)}g_u(t,-1) & (y < -1).
+    \end{cases}
+ \end{equation}
+ $\D^{(0,1)}g(t,1) = \pm \Lambda_u \D^{(0,1)}g_u(t,1)$, 
+ $\D^{(0,1)}g(t,-1) = \pm \Lambda_u \D^{(0,1)}g_u(t,-1)$ であり,
+ 第二変数について連続.
+ 
+ 第一変数について連続性を示す.
+ $[0,1)$ 区間において
+ $t \in (0,1)$ ならば $\D^{(i,1)}g_u$ が連続であるため $\D^{(i,1)}g$ も連続.
+ $g_u(0,y) = g_u(1,y) = 1$ より $\D^{(i,1)} g_u(0, y) = \D^{(i, 1)} g_u(1,y) = 0$
+ なので $\D^{(i,1)} g(0, y) = \D^{(i, 1)} g(1,y) = 0$ のため $t = 0, 1$ においても連続.
+
+ 最後に第一変数が $1$ へ向かうとき発散しないことを示す.
+ \begin{align*}
+  \left|\D^{(i, 1)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
+  \frac{y}{\Lambda_u}\right)\right|
+  & \le \Lambda_u^{i+1} |\D^{(i, 1)}g_u| \\
+  & \le  2^{(i+1)\lambda(|u|) + \mu_i(|u|) - \gamma(|u|)}  \taghere
+ \end{align*}
+ $\gamma$ のとり方により $|u| \to \infty$ のとき 
+ $2^{(i+1)\lambda(|u|) + \mu_i(|u|) - \gamma(|u|)}$ は 0 へ収束する.
+ よって  $\displaystyle \lim_{t \to 1-0}\D^{(i,0)} g(t,y) = 0$.
+ 以上により $g$ が $(\infty, 1)$ 階連続的微分可能であることを示した.
+
+
+
+ $h$が$g$の常微分方程式の解であることを示す. 
+ $h(0)=0, \quad \D^{1}h(1) = 0 = g(1,h(1))$ は自明. 
+ \begin{align*}
+  h' \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right)
+  &= \pm \frac{h'_u(t)}{\Lambda_u} \\ 
+  &= \pm g_u \left(t, h_u(t)\right) \\
+  &= g\left(l^\mp_u \pm \frac{t}{\Lambda_u},  
+	\frac{h_u(t)}{\Lambda_u}\right) \\ 
+  &= g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, 
+	h\left(l^\mp_u \pm \frac{t}{\Lambda_u}\right) \right) . \taghere
+ \end{align*}
+
+
+
+ $L$ は $h$ に還元可能であることを示す.
+ \begin{equation}
+  h(c_u) = \frac{h_u(1)}{\Lambda_u}
+   = \frac{L(u)}{2^{\lambda(|u|)+\rho(|u|)}}
+ \end{equation}
+ つまり $R,S,T$ を以下のように定義することで, 還元可能.
+ \begin{align}
+  R(u,v) &= v \\
+  S(u, 0^n) &= \lfloor 2^nc_u \rfloor \text{を表す文字列,} \\
+  T(u) &= 0^{\lambda(|u|)+\rho(|u|)}
+ \end{align}
+ $L$ は $\classPSPACE$ 完全であるため, $h$ は $\classPSPACE$ 困難.
+\end{proof}
 
 
 \subsection{定理 \ref{KTimesIsCH} の証明}
