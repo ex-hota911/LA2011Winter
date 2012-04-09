@@ -248,8 +248,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
 
 
 
-\subsection{多項式段差分方程式を模倣する関数族}
-
+\subsection{差分方程式を模倣する関数族}
 
 \begin{lemma}
  \label{DifferentiableFamily}
@@ -276,6 +275,35 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
  \end{enumerate}
 \end{lemma}
 
+
+ \begin{lemma}
+  \label{KTimesFamily}
+  任意の自然数 $k \ge 2$ に対して,
+  $\classCH$ 困難な言語 $L$,
+  係数のみに $i$ を含む多項式 $\mu_i$ が存在して,
+  任意の多項式 $\gamma$ に対して,
+  関数 $\rho \colon \N \to \N$, 関数族 $g_u, h_u$ で,
+  $\rho, (g_u)_u$ は多項式時間計算可能であり,
+  各文字列 $u$ に対して以下を満たすものが存在する.
+  \begin{enumerate}
+   \item $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$;
+   \item $h_u$ は $g_u$ の常微分方程式 (\ref{eq:ode}) の解;
+   \item $g_u$ は $(\infty, k)$ 階連続微分可能;
+   \item \label{enum:boundary}
+	 任意の $i \in \N$, $y \in [-1,1]$ に対して
+	 \begin{equation*}
+	  \D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0 ;
+	 \end{equation*}
+   \item \label{enum:inftyk}
+	 任意の $i \in \N$, $j \in \{0, \dots, k\}$ に対して
+	 \begin{equation*}
+	  \left|\D^{(i,j)} g_u(t,y)\right| \le 2^{\mu_i(|u|) - \gamma(|u|)};
+	 \end{equation*}
+   \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
+  \end{enumerate}
+ \end{lemma}
+
+
  この補題より各 $h_u$ が $g_u$ の常微分方程式の解であり, 
  $h_u(1)$ に $L(u)$ の情報を持つ
  実関数族 $(g_u)_u, (h_u)_u$ の存在が示される.
@@ -299,10 +327,11 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
  以下のような無限回微分可能な多項式時間実関数 $f \colon [0,1] \to \R$ を用いて
  $g_u$ を構成していることである.
 
- \begin{lemma}[補題 3.6. \cite{ko1991complexity}]
+ \begin{lemma}[補題 3.6 \cite{ko1991complexity}]
   \label{SmoothFunction}
   以下を満たす多項式時間計算可能で無限回微分可能な
   実関数 $f \colon [0,1] \to \R$ が存在する.
+
   \begin{enumerate}
    \item $f(0) = 0, \quad f(1) = 1$;
    \item 任意の $n \ge 1$ で $f^{(n)}(0) = f^{(n)}(1) = 0$;
@@ -311,225 +340,16 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
   \end{enumerate}
  \end{lemma} 
 
+ 補題 \ref{DifferentiableFamily} の証明はLipschitzの場合とほとんど変わらず,
+ 細かな差異も補題 \ref{KTimesFamily} の証明に含まれるものと同じであるため省略する.
 
- \begin{proof}[\rm 補題 \ref{DifferentiableFamily} の証明]
-  補題 \ref{DIVPpolyIsPSPACEhard} から, $L$ を認識する 
-  離散初期値問題 $\left< d, p, q,(G_u)_u \right>$
-  とその解 $(H_u)_u$ を得る.
-  各ステップを $p(u)$ 個に分割することで, $G_u(i, T, Y) \not = 0$ を満たす
-  $i$ を各 $T$ に対してたかだか1つにすることができる. そのような $i$ のことを 
-  $j_u(T)$ と表現する. 任意の $i$ で $G_u(i, T, Y) = 0$ ならば $j_u(T)$ は
-  任意の値を取るとする. 
-  さらに以下を満たすとしても一般性を失わない.
-  \begin{equation}
-   H_u(i, 2^{q(|u|)}) = \begin{cases}
-			 L(u) & (i=p(|u|)) \\
-			0 & (i<p(|u|))
-			\end{cases}
-  \end{equation}
-
-  補題 \ref{SmoothFunction} の $f$ に対して, 
- 自然数 $c_i$ を各 $i \in \N$ に対して 
-  $|\D^i f(x)| \le 2^{c_i}$ を満たす最小の自然数と定める.
-  $\mu_i(k) = (i+1)q(k) + c_i + c_1 + 2$ とおく.
-  これは $\lambda$ に依存しない.
- 定数 $d' = \lceil \log (4d + 1) \rceil$, 
- $B = 2^{\gamma(|u|) + d'}$ とおき, 
- 各 $(t, y) \in [0,1] \times [-1, 1]$ に対して,
- 自然数 $N$, $\theta \in [0,1]$, 整数 $Y$, $\eta \in [-1/4, 3/4]$ を
- $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-j_u(T)}$ を満たすように
- 定める.
- 
- そのとき,
- \begin{equation}
-  \delta_{u, Y} (t) = \frac{2^{q(|u|)} f'(\theta)}{B^{j_u(T)+1}} 
-   G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
- \end{equation}
- とおき $g_u, h_u$ を以下のように定義する.
- \begin{equation}
-  g_u(t,y) 
-  = \begin{cases}
-     \delta_{u, Y}(t)& (\eta \le \frac 1 4) \\
-     ( 1-f ( \frac{4\eta-1}{2})) \delta_{u, Y}(t) 
-     + f ( \frac{4\eta-1}{2}) \delta_{u,Y+1}(t)
-     & (\eta > \frac 1 4)
-    \end{cases}
-  \label{eq:gu}
- \end{equation}
-
- \begin{equation} 
-  h_u(t) = \sum^{p(|u|)}_{i=0} \frac{H_u(i, T)}{B^i}  
-  + \frac{f(\theta)}{B^{j_u(T)+1}} G_u(j_u(T), T, H_u(j_u(T), T)) 
-  \label{eq:hu}
- \end{equation}
-
- 上記のように定義した $g_u, h_u$ が補題\ref{DifferentiableFamily} で求める
- 性質を満たすことを示す. (i) は自明. 
- $(g_u)_u$ が多項式時間計算可能であることは
- 補題 \ref{lem:type1representation}によって示される.
-
- $h_u$ は $g_u$ の常微分方程式の解であることを示す.
- まず $h_u$ について解析する. 
-  $h_u(t) = (Y + \eta) B^{-j_u(T)}$ とおくときの, $\eta$ の範囲がどうなるか,
-  つまり式(\ref{eq:gu})のどちらのケースを使うかを考える.
-  式(\ref{eq:hu}) の一つ目の項において
- $i \le j_u(T)$ の合計は $B^{j_u(T)}$ の倍数なので $\eta$ に影響はない.
-  $i > j_u(T)$ の合計は, 
- \begin{align*}
-  \sum_{i>j_u(T)} \frac{H_u(i, T)}{B^i} 
-  & \le \sum_{i>j_u(T)} \frac{d-1}{B^i} 
-   = \sum_{i>j_u(T)} \frac{d-1}{B^{i-j_u(T)}}B^{-j_u(T)} \\
-  & \le \sum_{i>j_u(T)} \frac{(d-1)}{(4d+1)^{i-j_u(T)}}B^{-j_u(T)} \\
-  & = \frac{d-1}{4d}B^{-j_u(T)}
- \end{align*}
- 二つ目の項の絶対値は
- \begin{equation}
-  \left| \frac{f(\theta)}{B^{j_u(T)+1}} G_u(j_u(T), T, H_u(j_u(T), T)) \right|
-  \le \frac{1}{B^{j_u(T)+1}}
-  \le \frac{B^{-j_u(T)}}{4d+1}
- \end{equation}
- $(\frac{d-1}{4d} + \frac{1}{4d+1})B^{-j_u(T)} \le \frac 1 4 B^{-j_u(T)} $
-  より $h_u(t) = (Y + \eta) B^{-j_u(T)}$ を満たす $\eta \in [-1/4, 1/4]$
- が存在する. このとき,
- \begin{equation}
-  Y = \sum_{i=0}^{j_u(T)}H_u(i, T) \cdot B^{j_u(T) - i} .
- \end{equation}
- $B$ は $2^{d'}$ の倍数なので, 
- $\min (Y \bmod 2^{d'}\!\!\!,\ d-1) = \min (H_u(j_u), d-1) = H_u(j_u)$. 
- (\ref{eq:gu})へ$Y$ と $\eta$ を代入すると,
- \begin{align*}
-   g_u(t, h_u(t)) 
-  & =  \frac{2^{q(|u|)} f'(\theta)}{B^{j_u(T)+1}}
-   G_u(j_u(T), T, H_u(j_u(T), T)) \\
-  & =  \D^{1}h_u(t).
- \end{align*}
- よって $h_u$ は $g_u$ の常微分方程式の解.
-
-  $g_u$ が $(\infty, 1)$ 階連続的微分可能であることを証明する.
-  $\eta$ が $[-1/4, 1/4]$ と $[1/4, 3/4]$ である区間それぞれにおいて微分する.
-
-  \begin{equation}
-   \D^i \delta_{u,Y}(t) 
-    = \frac{2^{(i+1)q(|u|)} \D^{i+1}f(\theta)}{B^{j_u(T)+1}}
-    G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
-  \end{equation}
-
-  \begin{equation}
-   \label{eq:derivativeofgu}
-    \D^{(i,0)} g_u(t, y)
-     = \begin{cases}
-	\D^i \delta_{u, Y}(t) 
-	\hfill (- \frac 1 4 < \eta < \frac 1 4) \\
-	\left( 1-f \left(\frac{4\eta-1}{2}\right)\right) 
-	\D^i \delta_{u, Y}(t) 
-	+ f \left(\frac{4\eta-1}{2}\right) \D^i \delta_{u,Y+1}(t) \\
-	\hfill (\frac 1 4 < \eta < \frac 3 4)
-       \end{cases}
-  \end{equation}   
-
-  \begin{equation}
-    \D^{(i,1)} g_u(t, y)
-     = \begin{cases}
-	0 \hfill (- \frac 1 4 < \eta < \frac 1 4) \\
-	2B^{j_u(T)}\D^{1}f(\frac{4\eta - 1}2)
-	(\D^i \delta_{u,Y+1}(t)-\D^i \delta_{u, Y}(t)) \\
-	\hfill (\frac 1 4 < \eta < \frac 3 4)
-       \end{cases}
-  \end{equation}
-  $f$ は 無限回微分可能であるため, $\delta_{u,Y}$ も無限回微分可能である.
-  よって 区間 $[-1/4, 1/4]$, $[1/4, 3/4]$ において
-  $\D^{(i,0)} g_u$, $\D^{(i,1)} g_u$ は連続. 
-  $\eta = 1/4$ および  $\eta = 3/4(-1/4)$ においても連続であることは自明.
-  よって $g_u$ は $(\infty, 1)$ 階連続的微分可能.
-
-  式 (\ref{eq:derivativeofgu}) に $t = 0$ を代入して
-  $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$.
-
-  $|\D^{(i,1)} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)}$ および
-  $|\D^{(i,0)} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)}$ を示す.
-
-  \begin{equation}
-   |\D^i \delta_{u, Y}(t)| 
-    \le \left|\frac{2^{(i+1)q(|u|)}\D^{i+1}f(\theta)}{B^{j_u(T)+1}} \right|
-    \le \frac{2^{(i+1)q(|u|) + c_i}}{B^{j_u(T)+1}}\\
-  \end{equation}
-
-  $B$ の定義より
-
-  \begin{align*}
-   \left| \D^{(i,0)} g_u \right| 
-   &\le 
-   |\D^i \delta_{u, Y}(t)| 
-    \le \frac{2^{(i+1)q(|u|) + c_i}}{B} 
-    \le 2^{\mu_i (|u|) - \gamma(|u|)}
-   \taghere \\
-   \left| \D^{(i,1)} g_u \right| 
-   & \le 
-   2B^{j_u(T)} \left|\D^{1}f\left(\frac{4\eta - 1}2\right)\right|
-   \cdot \left|\D^i \delta_{u,Y+1}(t)-\D^i \delta_{u, Y}(t)\right| \\
-   & \le
-   2 B^{j_u(T)} \cdot 2^{c_1} \cdot 
-   2 \cdot \frac{2^{(i+1)q(|u|) + c_i}}{B^{j_u(T)+1}}\\
-   & =
-   \frac{2^{(i+1)q(|u|) + c_i + c_1 + 2}}{B}
-   \le
-   2^{\mu_i (|u|) - \gamma(|u|)} . \taghere
-  \end{align*}
-
-
- (vii) は 
- \begin{align*}
-  h_u(1) &= \frac{H_u(p(|u|), 2^{q(|u|)})}{B^{p(|u|)}}  \\
-  &= \frac{L(u)}{2^{p(|u|) (\gamma(|u|) + d')}} \taghere
- \end{align*}
- より, $\rho(k) = p(k)(\gamma(k) + d')$ とおくと成り立つ.
- \end{proof}
-
-
-
-\subsection{対数段差分方程式を模倣する関数族}
-
- \begin{lemma}
-  \label{KTimesFamily}
-  任意の自然数 $k \ge 2$ に対して,
-  $\classCH$ 困難な言語 $L$,
-  係数のみに $i$ を含む多項式 $\mu_i$ が存在して,
-  任意の多項式 $\gamma$ に対して,
-  関数 $\rho \colon \N \to \N$, 関数族 $g_u, h_u$ で,
-  $\rho, (g_u)_u$ は多項式時間計算可能であり,
-  各文字列 $u$ に対して以下を満たすものが存在する.
-  \begin{enumerate}
-   \item $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$;
-   \item $h_u$ は $g_u$ の常微分方程式 (\ref{eq:ode}) の解;
-   \item $g_u$ は $(\infty, k)$ 階連続微分可能;
-   \item 任意の $i \in \N$, $y \in [-1,1]$ に対して
-	 \begin{equation*}
-	  \D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0 ;
-	 \end{equation*}
-   \item \label{enum:inftyk}
-	 任意の $i \in \N$, $j \in \{0, \dots, k\}$ に対して
-	 \begin{equation*}
-	  \left|\D^{(i,j)} g_u(t,y)\right| \le 2^{\mu_i(|u|) - \gamma(|u|)};
-	 \end{equation*}
-   \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
-  \end{enumerate}
- \end{lemma}
-
-
-補題 \ref{DifferentiableFamily} とくらべて補題 \ref{KTimesFamily} は,
-$\classPSPACE$ が $\classCH$ に置き換わり, $(\infty, 1)$ 回連続微分可能が 
-$(\infty, k)$回連続微分可能に一般化されている.
-本質的な違いは条件 (\ref{enum:inftyk}) によって, $h$ に対するフィードバックの大きさ,
-つまり $g(t,y)$ に対する $y$ の値の影響がかなり制限されてしまう点にある.
-それにより, 模倣できる差分方程式が多項式段ではなく対数段に制限され,
-$\classPSPACE$ 困難が $\classCH$ 困難へと置き換わる.
-
-
-
- \begin{proof}
+ \begin{proof}[\rm 補題 \ref{KTimesFamily} の証明]
+  補題 \ref{DIVPlogIsCHhard} より
   $\classCH$ 困難な問題 $\C_{\log} B_{be}$ を認識する
-  対数深さ離散初期値問題 $\left< d, p, q,(G_u)_u \right>$
-  とその解 $(H_u)_u$ を得る. さらに以下のように仮定する.
+  対数段一様関数族 $(G_u)_u$, その解 $(H_u)_u$, 
+  $P_u = p(|u|), Q_u = 2^{q(|u|)}, R_u = 2^{r(|u|)}$ を満たす関数$p$, 
+  多項式 $q,r$ を得る.
+  さらに以下のように仮定する.
   \begin{equation}
    H_u(i, 2^{q(|u|)}) = \begin{cases}
 			L(u) & (i=p(|u|)) \\
@@ -540,8 +360,7 @@ $\classPSPACE$ 困難が $\classCH$ 困難へと置き換わる.
   補題 \ref{SmoothFunction} の $f$ に対して, 
   自然数の族 $c_i$ を各 $i \in \N$ に対して 
   $|\D^i f(x)| \le 2^{c_i}$ を満たす最小の自然数と定める.
- 定数 $d' = \lceil \log (4d + 1) \rceil$, 
- $B = 2^{\gamma(|u|) + d'}$ とおき, 
+ $B = 2^{\gamma(|u|) + r(|u|) + 3}$ とおき, 
  各 $(t, y) \in [0,1] \times [-1, 1]$ に対して,
  自然数 $N$, $\theta \in [0,1]$, 整数 $Y$, $\eta \in [-1/4, 3/4]$ を
  $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-k^{j_u(T)}}$ を満たすように
@@ -550,10 +369,11 @@ $\classPSPACE$ 困難が $\classCH$ 困難へと置き換わる.
  そのとき,
  \begin{equation}
   \delta_{u, Y} (t) = \frac{2^{q(|u|)} f'(\theta)}{B^{k^{j_u(T)+1}}} 
-   G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
+   G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
  \end{equation}
  とおき $g_u, h_u$ を以下のように定義する.
  \begin{equation}
+  \label{eq:gu}
   g_u(t,y) 
   = \begin{cases}
      \delta_{u, Y}(t)
@@ -577,44 +397,23 @@ $\classPSPACE$ 困難が $\classCH$ 困難へと置き換わる.
   補題 \ref{lem:type1representation}によって示される.
 
  $h_u$ は $g_u$ の常微分方程式の解であることを示す.
- まず $h_u$ について解析する. 
-  $h_u(t) = (Y + \eta) B^{-k^{j_u(T)}}$ とおくときの, $\eta$ の範囲がどうなるか,
-  つまり式(\ref{eq:gu})のどちらのケースを使うかを考える.
-  式(\ref{eq:hu}) の一つ目の項において
- $i \le j_u(T)$ の合計は $B^{k^{j_u(T)}}$ の倍数なので $\eta$ に影響はない.
-  $i > j_u(T)$ の合計は, 
- \begin{align*}
-  \sum_{i>j_u(T)}^{p(|u|)} \frac{H_u(i, T)}{B^{k^i}} 
-  & \le \sum_{i>j_u(T)}^\infty \frac{d-1}{B^{k^i}}  \\
-  & \le \sum_{i>j_u(T)}^\infty \frac{d-1}{B^i} 
-   = \sum_{i>j_u(T)}^\infty \frac{d-1}{B^{i-j_u(T)}}B^{-j_u(T)} \\
-  & \le \sum_{i>j_u(T)}^\infty \frac{d-1}{(4d+1)^{i-j_u(T)}}B^{-j_u(T)} \\
-  & = \frac{d-1}{4d}B^{-j_u(T)}
- \end{align*}
- 二つ目の項の絶対値は
+ 任意の $t$ について $h_u(t) = (Y + \eta) B^{-j_u(T)}$ を満たす 
+ $\eta \in [-1/4, 1/4]$ が存在する. 
+ つまり常微分方程式の解$h$は式 $\ref{eq:gu}$ の一つ目の場合のみを考慮すればよい.
  \begin{equation}
-  \left| \frac{f(\theta)}{B^{k^{j_u(T)+1}}} G_u(j_u(T), T, H_u(j_u(T), T)) \right|
-  \le \frac{1}{B^{j_u(T)+1}}
-  \le \frac{B^{-j_u(T)}}{4d+1}
+  Y = \sum_{i=0}^{j_u(T)} \frac{H_u(i, T)}{B^{k^i}} \cdot B^{k^{j_u(T)}}.
  \end{equation}
- $(\frac{d-1}{4d} + \frac{1}{4d+1})B^{-j_u(T)} \le \frac 1 4 B^{-j_u(T)} $
-  より $h_u(t) = (Y + \eta) B^{-j_u(T)}$ を満たす $\eta \in [-1/4, 1/4]$
- が存在する. このとき,
- \begin{equation}
-  Y = \sum_{i=0}^{j_u(T)}H_u(i, T) \cdot B^{k^{j_u(T)} - k^i} .
- \end{equation}
- $B$ は $2^{d'}$ の倍数なので, 
- $\min (Y \bmod 2^{d'}\!\!\!,\ d-1) = \min (H_u(j_u), d-1) = H_u(j_u)$. 
+ $B$ は $2^{r(|u|)}$ の倍数なので,  $Y \bmod 2^{r(|u|)} = H_u(j_u)$. 
  $g_u$ に代入すると,
  \begin{align*}
    g_u(t, h_u(t)) 
   & =  \frac{2^{q(|u|)} f'(\theta)}{B^{k^{j_u(T)+1}}}
    G_u(j_u(T), T, H_u(j_u(T), T)) \\
-  & =  \D^{1}h_u(t).
+  & =  \D h_u(t).
  \end{align*}
  よって $h_u$ は $g_u$ の常微分方程式の解.
 
-  $g_u$ が $(\infty, k)$ 階連続的微分可能であることを証明する.
+  $g_u$ が $(\infty, k)$ 階連続的微分可能であることを示す.
   $\eta$ が $[-1/4, 1/4]$ と $[1/4, 3/4]$ である区間それぞれにおいて微分する.
   任意の $i \in \N$ について
 
@@ -647,66 +446,50 @@ $\classPSPACE$ 困難が $\classCH$ 困難へと置き換わる.
 	\hfill (\frac 1 4 < \eta < \frac 3 4)
        \end{cases}
   \end{equation}
-  $f$ は 無限回微分可能であるため, $\delta_{u,Y}$ も無限回微分可能である.
-  よって 区間 $(-1/4, 1/4)$, $(1/4, 3/4)$ において
-  $\D^{(i, 0)} g_u$, $\D^{(i,j)} g_u$ は連続. 
-  $\eta = 1/4$ および  $\eta = 3/4(-1/4)$ においても連続であることは自明.
-  $\D^{(i+1, 0)} f(0) = \D^{(i+1, 0)} f(1) = 0$ より $\theta = 0$ または $\theta = 1$
-  において $\D^{(i, 0)}g_u(t, y) = 0$, $\D^{(i, j)}g_u(t, y) = 0$,
-  よって $t$ についても連続.
-  以上により $g_u$ は $(\infty, j)$ 階連続的微分可能であることが示された.
-
+  境界においても連続であるため,
+  $g_u$ は $(\infty, j)$ 階連続的微分可能であることが示された.
   式 (\ref{eq:derivativeofgu}) に $t = 0, 1$ ($\theta = 0$) を代入して
   $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$.
+  上記の式より, 任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
+  $|\D^{(i,j)} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)}$.
 
-  任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
-  $|\D^{(i,j)} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)}$ を示す.
-
-  \begin{equation}
-   |\D^i \delta_{u, Y}(t)| 
-    \le \left|\frac{2^{(i+1)q(|u|)}\D^{i+1}f(\theta)}{B^{k^{j_u(T)+1}}} \right|
-    \le \frac{2^{(i+1)q(|u|) + c_i}}{B^{k^{j_u(T)+1}}}\\
-  \end{equation}
-
-  $\mu_i(k) = (i+1)q(k) + \sum^k_{j=1}c_i + c_i + k + 1$ とおく.
-  これは $\lambda$ に依存しない.
-  $B$ の定義より
-
-  \begin{align*}
-   \left| \D^{(i,0)} g_u \right| 
-   &\le 
-   |\D^i \delta_{u, Y}(t)| 
-    \le \frac{2^{(i+1)q(|u|) + c_i}}{B} 
-    \le 2^{\mu_i (|u|) - \gamma(|u|)}
-   \taghere 
-   \\
-   \left| \D^{(i,j)} g_u \right| 
-   & \le 
-   (2B^{j_u(T)})^j \left|\D^j f\left(\frac{4\eta - 1}2\right)\right|
-   \cdot \left|\D^i \delta_{u,Y+1}(t)-\D^i \delta_{u, Y}(t)\right| \\
-   & \le
-   2^k B^{k \cdot j_u(T)} \cdot 2^{c_j} \cdot 
-   2 \cdot \frac{2^{(i+1)q(|u|) + c_i}}{B^{k^{j_u(T)+1}}}\\
-   & \le
-   \frac{2^{(i+1)q(|u|) + \sum^k_{j=1}c_j + c_i +  k + 1}}{B}
-   \le
-   2^{\mu_i (|u|) - \gamma(|u|)} . \taghere
-  \end{align*}
-
- (vii) は 
  \begin{align*}
-  h_u(1) &= \frac{H_u(p(|u|), 2^{q(|u|)})}{B^{p(|u|)}}  \\
-  &= \frac{L(u)}{2^{p(|u|) (\gamma(|u|) + d')}} \taghere
+  h_u(1) &= \frac{H_u(p(|u|), 2^{q(|u|)})}{B^{2^{p(|u|)}}}  \\
+  &= L(u) \cdot 2^{-2^{p(|u|)} \cdot (\gamma(|u|) + r(|u|) + 3) } \taghere
  \end{align*}
- より, $\rho(k) = p(k)(\gamma(k) + d')$ とおくと成り立つ.
+ より, $\rho(x) = 2^{p(x)} \cdot (\gamma(x) + r(x) + 3)$ とおくと成り立つ.
  \end{proof}
 
 
-\subsection{定理 \ref{DifferentiableIsPspace} の証明}
+ ちなみに$\classPSPACE$困難な言語を認識する多項式段一様関数族$(G_u)_u$と
+ その解$(H_u)_u$に対して
+ \begin{align}
+  \delta_{u, Y} (t) &= \frac{2^{q(|u|)} f'(\theta)}{B^{{j_u(T)+1}}} 
+   G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
+  \\
+  g_u(t,y) 
+  &= \begin{cases}
+     \delta_{u, Y}(t)
+     & (\eta \le \frac 1 4)
+     \\
+     ( 1-f ( \frac{4\eta-1}{2})) \delta_{u, Y}(t) 
+     + f ( \frac{4\eta-1}{2}) \delta_{u,Y+1}(t)
+     & (\eta > \frac 1 4)
+    \end{cases}
+  \\
+  h_u(t) &= \sum^{p(|u|)}_{i=0} \frac{H_u(i, T)}{B^{i}}  
+  + \frac{f(\theta)}{B^{{j_u(T)+1}}} G_u(j_u(T), T, H_u(j_u(T), T)) 
+ \end{align}
+ と定めるとる$(g_u)_u$と$(h_u)_u$は, 
+ 補題 \ref{DifferentiableFamily} で求める性質を満たす.
 
- $\classPSPACE$ 完全な言語 {\sf QBF} 補題 \ref{DifferentiableFamily} から得られる
+
+\subsection{主定理の証明}
+
+ 主定理の証明はLipschitzの場合とほぼ同じである.
+ 補題 \ref{DifferentiableFamily} から得られる
  $(g_u)_u$ と $(h_u)_u$ から滑らかな $g$ と
- その常微分方程式の解で $\classPSPACE$ 困難な $h$ を構成する.
+ その常微分方程式の解 $h$ を構成する.
  各 $h_u(1)$ には $L(u)$ の情報が含まれるため,
  すべての $h_u$ を一つの関数 $h$ に埋め込みたい.
  そこで [0,1] を無限の区間に分割し, $h$ の各文字列 $u$ に対応する区間
@@ -721,21 +504,22 @@ $\classPSPACE$ 困難が $\classCH$ 困難へと置き換わる.
  同様に $g$ は $h$ が常微分方程式の解となるよう,
  各文字列 $u$ に対応する区間に $g_u$ を縮小して埋め込む.
 
- Lipschitz条件の場合と異なる点は, $g_u$ を構成する時点で
- $(\infty, 1)$ 回連続微分可能にするために,
- $|\D ^{(i, 0)} g_u|, |\D ^{(i, 0)} g_u|$ の大きさを制限する点である
- (補題 \ref{DifferentiableFamily} の (\ref{enum:infty1})).
- 
+ 定理 \ref{DifferentiableIsPspace} と定理 \ref{KTimesIsCH} の関係は
+ 補題 \ref{DifferentiableFamily} と補題 \ref{KTimesFamily} の関係と等しい.
+ つまり $\classPSPACE$ が $\classCH$ に置き換わり,
+ $(\infty, 1)$ 回連続微分可能が $(\infty, k)$回連続微分可能に一般化されている.
+ よって定理 \ref{KTimesIsCH} の証明から
+ 定理 \ref{DifferentiableIsPspace} の証明が構成できる.
 
-\begin{proof}
- $L$ を $\classPSPACE$ 完全な言語とおく.
- $\classPSPACE$ 完全な言語 $L$ に対して補題 \ref{DifferentiableFamily} を用いて,
+\begin{proof}[\rm 定理 \ref{KTimesIsCH} の証明]
+ $L$ を $\classCH$ 困難な言語とおく.
+ $L$ に対して補題 \ref{DifferentiableFamily} を用いて,
  まず多項式 $\mu_i$ をえる.
  $\mu_i$ は $i$ を係数部にのみ持つ多項式であるため,
- $\mu_i(k) = O(k^c)$ をみたす最小の定数 $c$ が存在する.
+ $\mu_i(x) = O(x^c)$ をみたす最小の定数 $c$ が存在する.
  \begin{align}
-  \lambda(k) &= 2k + 2,&
-  \gamma(k) &= k^{c+1} + k \lambda(k)
+  \lambda(x) &= 2x + 2,&
+  \gamma(x) &= x^{c+1} + x \lambda(x)
  \end{align}
  とおき, 各 $u$ に対して 
 \begin{align}
@@ -748,30 +532,27 @@ $\classPSPACE$ 困難が $\classCH$ 困難へと置き換わる.
 \end{align}  
  とおく. ただし $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ は $u$ を二進数と
  して解釈した数.
- $\gamma$ に対して, 再び補題より $\rho$, $(g_u)_u$, $(h_u)_u$ を得る.
-
+ $\gamma$ に対して, 補題より $\rho$, $(g_u)_u$, $(h_u)_u$ を得る.
 
 
  任意の $[0,1)$ の実数に対して,
  $l^\mp_u \pm \frac{t}{\Lambda_u}$ がその実数と等しくなるような
  $u, \pm, t\in [0,1]$ が存在する.
- 関数 $g, h$ を $t \in [0,1]$, $y \in \R$ に対して,
- それぞれ $[0,1) \times [-1,1]$ の範囲と $[0,1)$ の範囲で下のように定義する.
-
+ 関数 $g, h$ を $t \in [0,1)$, $y \in [-1, 1]$ に対して,
  \begin{align}
-  g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
+ g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
   &= \begin{cases}
-      \pm \left( g_u(t,1) 
-      + \D^{(0,1)}g_u(t, 1)(y-1) \right)&  (1<y)\\
-      \pm g_u(t, y) & (-1 \le y \le 1) \\
-      \pm \left( g_u(t, -1) + \D^{(0,1)} g_u(t, -1)(y+1) \right) & (y<-1)
-     \end{cases}
+      \pm \displaystyle \sum_{l=0}^k \frac{\D^{(0,l)}g_u(t,1)}{l!} (y-1)^l 
+      &  (1<y) \\
+      \pm g_u(t, y)      & (-1 \le y \le 1) \\
+      \pm \displaystyle \sum_{l=0}^k \frac{\D^{(0,l)}g_u(t,-1)}{l!} (y+1)^l  
+      &  (1<y) \\
+    \end{cases} 
   \\
-  h \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right) 
-  &= \frac{h_u(t)}{\Lambda_u}.
+ h \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right) 
+  & = \frac{h_u(t)}{\Lambda_u}.
 \end{align}
- 任意の $y \in \R$ に対して $g(1,y) = h(1) = 0$ と定義する.
-
+ $t=1$のとき $g(1,y) = 0$, $h(1) = 0$ と定義する.
 
 
  この $g$ と $h$ が定理 \ref{DifferentiableIsPspace} で求める関数
@@ -782,119 +563,57 @@ $\classPSPACE$ 困難が $\classCH$ 困難へと置き換わる.
  まず $g$ が多項式時間計算可能であることを
  補題 \ref{lem:type1representation} を用いて示す.
  各有理数 $T,Y$ について $g(T, Y)$ を求めるとき,
- $T=l_u^\mp \pm t/\Lambda_u$, $Y = y/\Lambda_u\Gamma_u$ を満たすような
+ $T=l_u^\mp \pm t/\Lambda_u$, $Y = y/\Lambda_u$ を満たすような
  $u, \pm, t, y$ は, 多項式時間で計算可能であり,
  $(g_u)_u$ は多項式時間計算可能なので $g(T, Y)$ は多項式時間計算可能.
 
 
-
- $g$ が $(\infty, 1)$ 階連続的微分可能であることを示すため,
- まず $g$ が $(\infty, 0)$ 階連続的微分可能であることを示す.
- 
- $g_u$ は $(\infty, 1)$ 階連続的微分可能であるため,
- 各区間においては$(\infty, 1)$ 階連続的微分可能である.
- $t \in (0, 1)$ において
-
- \begin{multline}
-  \D^{(i, 0)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
-  \\
+ $g$ が $(\infty, k)$ 回連続的微分可能であることを示す.
+ $g_u$ は $(\infty, k)$ 階連続的微分可能であるため,
+ 各区間においては$(\infty, k)$ 階連続的微分可能である.
+ $i \in \N$, $j \in \{0, \dots, k\}$, $t \in (0, 1)$ において
+\begin{equation}
+   \D^{(i, j)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
    = \begin{cases}
-      \pm \Lambda_u^i \left( \D^{(i, 0)} g_u(t,1) 
-       + \D^{(i,1)}g_u(t, 1)(y-1) \right)&  (1<y)\\
-      \pm \Lambda_u^i \D^{(i, 0)} g_u(t, y) & (-1 < y < 1) \\
-      \pm \Lambda_u^i \left( \D^{(i, 0)} g_u(t, -1) 
-       + \D^{(i,1)} g_u(t, -1)(y+1) \right) & (y<-1)
+      \pm \Lambda_u^{(i, j)} \sum^{k}_{l=j} \frac{\D^{(i,l)} g_u(t,1)}{(l-j)!}
+      (y - 1)^l &  (1<y)
+      \\
+      \pm \Lambda_u^{(i,j)} \D^{(i, j)} g_u(t, y) & (-1 < y < 1)
+      \\
+      \pm \Lambda_u^{(i, j)} \sum^{k}_{l=j} 
+      \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l &  (1<y)
     \end{cases}
- \end{multline}
-
- $\D^{(i,0)}g_u$ は連続であるため 
+\end{equation}
+ $\D^{(i,j)}g_u$ は連続であるため 
  $t \in (0,1)$, $y \not = -1, 1$ の区間において連続.
- 確認すべきなのは $g_u$ 同士をつなぐ境界 $t = 0, 1$ と
- $g_u$ の外側との境界 $y = 0, 1$,  
- および極限 $g_u$ の極限, つまり $g$ の第一引数が 1 へ限りなく近づくとき
- 発散せずに連続であることである.
-
-
- $y = 1$ のとき 
- $\D^{(i, 0)}g \left(l^\mp_u \pm t / \Lambda_u, y / \Lambda_u\right) = 
- \pm \Lambda_u^i \D^{(i, 0)} g_u(t, 1)$,
- $y = -1$ のとき 
- $\D^{(i, 0)}g \left(l^\mp_u \pm t / \Lambda_u, y / \Lambda_u\right) = 
- \pm \Lambda_u^i \D^{(i, 0)} g_u(t, -1)$
- より $\D^{(i,0)}g$ は第二変数について連続である.
-
- 第一変数が $[0,1)$ の範囲にあるとき,
- つまり $l^\mp_u \pm t/\Lambda_u$ と表される範囲において連続であることを示す.
- $t = 1$ において $g_u$ と $-g_u$ が接続され,
- $t = 0$ において $g_u$ とつぎの文字 $u'$ の関数 $g_{u'}$ が接続されているが,
- $\D^{(i, 0)} g_u(0, y) = \D^{(i, 0)} g_u(1, y) = 0$ より連続に接続されている.
-
- 最後に第一変数が $1$ へ向かうとき発散しないことを示す.
+ 境界($t = 0, 1$または$y = -1, 1$)において連続であることは,
+ 定義および補題 \ref{KTimesFamily}(\ref{enum:boundary})によりしめされる.
+ 第一変数が $1$ へ向かうとき
  \begin{align*}
-  \left|\D^{(i, 0)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
+  \left|\D^{(i, j)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
   \frac{y}{\Lambda_u}\right)\right|
-  & \le \Lambda_u^i (|\D^{(i, 0)}g_u| + |\D^{(i, 1)}g_u| (\Lambda_u + 1)) \\
-  & \le \Lambda_u^i (\Lambda_u + 2) 2^{\mu_i(|u|) - \gamma(|u|)} \\
-  & \le \Lambda_u^{(i+1)} 2^{\mu_i(|u|) - \gamma(|u|) + 1} \\
-  & =  2^{(i+1)\lambda(|u|) + \mu_i(|u|) + 1 - \gamma(|u|)}  \taghere
+  &\le 
+  \Lambda_u^{i+j} \sum^{k}_{l=j} \left(|\D^{(i,l)} g_u |(\Lambda_u + 1)^l \right)
+  \\
+  & \le \Lambda_u^{i+j+k}  2^{k + \mu_i(|u|) - \gamma(|u|)}
+  \\
+  & =  2^{(i+j+k)\lambda(|u|) + k + \mu_i(|u|)  - \gamma(|u|)}.  \taghere
   \label{eq:sizeofderivative}
  \end{align*}
  $\gamma$ のとり方により, $|u| \to \infty$ のとき 
  式 (\ref{eq:sizeofderivative}) は 0 に収束する.
- よって  $\lim_{t \to 1-0}\D^{(i,0)} g(t,y) = 0$.
- とくに $i=0$ のとき, $\lim_{t \to 1-0} g(t,y) = 0 = g(1, y)$ より 1 で連続.
- 以上により $g$ が $(\infty, 0)$ 階連続的微分可能であることを示した.
+ よって  $\lim_{t \to 1-0}\D^{(i,j)} g(t,y) = g(1, y) = 0$.
+ 以上により $g$ が $(\infty, k)$ 階連続的微分可能.
  
-
- $g$ が $(\infty, 1)$ 階連続的微分可能であることを示す.
- $(\infty, 0)$ 階連続的微分可能と同様に,
- 各区間において, $(\infty, 1)$ 階連続的微分可能であるためそれぞれ導関数を求める.
- $t \in (0, 1)$ において
-
- \begin{equation}
-   \D^{(i,1)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},  \frac{y}{\Lambda_u} \right)
-   = \begin{cases}
-		   \pm \Lambda_u^{i+1} \D^{(i,1)}g_u(t,1) & (1 < y) \\
-		   \pm \Lambda_u^{i+1} \D^{(i,1)}g_u(t,y) & (-1 < y < 1) \\
-		   \pm \Lambda_u^{i+1} \D^{(i,1)}g_u(t,-1) & (y < -1).
-    \end{cases}
- \end{equation}
- $\D^{(0,1)}g(t,1) = \pm \Lambda_u \D^{(0,1)}g_u(t,1)$, 
- $\D^{(0,1)}g(t,-1) = \pm \Lambda_u \D^{(0,1)}g_u(t,-1)$ であり,
- 第二変数について連続.
- 
- 第一変数について連続性を示す.
- $[0,1)$ 区間において
- $t \in (0,1)$ ならば $\D^{(i,1)}g_u$ が連続であるため $\D^{(i,1)}g$ も連続.
- $g_u(0,y) = g_u(1,y) = 1$ より $\D^{(i,1)} g_u(0, y) = \D^{(i, 1)} g_u(1,y) = 0$
- なので $\D^{(i,1)} g(0, y) = \D^{(i, 1)} g(1,y) = 0$ のため $t = 0, 1$ においても連続.
-
- 最後に第一変数が $1$ へ向かうとき発散しないことを示す.
- \begin{align*}
-  \left|\D^{(i, 1)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
-  \frac{y}{\Lambda_u}\right)\right|
-  & \le \Lambda_u^{i+1} |\D^{(i, 1)}g_u| \\
-  & \le  2^{(i+1)\lambda(|u|) + \mu_i(|u|) - \gamma(|u|)}  \taghere
- \end{align*}
- $\gamma$ のとり方により $|u| \to \infty$ のとき 
- $2^{(i+1)\lambda(|u|) + \mu_i(|u|) - \gamma(|u|)}$ は 0 へ収束する.
- よって  $\displaystyle \lim_{t \to 1-0}\D^{(i,0)} g(t,y) = 0$.
- 以上により $g$ が $(\infty, 1)$ 階連続的微分可能であることを示した.
-
-
 
  $h$が$g$の常微分方程式の解であることを示す. 
- $h(0)=0, \quad \D^{1}h(1) = 0 = g(1,h(1))$ は自明. 
- \begin{align*}
-  h' \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right)
-  &= \pm \frac{h'_u(t)}{\Lambda_u} \\ 
-  &= \pm g_u \left(t, h_u(t)\right) \\
-  &= g\left(l^\mp_u \pm \frac{t}{\Lambda_u},  
-	\frac{h_u(t)}{\Lambda_u}\right) \\ 
-  &= g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, 
-	h\left(l^\mp_u \pm \frac{t}{\Lambda_u}\right) \right) . \taghere
- \end{align*}
-
+ $h(0)=0$, 
+ \begin{equation}
+  \D h \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right)
+  = \pm \frac{\D h_u(t)}{\Lambda_u} = \pm g_u \left(t, h_u(t)\right) 
+  = g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, 
+	h\left(l^\mp_u \pm \frac{t}{\Lambda_u}\right) \right).
+\end{equation}
 
 
  $L$ は $h$ に還元可能であることを示す.
@@ -908,17 +627,8 @@ $\classPSPACE$ 困難が $\classCH$ 困難へと置き換わる.
   S(u, 0^n) &= \lfloor 2^nc_u \rfloor \text{を表す文字列,} \\
   T(u) &= 0^{\lambda(|u|)+\rho(|u|)}
  \end{align}
- $L$ は $\classPSPACE$ 完全であるため, $h$ は $\classPSPACE$ 困難.
+ $L$ は $\classCH$ 困難であるため, $h$ は $\classCH$ 困難.
 \end{proof}
 
-
-\subsection{定理 \ref{KTimesIsCH} の証明}
-
-定理 \ref{DifferentiableIsPspace} と定理 \ref{KTimesIsCH} の関係は
-補題 \ref{DifferentiableFamily} と補題 \ref{KTimesFamily} の関係と等しい.
-つまり $\classPSPACE$ が $\classCH$ に置き換わり,
-$(\infty, 1)$ 回連続微分可能が $(\infty, k)$回連続微分可能に一般化されている.
-よって定理 \ref{DifferentiableIsPspace} の証明から
-定理 \ref{KTimesIsCH} の証明が構成できる.
 
 %%% 証明は削除, master に残っているものを後でマージする.
