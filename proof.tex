@@ -4,7 +4,7 @@
 基本的な証明の流れは河村によるものと等しい\cite{kawamura2010lipschitz}.
 定理 \ref{DifferentiableIsPspace} の証明では,
 まず任意の言語$L \in \classPSPACE$ を認識する関数族$(G_u)_u, (H_u)_u$ を得る
-(補題 \ref{WeakFeedback}).
+(補題 \ref{DIVPpolyIsPSPACEhard}).
 そして $(G_u)_u, (H_u)_u$ を模倣する実関数族 $(g_u)_u, (h_u)_u$ を構成し(補題\ref{DifferentiableFamily}),
 それらから定理で求める $g, h$ を構成する.
 定理 \ref{KTimesIsCH} においても, ある $\classCH$ 困難な言語を認識する関数族
@@ -79,11 +79,17 @@ $(\infty, 1)$ 回微分可能な関数の常微分方程式においても,
 対数段一様な関数族によって認識される言語の困難性が重要である.
 
 \begin{lemma}
- \label{DIVPlog}
+ \label{DIVPlogIsCHhard}
  $\classCH$ 困難で対数段一様な関数族によって認識される言語が存在する.
 \end{lemma}
 
-一見補題
+補題 \ref{DIVPpolyIsPSPACEhard} が$\classPSPACE$の任意の言語について述べているのに対して,
+この補題は$\classCH$困難な或る言語について述べているという違いがある.
+しかし定理の証明において必要なのは言語クラスに対して困難な或る言語を認識できることであり,
+補題 \ref{DIVPpolyIsPSPACEhard} を補題 \ref{DIVPlogIsCHhard} と同じ形式
+($\classPSPACE$ 困難で多項式段一様な関数族によって認識される言語が存在する)
+に変えても定理を証明するには十分である.
+
 
 
 \subsection{$\classCH$ 困難な言語}
@@ -104,8 +110,10 @@ $\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ �
  \longleftrightarrow
  \C^{m_1}{\alpha_1} \cdots \C^{m_n}{\alpha_n} \phi(\alpha_1, \dots, \alpha_n) 
 \end{equation}
+
 ただし $\langle y_1, \dots, y_i \rangle$ は組み合わせ関数,
-それぞれ $x_i$, $\alpha_i$ は $l_i$ 個の論理変数の組とする.
+$x_i$, $\alpha_i$ は $l_i$ 個の論理変数の組,
+$\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理式とする.
 
 
 \begin{lemma}[Theorem 7 \cite{wagner1986complexity}] \label{lemma:CnP-complete}
@@ -114,17 +122,17 @@ $\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ �
 
 
 各 $\C_n B_{be}$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように定義する.
-\[
+\begin{equation}
  \langle 0^{2^n}, u \rangle \in \C_{\log} B_{be}
  \longleftrightarrow
  u \in \C_n B_{be}
-\]
+\end{equation}
+この $\C_{\log} B_{be}$ が補題 \ref{DIVPlogIsCHhard} で求める言語であること,
+つまり$\classCH$困難かつ対数段一様関数族によって認識可能であることを示す.
 
-\begin{lemma}
- $\C_{\log} B_{be}$ は $\classCH$ 困難.
-\end{lemma}
 
-\begin{proof}
+\begin{proof}[\rm 補題 \ref{DIVPlogIsCHhard} の証明]
+ $\C_{\log} B_{be}$が$\classCH$困難であることを示す.
  任意の $\classCH$ の言語 $A$ はある階層 $\C_n \classP$ に属する. 
  補題 \ref{lemma:CnP-complete} より任意の $u \in \{0,1\}^*$ について
  $u \in A \leftrightarrow f(u) \in \C_n B_{be}$ 
@@ -135,18 +143,16 @@ $\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ �
  \end{align}
  $n$ は定数であるため $\langle 0^{2^n}, f(\cdot) \rangle$ は多項式時間関数.
  よって $A$ は $\C_n B_{be}$ に多項式時間還元可能.
-\end{proof}
 
-\begin{lemma}
- \label{DIVPlogIsCHhard}
- $\C_{\log} B_{be}$ を認識する対数段一様関数族 $(G_u)_u$ が存在する.
-\end{lemma}
 
-\begin{proof}
- 関数族 $(G_u)_u$, $(H_u)_u$, 関数 $p$, 多項式 $q,r$ を構成する.
+ $\C_{\log} B_{be}$を認識する関数族 $(G_u)_u$, 
+ その解$(H_u)_u$, 関数 $p \colon \N \to \N$, 多項式 $q,r$ を構成する.
+ 自然数 $n, m_1, \dots, m_n$, 論理式$\phi$を
  $u  = \langle 0^{2^n}, 
  \langle \phi(x_1, \dots, x_n), m_1, \dots, m_n \rangle \rangle$
- と仮定する.
+ を満たすものとする. 
+ (そのような$n, m_1, \dots, m_n, \phi$が存在しないとき$u \not \in A$.)
+ 
  
  $L = C_{\log} B_{be}$,
  $l_i = |x_i|$,
@@ -161,12 +167,12 @@ $\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ �
  と定義する. 
  任意の $i = 0, \dots, n$ と $n-i$ 個の文字列 
  $\beta_{i+1} \in \{0,1\}^{l_{i+1}}, \dots, \beta_n \in \{0,1\}^{l_n}$ 
- について部分式
+ について論理式
  $\C^{m_{i}}{\alpha_i} \cdots \C^{m_1}{\alpha_1}
  \phi(\alpha_1, \dots, \alpha_i, \beta_{i+1}, \dots, \beta_n)$
  の真偽値を $\phi_i(\beta_{i+1}, \dots, \beta_n)$ と表記する.
  \begin{align}
-  \phi_0 &= \phi 
+  \phi_0 (\beta_1, \dots, \beta_n) &= \phi(\beta_1, \dots, \beta_n)
   \\ \label{eq:phi-step}
   \phi_{i+1}(\beta_{i+2}, \dots, \beta_n) 
   &= C^{m_{i+1}}\left(\sum\nolimits_{\alpha_i \in \{0,1\}^{l_i}} 
@@ -213,7 +219,7 @@ $\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ �
   2^{s_n}+1 \le 2^{s_n+1} \le 2^{|u|}
  \end{gather}
  より $p(u) = n+1, q(x) = r(x) = x$ とおき $G_u$ を
- $[p(u)] \times [2^{q(|u|)}] \times [2^{r(|u|)}]$ の範囲に拡大すると
+ $[p(u)] \times [2^{q(|u|)}] \times [2^{r(|u|)}]$ の範囲に拡張すると
  $H_u(p(u), 2^{q(|u|)}) = L(u)$.
 
  $i=0$ のとき, 式(\ref{eq:def-Gu:case0})より成り立つ.
@@ -273,14 +279,14 @@ $\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ �
  この補題より各 $h_u$ が $g_u$ の常微分方程式の解であり, 
  $h_u(1)$ に $L(u)$ の情報を持つ
  実関数族 $(g_u)_u, (h_u)_u$ の存在が示される.
- 条件 (iii) -- (v) はすべて定理 \ref{DifferentiableIsPspace} の $g$ を
- 滑らかな関数とするために必要となる条件である.
- 詳細については定理の証明の際に説明する.
+ 河村によるLipschitz連続な常微分方程式の$\classPSPACE$困難性の証明における,
+ 補題 4.1 に対応するが,
+ $g$ を微分可能にするため, 条件 (iii) -- (v) が付け加えられている.
  
 
  この補題の証明の基本的な流れを説明する.
  任意の言語 $L \in \classPSPACE$ に対し, 
- 補題 \ref{WeakFeedback} を用いて $L$ を認識する $(G_u)_u$ 
+ 補題 \ref{DIVPpolyIsPSPACEhard} を用いて $L$ を認識する $(G_u)_u$ 
  及びその差分方程式の解 $(H_u)_u$ を得る.
  そして各 $G_u, H_u$ を模倣する
  滑らかな $g_u \colon [0,1] \times [-1, 1] \to \R$ 
@@ -289,7 +295,7 @@ $\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ �
 
 
  上記の証明は基本的に, Lipschitz条件の場合と変わらない.
- 異なる点は $g_u$ を滑らかな関数にするため, 
+ 異なる点は, $g_u$ を滑らかな関数にするため, 
  以下のような無限回微分可能な多項式時間実関数 $f \colon [0,1] \to \R$ を用いて
  $g_u$ を構成していることである.
 
@@ -307,12 +313,12 @@ $\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ �
 
 
  \begin{proof}[\rm 補題 \ref{DifferentiableFamily} の証明]
-  補題 \ref{WeakFeedback} から, $L$ を認識する 
+  補題 \ref{DIVPpolyIsPSPACEhard} から, $L$ を認識する 
   離散初期値問題 $\left< d, p, q,(G_u)_u \right>$
   とその解 $(H_u)_u$ を得る.
   各ステップを $p(u)$ 個に分割することで, $G_u(i, T, Y) \not = 0$ を満たす
   $i$ を各 $T$ に対してたかだか1つにすることができる. そのような $i$ のことを 
-  $j_ul(T)$ と表現する. 任意の $i$ で $G_u(i, T, Y) = 0$ ならば $j_u(T)$ は
+  $j_u(T)$ と表現する. 任意の $i$ で $G_u(i, T, Y) = 0$ ならば $j_u(T)$ は
   任意の値を取るとする. 
   さらに以下を満たすとしても一般性を失わない.
   \begin{equation}
@@ -322,25 +328,11 @@ $\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ �
 			\end{cases}
   \end{equation}
 
- \begin{equation}
-  G_u(i, 2\cdot 2^{q(|u|)} - 1 - T, Y) 
-   = \begin{cases}
-      0 & (i=p(|u|)-1) \\
-      -G_u(i,T,Y) & (i<p(|u|)-1)
-     \end{cases}
- \end{equation}
-
- \begin{equation}
-  H_u(i, 2 \cdot 2^{q(|u|)} - T) 
-  = \begin{cases}
-    H_u(p(|u|), 2^{q(|u|)}) & (i=p(|u|)) \\
-    H_u(i, T) &  (i<p(|u|))
-    \end{cases}
- \end{equation}
-
   補題 \ref{SmoothFunction} の $f$ に対して, 
  自然数 $c_i$ を各 $i \in \N$ に対して 
   $|\D^i f(x)| \le 2^{c_i}$ を満たす最小の自然数と定める.
+  $\mu_i(k) = (i+1)q(k) + c_i + c_1 + 2$ とおく.
+  これは $\lambda$ に依存しない.
  定数 $d' = \lceil \log (4d + 1) \rceil$, 
  $B = 2^{\gamma(|u|) + d'}$ とおき, 
  各 $(t, y) \in [0,1] \times [-1, 1]$ に対して,
@@ -462,8 +454,6 @@ $\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ �
     \le \frac{2^{(i+1)q(|u|) + c_i}}{B^{j_u(T)+1}}\\
   \end{equation}
 
-  $\mu_i(k) = (i+1)q(k) + c_i + c_1 + 2$ とおく.
-  これは $\lambda$ に依存しない.
   $B$ の定義より
 
   \begin{align*}
