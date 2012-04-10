@@ -150,28 +150,74 @@ $\classCH$は定数回の計数(数え上げ)による計算量クラスであ�
 この問に答えるには先ず
 実関数を実関数へ写す演算子の計算量を
 定義することを要する. 
-実数の名を実数の名へ変換する機械を以て実関数の計算を定義したのと同じように, 
-実関数の名を実関数の名へ変換することになる. 
-ほげほげ……
 
-\newcommand{\OpDiffIVP}{\mathit{ODE}}
+\newcommand{\OpIVP}{\mathit{ODE}}
 \newcommand{\deltabox}{\delta _\square}
+\newcommand{\deltaboxLip}{\delta _{\square \mathrm L}}
 \newcommand{\classtwofont}[1]{\text{\bfseries \sffamily \upshape #1}}
 \newcommand{\classFPSPACEtwo}{\classtwofont{FPSPACE}}
 \newcommand{\classCHtwo}{\classtwofont{CH}}
+\newcommand{\redMF}{\leq _{\mathrm mf}}
 \newcommand{\redW}{\leq _{\mathrm W}}
 \newcommand{\redSW}{\leq _{\mathrm{sW}}}
+\newcommand{\classLip}{\mathrm C _{\mathrm L}}
+\newcommand{\classC}{\mathrm C}
+
+実数を入出力する関数の計算量を論ずるには, 
+実数を文字列関数で表した. 
+即ち$\R$の各元の名として文字列関数を使ったのであり, 
+その対応を$\R$の表現という. 
+同じように実関数を入出力する演算子の計算量を論ずるには, 
+実関数を文字列関数で表す. 
+すなわち, 
+連続な実関数$h \colon [0,1] \to \R$の全体
+$\classC [0, 1]$や, 
+リプシッツ連続な実関数$g \colon [0, 1] \times [-1, 1] \to \R$の全体
+$\classLip [[0, 1] \times [-1, 1]]$について, 
+表現を指定すればよい. 
+演算子の計算可能性や計算量は
+その表現に依ることになるが, 
+ここでは
+\cite{kawamura2010operators}に従い, 
+$\classC [0, 1]$の表現として$\deltabox$を, 
+$\classLip [[0, 1] \times [-1, 1]]$の表現として$\deltaboxLip$を
+それぞれ用いる. 
+これらの表現では使われる文字列関数の長さが有界でないため, 
+神託機械の時間・空間を測る方法を二階多項式を使って拡張する必要があるが, 
+詳細は\cite{kawamura2010operators}を参照せられたい. 
+$\deltabox$は関数空間$\classC [0, 1]$の表現として
+或る意味で自然なものであることが判っており
+\cite{}, 
+また$\deltaboxLip$はそれと同様の表現にリプシッツ定数に関する情報を附加したものである. 
+
+実関数$g \in \classLip [[0, 1] \times [-1, 1]]$を, 
+\eqref{eq:ode}を満す$h \in \classC [0, 1]$に対応させる演算子$\OpIVP$を考える. 
+$\OpIVP$は$\classLip [[0, 1] \times [-1, 1]]$から
+$\classC [0, 1]$への部分写像である. 
+
+\cite{kawamura2010operators}では表\ref{table:related}第三行の証明を
+構成的に書き直すことで, 
+$\OpIVP$が$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$完全であることが
+示されている. 
+本稿の関心はこれを滑らかな入力に制限しても困難性が成立つかという問である. 
+$\OpIVP$を$(\infty, k)$回連続微分可能な入力に制限したものを
+$\OpIVP _k$と書くことにする ($k \in \N \cup \{\infty\}$). 
+
+帰着の定義に$\redMF$, $\redW$, $\redSW$が
+ほげほげ……
 
 \begin{theorem}
-$\OpDiffIVP _1$は$(\deltabox, \deltabox)$-$\classFPSPACEtwo$-$\redW$完全. 
+$\OpIVP _1$は$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$完全. 
 \end{theorem}
 
 \begin{theorem}
-$\OpDiffIVP _k$は$(\deltabox, \deltabox)$-$\classFPSPACEtwo$に属し, 
-$(\deltabox, \deltabox)$-$\classCHtwo$-$\redW$困難. 
+$\OpIVP _k$は$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$に属し, 
+$(\deltaboxLip, \deltabox)$-$\classCHtwo$-$\redW$困難. 
 \end{theorem}
 
 \begin{theorem}
-$\OpDiffIVP _\infty$は$\classFPSPACEtwo$-$\redSW$完全. 
+$\OpIVP _\infty$は$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redSW$完全. 
 \end{theorem}
 
+定理\ref{DifferentiableIsPspace}, \ref{KTimesIsCH}は系として
+ふがふが
