@@ -37,7 +37,7 @@ $P, Q, R$ をそれぞれ\emph{段数}, \emph{列数}, \emph{欄の大きさ}と
 $G$ と $H$ が常微分方程式の $g$ と $h$ に対応し,
 $H(i, 0) = 0$ が $h(0) = 0$ に,
 式 (\ref{eq:divp}) と同値である式 $H(i + 1, T + 1) - H(i+1, T) = G(i, T, H(i, T))$
-が $h'(t) = g(t, h(t))$ と対応していると考える.
+が $\D h(t) = g(t, h(t))$ と対応していると考える.
 
 以下では文字列 $u$ ごとに差分方程式 $G _u$ を一つ定めた族 $(G _u) _u$ を考える. 
 各 $u$ に対して $G_u$ の段数と列数, 解をそれぞれ $P_u, Q_u, H_u$ としたとき,
@@ -345,7 +345,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
 
  \begin{proof}[\rm 補題 \ref{KTimesFamily} の証明]
   補題 \ref{DIVPlogIsCHhard} より
-  $\classCH$ 困難な問題 $\C_{\log} B_{be}$ を認識する
+  $\classCH$ 困難な言語 $L$ を認識する
   対数段一様関数族 $(G_u)_u$, その解 $(H_u)_u$, 
   $P_u = p(|u|), Q_u = 2^{q(|u|)}, R_u = 2^{r(|u|)}$ を満たす関数$p$, 
   多項式 $q,r$ を得る.
@@ -368,7 +368,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
  
  そのとき,
  \begin{equation}
-  \delta_{u, Y} (t) = \frac{2^{q(|u|)} f'(\theta)}{B^{k^{j_u(T)+1}}} 
+  \delta_{u, Y} (t) = \frac{2^{q(|u|)} \D f(\theta)}{B^{k^{j_u(T)+1}}} 
    G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
  \end{equation}
  とおき $g_u, h_u$ を以下のように定義する.
@@ -407,7 +407,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
  $g_u$ に代入すると,
  \begin{align*}
    g_u(t, h_u(t)) 
-  & =  \frac{2^{q(|u|)} f'(\theta)}{B^{k^{j_u(T)+1}}}
+  & =  \frac{2^{q(|u|)} \D f(\theta)}{B^{k^{j_u(T)+1}}}
    G_u(j_u(T), T, H_u(j_u(T), T)) \\
   & =  \D h_u(t).
  \end{align*}
@@ -420,7 +420,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
   \begin{equation}
    \D^i \delta_{u,Y}(t) 
     = \frac{2^{(i+1)q(|u|)} \D^{i+1}f(\theta)}{B^{k^{j_u(T)+1}}}
-    G_u\left( j_u(T), T, \min \left(Y \bmod 2^{d'}\!\!\!,\ d-1 \right) \right)
+    G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
   \end{equation}
 
   \begin{equation}
@@ -461,10 +461,10 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
  \end{proof}
 
 
- ちなみに$\classPSPACE$困難な言語を認識する多項式段一様関数族$(G_u)_u$と
- その解$(H_u)_u$に対して
+ 補題 \ref{DifferentiableFamily} の証明では
+ $\classPSPACE$困難な言語を認識する多項式段一様関数族$(G_u)_u$とその解$(H_u)_u$に対して
  \begin{align}
-  \delta_{u, Y} (t) &= \frac{2^{q(|u|)} f'(\theta)}{B^{{j_u(T)+1}}} 
+  \delta_{u, Y} (t) &= \frac{2^{q(|u|)} \D f(\theta)}{B^{{j_u(T)+1}}} 
    G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
   \\
   g_u(t,y) 
@@ -480,8 +480,9 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
   h_u(t) &= \sum^{p(|u|)}_{i=0} \frac{H_u(i, T)}{B^{i}}  
   + \frac{f(\theta)}{B^{{j_u(T)+1}}} G_u(j_u(T), T, H_u(j_u(T), T)) 
  \end{align}
- と定めるとる$(g_u)_u$と$(h_u)_u$は, 
- 補題 \ref{DifferentiableFamily} で求める性質を満たす.
+ と定める.
+ $(g_u)_u$と$(h_u)_u$が補題 \ref{DifferentiableFamily} で求める性質を満たすことは,
+ 補題 \ref{KTimesFamily} の証明と同様に示される.
 
 
 \subsection{主定理の証明}
