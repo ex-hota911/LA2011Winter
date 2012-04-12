@@ -662,13 +662,13 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
   h(c_u) = \frac{h_u(1)}{\Lambda_u}
    = \frac{L(u)}{2^{\lambda(|u|)+\rho(|u|)}}
  \end{equation}
- つまり $R,S,T$ を以下のように定義することで, 還元可能.
+ つまり $S$ を以下のように定義すると,
  \begin{align}
-  R(u,v) &= v \\
   S(u, 0^n) &= \lfloor 2^nc_u \rfloor \text{を表す文字列,} \\
-  T(u) &= 0^{\lambda(|u|)+\rho(|u|)}
  \end{align}
- $L$ は $\classCH$ 困難であるため, $h$ は $\classCH$ 困難.
+ $h(c_u)$の名$\phi$について$\phi(0^{\lambda(|u|)+\rho(|u|)}) = L(u)$
+ が成り立つため, 多項式時間還元可能.
+  $L$ は $\classCH$ 困難であるため, $h$ は $\classCH$ 困難.
 \end{proof}
 
 
