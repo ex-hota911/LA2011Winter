@@ -91,8 +91,38 @@ $(\infty, 1)$ 回微分可能な関数の常微分方程式においても,
 に変えても定理を証明するには十分である.
 
 
+\subsection{計数階層と対数段差分方程式}
+\label{subsection: counting hierarchy}
 
-\subsection{$\classCH$ 困難な言語}
+\emph{計数階層}(Counting Hierarchy($\classCH$)) とは
+Wagner によって導入された計算量クラスである\cite{wagner1986complexity}.
+多項式階層({\bf PH})が {\bf NP} の神託機械を用いて,
+\begin{align*}
+ \Sigma^p_0 
+ &= \classP \\
+ \Sigma^p_{k+1}
+ &= \mathbf{NP}^{\Sigma^p_k}
+\end{align*}
+\[
+ \mathbf{PH} = \bigcup_k \Sigma^p_k
+\]
+と定義されるのに対し,
+計数階層は多項式階層の {\bf NP} を {\bf PP} で置き換えたものである. つまり
+\begin{align*}
+ \C_0 \classP  
+ &= \classP \\
+ \C_{k+1} \classP
+ &= \classPP^{\C_k \classP}
+\end{align*}
+\[
+ \classCH = \bigcup_k \C_k \classP.
+\]
+上記の特徴付けは Tor{\'a}n によるものであり,
+Wagner によるオリジナルの定義とは異なる\cite{toran1991complexity}.
+
+$\mathbf{PH} \subseteq \classCH \subseteq \classPSPACE$ だが,
+$\mathbf{PH} = \classCH$, $\classCH = \classPSPACE$
+か否かは未解決である.
 
 Wagner によって $\classCH$ の各階層 $\C_n \classP$ に対してそれぞれ完全問題が存在することが示されている\cite{wagner1986complexity}.
 量化子 $\C$ を自然数 $m$, 論理式 $A(x_1, \dots, x_l)$, 
