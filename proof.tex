@@ -283,7 +283,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
 \begin{lemma}
  \label{DifferentiableFamily}
  任意の言語 $L \in \classPSPACE$ に対して, 
- 係数のみに $i$ を含む多項式 $\mu_i$ が存在して,
+ 二変数多項式 $\mu$ が存在して,
  任意の多項式 $\gamma$ に対して,
  多項式 $\rho$, 実関数族 $(g_u)_u, (h_u)_u$ で, 
  $(g_u)_u$ は多項式時間計算可能であり,
@@ -299,7 +299,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
   \item \label{enum:infty1}
 	任意の $i \in \N$, $j \in \{0,1\}$ に対して
 	\begin{equation*}
-	 |\D ^{(i,j)} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)};
+	 |\D ^{(i,j)} g_u| \leq 2^{\mu(i, |u|) - \gamma(|u|)};
 	\end{equation*}
   \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
  \end{enumerate}
@@ -310,7 +310,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
   \label{KTimesFamily}
   任意の自然数 $k \ge 2$ に対して,
   $\classCH$ 困難な言語 $L$,
-  係数のみに $i$ を含む多項式 $\mu_i$ が存在して,
+  二変数多項式 $\mu$ が存在して,
   任意の多項式 $\gamma$ に対して,
   関数 $\rho \colon \N \to \N$, 関数族 $g_u, h_u$ で,
   $\rho, (g_u)_u$ は多項式時間計算可能であり,
@@ -327,7 +327,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
    \item \label{enum:inftyk}
 	 任意の $i \in \N$, $j \in \{0, \dots, k\}$ に対して
 	 \begin{equation*}
-	  \left|\D^{(i,j)} g_u(t,y)\right| \le 2^{\mu_i(|u|) - \gamma(|u|)};
+	  \left|\D^{(i,j)} g_u(t,y)\right| \le 2^{\mu(i, |u|) - \gamma(|u|)};
 	 \end{equation*}
    \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
   \end{enumerate}
@@ -366,9 +366,19 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
    \item $f(0) = 0, \quad f(1) = 1$;
    \item 任意の $n \ge 1$ で $f^{(n)}(0) = f^{(n)}(1) = 0$;
    \item $f$ は $[0,1]$ で単調増加;
-   \item 任意の $n \ge 1$ で $f^{(n)}$ は多項式時間実関数.
+   \item 任意の $n \ge 1$ で $\D^n f$ は多項式時間実関数.
   \end{enumerate}
- \end{lemma} 
+ \end{lemma}
+
+ さらにここでは上記の条件に加えて, 
+ \begin{enumerate}
+  \setcounter{enumi}{4} 
+  \item 以下を多項式 $s$が存在
+	\begin{equation} \label{enum:polynomial-size}
+	 |\D^n f| \le s(n)
+	\end{equation}
+ \end{enumerate}
+ を満たすような$f$が存在することを用いて証明する.
 
  補題 \ref{DifferentiableFamily} の証明はLipschitzの場合とほとんど変わらず,
  細かな差異も補題 \ref{KTimesFamily} の証明に含まれるものと同じであるため省略する.
@@ -387,18 +397,15 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
 			\end{cases}
   \end{equation}
 
-  補題 \ref{SmoothFunction} の $f$ に対して, 
-  自然数の族 $c_i$ を各 $i \in \N$ に対して 
-  $|\D^i f(x)| \le 2^{c_i}$ を満たす最小の自然数と定める.
- $B = 2^{\gamma(|u|) + r(|u|) + 3}$ とおき, 
+ $B = 2^{\gamma(|u|) + r(|u|) + s(k) + k + 3}$ とおき, 
  各 $(t, y) \in [0,1] \times [-1, 1]$ に対して,
  自然数 $N$, $\theta \in [0,1]$, 整数 $Y$, $\eta \in [-1/4, 3/4]$ を
- $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-k^{j_u(T)}}$ を満たすように
+ $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-(k+1)^{j_u(T)}}$ を満たすように
  定める.
  
  そのとき,
  \begin{equation}
-  \delta_{u, Y} (t) = \frac{2^{q(|u|)} \D f(\theta)}{B^{k^{j_u(T)+1}}} 
+  \delta_{u, Y} (t) = \frac{2^{q(|u|)} \D f(\theta)}{B^{(k+1)^{j_u(T)+1}}} 
    G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
  \end{equation}
  とおき $g_u, h_u$ を以下のように定義する.
@@ -414,30 +421,34 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
      & (\eta > \frac 1 4)
     \end{cases}
  \end{equation}
-
  \begin{equation} 
-  h_u(t) = \sum^{p(|u|)}_{i=0} \frac{H_u(i, T)}{B^{k^i}}  
-  + \frac{f(\theta)}{B^{k^{j_u(T)+1}}} G_u(j_u(T), T, H_u(j_u(T), T)) 
+  h_u(t) 
+   = \sum^{p(|u|)}_{i=0} \frac{H_u(i, T)}{B^{(k+1)^i}}  
+  + \frac{f(\theta)}{B^{(k+1)^{j_u(T)+1}}} G_u(j_u(T), T, H_u(j_u(T), T)) 
   \label{eq:hu}
  \end{equation}
+  ただし$f$と多項式$s$は補題 \ref{SmoothFunction}
+  および式(\ref{enum:polynomial-size})を満たすものとする.
+
 
  上記のように定義した $g_u, h_u$ が補題\ref{DifferentiableFamily} で求める
  性質を満たすことを示す. (i) は自明. 
  $(g_u)_u$ が多項式時間計算可能であることは
   補題 \ref{lem:type1representation}によって示される.
 
+
  $h_u$ は $g_u$ の常微分方程式の解であることを示す.
  任意の $t$ について $h_u(t) = (Y + \eta) B^{-j_u(T)}$ を満たす 
  $\eta \in [-1/4, 1/4]$ が存在する. 
  つまり常微分方程式の解$h$は式 $\ref{eq:gu}$ の一つ目の場合のみを考慮すればよい.
  \begin{equation}
-  Y = \sum_{i=0}^{j_u(T)} \frac{H_u(i, T)}{B^{k^i}} \cdot B^{k^{j_u(T)}}.
+  Y = \sum_{i=0}^{j_u(T)} \frac{H_u(i, T)}{B^{(k+1)^i}} \cdot B^{(k+1)^{j_u(T)}}.
  \end{equation}
  $B$ は $2^{r(|u|)}$ の倍数なので,  $Y \bmod 2^{r(|u|)} = H_u(j_u)$. 
  $g_u$ に代入すると,
  \begin{align*}
    g_u(t, h_u(t)) 
-  & =  \frac{2^{q(|u|)} \D f(\theta)}{B^{k^{j_u(T)+1}}}
+  & =  \frac{2^{q(|u|)} \D f(\theta)}{B^{(k+1)^{j_u(T)+1}}}
    G_u(j_u(T), T, H_u(j_u(T), T)) \\
   & =  \D h_u(t).
  \end{align*}
@@ -449,7 +460,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
 
   \begin{equation}
    \D^i \delta_{u,Y}(t) 
-    = \frac{2^{(i+1)q(|u|)} \D^{i+1}f(\theta)}{B^{k^{j_u(T)+1}}}
+    = \frac{2^{(i+1)q(|u|)} \D^{i+1}f(\theta)}{B^{(k+1)^{j_u(T)+1}}}
     G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
   \end{equation}
 
@@ -471,7 +482,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
     \D^{(i,j)} g_u(t, y)
      = \begin{cases}
 	0 \hfill (- \frac 1 4 < \eta < \frac 1 4) \\
-	(2B^{j_u(T)})^j \D^j f(\frac{4\eta - 1}2)
+	(2B^{(k+1)^{j_u(T)}})^j \D^j f(\frac{4\eta - 1}2)
 	(\D^i \delta_{u,Y+1}(\theta)-\D^i \delta_{u, Y}(\theta)) \\
 	\hfill (\frac 1 4 < \eta < \frac 3 4)
        \end{cases}
@@ -480,8 +491,9 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
   $g_u$ は $(\infty, j)$ 階連続的微分可能であることが示された.
   式 (\ref{eq:derivativeofgu}) に $t = 0, 1$ ($\theta = 0$) を代入して
   $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$.
-  上記の式より, 任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
-  $|\D^{(i,j)} g_u| \leq 2^{\mu_i (|u|) - \gamma(|u|)}$.
+  上記の式より, $\mu(x, y) = (x+1)q(y) + s(x+1)$とおくと,
+  任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
+  $|\D^{(i,j)} g_u| \leq 2^{\mu(i, |u|) - \gamma(|u|)}$.
 
  \begin{align*}
   h_u(1) &= \frac{H_u(p(|u|), 2^{q(|u|)})}{B^{2^{p(|u|)}}}  \\
@@ -545,12 +557,10 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
 \begin{proof}[\rm 定理 \ref{KTimesIsCH} の証明]
  $L$ を $\classCH$ 困難な言語とおく.
  $L$ に対して補題 \ref{DifferentiableFamily} を用いて,
- まず多項式 $\mu_i$ をえる.
- $\mu_i$ は $i$ を係数部にのみ持つ多項式であるため,
- $\mu_i(x) = O(x^c)$ をみたす最小の定数 $c$ が存在する.
+ まず多項式 $\mu$ をえる.
  \begin{align}
   \lambda(x) &= 2x + 2,&
-  \gamma(x) &= x^{c+1} + x \lambda(x)
+  \gamma(x) &= x\mu(1, x) + x \lambda(x)
  \end{align}
  とおき, 各 $u$ に対して 
 \begin{align}
@@ -626,9 +636,9 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
   &\le 
   \Lambda_u^{i+j} \sum^{k}_{l=j} \left(|\D^{(i,l)} g_u |(\Lambda_u + 1)^l \right)
   \\
-  & \le \Lambda_u^{i+j+k}  2^{k + \mu_i(|u|) - \gamma(|u|)}
+  & \le \Lambda_u^{i+j+k}  2^{k + \mu(i, |u|) - \gamma(|u|)}
   \\
-  & =  2^{(i+j+k)\lambda(|u|) + k + \mu_i(|u|)  - \gamma(|u|)}.  \taghere
+  & =  2^{(i+j+k)\lambda(|u|) + k + \mu(i, |u|)  - \gamma(|u|)}.  \taghere
   \label{eq:sizeofderivative}
  \end{align*}
  $\gamma$ のとり方により, $|u| \to \infty$ のとき 
