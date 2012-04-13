@@ -6,7 +6,7 @@
 解$h$の計算量について述べている. 
 しかし微分方程式を「解く」困難さ, 
 すなわち与えられた$g$から$h$を求める演算子の計算量は
-如何程であろうか. 
+如何であろうか. 
 この問に答えるには先ず
 実関数を実関数へ写す演算子の計算量を
 定義することを要する. 
@@ -29,10 +29,9 @@
 その対応を$\R$の表現という. 
 同じように実関数を入出力する演算子の計算量を論ずるには, 
 実関数を文字列関数で表す. 
-すなわち, 
-連続な実関数$h \colon [0,1] \to \R$の全体
-$\classC [0, 1]$や, 
-リプシッツ連続な実関数$g \colon [0, 1] \times [-1, 1] \to \R$の全体
+つまり
+連続な実関数$h \colon [0,1] \to \R$の空間$\classC [0, 1]$や, 
+リプシッツ連続な実関数$g \colon [0, 1] \times [-1, 1] \to \R$の空間
 $\classLip [[0, 1] \times [-1, 1]]$について, 
 表現を指定すればよい. 
 演算子の計算可能性や計算量は
@@ -46,25 +45,29 @@ $\classLip [[0, 1] \times [-1, 1]]$の表現として$\deltaboxLip$を
 神託機械の時間・空間を測る方法を二階多項式を使って拡張する必要があるが, 
 詳細は\cite{kawamura2010operators}を参照せられたい. 
 $\deltabox$は関数空間$\classC [0, 1]$の表現として
-或る意味で自然なものであることが判っており
+或る意味で自然な唯一のものであることが判っており
 \cite{}, 
-また$\deltaboxLip$はそれと同様の表現にリプシッツ定数に関する情報を附加したものである. 
+また$\deltaboxLip$は$\deltabox$にリプシッツ定数に関する情報を附加した表現である. 
+
+\cite{kawamura2010operators}では文字列関数による表現に基いて, 
+多項式空間$\classFPSPACEtwo$などの計算量クラスや, 
+多項式時間ワイラオホ帰着$\redW$などの帰着が定義され, 
+それらによって定義される困難性が論ぜられている. 
+この枠組を用いて本稿の結果も以下の如く構成的な形で述べることができる. 
+
+% $\redMF$, $\redSW$が
 
 実関数$g \in \classLip [[0, 1] \times [-1, 1]]$を, 
 \eqref{eq:ode}を満す$h \in \classC [0, 1]$に対応させる演算子$\OpIVP$を考える. 
 $\OpIVP$は$\classLip [[0, 1] \times [-1, 1]]$から
 $\classC [0, 1]$への部分写像である. 
-
 \cite{kawamura2010operators}では表\ref{table:related}第三行の証明を
 構成的に書き直すことで, 
 $\OpIVP$が$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$完全であることが
-示されている. 
-本稿の関心はこれを滑らかな入力に制限しても困難性が成立つかという問である. 
+示された. 
+本稿の関心は$g$が滑らかな場合であるから, 
 $\OpIVP$を$(\infty, k)$回連続微分可能な入力に制限したものを
 $\OpIVP _k$と書くことにする ($k \in \N \cup \{\infty\}$). 
-
-帰着の定義に$\redMF$, $\redW$, $\redSW$が
-ほげほげ……
 
 \begin{theorem}
 \label{theorem: C1 constructive}
@@ -85,6 +88,8 @@ $(\deltaboxLip, \deltabox)$-$\classCHtwo$-$\redW$困難.
 定理\ref{DifferentiableIsPspace}, \ref{KTimesIsCH}はそれぞれ
 定理\ref{theorem: C1 constructive}, \ref{theorem: Ck constructive}の
 系として得られる. 
+
+ところで, ……
 
 \begin{theorem}
 $\OpIVP _\infty$は$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redSW$完全. 
