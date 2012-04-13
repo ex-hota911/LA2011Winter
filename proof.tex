@@ -510,7 +510,9 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
 \subsection{主定理の証明}
 \label{subsection: proof of theorems}
 
- 主定理の証明は河村Lipschitzの場合とほぼ同じである\cite[定理3.2]{kawamura2010lipschitz}.
+ 主定理の証明は$g$が微分可能であることを示す必要が或ること以外,
+ 河村によるLipschitzの場合とほぼ同じである\cite[定理3.2]{kawamura2010lipschitz}.
+ その概略を示す.
  前の節の補題から得られる $(g_u)_u$ と $(h_u)_u$ を縮小して連結し滑らかな $g$ と
  その常微分方程式の解 $h$ を構成する.
  [0,1] を無限の区間に分割し, $h$ の各文字列 $u$ に対応する区間
@@ -528,10 +530,10 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
  補題 \ref{DifferentiableFamily} と補題 \ref{KTimesFamily} の関係と等しい.
  つまり $\classPSPACE$ が $\classCH$ に置き換わり,
  $(\infty, 1)$ 回連続微分可能が $(\infty, k)$回連続微分可能に一般化されている.
- よって定理 \ref{KTimesIsCH} の証明から
- 定理 \ref{DifferentiableIsPspace} の証明が構成できるため省略する.
+ よって定理 \ref{DifferentiableIsPspace} の証明は
+ 定理 \ref{KTimesIsCH} の証明から構成できるため省略する.
 
-\begin{proof}[\rm 定理 \ref{KTimesIsCH} の証明の概略]
+\begin{proof}[\rm 定理 \ref{KTimesIsCH} の証明]
  $L$ を $\classCH$ 困難な言語とおく.
  $L$ に対して補題 \ref{DifferentiableFamily} を用いて,
  まず多項式 $\mu$ をえる.
@@ -572,8 +574,8 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
 \end{align}
  $t=1$のとき $g(1,y) = 0$, $h(1) = 0$ と定義する.
  この $g$ と $h$ が定理 \ref{KTimesIsCH} で求める関数
- の性質を満たすことがLipschitzの場合と同様に確認できるが,
- ここでは特に$g$ が $(\infty, k)$ 回連続的微分可能であることを示す.
+ の性質を満たすことはLipschitzの場合と同様に確認できるため,
+ ここでは特に$g$が$(\infty, k)$回連続微分可能であることのみ示す.
 
  $g_u$ は $(\infty, k)$ 階連続的微分可能であるため,
  各区間においては$(\infty, k)$ 階連続的微分可能である.
