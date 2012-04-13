@@ -1,33 +1,24 @@
 \section{証明}
 \label{section:differentiable}
 
-基本的な証明の流れは河村によるものと等しい\cite{kawamura2010lipschitz}.
-定理 \ref{DifferentiableIsPspace} の証明では,
-まず任意の言語$L \in \classPSPACE$ を認識する関数族$(G_u)_u, (H_u)_u$ を得る
-(補題 \ref{DIVPpolyIsPSPACEhard}).
-そして $(G_u)_u, (H_u)_u$ を模倣する実関数族 $(g_u)_u, (h_u)_u$ を構成し(補題\ref{DifferentiableFamily}),
-それらから定理で求める $g, h$ を構成する.
-定理 \ref{KTimesIsCH} においても, ある $\classCH$ 困難な言語を認識する関数族
-$(G_u)_u, (H_u)_u$ を構成し(補題 \ref{DIVPlogIsCHhard}),
-それらを模倣する実関数族 $(g_u)_u, (h_u)_u$ を構成し(補題\ref{KTimesFamily}),
-それらから定理で求める $g, h$ を構成する.
+どちらの定理の証明も基本的な流れは河村による
+Lipschitz条件を満たす常微分方程式の解が$\classPSPACE$困難であることの証明と等しい
+\cite{kawamura2010lipschitz}.
+まず$\classPSPACE$または$\classCH$困難なある種の離散版の常微分方程式
+$(G_u)_u, (H_u)_u$ を得る(\ref{section:divp}節, \ref{subsection: counting hierarchy}節).
+そして各 $(G_u)_u, (H_u)_u$ を模倣する実関数族 $(g_u)_u, (h_u)_u$ を構成し(\ref{subsection: ode family}節)
+それらを一つの実関数へまとめることで定理で求める $g, h$ を得る(\ref{subsection: proof of theorems}節).
 
 
 
 \subsection{差分方程式}
 \label{section:divp}
 
-定理 \ref{DifferentiableIsPspace} と定理 \ref{KTimesIsCH} の証明では,
-まず滑らかな実関数の常微分方程式によって
-ある種の「離散版」常微分方程式を模倣できることを示し, 
-その離散版の方程式が$\classPSPACE$困難ないし$\classCH$困難であることを示す.
-この節ではその離散版の方程式である「差分方程式」を定義する.
-
-元々は河村によってLipschitz連続な常微分方程式の解の$\classPSPACE$困難性を示すために定義された(補題 4.7 \cite{kawamura2010lipschitz}).
-本稿ではその定義を拡張し, 一般化することで,
-$i+1$段の差分方程式が計数階層の第$i$階層に対応することをしめした.
-これは元の結果の拡張となっている.
-
+河村によるLipschitz連続な常微分方程式の$\classPSPACE$困難性の証明では
+最初のステップとして, まずの離散版を定義し, 
+それが$\classPSPACE$困難であることを示した(\cite[補題4.7]{kawamura2010lipschitz}).
+この節では離散版微分方程式をより形式的に定義し,
+滑らかな常微分方程式の離散版が$\classPSPACE$困難ないし$\classCH$困難であることを示す.
 
 $[n] = \{0, \dots , n-1\}$ と表記する.
 関数 $G \colon [P] \times [Q] \times [R] \to \{-1, 0, 1\}$ に対して,
@@ -45,7 +36,9 @@ $H(i, 0) = 0$ が $h(0) = 0$ に,
 式 (\ref{eq:divp}) と同値である式 $H(i + 1, T + 1) - H(i+1, T) = G(i, T, H(i, T))$
 が $\D h(t) = g(t, h(t))$ と対応していると考える.
 
-以下では文字列 $u$ ごとに差分方程式 $G _u$ を一つ定めた族 $(G _u) _u$ を考える. 
+差分方程式の族によって言語 $L$ を認識することを考える.
+つまり文字列 $u$ ごとに差分方程式 $G _u$ を一つ定め,
+その差分方程式によって $u \in L$ を定義する.
 各 $u$ に対して $G_u$ の段数と列数, 解をそれぞれ $P_u, Q_u, H_u$ としたとき,
 言語 $L$ がこの族 $(G_u)_u$ によって認識されるとは,
 $H_u(P_u, Q_u) = L(u)$ を満たすこととする(表 \ref{fig:divp}).
@@ -285,6 +278,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$以外の変数を持たない論理�
 
 
 \subsection{差分方程式を模倣する関数族}
+\label{subsection: ode family}
 
 \begin{lemma}
  \label{DifferentiableFamily}
@@ -534,6 +528,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$以外の変数を持たない論理�
 
 
 \subsection{主定理の証明}
+\label{subsection: proof of theorems}
 
  主定理の証明はLipschitzの場合とほぼ同じである.
  
