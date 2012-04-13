@@ -17,7 +17,7 @@
 \newcommand{\classtwofont}[1]{\text{\bfseries \sffamily \upshape #1}}
 \newcommand{\classFPSPACEtwo}{\classtwofont{FPSPACE}}
 \newcommand{\classCHtwo}{\classtwofont{CH}}
-\newcommand{\redMF}{\leq _{\mathrm mf}}
+\newcommand{\redMF}{\leq _{\mathrm{mf}}}
 \newcommand{\redW}{\leq _{\mathrm W}}
 \newcommand{\redSW}{\leq _{\mathrm{sW}}}
 \newcommand{\classLip}{\mathrm C _{\mathrm L}}
@@ -67,17 +67,26 @@ $\OpIVP _k$と書くことにする ($k \in \N \cup \{\infty\}$).
 ほげほげ……
 
 \begin{theorem}
+\label{theorem: C1 constructive}
 $\OpIVP _1$は$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$完全. 
 \end{theorem}
 
 \begin{theorem}
+\label{theorem: Ck constructive}
 $\OpIVP _k$は$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$に属し, 
 $(\deltaboxLip, \deltabox)$-$\classCHtwo$-$\redW$困難. 
 \end{theorem}
+
+これらを示すには, 
+定理\ref{DifferentiableIsPspace}, \ref{KTimesIsCH}の証明において
+関数の構成に使われた情報が入力から容易に得られることを確かめればよく, 
+新たな技巧を要しないから詳細は省略する. 
+\cite{kawamura2010operators}で示されているように, 
+定理\ref{DifferentiableIsPspace}, \ref{KTimesIsCH}はそれぞれ
+定理\ref{theorem: C1 constructive}, \ref{theorem: Ck constructive}の
+系として得られる. 
 
 \begin{theorem}
 $\OpIVP _\infty$は$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redSW$完全. 
 \end{theorem}
 
-定理\ref{DifferentiableIsPspace}, \ref{KTimesIsCH}は系として
-ふがふが
