@@ -530,22 +530,21 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
 \subsection{主定理の証明}
 
  主定理の証明はLipschitzの場合とほぼ同じである.
- 補題 \ref{DifferentiableFamily} から得られる
- $(g_u)_u$ と $(h_u)_u$ から滑らかな $g$ と
+ 
+ 前の節の補題から得られる $(g_u)_u$ と $(h_u)_u$ を縮小して連結し滑らかな $g$ と
  その常微分方程式の解 $h$ を構成する.
- 各 $h_u(1)$ には $L(u)$ の情報が含まれるため,
- すべての $h_u$ を一つの関数 $h$ に埋め込みたい.
- そこで [0,1] を無限の区間に分割し, $h$ の各文字列 $u$ に対応する区間
- $[l^-_u, c_u]$ に $h_u$ を
- 縮小して埋め込む. 
+ [0,1] を無限の区間に分割し, $h$ の各文字列 $u$ に対応する区間
+ $[l^-_u, c_u]$ に $h_u$ を縮小して埋め込む. 
  ただし次の文字列 $u'$ の計算に影響を与えないために,
  $h_u$ を定義域方向について反転したものを
  区間 $[c_u, l^+_u]$ に埋め込むことで影響を相殺する.
- つまり $h(l^-_u) = 0,\ h(c_u) = 2^{-\rho'(|u|)} L(u),\ h(l^+_u) = 0$ を満たす
+ つまりある多項式$\rho'$に対して
+ $h(l^-_u) = 0,\ h(c_u) = 2^{-\rho'(|u|)} L(u),\ h(l^+_u) = 0$ を満たす
  ように $h_u(t)$埋め込む.
- ただし $\rho'$ とは $\rho$ に縮小率をかけたものとする.
  同様に $g$ は $h$ が常微分方程式の解となるよう,
  各文字列 $u$ に対応する区間に $g_u$ を縮小して埋め込む.
+
+ Lipschitzの場合と異なる点は連続微分可能にするために
 
  定理 \ref{DifferentiableIsPspace} と定理 \ref{KTimesIsCH} の関係は
  補題 \ref{DifferentiableFamily} と補題 \ref{KTimesFamily} の関係と等しい.
@@ -554,7 +553,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
  よって定理 \ref{KTimesIsCH} の証明から
  定理 \ref{DifferentiableIsPspace} の証明が構成できる.
 
-\begin{proof}[\rm 定理 \ref{KTimesIsCH} の証明]
+\begin{proof}[\rm 定理 \ref{KTimesIsCH} の証明の概略]
  $L$ を $\classCH$ 困難な言語とおく.
  $L$ に対して補題 \ref{DifferentiableFamily} を用いて,
  まず多項式 $\mu$ をえる.
@@ -594,22 +593,10 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
   & = \frac{h_u(t)}{\Lambda_u}.
 \end{align}
  $t=1$のとき $g(1,y) = 0$, $h(1) = 0$ と定義する.
+ この $g$ と $h$ が定理 \ref{KTimeIsCH} で求める関数
+ の性質を満たすことがLipschitzの場合と同様に確認できるが,
+ ここでは特に$g$ が $(\infty, k)$ 回連続的微分可能であることを示す.
 
-
- この $g$ と $h$ が定理 \ref{DifferentiableIsPspace} で求める関数
- の性質を満たすことを示す.
-
-
- 
- まず $g$ が多項式時間計算可能であることを
- 補題 \ref{lem:type1representation} を用いて示す.
- 各有理数 $T,Y$ について $g(T, Y)$ を求めるとき,
- $T=l_u^\mp \pm t/\Lambda_u$, $Y = y/\Lambda_u$ を満たすような
- $u, \pm, t, y$ は, 多項式時間で計算可能であり,
- $(g_u)_u$ は多項式時間計算可能なので $g(T, Y)$ は多項式時間計算可能.
-
-
- $g$ が $(\infty, k)$ 回連続的微分可能であることを示す.
  $g_u$ は $(\infty, k)$ 階連続的微分可能であるため,
  各区間においては$(\infty, k)$ 階連続的微分可能である.
  $i \in \N$, $j \in \{0, \dots, k\}$, $t \in (0, 1)$ において
@@ -626,10 +613,11 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
     \end{cases}
 \end{equation}
  $\D^{(i,j)}g_u$ は連続であるため 
- $t \in (0,1)$, $y \not = -1, 1$ の区間において連続.
+ $t \in (0,1)$, $y \not = -1, 1$ において連続.
  境界($t = 0, 1$または$y = -1, 1$)において連続であることは,
- 定義および補題 \ref{KTimesFamily}(\ref{enum:boundary})によりしめされる.
- 第一変数が $1$ へ向かうとき
+ 定義および補題 \ref{KTimesFamily} (\ref{enum:boundary})によりしめされる.
+ 第一変数が $1$ のとき連続であることを示す.
+ 補題 \ref{KTimesFamily} の(\ref{enum:inftyk})より
  \begin{align*}
   \left|\D^{(i, j)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
   \frac{y}{\Lambda_u}\right)\right|
@@ -644,31 +632,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
  $\gamma$ のとり方により, $|u| \to \infty$ のとき 
  式 (\ref{eq:sizeofderivative}) は 0 に収束する.
  よって  $\lim_{t \to 1-0}\D^{(i,j)} g(t,y) = g(1, y) = 0$.
- 以上により $g$ が $(\infty, k)$ 階連続的微分可能.
- 
-
- $h$が$g$の常微分方程式の解であることを示す. 
- $h(0)=0$, 
- \begin{equation}
-  \D h \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right)
-  = \pm \frac{\D h_u(t)}{\Lambda_u} = \pm g_u \left(t, h_u(t)\right) 
-  = g\left(l^\mp_u \pm \frac{t}{\Lambda_u}, 
-	h\left(l^\mp_u \pm \frac{t}{\Lambda_u}\right) \right).
-\end{equation}
-
-
- $L$ は $h$ に還元可能であることを示す.
- \begin{equation}
-  h(c_u) = \frac{h_u(1)}{\Lambda_u}
-   = \frac{L(u)}{2^{\lambda(|u|)+\rho(|u|)}}
- \end{equation}
- つまり $S$ を以下のように定義すると,
- \begin{align}
-  S(u, 0^n) &= \lfloor 2^nc_u \rfloor \text{を表す文字列,} \\
- \end{align}
- $h(c_u)$の名$\phi$について$\phi(0^{\lambda(|u|)+\rho(|u|)}) = L(u)$
- が成り立つため, 多項式時間還元可能.
-  $L$ は $\classCH$ 困難であるため, $h$ は $\classCH$ 困難.
+ 以上により $g$ は $(\infty, k)$ 階連続的微分可能.
 \end{proof}
 
 
