@@ -335,29 +335,29 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
 
 
  この補題より各 $h_u$ が $g_u$ の常微分方程式の解であり, 
- $h_u(1)$ に $L(u)$ の情報を持つ
- 実関数族 $(g_u)_u, (h_u)_u$ の存在が示される.
+ 各$h_u(1)$ に $L(u)$ の情報を持つ
+ 滑らかな実関数族 $(g_u)_u, (h_u)_u$ の存在が示される.
  河村によるLipschitz連続な常微分方程式の$\classPSPACE$困難性の証明における,
- 補題 4.1 に対応するが,
+ 補題4.1 に対応するが,
  $g$ を微分可能にするため, 条件 (iii) -- (v) が付け加えられている.
- 
+
 
  この補題の証明の基本的な流れを説明する.
- 任意の言語 $L \in \classPSPACE$ に対し, 
- 補題 \ref{DIVPpolyIsPSPACEhard} を用いて $L$ を認識する $(G_u)_u$ 
+ 任意の言語 $L \in \classPSPACE$ (resp. ある$\classCH$困難な言語$L$)に対し, 
+ 補題 \ref{DIVPpolyIsPSPACEhard}(resp. 補題 \ref{DIVPlogIsCHhard})
+ を用いて $L$ を認識する $(G_u)_u$ 
  及びその差分方程式の解 $(H_u)_u$ を得る.
  そして各 $G_u, H_u$ を模倣する
  滑らかな $g_u \colon [0,1] \times [-1, 1] \to \R$ 
  とその常微分方程式の解 $h_u \colon [0,1] \to \R$ を構成する.
  また $(G_u)_u$ の一様性から $(g_u)_u$ の多項式時間計算可能性を示す.
 
-
- 上記の証明は基本的に, Lipschitz条件の場合と変わらない.
+ 上記の証明は基本的に, 河村による証明と変わらない\cite[補題4.1]{kawamura2010lipschitz}.
  異なる点は, $g_u$ を滑らかな関数にするため, 
  以下のような無限回微分可能な多項式時間実関数 $f \colon [0,1] \to \R$ を用いて
  $g_u$ を構成していることである.
 
- \begin{lemma}[補題 3.6 \cite{ko1991complexity}]
+ \begin{lemma}[{\cite[補題 3.6]{ko1991complexity}}]
   \label{SmoothFunction}
   以下を満たす多項式時間計算可能で無限回微分可能な
   実関数 $f \colon [0,1] \to \R$ が存在する.
@@ -379,6 +379,7 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
 	\end{equation}
  \end{enumerate}
  を満たすような$f$が存在することを用いて証明する.
+ そのような$f$が存在することは葛による証明を確認することで容易に示される.
 
  補題 \ref{DifferentiableFamily} の証明はLipschitzの場合とほとんど変わらず,
  細かな差異も補題 \ref{KTimesFamily} の証明に含まれるものと同じであるため省略する.
@@ -389,21 +390,24 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
   対数段一様関数族 $(G_u)_u$, その解 $(H_u)_u$, 
   $P_u = p(|u|), Q_u = 2^{q(|u|)}, R_u = 2^{r(|u|)}$ を満たす関数$p$, 
   多項式 $q,r$ を得る.
-  さらに以下のように仮定する.
-  \begin{equation}
+  河村による証明と同様に
+  以下のことを仮定する\cite[補題4.1]{kawamura2010lipschitz}.
+  \begin{gather}
    H_u(i, 2^{q(|u|)}) = \begin{cases}
 			L(u) & (i=p(|u|)) \\
 			0 & (i<p(|u|)).
 			\end{cases}
-  \end{equation}
+   \\
+   i \not = j_u(T)  \to G_u(i, T, Y) = 0 
+  \end{gather}
+  
 
  $B = 2^{\gamma(|u|) + r(|u|) + s(k) + k + 3}$ とおき, 
  各 $(t, y) \in [0,1] \times [-1, 1]$ に対して,
  自然数 $N$, $\theta \in [0,1]$, 整数 $Y$, $\eta \in [-1/4, 3/4]$ を
  $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-(k+1)^{j_u(T)}}$ を満たすように
  定める.
- 
- そのとき,
+  そのとき,
  \begin{equation}
   \delta_{u, Y} (t) = \frac{2^{q(|u|)} \D f(\theta)}{B^{(k+1)^{j_u(T)+1}}} 
    G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
@@ -429,31 +433,14 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
  \end{equation}
   ただし$f$と多項式$s$は補題 \ref{SmoothFunction}
   および式(\ref{enum:polynomial-size})を満たすものとする.
+  また$\rho(x) = 2^{p(x)} \cdot (\gamma(x) + r(x) + 3)$, 
+  $\mu(x, y) = (x+1)q(y) + s(x+1)$とおく.
 
 
  上記のように定義した $g_u, h_u$ が補題\ref{DifferentiableFamily} で求める
- 性質を満たすことを示す. (i) は自明. 
- $(g_u)_u$ が多項式時間計算可能であることは
-  補題 \ref{lem:type1representation}によって示される.
-
-
- $h_u$ は $g_u$ の常微分方程式の解であることを示す.
- 任意の $t$ について $h_u(t) = (Y + \eta) B^{-j_u(T)}$ を満たす 
- $\eta \in [-1/4, 1/4]$ が存在する. 
- つまり常微分方程式の解$h$は式 $\ref{eq:gu}$ の一つ目の場合のみを考慮すればよい.
- \begin{equation}
-  Y = \sum_{i=0}^{j_u(T)} \frac{H_u(i, T)}{B^{(k+1)^i}} \cdot B^{(k+1)^{j_u(T)}}.
- \end{equation}
- $B$ は $2^{r(|u|)}$ の倍数なので,  $Y \bmod 2^{r(|u|)} = H_u(j_u)$. 
- $g_u$ に代入すると,
- \begin{align*}
-   g_u(t, h_u(t)) 
-  & =  \frac{2^{q(|u|)} \D f(\theta)}{B^{(k+1)^{j_u(T)+1}}}
-   G_u(j_u(T), T, H_u(j_u(T), T)) \\
-  & =  \D h_u(t).
- \end{align*}
- よって $h_u$ は $g_u$ の常微分方程式の解.
-
+ 性質を満たすことを示す. ただし多くは河村による証明と同様に示せるため
+  異なる条件 (iii) - (v) のみ示す\cite[補題4.1]{kawamura2010lipschitz}.
+ 
   $g_u$ が $(\infty, k)$ 階連続的微分可能であることを示す.
   $\eta$ が $[-1/4, 1/4]$ と $[1/4, 3/4]$ である区間それぞれにおいて微分する.
   任意の $i \in \N$ について
@@ -491,17 +478,10 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
   $g_u$ は $(\infty, j)$ 階連続的微分可能であることが示された.
   式 (\ref{eq:derivativeofgu}) に $t = 0, 1$ ($\theta = 0$) を代入して
   $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$.
-  上記の式より, $\mu(x, y) = (x+1)q(y) + s(x+1)$とおくと,
-  任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
+  上記の式より任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
   $|\D^{(i,j)} g_u| \leq 2^{\mu(i, |u|) - \gamma(|u|)}$.
 
- \begin{align*}
-  h_u(1) &= \frac{H_u(p(|u|), 2^{q(|u|)})}{B^{2^{p(|u|)}}}  \\
-  &= L(u) \cdot 2^{-2^{p(|u|)} \cdot (\gamma(|u|) + r(|u|) + 3) } \taghere
- \end{align*}
- より, $\rho(x) = 2^{p(x)} \cdot (\gamma(x) + r(x) + 3)$ とおくと成り立つ.
  \end{proof}
-
 
  補題 \ref{DifferentiableFamily} の証明では
  $\classPSPACE$困難な言語を認識する多項式段一様関数族$(G_u)_u$とその解$(H_u)_u$に対して
@@ -530,8 +510,7 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
 \subsection{主定理の証明}
 \label{subsection: proof of theorems}
 
- 主定理の証明はLipschitzの場合とほぼ同じである.
- 
+ 主定理の証明は河村Lipschitzの場合とほぼ同じである\cite[定理3.2]{kawamura2010lipschitz}.
  前の節の補題から得られる $(g_u)_u$ と $(h_u)_u$ を縮小して連結し滑らかな $g$ と
  その常微分方程式の解 $h$ を構成する.
  [0,1] を無限の区間に分割し, $h$ の各文字列 $u$ に対応する区間
@@ -550,7 +529,7 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
  つまり $\classPSPACE$ が $\classCH$ に置き換わり,
  $(\infty, 1)$ 回連続微分可能が $(\infty, k)$回連続微分可能に一般化されている.
  よって定理 \ref{KTimesIsCH} の証明から
- 定理 \ref{DifferentiableIsPspace} の証明が構成できる.
+ 定理 \ref{DifferentiableIsPspace} の証明が構成できるため省略する.
 
 \begin{proof}[\rm 定理 \ref{KTimesIsCH} の証明の概略]
  $L$ を $\classCH$ 困難な言語とおく.
@@ -592,7 +571,7 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
   & = \frac{h_u(t)}{\Lambda_u}.
 \end{align}
  $t=1$のとき $g(1,y) = 0$, $h(1) = 0$ と定義する.
- この $g$ と $h$ が定理 \ref{KTimeIsCH} で求める関数
+ この $g$ と $h$ が定理 \ref{KTimesIsCH} で求める関数
  の性質を満たすことがLipschitzの場合と同様に確認できるが,
  ここでは特に$g$ が $(\infty, k)$ 回連続的微分可能であることを示す.
 
