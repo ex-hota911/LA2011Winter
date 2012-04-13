@@ -7,7 +7,7 @@
 しかし微分方程式を「解く」困難さ, 
 すなわち与えられた$g$から$h$を求める演算子の計算量は
 如何であろうか. 
-この問に答えるには先ず
+この問に答えるにはまず
 実関数を実関数へ写す演算子の計算量を
 定義することを要する. 
 
@@ -17,9 +17,9 @@
 \newcommand{\classtwofont}[1]{\text{\bfseries \sffamily \upshape #1}}
 \newcommand{\classFPSPACEtwo}{\classtwofont{FPSPACE}}
 \newcommand{\classCHtwo}{\classtwofont{CH}}
-\newcommand{\redMF}{\leq _{\mathrm{mf}}}
+% \newcommand{\redMF}{\leq _{\mathrm{mf}}}
 \newcommand{\redW}{\leq _{\mathrm W}}
-\newcommand{\redSW}{\leq _{\mathrm{sW}}}
+% \newcommand{\redSW}{\leq _{\mathrm{sW}}}
 \newcommand{\classLip}{\mathrm C _{\mathrm L}}
 \newcommand{\classC}{\mathrm C}
 
@@ -61,7 +61,7 @@ $\deltabox$は関数空間$\classC [0, 1]$の表現として
 \eqref{eq:ode}を満す$h \in \classC [0, 1]$に対応させる演算子$\OpIVP$を考える. 
 $\OpIVP$は$\classLip [[0, 1] \times [-1, 1]]$から
 $\classC [0, 1]$への部分写像である. 
-\cite{kawamura2010operators}では表\ref{table:related}第三行の証明を
+\cite[Theorem~4.9]{kawamura2010operators}では表\ref{table:related}第三行の証明を
 構成的に書き直すことで, 
 $\OpIVP$が$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$完全であることが
 示された. 
@@ -84,14 +84,15 @@ $(\deltaboxLip, \deltabox)$-$\classCHtwo$-$\redW$困難.
 定理\ref{DifferentiableIsPspace}, \ref{KTimesIsCH}の証明において
 関数の構成に使われた情報が入力から容易に得られることを確かめればよく, 
 新たな技巧を要しないから詳細は省略する. 
-\cite{kawamura2010operators}で示されているように, 
-定理\ref{DifferentiableIsPspace}, \ref{KTimesIsCH}はそれぞれ
-定理\ref{theorem: C1 constructive}, \ref{theorem: Ck constructive}の
-系として得られる. 
+これら構成的な主張は非構成的な主張よりも
+強いものであり\cite[Lemmas 3.7, 3.8]{kawamura2010operators}, 
+定理\ref{DifferentiableIsPspace}, \ref{KTimesIsCH}は
+それぞれ定理\ref{theorem: C1 constructive}, \ref{theorem: Ck constructive}の
+系として従う. 
 
-ところで, ……
+% ところで, より強い帰着である
+% 強ワイラオホ帰着を用いると
 
-\begin{theorem}
-$\OpIVP _\infty$は$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redSW$完全. 
-\end{theorem}
-
+% \begin{theorem}
+% $\OpIVP _\infty$は$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redSW$完全. 
+% \end{theorem}
