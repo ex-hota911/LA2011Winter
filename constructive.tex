@@ -11,18 +11,6 @@
 実関数を実関数へ写す演算子の計算量を
 定義することを要する. 
 
-\newcommand{\OpIVP}{\mathit{ODE}}
-\newcommand{\deltabox}{\delta _\square}
-\newcommand{\deltaboxLip}{\delta _{\square \mathrm L}}
-\newcommand{\classtwofont}[1]{\text{\bfseries \sffamily \upshape #1}}
-\newcommand{\classFPSPACEtwo}{\classtwofont{FPSPACE}}
-\newcommand{\classCHtwo}{\classtwofont{CH}}
-% \newcommand{\redMF}{\leq _{\mathrm{mf}}}
-\newcommand{\redW}{\leq _{\mathrm W}}
-% \newcommand{\redSW}{\leq _{\mathrm{sW}}}
-\newcommand{\classLip}{\mathrm C _{\mathrm L}}
-\newcommand{\classC}{\mathrm C}
-
 実数を入出力する関数の計算量を論ずるには, 
 実数を文字列関数で表した. 
 即ち$\R$の各元の名として文字列関数を使ったのであり, 
@@ -55,10 +43,8 @@ $\deltabox$は関数空間$\classC [0, 1]$の表現として
 それらによって定義される困難性が論ぜられている. 
 この枠組を用いて本稿の結果も以下の如く構成的な形で述べることができる. 
 
-% $\redMF$, $\redSW$が
-
 実関数$g \in \classLip [[0, 1] \times [-1, 1]]$を, 
-\eqref{eq:ode}を満す$h \in \classC [0, 1]$に対応させる演算子$\OpIVP$を考える. 
+\eqref{eq:ode}の解$h \in \classC [0, 1]$に対応させる演算子$\OpIVP$を考える. 
 $\OpIVP$は$\classLip [[0, 1] \times [-1, 1]]$から
 $\classC [0, 1]$への部分写像である. 
 \cite[Theorem~4.9]{kawamura2010operators}では表\ref{table:related}第三行の証明を
@@ -67,7 +53,7 @@ $\OpIVP$が$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$完全である
 示された. 
 本稿の関心は$g$が滑らかな場合であるから, 
 $\OpIVP$を$(\infty, k)$回連続微分可能な入力に制限したものを
-$\OpIVP _k$と書くことにする ($k \in \N \cup \{\infty\}$). 
+$\OpIVP _k$と書くことにする. 
 
 \begin{theorem}
 \label{theorem: C1 constructive}
@@ -76,6 +62,7 @@ $\OpIVP _1$は$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$完全.
 
 \begin{theorem}
 \label{theorem: Ck constructive}
+各$k \in \N$について, 
 $\OpIVP _k$は$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$に属し, 
 $(\deltaboxLip, \deltabox)$-$\classCHtwo$-$\redW$困難. 
 \end{theorem}
