@@ -125,12 +125,12 @@ $\mathbf{PH} = \classCH$, $\classCH = \classPSPACE$
 か否かは未解決である.
 
 Wagner によって $\classCH$ の各階層 $\C_n \classP$ に対してそれぞれ完全問題が存在することが示されている\cite{wagner1986complexity}.
-量化子 $\C$ を自然数 $m$, 論理式 $A(x_1, \dots, x_l)$, 
-$l$ 個の論理変数の組 $\alpha$ について以下のように定義する.
+量化子 $\C$ を自然数 $m$, $l$ 個の論理変数の組 $x$,
+論理式 $A(x)$について以下のように定義する.
 \begin{equation}
- \C^m \alpha A(\alpha) 
+ \C^m x A(x) 
   \longleftrightarrow 
-  \Bigl|\{\alpha \in \{0,1\}^l \mid A(\alpha) = 1\}\Bigr| \ge m.
+  \Bigl|\{x \in \{0, 1\}^l \mid A(x) = 1\}\Bigr| \ge m.
 \end{equation}
 $\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ の
 一般化と言える.
@@ -138,12 +138,12 @@ $\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ �
 \begin{equation}
  \langle \phi(x_1, \dots, x_n), m_1, \dots, m_n \rangle \in \C_n B_{be}
  \longleftrightarrow
- \C^{m_1}{\alpha_1} \cdots \C^{m_n}{\alpha_n} \phi(\alpha_1, \dots, \alpha_n) 
+ \C^{m_1}{x_1} \cdots \C^{m_n}{x_n} \phi(x_1, \dots, x_n) 
 \end{equation}
 
-ただし $\langle y_1, \dots, y_i \rangle$ は組み合わせ関数,
-$x_i$, $\alpha_i$ は $l_i$ 個の論理変数の組,
-$\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理式とする.
+ただし $\langle \cdot \rangle$ は組み合わせ関数,
+$x_i$ は $l_i$ 個の論理変数の組,
+$\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$以外の変数を持たない論理式とする.
 
 
 \begin{lemma}[Theorem 7 \cite{wagner1986complexity}] \label{lemma:CnP-complete}
@@ -196,17 +196,17 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
  \end{equation}
  と定義する. 
  任意の $i = 0, \dots, n$ と $n-i$ 個の文字列 
- $\beta_{i+1} \in \{0,1\}^{l_{i+1}}, \dots, \beta_n \in \{0,1\}^{l_n}$ 
+ $y_{i+1} \in \{0,1\}^{l_{i+1}}, \dots, y_n \in \{0,1\}^{l_n}$ 
  について論理式
- $\C^{m_{i}}{\alpha_i} \cdots \C^{m_1}{\alpha_1}
- \phi(\alpha_1, \dots, \alpha_i, \beta_{i+1}, \dots, \beta_n)$
- の真偽値を $\phi_i(\beta_{i+1}, \dots, \beta_n)$ と表記する.
+ $\C^{m_{i}}{x_i} \cdots \C^{m_1}{x_1}
+ \phi(x_1, \dots, x_i, y_{i+1}, \dots, y_n)$
+ の真偽値を $\phi_i(y_{i+1}, \dots, y_n)$ と表記する.
  \begin{align}
-  \phi_0 (\beta_1, \dots, \beta_n) &= \phi(\beta_1, \dots, \beta_n)
+  \phi_0 (y_1, \dots, y_n) &= \phi(y_1, \dots, y_n)
   \\ \label{eq:phi-step}
-  \phi_{i+1}(\beta_{i+2}, \dots, \beta_n) 
-  &= C^{m_{i+1}}\left(\sum\nolimits_{\alpha_i \in \{0,1\}^{l_i}} 
-  \phi_i(\alpha_{i+1}, \beta_{i+2}, \dots, \beta_{n})\right) 
+  \phi_{i+1}(y_{i+2}, \dots, y_n) 
+  &= C^{m_{i+1}}\left(\sum\nolimits_{x_{i+1} \in \{0,1\}^{l_i}} 
+  \phi_i(x_{i+1}, y_{i+2}, \dots, y_{n})\right) 
   \\
   \phi_n() &= L(u) 
  \end{align}
@@ -261,11 +261,11 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
    \dots, V_{[s_{n-1}+1, s_n]})
  \end{align}
  $T_{[1, s_{i+1}]} = 10 \cdots 0$ のとき,
- $V_{[1, s_n]} = T_{[s_{i+1}+1,s_n]} 0 \alpha 1 0 \cdots 0$ であるとき
+ $V_{[1, s_n]} = T_{[s_{i+1}+1,s_n]} 0 x 1 0 \cdots 0$ であるとき
  以外の値は打ち消し合うので,
  \begin{equation}
-  Y = \sum\nolimits_{\alpha \in \{0,1\}^{l_i}} 
-  \phi_i(\alpha, T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]})
+  Y = \sum\nolimits_{x \in \{0,1\}^{l_i}} 
+  \phi_i(x, T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]})
  \end{equation}
  式(\ref{eq:phi-step})より
  \begin{align}
@@ -543,8 +543,6 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$のみを変数として持つ論理�
  ように $h_u(t)$埋め込む.
  同様に $g$ は $h$ が常微分方程式の解となるよう,
  各文字列 $u$ に対応する区間に $g_u$ を縮小して埋め込む.
-
- Lipschitzの場合と異なる点は連続微分可能にするために
 
  定理 \ref{DifferentiableIsPspace} と定理 \ref{KTimesIsCH} の関係は
  補題 \ref{DifferentiableFamily} と補題 \ref{KTimesFamily} の関係と等しい.
