@@ -36,9 +36,8 @@ $H(i, 0) = 0$ が $h(0) = 0$ に,
 式 (\ref{eq:divp}) と同値である式 $H(i + 1, T + 1) - H(i+1, T) = G(i, T, H(i, T))$
 が $\D h(t) = g(t, h(t))$ と対応していると考える.
 
-差分方程式の族によって言語 $L$ を認識することを考える.
-つまり文字列 $u$ ごとに差分方程式 $G _u$ を一つ定め,
-その差分方程式によって $u \in L$ を定義する.
+差分方程式の族によって一つの言語を定義するに,
+以下では文字列 $u$ ごとに差分方程式 $G _u$ を一つ定めた族 $(G _u) _u$ を考える. 
 各 $u$ に対して $G_u$ の段数と列数, 解をそれぞれ $P_u, Q_u, H_u$ としたとき,
 言語 $L$ がこの族 $(G_u)_u$ によって認識されるとは,
 $H_u(P_u, Q_u) = L(u)$ を満たすこととする(表 \ref{fig:divp}).
@@ -54,6 +53,7 @@ $u \in L$ のとき $L (u) = 1$ としている.
   \caption{差分方程式と認識される言語}
  \end{figure}
 
+多項式時間実関数$g$で$(G_u)_u$を模倣可能にするため, $(G_u)_u$に制限をかける.
 $(G_u)_u$ が{\bf 一様}であるとは,
 各 $u$ について $G _u$ の段数, 列数及び欄の大きさが $|u|$ の多項式の指数($2^{\mathrm{poly} (|u|)}$)で抑えられ, 
 かつ与えられた $(u, i, T, Y)$ から多項式時間で $G_u(i, T, Y)$ が
@@ -62,8 +62,7 @@ $(G_u)_u$ が{\bf 一様}であるとは,
 $G_u$ の段数がさらに $|u|$ の多項式, 対数で抑えられるとき, 
 族 $(G_u) _u$ はそれぞれ\emph{多項式段}, \emph{対数段}であるという. 
 河村の論文では次が示されている.
-
-\begin{lemma}[補題 4.7 \cite{kawamura2010lipschitz}]
+\begin{lemma}[{\cite[補題4.7]{kawamura2010lipschitz}}]
  \label{DIVPpolyIsPSPACEhard}
  任意の言語 $L \in \classPSPACE$ に対して,
  その言語を認識する多項式段一様関数族が存在する.
@@ -72,10 +71,11 @@ $G_u$ の段数がさらに $|u|$ の多項式, 対数で抑えられるとき,
 $(\infty, 1)$ 回微分可能な関数の常微分方程式においても,
 この補題を用いて$\classPSPACE$困難な常微分方程式の解を構成することができる.
 
-2回以上微分可能な関数の常微分方程式の複雑さを考えるとき,
-その制限により多項式段の差分方程式を模倣することが我々にはできなかった.
-しかし差分方程式を対数段に制限してやれば模倣可能であり,
-対数段一様な関数族によって認識される言語の困難性が重要である.
+2回以上微分可能な関数の常微分方程式の計算量を考えるとき,
+その滑らかさの制限により多項式段の差分方程式を模倣することが我々にはできなかった.
+しかし差分方程式を対数段に制限してやれば模倣可能であることことが示せたため
+(\ref{subsection: ode family}節, \ref{subsection: proof of theorems}節),
+対数段一様な差分方程式の困難性について注目し以下の結果を得た.
 
 \begin{lemma}
  \label{DIVPlogIsCHhard}
@@ -84,7 +84,7 @@ $(\infty, 1)$ 回微分可能な関数の常微分方程式においても,
 
 補題 \ref{DIVPpolyIsPSPACEhard} が$\classPSPACE$の任意の言語について述べているのに対して,
 この補題は$\classCH$困難な或る言語について述べているという違いがある.
-しかし定理の証明において必要なのは言語クラスに対して困難な或る言語を認識できることであり,
+しかし定理の証明において必要な点は, 言語クラスに対して困難な或る言語を認識できることであり,
 補題 \ref{DIVPpolyIsPSPACEhard} を補題 \ref{DIVPlogIsCHhard} と同じ形式
 ($\classPSPACE$ 困難で多項式段一様な関数族によって認識される言語が存在する)
 に変えても定理を証明するには十分である.
@@ -106,7 +106,10 @@ Wagner によって導入された計算量クラスである\cite{wagner1986com
  \mathbf{PH} = \bigcup_k \Sigma^p_k
 \]
 と定義されるのに対し,
-計数階層は多項式階層の {\bf NP} を {\bf PP} で置き換えたものである. つまり
+計数階層は多項式階層の {\bf NP} を {\bf PP} で置き換えたものである
+\footnote{ただしこの特徴付けは Tor{\'a}n によるものであり,
+Wagner によるオリジナルの定義とは異なる\cite{toran1991complexity}.
+}. つまり
 \begin{align*}
  \C_0 \classP  
  &= \classP \\
@@ -116,14 +119,12 @@ Wagner によって導入された計算量クラスである\cite{wagner1986com
 \[
  \classCH = \bigcup_k \C_k \classP.
 \]
-上記の特徴付けは Tor{\'a}n によるものであり,
-Wagner によるオリジナルの定義とは異なる\cite{toran1991complexity}.
 
 $\mathbf{PH} \subseteq \classCH \subseteq \classPSPACE$ だが,
 $\mathbf{PH} = \classCH$, $\classCH = \classPSPACE$
 か否かは未解決である.
 
-Wagner によって $\classCH$ の各階層 $\C_n \classP$ に対してそれぞれ完全問題が存在することが示されている\cite{wagner1986complexity}.
+補題 \ref{DIVPlogIsCHhard} における $\classCH$困難な言語を定義するため, まず$\classCH$ の各階層 $\C_n \classP$ に対する完全問題$\C_n B_{be}$を定義する\cite[定理 7]{wagner1986complexity}.
 量化子 $\C$ を自然数 $m$, $l$ 個の論理変数の組 $x$,
 論理式 $A(x)$について以下のように定義する.
 \begin{equation}
@@ -139,18 +140,16 @@ $\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ �
  \longleftrightarrow
  \C^{m_1}{x_1} \cdots \C^{m_n}{x_n} \phi(x_1, \dots, x_n) 
 \end{equation}
-
 ただし $\langle \cdot \rangle$ は組み合わせ関数,
 $x_i$ は $l_i$ 個の論理変数の組,
 $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$以外の変数を持たない論理式とする.
-
 
 \begin{lemma}[Theorem 7 \cite{wagner1986complexity}] \label{lemma:CnP-complete}
  $\C_n B_{be}$ は $\C_n\classP$ 完全.
 \end{lemma}
 
 
-各 $\C_n B_{be}$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように定義する.
+$(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように定義する.
 \begin{equation}
  \langle 0^{2^n}, u \rangle \in \C_{\log} B_{be}
  \longleftrightarrow
@@ -171,7 +170,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$以外の変数を持たない論理�
   & \longleftrightarrow \langle 0^{2^n}, f(u) \rangle \in \C_{\log} B_{be}
  \end{align}
  $n$ は定数であるため $\langle 0^{2^n}, f(\cdot) \rangle$ は多項式時間関数.
- よって $A$ は $\C_n B_{be}$ に多項式時間還元可能.
+ よって $A$ は $\C_{\log} B_{be}$ に多項式時間還元可能.
 
 
  $\C_{\log} B_{be}$を認識する関数族 $(G_u)_u$, 
@@ -279,6 +278,7 @@ $\phi(x_1, \dots, x_n)$は$x_1, \dots, x_n$以外の変数を持たない論理�
 
 \subsection{差分方程式を模倣する関数族}
 \label{subsection: ode family}
+次に前節で示した$\classPSPACE$または$\classCH$困難な各差分方程式を滑らかな実関数で模倣可能であることを示す.
 
 \begin{lemma}
  \label{DifferentiableFamily}
