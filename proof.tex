@@ -116,10 +116,12 @@ Wagner によるオリジナルの定義とは異なる\cite{toran1991complexity
 $\mathbf{PH} \subseteq \classCH \subseteq \classPSPACE$ だが,
 いずれの包含関係も厳密か否かは未解決である.
 
-補題 \ref{DIVPlogIsCHhard} における $\classCH$困難な言語を定義するため, 
-まず$\classCH$ の各階層 $\C_n \classP$ に対する完全問題$\C_n B_{be}$を導入する.
-論理式を真にする割り当ての数が一定以上であれば真となる量化子を考える.
-つまり量化子 $\C$ を自然数 $m$, $l$ 個の論理変数の組 $X$,
+補題 \ref{DIVPlogIsCHhard} において述べている $\classCH$困難な言語を定義するため, 
+まず各階層 $\C_n \classP$ に対する完全問題$\C_n B_{be}$を導入する.
+$k$個の量化子を持つ論理式の真偽値判定は,
+多項式階層の各階層$\Sigma^p_k$にたいし完全問題であるが,
+新たに計数用の量化子を導入して同様の判定問題を構成する.
+量化子 $\C$ を自然数 $m$, $l$ 個の論理変数の組 $X$,
 論理式 $\phi(X)$について以下のように定義する.
 \begin{equation}
  \C^m X \phi(X) 
@@ -135,7 +137,7 @@ $\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ �
  \C^{m_1}{X_1} \cdots \C^{m_n}{X_n} \phi(X_1, \dots, X_n) 
 \end{equation}
 ただし $\langle \cdot \rangle$ は組み合わせ関数,
-$X_i$ は $l_i$ 個の論理変数の組,
+$X_i$ は論理変数の組,
 $\phi(X_1, \dots, X_n)$は$X_1, \dots, X_n$以外の変数を持たない論理式とする.
 
 
@@ -150,8 +152,9 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
  \longleftrightarrow
  u \in \C_n B_{be}
 \end{equation}
-入力として階層の指数サイズ($0^{2^n}$)を与えているのは,padding することで
-段数を入力長の対数オーダーとすることで, 対数段の差分方程式により認識可能とするためである.
+入力として階層の指数サイズ($0^{2^n}$)を与えているのは, padding することにより
+量化子の数が全体の入力長に対して対数オーダーであることを保証することで,
+対数段の差分方程式により認識可能とするためである.
 この $\C_{\log} B_{be}$ が補題 \ref{DIVPlogIsCHhard} で求める言語であること,
 つまり$\classCH$困難かつ対数段一様関数族によって認識可能であることを示す.
 
@@ -179,9 +182,7 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
  (そのような$n, m_1, \dots, m_n, \phi$が存在しないとき$u \not \in A$.)
  
  
- $L = \C_{\log} B_{be}$,
- $l_i = |X_i|$,
- $s_i = \sum^i_{j=1}l_j + 2i$  と表記する.
+ $L = \C_{\log} B_{be}$, $l_i = |X_i|$と表記する.
  関数 $C^m \colon \N \to \N$ を
  \begin{equation}
   C^m(x) 
@@ -209,6 +210,7 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
  $T_{[i,j]} = T_{j-1} T_{j-2} \cdots T_{i+1} T_{i}$ と表記する.
 
 
+ $s_i = i + \sum^i_{j=1}l_j$ と書く.
  $G_u$ を $(i, T, Y) \in [n+1] \times [2^{s_n}+1] \times [2^{|u|}]$ の範囲で
  を以下のように定義する. 一段目つまり $i=0$ ならば
  \begin{equation}
@@ -243,8 +245,8 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
   n+1 \le \log(|0^{2^n}|) + 1 = O(\log(|u|)) \\
   2^{s_n}+1 \le 2^{s_n+1} \le 2^{|u|}
  \end{gather}
- より $p(u) = n+1, q(x) = r(x) = x$ とおき $G_u$ を
- $[p(u)] \times [2^{q(|u|)}] \times [2^{r(|u|)}]$ の範囲に拡張すると
+ より $l(u) = n+1, q(x) = r(x) = x$ とおき $G_u$ を
+ $[l(u)] \times [2^{q(|u|)}] \times [2^{r(|u|)}]$ の範囲に拡張すると
  $H_u(p(u), 2^{q(|u|)}) = L(u)$.
 
  $i=0$ のとき, 式(\ref{eq:def-Gu:case0})より成り立つ.
