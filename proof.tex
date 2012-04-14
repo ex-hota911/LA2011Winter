@@ -34,20 +34,19 @@ $H$ を $G$ の\emph{差分方程式}の解と呼ぶ.
 \begin{gather}
    H(i, 0) = H(0, T) = 0 \label{eq:initial value}
 \\
-   H(i + 1, T + 1) = H(i+1, T) + G(i, T, H(i, T))  \label{eq:divp}
+   H(i + 1, T + 1) - H(i+1, T) = G(i, T, H(i, T))  \label{eq:divp}
 \end{gather}
 $P, Q, R$ をそれぞれ\emph{段数}, \emph{列数}, \emph{欄の大きさ}と呼ぶ.
-常微分方程式の1つめの条件($h(0) = 0$)と式(\ref{eq:initial value}),
-2つめの条件($\D h(t) = g(t, h(t))$)と式(\ref{eq:divp})と同値である式 
-$H(i + 1, T + 1) - H(i+1, T) = G(i, T, H(i, T))$
+常微分方程式(\ref{eq:ode})の1つめの条件($h(0) = 0$)と式(\ref{eq:initial value}),
+2つめの条件($\D h(t) = g(t, h(t))$)と式(\ref{eq:divp})
 の間に対応関係を見て取ることができるため,
-差分方程式は常微分方程式の離散版と呼べる.
+差分方程式は常微分方程式の離散版と呼べる(図 \ref{fig:divp}).
 
 文字列 $u$ ごとに一つの差分方程式 $G _u$ を与え,
 $u$が言語$L$に入っているかをその差分方程式によって計算することを考える.
 各 $u$ に対して $G_u$ の段数と列数, 解をそれぞれ $P_u, Q_u, H_u$ としたとき,
 言語 $L$ が関数族 $(G_u)_u$ によって認識されるとは,
-$H_u(P_u, Q_u) = L(u)$ を満たすこととする(表 \ref{fig:divp}).
+$H_u(P_u, Q_u) = L(u)$ を満たすこととする.
 ここで言語 $L \subseteq \{0, 1\} ^*$ は
 関数 $L \colon \{0, 1\} ^* \to \{0, 1\}$ と同一視し, 
 $u \in L$ のとき $L (u) = 1$ としている. 
@@ -71,19 +70,17 @@ $G_u$ の段数がさらに $|u|$ の多項式, 対数で抑えられるとき,
 河村の論文では次が示されている.
 \begin{lemma}[{\cite[補題4.7]{kawamura2010lipschitz}}]
  \label{DIVPpolyIsPSPACEhard}
- 任意の言語 $L \in \classPSPACE$ に対して,
- その言語を認識する多項式段一様関数族が存在する.
+ $\classPSPACE$ 困難で多項式段一様な関数族によって認識される言語が存在する
+ \footnote{差分方程式によって認識される言語のクラスはカープ還元において閉じており,
+多項式段一様な関数族によって認識される言語は$\classPSPACE$と一致する.}.
 \end{lemma}
-
-$(\infty, 1)$ 回微分可能な関数の常微分方程式においても,
+$g$ が $(\infty, 1)$ 回微分可能であるときも,
 この補題を用いて$\classPSPACE$困難な常微分方程式の解を構成することができる.
-
-2回以上微分可能な関数の常微分方程式の計算量を考えるとき,
+2回以上微分可能な関数によって与えられるの常微分方程式の計算量を考えるとき,
 その滑らかさの制限により多項式段の差分方程式を模倣することができなかった.
 しかし差分方程式を対数段に制限してやれば模倣可能である
 (\ref{subsection: ode family}節, \ref{subsection: proof of theorems}節).
 そこで対数段一様な差分方程式の困難性について注目し以下の結果を得た.
-
 \begin{lemma}
  \label{DIVPlogIsCHhard}
  $\classCH$ 困難で対数段一様な関数族によって認識される言語が存在する.
