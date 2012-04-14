@@ -1,18 +1,16 @@
 \section{証明}
 \label{section:differentiable}
 
-証明の方針は河村によるLipschitz条件を満たす常微分方程式の解が
-$\classPSPACE$困難であることの証明に則る
-\cite{kawamura2010lipschitz}.
+証明の概略を示す.
 まず$\classPSPACE$または$\classCH$困難なある種の離散版の常微分方程式
-$(G_u)_u, (H_u)_u$ を得る(\ref{section:divp}節, \ref{subsection: counting hierarchy}節).
-そして各 $(G_u)_u, (H_u)_u$ を模倣する, 滑らかな実関数族とその常微分方程式の解のペア $(g_u)_u, (h_u)_u$ の存在を示す(\ref{subsection: ode family}節).
+を得る(\ref{section:divp}節, \ref{subsection: counting hierarchy}節).
+そして離散版常微分方程式を模倣する, 滑らかな実関数族とその常微分方程式の解のペア $(g_u)_u, (h_u)_u$ の存在を示す(\ref{subsection: ode family}節).
 それらを一つの滑らかな実関数へ埋め込むことで定理で求める $g, h$ を構成する(\ref{subsection: proof of theorems}節).
 
-本稿の証明において用いられる新たな技巧は2点ある.
-1つは滑らかな多項式時間計算可能関数を用いて実関数を構成することにより,
+Lipschitz条件の場合の証明では用いられていない新たな技巧は2点ある.
+1つは滑らかな多項式時間計算可能関数を用いて実関数を構成することにより
 微分可能としたこと,
-もうひとつは河村によって定義されていたLipschitz連続な微分方程式の離散版を
+もうひとつは河村によって定義されたLipschitz連続な微分方程式の離散版を,
 より形式的に定義し, さらに任意回微分可能な微分方程式の離散版を構成して
 その$\classCH$困難性を示した点である.
 
@@ -21,11 +19,10 @@ $(G_u)_u, (H_u)_u$ を得る(\ref{section:divp}節, \ref{subsection: counting hi
 \subsection{差分方程式}
 \label{section:divp}
 
-河村のLipschitz連続な常微分方程式の$\classPSPACE$困難性の証明では
-最初のステップとして, まずの離散版を定義し, 
+Lipschitz連続な常微分方程式の$\classPSPACE$困難性の証明では
+最初のステップとして, まずの離散版の常微分方程式を定義し, 
 それが$\classPSPACE$困難であることを示している
 \cite[補題4.7]{kawamura2010lipschitz}.
-同じ離散版方程式 1回微分可能関数の常微分方程式でも, 
 この節では離散版微分方程式をより形式的に定義し,
 滑らかな常微分方程式の離散版が$\classPSPACE$困難ないし$\classCH$困難であることを示す.
 
@@ -35,20 +32,21 @@ $[n] = \{0, \dots , n-1\}$ と表記する.
 任意の $i \in [P],\ T \in [Q]$ について以下を満たすとき,
 $H$ を $G$ の\emph{差分方程式}の解と呼ぶ.
 \begin{gather}
-   H(i, 0) = H(0, T) = 0 
+   H(i, 0) = H(0, T) = 0 \label{eq:initial value}
 \\
    H(i + 1, T + 1) = H(i+1, T) + G(i, T, H(i, T))  \label{eq:divp}
 \end{gather}
 $P, Q, R$ をそれぞれ\emph{段数}, \emph{列数}, \emph{欄の大きさ}と呼ぶ.
-$G$ と $H$ が常微分方程式の $g$ と $h$ に対応し,
-$H(i, 0) = 0$ が $h(0) = 0$ に,
-式 (\ref{eq:divp}) と同値である式 $H(i + 1, T + 1) - H(i+1, T) = G(i, T, H(i, T))$
-が $\D h(t) = g(t, h(t))$ の間に対応関係を見て取ることができる.
+常微分方程式の1つめの条件($h(0) = 0$)と式(\ref{eq:initial value}),
+2つめの条件($\D h(t) = g(t, h(t))$)と式(\ref{eq:divp})と同値である式 
+$H(i + 1, T + 1) - H(i+1, T) = G(i, T, H(i, T))$
+の間に対応関係を見て取ることができるため,
+差分方程式は常微分方程式の離散版と呼べる.
 
-差分方程式の族によって一つの言語を定義するために,
-以下では文字列 $u$ ごとに差分方程式 $G _u$ を一つ定めた族 $(G _u) _u$ を考える. 
+文字列 $u$ ごとに一つの差分方程式 $G _u$ を与え,
+$u$が言語$L$に入っているかをその差分方程式によって計算することを考える.
 各 $u$ に対して $G_u$ の段数と列数, 解をそれぞれ $P_u, Q_u, H_u$ としたとき,
-言語 $L$ がこの族 $(G_u)_u$ によって認識されるとは,
+言語 $L$ が関数族 $(G_u)_u$ によって認識されるとは,
 $H_u(P_u, Q_u) = L(u)$ を満たすこととする(表 \ref{fig:divp}).
 ここで言語 $L \subseteq \{0, 1\} ^*$ は
 関数 $L \colon \{0, 1\} ^* \to \{0, 1\}$ と同一視し, 
@@ -62,7 +60,7 @@ $u \in L$ のとき $L (u) = 1$ としている.
   \caption{差分方程式と認識される言語}
  \end{figure}
 
-多項式時間実関数$g$で$(G_u)_u$を模倣可能にするため, $(G_u)_u$に制限をかける.
+このままでは任意の言語を差分方程式で認識可能となってしまうので, $(G_u)_u$全体にある種の制限をかける.
 $(G_u)_u$ が{\bf 一様}であるとは,
 各 $u$ について $G _u$ の段数, 列数及び欄の大きさが $|u|$ の多項式の指数($2^{\mathrm{poly} (|u|)}$)で抑えられ, 
 かつ与えられた $(u, i, T, Y)$ から多項式時間で $G_u(i, T, Y)$ が
@@ -82,22 +80,15 @@ $(\infty, 1)$ 回微分可能な関数の常微分方程式においても,
 
 2回以上微分可能な関数の常微分方程式の計算量を考えるとき,
 その滑らかさの制限により多項式段の差分方程式を模倣することができなかった.
-しかし差分方程式を対数段に制限してやれば模倣可能であることことが示せたため
-(\ref{subsection: ode family}節, \ref{subsection: proof of theorems}節),
-対数段一様な差分方程式の困難性について注目し以下の結果を得た.
+しかし差分方程式を対数段に制限してやれば模倣可能である
+(\ref{subsection: ode family}節, \ref{subsection: proof of theorems}節).
+そこで対数段一様な差分方程式の困難性について注目し以下の結果を得た.
 
 \begin{lemma}
  \label{DIVPlogIsCHhard}
  $\classCH$ 困難で対数段一様な関数族によって認識される言語が存在する.
 \end{lemma}
-
-補題 \ref{DIVPpolyIsPSPACEhard} が$\classPSPACE$の任意の言語について述べているのに対して,
-この補題は$\classCH$困難な或る言語について述べているという違いがある.
-しかし定理の証明において必要な点は, 言語クラスに対して困難な或る言語を認識できることであり,
-補題 \ref{DIVPpolyIsPSPACEhard} を補題 \ref{DIVPlogIsCHhard} と同じ形式
-($\classPSPACE$ 困難で多項式段一様な関数族によって認識される言語が存在する)
-に変えても定理を証明するには十分である.
-
+計数階層$\classCH$の定義及びこの補題の証明は次章にて行う.
 
 \subsection{計数階層と対数段差分方程式}
 \label{subsection: counting hierarchy}
@@ -106,32 +97,27 @@ $(\infty, 1)$ 回微分可能な関数の常微分方程式においても,
 Wagner によって導入された計算量クラスである\cite{wagner1986complexity}.
 多項式階層({\bf PH})が {\bf NP} の神託機械を用いて,
 \begin{align*}
- \Sigma^p_0 
- &= \classP \\
- \Sigma^p_{k+1}
- &= \mathbf{NP}^{\Sigma^p_k}
+ \Sigma^p_0  &= \classP
+ \\
+ \Sigma^p_{k+1} &= \mathbf{NP}^{\Sigma^p_k}
+ \\
+ \mathbf{PH} &= \bigcup_k \Sigma^p_k
 \end{align*}
-\[
- \mathbf{PH} = \bigcup_k \Sigma^p_k
-\]
 と定義されるのに対し,
 計数階層は多項式階層の {\bf NP} を {\bf PP} で置き換えたものである
 \footnote{ただしこの特徴付けは Tor{\'a}n によるものであり,
 Wagner によるオリジナルの定義とは異なる\cite{toran1991complexity}.
 }. つまり
 \begin{align*}
- \C_0 \classP  
- &= \classP \\
- \C_{k+1} \classP
- &= \classPP^{\C_k \classP}
+ \C_0 \classP  &= \classP
+ \\
+ \C_{k+1} \classP &= \classPP^{\C_k \classP}
+ \\
+ \classCH &= \bigcup_k \C_k \classP.
 \end{align*}
-\[
- \classCH = \bigcup_k \C_k \classP.
-\]
 
 $\mathbf{PH} \subseteq \classCH \subseteq \classPSPACE$ だが,
-$\mathbf{PH} = \classCH$, $\classCH = \classPSPACE$
-か否かは未解決である.
+いずれの包含関係も厳密か否かは未解決である.
 
 補題 \ref{DIVPlogIsCHhard} における $\classCH$困難な言語を定義するため, 
 まず$\classCH$ の各階層 $\C_n \classP$ に対する完全問題$\C_n B_{be}$を導入する.
@@ -640,4 +626,3 @@ $f _u (x)$ の名であることをいう.
 \end{proof}
 
 
-%%% 証明は削除, master に残っているものを後でマージする.
