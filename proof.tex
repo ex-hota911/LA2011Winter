@@ -302,7 +302,7 @@ $f _u (x)$ の名であることをいう.
   \begin{enumerate}
    \item \label{enum:kf:start}
      $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$; 
-   \item $h_u$ は $g_u$ の常微分方程式 (\ref{eq:ode}) の解;
+   \item $g_u$と$h_u$は常微分方程式 (\ref{eq:ode}) を満たす;
    \item $g_u$ は $(\infty, k)$ 階連続微分可能;
    \item \label{enum:boundary}
 	 任意の $i \in \N$, $y \in [-1,1]$ に対して
@@ -333,8 +333,7 @@ $f _u (x)$ の名であることをいう.
 
 
 
- この補題より各 $h_u$ が $g_u$ の常微分方程式の解であり, 
- 各$h_u(1)$ に $L(u)$ の情報を持つ
+ この補題より各 $h_u(1)$ に $L(u)$ の情報を持つ
  滑らかな実関数族 $(g_u)_u, (h_u)_u$ の存在が示される.
  河村によるLipschitz連続な常微分方程式の$\classPSPACE$困難性の証明における,
  補題4.1 に対応するが,
@@ -342,17 +341,18 @@ $f _u (x)$ の名であることをいう.
 
 
  この補題の証明の基本的な流れを説明する.
- 任意の言語 $L \in \classPSPACE$ (resp. ある$\classCH$困難な言語$L$)に対し, 
- 補題 \ref{DIVPpolyIsPSPACEhard}(resp. 補題 \ref{DIVPlogIsCHhard})
+ ある$\classCH$困難(resp. $\classPSPACE$困難)な言語$L$に対し, 
+ 補題 \ref{DIVPlogIsCHhard}(resp. 補題 \ref{DIVPpolyIsPSPACEhard})
  を用いて $L$ を認識する $(G_u)_u$ 
- 及びその差分方程式の解 $(H_u)_u$ を得る.
+ 及び $(H_u)_u$ を得る.
  そして各 $G_u, H_u$ を模倣する
  滑らかな $g_u \colon [0,1] \times [-1, 1] \to \R$ 
- とその常微分方程式の解 $h_u \colon [0,1] \to \R$ を構成する.
- また $(G_u)_u$ の一様性から $(g_u)_u$ の多項式時間計算可能性を示す.
+ と $h_u \colon [0,1] \to \R$ 構成する.
+ それらが常微分方程式(\ref{eq:ode})を満たすことを差分方程式の性質により示し,
+ $(g_u)_u$の多項式時間計算可能性を$(G_u)_u$ の一様性から示す.
 
  上記の証明は基本的に, 河村による証明と変わらない\cite[補題4.1]{kawamura2010lipschitz}.
- 河村の証明と異なる点は, $g_u$ を滑らかな関数にするため, 
+ 河村の証明と大きく異なる点は, $g_u$ を滑らかな関数にするため, 
  以下のような無限回微分可能な多項式時間実関数 $f \colon [0,1] \to \R$ を用いて
  $g_u$ を構成していることである.
 
@@ -372,17 +372,18 @@ $f _u (x)$ の名であることをいう.
  さらにここでは上記の条件に加えて, 
  \begin{enumerate}
   \setcounter{enumi}{4} 
-  \item 以下を多項式 $s$が存在
+  \item 以下を満たす多項式$s$が存在する
 	\begin{equation} \label{enum:polynomial-size}
 	 |\D^n f| \le s(n)
 	\end{equation}
  \end{enumerate}
  を満たすような$f$が存在することを用いて証明する.
- そのような$f$が存在することは葛による証明を確認することで容易に示される.
+ 葛による証明を確認することで多項式$s$の存在は容易に示される.
 
  ここではより難しく一般的な補題 \ref{KTimesFamily} のみ証明を行い,
- 補題 \ref{DifferentiableFamily} については$g, h$の例のみ示し
- 証明は省略する.
+ 補題 \ref{DifferentiableFamily} について証明は省略する.
+
+
  \begin{proof}[\rm 補題 \ref{KTimesFamily} の証明]
   補題 \ref{DIVPlogIsCHhard} より
   $\classCH$ 困難な言語 $L$ を認識する
