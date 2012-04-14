@@ -414,7 +414,7 @@ $f _u (x)$ の名であることをいう.
  $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-(k+1)^{j_u(T)}}$ を満たすように
  定める.
   そのとき,
- \begin{equation}
+ \begin{equation} \label{eq:delta}
   \delta_{u, Y} (t) = \frac{2^{q(|u|)} \D f(\theta)}{B^{(k+1)^{j_u(T)+1}}} 
    G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
  \end{equation}
@@ -496,7 +496,7 @@ $f _u (x)$ の名であることをいう.
 
 
  補題 \ref{DifferentiableFamily} の証明では
- $\classPSPACE$困難な言語を認識する多項式段一様関数族$(G_u)_u$とその解$(H_u)_u$に対して
+ $\classPSPACE$困難な言語を認識する多項式段一様関数族$(G_u)_u$とその解$(H_u)_u$に対して式(\ref{eq:delta}), (\ref{eq:gu}), (\ref{eq:hu})をそれぞれ,
  \begin{align}
   \delta_{u, Y} (t) &= \frac{2^{q(|u|)} \D f(\theta)}{B^{{j_u(T)+1}}} 
    G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
@@ -514,7 +514,7 @@ $f _u (x)$ の名であることをいう.
   h_u(t) &= \sum^{l(|u|)}_{i=0} \frac{H_u(i, T)}{B^{i}}  
   + \frac{f(\theta)}{B^{{j_u(T)+1}}} G_u(j_u(T), T, H_u(j_u(T), T)) 
  \end{align}
- と定める.
+ と置き換える. ただし$p, q, r$ は $G_u \colon [p(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\}$を満たす多項式.
  $(g_u)_u$と$(h_u)_u$が補題 \ref{DifferentiableFamily} で求める性質を満たすことは,
  補題 \ref{KTimesFamily} の証明と同様に示される.
 
@@ -524,8 +524,8 @@ $f _u (x)$ の名であることをいう.
 
  証明の概略を示す.
  前の節の補題から得られる $(g_u)_u$ と $(h_u)_u$ を縮小して連結し滑らかな $g$ と
- その常微分方程式の解 $h$ を構成する.
- [0,1] を無限の区間に分割し, $h$ の各文字列 $u$ に対応する区間
+ 解 $h$ を構成する.
+ $[0,1)$ を無限の区間に分割し, 各文字列 $u$ に対応する区間
  $[l^-_u, c_u]$ に $h_u$ を縮小して埋め込む. 
  ただし次の文字列 $u'$ の計算に影響を与えないために,
  $h_u$ を定義域方向について反転したものを
