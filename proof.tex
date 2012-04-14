@@ -290,43 +290,19 @@ $f _u (x)$ の名であることをいう.
 実関数族が多項式時間計算可能であるとは, その実関数族を計算する
 多項式時間神託機械が存在することである.
 
-\begin{lemma}
- \label{DifferentiableFamily}
- 任意の言語 $L \in \classPSPACE$ に対して, 
- 二変数多項式 $\mu$ が存在して,
- 任意の多項式 $\gamma$ に対して,
- 多項式 $\rho$, 実関数族 $(g_u)_u, (h_u)_u$ で, 
- $(g_u)_u$ は多項式時間計算可能であり,
- 各文字列 $u$ に対して以下を満たすものが存在する.
- \begin{enumerate}
-  \item $g_u\colon [0,1] \times [-1,1]\to \R$, $h_u\colon [0,1] \to [-1,1]$;
-  \item $h_u$ は $g_u$ の常微分方程式 (\ref{eq:ode}) の解; 
-  \item $g_u$ は $(\infty, 1)$ 回連続微分可能;
-  \item 任意の $i \in \N$, $y \in [-1,1]$ に対して
-	\begin{equation*}
-	 \D ^{(i, 0)} g_u(0,y) = \D ^{(i, 0)} g_u(1,y) = 0;
-	\end{equation*}
-  \item \label{enum:infty1}
-	任意の $i \in \N$, $j \in \{0,1\}$ に対して
-	\begin{equation*}
-	 |\D ^{(i,j)} g_u| \leq 2^{\mu(i, |u|) - \gamma(|u|)};
-	\end{equation*}
-  \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
- \end{enumerate}
-\end{lemma}
-
-
  \begin{lemma}
   \label{KTimesFamily}
-  任意の自然数 $k \ge 2$ に対して,
-  $\classCH$ 困難な言語 $L$,
-  二変数多項式 $\mu$ が存在して,
+  或る $\classCH$ 困難な言語 $L$,
+  二変数多項式 $\mu$ において,
+  任意の正の整数 $k$,
   任意の多項式 $\gamma$ に対して,
-  関数 $\rho \colon \N \to \N$, 関数族 $g_u, h_u$ で,
-  $\rho, (g_u)_u$ は多項式時間計算可能であり,
+  多項式 $\rho$, 実関数族 $(g_u)_u, (h_u)_u$ で, 
+  $(g_u)_u$ は多項式時間計算可能であり,
   各文字列 $u$ に対して以下を満たすものが存在する.
+
   \begin{enumerate}
-   \item $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$;
+   \item \label{enum:kf:start}
+     $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$; 
    \item $h_u$ は $g_u$ の常微分方程式 (\ref{eq:ode}) の解;
    \item $g_u$ は $(\infty, k)$ 階連続微分可能;
    \item \label{enum:boundary}
@@ -339,9 +315,23 @@ $f _u (x)$ の名であることをいう.
 	 \begin{equation*}
 	  \left|\D^{(i,j)} g_u(t,y)\right| \le 2^{\mu(i, |u|) - \gamma(|u|)};
 	 \end{equation*}
-   \item $h_u(1) = 2^{-\rho(|u|)}L(u)$.
+   \item \label{enum:kf:end}
+	 $h_u(1) = 2^{-\rho(|u|)}L(u)$.
   \end{enumerate}
  \end{lemma}
+
+\begin{lemma}
+ \label{DifferentiableFamily}
+ 或る $\classPSPACE$ 困難な言語 $L$,
+ 二変数多項式 $\mu$ において,
+ $k = 1$のとき,
+ 任意の多項式 $\gamma$ に対して,
+ 多項式 $\rho$, 実関数族 $(g_u)_u, (h_u)_u$ で, 
+ $(g_u)_u$ は多項式時間計算可能であり,
+ 各文字列 $u$ に対して
+ 補題\ref{KTimesFamily}の(\ref{enum:kf:start}) -- (\ref{enum:kf:end})を満たすものが存在する.
+\end{lemma}
+
 
 
  この補題より各 $h_u$ が $g_u$ の常微分方程式の解であり, 
