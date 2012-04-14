@@ -7,7 +7,7 @@
 FILE=fulltext
 EFILE=fulltext.euc
 # 分割され、インクルードされているファイル
-SRC=abstract.euc.tex conclusion.euc.tex proof.euc.tex introduction.euc.tex preliminary.euc.tex acknowledgements.euc.tex constructive.euc.tex
+SRC=abstract.euc.tex conclusion.euc.tex proof.euc.tex introduction.euc.tex preliminary.euc.tex acknowledgements.euc.tex constructive.euc.tex future.euc.tex
 #スタイルファイルやクラスファイルなど
 OHTERS=
 # 画像などのバイナリファイル
