@@ -315,7 +315,7 @@ $f _u (x)$ の名であることをいう.
 	  \left|\D^{(i,j)} g_u(t,y)\right| \le 2^{\mu(i, |u|) - \gamma(|u|)};
 	 \end{equation*}
    \item \label{enum:kf:end}
-	 $h_u(1) = 2^{-\rho(|u|)}L(u)$.
+	 $h_u(1) \ge 2^{-\rho(|u|)} \longleftrightarrow u \in L$.
   \end{enumerate}
  \end{lemma}
 
@@ -387,10 +387,16 @@ $f _u (x)$ の名であることをいう.
  \begin{proof}[\rm 補題 \ref{KTimesFamily} の証明]
   補題 \ref{DIVPlogIsCHhard} より
   $\classCH$ 困難な言語 $L$ を認識する
-  対数段一様関数族 $(G_u)_u$, その解 $(H_u)_u$, 
-  $P_u = p(|u|), Q_u = 2^{q(|u|)}, R_u = 2^{r(|u|)}$ を満たす関数$p$, 
-  多項式 $q,r$ を得る.
-  河村による証明と同様に
+  対数段一様関数族 $(G_u)_u$, その解 $(H_u)_u$を得る.
+  対数段一様関数族の定義より 
+  $G_u \colon [l(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\}$
+  を満たす関数$l$, 多項式 $q,r$が存在する. 
+  また$l(|u|) = O(\log |u|)$より任意の$x \in \N$に対して,
+  $(k+1)^l(x) \le p(x)$を満たす多項式$p$が存在する.
+  また$\rho(x) = p(x) \cdot (\gamma(x) + r(x) + 3)$, 
+  $\mu(x, y) = (x+1)q(y) + s(x+1)$とおく.
+
+  河村による証明と同様に$(G_u)_u, (H_u)_u$を拡張することにより,
   以下のことを仮定する.
   \begin{gather}
    H_u(i, 2^{q(|u|)}) = \begin{cases}
@@ -427,19 +433,17 @@ $f _u (x)$ の名であることをいう.
  \end{equation}
  \begin{equation} 
   h_u(t) 
-   = \sum^{p(|u|)}_{i=0} \frac{H_u(i, T)}{B^{(k+1)^i}}  
+   = \sum^{l(|u|)}_{i=0} \frac{H_u(i, T)}{B^{(k+1)^i}}  
   + \frac{f(\theta)}{B^{(k+1)^{j_u(T)+1}}} G_u(j_u(T), T, H_u(j_u(T), T)) 
   \label{eq:hu}
  \end{equation}
   ただし$f$と多項式$s$は補題 \ref{SmoothFunction}
   および式(\ref{enum:polynomial-size})を満たすものとする.
-  また$\rho(x) = 2^{p(x)} \cdot (\gamma(x) + r(x) + 3)$, 
-  $\mu(x, y) = (x+1)q(y) + s(x+1)$とおく.
 
 
  上記のように定義した $g_u, h_u$ が補題\ref{DifferentiableFamily} で求める
  性質を満たすことを示す. ただし多くは河村による証明と同様に示せるため
-  異なる条件 (iii) - (v) のみ示す
+  異なる条件 (iii) - (vi) のみ示す
  
   $g_u$ が $(\infty, k)$ 階連続的微分可能であることを示す.
   $\eta$ が $[-1/4, 1/4]$ と $[1/4, 3/4]$ である区間それぞれにおいて微分する.
@@ -481,7 +485,15 @@ $f _u (x)$ の名であることをいう.
   上記の式より任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
   $|\D^{(i,j)} g_u| \leq 2^{\mu(i, |u|) - \gamma(|u|)}$.
 
+  \begin{equation}
+   h_u(1) = \frac{H_u(l(|u|), 2^{q(|u|)})}{B^{(k+1)^{l(|u|)}}} 
+          = \frac{L(u)}{2^{(k+1)^{l(|u|)} \cdot (\gamma(|u|)+r(|u|)+s(k)+k+3)}}
+  \end{equation}
+  $u \not \in L$ならば$h_u(1) = 0$,
+  $u \in L$ ならば $(k+1)^l(|u|) < p(|u|)$より$h_u(1) \le 2^{\rho(u)}$
  \end{proof}
+
+
 
  補題 \ref{DifferentiableFamily} の証明では
  $\classPSPACE$困難な言語を認識する多項式段一様関数族$(G_u)_u$とその解$(H_u)_u$に対して
@@ -499,7 +511,7 @@ $f _u (x)$ の名であることをいう.
      & (\eta > \frac 1 4)
     \end{cases}
   \\
-  h_u(t) &= \sum^{p(|u|)}_{i=0} \frac{H_u(i, T)}{B^{i}}  
+  h_u(t) &= \sum^{l(|u|)}_{i=0} \frac{H_u(i, T)}{B^{i}}  
   + \frac{f(\theta)}{B^{{j_u(T)+1}}} G_u(j_u(T), T, H_u(j_u(T), T)) 
  \end{align}
  と定める.
