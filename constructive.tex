@@ -29,53 +29,55 @@ $\classLip [[0, 1] \times [-1, 1]]$について,
 $\classC [0, 1]$の表現として$\deltabox$を, 
 $\classLip [[0, 1] \times [-1, 1]]$の表現として$\deltaboxLip$を
 それぞれ用いる. 
-これらの表現では使われる文字列関数の長さが有界でないため, 
-神託機械の時間・空間を測る方法を二階多項式を使って拡張する必要があるが, 
-詳細は\cite{kawamura2010operators}を参照せられたい. 
 $\deltabox$は関数空間$\classC [0, 1]$の表現として
 或る意味で自然な唯一のものであることが判っており
 \cite{kawamura11:_funct_space_repres_and_polyn_time_comput}, 
-また$\deltaboxLip$は$\deltabox$にLipschitz定数に関する情報を附加した表現である. 
+また$\deltaboxLip$は$\deltabox$にLipschitz定数の情報を附加した表現である. 
 
-\cite{kawamura2010operators}では文字列関数による表現に基いて, 
-多項式空間$\classFPSPACEtwo$などの計算量クラスや, 
-多項式時間Weihrauch帰着$\redW$などの帰着が定義され, 
-それらによって定義される困難性が論ぜられている. 
-この枠組を用いて本稿の結果も以下の如く構成的な形で述べることができる. 
+これらの表現では使われる文字列関数の長さが有界でないため, 
+神託機械の時間・空間を測る方法を二階多項式を使って拡張し, 
+これに基いて多項式空間$\classFPSPACEtwo$などの計算量クラスや, 
+多項式時間Weihrauch帰着$\redW$などの帰着, 
+その下での困難性を定義する\cite{kawamura2010operators}. 
+この枠組を上述の実関数の表現と組合せることで, 
+本稿の結果も以下の如く構成的な形で述べることができる. 
 
 実関数$g \in \classLip [[0, 1] \times [-1, 1]]$を, 
 \eqref{eq:ode}の解$h \in \classC [0, 1]$に対応させる演算子$\OpIVP$を考える. 
 $\OpIVP$は$\classLip [[0, 1] \times [-1, 1]]$から
 $\classC [0, 1]$への部分写像である. 
-\cite[Theorem~4.9]{kawamura2010operators}では表\ref{table:related}第三行の証明を
+\cite[定理4.9]{kawamura2010operators}では表\ref{table:related}第三行の証明を
 構成的に書き直すことで, 
 $\OpIVP$が$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$完全であることが
 示された. 
-本稿の関心は$g$が滑らかな場合であるから, 
-$\OpIVP$を$(\infty, k)$回連続微分可能な入力に制限したものを
-$\OpIVP _k$と書くことにする. 
+本稿の定理\ref{DifferentiableIsPspace}も同じように
+構成的に書き直すことができる. 
+即ち$\OpIVP$を$(\infty, k)$回連続微分可能な入力に制限したものを
+$\OpIVP _k$と書くと, 
 
 \begin{theorem}
 \label{theorem: C1 constructive}
 $\OpIVP _1$は$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$完全. 
 \end{theorem}
 
-\begin{theorem}
-\label{theorem: Ck constructive}
-各$k \in \N$について, 
-$\OpIVP _k$は$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$に属し, 
-$(\deltaboxLip, \deltabox)$-$\classCHtwo$-$\redW$困難. 
-\end{theorem}
-
-これらを示すには, 
-定理\ref{DifferentiableIsPspace}, \ref{KTimesIsCH}の証明において
+これを示すには, 
+定理\ref{DifferentiableIsPspace}の証明において
 関数の構成に使われた情報が入力から容易に得られることを確かめればよく, 
 新たな技巧を要しないから詳細は省略する. 
-これら構成的な主張は非構成的な主張よりも
-強いものであり\cite[Lemmas 3.7, 3.8]{kawamura2010operators}, 
-定理\ref{DifferentiableIsPspace}, \ref{KTimesIsCH}は
-それぞれ定理\ref{theorem: C1 constructive}, \ref{theorem: Ck constructive}の
-系として従う. 
+この構成的な主張は非構成的な主張よりも
+強いものであり\cite[補題3.7, 3.8]{kawamura2010operators}, 
+定理\ref{DifferentiableIsPspace}は
+定理\ref{theorem: C1 constructive}の系として従う. 
+
+% \begin{theorem}
+% \label{theorem: Ck constructive}
+% \end{theorem}
+
+なお定理\ref{KTimesIsCH}も同様に構成的な形で成り立ち, 
+各$k \in \N$について
+$\OpIVP _k$は$(\deltaboxLip, \deltabox)$-$\classCHtwo$-$\redW$困難であるが, 
+この\cite{kawamura2010operators}の枠組における$\classCHtwo$を定義するには
+相対化の扱いについて今少しの議論を要するので別稿で扱う. 
 
 % ところで, より強い帰着である
 % 強ワイラオホ帰着を用いると
