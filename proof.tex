@@ -33,6 +33,13 @@ $[n] = \{0, \dots , n-1\}$と書く.
 関数$G \colon [P] \times [Q] \times [R] \to \{-1, 0, 1\}$と
 $H \colon [P + 1] \times [Q+1] \to [R]$が
 任意の$i \in [P]$, $T \in [Q]$について以下を満たすとき(図\ref{fig:divp}), 
+\begin{figure}
+ \begin{center}
+  \includegraphics[height=0.15\textheight]{image/divp.eps}
+ \end{center}
+ \caption{差分方程式$G$とその解$H$}
+ \label{fig:divp}
+\end{figure}
 $H$を\emph{差分方程式}\kern\xkanjiskip$G$の解と呼ぶ.
 \begin{gather}
    H(i, 0) = H(0, T) = 0 \label{eq:initial value}
@@ -46,23 +53,12 @@ $P$, $Q$, $R$をそれぞれこの差分方程式の
 \ref{subsection: ode family}節ではこれを用いて
 微分方程式で差分方程式を模倣する. 
 
-\begin{figure}
- \begin{center}
-  \includegraphics[height=0.2\textheight]{image/divp.eps}
- \end{center}
- \caption{差分方程式$G$とその解$H$}
- \label{fig:divp}
-\end{figure}
-
 文字列$u$ごとに一つの差分方程式$G _u$を与え,
 $u$が言語$L$に属するかをその差分方程式によって計算することを考える.
 各 $u$ に対して $G_u$ の段数と列数, 解をそれぞれ $P_u, Q_u, H_u$ としたとき,
 言語$L$が関数族$(G_u)_u$によって
 \emph{認識}されるとは,
 $H_u(P_u, Q_u) = L(u)$ を満たすこととする.
-ここで言語 $L \subseteq \{0, 1\} ^*$ は
-関数 $L \colon \{0, 1\} ^* \to \{0, 1\}$ と同一視し, 
-$u \in L$ のとき $L (u) = 1$ としている. 
 
 % このままでは任意の言語を差分方程式で認識可能となってしまうので, $(G_u)_u$全体にある種の制限をかける.
 族$(G_u)_u$が\emph{一様}であるとは,
@@ -78,23 +74,32 @@ $G_u$ の段数がさらに $|u|$ の多項式, 対数で抑えられるとき,
 
 \begin{lemma}
  \label{DIVPpolyIsPSPACEhard}
- 多項式段一様な関数族によって認識される$\classPSPACE$困難な言語が存在する
+ 多項式段の一様な差分方程式族によって認識される$\classPSPACE$困難な言語が存在する
  \footnote{差分方程式によって認識される言語のクラスはカープ帰着において閉じており,
 多項式段一様な関数族によって認識される言語は$\classPSPACE$と一致する.}.
 \end{lemma}
 
-$g$ が $(\infty, 1)$ 回微分可能であるときも,
-この補題を用いて$\classPSPACE$困難な常微分方程式の解を構成することができる.
-2回以上微分可能な関数によって与えられる常微分方程式の計算量を考えるとき,
-その滑らかさの制限により多項式段の差分方程式を模倣することができなかった.
-しかし差分方程式を対数段に制限してやれば模倣可能である
-(\ref{subsection: ode family}節, \ref{subsection: proof of theorems}節).
-そこで対数段一様な差分方程式の困難性について注目し以下の結果を得た.
+河村\cite{kawamura2010lipschitz}は
+この多項式段の一様な差分方程式族をLipschitz連続な微分方程式で模倣することで, 
+表\ref{table:related}第三行の結果を得た. 
+本稿の定理\ref{DifferentiableIsPspace}はこの構成に手を加えて, 
+$(\infty, 1)$回微分可能な模倣に
+作り替えることにより
+(\ref{subsection: ode family}, \ref{subsection: proof of theorems}節), 
+やはり補題\ref{DIVPpolyIsPSPACEhard}から得られる. 
+
+本稿では更に, 対象とする差分方程式族を対数段に制限すれば, 
+$(\infty, 2)$回以上微分可能な関数によっても
+模倣できることを示し
+(\ref{subsection: ode family}, \ref{subsection: proof of theorems}節), 
+これと次の補題から定理\ref{KTimesIsCH}を得る. 
+
 \begin{lemma}
  \label{DIVPlogIsCHhard}
- 対数段一様な関数族によって認識される$\classCH$困難な言語が存在する.
+ 対数段の一様な差分方程式族によって認識される$\classCH$困難な言語が存在する.
 \end{lemma}
-計数階層$\classCH$の定義及びこの補題の証明は
+
+計数階層$\classCH$の定義及び補題\ref{DIVPlogIsCHhard}の証明は
 \ref{subsection: counting hierarchy}節にて行う.
 
 \subsection{計数階層と対数段の差分方程式}
@@ -105,19 +110,19 @@ Wagnerによって導入された計算量クラスである\cite{wagner1986comp
 多項式階層$\classPH$が$\classNP$の神託機械を用いて
 \begin{align*}
  \classSigma^p_0  &= \classP
- \\
+ &
  \classSigma^p_{n+1} &= \classNP ^{\classSigma^p_n}
- \\
+ &
  \classPH &= \bigcup_n \classSigma^p_n
 \end{align*}
 と定義されるのに対し,
 計数階層は多項式階層の$\classNP$を$\classPP$で置き換えて
 \begin{align*}
  \quantC_0 \classP  &= \classP
- \\
+ &
  \quantC_{n+1} \classP &= \classPP^{\quantC_n \classP}
- \\
- \classCH &= \bigcup_n \quantC_n \classP.
+ &
+ \classCH &= \bigcup_n \quantC_n \classP
 \end{align*}
 で定義される\footnote{ただしこの特徴づけは Tor{\'a}n によるものであり,
 Wagnerによる定義とは異なる\cite{toran1991complexity}.

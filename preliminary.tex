@@ -75,31 +75,14 @@ $A$が$\R ^2$の有界閉集合であるときにも,
 
 \subsection{帰着と困難性}
 
- 言語 $L \colon \{0, 1\} ^* \to \{0, 1\}$ が
- 実関数 $f\colon [0,1] \to \R$ に多項式時間帰着(以下単に帰着と呼ぶ)するとは,
- $f$ を計算する機械があるとしたとき, 入力 $u$ に対して,
- 精度 $n$ をこの機械に与え, ある実数 $x_u$ の神託を模倣し, $f(x_u)$ の $n$ 桁近似値から,
- $u$ が $L$ に属するか否かを多項式時間で計算可能であることである
- (図\ref{fig:reduction}).
- 厳密には以下のように定義する.
+言語$L \subseteq \{0, 1\} ^*$は
+関数$L \colon \{0, 1\} ^* \to \{0, 1\}$と同一視し, 
+$u \in L$のとき$L (u) = 1$とする. 
 
- \begin{definition}[帰着]
-  言語 $L$ が実関数 $f\colon [0,1] \to \R$ に\emph{帰着}するとは, 
+\begin{definition}[帰着]
+  言語$L$が実関数$f \colon [0, 1] \to \R$に\emph{帰着}するとは, 
   多項式時間計算可能な関数 $S$ と多項式時間神託機械$M$が存在し, 
-  任意の文字列 $u$ に対して以下を満たすことをいう. 
-  \begin{itemize}
-   \item $S(u, \cdot)$ はある実数 $x_u$ の名;
-   \item $f(x_u)$ の任意の名 $\phi$ に対して
-	 \[
-	  M^\phi(u) \text{が受理} \leftrightarrow u \in L.
-	 \]
-  \end{itemize}
- \end{definition}
- この定義は河村による帰着の定義と形式上は異なるが,
- 帰着としての強さは等しい.
- 計算量 $C$ に対して, 関数 $f$ が \emph{$C$ 困難}であるとは,
- $C$ に属する任意の言語が $f$ に帰着することをいう.
-
+  任意の文字列 $u$ に対して以下を満たすことをいう(図\ref{fig:reduction}). 
  \begin{figure}
   \begin{center}
   \includegraphics[scale=0.25]{image/reduction.eps}
@@ -107,3 +90,15 @@ $A$が$\R ^2$の有界閉集合であるときにも,
   \label{fig:reduction}
   \end{center}
  \end{figure}
+  \begin{itemize}
+   \item $S(u, \cdot)$ はある実数 $x_u$ の名;
+   \item $f(x_u)$ の任意の名 $\phi$ に対して
+	 \[
+	  M^\phi(u) \text{が受理} \leftrightarrow u \in L.
+	 \]
+  \end{itemize}
+\end{definition}
+ この定義は河村による帰着の定義と形式上は異なるが,
+ 帰着としての強さは等しい.
+ 計算量 $C$ に対して, 関数 $f$ が \emph{$C$ 困難}であるとは,
+ $C$ に属する任意の言語が $f$ に帰着することをいう.
