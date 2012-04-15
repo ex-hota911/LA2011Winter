@@ -402,10 +402,6 @@ $f _u (x)$ の名であることをいう.
   対数段一様関数族の定義より 
   $G_u \colon [l(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\}$
   を満たす関数$l$, 多項式 $q,r$が存在する. 
-  また$l(|u|) = O(\log |u|)$より任意の$x \in \N$に対して,
-  $(k+1)^l(x) \le p(x)$を満たす多項式$p$が存在する.
-  また$\rho(x) = p(x) \cdot (\gamma(x) + r(x) + 3)$, 
-  $\mu(x, y) = (x+1)q(y) + s(x+1)$とおく.
 
   河村による証明と同様に$(G_u)_u, (H_u)_u$を拡張することにより,
   以下のことを仮定する.
@@ -418,18 +414,29 @@ $f _u (x)$ の名であることをいう.
    i \not = j_u(T)  \to G_u(i, T, Y) = 0 
   \end{gather}
   
-
- $B = 2^{\gamma(|u|) + r(|u|) + s(k) + k + 3}$ とおき, 
+  $l(x) = O(\log x)$より任意の$x \in \N$に対して,
+  $(k+1)^{l(x)} \le p(x)$を満たす多項式$p$が存在する.
+  大きな数$B$と関数$d_u \colon [l(|u|)+1] \to \N$を
+  \begin{align*}
+   B &= 2^{\gamma(|u|) + r(|u|) + s(k) + k + 3}
+   &
+   d_u(i) &= 
+   \begin{cases}
+    p(|u|) & (i=l(|u|)) 
+    \\
+    (k+1)^i & (i<l(|u|))
+   \end{cases}
+  \end{align*}
+  とおき, 
  各 $(t, y) \in [0,1] \times [-1, 1]$ に対して,
  自然数 $N$, $\theta \in [0,1]$, 整数 $Y$, $\eta \in [-1/4, 3/4]$ を
- $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-(k+1)^{j_u(T)}}$ を満たすように
- 定める.
-  そのとき,
+ $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-d_u(j_u(T))}$ を満たすように
+ 定める. 関数$\delta_{u,Y} \colon [0,1] \to \R$を
  \begin{equation} \label{eq:delta}
-  \delta_{u, Y} (t) = \frac{2^{q(|u|)} \D f(\theta)}{B^{(k+1)^{j_u(T)+1}}} 
+  \delta_{u, Y} (t) = \frac{2^{q(|u|)} \D f(\theta)}{B^{d_u(j_u(T)+1)}} 
    G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
  \end{equation}
- とおき $g_u, h_u$ を以下のように定義する.
+ とおき, $g_u, h_u$ を以下のように定義する.
  \begin{equation}
   \label{eq:gu}
 \\  g_u(t,y) 
@@ -444,8 +451,8 @@ $f _u (x)$ の名であることをいう.
  \end{equation}
  \begin{equation} 
   h_u(t) 
-   = \sum^{l(|u|)}_{i=0} \frac{H_u(i, T)}{B^{(k+1)^i}}  
-  + \frac{f(\theta)}{B^{(k+1)^{j_u(T)+1}}} G_u(j_u(T), T, H_u(j_u(T), T)) 
+   = \sum^{l(|u|)}_{i=0} \frac{H_u(i, T)}{B^{d_u(i)}}  
+  + \frac{f(\theta)}{B^{d_u(j_u(T)+1)}} G_u(j_u(T), T, H_u(j_u(T), T)) 
   \label{eq:hu}
  \end{equation}
   ただし$f$と多項式$s$は補題 \ref{SmoothFunction}
@@ -462,7 +469,7 @@ $f _u (x)$ の名であることをいう.
 
   \begin{equation}
    \D^i \delta_{u,Y}(t) 
-    = \frac{2^{(i+1)q(|u|)} \D^{i+1}f(\theta)}{B^{(k+1)^{j_u(T)+1}}}
+    = \frac{2^{(i+1)q(|u|)} \D^{i+1}f(\theta)}{B^{d_u(j_u(T)+1)}}
     G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
   \end{equation}
 
@@ -484,7 +491,7 @@ $f _u (x)$ の名であることをいう.
     \D^{(i,j)} g_u(t, y)
      = \begin{cases}
 	0 \hfill (- \frac 1 4 < \eta < \frac 1 4) \\
-	(2B^{(k+1)^{j_u(T)}})^j \D^j f(\frac{4\eta - 1}2)
+	(2B^{d_u(j_u(T))})^j \D^j f(\frac{4\eta - 1}2)
 	(\D^i \delta_{u,Y+1}(\theta)-\D^i \delta_{u, Y}(\theta)) \\
 	\hfill (\frac 1 4 < \eta < \frac 3 4)
        \end{cases}
@@ -494,14 +501,16 @@ $f _u (x)$ の名であることをいう.
   式 (\ref{eq:derivativeofgu}) に $t = 0, 1$ ($\theta = 0$) を代入して
   $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$.
   上記の式より任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
+  $\mu(x, y) = (x+1)q(y) + s(x+1)$とおくと
   $|\D^{(i,j)} g_u| \leq 2^{\mu(i, |u|) - \gamma(|u|)}$.
+  この$\mu$は$k$や$\gamma$に依存しない.
 
+  $\rho(x) = p(x) \cdot (\gamma(x)+r(x)+s(k)+k+3)$ とおくと,
   \begin{equation}
-   h_u(1) = \frac{H_u(l(|u|), 2^{q(|u|)})}{B^{(k+1)^{l(|u|)}}} 
-          = \frac{L(u)}{2^{(k+1)^{l(|u|)} \cdot (\gamma(|u|)+r(|u|)+s(k)+k+3)}}
+   h_u(1) = \frac{H_u(l(|u|), 2^{q(|u|)})}{B^{d_u(l(|u|))}} 
+          = \frac{L(u)}{2^{p(|u|) \cdot (\gamma(|u|)+r(|u|)+s(k)+k+3)}}
+	  = 2^{-\rho(|u|)} L(u).
   \end{equation}
-  $u \not \in L$ならば$h_u(1) = 0$,
-  $u \in L$ ならば $(k+1)^l(|u|) < p(|u|)$より$h_u(1) \le 2^{\rho(u)}$
  \end{proof}
 
 
