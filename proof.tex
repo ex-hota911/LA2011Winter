@@ -414,9 +414,12 @@ $f _u (x)$ の名であることをいう.
    i \not = j_u(T)  \to G_u(i, T, Y) = 0 
   \end{gather}
   
+  $H_u$を模倣するような$h_u$を構成する.
+  具体的には$h_u(T/2^{q(|u|)}) = \sum^{l(|u|)}_{i}H_u(i, T)/B^{d_u(i)}$
+  を満たすように$h_u$を構成する. ここで$d_u$は段数から桁への割り当てである.
   $l(x) = O(\log x)$より任意の$x \in \N$に対して,
   $(k+1)^{l(x)} \le p(x)$を満たす多項式$p$が存在する.
-  大きな数$B$と関数$d_u \colon [l(|u|)+1] \to \N$を
+  $B$と関数$d_u \colon [l(|u|)+1] \to \N$を
   \begin{align*}
    B &= 2^{\gamma(|u|) + r(|u|) + s(k) + k + 3}
    &
@@ -427,11 +430,12 @@ $f _u (x)$ の名であることをいう.
     (k+1)^i & (i<l(|u|))
    \end{cases}
   \end{align*}
-  とおき, 
+  とおく.
  各 $(t, y) \in [0,1] \times [-1, 1]$ に対して,
- 自然数 $N$, $\theta \in [0,1]$, 整数 $Y$, $\eta \in [-1/4, 3/4]$ を
- $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-d_u(j_u(T))}$ を満たすように
- 定める. 関数$\delta_{u,Y} \colon [0,1] \to \R$を
+ $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-d_u(j_u(T))}$ を満たす
+ 自然数 $N$, $\theta \in [0,1)$, 整数 $Y$, $\eta \in [-1/4, 3/4)$ 
+ がそれぞれ唯一存在する.
+ 関数$\delta_{u,Y} \colon [0,1] \to \R$を
  \begin{equation} \label{eq:delta}
   \delta_{u, Y} (t) = \frac{2^{q(|u|)} \D f(\theta)}{B^{d_u(j_u(T)+1)}} 
    G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
@@ -502,7 +506,7 @@ $f _u (x)$ の名であることをいう.
   $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$.
 
   (\ref{enum:smooth})を示す.
-  $\mu(x, y) = (x+1)q(y) + s(x+1)$とおく(この$\mu$は$k$や$\gamma$に依存しない.)
+  $\mu(x, y) = (x+1)q(y) + s(x+1)$とおく(この$\mu$は$k$や$\gamma$に依存しない).
   式(\ref{eq:delta})より
   $|\D^i \delta_{u,Y}(t)| \le 2^{(i+1)q(|u|) + s(i+1)}B^{-d_u(j_u(|u|)+1)}$.
   任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
