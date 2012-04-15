@@ -1,20 +1,25 @@
 \section{証明}
 \label{section:differentiable}
 
-証明の概略を示す.
-まず$\classPSPACE$または$\classCH$困難なある種の離散版の常微分方程式
-を得る(\ref{section:divp}節, \ref{subsection: counting hierarchy}節).
-そして離散版常微分方程式を模倣する, 滑らかな実関数族とその常微分方程式の解のペア $(g_u)_u, (h_u)_u$ の存在を示す(\ref{subsection: ode family}節).
-それらを一つの滑らかな実関数へ埋め込むことで定理で求める $g, h$ を構成する(\ref{subsection: proof of theorems}節).
+本節では次の手順で定理\ref{DifferentiableIsPspace}, \ref{KTimesIsCH}を示す. 
+まずある種の差分方程式の族が, 
+$\classPSPACE$困難ないし$\classCH$困難であることを示す
+(\ref{section:divp}節, \ref{subsection: counting hierarchy}節).
+そしてこの差分方程式が, 
+滑らかさの条件を満たす\eqref{eq:ode}の形の微分方程式の族により模倣されることを示す
+(\ref{subsection: ode family}節). 
+この族を一つの滑らかな微分方程式へ埋め込むことで, 
+定理にいう$g$, $h$を構成する(\ref{subsection: proof of theorems}節).
 
-Lipschitz条件の場合の証明では用いられていない新たな技巧は2点ある.
-1つは滑らかな多項式時間計算可能関数を用いて実関数を構成することにより
-微分可能としたこと,
-もうひとつは河村によって定義されたLipschitz連続な微分方程式の離散版を,
-より形式的に定義し, さらに任意回微分可能な微分方程式の離散版を構成して
-その$\classCH$困難性を示した点である.
-
-
+このように微分方程式で差分方程式を模倣する考え方は, 
+Lipschitz条件の場合の証明
+\cite{kawamura2010lipschitz}にも本質的には既に現れていたものであるが, 
+本稿ではより精密に, 滑らかさの条件が与える影響を調べるため, 
+差分方程式をある種の回路族として定義する. 
+その結果, 
+$2$回以上連続微分可能という制限の下でも, 
+回路の深さが小さければ模倣できることが判り, 
+そのことから$\classCH$困難性が従う. 
 
 \subsection{差分方程式}
 \label{section:divp}
