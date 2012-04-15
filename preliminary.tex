@@ -5,7 +5,7 @@
  実数は有限な文字列に符号化できない. 
  そこで文字列から文字列への関数に符号化する.
  \begin{definition}[実数の名]
-  関数 $\phi \colon \T \to \{0, 1\}^*$ が実数 $x \in [0,1]$ の\emph{名}であるとは,
+  関数 $\phi \colon \{0\} ^* \to \{0, 1\}^*$ が実数 $x \in [0,1]$ の\emph{名}であるとは,
   $\phi(0^n) = \lfloor x \cdot 2^n \rfloor$ または
   $\phi(0^n) = \lceil x \cdot 2^n \rceil$ を満たすこと.
  \end{definition}
@@ -67,7 +67,7 @@ $A$ が $\R ^2$ の有界閉領域であるときにも,
   実関数 $f\colon [0,1] \to \R$ に対して,
   $f$ が多項式時間計算可能であることは, 
   多項式時間計算可能な
-  二つの関数 $\phi \colon (\Q \cap [0, 1]) \times \T \to \Q$ と
+  二つの関数 $\phi \colon (\Q \cap [0, 1]) \times \{0\} ^* \to \Q$ と
   $p \colon \N \to \N$ とが存在し, 
   任意の $d \in \Q \cap [0,1]$, $n \in \N$ について
   \begin{equation}

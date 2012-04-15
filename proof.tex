@@ -106,35 +106,35 @@ Wagner によって導入された計算量クラスである\cite{wagner1986com
 Wagner によるオリジナルの定義とは異なる\cite{toran1991complexity}.
 }. つまり
 \begin{align*}
- \C_0 \classP  &= \classP
+ \quantC_0 \classP  &= \classP
  \\
- \C_{k+1} \classP &= \classPP^{\C_k \classP}
+ \quantC_{k+1} \classP &= \classPP^{\quantC_k \classP}
  \\
- \classCH &= \bigcup_k \C_k \classP.
+ \classCH &= \bigcup_k \quantC_k \classP.
 \end{align*}
 
 $\mathbf{PH} \subseteq \classCH \subseteq \classPSPACE$ だが,
 いずれの包含関係も厳密か否かは未解決である.
 
 補題 \ref{DIVPlogIsCHhard} において述べている $\classCH$困難な言語を定義するため, 
-まず各階層 $\C_n \classP$ に対する完全問題$\C_n B_{be}$を導入する.
+まず各階層 $\quantC_n \classP$ に対する完全問題$\quantC_n B_{be}$を導入する.
 $k$個の量化子を持つ論理式の真偽値判定は,
 多項式階層の各階層$\Sigma^p_k$にたいし完全問題であるが,
 新たに計数用の量化子を導入して同様の判定問題を構成する.
-量化子 $\C$ を自然数 $m$, $l$ 個の論理変数の組 $X$,
+量化子 $\quantC$ を自然数 $m$, $l$ 個の論理変数の組 $X$,
 論理式 $\phi(X)$について以下のように定義する.
 \begin{equation}
- \C^m X \phi(X) 
+ \quantC^m X \phi(X) 
   \longleftrightarrow 
   \Bigl|\{X \in \{0, 1\}^l \mid \phi(X) = 1\}\Bigr| \ge m.
 \end{equation}
-$\C^1 = \exists$, $\C^{2^l} = \forall$ であり, $\C$ は $\exists, \forall$ の
+$\quantC^1 = \exists$, $\quantC^{2^l} = \forall$ であり, $\quantC$ は $\exists, \forall$ の
 一般化と言える.
-言語 $\C_n B_{be}$ を以下のように定義する.
+言語 $\quantC_n B_{be}$ を以下のように定義する.
 \begin{equation}
- \langle \phi(X_1, \dots, X_n), m_1, \dots, m_n \rangle \in \C_n B_{be}
+ \langle \phi(X_1, \dots, X_n), m_1, \dots, m_n \rangle \in \quantC_n B_{be}
  \longleftrightarrow
- \C^{m_1}{X_1} \cdots \C^{m_n}{X_n} \phi(X_1, \dots, X_n) 
+ \quantC^{m_1}{X_1} \cdots \quantC^{m_n}{X_n} \phi(X_1, \dots, X_n) 
 \end{equation}
 ただし $\langle \cdot \rangle$ は組み合わせ関数,
 $X_i$ は論理変数の組,
@@ -142,38 +142,38 @@ $\phi(X_1, \dots, X_n)$は$X_1, \dots, X_n$以外の変数を持たない論理�
 
 
 \begin{lemma}[{\cite[定理 7]{wagner1986complexity}}] \label{lemma:CnP-complete}
- $\C_n B_{be}$ は $\C_n\classP$ 完全.
+ $\quantC_n B_{be}$ は $\quantC_n\classP$ 完全.
 \end{lemma}
 
 
-$(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように定義する.
+$(\quantC_n B_{be})_n$ をまとめた言語 $\quantC_{\log} B_{be}$ を以下のように定義する.
 \begin{equation}
- \langle 0^{2^n}, u \rangle \in \C_{\log} B_{be}
+ \langle 0^{2^n}, u \rangle \in \quantC_{\log} B_{be}
  \longleftrightarrow
- u \in \C_n B_{be}
+ u \in \quantC_n B_{be}
 \end{equation}
 入力として階層の指数サイズ($0^{2^n}$)を与えているのは, padding することにより
 量化子の数が全体の入力長に対して対数オーダーであることを保証することで,
 対数段の差分方程式により認識可能とするためである.
-この $\C_{\log} B_{be}$ が補題 \ref{DIVPlogIsCHhard} で求める言語であること,
+この $\quantC_{\log} B_{be}$ が補題 \ref{DIVPlogIsCHhard} で求める言語であること,
 つまり$\classCH$困難かつ対数段一様関数族によって認識可能であることを示す.
 
 
 \begin{proof}[\rm 補題 \ref{DIVPlogIsCHhard} の証明]
- $\C_{\log} B_{be}$が$\classCH$困難であることを示す.
- 任意の $\classCH$ の言語 $A$ はある階層 $\C_n \classP$ に属する. 
+ $\quantC_{\log} B_{be}$が$\classCH$困難であることを示す.
+ 任意の $\classCH$ の言語 $A$ はある階層 $\quantC_n \classP$ に属する. 
  補題 \ref{lemma:CnP-complete} より任意の $u \in \{0,1\}^*$ について
- $u \in A \leftrightarrow f(u) \in \C_n B_{be}$ 
+ $u \in A \leftrightarrow f(u) \in \quantC_n B_{be}$ 
  を満たす多項式時間関数 $f$ が存在する.
  \begin{align}
   u \in A 
-  & \longleftrightarrow \langle 0^{2^n}, f(u) \rangle \in \C_{\log} B_{be}
+  & \longleftrightarrow \langle 0^{2^n}, f(u) \rangle \in \quantC_{\log} B_{be}
  \end{align}
  $n$ は定数であるため $\langle 0^{2^n}, f(\cdot) \rangle$ は多項式時間関数.
- よって $A$ は $\C_{\log} B_{be}$ に多項式時間還元可能.
+ よって $A$ は $\quantC_{\log} B_{be}$ に多項式時間還元可能.
 
 
- $\C_{\log} B_{be}$を認識する関数族 $(G_u)_u$, 
+ $\quantC_{\log} B_{be}$を認識する関数族 $(G_u)_u$, 
  その解$(H_u)_u$, 関数 $p \colon \N \to \N$, 多項式 $q,r$ を構成する.
  自然数 $n, m_1, \dots, m_n$, 論理式$\phi$を
  $u  = \langle 0^{2^n}, 
@@ -182,7 +182,7 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
  (そのような$n, m_1, \dots, m_n, \phi$が存在しないとき$u \not \in A$.)
  
  
- $L = \C_{\log} B_{be}$, $l_i = |X_i|$と表記する.
+ $L = \quantC_{\log} B_{be}$, $l_i = |X_i|$と表記する.
  関数 $C^m \colon \N \to \N$ を
  \begin{equation}
   C^m(x) 
@@ -194,7 +194,7 @@ $(\C_n B_{be})_n$ をまとめた言語 $\C_{\log} B_{be}$ を以下のように
  任意の $i = 0, \dots, n$ と $n-i$ 個の文字列 
  $Y_{i+1} \in \{0,1\}^{l_{i+1}}, \dots, Y_n \in \{0,1\}^{l_n}$ 
  について論理式
- $\C^{m_{i}}{X_i} \cdots \C^{m_1}{X_1}
+ $\quantC^{m_{i}}{X_i} \cdots \quantC^{m_1}{X_1}
  \phi(X_1, \dots, X_i, Y_{i+1}, \dots, Y_n)$
  の真偽値を $\phi_i(Y_{i+1}, \dots, Y_n)$ と表記する.
  \begin{align}
