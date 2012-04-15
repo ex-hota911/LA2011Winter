@@ -320,7 +320,7 @@ $f _u (x)$ の名であることをいう.
 	 \begin{equation*}
 	  \D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0 ;
 	 \end{equation*}
-   \item \label{enum:inftyk}
+   \item \label{enum:smooth}
 	 任意の $i \in \N$, $j \in \{0, \dots, k\}$ に対して
 	 \begin{equation*}
 	  \left|\D^{(i,j)} g_u(t,y)\right| \le 2^{\mu(i, |u|) - \gamma(|u|)};
@@ -500,10 +500,21 @@ $f _u (x)$ の名であることをいう.
   $g_u$ は $(\infty, j)$ 階連続的微分可能であることが示された.
   式 (\ref{eq:derivativeofgu}) に $t = 0, 1$ ($\theta = 0$) を代入して
   $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$.
-  上記の式より任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
-  $\mu(x, y) = (x+1)q(y) + s(x+1)$とおくと
-  $|\D^{(i,j)} g_u| \leq 2^{\mu(i, |u|) - \gamma(|u|)}$.
-  この$\mu$は$k$や$\gamma$に依存しない.
+
+  (\ref{enum:smooth})を示す.
+  $\mu(x, y) = (x+1)q(y) + s(x+1)$とおく(この$\mu$は$k$や$\gamma$に依存しない.)
+  式(\ref{eq:delta})より
+  $|\D^i \delta_{u,Y}(t)| \le 2^{(i+1)q(|u|) + s(i+1)}B^{-d_u(j_u(|u|)+1)}$.
+  任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
+  \begin{equation}
+   |\D^{(i,j)} g_u| 
+   \le 
+   2^k B^{k \cdot j_u(T)} 2^{s(k)} \cdot 2 \cdot 
+   \frac{2^{(i+1)q(|u|) + s(i+1)}}{B^{d_u(j_u(|u|)+1)}} 
+   \le
+   \frac{2^{\mu(i, |u|) + s(k) + k + 1}}{B}
+  \end{equation}
+  $B$のとり方により, $|\D^{(i,j)} g_u| \leq 2^{\mu(i, |u|) - \gamma(|u|)}$.
 
   $\rho(x) = p(x) \cdot (\gamma(x)+r(x)+s(k)+k+3)$ とおくと,
   \begin{equation}
@@ -629,7 +640,7 @@ $f _u (x)$ の名であることをいう.
  境界($t = 0, 1$または$y = -1, 1$)において連続であることは,
  定義および補題 \ref{KTimesFamily} (\ref{enum:boundary})によりしめされる.
  第一変数が $1$ のとき連続であることを示す.
- 補題 \ref{KTimesFamily} の(\ref{enum:inftyk})より
+ 補題 \ref{KTimesFamily} の(\ref{enum:smooth})より
  \begin{align*}
   \left|\D^{(i, j)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
   \frac{y}{\Lambda_u}\right)\right|
