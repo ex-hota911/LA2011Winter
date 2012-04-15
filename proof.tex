@@ -25,13 +25,13 @@ $2$回以上連続微分可能という制限の下でも,
 \label{section:divp}
 
 Lipschitz連続な常微分方程式の$\classPSPACE$困難性の証明では
-最初のステップとして, まずの離散版の常微分方程式を定義し, 
+初めに, まず離散版の常微分方程式を定義し, 
 それが$\classPSPACE$困難であることを示している
 \cite[補題4.7]{kawamura2010lipschitz}.
 この節では離散版微分方程式をより形式的に定義し,
 滑らかな常微分方程式の離散版が$\classPSPACE$困難ないし$\classCH$困難であることを示す.
 
-$[n] = \{0, \dots , n-1\}$ と表記する.
+$[n] = \{0, \dots , n-1\}$と書く.
 関数 $G \colon [P] \times [Q] \times [R] \to \{-1, 0, 1\}$ に対して,
 関数 $H \colon [P + 1] \times [Q+1] \to [R]$ が
 任意の $i \in [P],\ T \in [Q]$ について以下を満たすとき,
@@ -41,16 +41,16 @@ $H$ を $G$ の\emph{差分方程式}の解と呼ぶ.
 \\
    H(i + 1, T + 1) - H(i+1, T) = G(i, T, H(i, T))  \label{eq:divp}
 \end{gather}
-$P, Q, R$ をそれぞれ\emph{段数}, \emph{列数}, \emph{欄の大きさ}と呼ぶ.
-常微分方程式(\ref{eq:ode})の1つめの条件($h(0) = 0$)と式(\ref{eq:initial value}),
-2つめの条件($\D h(t) = g(t, h(t))$)と式(\ref{eq:divp})
-の間に対応関係を見て取ることができるため,
-差分方程式は常微分方程式の離散版と呼べる(図 \ref{fig:divp}).
+$P$, $Q$, $R$をそれぞれ\emph{段数}, \emph{列数}, \emph{欄の大きさ}と呼ぶ.
+\eqref{eq:ode}の初期条件$h(0) = 0$と方程式$\D h(t) = g(t, h(t))$が
+それぞれ式\eqref{eq:initial value}, \eqref{eq:divp}に対応しており, 
+差分方程式は常微分方程式の離散版と呼べる(図\ref{fig:divp}).
 
-文字列 $u$ ごとに一つの差分方程式 $G _u$ を与え,
-$u$が言語$L$に入っているかをその差分方程式によって計算することを考える.
+文字列$u$ごとに一つの差分方程式$G _u$を与え,
+$u$が言語$L$に属するかをその差分方程式によって計算することを考える.
 各 $u$ に対して $G_u$ の段数と列数, 解をそれぞれ $P_u, Q_u, H_u$ としたとき,
-言語 $L$ が関数族 $(G_u)_u$ によって認識されるとは,
+言語$L$が関数族$(G_u)_u$によって
+\emph{認識}されるとは,
 $H_u(P_u, Q_u) = L(u)$ を満たすこととする.
 ここで言語 $L \subseteq \{0, 1\} ^*$ は
 関数 $L \colon \{0, 1\} ^* \to \{0, 1\}$ と同一視し, 
@@ -76,7 +76,7 @@ $G_u$ の段数がさらに $|u|$ の多項式, 対数で抑えられるとき,
 \begin{lemma}[{\cite[補題4.7]{kawamura2010lipschitz}}]
  \label{DIVPpolyIsPSPACEhard}
  $\classPSPACE$ 困難で多項式段一様な関数族によって認識される言語が存在する
- \footnote{差分方程式によって認識される言語のクラスはカープ還元において閉じており,
+ \footnote{差分方程式によって認識される言語のクラスはカープ帰着において閉じており,
 多項式段一様な関数族によって認識される言語は$\classPSPACE$と一致する.}.
 \end{lemma}
 $g$ が $(\infty, 1)$ 回微分可能であるときも,
@@ -90,7 +90,8 @@ $g$ が $(\infty, 1)$ 回微分可能であるときも,
  \label{DIVPlogIsCHhard}
  $\classCH$ 困難で対数段一様な関数族によって認識される言語が存在する.
 \end{lemma}
-計数階層$\classCH$の定義及びこの補題の証明は次章にて行う.
+計数階層$\classCH$の定義及びこの補題の証明は
+\ref{subsection: counting hierarchy}節にて行う.
 
 \subsection{計数階層と対数段差分方程式}
 \label{subsection: counting hierarchy}
@@ -175,7 +176,7 @@ $(\quantC_n B_{be})_n$ をまとめた言語 $\quantC_{\log} B_{be}$ を以下�
   & \longleftrightarrow \langle 0^{2^n}, f(u) \rangle \in \quantC_{\log} B_{be}
  \end{align}
  $n$ は定数であるため $\langle 0^{2^n}, f(\cdot) \rangle$ は多項式時間関数.
- よって $A$ は $\quantC_{\log} B_{be}$ に多項式時間還元可能.
+ よって $A$ は $\quantC_{\log} B_{be}$ に帰着する.
 
 
  $\quantC_{\log} B_{be}$を認識する関数族 $(G_u)_u$, 
