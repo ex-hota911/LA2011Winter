@@ -93,79 +93,73 @@ $g$ が $(\infty, 1)$ 回微分可能であるときも,
 計数階層$\classCH$の定義及びこの補題の証明は
 \ref{subsection: counting hierarchy}節にて行う.
 
-\subsection{計数階層と対数段差分方程式}
+\subsection{計数階層と対数段の差分方程式}
 \label{subsection: counting hierarchy}
 
-\emph{計数階層}(Counting Hierarchy($\classCH$)) とは
-Wagner によって導入された計算量クラスである\cite{wagner1986complexity}.
-多項式階層({\bf PH})が {\bf NP} の神託機械を用いて,
+\emph{計数階層}\kern\xkanjiskip(Counting Hierarchy) $\classCH$は
+Wagnerによって導入された計算量クラスである\cite{wagner1986complexity}.
+多項式階層$\classPH$が$\classNP$の神託機械を用いて
 \begin{align*}
- \Sigma^p_0  &= \classP
+ \classSigma^p_0  &= \classP
  \\
- \Sigma^p_{k+1} &= \mathbf{NP}^{\Sigma^p_k}
+ \classSigma^p_{n+1} &= \classNP ^{\classSigma^p_n}
  \\
- \mathbf{PH} &= \bigcup_k \Sigma^p_k
+ \classPH &= \bigcup_n \classSigma^p_n
 \end{align*}
 と定義されるのに対し,
-計数階層は多項式階層の {\bf NP} を {\bf PP} で置き換えたものである
-\footnote{ただしこの特徴付けは Tor{\'a}n によるものであり,
-Wagner によるオリジナルの定義とは異なる\cite{toran1991complexity}.
-}. つまり
+計数階層は多項式階層の$\classNP$を$\classPP$で置き換えて
 \begin{align*}
  \quantC_0 \classP  &= \classP
  \\
- \quantC_{k+1} \classP &= \classPP^{\quantC_k \classP}
+ \quantC_{n+1} \classP &= \classPP^{\quantC_n \classP}
  \\
- \classCH &= \bigcup_k \quantC_k \classP.
+ \classCH &= \bigcup_n \quantC_n \classP.
 \end{align*}
+で定義される\footnote{ただしこの特徴づけは Tor{\'a}n によるものであり,
+Wagnerによる定義とは異なる\cite{toran1991complexity}.
+}. $\classPH \subseteq \classCH \subseteq \classPSPACE$だが,
+いずれも真の包含か否かは未解決である.
 
-$\mathbf{PH} \subseteq \classCH \subseteq \classPSPACE$ だが,
-いずれの包含関係も厳密か否かは未解決である.
-
-補題 \ref{DIVPlogIsCHhard} において述べている $\classCH$困難な言語を定義するため, 
-まず各階層 $\quantC_n \classP$ に対する完全問題$\quantC_n B_{be}$を導入する.
-$k$個の量化子を持つ論理式の真偽値判定は,
-多項式階層の各階層$\Sigma^p_k$にたいし完全問題であるが,
-新たに計数用の量化子を導入して同様の判定問題を構成する.
+各階層$\quantC_n \classP$は次の完全問題$\quantC_n B_{be}$をもつ.
+% $n$回の量化子交替を持つ命題論理式の評価は,
+% 多項式階層の各階層$\classSigma^p_n$の完全問題であるが,
+% 新たに計数用の量化子を導入して同様の判定問題を構成する.
 量化子 $\quantC$ を自然数 $m$, $l$ 個の論理変数の組 $X$,
-論理式 $\phi(X)$について以下のように定義する.
+論理式$\phi(X)$について次のように定義する.
 \begin{equation}
  \quantC^m X \phi(X) 
   \longleftrightarrow 
-  \Bigl|\{X \in \{0, 1\}^l \mid \phi(X) = 1\}\Bigr| \ge m.
+  \bigl|\{X \in \{0, 1\}^l \mid \phi(X) = 1\}\bigr| \ge m.
 \end{equation}
 $\quantC^1 = \exists$, $\quantC^{2^l} = \forall$ であり, $\quantC$ は $\exists, \forall$ の
 一般化と言える.
-言語 $\quantC_n B_{be}$ を以下のように定義する.
+言語$\quantC_n B_{be}$を次のように定義する.
 \begin{equation}
  \langle \phi(X_1, \dots, X_n), m_1, \dots, m_n \rangle \in \quantC_n B_{be}
  \longleftrightarrow
  \quantC^{m_1}{X_1} \cdots \quantC^{m_n}{X_n} \phi(X_1, \dots, X_n) 
 \end{equation}
-ただし $\langle \cdot \rangle$ は組み合わせ関数,
+ただし
 $X_i$ は論理変数の組,
 $\phi(X_1, \dots, X_n)$は$X_1, \dots, X_n$以外の変数を持たない論理式とする.
 
-
-\begin{lemma}[{\cite[定理 7]{wagner1986complexity}}] \label{lemma:CnP-complete}
+\begin{lemma}[{\cite[定理7]{wagner1986complexity}}] \label{lemma:CnP-complete}
  $\quantC_n B_{be}$ は $\quantC_n\classP$ 完全.
 \end{lemma}
 
-
-$(\quantC_n B_{be})_n$ をまとめた言語 $\quantC_{\log} B_{be}$ を以下のように定義する.
+これらの問題$\quantC_n B_{be}$から問題$\quantC_{\log} B_{be}$を次で定義する.
 \begin{equation}
  \langle 0^{2^n}, u \rangle \in \quantC_{\log} B_{be}
  \longleftrightarrow
  u \in \quantC_n B_{be}
 \end{equation}
-入力として階層の指数サイズ($0^{2^n}$)を与えているのは, padding することにより
-量化子の数が全体の入力長に対して対数オーダーであることを保証することで,
-対数段の差分方程式により認識可能とするためである.
-この $\quantC_{\log} B_{be}$ が補題 \ref{DIVPlogIsCHhard} で求める言語であること,
+% 入力として階層の指数サイズ($0^{2^n}$)を与えているのは, padding することにより
+% 量化子の数が全体の入力長に対して対数オーダーであることを保証することで,
+% 対数段の差分方程式により認識可能とするためである.
+この$\quantC_{\log} B_{be}$が補題\ref{DIVPlogIsCHhard}で求める言語であること,
 つまり$\classCH$困難かつ対数段一様関数族によって認識可能であることを示す.
 
-
-\begin{proof}[\rm 補題 \ref{DIVPlogIsCHhard} の証明]
+\begin{proof}[\textup{補題\ref{DIVPlogIsCHhard}の証明}]
  $\quantC_{\log} B_{be}$が$\classCH$困難であることを示す.
  任意の $\classCH$ の言語 $A$ はある階層 $\quantC_n \classP$ に属する. 
  補題 \ref{lemma:CnP-complete} より任意の $u \in \{0,1\}^*$ について
