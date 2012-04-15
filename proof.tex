@@ -530,27 +530,10 @@ $f _u (x)$ の名であることをいう.
 
 
 
- 補題 \ref{DifferentiableFamily} の証明では
- $\classPSPACE$困難な言語を認識する多項式段一様関数族$(G_u)_u$とその解$(H_u)_u$に対して式(\ref{eq:delta}), (\ref{eq:gu}), (\ref{eq:hu})をそれぞれ,
- \begin{align}
-  \delta_{u, Y} (t) &= \frac{2^{q(|u|)} \D f(\theta)}{B^{{j_u(T)+1}}} 
-   G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
-  \\
-  g_u(t,y) 
-  &= \begin{cases}
-     \delta_{u, Y}(t)
-     & (\eta \le \frac 1 4)
-     \\
-     ( 1-f ( \frac{4\eta-1}{2})) \delta_{u, Y}(t) 
-     + f ( \frac{4\eta-1}{2}) \delta_{u,Y+1}(t)
-     & (\eta > \frac 1 4)
-    \end{cases}
-  \\
-  h_u(t) &= \sum^{l(|u|)}_{i=0} \frac{H_u(i, T)}{B^{i}}  
-  + \frac{f(\theta)}{B^{{j_u(T)+1}}} G_u(j_u(T), T, H_u(j_u(T), T)) 
- \end{align}
- と置き換える. ただし$p, q, r$ は $G_u \colon [p(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\}$を満たす多項式.
- $(g_u)_u$と$(h_u)_u$が補題 \ref{DifferentiableFamily} で求める性質を満たすことは,
+ 補題 \ref{DifferentiableFamily} の証明では$d_u$を$d_u(i) = i$と置き換える.
+ $\classPSPACE$困難な言語を認識する多項式段一様関数族$(G_u)_u$とその解$(H_u)_u$に対して,
+ 式(\ref{eq:gu}), (\ref{eq:hu})により定義される$(g_u)_u$と$(h_u)_u$が,
+ 補題 \ref{DifferentiableFamily} で求める性質を満たすことは,
  補題 \ref{KTimesFamily} の証明と同様に示される.
 
 
