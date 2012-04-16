@@ -43,9 +43,6 @@
 
 \renewcommand{\proofname}{\bf 証明} 
 
-%%% \proc != 0 ならば証明などをとばす.
-\newcommand{\proc}{1}
-
 %%% 数式中の大文字ギリシャ文字を斜体化
 \renewcommand{\Lambda}{\varLambda}
 \renewcommand{\Gamma}{\varGamma}
@@ -65,12 +62,6 @@
 %%% 図番号を 章.num に
 \renewcommand{\thefigure}{\thesection.\arabic{figure}}
 \@addtoreset{figure}{section}
-
-%%% align* などで指定した場所だけ数式番号を置く
-\newcommand{\taghere}{{
-\stepcounter{equation}
-\tag{\theequation}
-}}
 
 \makeatother
 
@@ -93,8 +84,6 @@
 \begin{document}
 
 \maketitle
-
-%%% 以下に，予稿の本文を記述して下さい．
 
 \input{abstract}
 \input{introduction}
