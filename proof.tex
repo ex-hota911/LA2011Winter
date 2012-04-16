@@ -380,15 +380,10 @@ $f _u (x)$ の名であることをいう.
   \end{enumerate}
  \end{lemma}
 
- さらにここでは上記の条件に加えて, 
- \begin{enumerate}
-  \setcounter{enumi}{4} 
-  \item 以下を満たす多項式$s$が存在する
-	\begin{equation} \label{enum:polynomial-size}
-	 |\D^n f| \le s(n)
-	\end{equation}
- \end{enumerate}
- を満たすような$f$が存在することを用いて証明する.
+ さらにここでは上記の条件に加えて, 以下の条件を満たすような多項式$s$が存在することを用いて証明する.
+  \begin{equation} \label{enum:polynomial-size}
+   |\D^i f| \le s(i)
+  \end{equation}
  葛による証明を確認することで多項式$s$の存在は容易に示される.
 
  ここではより難しく一般的な補題 \ref{KTimesFamily} のみ証明を行い,
@@ -400,8 +395,8 @@ $f _u (x)$ の名であることをいう.
   $\classCH$ 困難な言語 $L$ を認識する
   対数段一様関数族 $(G_u)_u$, その解 $(H_u)_u$を得る.
   対数段一様関数族の定義より 
-  $G_u \colon [l(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\}$
-  を満たす関数$l$, 多項式 $q,r$が存在する. 
+  $G_u \colon [p(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\}$
+  を満たす関数$p$, 多項式 $q,r$が存在する. 
 
   河村による証明と同様に$(G_u)_u, (H_u)_u$を拡張することにより,
   以下のことを仮定する.
@@ -415,21 +410,21 @@ $f _u (x)$ の名であることをいう.
   \end{gather}
   
   $H_u$を模倣するような$h_u$を構成する.
-  具体的には$h_u(T/2^{q(|u|)}) = \sum^{l(|u|)}_{i}H_u(i, T)/B^{d_u(i)}$
+  具体的には$h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i}H_u(i, T)/B^{d_u(i)}$
   を満たすように$h_u$を構成する. ここで$d_u$は段数から桁への割り当てである.
-  $l(x) = O(\log x)$より任意の$x \in \N$に対して,
-  $(k+1)^{l(x)} \le p(x)$を満たす多項式$p$が存在する.
-  $B$と関数$d_u \colon [l(|u|)+1] \to \N$を
-  \begin{align*}
+  $p(x) = O(\log x)$より任意の$x \in \N$に対して,
+  $(k+1)^{p(x)} \le \sigma(x)$を満たす多項式$\sigma$が存在する.
+  $B$と関数$d_u \colon [p(|u|)+1] \to \N$を
+  \begin{align}
    B &= 2^{\gamma(|u|) + r(|u|) + s(k) + k + 3}
    &
    d_u(i) &= 
    \begin{cases}
-    p(|u|) & (i=l(|u|)) 
+    \sigma(|u|) & (i=p(|u|)) 
     \\
-    (k+1)^i & (i<l(|u|))
+    (k+1)^i & (i<p(|u|))
    \end{cases}
-  \end{align*}
+  \end{align}
   とおく.
  各 $(t, y) \in [0,1] \times [-1, 1]$ に対して,
  $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-d_u(j_u(T))}$ を満たす
@@ -441,10 +436,10 @@ $f _u (x)$ の名であることをいう.
    G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
  \end{equation}
  とおき, $g_u, h_u$ を以下のように定義する.
- \begin{equation}
+  \begin{align}
   \label{eq:gu}
-\\  g_u(t,y) 
-  = \begin{cases}
+  g_u(t,y) 
+  &= \begin{cases}
      \delta_{u, Y}(\theta)
      & (\eta \le \frac 1 4)
      \\
@@ -452,13 +447,12 @@ $f _u (x)$ の名であることをいう.
      + f ( \frac{4\eta-1}{2}) \delta_{u,Y+1}(\theta)
      & (\eta > \frac 1 4)
     \end{cases}
- \end{equation}
- \begin{equation} 
+   \\
   h_u(t) 
-   = \sum^{l(|u|)}_{i=0} \frac{H_u(i, T)}{B^{d_u(i)}}  
+   &= \sum^{p(|u|)}_{i=0} \frac{H_u(i, T)}{B^{d_u(i)}}  
   + \frac{f(\theta)}{B^{d_u(j_u(T)+1)}} G_u(j_u(T), T, H_u(j_u(T), T)) 
   \label{eq:hu}
- \end{equation}
+  \end{align}
   ただし$f$と多項式$s$は補題 \ref{SmoothFunction}
   および式(\ref{enum:polynomial-size})を満たすものとする.
 
@@ -520,10 +514,10 @@ $f _u (x)$ の名であることをいう.
   \end{equation}
   $B$のとり方により, $|\D^{(i,j)} g_u| \leq 2^{\mu(i, |u|) - \gamma(|u|)}$.
 
-  $\rho(x) = p(x) \cdot (\gamma(x)+r(x)+s(k)+k+3)$ とおくと,
+  $\rho(x) = \sigma(x) \cdot (\gamma(x)+r(x)+s(k)+k+3)$ とおくと,
   \begin{equation}
-   h_u(1) = \frac{H_u(l(|u|), 2^{q(|u|)})}{B^{d_u(l(|u|))}} 
-          = \frac{L(u)}{2^{p(|u|) \cdot (\gamma(|u|)+r(|u|)+s(k)+k+3)}}
+   h_u(1) = \frac{H_u(p(|u|), 2^{q(|u|)})}{B^{d_u(p(|u|))}} 
+          = \frac{L(u)}{2^{\sigma(|u|) \cdot (\gamma(|u|)+r(|u|)+s(k)+k+3)}}
 	  = 2^{-\rho(|u|)} L(u).
   \end{equation}
  \end{proof}
