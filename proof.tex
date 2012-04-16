@@ -290,8 +290,8 @@ $\phi(X_1, \dots, X_n)$は$X_1, \dots, X_n$以外の変数を持たない論理�
 \label{subsection: ode family}
 次に前節で示した$\classPSPACE$または$\classCH$困難な各差分方程式を滑らかな実関数で模倣可能であることを示す.
 
-しかし補題を述べる前に実関数の多項式時間計算可能性を
-実関数族のそれに拡張する.
+まず実関数の多項式時間計算可能性を
+実関数の族に拡張する.
 文字列$u$で添字づけられた実関数$f _u \colon A \to \R$の
 族 $(f_u)_u$ を機械 $M$ が計算するとは,
 任意の実数 $x \in A$, 任意の $x$ の名 $\phi_x$ に対して,
@@ -302,8 +302,8 @@ $f _u (x)$ の名であることをいう.
 
  \begin{lemma}
   \label{KTimesFamily}
-  或る $\classCH$ 困難な言語 $L$,
-  二変数多項式 $\mu$ において,
+  $\classCH$困難な言語$L$と
+  多項式$\mu$が存在し,
   任意の正の整数 $k$,
   任意の多項式 $\gamma$ に対して,
   多項式 $\rho$, 実関数族 $(g_u)_u, (h_u)_u$ で, 
@@ -312,19 +312,17 @@ $f _u (x)$ の名であることをいう.
 
   \begin{enumerate}
    \item \label{enum:kf:start}
-     $g_u\colon [0,1] \times [-1,1]\to \R, \quad h_u\colon [0,1] \to [-1,1]$; 
-   \item $g_u$と$h_u$は常微分方程式 (\ref{eq:ode}) を満たす;
-   \item $g_u$ は $(\infty, k)$ 階連続微分可能;
+     $g_u\colon [0,1] \times [-1,1]\to \R$, $h_u\colon [0,1] \to [-1,1]$. 
+   \item $g_u$と$h_u$は常微分方程式 (\ref{eq:ode}) を満たす.
+   \item $g_u$ は $(\infty, k)$ 階連続微分可能.
    \item \label{enum:boundary}
-	 任意の $i \in \N$, $y \in [-1,1]$ に対して
-	 \begin{equation*}
-	  \D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0 ;
-	 \end{equation*}
+	 任意の $i \in \N$, $y \in [-1,1]$ に対して$
+	  \D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0
+         $.
    \item \label{enum:smooth}
-	 任意の $i \in \N$, $j \in \{0, \dots, k\}$ に対して
-	 \begin{equation*}
-	  \left|\D^{(i,j)} g_u(t,y)\right| \le 2^{\mu(i, |u|) - \gamma(|u|)};
-	 \end{equation*}
+	 任意の $i \in \N$, $j \in \{0, \dots, k\}$ に対して$
+	  \left|\D^{(i,j)} g_u(t,y)\right| \le 2^{\mu(i, |u|) - \gamma(|u|)}
+         $.
    \item \label{enum:kf:end}
 	 $h_u(1) = 2^{-\rho(|u|)} L(u)$.
   \end{enumerate}
@@ -332,8 +330,8 @@ $f _u (x)$ の名であることをいう.
 
 \begin{lemma}
  \label{DifferentiableFamily}
- 或る $\classPSPACE$ 困難な言語 $L$,
- 二変数多項式 $\mu$ において,
+ $\classPSPACE$困難な言語$L$と
+ 多項式$\mu$が存在し, 
  $k = 1$のとき,
  任意の多項式 $\gamma$ に対して,
  多項式 $\rho$, 実関数族 $(g_u)_u, (h_u)_u$ で, 
@@ -362,29 +360,29 @@ $f _u (x)$ の名であることをいう.
  それらが常微分方程式(\ref{eq:ode})を満たすことを差分方程式の性質により示し,
  $(g_u)_u$の多項式時間計算可能性を$(G_u)_u$ の一様性から示す.
 
- 上記の証明は基本的に, 河村による証明と変わらない\cite[補題4.1]{kawamura2010lipschitz}.
- 河村の証明と大きく異なる点は, $g_u$ を滑らかな関数にするため, 
- 以下のような無限回微分可能な多項式時間実関数 $f \colon [0,1] \to \R$ を用いて
- $g_u$ を構成していることである.
+河村\cite[補題4.1]{kawamura2010lipschitz}の構成と違って
+$g_u$を滑らかにする必要があるため, 
+以下のような無限回微分可能な関数$f \colon [0,1] \to \R$を用いる. 
 
- \begin{lemma}[{\cite[補題 3.6]{ko1991complexity}}]
+ \begin{lemma}[{\cite[補題3.6]{ko1991complexity}}]
   \label{SmoothFunction}
   以下を満たす多項式時間計算可能で無限回微分可能な
-  実関数 $f \colon [0,1] \to \R$ が存在する.
-
+  関数$f \colon [0,1] \to \R$及び
+  多項式$s$が存在する.
   \begin{enumerate}
-   \item $f(0) = 0, \quad f(1) = 1$;
-   \item 任意の $n \ge 1$ で $f^{(n)}(0) = f^{(n)}(1) = 0$;
-   \item $f$ は $[0,1]$ で単調増加;
-   \item 任意の $n \ge 1$ で $\D^n f$ は多項式時間実関数.
+   \item $f(0) = 0$, $f(1) = 1$. 
+   \item 任意の$n \ge 1$について, $\D ^n f (0) = \D ^n f (1) = 0$. 
+   \item $f$は単調増加. 
+   \item 任意の$n \ge 1$について, $\D ^n f$は多項式時間計算可能.
+   \item \label{enum:polynomial-size}
+     任意の$n \ge 1$について, $|\D^n f| \le s(n)$. 
   \end{enumerate}
  \end{lemma}
 
- さらにここでは上記の条件に加えて, 以下の条件を満たすような多項式$s$が存在することを用いて証明する.
-  \begin{equation} \label{enum:polynomial-size}
-   |\D^i f| \le s(i)
-  \end{equation}
- 葛による証明を確認することで多項式$s$の存在は容易に示される.
+葛\cite[補題3.6]{ko1991complexity}には
+条件(\ref{enum:polynomial-size})を満たす多項式$s$の存在が
+明示されていないが, 
+容易に示される.
 
  ここではより難しく一般的な補題 \ref{KTimesFamily} のみ証明を行い,
  補題 \ref{DifferentiableFamily} について証明は省略する.
@@ -399,22 +397,22 @@ $f _u (x)$ の名であることをいう.
   を満たす関数$p$, 多項式 $q,r$が存在する. 
 
   河村による証明と同様に$(G_u)_u, (H_u)_u$を拡張することにより,
-  以下のことを仮定する.
+  以下のことを仮定してよい.
   \begin{gather}
    H_u(i, 2^{q(|u|)}) = \begin{cases}
 			L(u) & (i=p(|u|)) \\
-			0 & (i<p(|u|)).
+			0 & (i<p(|u|))
 			\end{cases}
    \\
    i \not = j_u(T)  \to G_u(i, T, Y) = 0 
   \end{gather}
   
-  $H_u$を模倣するような$h_u$を構成する.
-  具体的には$h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i}H_u(i, T)/B^{d_u(i)}$
-  を満たすように$h_u$を構成する. ここで$d_u$は段数から桁への割り当てである.
-  $p(x) = O(\log x)$より任意の$x \in \N$に対して,
-  $(k+1)^{p(x)} \le \sigma(x)$を満たす多項式$\sigma$が存在する.
-  $B$と関数$d_u \colon [p(|u|)+1] \to \N$を
+  $H_u$を模倣する$h_u$を構成する.
+  具体的には$h_u(T/2^{q(|u|)}) = \sum^{l(|u|)}_{i}H_u(i, T)/B^{d_u(i)}$
+  を満たすようにする. ここで$d_u$は段数から桁への割り当てである.
+  $l(x) = O(\log x)$より任意の$x \in \N$に対して,
+  $(k+1)^{l(x)} \le p(x)$を満たす多項式$p$が存在する.
+  $B$と関数$d_u \colon [l(|u|)+1] \to \N$を
   \begin{align}
    B &= 2^{\gamma(|u|) + r(|u|) + s(k) + k + 3}
    &
@@ -461,37 +459,35 @@ $f _u (x)$ の名であることをいう.
  性質を満たすことを示す. ただし多くは河村による証明と同様に示せるため
   異なる条件 (iii) - (vi) のみ示す
  
-  $g_u$ が $(\infty, k)$ 階連続的微分可能であることを示す.
+  $g _u$が$(\infty, k)$回連続的微分可能であることを示す.
   $\eta$ が $[-1/4, 1/4]$ と $[1/4, 3/4]$ である区間それぞれにおいて微分する.
   任意の $i \in \N$ について
-
-  \begin{equation}
+  \begin{align}
    \D^i \delta_{u,Y}(t) 
+&
     = \frac{2^{(i+1)q(|u|)} \D^{i+1}f(\theta)}{B^{d_u(j_u(T)+1)}}
     G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
-  \end{equation}
-
-  \begin{equation}
+\\
    \label{eq:derivativeofgu}
     \D^{(i,0)} g_u(t, y)
+&
      = \begin{cases}
  	\D^i \delta_{u, Y}(\theta) 
-	\hfill (- \frac 1 4 < \eta < \frac 1 4) \\
+	& (- \frac 1 4 < \eta < \frac 1 4) \\
 	\left( 1-f \left(\frac{4\eta-1}{2}\right)\right) 
 	\D^i \delta_{u, Y}(\theta) 
-	+ f \left(\frac{4\eta-1}{2}\right) \D^i \delta_{u,Y+1}(\theta) \\
-	\hfill (\frac 1 4 < \eta < \frac 3 4)
+	+ f \left(\frac{4\eta-1}{2}\right) \D^i \delta_{u,Y+1}(\theta) 
+	& (\frac 1 4 < \eta < \frac 3 4)
        \end{cases}
-  \end{equation}   
+  \end{align}
   $j \in \{1, \dots , k\}$ について,
-
   \begin{equation}
     \D^{(i,j)} g_u(t, y)
      = \begin{cases}
-	0 \hfill (- \frac 1 4 < \eta < \frac 1 4) \\
+	0 & (- \frac 1 4 < \eta < \frac 1 4) \\
 	(2B^{d_u(j_u(T))})^j \D^j f(\frac{4\eta - 1}2)
-	(\D^i \delta_{u,Y+1}(\theta)-\D^i \delta_{u, Y}(\theta)) \\
-	\hfill (\frac 1 4 < \eta < \frac 3 4)
+	(\D^i \delta_{u,Y+1}(\theta)-\D^i \delta_{u, Y}(\theta)) 
+	& (\frac 1 4 < \eta < \frac 3 4)
        \end{cases}
   \end{equation}
   境界においても連続であるため,
