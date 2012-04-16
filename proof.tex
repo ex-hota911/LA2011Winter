@@ -312,7 +312,7 @@ $f _u (x)$ の名であることをいう.
    \item \label{enum:kf:start}
      $g_u\colon [0,1] \times [-1,1]\to \R$, $h_u\colon [0,1] \to [-1,1]$. 
    \item \label{enum:equation}
-         $g_u$と$h_u$は方程式 (\ref{eq:ode}) を満たす.
+	 $h_u(0) = 0$かつ任意の$t \in [0,1]$について$\D h_u(t) = g_u(t, h_u(t))$
    \item \label{enum:differentiability}
          $g_u$は$(\infty, k)$回連続微分可能.
    \item \label{enum:boundary}
@@ -356,7 +356,7 @@ $f _u (x)$ の名であることをいう.
  各$T/2^{q(|u|)} \in [0,1]$ において
  $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i}H_u(i, T)/B^{d_u(i)}$
  を満たすように$h_u$を構成し, $G_u$から$g_u$を構成する.
- それらが方程式(\ref{eq:ode})を満たすことを差分方程式の性質により示し,
+ それらが微分方程式$\D h(t) = g(t, h(t))$を満たすことを差分方程式の性質により示し,
  $(g_u)_u$の多項式時間計算可能性を$(G_u)_u$ の一様性から示す.
 
  河村\cite[補題4.1]{kawamura2010lipschitz}の構成と違って
