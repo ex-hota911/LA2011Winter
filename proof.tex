@@ -344,13 +344,6 @@ $f _u (x)$ の名であることをいう.
 
 
 
- この補題より各 $h_u(1)$ に $L(u)$ の情報を持つ
- 滑らかな実関数族 $(g_u)_u, (h_u)_u$ の存在が示される.
- 河村によるLipschitz連続な常微分方程式の$\classPSPACE$困難性の証明における,
- 補題4.1 に対応するが,
- $g$ を微分可能にするため, 条件 (iii) -- (v) が付け加えられている.
-
-
  この補題の証明の基本的な流れを説明する.
  ある$\classCH$困難(resp. $\classPSPACE$困難)な言語$L$に対し, 
  補題 \ref{DIVPlogIsCHhard}(resp. 補題 \ref{DIVPpolyIsPSPACEhard})
@@ -361,8 +354,10 @@ $f _u (x)$ の名であることをいう.
  それらが微分方程式$\D h(t) = g(t, h(t))$を満たすことを差分方程式の性質により示し,
  $(g_u)_u$の多項式時間計算可能性を$(G_u)_u$ の一様性から示す.
 
- 河村\cite[補題4.1]{kawamura2010lipschitz}の構成と違って
- $g_u$を滑らかにする必要があるため, 
+ 河村\cite[補題4.1]{kawamura2010lipschitz}と違って
+ $g$ を微分可能にするため, 
+ 条件 (\ref{enum:differentiability}) -- (\ref{enum:smooth}) が付け加えられている 
+ つまり$g_u$を滑らかに構成する必要があるため, 
  以下のような無限回微分可能な関数$f \colon [0,1] \to \R$を用いる. 
 
  \begin{lemma}[{\cite[補題3.6]{ko1991complexity}}]
@@ -506,8 +501,8 @@ $を次で定義する.
   つまり(\ref{enum:boundary})が成り立つ.
 
   (\ref{enum:smooth})を示す.
-  多項式 $\mu$ を $\mu(x, y) = (x+1)q(y) + s(x+1)$とおく.
-  この$\mu$は$k$や$\gamma$に依存しない.
+  $\mu(x, y) = (x+1)q(y) + s(x+1)$とおく.
+  この$\mu$は$k$や$\gamma$に依存しない多項式である.
   式(\ref{eq:delta})より
   $|\D^i \delta_{u,Y}(t)| \le 2^{(i+1)q(|u|) + s(i+1)}B^{-d_u(j_u(|u|)+1)}$.
   任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
