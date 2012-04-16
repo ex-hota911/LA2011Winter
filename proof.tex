@@ -311,8 +311,10 @@ $f _u (x)$ の名であることをいう.
   \begin{enumerate}
    \item \label{enum:kf:start}
      $g_u\colon [0,1] \times [-1,1]\to \R$, $h_u\colon [0,1] \to [-1,1]$. 
-   \item $g_u$と$h_u$は方程式 (\ref{eq:ode}) を満たす.
-   \item $g_u$ は $(\infty, k)$ 階連続微分可能.
+   \item \label{enum:equation}
+         $g_u$と$h_u$は方程式 (\ref{eq:ode}) を満たす.
+   \item \label{enum:differentiability}
+         $g_u$は$(\infty, k)$回連続微分可能.
    \item \label{enum:boundary}
 	 任意の $i \in \N$, $y \in [-1,1]$ に対して$
 	  \D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0
@@ -354,7 +356,6 @@ $f _u (x)$ の名であることをいう.
  各$T/2^{q(|u|)} \in [0,1]$ において
  $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i}H_u(i, T)/B^{d_u(i)}$
  を満たすように$h_u$を構成し, $G_u$から$g_u$を構成する.
- ここで$d_u$は差分方程式の段を実数の何桁目に埋め込むかという割り当てである.
  それらが方程式(\ref{eq:ode})を満たすことを差分方程式の性質により示し,
  $(g_u)_u$の多項式時間計算可能性を$(G_u)_u$ の一様性から示す.
 
@@ -387,15 +388,19 @@ $f _u (x)$ の名であることをいう.
 
 
  \begin{proof}[\rm 補題 \ref{KTimesFamily} の証明]
-  補題 \ref{DIVPlogIsCHhard} より
-  $\classCH$ 困難な言語 $L$ を認識する
-  対数段一様関数族 $(G_u)_u$, その解 $(H_u)_u$を得る.
+  補題\ref{DIVPlogIsCHhard}より
+  $\classCH$困難な言語$L$を認識する
+  対数段の一様な関数族$(G_u)_u$とその解$(H_u)_u$を得る.
   対数段一様関数族の定義より 
   $G_u \colon [p(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\}$
-  を満たす関数$p$, 多項式 $q,r$が存在する. 
+  を満たす関数$p$と多項式$q$, $r$が存在する. 
+  $p (x) = O (\log x)$より, 
+  多項式$\sigma$が存在して
+  任意の$x \in \N$に対して$(k+1)^{p(x)} \le \sigma(x)$が成立つ. 
 
-  河村による証明と同様に$(G_u)_u, (H_u)_u$を拡張することにより,
-  以下のことを仮定してよい.
+  \cite[補題4.1]{kawamura2010lipschitz}の証明の冒頭と同様に
+  $G _u$, $H _u$を拡張することで
+  次が成立つとしてよい.
   \begin{gather}
    H_u(i, 2^{q(|u|)}) = \begin{cases}
 			L(u) & (i=p(|u|)) \\
@@ -404,10 +409,9 @@ $f _u (x)$ の名であることをいう.
    \\
    i \not = j_u(T)  \to G_u(i, T, Y) = 0 
   \end{gather}
-  
-  $p(x) = O(\log x)$より任意の$x \in \N$に対して,
-  $(k+1)^{p(x)} \le \sigma(x)$を満たす多項式$\sigma$が存在する.
-  $B$と関数$d_u \colon [p(|u|)+1] \to \N$を
+  $G _u$, $H _u$を模倣する$g _u$, $h _u$を構成する.
+  具体的には$h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i = 0}H_u(i, T)/B^{d_u(i)}$
+  を満たすようにする. この$B$と関数$d_u \colon [p(|u|)+1] \to \N$を次で定める. 
   \begin{align}
    B &= 2^{\gamma(|u|) + r(|u|) + s(k) + k + 3}
    &
@@ -418,17 +422,24 @@ $f _u (x)$ の名であることをいう.
     (k+1)^i & (i<p(|u|))
    \end{cases}
   \end{align}
-  とおく.
- 各 $(t, y) \in [0,1] \times [-1, 1]$ に対して,
- $t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-d_u(j_u(T))}$ を満たす
- 自然数 $N$, $\theta \in [0,1)$, 整数 $Y$, $\eta \in [-1/4, 3/4)$ 
- がそれぞれ唯一存在する.
- 関数$\delta_{u,Y} \colon [0,1] \to \R$を
+各$(t, y) \in [0,1] \times [-1, 1]$に対して,
+$t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-d_u(j_u(T))}$を満たす
+$N \in \N$, 
+$\theta \in [0,1)$, 
+$Y \in \Z$, 
+$\eta \in [-1/4, 3/4)$が
+それぞれ唯一存在する.
+関数$\delta_{u,Y} \colon [0,1] \to \R$を次で定める. 
  \begin{equation} \label{eq:delta}
   \delta_{u, Y} (t) = \frac{2^{q(|u|)} \D f(\theta)}{B^{d_u(j_u(T)+1)}} 
-   G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
+   G_u \bigl( j_u(T), T, Y \bmod 2^{r(|u|)} \bigr)
  \end{equation}
- とおき, $g_u, h_u$ を以下のように定義する.
+関数$
+g _u \colon [0, 1] \times [-1, 1] \to \R
+$と$
+h _u \colon [0, 1] \to [-1, 1]
+$を次で定義する.
+ただし$f$と多項式$s$は補題\ref{SmoothFunction}のものである.
   \begin{align}
   \label{eq:gu}
   g_u(t,y) 
@@ -443,16 +454,18 @@ $f _u (x)$ の名であることをいう.
    \\
   h_u(t) 
    &= \sum^{p(|u|)}_{i=0} \frac{H_u(i, T)}{B^{d_u(i)}}  
-  + \frac{f(\theta)}{B^{d_u(j_u(T)+1)}} G_u(j_u(T), T, H_u(j_u(T), T)) 
+  + \frac{f(\theta)}{B^{d_u(j_u(T)+1)}} G_u \bigl( j_u(T), T, H_u(j_u(T), T) \bigr) 
   \label{eq:hu}
   \end{align}
-  ただし$f$と多項式$s$は補題 \ref{SmoothFunction}を満たすものとする.
 
+この$g_u$, $h_u$が補題\ref{KTimesFamily}の各性質を満たすことを示す. 
+性質(\ref{enum:equation})は
+\cite[補題 4.1]{kawamura2010lipschitz}と同様に判るから
+(\ref{enum:differentiability}), 
+(\ref{enum:boundary}), 
+(\ref{enum:smooth}), 
+(\ref{enum:kf:end})のみ示す. 
 
- 上記のように定義した $g_u, h_u$ が補題\ref{DifferentiableFamily} で求める
- 性質を満たすことを示す. ただし多くは河村による証明と同様に示せるため,
- \cite[補題 4.1]{kawamura2010lipschitz}と異なる条件 (iii) -- (vi) のみ示す
- 
   $g _u$が$(\infty, k)$回連続的微分可能であることを示す.
   $\eta$ が $[-1/4, 1/4]$ と $(1/4, 3/4)$ である区間それぞれにおいて微分する.
   任意の $i \in \N$ について
@@ -485,7 +498,7 @@ $f _u (x)$ の名であることをいう.
        \end{cases}
   \end{equation}
   境界においても連続であるため,
-  $g_u$ は $(\infty, j)$ 階連続的微分可能であることが示された.
+  $g _u$は$(\infty, j)$回連続微分可能であることが示された.
   式 (\ref{eq:derivativeofgu}) に $t = 0, 1$ ($\theta = 0$) を代入して
   $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$.
 
