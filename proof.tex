@@ -310,7 +310,7 @@ $f _u (x)$ の名であることをいう.
   \begin{enumerate}
    \item \label{enum:kf:start}
      $g_u\colon [0,1] \times [-1,1]\to \R$, $h_u\colon [0,1] \to [-1,1]$. 
-   \item $g_u$と$h_u$は常微分方程式 (\ref{eq:ode}) を満たす.
+   \item $g_u$と$h_u$は方程式 (\ref{eq:ode}) を満たす.
    \item $g_u$ は $(\infty, k)$ 階連続微分可能.
    \item \label{enum:boundary}
 	 任意の $i \in \N$, $y \in [-1,1]$ に対して$
@@ -354,7 +354,7 @@ $f _u (x)$ の名であることをいう.
  そして各 $G_u, H_u$ を模倣する
  滑らかな $g_u \colon [0,1] \times [-1, 1] \to \R$ 
  と $h_u \colon [0,1] \to \R$ 構成する.
- それらが常微分方程式(\ref{eq:ode})を満たすことを差分方程式の性質により示し,
+ それらが方程式(\ref{eq:ode})を満たすことを差分方程式の性質により示し,
  $(g_u)_u$の多項式時間計算可能性を$(G_u)_u$ の一様性から示す.
 
 河村\cite[補題4.1]{kawamura2010lipschitz}の構成と違って
@@ -537,7 +537,7 @@ $g_u$を滑らかにする必要があるため,
  つまりある多項式$\rho'$に対して
  $h(l^-_u) = 0,\ h(c_u) = 2^{-\rho'(|u|)} L(u),\ h(l^+_u) = 0$ を満たす
  ように $h_u(t)$埋め込む.
- 同様に $g$ は $h$ が常微分方程式の解となるよう,
+ 同様に $g$ と $h$ が方程式(\ref{eq:ode})を満たすよう,
  各文字列 $u$ に対応する区間に $g_u$ を縮小して埋め込む.
 
  定理 \ref{DifferentiableIsPspace} と定理 \ref{KTimesIsCH} の関係は
@@ -564,7 +564,7 @@ $g_u$を滑らかにする必要があるため,
  c_u 
  &= 1-\frac{1}{2^{|u|}}+\frac{2\bar{u}+1}{\Lambda_u}, &
  l_u^\mp 
- &= c_u\mp\frac{1}{\varLambda_u} 
+ &= c_u\mp\frac{1}{\Lambda_u} 
 \end{align}  
  とおく. ただし $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ は $u$ を二進数と
  して解釈した数.
@@ -590,7 +590,7 @@ $g_u$を滑らかにする必要があるため,
 \end{align}
  $t=1$のとき $g(1,y) = 0$, $h(1) = 0$ と定義する.
 
- この $g$ が多項式時間計算可能であり $h$ が常微分方程式の解であることは,
+ この $g$ が多項式時間計算可能であり$g$と$h$が方程式(\ref{eq:ode})を満たすことは,
  Lipschitz条件の場合と同様に示されるため,
  河村による証明を参照されたし\cite[定理3.2]{kawamura2010lipschitz}.
  ここでは特に$g$が$(\infty, k)$回連続微分可能であることのみ示す.
