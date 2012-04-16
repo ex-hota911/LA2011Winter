@@ -343,17 +343,17 @@ $f _u (x)$ の名であることをいう.
  補題\ref{KTimesFamily}の(\ref{enum:kf:start}) -- (\ref{enum:kf:end})を満たすものが存在する.
 \end{lemma}
 
-
-
- この補題の証明の基本的な流れを説明する.
- ある$\classCH$困難(resp. $\classPSPACE$困難)な言語$L$に対し, 
- 補題 \ref{DIVPlogIsCHhard}(resp. 補題 \ref{DIVPpolyIsPSPACEhard})
- を用いて $L$ を認識する $(G_u)_u$ 及び $(H_u)_u$ を得る.
- 各$T/2^{q(|u|)} \in [0,1]$ において
- $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i}H_u(i, T)/B^{d_u(i)}$
- を満たすように$h_u$を構成し, $G_u$から$g_u$を構成する.
+補題\ref{KTimesFamily}は次のように証明する.
+まず補題\ref{DIVPlogIsCHhard}より, 
+$\classCH$困難な言語$L$と, 
+$L$を認識する$(G_u)_u$及び$(H_u)_u$を得る.
+各$T = 0$, \ldots, $2^{q(|u|)}$において
+$h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i}H_u(i, T)/B^{d_u(i)}$を満たすように
+$h_u$を構成し, $G_u$から$g_u$を構成する.
  それらが微分方程式$\D h(t) = g(t, h(t))$を満たすことを差分方程式の性質により示し,
  $(g_u)_u$の多項式時間計算可能性を$(G_u)_u$ の一様性から示す.
+補題\ref{DifferentiableFamily}も同様に, 
+補題\ref{DIVPpolyIsPSPACEhard}を用いて示す. 
 
  補題\ref{KTimesFamily}では
  河村\cite[補題4.1]{kawamura2010lipschitz}と違って
