@@ -407,7 +407,7 @@ $g_u$を滑らかにする必要があるため,
   
   $H_u$を模倣する$h_u$を構成する.
   具体的には$h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i}H_u(i, T)/B^{d_u(i)}$
-  を満たすようにする. ここで$d_u$は段数から桁への割り当てである.
+  を満たすようにする. 
   $p(x) = O(\log x)$より任意の$x \in \N$に対して,
   $(k+1)^{p(x)} \le \sigma(x)$を満たす多項式$\sigma$が存在する.
   $B$と関数$d_u \colon [p(|u|)+1] \to \N$を
@@ -493,7 +493,8 @@ $g_u$を滑らかにする必要があるため,
   $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$.
 
   (\ref{enum:smooth})を示す.
-  $\mu(x, y) = (x+1)q(y) + s(x+1)$とおく(この$\mu$は$k$や$\gamma$に依存しない).
+  多項式 $\mu$ を $\mu(x, y) = (x+1)q(y) + s(x+1)$とおく.
+  この$\mu$は$k$や$\gamma$に依存しない.
   式(\ref{eq:delta})より
   $|\D^i \delta_{u,Y}(t)| \le 2^{(i+1)q(|u|) + s(i+1)}B^{-d_u(j_u(|u|)+1)}$.
   任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
@@ -519,8 +520,8 @@ $g_u$を滑らかにする必要があるため,
 
  補題 \ref{DifferentiableFamily} の証明では$d_u$を$d_u(i) = i$と置き換える.
  $\classPSPACE$困難な言語を認識する多項式段一様関数族$(G_u)_u$とその解$(H_u)_u$に対して,
- 式(\ref{eq:gu}), (\ref{eq:hu})により定義される$(g_u)_u$と$(h_u)_u$が,
- 補題 \ref{DifferentiableFamily} で求める性質を満たすことは,
+ 式(\ref{eq:gu}), (\ref{eq:hu})により$(g_u)_u$と$(h_u)_u$を定義する.
+ それらが補題 \ref{DifferentiableFamily} で求める性質を満たすことは,
  補題 \ref{KTimesFamily} の証明と同様に示される.
 
 
@@ -537,9 +538,9 @@ $g_u$を滑らかにする必要があるため,
  区間 $[c_u, l^+_u]$ に埋め込むことで影響を相殺する.
  つまりある多項式$\rho'$に対して
  $h(l^-_u) = 0,\ h(c_u) = 2^{-\rho'(|u|)} L(u),\ h(l^+_u) = 0$ を満たす
- ように $h_u(t)$埋め込む.
+ ように $h$ を構成する.
  同様に $g$ と $h$ が方程式(\ref{eq:ode})を満たすよう,
- 各文字列 $u$ に対応する区間に $g_u$ を縮小して埋め込む.
+ 各文字列 $u$ に対応する区間に $g_u$ を縮小して埋め込むことで $g$ を構成する.
 
  定理 \ref{DifferentiableIsPspace} と定理 \ref{KTimesIsCH} の関係は
  補題 \ref{DifferentiableFamily} と補題 \ref{KTimesFamily} の関係と等しい.
