@@ -431,7 +431,7 @@ $\eta \in [-1/4, 3/4)$が
 それぞれ唯一存在する.
 関数$\delta_{u,Y} \colon [0,1] \to \R$を次で定める. 
  \begin{equation} \label{eq:delta}
-  \delta_{u, Y} (\theta) = \frac{2^{q(|u|)} \D f(\theta)}{B^{d_u(j_u(T)+1)}} 
+  \delta_{u, Y} (t) = \frac{2^{q(|u|)} \D f(\theta)}{B^{d_u(j_u(T)+1)}} 
    G_u \bigl( j_u(T), T, Y \bmod 2^{r(|u|)} \bigr)
  \end{equation}
 関数$
@@ -470,21 +470,20 @@ $を次で定義する.
   \eqref{eq:delta}, \eqref{eq:gu}より
   各$i \in \N$について
   \begin{align}
-   \D^i \delta_{u,Y}(\theta) 
+   \D^i \delta_{u,Y}(t) 
 &
-    = \frac{2^{q(|u|)} \D^{i+1}f(\theta)}{B^{d_u(j_u(T)+1)}}
-    G_u \bigl( j_u(T), T, Y \bmod 2^{r(|u|)} \bigr)
+    = \frac{2^{(i+1)q(|u|)} \D^{i+1}f(\theta)}{B^{d_u(j_u(T)+1)}}
+    G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
 \\
    \label{eq:derivativeofgu}
     \D^{(i,0)} g_u(t, y)
 &
      = \begin{cases}
- 	2^{iq(|u|)}\D^i \delta_{u, Y}(\theta) 
+ 	\D^i \delta_{u, Y}(\theta) 
 	& (- \frac 1 4 < \eta < \frac 1 4) \\
-	\left( 1-f \left(\frac{4\eta-1}{2}\right)\right) 2^{iq(|u|)}
+	\left( 1-f \left(\frac{4\eta-1}{2}\right)\right) 
 	\D^i \delta_{u, Y}(\theta) 
-	+ f \left(\frac{4\eta-1}{2}\right) 2^{iq(|u|)} 
-	\D^i \delta_{u,Y+1}(\theta) 
+	+ f \left(\frac{4\eta-1}{2}\right) \D^i \delta_{u,Y+1}(\theta) 
 	& (\frac 1 4 < \eta < \frac 3 4)
        \end{cases}
   \end{align}
@@ -493,7 +492,7 @@ $を次で定義する.
     \D^{(i,j)} g_u(t, y)
      = \begin{cases}
 	0 & (- \frac 1 4 < \eta < \frac 1 4) \\
-	2^{j + iq(|u|)}B^{j d_u(j_u(T))} \D^j f(\frac{4\eta - 1}2)
+	(2B^{d_u(j_u(T))})^j \D^j f(\frac{4\eta - 1}2)
 	(\D^i \delta_{u,Y+1}(\theta)-\D^i \delta_{u, Y}(\theta)) 
 	& (\frac 1 4 < \eta < \frac 3 4)
        \end{cases}
@@ -512,8 +511,8 @@ $を次で定義する.
   \begin{equation}
    |\D^{(i,j)} g_u| 
    \le 
-   \frac{2^{(i+1)q(|u|) + s(i+1) + s(j) + j + 1}
-   B^{j d_u(j_u(T))}}{B^{d_u(j_u(T)+1)}}
+   2^k B^{k \cdot j_u(T)} 2^{s(k)} \cdot 2 \cdot 
+   \frac{2^{(i+1)q(|u|) + s(i+1)}}{B^{d_u(j_u(|u|)+1)}} 
    \le
    \frac{2^{\mu(i, |u|) + s(k) + k + 1}}{B}
   \end{equation}
