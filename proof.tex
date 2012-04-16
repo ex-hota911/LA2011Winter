@@ -140,8 +140,10 @@ Wagnerによる定義とは異なる\cite{toran1991complexity}.
 \begin{equation}
  \quantC^m X \phi(X) 
   \longleftrightarrow 
-  \bigl|\{X \in \{0, 1\}^l \mid \phi(X) = 1\}\bigr| \ge m.
+  \sum_{X \in \{0,1\}^l} \phi(X) \ge m.
 \end{equation}
+ただし論理式$\phi(X)$を関数$\phi \colon \{0,1\}^l \to \{0,1\}$と同一視し,
+$\phi(X)$が成り立つとき$\phi(X)=1$とする.
 $\quantC^1 = \exists$, $\quantC^{2^l} = \forall$ であり, $\quantC$ は $\exists, \forall$ の
 一般化と言える.
 言語$\quantC_n B_{be}$を次のように定義する.
@@ -171,17 +173,17 @@ $\phi(X_1, \dots, X_n)$は$X_1, \dots, X_n$以外の変数を持たない論理�
  $\quantC_{\log} B_{be}$が$\classCH$困難であることを示す.
  任意の $\classCH$ の言語 $A$ はある階層 $\quantC_n \classP$ に属する. 
  補題 \ref{lemma:CnP-complete} より任意の $u \in \{0,1\}^*$ について
- $u \in A \leftrightarrow f(u) \in \quantC_n B_{be}$ 
- を満たす多項式時間関数 $f$ が存在する.
+ $u \in A \leftrightarrow f_n(u) \in \quantC_n B_{be}$ 
+ を満たす多項式時間関数 $f_n$ が存在する.
  \begin{align}
   u \in A 
-  & \longleftrightarrow \langle 0^{2^n}, f(u) \rangle \in \quantC_{\log} B_{be}
+  & \longleftrightarrow \langle 0^{2^n}, f_n(u) \rangle \in \quantC_{\log} B_{be}
  \end{align}
- $n$ は定数であるため $\langle 0^{2^n}, f(\cdot) \rangle$ は多項式時間関数.
+ $n$ は定数であるため $\langle 0^{2^n}, f_n(\cdot) \rangle$ は多項式時間関数.
  よって $A$ は $\quantC_{\log} B_{be}$ に帰着する.
 
 
- $\quantC_{\log} B_{be}$を認識する関数族 $(G_u)_u$,  その解$(H_u)_u$,
+ $\quantC_{\log} B_{be}$を認識する対数段一様な関数族 $(G_u)_u$,  その解$(H_u)_u$,
  及び$G_u \colon [p(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\}$を満たす
  関数 $p \colon \N \to \N$, 多項式 $q,r$ を構成する.
  自然数 $n, m_1, \dots, m_n$, 論理式$\phi$を
