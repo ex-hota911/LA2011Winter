@@ -255,16 +255,16 @@ $\phi(X_1, \dots, X_n)$は$X_1, \dots, X_n$以外の変数を持たない論理�
   n+1 \le \log(|0^{2^n}|) + 1 = O(\log(|u|)) \\
   2^{s_n}+1 \le 2^{s_n+1} \le 2^{|u|}
  \end{gather}
- より $p(u) = n+1, q(x) = r(x) = x$ とおき $G_u$ を
+ より$p(u) = n+1$, $q(x) = r(x) = x$とおき $G_u$ を
  $[p(u)] \times [2^{q(|u|)}] \times [2^{r(|u|)}]$ の範囲に拡張すると
  $H_u(p(u), 2^{q(|u|)}) = \quantC_{\log} B_{be}(u)$.
 
- $i=0$ のとき, 式(\ref{eq:def-Gu:case0})より成り立つ.
- $i=j$ のとき, 成り立つと仮定する.
+ $i=0$のとき, 式\eqref{eq:def-Gu:case0}より成り立つ.
+ $i=j$のとき, 成り立つと仮定する.
  \begin{align}
   H_u(j+1, T) 
-  &= \sum_{V = 0}^{T-1} G_u(j, V, H_u(j, V)) \\
-  &= \sum_{V} (-1)^{V_{s_{j+1}}} \phi_j(V_{[s_j+1, s_{j+1}]}, 
+  = \sum_{V = 0}^{T-1} G_u(j, V, H_u(j, V)) 
+  = \sum_{V} (-1)^{V_{s_{j+1}}} \phi_j(V_{[s_j+1, s_{j+1}]}, 
    \dots, V_{[s_{n-1}+1, s_n]})
  \end{align}
  文字列$U$に対して, $U$を2進数と解釈した時の値を$\overline U$と表記する.
@@ -275,13 +275,15 @@ $\phi(X_1, \dots, X_n)$は$X_1, \dots, X_n$以外の変数を持たない論理�
   H_u(j+1, T) = \sum\nolimits_{X \in \{0,1\}^{l_j}} 
   \phi_j(X, T_{[s_{j+1}+1, s_{j+2}]}, \dots, T_{[s_{n-1}+1, s_n]})
  \end{equation}
- 式(\ref{eq:phi-step})より
+ 式\eqref{eq:phi-step}より
  \begin{align}
   G_u(j+1,T,H_u(j+1,T)) 
-  &= (-1)^{T_{s_{j+2}}} C^{m_{j+1}} (H_u(j+1, T))\\
+  &= (-1)^{T_{s_{j+2}}} C^{m_{j+1}} (H_u(j+1, T))
+\notag
+\\
   &= (-1)^{T_{s_{j+2}}} \phi_{j+1}(T_{[s_{j+1}+1, s_{j+2}]}, \dots, T_{[s_{n-1}+1, s_n]})
  \end{align}
- よって $i=j+1$ でも成り立つ.
+ よって$i=j+1$でも成り立つ.
  \end{proof}
 
 
@@ -309,7 +311,6 @@ $f _u (x)$ の名であることをいう.
   多項式 $\rho$, 実関数族 $(g_u)_u, (h_u)_u$ で, 
   $(g_u)_u$ は多項式時間計算可能であり,
   各文字列 $u$ に対して以下を満たすものが存在する.
-
   \begin{enumerate}
    \item \label{enum:kf:start}
      $g_u\colon [0,1] \times [-1,1]\to \R$, $h_u\colon [0,1] \to [-1,1]$. 
@@ -354,11 +355,12 @@ $f _u (x)$ の名であることをいう.
  それらが微分方程式$\D h(t) = g(t, h(t))$を満たすことを差分方程式の性質により示し,
  $(g_u)_u$の多項式時間計算可能性を$(G_u)_u$ の一様性から示す.
 
+ 補題\ref{KTimesFamily}では
  河村\cite[補題4.1]{kawamura2010lipschitz}と違って
- $g$ を微分可能にするため, 
- 条件 (\ref{enum:differentiability}) -- (\ref{enum:smooth}) が付け加えられている 
- つまり$g_u$を滑らかに構成する必要があるため, 
- 以下のような無限回微分可能な関数$f \colon [0,1] \to \R$を用いる. 
+ $g _u$の滑らかさと導関数についての
+ 条件(\ref{enum:differentiability}) -- (\ref{enum:smooth})が加わっている.
+ これを満すように$g_u$を構成するため, 
+ 次の補題にいう関数$f \colon [0,1] \to \R$を用いる. 
 
  \begin{lemma}[{\cite[補題3.6]{ko1991complexity}}]
   \label{SmoothFunction}
@@ -627,21 +629,21 @@ $を次で定義する.
  定義および補題 \ref{KTimesFamily} (\ref{enum:boundary})によりしめされる.
  第一変数が $1$ のとき連続であることを示す.
  補題 \ref{KTimesFamily} の(\ref{enum:smooth})より
- \begin{align*}
+ \begin{align}
   \left|\D^{(i, j)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
   \frac{y}{\Lambda_u}\right)\right|
   &\le 
   \Lambda_u^{i+j} \sum^{k}_{l=j} \left(|\D^{(i,l)} g_u |(\Lambda_u + 1)^l \right)
+\notag
   \\
   & \le \Lambda_u^{i+j+k}  2^{k + \mu(i, |u|) - \gamma(|u|)}
-  \\
-  & =  2^{(i+j+k)\lambda(|u|) + k + \mu(i, |u|)  - \gamma(|u|)}.  \taghere
+   =  2^{(i+j+k)\lambda(|u|) + k + \mu(i, |u|)  - \gamma(|u|)}. 
   \label{eq:sizeofderivative}
- \end{align*}
+ \end{align}
  $\gamma$ のとり方により, $|u| \to \infty$ のとき 
- 式 (\ref{eq:sizeofderivative}) は 0 に収束する.
+ 式 (\ref{eq:sizeofderivative}) は$0$に収束する.
  よって  $\lim_{t \to 1-0}\D^{(i,j)} g(t,y) = g(1, y) = 0$.
- 以上により $g$ は $(\infty, k)$ 階連続的微分可能.
+ 以上により$g$は$(\infty, k)$回連続微分可能.
 \end{proof}
 
 
