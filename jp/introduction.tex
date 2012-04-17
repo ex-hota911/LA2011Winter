@@ -1,0 +1,148 @@
+\section{序論}
+
+連続実関数$g \colon [0,1] \times \R \to \R$に対して次の常微分方程式を考える. 
+\begin{align}
+ \label{eq:ode}
+ h(0) & = 0, &
+ \D h(t) & = g(t,h(t)) \quad (t \in [0,1])
+\end{align}
+ただし$\D h$は$h$の導関数.
+本稿では$g$が多項式時間計算可能であるとき, 
+解$h$がどれほど複雑でありうるかを考える.
+ここで多項式時間を初めとする計算量は
+\emph{計算可能解析学} (Computable Analysis) 
+\cite{weihrauch00:_comput_analy}における概念であり, 
+実関数を指定された精度で近似する計算の困難さを測るものである
+(本稿では\ref{section: preliminaries}節で説明する). 
+
+$g$に多項式時間計算可能であることの他に何の制限も設けない場合, 
+解$h$ (一般に一意でない) は計算不能でありうるため,
+様々な制限の下で$h$の計算量が研究されている (表 \ref{table:related}).
+この表では下に向うにつれて左列の条件が強まっており, 
+$g$が(大域的) Lipschitz条件を満たせば解$h$が一意であるが, 
+表の第3行にある通りこのとき唯一解$h$は
+ちょうど$\classPSPACE$困難でありうることがわかっている\cite{kawamura2010lipschitz}. 
+本稿ではより強く$g$に滑らかさの仮定を置いたときの
+$h$の複雑さを調べる. 
+
+\begin{table}
+\renewcommand\arraystretch{1.3}
+\begin{center}
+ \caption{$g$が多項式時間計算可能であるときの常微分方程式\eqref{eq:ode}の解$h$の計算量}
+ \label{table:related}
+ \begin{tabular}{lll}
+  制限 & 上界 & 下界 \\
+  \hline
+   --- & --- & 計算不可能になりうる \cite{pour1979computable} \\
+  $h$ が $g$ の唯一解 & 計算可能 \cite{coddington1955theory}
+  & 任意の時間がかかりうる \cite{ko1983computational, miller1970recursive} \\
+  $g$ が Lipschitz 条件を満たす & 多項式領域計算可能 \cite{ko1983computational}
+      &	$\classPSPACE$ 困難になりうる \cite{kawamura2010lipschitz}\\
+  $g$ が $(\infty, 1)$ 回連続微分可能 & 多項式領域計算可能 & \parbox[t]{14zw}{$\classPSPACE$ 困難になりうる\\{}(定理\ref{DifferentiableIsPspace})} \\
+  \parbox[t]{14zw}{$g$ が $(\infty, k)$ 回連続微分可能\\{}($k$は任意の定数)}
+  & 多項式領域計算可能 & \parbox[t]{14zw}{$\classCH$ 困難になりうる\\{}(定理\ref{KTimesIsCH})} \\
+  $g$ が解析的 
+  & 多項式時間計算可能 \cite{muller1987uniform, ko1988computing, kawamura2010complexity} 
+  & ---
+ \end{tabular}
+\end{center}
+\end{table}
+
+一般に数値計算においてはしばしば, 
+或る種の算法を適用できるようにするため, 
+或いは解析しやすくするために, 
+与えられる関数に何らかの滑らかさ (十分な回数微分可能であるなど) を仮定すると
+都合のよいことがある. 
+しかしこれは経験則にすぎず, 
+実際に滑らかさの仮定が
+解の複雑さを計算量の意味で抑える効果をもつのかについては
+あまり論ぜられて来なかった. 
+
+本稿で扱う微分方程式についていえば, 
+極端なのは$g$が解析的である場合であり, 
+このときにはテイラー級数による解法により, 
+表の最下列にあるように$h$は$g$と同じく多項式時間計算可能になる. 
+本稿ではLipschitz条件より強いが解析的よりは弱い滑らかさの仮定を考える
+(表の第4, 5行). 
+ここで$(i, j)$回連続微分可能とは, 
+第一, 第二変数についてそれぞれ$i$回, $j$回微分でき, 
+その導関数が連続であることである
+\footnote{%
+二変数関数$g$が
+$i+j \le k$を満たす任意の自然数$i$, $j$について
+$(i,j)$回連続微分可能であることを
+$k$回連続微分可能と言うこともあるが, 
+本稿では各変数について微分できる回数をこのように分けて書く.}.
+
+ \begin{theorem}
+  \label{DifferentiableIsPspace}
+  多項式時間計算可能かつ $(\infty, 1)$ 回連続微分可能な
+  実関数 $g \colon [0,1] \times [-1,1] \to \R$ であって, 
+  方程式\eqref{eq:ode}が
+  $\classPSPACE$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
+ \end{theorem}
+
+ \begin{theorem}
+  \label{KTimesIsCH}
+  任意の自然数 $k$ に対して, 
+  多項式時間計算可能かつ $(\infty, k)$ 回連続微分可能な
+  実関数 $g \colon [0,1] \times [-1,1] \to \R$ であって, 
+  方程式(\ref{eq:ode})が
+  $\classCH$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
+但し$\classCH \subseteq \classPSPACE$は計数階層(\ref{subsection: counting hierarchy}節)である.
+ \end{theorem}
+
+ここで $g \colon [0,1] \times \R \to \R$ でなく
+$g \colon [0,1] \times [-1, 1] \to \R$ と書いたのは, 
+本稿では実関数の多項式時間計算可能性を, 
+定義域が有界閉領域のときにのみ定義するからである. 
+このため $h$ が区間 $[-1, 1]$ の外に値を取ることがあると
+方程式(\ref{eq:ode})が意味をなさなくなるが, 
+定理\ref{DifferentiableIsPspace}において $h$ が解であるというのは, 
+任意の $t \in [0, 1]$ について $h (t) \in [-1, 1]$ が満たされることも含めて述べている.
+なお両定理とも Lipschitz 条件よりも強い仮定を置いているため, 
+そのような $h$ は $g$ に対して, 存在すれば唯一である. 
+
+本稿のように対象を滑らかな関数に制限することによる計算量の変化について,
+常微分方程式以外の問題では次のような否定的な結果がある.
+多項式時間計算可能な関数から積分により得られる関数は, 
+もとの関数を無限回微分可能なものに限っても
+なお一般の場合と同じく$\classNumberP$困難である. 
+\cite[定理5.33]{ko1991complexity}.
+最大化でも同様に, 
+無限回微分可能な関数に限っても一般の場合と同じく
+$\classNP$困難である\cite[定理3.7]{ko1991complexity}%
+\footnote{%
+ただし葛\cite[定理3.7]{ko1991complexity}の証明において関数$f$を
+\[f(x) = 
+\begin{cases}
+ u_s & \text{if not } R(s,t) \\
+ u_s + 2^{-(p(n)+2n+1)\cdot n} \cdot h_1(2^{p(n)+2n+1} (x - y_{s,t})) & \text{if } R(s,t)
+\end{cases}\]
+に修正する必要がある.
+}
+(なお対象を解析的な関数に限ると, 
+やはり級数を用いた議論により, 
+これらは多項式時間計算可能になる). 
+一方常微分方程式については, 
+定理\ref{KTimesIsCH}は各$k$についてそれぞれ成立つが, 
+$g$が$(\infty, \infty)$回微分可能であると仮定したときの
+$h$の計算量については依然不明である. 
+
+\subsubsection*{記法}
+自然数の集合を $\N$, 実数の集合を $\R$, 
+有理数の集合を $\Q$と表す. 
+
+$A, B$ を $\R$ の有界閉区間とする. 
+実関数 $f \colon A \to \R$ に対して $|f| = \sup_{x \in A} f(x)$ と書く.
+
+連続な一変数関数 $f\colon A \to \R$ が $i$ 回連続微分可能であるとは,
+導関数$\D f, \D^2 f, \dots, \D^i f$が存在し, すべて連続であることと定義する.
+連続な二変数関数 $g \colon A \times B \to \R$ が
+\emph{$(i, j)$ 回連続微分可能}であるとは,
+導関数$\D_1^n \D_2^m g$が, 任意の$0 \le n \le i$, $0 \le m \le j$を満たす
+$n,m$において存在し連続であることと定義する.
+$g$が$(i,j)$回連続微分可能であるとき,
+その導関数$\D_1^i \D_2^j g$を$\D^{(i,j)}g$と表記する.
+また任意の $i$ について $g$ が $(i, j)$ 回連続微分可能であるとき,
+$g$ は $(\infty, j)$ 回連続微分可能であると定義する.

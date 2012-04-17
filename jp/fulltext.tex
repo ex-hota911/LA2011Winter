@@ -1,0 +1,97 @@
+\documentclass[11pt,a4paper]{jsarticle}
+
+\makeatletter
+
+%%% 個人設定 
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+
+\usepackage[scaled]{helvet}
+
+\bibliographystyle{plain}
+
+\newcommand{\R}{\mathbf R}
+\newcommand{\N}{\mathbf N}
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\Z}{\mathbf Z}
+\newcommand{\D}{D}
+\newcommand{\classP}{\mathsf{P}}
+\newcommand{\classPSPACE}{\mathsf{PSPACE}}
+\newcommand{\classNP}{\mathsf{NP}}
+\newcommand{\classNumberP}{\mathsf{\#P}}
+\newcommand{\classPH}{\mathsf{PH}}
+\newcommand{\classPP}{\mathsf{PP}}
+\newcommand{\classCH}{\mathsf{CH}}
+\newcommand{\classSigma}{\mathsf{\Sigma}}
+\newcommand{\quantC}{\mathsf{C}}
+
+\newcommand{\OpIVP}{\mathit{ODE}}
+\newcommand{\deltabox}{\delta _\square}
+\newcommand{\deltaboxLip}{\delta _{\square \mathrm L}}
+\newcommand{\classtwofont}[1]{\text{\bfseries \sffamily \upshape #1}}
+\newcommand{\classFPSPACEtwo}{\classtwofont{FPSPACE}}
+\newcommand{\classCHtwo}{\classtwofont{CH}}
+\newcommand{\redW}{\leq _{\mathrm W}}
+\newcommand{\classLip}{\mathrm C _{\mathrm L}}
+\newcommand{\classC}{\mathrm C}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{definition}[theorem]{定義}
+
+\renewcommand{\proofname}{\bf 証明} 
+
+%%% 数式中の大文字ギリシャ文字を斜体化
+\renewcommand{\Lambda}{\varLambda}
+\renewcommand{\Gamma}{\varGamma}
+
+%%% (i), (ii), (iii), (iv)
+\def\theenumi{\roman{enumi}}
+\def\labelenumi{(\theenumi)}
+
+%%% 数式番号を(章.num) に
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\@addtoreset{equation}{section}
+
+%%% 表番号を 章.num に
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\@addtoreset{table}{section}
+
+%%% 図番号を 章.num に
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\@addtoreset{figure}{section}
+
+\makeatother
+
+\title{滑らかな常微分方程式の計算量}
+
+\author{%
+\hspace*{7zw}% 良い子は真似してはいけません！
+太田浩行\thanks{東京大学, \texttt{hota@is.s.u-tokyo.ac.jp}} 
+\and
+河村彰星\thanks{東京大学}%
+\hspace*{7zw}% 良い子は真似してはいけません！
+\and
+マルチン・ツィーグラー\thanks{Martin Ziegler, ダルムシュタット工科大学}
+\and
+カルステン・レースニク\thanks{Carsten R\"osnick, ダルムシュタット工科大学}
+}
+%\和暦
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\input{abstract}
+\input{introduction}
+\input{preliminary}
+\input{proof}
+\input{constructive}
+\input{acknowledgements}
+
+\bibliography{la}
+
+\end{document}
