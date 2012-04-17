@@ -107,7 +107,7 @@ $(\infty, 2)$回以上微分可能な関数によっても
 \ref{subsection: counting hierarchy}節にて述べる.
 
 
-\subsection{Counting Hierarchy and Logarithm Column Difference Equations}
+\subsection{Counting Hierarchy and Logarithm Height Difference Equations}
 \label{subsection: counting hierarchy}
 
 The counting hierarchy($\classCH$) was
@@ -170,118 +170,118 @@ We construct a problem $\quantC_{\log} B_{be}$ as
  \longleftrightarrow
  u \in \quantC_n B_{be}.
 \end{equation}
-この$\quantC_{\log} B_{be}$が補題\ref{DIVPlogIsCHhard}で求める言語であること,
-つまり$\classCH$困難かつ対数段一様関数族によって認識可能であることを示す.
 
-\begin{proof}[\textup{補題\ref{DIVPlogIsCHhard}の証明}]
- $\quantC_{\log} B_{be}$が$\classCH$困難であることを示す.
- 任意の $\classCH$ の言語 $A$ はある階層 $\quantC_n \classP$ に属する. 
- 補題 \ref{lemma:CnP-complete} より任意の $u \in \{0,1\}^*$ について
- $u \in A \leftrightarrow f_n(u) \in \quantC_n B_{be}$ 
- を満たす多項式時間関数 $f_n$ が存在する.
- \begin{align}
-  u \in A 
-  & \longleftrightarrow \langle 0^{2^n}, f_n(u) \rangle \in \quantC_{\log} B_{be}
- \end{align}
- $n$ は定数であるため $\langle 0^{2^n}, f_n(\cdot) \rangle$ は多項式時間関数.
- よって $A$ は $\quantC_{\log} B_{be}$ に帰着する.
+We show that $\quantC_{\log} B_{be}$ is the problem stated in Lemma \ref{DIVPlogIsCHhard},
+that is, it is $\classCH$-hard and accepted by a logarithm height uniform function family.
+
+\begin{proof}[\textup{Proof of Lemma \ref{DIVPlogIsCHhard}}]
+First we prove that $\quantC_{\log} B_{be}$ is $\classCH$-hard.
+For each problem $A$ in $\classCH$, there is a constant $n$ such that $A \in \quantC_n \classP$.
+From Lemma \ref{lemma:CnP-complete}, for each $u \in \{0,1\}^*$
+there is a polynomial time function $f_n$ such that
+$u \in A \leftrightarrow f_n(u) \in \quantC_n B_{be}$. So
+\begin{align}
+ u \in A 
+ & \longleftrightarrow \langle 0^{2^n}, f_n(u) \rangle \in \quantC_{\log} B_{be}.
+\end{align}
+Since $\langle 0^{2^n}, f_n(\cdot) \rangle$ is polynomial time computable,
+$A$ is reducible to $\quantC_{\log} B_{be}$.
 
 
- $\quantC_{\log} B_{be}$を認識する対数段一様な関数族 $(G_u)_u$ を構成する.
- 自然数 $n, m_1, \dots, m_n$, 論理式$\phi$を
- $u  = \langle 0^{2^n}, 
- \langle \phi(X_1, \dots, X_n), m_1, \dots, m_n \rangle \rangle$
- を満たすものとする. 
- (そのような$n, m_1, \dots, m_n, \phi$が存在しないとき$u \not \in A$.)
+Next we construct a logarithm height uniform function family $(G_u)_u$
+recognizing $\quantC_{\log} B_{be}$.
+We may assume $n$, $m_1, \dots, m_n$, and a formula $\phi$ as
+$u  = \langle 0^{2^n}, 
+\langle \phi(X_1, \dots, X_n), m_1, \dots, m_n \rangle \rangle$
+(If such $n$, $m_1, \dots, m_n$ and $\phi$ don't exist, then $u \not \in A$).
  
- 
- $l_i = |X_i|$, $s_i = i + \sum^i_{j=1}l_j$ と表記する.
- 任意の $i \in \{0, \dots, n\}$ と $n-i$ 個の文字列 
- $Y_{i+1} \in \{0,1\}^{l_{i+1}}, \dots, Y_n \in \{0,1\}^{l_n}$ 
- について論理式
- $\quantC^{m_{i}}{X_i} \cdots \quantC^{m_1}{X_1}
- \phi(X_1, \dots, X_i, Y_{i+1}, \dots, Y_n)$
- の真偽値を $\phi_i(Y_{i+1}, \dots, Y_n)$ と表記すると,
- $\phi_0 = \phi$ かつ $\phi_n() = \quantC_{\log} B_{be} (u)$.
- 関数 $C^m \colon \N \to \N$ を
- \begin{equation}
-  C^m(x) 
-     = \begin{cases}
-       1 & (x \ge m) \\
-       0 & (x < m) 
-       \end{cases}
- \end{equation}
- と定義すると
- \begin{equation} \label{eq:phi-step}
-  \phi_{i+1}(Y_{i+2}, \dots, Y_n) 
+We write $l_i = |X_i|$ and $s_i = i + \sum^i_{j=1}l_j$.
+For each $i \in \{0, \dots, n\}$ and
+$Y_{i+1} \in \{0,1\}^{l_{i+1}}, \dots, Y_n \in \{0,1\}^{l_n}$,
+we write $\phi_i(Y_{i+1}, \dots, Y_n)$ for the truth value of the subnormal
+$\quantC^{m_{i}}{X_i} \cdots \quantC^{m_1}{X_1} \phi(X_1, \dots, X_i, Y_{i+1}, \dots, Y_n)$,
+so that $\phi_0 = \phi$ and $\phi_n() = \quantC_{\log} B_{be} (u)$.
+We regard the quantifier $\quantC^m$ as a function from $\N$ to $\{0,1\}$:
+\begin{equation}
+ C^m(x) 
+  = \begin{cases}
+     1 & (x \ge m) \\
+     0 & (x < m).
+    \end{cases}
+\end{equation}
+Thus,
+\begin{equation} \label{eq:phi-step}
+ \phi_{i+1}(Y_{i+2}, \dots, Y_n) 
   = C^{m_{i+1}}\left(\sum_{X_{i+1} \in \{ 0,1 \} ^{l_i}}
-   \phi_i(X_{i+1}, Y_{i+2}, \dots, Y_{n})\right) 
- \end{equation}
- $T \in \N$ に対し, $T_i$ を $T$ の2進表記における $i$ 桁目, 
- $T_{[i,j]} = T_{j-1} T_{j-2} \cdots T_{i+1} T_{i}$ と表記する.
+		\phi_i(X_{i+1}, Y_{i+2}, \dots, Y_{n})\right).
+\end{equation}
+For $T \in \N$, we write $T_i$ for the $i$th digit of $T$ written in binary,
+and $T_{[i,j]}$ for the string $T_{j-1} T_{j-2} \cdots T_{i+1} T_{i}$.
 
-
- $G_u$ を $(i, T, Y) \in [n+1] \times [2^{s_n}+1] \times [2^{|u|}]$ の範囲で
- を以下のように定義する. 一段目つまり $i=0$ ならば
+For each $(i, T, Y) \in [n+1] \times [2^{s_n}+1] \times [2^{|u|}]$,
+we define $G_u$ as follows.
+In the first row, that is, if $i=0$,
  \begin{equation}\label{eq:def-Gu:case0}
   G_u(0,T,Y) = 
    (-1)^{T_{s_1}}\phi(T_{[1,s_1]}, T_{[s_1+1,s_2]},
     \dots, T_{[s_{n-1}+1,s_n]}) 
  \end{equation}
- $i \ge 1$ ならば
+and otherwise,
  \begin{equation} 
   G_u(i,T,Y) = 
    \begin{cases}
     (-1)^{T_{s_{i+1}}} C^{m_i}(Y) 
     & (T_{[1,s_i+1]} = 10 \cdots 0) \\
-    0 & (\text{othewise}).
+    0 & (\text{otherwise}).
    \end{cases} 
  \end{equation}
+Define $H_u$ from $G_u$ by \eqref{eq:initial value} and \eqref{eq:divp}.
 
- 差分方程式$G_u$の解を$H_u$と表記する.
- 任意の $i \in [n+1]$, $T \in [2^{s_n}+1]$ について,
- $T_{[1, s_i +1]} = 10 \cdots 0$ ならば
+We prove by induction on $i$ that $H_u(i, T) \in [2^{l_u}]$ for all $T$, and that
  \begin{equation} \label{eq:subformula}
-  G_u(i,T,H_u(i,T)) = (-1)^{T_{s_{i+1}}} 
-   \phi_i(T_{[s_i+1, s_{i+1}]}, \dots, T_{[s_{n-1}+1, s_n]})
+  G_u(i,T,H_u(i,V)) = (-1)^{V_{s_{i+1}}} 
+   \phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]})
  \end{equation}
- を満たすことを $i$ についての帰納法により示す.
+for all $i \in [n+1]$ and $V \in [2^{s_n}+1]$
+such that $V_{[1, s_i +1]} = 10 \cdots 0$.
 
- $i=0$のとき, 式\eqref{eq:def-Gu:case0}より成立つ.
- $i=j$において成立つと仮定すると, 
-\begin{equation}
-  H_u(j+1, T) 
-  = \sum_{V = 0}^{T-1} G_u(j, V, H_u(j, V)) 
-  = \sum_{V} (-1)^{V_{s_{j+1}}} \phi_j(V_{[s_j+1, s_{j+1}]}, 
-   \dots, V_{[s_{n-1}+1, s_n]})
-\end{equation}
- $U \in \{0,1\}^*$に対して, $U$を2進数と解釈した時の値を$\overline U$と表記する.
- $V \le \overline{T_{[s_{j+1}+1, s_n]} 0 \cdots 0}$ の範囲においては
- $\phi_j(V_{[s_j+1, s_{j+1}]}, \dots, V_{[s_{n-1}+1, s_n]})$ と
- $- \phi_j(V_{[s_j+1, s_{j+1}]}, \dots, V_{[s_{n-1}+1, s_n]})$が互いに打ち消し合うので, $T_{[1,s_{j+1} +1]} = 10 \cdots 0$ により,
+ For $i=0$, the claims hold because of \eqref{eq:def-Gu:case0}.
+ Now we may assume \eqref{eq:subformula} by induction,
  \begin{equation}
-  H_u(j+1, T) = \sum_{X \in \{0,1\}^{l_j}}
-  \phi_j(X, T_{[s_{j+1}+1, s_{j+2}]}, \dots, T_{[s_{n-1}+1, s_n]})
+  H_u(i+1, T) 
+  = \sum_{V = 0}^{T-1} G_u(i, V, H_u(i, V)) 
+  = \sum_{V} (-1)^{V_{s_{i+1}}} \phi_i(V_{[s_i+1, s_{i+1}]}, 
+   \dots, V_{[s_{n-1}+1, s_n]})
  \end{equation}
- 式\eqref{eq:phi-step}より
+For $U \in \{0,1\}^*$, we write $\overline U$ for the number represented by $U$ as binary expression.
+For $V < \overline{T_{[s_{i+1}+1, s_n]} 0 \cdots 0}$,
+the number $V'$ which is equal to $V$ with flipping the $s_i+1$ digit is
+also less than $\overline{T_{[s_{i+1}+1, s_n]} 0 \cdots 0}$,
+and  $\phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]}) +
+ - \phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]}) = 0$.
+Since $T_{[1,s_{i+1} +1]} = 10 \cdots 0$,
+ \begin{equation}
+  H_u(i+1, T) = \sum_{X \in \{0,1\}^{l_i}}
+  \phi_i(X, T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]}).
+ \end{equation}
+ From this equation and \eqref{eq:phi-step}, it follows that
  \begin{align}
-  G_u(j+1,T,H_u(j+1,T)) 
-  &= (-1)^{T_{s_{j+2}}} C^{m_{j+1}} (H_u(j+1, T))
+  G_u(i+1,T,H_u(i+1,T)) 
+  &= (-1)^{T_{s_{i+2}}} C^{m_{i+1}} (H_u(i+1, T))
 \notag
 \\
-  &= (-1)^{T_{s_{j+2}}} \phi_{j+1}(T_{[s_{j+1}+1, s_{j+2}]}, \dots, T_{[s_{n-1}+1, s_n]})
+  &= (-1)^{T_{s_{i+2}}} \phi_{i+1}(T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]}).
  \end{align}
- $i=j+1$でも成立つため, 任意の$i \in [n+1]$で\eqref{eq:subformula}が成立つ.
 
 
- \eqref{eq:subformula}に $i=n$, $T=2^{s_n}$ を代入して 
- $G_u(n, 2^{s_n}, H_u(n,2^{s_n})) = \phi_n() = \quantC_{\log} B_{be}(u)$
- よって $H_u(n+1, 2^{s_n}+1) = \quantC_{\log} B_{be}(u)$.
+ By substituting $n$ for $i$ and $2^{s_n}$ for $T$ in \eqref{eq:subformula},
+ we get $G_u(n, 2^{s_n}, H_u(n,2^{s_n})) = \phi_n() = \quantC_{\log} B_{be}(u)$.
+ Hence $H_u(n+1, 2^{s_n}+1) = \quantC_{\log} B_{be}(u)$.
  
- $G_u$の段数$n+1$, 列数$2^{s_n}+1$, 欄のサイズ$2^{|u|}$は
- それぞれ$u$より多項式時間計算可能かつ,
- $n+1 \le \log(|0^{2^n}|) + 1 \le \log|u| + 1$
- より$G_u$は対数段一様.
+ All of the height $n+1$, the width $2^{s_n}+1$, and the cell size $2^{|u|}$
+ of $G_u$ are polynomial time computable 
+ and $n+1 \le \log(|0^{2^n}|) + 1 \le \log|u| + 1$.
+ Hence $(G_u)_u$ is logarithm height uniform function family.
  \end{proof}
 
 
