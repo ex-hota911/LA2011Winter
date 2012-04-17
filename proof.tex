@@ -384,16 +384,13 @@ $h_u$を構成し, $G_u$から$g_u$を構成する.
   補題\ref{DIVPlogIsCHhard}より
   $\classCH$困難な言語$L$を認識する
   対数段の一様な関数族$(G_u)_u$とその解$(H_u)_u$を得る.
-  対数段一様関数族の定義より 
-  $G_u \colon [p(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\}$
-  を満たす関数$p$と多項式$q$, $r$が存在する. 
-  $p (x) = O (\log x)$より,
-  多項式$\sigma$が存在して $(k+1)^{p(x)} \le \sigma(x)$が成立つ. 
 
   \cite[補題4.1]{kawamura2010lipschitz}の証明の冒頭と同様に
-  $G _u$, $H _u$を拡張することで
-  次が成立つとしてよい.
+  $G _u$, $H _u$を拡張することで多項式時間関数$p$, $j_u$と多項式$q$, $r$が存在し,
+  次が成立つとしてよい. 
   \begin{gather}
+   G_u \colon [p(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\}
+   \\
    H_u(i, 2^{q(|u|)}) = \begin{cases}
 			L(u) & (i=p(|u|)) \\
 			0 & (i<p(|u|))
@@ -401,6 +398,8 @@ $h_u$を構成し, $G_u$から$g_u$を構成する.
    \\
    i \not = j_u(T)  \to G_u(i, T, Y) = 0 
   \end{gather}
+  $G_u$は対数段であるため, $(k+1)^{p(x)} \le \sigma(x)$が成立つ多項式$\sigma$が存在する.
+
   $G _u$, $H _u$を模倣する$g _u$, $h _u$を構成する.
   具体的には$h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i = 0}H_u(i, T)/B^{d_u(i)}$
   を満たすようにする. この$B$と関数$d_u \colon [p(|u|)+1] \to \N$を次で定める. 
