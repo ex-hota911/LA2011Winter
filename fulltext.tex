@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper]{jsarticle}
+\documentclass[11pt,a4paper]{article}
 
 \makeatletter
 
@@ -37,11 +37,11 @@
 \newcommand{\classC}{\mathrm C}
 
 \theoremstyle{definition}
-\newtheorem{theorem}{定理}[section]
-\newtheorem{lemma}[theorem]{補題}
-\newtheorem{definition}[theorem]{定義}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
 
-\renewcommand{\proofname}{\bf 証明} 
+%\renewcommand{\proofname}{\bf 証明} 
 
 %%% 数式中の大文字ギリシャ文字を斜体化
 \renewcommand{\Lambda}{\varLambda}
@@ -90,7 +90,7 @@
 \input{preliminary}
 \input{proof}
 \input{constructive}
-\input{acknowledgements}
+\input{acknowledgement}
 
 \bibliography{la}
 
