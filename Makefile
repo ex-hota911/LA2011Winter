@@ -7,7 +7,7 @@
 FILE=fulltext
 EFILE=fulltext.euc
 # 分割され、インクルードされているファイル
-SRC=abstract.euc.tex proof.euc.tex introduction.euc.tex preliminary.euc.tex acknowledgements.euc.tex constructive.euc.tex
+SRC=abstract.euc.tex proof.euc.tex introduction.euc.tex preliminary.euc.tex acknowledgments.euc.tex constructive.euc.tex
 #文献データベース
 REF=la.euc.bib
 #走らせるTeXプログラム

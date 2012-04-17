@@ -107,56 +107,56 @@ $(\infty, 2)$回以上微分可能な関数によっても
 \ref{subsection: counting hierarchy}節にて述べる.
 
 
-\subsection{計数階層と対数段の差分方程式}
+\subsection{Counting Hierarchy and Logarithm Column Difference Equations}
 \label{subsection: counting hierarchy}
 
-\emph{計数階層}\kern\xkanjiskip(Counting Hierarchy) $\classCH$は
-Wagnerによって導入された計算量クラスである\cite{wagner1986complexity}.
-多項式階層$\classPH$が$\classNP$の神託機械を用いて
+The counting hierarchy($\classCH$) was
+introduced by Wagner in \cite{wagner1986complexity}.
+The polynomial hierarchy($\classPH$) is defined using non-deterministic polynomial time oracle Turing machines as 
 \begin{align}
  \classSigma^p_0  &= \classP
  &
  \classSigma^p_{n+1} &= \classNP ^{\classSigma^p_n}
  &
- \classPH &= \bigcup_n \classSigma^p_n
+ \classPH &= \bigcup_n \classSigma^p_n.
 \end{align}
-と定義されるのに対し,
-計数階層は多項式階層の$\classNP$を$\classPP$で置き換えて
+In the same way, $\classCH$ is defined
+using probabilistic polynomial time oracle Turing machines as
+\footnote{This characterization, introduced by Tor{\'a}n 
+in \cite{toran1991complexity}, is different from Wagner's original one.
+}
 \begin{align} \label{eq:CH}
  \quantC_0 \classP  &= \classP
  &
  \quantC_{n+1} \classP &= \classPP^{\quantC_n \classP}
  &
- \classCH &= \bigcup_n \quantC_n \classP
+ \classCH &= \bigcup_n \quantC_n \classP.
 \end{align}
-で定義される\footnote{ただしこの特徴づけは Tor{\'a}n によるものであり,
-Wagnerによる定義とは異なる\cite{toran1991complexity}.
-}. $\classPH \subseteq \classCH \subseteq \classPSPACE$だが,
-いずれも真の包含か否かは未解決である.
+It is shown $\classPH \subseteq \classCH \subseteq \classPSPACE$, 
+but even it is not know whether $\classPH = \classPSPACE$ or not.
 
 
 
-各階層$\quantC_n \classP$は次の完全問題$\quantC_n B_{be}$をもつ.
-量化子 $\quantC$ を自然数 $m$, $l$ 個の論理変数の組 $X$,
-論理式$\phi(X)$について次のように定義する.
+We identify a formula $\phi(X)$ with a function 
+$\phi \colon \{0,1\}^l \to \{0,1\}$ 
+such that $l$ is the size of $X$ and $\phi(X) = 1$ if and only if $\phi(X)$ is true.
+We can construct complete problems for all classes of the counting hierarchy.
+The counting quantifier $\quantC$ is defined as follows.
+For every formula $\phi(X)$, 
 \begin{equation}
  \quantC^m X \phi(X) 
   \longleftrightarrow 
   \sum_{X \in \{0,1\}^l} \phi(X) \ge m.
 \end{equation}
-ただし論理式$\phi(X)$を関数$\phi \colon \{0,1\}^l \to \{0,1\}$と同一視し,
-$\phi(X)$が成立つとき$\phi(X)=1$とする.
-$\quantC^1 = \exists$, $\quantC^{2^l} = \forall$ であり, $\quantC$ は $\exists, \forall$ の
-一般化と言える.
-言語$\quantC_n B_{be}$を次のように定義する.
+The operator $\quantC$ is as powerful as $\exists$ and $\forall$
+because of $\quantC^1 = \exists$ and $\quantC^{2^l} = \forall$.
+For $n \ge 1$, the sets of free variables $X_i$ and a formula $\phi(X_1, \dots, X_n)$ without free variables except $X_1, \dots, X_n$,
+we define
 \begin{equation}
  \langle \phi(X_1, \dots, X_n), m_1, \dots, m_n \rangle \in \quantC_n B_{be}
  \longleftrightarrow
- \quantC^{m_1}{X_1} \cdots \quantC^{m_n}{X_n} \phi(X_1, \dots, X_n) 
+ \quantC^{m_1}{X_1} \cdots \quantC^{m_n}{X_n} \phi(X_1, \dots, X_n).
 \end{equation}
-ただし
-$X_i$ は論理変数の組,
-$\phi(X_1, \dots, X_n)$は$X_1, \dots, X_n$以外の変数を持たない論理式とする.
 
 \begin{lemma}[{\cite[定理7]{wagner1986complexity}}] \label{lemma:CnP-complete}
  $\quantC_n B_{be}$ は $\quantC_n\classP$ 完全.
