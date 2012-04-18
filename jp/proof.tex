@@ -324,9 +324,9 @@ $f _u (x)$ の名であることをいう.
   各文字列 $u$ に対して以下を満たすものが存在する.
   \begin{enumerate}
    \item \label{enum:kf:start}
-     $g_u\colon [0,1] \times [-1,1]\to \R$, $h_u\colon [0,1] \to [-1,1]$. 
+	 $g_u\colon [0,1] \times [-1,1]\to \R$, $h_u\colon [0,1] \to [-1,1]$. 
    \item \label{enum:equation}
-	 $h_u(0) = 0$かつ任意の$t \in [0,1]$について$\D h_u(t) = g_u(t, h_u(t))$
+	 $h_u(0) = 0$かつ任意の$t \in [0,1]$について$\D h_u(t) = g_u(t, h_u(t))$.
    \item \label{enum:differentiability}
          $g_u$は$(\infty, k)$回連続微分可能.
    \item \label{enum:boundary}
@@ -366,12 +366,12 @@ $h_u$を構成し, $G_u$から$g_u$を構成する.
 補題\ref{DifferentiableFamily}も同様に, 
 補題\ref{DIVPpolyIsPSPACEhard}を用いて示す. 
 
- 補題\ref{KTimesFamily}では
- 河村\cite[補題4.1]{kawamura2010lipschitz}と違って
- $g _u$の滑らかさと導関数についての
- 条件(\ref{enum:differentiability}) -- (\ref{enum:smooth})が加わっている.
- これを満すように$g_u$を構成するため, 
- 次の補題にいう関数$f \colon [0,1] \to \R$を用いる. 
+補題\ref{KTimesFamily}では
+河村\cite[補題4.1]{kawamura2010lipschitz}と違って
+$g _u$の滑らかさと導関数についての
+条件(\ref{enum:differentiability}) -- (\ref{enum:smooth})が加わっている.
+これを満すように$g_u$を構成するため, 
+次の補題にいう関数$f \colon [0,1] \to \R$を用いる. 
 
  \begin{lemma}[{\cite[補題3.6]{ko1991complexity}}]
   \label{SmoothFunction}

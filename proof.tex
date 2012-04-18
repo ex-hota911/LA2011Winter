@@ -281,26 +281,25 @@ Since $T_{[1,s_{i+1} +1]} = 10 \cdots 0$,
  we get $G_u(n, 2^{s_n}, H_u(n,2^{s_n})) = \phi_n() = \quantC_{\log} B_{be}(u)$.
  Hence $H_u(n+1, 2^{s_n}+1) = \quantC_{\log} B_{be}(u)$.
  
- The height $n+1$, the width $2^{s_n}+1$, and the cell size $2^{|u|}$
- of $G_u$ are polynomial-time computable from $u$, 
- and $n+1 \le \log(|0^{2^n}|) + 1 \le \log|u| + 1$.
- Hence $(G_u)_u$ is uniform and has logarithmic height. 
- \end{proof}
+The height $n+1$, the width $2^{s_n}+1$, and the cell size $2^{|u|}$
+of $G_u$ are polynomial-time computable from $u$, 
+and $n+1 \le \log(|0^{2^n}|) + 1 \le \log|u| + 1$.
+Hence $(G_u)_u$ is uniform and has logarithmic height. 
+\end{proof}
 
 
-
-段数が定数$i$であるの一様関数族によって認識される言語クラスは,
-計数階層の第$i$層$\quantC_i \classP$を含み, $\quantC_{i+1} \classP$に含まれる.
-$\quantC_i \classP$は神託機械による定義\eqref{eq:CH}の他に,
-$\quantC_i B_{be}$へのカープ還元可能や,
-確率的に遷移するよう拡張された交替性機械において
-交替が高々$i$回である機械によって受理される言語として特徴付けられる.
-また対数段一様な関数族によって認識される言語は,
-$\quantC_{\log} B_{be}$へカープ還元される言語と一致し,
-拡張された交替性機械で交替が高々対数オーダーであるものと等しい.
-そのようなクラスは$\classCH$を含むため, 補題\ref{KTimesFamily}, 
-定理$\ref{KTimesIsCH}$では$\classCH$困難と述べるに留まっているが,
-$\classCH$と$\classPSPACE$の間のどこに位置するかは以前不明である.
+The language class accepted by uniform function family of $i$ rows
+contains $\quantC_i \classP$(the $i$th level of the counting hierarchy),
+and is contained $\quantC_{i+1} \classP$.
+While the class $\quantC_i \classP$ is defined as \eqref{eq:CH} using oracle Turing Turing machines,
+it is also characterized the language having Karp reduction to $\quantC_i B_{be}$, or 
+accepted by alternative polynomial-time Turing machines extended to behave probabilistically and alternation at most $i$ times.
+The language class accepted by uniform function family of logarithmic height
+coincided with one having Karp reduction to $\quantC_{\log} B_{be}$
+and with one accepted extended alternating Turing machines with logarithmic alternations.
+Since this class contains $\classCH$,
+we only state $\classCH$-hard in Lemma \ref{KTimesFamily} and Theorem $\ref{KTimesIsCH}$,
+but it is not known such class how hard the class is between $\classCH$ and $\classPSPACE$.
 
 
 
