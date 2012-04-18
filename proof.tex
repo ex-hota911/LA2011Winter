@@ -534,30 +534,27 @@ We have (\ref{enum:kf:end}) with
  stated in Lemma \ref{DifferentiableFamily}.
 
 
-\subsection{主定理の証明}
+\subsection{The Proof of Main Theorems}
 \label{subsection: proof of theorems}
+We describe the sketch of proof.
+Let $(g_u)_u$ and $(h_u)_u$ be as lemmas in the previous section,
+the real functions $g$ and $h$ in theorems is constructed by shrinking and connecting $(g_u)_u$ and $(h_u)_u$.
+Divide $[0,1)$ into infinity many subintervals $[l^-_u, l^+_u]$,
+with midpoints $c_u$.
+For each string $u$, we construct $h$ by putting a scaled copy of $h_u$ onto $[l^-_u, c_u]$ and
+putting scaled and horizontally reversed copy of $h_u(t)$ onto $[c_u, l^+_u]$ 
+so that $h(l^-_u) = 0$, $h(c_u) = 2^{-\rho'(|u|)} L(u)$ and $h(l^+_u) = 0$ where $\rho'$ is a polynomial.
+In the same way, $g$ is constructed from $(g_u)_u$ so that $g$ and $h$ satisfy \eqref{eq:ode}.
 
- 証明の概略を示す.
- 前の節の補題から得られる $(g_u)_u$ と $(h_u)_u$ を縮小して連結し滑らかな $g$ と
- 解 $h$ を構成する.
- $[0,1)$ を無限個の区間$[l^-_u, l^+_u]$に分割し, 
- その中心を$c_u$としたとき, 各区間 $[l^-_u, c_u]$ に $h_u$ を縮小して埋め込む. 
- $h_u(1)$が後の計算に影響を与えないために,
- $h_u$ を定義域方向について反転したものを
- 区間 $[c_u, l^+_u]$ に埋め込むことで相殺する.
- つまりある多項式$\rho'$に対して
- $h(l^-_u) = 0,\ h(c_u) = 2^{-\rho'(|u|)} L(u),\ h(l^+_u) = 0$ を満たす
- ように $h$ を構成する.
- また $g$ と $h$ が方程式(\ref{eq:ode})を満たすよう,
- 各文字列 $u$ に対応する区間に $g_u$ を縮小して埋め込むことで $g$ を構成する.
+We omit the proof of Theorem \ref{DifferentiableIsPspace} 
+since it can be shown using Lemma \ref{DifferentiableFamily}
+applying the same argument as follows.
 
- 定理 \ref{DifferentiableIsPspace} は補題 \ref{DifferentiableFamily} を用いると,
- 定理 \ref{KTimesIsCH} と同様に証明されるため, ここでは省略する.
 
-\begin{proof}[定理 \ref{KTimesIsCH} の証明]
- $L$ を $\classCH$ 困難な言語とおく.
- $L$ に対して補題 \ref{DifferentiableFamily} を用いて,
- まず多項式 $\mu$ をえる.
+
+\begin{proof}[Proof of \ref{KTimesIsCH}]
+Let $L$ and $\mu$ be as Lemma \ref{DifferentiableFamily}.
+Define
  \begin{align}
   \lambda(x) &= 2x + 2,&
   \gamma(x) &= x \mu(x, x) + x \lambda(x)
