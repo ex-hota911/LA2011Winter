@@ -277,9 +277,9 @@ Since $T_{[1,s_{i+1} +1]} = 10 \cdots 0$,
  \end{align}
 
 
- By substituting $n$ for $i$ and $2^{s_n}$ for $T$ in \eqref{eq:subformula},
- we get $G_u(n, 2^{s_n}, H_u(n,2^{s_n})) = \phi_n() = \quantC_{\log} B_{be}(u)$.
- Hence $H_u(n+1, 2^{s_n}+1) = \quantC_{\log} B_{be}(u)$.
+By substituting $n$ for $i$ and $2^{s_n}$ for $T$ in \eqref{eq:subformula},
+we get $G_u(n, 2^{s_n}, H_u(n,2^{s_n})) = \phi_n() = \quantC_{\log} B_{be}(u)$.
+Hence $H_u(n+1, 2^{s_n}+1) = \quantC_{\log} B_{be}(u)$.
  
 The height $n+1$, the width $2^{s_n}+1$, and the cell size $2^{|u|}$
 of $G_u$ are polynomial-time computable from $u$, 
@@ -303,44 +303,44 @@ but it is not known such class how hard the class is between $\classCH$ and $\cl
 
 
 
-\subsection{差分方程式を模倣する関数族}
+\subsection{Families of Real Function Simulating Difference Equations}
 \label{subsection: ode family}
-次に前節で示した$\classPSPACE$または$\classCH$困難な各差分方程式を滑らかな実関数で模倣可能であることを示す.
+We show that families of smooth differential equations can simulate 
+$\classPSPACE$-hard or $\classCH$-hard difference equations stated in previous section.
 
-まず実関数の多項式時間計算可能性を
-実関数の族に拡張する.
-文字列$u$で添字づけられた実関数$f _u \colon A \to \R$の
-族 $(f_u)_u$ を機械 $M$ が計算するとは,
-任意の実数 $x \in A$, 任意の $x$ の名 $\phi_x$ に対して,
-文字列 $v$ を $M ^{\phi _x} (u, v)$ へ移す関数が, 
-$f _u (x)$ の名であることをいう.
-実関数族が多項式時間計算可能であるとは, その実関数族を計算する
-多項式時間神託機械が存在することである.
+Before stating Lemma \ref{KTimesFamily} and Lemma \ref{DifferentiableFamily},
+we extend the definition of polynomial-time computability of real function
+to families of real functions.
+We say that a family $(f_u)_u$ of functions $f _u \colon A \to \R$ 
+indexed by strings $u$ is computed by an oracle Turing machine $M$ as computable
+if for any $x \in A$ and name $\phi_x$ of $x$,
+the function taking $v$ to $M ^{\phi _x} (u, v)$ is a name of $f _u (x)$.
+We say a family of real functions$(f_u)_u$ is polynomial-time if there is
+polynomial-time machine compute $(f_u)_u$.
 
  \begin{lemma}
   \label{KTimesFamily}
-  $\classCH$困難な言語$L$と
-  多項式$\mu$が存在し,
-  任意の正の整数 $k$,
-  任意の多項式 $\gamma$ に対して,
-  多項式 $\rho$, 実関数族 $(g_u)_u, (h_u)_u$ で, 
-  $(g_u)_u$ は多項式時間計算可能であり,
-  各文字列 $u$ に対して以下を満たすものが存在する.
+  There exist A $\classCH$-hard language $L$ and a polynomial $\mu$ exist
+  such that for all $k \ge 1$ and polynomials $\gamma$,
+  there are a polynomial $\rho$ and families $(g_u)_u$, $(h_u)_u$ of real functions
+  such that $(g_u)_u$ is polynomial-time computable and for any string $u$:
   \begin{enumerate}
    \item \label{enum:kf:start}
-     $g_u\colon [0,1] \times [-1,1]\to \R$, $h_u\colon [0,1] \to [-1,1]$. 
+	 $g_u\colon [0,1] \times [-1,1]\to \R$, $h_u\colon [0,1] \to [-1,1]$;
    \item \label{enum:equation}
-	 $h_u(0) = 0$かつ任意の$t \in [0,1]$について$\D h_u(t) = g_u(t, h_u(t))$
+	 $h_u(0) = 0$ and $\D h_u(t) = g_u(t, h_u(t))$ for all $t \in [0,1]$;
    \item \label{enum:differentiability}
-         $g_u$は$(\infty, k)$回連続微分可能.
+         $g_u$ is $(\infty, k)$-time continuously differentiable;
    \item \label{enum:boundary}
-	 任意の $i \in \N$, $y \in [-1,1]$ に対して$
-	  \D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0
-         $.
+	 for all $i \in \N$ and $y \in [-1,1]$,
+	 $
+	 \D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0
+         $;
    \item \label{enum:smooth}
-	 任意の $i \in \N$, $j \in \{0, \dots, k\}$ に対して$
-	  \left|\D^{(i,j)} g_u(t,y)\right| \le 2^{\mu(i, |u|) - \gamma(|u|)}
-         $.
+	 for all $i \in \N$ and $j \in \{0, \dots, k\}$ 
+	 $
+	 \left|\D^{(i,j)} g_u(t,y)\right| \le 2^{\mu(i, |u|) - \gamma(|u|)}
+         $;
    \item \label{enum:kf:end}
 	 $h_u(1) = 2^{-\rho(|u|)} L(u)$.
   \end{enumerate}
@@ -348,14 +348,11 @@ $f _u (x)$ の名であることをいう.
 
 \begin{lemma}
  \label{DifferentiableFamily}
- $\classPSPACE$困難な言語$L$と
- 多項式$\mu$が存在し, 
- $k = 1$のとき,
- 任意の多項式 $\gamma$ に対して,
- 多項式 $\rho$, 実関数族 $(g_u)_u, (h_u)_u$ で, 
- $(g_u)_u$ は多項式時間計算可能であり,
- 各文字列 $u$ に対して
- 補題\ref{KTimesFamily}の(\ref{enum:kf:start}) -- (\ref{enum:kf:end})を満たすものが存在する.
+ There exist A $\classPSPACE$-hard language $L$ and a polynomial $\mu$,
+ suppose that $k = 1$, for all polynomials $\gamma$,
+ there are a polynomial $\rho$ and families $(g_u)_u$, $(h_u)_u$ of real functions
+ such that $(g_u)_u$ is polynomial-time computable and for any string $u$
+ satisfying (\ref{enum:kf:start}) -- (\ref{enum:kf:end}) in Lemma \ref{KTimesFamily}.
 \end{lemma}
 
 補題\ref{KTimesFamily}は次のように証明する.
