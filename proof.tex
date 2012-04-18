@@ -356,8 +356,8 @@ polynomial-time machine compute $(f_u)_u$.
 \end{lemma}
 
 We will reduce Lemma \ref{KTimesFamily} to Lemma \ref{DIVPlogIsCHhard} as follows.
-For a $\classCH$-hard language $L$, we get families $(G_u)_u$ and $(H_u)_u$ 
-of functions satisfying the conditions stated in Lemma \ref{DIVPlogIsCHhard}.
+Let a function family $(G_u)_u$ be as in Lemma \ref{DIVPlogIsCHhard},
+and let $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
 For each $T = 0$, \ldots, $2^{q(|u|)}$,
 we construct $h_u$ and $g_u$ from $H_u$ and $G_u$ 
 such that $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i}H_u(i, T)/B^{d_u(i)}$ and $\D h_u(t) = g_u(t, h_u(t))$.
@@ -392,27 +392,29 @@ and omit the proof of Lemma \ref{DifferentiableFamily}
 since it is easy and specific.
 
 
-\begin{proof}[\rm 補題 \ref{KTimesFamily} の証明]
-補題\ref{DIVPlogIsCHhard}より
-  $\classCH$困難な言語$L$を認識する
-  対数段の一様な関数族$(G_u)_u$とその解$(H_u)_u$を得る.
+\begin{proof}[Proof of Lemma \ref{KTimesFamily}]
+Let a function family $(G_u)_u$ be as in Lemma \ref{DIVPlogIsCHhard},
+and let a function family $(H_u)_u$ be the solution of difference equation given by $(G_u)_u$.
 
-  \cite[補題4.1]{kawamura2010lipschitz}の証明の冒頭と同様に
-  $G _u$, $H _u$を拡張することで多項式時間関数$p$, $j_u$と多項式$q$, $r$が存在し,
-  次が成立つとしてよい. 
-  \begin{gather}
-   G_u \colon [p(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\}
-   \\
-   H_u(i, 2^{q(|u|)}) = \begin{cases}
-			L(u) & (i=p(|u|)) \\
-			0 & (i<p(|u|))
-			\end{cases}
-   \\
-   i \not = j_u(T)  \to G_u(i, T, Y) = 0 
-  \end{gather}
-  $G_u$は対数段であるため, $(k+1)^{p(x)} \le \sigma(x)$が成立つ多項式$\sigma$が存在する.
+By the same argument as at the beginning of the proof\cite[Lemma 4.1]{kawamura2010lipschitz},
+we may assume that there exist polynomial-time functions $p$, $j_u$
+and polynomial $q$, $r$ satisfying following properties:
+\begin{gather}
+ G_u \colon [p(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\};
+ \\
+ H_u(i, 2^{q(|u|)}) = \begin{cases}
+		       L(u) & (i=p(|u|)) \\
+		       0 & (i<p(|u|))
+		      \end{cases};
+ \\
+ i \not = j_u(T)  \to G_u(i, T, Y) = 0.
+\end{gather}
+Since $G_u$ has logarithmic height,
+there exists polynomial $\sigma$ such that $(k+1)^{p(x)} \le \sigma(x)$
 
-  $G _u$, $H _u$を模倣する$g _u$, $h _u$を構成する.
+
+We construct the families real functions $(g_u)_u$ and $(h_u)_u$ simulating $G _u$ and $H _u$.
+
   具体的には$h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i = 0}H_u(i, T)/B^{d_u(i)}$
   を満たすようにする. この$B$と関数$d_u \colon [p(|u|)+1] \to \N$を次で定める. 
   \begin{align}
@@ -556,7 +558,7 @@ $を次で定義する.
  定理 \ref{DifferentiableIsPspace} は補題 \ref{DifferentiableFamily} を用いると,
  定理 \ref{KTimesIsCH} と同様に証明されるため, ここでは省略する.
 
-\begin{proof}[\rm 定理 \ref{KTimesIsCH} の証明]
+\begin{proof}[定理 \ref{KTimesIsCH} の証明]
  $L$ を $\classCH$ 困難な言語とおく.
  $L$ に対して補題 \ref{DifferentiableFamily} を用いて,
  まず多項式 $\mu$ をえる.
