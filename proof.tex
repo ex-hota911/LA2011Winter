@@ -413,10 +413,9 @@ Since $G_u$ has logarithmic height,
 there exists polynomial $\sigma$ such that $(k+1)^{p(x)} \le \sigma(x)$
 
 
-We construct the families real functions $(g_u)_u$ and $(h_u)_u$ simulating $G _u$ and $H _u$.
-
-  具体的には$h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i = 0}H_u(i, T)/B^{d_u(i)}$
-  を満たすようにする. この$B$と関数$d_u \colon [p(|u|)+1] \to \N$を次で定める. 
+We construct the families real functions $(g_u)_u$ and $(h_u)_u$ simulating $G _u$ and $H _u$,
+in particular, $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i = 0}H_u(i, T)/B^{d_u(i)}$.
+We define the constant $B$ and the function $d_u \colon [p(|u|)+1] \to \N$ as
   \begin{align}
    B &= 2^{\gamma(|u|) + r(|u|) + s(k) + k + 3}
    &
@@ -424,27 +423,23 @@ We construct the families real functions $(g_u)_u$ and $(h_u)_u$ simulating $G _
    \begin{cases}
     \sigma(|u|) & (i=p(|u|)) 
     \\
-    (k+1)^i & (i<p(|u|))
+    (k+1)^i & (i<p(|u|)).
    \end{cases}
   \end{align}
-各$(t, y) \in [0,1] \times [-1, 1]$に対して,
-$t = (T + \theta)2^{-q(|u|)}$, $y = (Y + \eta)B^{-d_u(j_u(T))}$を満たす
-$N \in \N$, 
-$\theta \in [0,1)$, 
-$Y \in \Z$, 
-$\eta \in [-1/4, 3/4)$が
-それぞれ唯一存在する.
-関数$\delta_{u,Y} \colon [0,1] \to \R$を次で定める. 
+For each $(t, y) \in [0,1] \times [-1, 1]$,
+there exists unique $N \in \N$, $\theta \in [0,1)$ and $Y \in \Z$
+such that $t = (T + \theta)2^{-q(|u|)}$ and $y = (Y + \eta)B^{-d_u(j_u(T))}$.
+We define $\delta_{u,Y} \colon [0,1] \to \R$ as
  \begin{equation} \label{eq:delta}
   \delta_{u, Y} (t) = \frac{2^{q(|u|)} \D f(\theta)}{B^{d_u(j_u(T)+1)}} 
-   G_u \bigl( j_u(T), T, Y \bmod 2^{r(|u|)} \bigr)
+   G_u \bigl( j_u(T), T, Y \bmod 2^{r(|u|)} \bigr),
  \end{equation}
-関数$
+and let $f$ and polynomial $s$ be as in Lemma \ref{SmoothFunction},
+we define $
 g _u \colon [0, 1] \times [-1, 1] \to \R
-$と$
+$ and $
 h _u \colon [0, 1] \to [-1, 1]
-$を次で定義する.
-ただし$f$と多項式$s$は補題\ref{SmoothFunction}のものである.
+$ as
   \begin{align}
   \label{eq:gu}
   g_u(t,y) 
@@ -459,9 +454,10 @@ $を次で定義する.
    \\
   h_u(t) 
    &= \sum^{p(|u|)}_{i=0} \frac{H_u(i, T)}{B^{d_u(i)}}  
-  + \frac{f(\theta)}{B^{d_u(j_u(T)+1)}} G_u \bigl( j_u(T), T, H_u(j_u(T), T) \bigr) 
+  + \frac{f(\theta)}{B^{d_u(j_u(T)+1)}} G_u \bigl( j_u(T), T, H_u(j_u(T), T) \bigr) .
   \label{eq:hu}
   \end{align}
+
 
 この$g_u$, $h_u$が補題\ref{KTimesFamily}の各性質を満たすことを示す. 
 性質(\ref{enum:equation})は
