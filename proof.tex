@@ -428,18 +428,19 @@ We define the constant $B$ and the function $d_u \colon [p(|u|)+1] \to \N$ as
 For each $(t, y) \in [0,1] \times [-1, 1]$,
 there exists unique $N \in \N$, $\theta \in [0,1)$ and $Y \in \Z$
 such that $t = (T + \theta)2^{-q(|u|)}$ and $y = (Y + \eta)B^{-d_u(j_u(T))}$.
-We define $\delta_{u,Y} \colon [0,1] \to \R$ as
- \begin{equation} \label{eq:delta}
-  \delta_{u, Y} (t) = \frac{2^{q(|u|)} \D f(\theta)}{B^{d_u(j_u(T)+1)}} 
-   G_u \bigl( j_u(T), T, Y \bmod 2^{r(|u|)} \bigr),
- \end{equation}
-and let $f$ and polynomial $s$ be as in Lemma \ref{SmoothFunction},
-we define $
+Let $f$ and a polynomial $s$ be as in Lemma \ref{SmoothFunction},
+we define 
+$\delta_{u,Y} \colon [0,1] \to \R$,
+$
 g _u \colon [0, 1] \times [-1, 1] \to \R
 $ and $
 h _u \colon [0, 1] \to [-1, 1]
 $ as
   \begin{align}
+    \label{eq:delta}
+   \delta_{u, Y} (t) &= \frac{2^{q(|u|)} \D f(\theta)}{B^{d_u(j_u(T)+1)}} 
+   G_u \bigl( j_u(T), T, Y \bmod 2^{r(|u|)} \bigr),
+   \\
   \label{eq:gu}
   g_u(t,y) 
   &= \begin{cases}
@@ -448,7 +449,7 @@ $ as
      \\
      ( 1-f ( \frac{4\eta-1}{2})) \delta_{u, Y}(t)
      + f ( \frac{4\eta-1}{2}) \delta_{u,Y+1}(t)
-     & (\eta > \frac 1 4)
+     & (\eta > \frac 1 4),
     \end{cases}
    \\
   h_u(t) 
@@ -457,19 +458,18 @@ $ as
   \label{eq:hu}
   \end{align}
 
+We will verify that $(g_u)_u$ and $(h_u)_u$ defined above satisfy all the conditions stated in Lemma \ref{KTimesFamily}.
 
-この$g_u$, $h_u$が補題\ref{KTimesFamily}の各性質を満たすことを示す. 
-性質(\ref{enum:equation})は
-\cite[補題 4.1]{kawamura2010lipschitz}と同様に判る.
+The condition(\ref{enum:equation}) are verified by applying the same argument of
+\cite[Lemma 4.1]{kawamura2010lipschitz}.
 
-性質(\ref{enum:differentiability}), すなわち$g _u$が$(\infty, k)$回連続微分可能であることを示す.
-  \eqref{eq:delta}, \eqref{eq:gu}より
-  各$i \in \N$について
+We will verify that the condition(\ref{enum:differentiability}) holds, that is, $g _u$ is $(\infty, k)$-times continuously differentiable.
+For each $i \in \N$,
   \begin{align}
    \D^i \delta_{u,Y}(t) 
 &
     = \frac{2^{(i+1)q(|u|)} \D^{i+1}f(\theta)}{B^{d_u(j_u(T)+1)}}
-    G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right)
+    G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right),
 \\
    \label{eq:derivativeofgu}
     \D^{(i,0)} g_u(t, y)
@@ -480,43 +480,42 @@ $ as
 	\left( 1-f \left(\frac{4\eta-1}{2}\right)\right) 
 	\D^i \delta_{u, Y}(t)
 	+ f \left(\frac{4\eta-1}{2}\right) \D^i \delta_{u,Y+1}(t) 
-	& (\frac 1 4 < \eta < \frac 3 4)
+	& (\frac 1 4 < \eta < \frac 3 4),
        \end{cases}
   \end{align}
-  $j \in \{1, \dots , k\}$ について,
+and for each  $j \in \{1, \dots , k\}$,
   \begin{equation}
     \D^{(i,j)} g_u(t, y)
      = \begin{cases}
 	0 & (- \frac 1 4 < \eta < \frac 1 4) \\
 	(2B^{d_u(j_u(T))})^j \D^j f(\frac{4\eta - 1}2)
 	(\D^i \delta_{u,Y+1}(t)-\D^i \delta_{u, Y}(t)) 
-	& (\frac 1 4 < \eta < \frac 3 4)
+	& (\frac 1 4 < \eta < \frac 3 4).
        \end{cases}
   \end{equation}
-  境界においても連続であるため,
-  $g _u$は$(\infty, j)$回連続微分可能であることが示された.
-また式 (\ref{eq:derivativeofgu}) に $t = 0, 1$ ($\theta = 0$) を代入して
-  $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$.
-  つまり(\ref{enum:boundary})が成立つ.
+They are all continuous on the boundary($\theta = 0$, $\eta = -1/4, 3/4$).
+Hence $g _u$ is $(\infty, j)$-times continuously differentiable.
+Substituting $t = 0, 1$ ($\theta = 0$) into \eqref{eq:derivativeofgu},
+we get $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$, 
+so the condition (\ref{enum:boundary}) holds.
 
-  (\ref{enum:smooth})を示す.
-  $\mu(x, y) = (x+1)q(y) + s(x+1)$とおく.
-  この$\mu$は$k$や$\gamma$に依存しない多項式である.
-  式(\ref{eq:delta})より
-  $|\D^i \delta_{u,Y}(t)| \le 2^{(i+1)q(|u|) + s(i+1)}B^{-d_u(j_u(|u|)+1)}$.
-  任意の $i \in \N$, $j \in \{0, \dots, k\}$ について
-  \begin{equation}
-   |\D^{(i,j)} g_u| 
+We show that the condition (\ref{enum:smooth}) holds with $\mu(x, y) = (x+1)q(y) + s(x+1)$.
+Note that $\mu$ is a polynomial independent from $k$ or $\gamma$.
+Since $|\D^i \delta_{u,Y}(t)| \le 2^{(i+1)q(|u|) + s(i+1)}B^{-d_u(j_u(|u|)+1)}$ by \eqref{eq:delta}, for all $i \in \N$ and $j \in \{0, \dots, k\}$,
+ \begin{equation}
+  |\D^{(i,j)} g_u| 
    \le 
    2^k B^{k \cdot j_u(T)} 2^{s(k)} \cdot 2 \cdot 
    \frac{2^{(i+1)q(|u|) + s(i+1)}}{B^{d_u(j_u(|u|)+1)}} 
    \le
    \frac{2^{\mu(i, |u|) + s(k) + k + 1}}{B}
-  \end{equation}
-  $B$のとり方により, $|\D^{(i,j)} g_u| \leq 2^{\mu(i, |u|) - \gamma(|u|)}$.
+   \le
+   2^{\mu(i, |u|) - \gamma(|u|)}
+ \end{equation}
+ by our choice of $B$.
 
-  (\ref{enum:kf:end})を示す.
-  $\rho(x) = \sigma(x) \cdot (\gamma(x)+r(x)+s(k)+k+3)$ とおくと,
+We have (\ref{enum:kf:end}) with
+  $\rho(x) = \sigma(x) \cdot (\gamma(x)+r(x)+s(k)+k+3)$ because
   \begin{equation}
    h_u(1) = \frac{H_u(p(|u|), 2^{q(|u|)})}{B^{d_u(p(|u|))}} 
           = \frac{L(u)}{2^{\sigma(|u|) \cdot (\gamma(|u|)+r(|u|)+s(k)+k+3)}}
@@ -526,11 +525,13 @@ $ as
 
 
 
- 補題 \ref{DifferentiableFamily} の証明では$d_u$を$d_u(i) = i$と置き換え,
- $\classPSPACE$困難な言語を認識する多項式段一様関数族$(G_u)_u$とその解$(H_u)_u$に対して,
- 式(\ref{eq:gu}), (\ref{eq:hu})により$(g_u)_u$と$(h_u)_u$を定義する.
- それらが補題 \ref{DifferentiableFamily} で求める性質を満たすことは,
- 補題 \ref{KTimesFamily} の証明と同様に示される.
+ To prove Lemma \ref{DifferentiableFamily}, 
+ let a function family $(G_u)_u$ be as Lemma \ref{DIVPpolyIsPSPACEhard}
+ and a function family $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$,
+ and define $(g_u)_u$ and $(h_u)_u$ as \eqref{eq:gu} and \eqref{eq:hu}
+ with $d_u(i) = i$.
+ It is shown in the same way above that they match all the conditions
+ stated in Lemma \ref{DifferentiableFamily}.
 
 
 \subsection{主定理の証明}
