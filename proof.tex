@@ -298,7 +298,7 @@ extended with ``threshold states'' and having at most $i$ alternations.
 Likewise, 
 the language class accepted by uniform function families of logarithmic height
 coincided with languages Karp-reducible to $\quantC_{\log} B_{be}$
-and with those accepted by an extended alternating Turing machines with logarithmic alternations.
+and with those accepted by an extended alternating Turing machine with logarithmic alternations.
 Since this class contains $\classCH$,
 we only state $\classCH$-hard in Lemma \ref{KTimesFamily} and Theorem $\ref{KTimesIsCH}$,
 but it is not known such class how hard the class is between $\classCH$ and $\classPSPACE$.
@@ -355,42 +355,41 @@ a polynomial-time machine computing $(f_u)_u$.
  satisfying (\ref{enum:kf:start})--(\ref{enum:kf:end}) of Lemma \ref{KTimesFamily} with $k = 1$.
 \end{lemma}
 
-We will reduce Lemma \ref{KTimesFamily} to Lemma \ref{DIVPlogIsCHhard} as follows.
+We will prove Lemma~\ref{KTimesFamily} using Lemma~\ref{DIVPlogIsCHhard} as follows.
 Let a function family $(G_u)_u$ be as in Lemma \ref{DIVPlogIsCHhard},
 and let $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
 For each $T = 0$, \ldots, $2^{q(|u|)}$,
 we construct $h_u$ and $g_u$ from $H_u$ and $G_u$ 
-such that $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i}H_u(i, T)/B^{d_u(i)}$ and $\D h_u(t) = g_u(t, h_u(t))$.
-The polynomial-time computability of $(g_u)_u$ follows from the one of $(G_u)_u$.
-We will reduce Lemma \ref{DifferentiableFamily} to Lemma \ref{DIVPpolyIsPSPACEhard} in the same way.
+such that $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i = 0} H_u(i, T)/B^{d_u(i)}$ and $\D h_u(t) = g_u(t, h_u(t))$.
+The polynomial-time computability of $(g_u)_u$ follows from that of $(G_u)_u$.
+We will prove Lemma~\ref{DifferentiableFamily} from Lemma~\ref{DIVPpolyIsPSPACEhard} in the same way.
 
 In Lemma \ref{KTimesFamily}, 
-we add the conditions (\ref{enum:differentiability}) -- (\ref{enum:smooth}) 
-about smoothness and derivatives of $g_u$ to \cite[Lemma 4.1]{kawamura2010lipschitz}.
-To satisfy the conditions, we construct $g_u$ 
-using the real function $f$ in following lemma.
+we have the new conditions (\ref{enum:differentiability})--(\ref{enum:smooth}) 
+about the smoothness and the derivatives of $g_u$ 
+that were not present in \cite[Lemma 4.1]{kawamura2010lipschitz}.
+To satisfy these conditions, we construct $g_u$ 
+using the smooth function $f$ in following lemma.
 
 \begin{lemma}[{\cite[Lemma 3.6]{ko1991complexity}}]
  \label{SmoothFunction}
- There exist a polynomial-time infinitely differentiable real function  $f \colon [0,1] \to \R$ 
- and a polynomial $s$ such that:
+ There exist a polynomial-time infinitely differentiable function  $f \colon [0,1] \to \R$ 
+ and a polynomial $s$ such that
   \begin{enumerate}
    \item $f(0) = 0$ and $f(1) = 1$;
    \item $\D ^n f (0) = \D ^n f (1) = 0$ for all $n \ge 1$;
    \item $f$ is strictly increasing;
    \item $\D ^n f$ is polynomial-time computable for all $n \ge 1$;
    \item \label{enum:polynomial-size}
-	 $|\D^n f| \le s(n)$ for all $n \ge 1$,. 
+	 $|\D^n f| \le s(n)$ for all $n \ge 1$. 
   \end{enumerate}
  \end{lemma}
 
-Though existence of polynomial $s$ satisfying the condition (\ref{enum:polynomial-size}) is not stated in \cite[Lemma 3.6]{ko1991complexity},
+Although the existence of the polynomial~$s$ satisfying the condition (\ref{enum:polynomial-size}) is not stated in \cite[Lemma 3.6]{ko1991complexity},
 it can be shown easily.
 
 We only prove Lemma \ref{KTimesFamily} here
-and omit the proof of Lemma \ref{DifferentiableFamily}
-since it is easy and specific.
-
+and omit the analogous and easier proof of Lemma \ref{DifferentiableFamily}.
 
 \begin{proof}[Proof of Lemma \ref{KTimesFamily}]
 Let a function family $(G_u)_u$ be as in Lemma \ref{DIVPlogIsCHhard},
