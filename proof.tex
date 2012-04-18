@@ -288,22 +288,24 @@ Hence $(G_u)_u$ is uniform and has logarithmic height.
 \end{proof}
 
 
-The language class accepted by uniform function family of $i$ rows
-contains $\quantC_i \classP$(the $i$th level of the counting hierarchy),
-and is contained $\quantC_{i+1} \classP$.
-While the class $\quantC_i \classP$ is defined as \eqref{eq:CH} using oracle Turing Turing machines,
-it is also characterized the language having Karp reduction to $\quantC_i B_{be}$, or 
-accepted by alternative polynomial-time Turing machines extended to behave probabilistically and alternation at most $i$ times.
-The language class accepted by uniform function family of logarithmic height
-coincided with one having Karp reduction to $\quantC_{\log} B_{be}$
-and with one accepted extended alternating Turing machines with logarithmic alternations.
+The language class recognized by uniform function families with $i$ rows
+contains $\quantC_i \classP$ (the $i$th level of the counting hierarchy)
+and is contained in $\quantC_{i+1} \classP$.
+While the class $\quantC_i \classP$ is defined by \eqref{eq:CH} using oracle Turing machines,
+it is also characterized as those languages Karp-reducible to $\quantC_i B_{be}$, or 
+as those accepted by a polynomial-time alternating Turing machine 
+extended with ``threshold states'' and having at most $i$ alternations.
+Likewise, 
+the language class accepted by uniform function families of logarithmic height
+coincided with languages Karp-reducible to $\quantC_{\log} B_{be}$
+and with those accepted by an extended alternating Turing machines with logarithmic alternations.
 Since this class contains $\classCH$,
 we only state $\classCH$-hard in Lemma \ref{KTimesFamily} and Theorem $\ref{KTimesIsCH}$,
 but it is not known such class how hard the class is between $\classCH$ and $\classPSPACE$.
 
 
 
-\subsection{Families of Real Function Simulating Difference Equations}
+\subsection{Families of Real Functions Simulating Difference Equations}
 \label{subsection: ode family}
 We show that families of smooth differential equations can simulate 
 $\classPSPACE$-hard or $\classCH$-hard difference equations stated in previous section.
@@ -312,15 +314,15 @@ Before stating Lemma \ref{KTimesFamily} and Lemma \ref{DifferentiableFamily},
 we extend the definition of polynomial-time computability of real function
 to families of real functions.
 We say that a family $(f_u)_u$ of functions $f _u \colon A \to \R$ 
-indexed by strings $u$ is computed by an oracle Turing machine $M$ as computable
-if for any $x \in A$ and name $\phi_x$ of $x$,
+indexed by strings $u$ is computed by an oracle Turing machine $M$ 
+if for any $x \in A$ and any name $\phi_x$ of $x$,
 the function taking $v$ to $M ^{\phi _x} (u, v)$ is a name of $f _u (x)$.
-We say a family of real functions$(f_u)_u$ is polynomial-time if there is
-polynomial-time machine compute $(f_u)_u$.
+We say a family of real functions $(f_u)_u$ is polynomial-time if there is
+a polynomial-time machine computing $(f_u)_u$.
 
  \begin{lemma}
   \label{KTimesFamily}
-  There exist A $\classCH$-hard language $L$ and a polynomial $\mu$ exist
+  There exist a $\classCH$-hard language $L$ and a polynomial $\mu$ 
   such that for all $k \ge 1$ and polynomials $\gamma$,
   there are a polynomial $\rho$ and families $(g_u)_u$, $(h_u)_u$ of real functions
   such that $(g_u)_u$ is polynomial-time computable and for any string $u$:
@@ -330,17 +332,15 @@ polynomial-time machine compute $(f_u)_u$.
    \item \label{enum:equation}
 	 $h_u(0) = 0$ and $\D h_u(t) = g_u(t, h_u(t))$ for all $t \in [0,1]$;
    \item \label{enum:differentiability}
-         $g_u$ is $(\infty, k)$-time continuously differentiable;
+         $g_u$ is $(\infty, k)$-times continuously differentiable;
    \item \label{enum:boundary}
-	 for all $i \in \N$ and $y \in [-1,1]$,
 	 $
 	 \D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0
-         $;
+         $ for all $i \in \N$ and $y \in [-1,1]$;
    \item \label{enum:smooth}
-	 for all $i \in \N$ and $j \in \{0, \dots, k\}$ 
 	 $
 	 \left|\D^{(i,j)} g_u(t,y)\right| \le 2^{\mu(i, |u|) - \gamma(|u|)}
-         $;
+         $ for all $i \in \N$ and $j \in \{0, \dots, k\}$;
    \item \label{enum:kf:end}
 	 $h_u(1) = 2^{-\rho(|u|)} L(u)$.
   \end{enumerate}
@@ -348,11 +348,11 @@ polynomial-time machine compute $(f_u)_u$.
 
 \begin{lemma}
  \label{DifferentiableFamily}
- There exist A $\classPSPACE$-hard language $L$ and a polynomial $\mu$,
- suppose that $k = 1$, for all polynomials $\gamma$,
+ There exist a $\classPSPACE$-hard language $L$ and a polynomial $\mu$,
+ such that for all polynomials $\gamma$,
  there are a polynomial $\rho$ and families $(g_u)_u$, $(h_u)_u$ of real functions
  such that $(g_u)_u$ is polynomial-time computable and for any string $u$
- satisfying (\ref{enum:kf:start}) -- (\ref{enum:kf:end}) in Lemma \ref{KTimesFamily}.
+ satisfying (\ref{enum:kf:start})--(\ref{enum:kf:end}) of Lemma \ref{KTimesFamily} with $k = 1$.
 \end{lemma}
 
 補題\ref{KTimesFamily}は次のように証明する.
