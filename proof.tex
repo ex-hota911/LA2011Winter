@@ -250,19 +250,16 @@ such that $V_{[1, s_i +1]} = 10 \cdots 0$.
 For $i=0$, the claims follows from \eqref{eq:def-Gu:case0}.
 For the induction step, assume \eqref{eq:subformula}. 
 We have
- \begin{equation}
+ \begin{equation} \label{eq:summation}
   H_u(i+1, T) 
   = \sum_{V = 0}^{T-1} G_u(i, V, H_u(i, V)) 
   = \sum_{V} (-1)^{V_{s_{i+1}}} \phi_i(V_{[s_i+1, s_{i+1}]}, 
-   \dots, V_{[s_{n-1}+1, s_n]}). 
+   \dots, V_{[s_{n-1}+1, s_n]}),
  \end{equation}
-For $U \in \{0,1\}^*$, we write $\overline U$ for the number represented by $U$ as binary expression.
-For $V < \overline{T_{[s_{i+1}+1, s_n]} 0 \cdots 0}$,
-the number $V'$ which is equal to $V$ with flipping the $s_i+1$ digit is
-also less than $\overline{T_{[s_{i+1}+1, s_n]} 0 \cdots 0}$,
-and  $\phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]}) +
- - \phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]}) = 0$.
-Since $T_{[1,s_{i+1} +1]} = 10 \cdots 0$,
+where we write $\overline U$ for the number represented by string $U$ as binary expression.
+For each $V < \overline{T_{[s_{i+1}+1, s_n]} 0 \cdots 0}$ in \eqref{eq:summation},
+the term $\phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]})$ and
+ $- \phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]}) = 0$ cancel each other out. Then 
  \begin{equation}
   H_u(i+1, T) = \sum_{X \in \{0,1\}^{l_i}}
   \phi_i(X, T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]}).
@@ -538,18 +535,16 @@ We have (\ref{enum:kf:end}) with
 \label{subsection: proof of theorems}
 We describe the sketch of proof.
 Let $(g_u)_u$ and $(h_u)_u$ be as lemmas in the previous section,
-the real functions $g$ and $h$ in theorems is constructed by shrinking and connecting $(g_u)_u$ and $(h_u)_u$.
+the real functions $g$ and $h$ in theorems are constructed from $(g_u)_u$ and $(h_u)_u$ as follows.
 Divide $[0,1)$ into infinity many subintervals $[l^-_u, l^+_u]$,
 with midpoints $c_u$.
-For each string $u$, we construct $h$ by putting a scaled copy of $h_u$ onto $[l^-_u, c_u]$ and
-putting scaled and horizontally reversed copy of $h_u(t)$ onto $[c_u, l^+_u]$ 
+We construct $h$ putting a scaled copy of $h_u$ onto $[l^-_u, c_u]$ and
+putting a horizontally reversed scaled copy of $h_u(t)$ onto $[c_u, l^+_u]$ 
 so that $h(l^-_u) = 0$, $h(c_u) = 2^{-\rho'(|u|)} L(u)$ and $h(l^+_u) = 0$ where $\rho'$ is a polynomial.
 In the same way, $g$ is constructed from $(g_u)_u$ so that $g$ and $h$ satisfy \eqref{eq:ode}.
 
 We omit the proof of Theorem \ref{DifferentiableIsPspace} 
-since it can be shown using Lemma \ref{DifferentiableFamily}
-applying the same argument as follows.
-
+since we can get it applying the same argument as the proof of Theorem \ref{KTimesIsCH} and using Lemma \ref{DifferentiableFamily}.
 
 
 \begin{proof}[Proof of Theorem \ref{KTimesIsCH}]
@@ -559,21 +554,20 @@ Define
   \lambda(x) &= 2x + 2,&
   \gamma(x) &= x \mu(x, x) + x \lambda(x).
  \end{align}
-and each $u$,
+and for each $u$
 \begin{align}
  \Lambda_u 
  &= 2^{\lambda(|u|)}, &
  c_u 
  &= 1-\frac{1}{2^{|u|}}+\frac{2\bar{u}+1}{\Lambda_u}, &
  l_u^\mp 
- &= c_u\mp\frac{1}{\Lambda_u}.
+ &= c_u\mp\frac{1}{\Lambda_u}
 \end{align}  
  where $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ is the number represented by $u$ as binary expression.
 Let $\rho$, $(g_u)_u$, $(h_u)_u$ be as Lemma \ref{KTimesFamily} with $\gamma$.
 
-Since any real number in $[0,1)$ can be written in the form  $l^\mp_u \pm \frac{t}{\Lambda_u}$ for some string $u$, $\pm$, $t\in [0,1]$.
 We define
- \begin{align}
+ \begin{align} \label{eq:g}
  g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
   &= \begin{cases}
       \pm \displaystyle \sum_{l=0}^k \frac{\D^{(0,l)}g_u(t,1)}{l!} (y-1)^l 
@@ -586,16 +580,15 @@ We define
  h \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right) 
   & = \frac{h_u(t)}{\Lambda_u}
 \end{align}
-for each $t \in [0,1)$, $y \in [-1, 1]$.
+for each string $u$, $t \in [0,1)$, $y \in [-1, 1]$.
 Let $g(1,y) = 0$ and $h(1) = 0$ for any $y \in [-1,1]$
 
-It can be shown in the same way as the Lipschitz version 
+It can be shown in a similar way as the Lipschitz version 
 that $g$ and $h$ satisfy \eqref{eq:ode} and $g$ is polynomial-time computable,
-so see the proof of \cite[Theorem 3.2]{kawamura2010lipschitz} for more detail.
+so see the proof of \cite[Theorem 3.2]{kawamura2010lipschitz} for more details.
 We only show that $g$ is $(\infty, k)$-times continuously differentiable.
 
-For each interval($t \in (0,1)$ and $y<-1$ or $-1<y<1$ or $1<y$), $g$ is $(\infty, k)$-times continuously differentiable
-Define
+For each $i \in \N$ and $j \in \{0, \dots, k\}$ differentiating \eqref{eq:g} $(i,j)$-times,
 \begin{equation}
    \D^{(i, j)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
    = \begin{cases}
@@ -608,9 +601,9 @@ Define
       \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l &  (1<y).
     \end{cases}
 \end{equation}
-for each $i \in \N$, $j \in \{0, \dots, k\}$, $t \in (0, 1)$ and $y \in [-\Lambda_u, \Lambda_u]$ where $y \neq -1, 1$.
-Since each $\D^{(i,j)}g_u$ is continuous,
-it is so where $t \in (0,1)$ and $y \not = -1, 1$.
+for $t \in (0, 1)$ and $y \in [-\Lambda_u, \Lambda_u]$ where $y \neq -1, 1$.
+It is continuous where $t \in (0,1)$ and $y \not = -1, 1$
+since each $\D^{(i,j)}g_u$ is continuous.
 We can verify that it is continuous on the boundary($t = 0, 1$ or $y = -1, 1$)
 by the definition and Lemma \ref{KTimesFamily} (\ref{enum:boundary}).
 Finally we show that it is continuous at 1 for the first variable.
@@ -626,9 +619,9 @@ By Lemma \ref{KTimesFamily} (\ref{enum:smooth}),
    =  2^{(i+j+k)\lambda(|u|) + k + \mu(i, |u|)  - \gamma(|u|)}. 
   \label{eq:sizeofderivative}
  \end{align}
-While $|u| \to \infty$, \ref{eq:sizeofderivative} correspondingly approaches to $0$ by our choice of $\gamma$.
+While $|u| \to \infty$, \eqref{eq:sizeofderivative} correspondingly approaches to $0$ by our choice of $\gamma$.
 Hence $\lim_{t \to 1-0}\D^{(i,j)} g(t,y) = g(1, y) = 0$.
-So we complete to show that $g$ is $(\infty, k)$-times continuously differentiable.
+and we complete to show that $g$ is $(\infty, k)$-times continuously differentiable.
 \end{proof}
 
 
