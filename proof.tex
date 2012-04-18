@@ -323,7 +323,7 @@ polynomial-time machine compute $(f_u)_u$.
   There exist A $\classCH$-hard language $L$ and a polynomial $\mu$ exist
   such that for all $k \ge 1$ and polynomials $\gamma$,
   there are a polynomial $\rho$ and families $(g_u)_u$, $(h_u)_u$ of real functions
-  such that $(g_u)_u$ is polynomial-time computable and for any string $u$:
+  having following properties that $(g_u)_u$ is polynomial-time computable and for any string $u$:
   \begin{enumerate}
    \item \label{enum:kf:start}
 	 $g_u\colon [0,1] \times [-1,1]\to \R$, $h_u\colon [0,1] \to [-1,1]$;
@@ -348,58 +348,52 @@ polynomial-time machine compute $(f_u)_u$.
 
 \begin{lemma}
  \label{DifferentiableFamily}
- There exist A $\classPSPACE$-hard language $L$ and a polynomial $\mu$,
- suppose that $k = 1$, for all polynomials $\gamma$,
- there are a polynomial $\rho$ and families $(g_u)_u$, $(h_u)_u$ of real functions
- such that $(g_u)_u$ is polynomial-time computable and for any string $u$
- satisfying (\ref{enum:kf:start}) -- (\ref{enum:kf:end}) in Lemma \ref{KTimesFamily}.
+ There exist A $\classPSPACE$-hard language $L$ and a polynomial $\mu$
+ such that, supposing that $k = 1$, for all polynomials $\gamma$,
+ there are a polynomial $\rho$ and families $(g_u)_u$, $(h_u)_u$ of real functions having following properties that 
+  $(g_u)_u$ is polynomial-time computable and for any string $u$
+ they satisfy (\ref{enum:kf:start}) -- (\ref{enum:kf:end}) in Lemma \ref{KTimesFamily}.
 \end{lemma}
 
-補題\ref{KTimesFamily}は次のように証明する.
-まず補題\ref{DIVPlogIsCHhard}より, 
-$\classCH$困難な言語$L$と, 
-$L$を認識する$(G_u)_u$及び$(H_u)_u$を得る.
-各$T = 0$, \ldots, $2^{q(|u|)}$において
-$h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i}H_u(i, T)/B^{d_u(i)}$を満たすように
-$h_u$を構成し, $G_u$から$g_u$を構成する.
- それらが微分方程式$\D h_u(t) = g_u(t, h_u(t))$を満たすことを差分方程式の性質により示し,
- $(g_u)_u$の多項式時間計算可能性を$(G_u)_u$ の一様性から示す.
-補題\ref{DifferentiableFamily}も同様に, 
-補題\ref{DIVPpolyIsPSPACEhard}を用いて示す. 
+We will reduce Lemma \ref{KTimesFamily} to Lemma \ref{DIVPlogIsCHhard} as follows.
+For a $\classCH$-hard language $L$, we get families $(G_u)_u$ and $(H_u)_u$ 
+of functions satisfying the conditions stated in Lemma \ref{DIVPlogIsCHhard}.
+For each $T = 0$, \ldots, $2^{q(|u|)}$,
+we construct $h_u$ and $g_u$ from $H_u$ and $G_u$ 
+such that $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i}H_u(i, T)/B^{d_u(i)}$ and $\D h_u(t) = g_u(t, h_u(t))$.
+The polynomial-time computability of $(g_u)_u$ follows from the one of $(G_u)_u$.
+We will reduce Lemma \ref{DifferentiableFamily} to Lemma \ref{DIVPpolyIsPSPACEhard} in the same way.
 
- 補題\ref{KTimesFamily}では
- 河村\cite[補題4.1]{kawamura2010lipschitz}と違って
- $g _u$の滑らかさと導関数についての
- 条件(\ref{enum:differentiability}) -- (\ref{enum:smooth})が加わっている.
- これを満すように$g_u$を構成するため, 
- 次の補題にいう関数$f \colon [0,1] \to \R$を用いる. 
+In Lemma \ref{KTimesFamily}, 
+we add the conditions (\ref{enum:differentiability}) -- (\ref{enum:smooth}) 
+about smoothness and derivatives of $g_u$ to \cite[Lemma 4.1]{kawamura2010lipschitz}.
+To satisfy the conditions, we construct $g_u$ 
+using the real function $f$ in following lemma.
 
- \begin{lemma}[{\cite[補題3.6]{ko1991complexity}}]
-  \label{SmoothFunction}
-  以下を満たす多項式時間計算可能で無限回微分可能な
-  関数$f \colon [0,1] \to \R$及び
-  多項式$s$が存在する.
+\begin{lemma}[{\cite[Lemma 3.6]{ko1991complexity}}]
+ \label{SmoothFunction}
+ There exist a polynomial-time infinitely differentiable real function  $f \colon [0,1] \to \R$ 
+ and a polynomial $s$ such that:
   \begin{enumerate}
-   \item $f(0) = 0$, $f(1) = 1$. 
-   \item 任意の$n \ge 1$について, $\D ^n f (0) = \D ^n f (1) = 0$. 
-   \item $f$は単調増加. 
-   \item 任意の$n \ge 1$について, $\D ^n f$は多項式時間計算可能.
+   \item $f(0) = 0$ and $f(1) = 1$;
+   \item $\D ^n f (0) = \D ^n f (1) = 0$ for all $n \ge 1$;
+   \item $f$ is strictly increasing;
+   \item $\D ^n f$ is polynomial-time computable for all $n \ge 1$;
    \item \label{enum:polynomial-size}
-     任意の$n \ge 1$について, $|\D^n f| \le s(n)$. 
+	 $|\D^n f| \le s(n)$ for all $n \ge 1$,. 
   \end{enumerate}
  \end{lemma}
 
-葛\cite[補題3.6]{ko1991complexity}には
-条件(\ref{enum:polynomial-size})を満たす多項式$s$の存在が
-明示されていないが, 
-容易に示される.
+Though existence of polynomial $s$ satisfying the condition (\ref{enum:polynomial-size}) is not stated in \cite[Lemma 3.6]{ko1991complexity},
+it can be shown easily.
 
- ここではより難しく一般的な補題 \ref{KTimesFamily} のみ証明を行い,
- 補題 \ref{DifferentiableFamily} について証明は省略する.
+We only prove Lemma \ref{KTimesFamily} here
+and omit the proof of Lemma \ref{DifferentiableFamily}
+since it is easy and specific.
 
 
- \begin{proof}[\rm 補題 \ref{KTimesFamily} の証明]
-  補題\ref{DIVPlogIsCHhard}より
+\begin{proof}[\rm 補題 \ref{KTimesFamily} の証明]
+補題\ref{DIVPlogIsCHhard}より
   $\classCH$困難な言語$L$を認識する
   対数段の一様な関数族$(G_u)_u$とその解$(H_u)_u$を得る.
 
