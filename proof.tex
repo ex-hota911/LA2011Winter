@@ -552,31 +552,27 @@ applying the same argument as follows.
 
 
 
-\begin{proof}[Proof of \ref{KTimesIsCH}]
+\begin{proof}[Proof of Theorem \ref{KTimesIsCH}]
 Let $L$ and $\mu$ be as Lemma \ref{DifferentiableFamily}.
 Define
  \begin{align}
   \lambda(x) &= 2x + 2,&
-  \gamma(x) &= x \mu(x, x) + x \lambda(x)
+  \gamma(x) &= x \mu(x, x) + x \lambda(x).
  \end{align}
- とおき, 各 $u$ に対して 
+and each $u$,
 \begin{align}
  \Lambda_u 
  &= 2^{\lambda(|u|)}, &
  c_u 
  &= 1-\frac{1}{2^{|u|}}+\frac{2\bar{u}+1}{\Lambda_u}, &
  l_u^\mp 
- &= c_u\mp\frac{1}{\Lambda_u} 
+ &= c_u\mp\frac{1}{\Lambda_u}.
 \end{align}  
- とおく. 
- %%% 補題3.4 の証明ででてきたためいらない？
- %ただし $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ は $u$ を二進数として解釈した数.
- $\gamma$ に対して, 補題より $\rho$, $(g_u)_u$, $(h_u)_u$ を得る.
+ where $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ is the number represented by $u$ as binary expression.
+Let $\rho$, $(g_u)_u$, $(h_u)_u$ be as Lemma \ref{KTimesFamily} with $\gamma$.
 
-
- 任意の $[0,1)$ の実数は, 或る文字列 $u$, $\pm$, $t\in [0,1]$ を以って
- $l^\mp_u \pm \frac{t}{\Lambda_u}$ と書ける.
- 関数 $g, h$ を $t \in [0,1)$, $y \in [-1, 1]$ に対して,
+Since any real number in $[0,1)$ can be written in the form  $l^\mp_u \pm \frac{t}{\Lambda_u}$ for some string $u$, $\pm$, $t\in [0,1]$.
+We define
  \begin{align}
  g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
   &= \begin{cases}
@@ -588,18 +584,18 @@ Define
     \end{cases} 
   \\
  h \left( l^\mp_u \pm \frac{t}{\Lambda_u} \right) 
-  & = \frac{h_u(t)}{\Lambda_u}.
+  & = \frac{h_u(t)}{\Lambda_u}
 \end{align}
- $t=1$のとき $g(1,y) = 0$, $h(1) = 0$ と定義する.
+for each $t \in [0,1)$, $y \in [-1, 1]$.
+Let $g(1,y) = 0$ and $h(1) = 0$ for any $y \in [-1,1]$
 
- この $g$ が多項式時間計算可能であり$g$と$h$が方程式(\ref{eq:ode})を満たすことは,
- Lipschitz条件の場合と同様に示されるため,
- 河村による証明を参照されたし\cite[定理3.2]{kawamura2010lipschitz}.
- ここでは特に$g$が$(\infty, k)$回連続微分可能であることのみ示す.
+It can be shown in the same way as the Lipschitz version 
+that $g$ and $h$ satisfy \eqref{eq:ode} and $g$ is polynomial-time computable,
+so see the proof of \cite[Theorem 3.2]{kawamura2010lipschitz} for more detail.
+We only show that $g$ is $(\infty, k)$-times continuously differentiable.
 
- $g_u$ は $(\infty, k)$ 回連続微分可能であるため,
- 各区間においては$(\infty, k)$ 回連続微分可能である.
- $i \in \N$, $j \in \{0, \dots, k\}$, $t \in (0, 1)$ において
+For each interval($t \in (0,1)$ and $y<-1$ or $-1<y<1$ or $1<y$), $g$ is $(\infty, k)$-times continuously differentiable
+Define
 \begin{equation}
    \D^{(i, j)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
    = \begin{cases}
@@ -609,15 +605,16 @@ Define
       \pm \Lambda_u^{(i,j)} \D^{(i, j)} g_u(t, y) & (-1 < y < 1)
       \\
       \pm \Lambda_u^{(i, j)} \sum^{k}_{l=j} 
-      \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l &  (1<y)
+      \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l &  (1<y).
     \end{cases}
 \end{equation}
- $\D^{(i,j)}g_u$ は連続であるため 
- $t \in (0,1)$, $y \not = -1, 1$ において連続.
- 境界($t = 0, 1$または$y = -1, 1$)において連続であることは,
- 定義および補題 \ref{KTimesFamily} (\ref{enum:boundary})により示される.
- 第一変数について $1$ の周辺で連続であることを示す.
- 補題 \ref{KTimesFamily} の(\ref{enum:smooth})より
+for each $i \in \N$, $j \in \{0, \dots, k\}$, $t \in (0, 1)$ and $y \in [-\Lambda_u, \Lambda_u]$ where $y \neq -1, 1$.
+Since each $\D^{(i,j)}g_u$ is continuous,
+it is so where $t \in (0,1)$ and $y \not = -1, 1$.
+We can verify that it is continuous on the boundary($t = 0, 1$ or $y = -1, 1$)
+by the definition and Lemma \ref{KTimesFamily} (\ref{enum:boundary}).
+Finally we show that it is continuous at 1 for the first variable.
+By Lemma \ref{KTimesFamily} (\ref{enum:smooth}),
  \begin{align}
   \left|\D^{(i, j)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
   \frac{y}{\Lambda_u}\right)\right|
@@ -629,10 +626,9 @@ Define
    =  2^{(i+j+k)\lambda(|u|) + k + \mu(i, |u|)  - \gamma(|u|)}. 
   \label{eq:sizeofderivative}
  \end{align}
- $\gamma$ のとり方により, $|u| \to \infty$ のとき 
- 式 (\ref{eq:sizeofderivative}) は$0$に収束する.
- よって  $\lim_{t \to 1-0}\D^{(i,j)} g(t,y) = g(1, y) = 0$.
- 以上により$g$は$(\infty, k)$回連続微分可能.
+While $|u| \to \infty$, \ref{eq:sizeofderivative} correspondingly approaches to $0$ by our choice of $\gamma$.
+Hence $\lim_{t \to 1-0}\D^{(i,j)} g(t,y) = g(1, y) = 0$.
+So we complete to show that $g$ is $(\infty, k)$-times continuously differentiable.
 \end{proof}
 
 
