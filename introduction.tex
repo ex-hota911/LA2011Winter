@@ -1,29 +1,35 @@
 \section{序論}
 
-連続実関数$g \colon [0,1] \times \R \to \R$に対して次の常微分方程式を考える. 
+Let $g \colon [0,1] \times \R \to \R$ be continuous 
+and consider the following differential equation: 
 \begin{align}
  \label{eq:ode}
  h(0) & = 0, &
- \D h(t) & = g(t,h(t)) \quad (t \in [0,1])
+ \D h(t) & = g(t,h(t)) \quad t \in [0,1], 
 \end{align}
-ただし$\D h$は$h$の導関数.
-本稿では$g$が多項式時間計算可能であるとき, 
-解$h$がどれほど複雑でありうるかを考える.
-ここで多項式時間を初めとする計算量は
-\emph{計算可能解析学} (Computable Analysis) 
-\cite{weihrauch00:_comput_analy}における概念であり, 
-実関数を指定された精度で近似する計算の困難さを測るものである
-(本稿では\ref{section: preliminaries}節で説明する). 
+where $\D h$ denotes the derivative of $h$. 
+How complex can the solution~$h$ be, 
+assuming that $g$ is polynomial-time computable? 
+Here, the polynomial-time computability 
+and other notions of complexity 
+are from the field of 
+\emph{Computable Analysis}~\cite{weihrauch00:_comput_analy}
+and measures how hard it is to 
+approximate real functions with specified precisions 
+(Section~\ref{section: preliminaries}). 
 
-$g$に多項式時間計算可能であることの他に何の制限も設けない場合, 
-解$h$ (一般に一意でない) は計算不能でありうるため,
-様々な制限の下で$h$の計算量が研究されている (表 \ref{table:related}).
-この表では下に向うにつれて左列の条件が強まっており, 
-$g$が(大域的) Lipschitz条件を満たせば解$h$が一意であるが, 
-表の第3行にある通りこのとき唯一解$h$は
-ちょうど$\classPSPACE$困難でありうることがわかっている\cite{kawamura2010lipschitz}. 
-本稿ではより強く$g$に滑らかさの仮定を置いたときの
-$h$の複雑さを調べる. 
+If we put no assumption on $g$ other than being polynomial-time computable, 
+the solution~$h$ (which is not unique in general) can be non-computable. 
+Table~\ref{table:related} summarizes known results about 
+the complexity of $h$ under various assumptions on $g$, 
+with the assumptions getting stronger as we go down. 
+In particular, if $g$ is (globally) Lipschitz continuous, 
+then the (unique) solution $h$ is known to be 
+polynomial-space computable but still can be 
+$\classPSPACE$-hard \cite{kawamura2010lipschitz}. 
+In this paper, we study the complexity of $h$ 
+when we put stronger assumptions about 
+the smoothness of $g$. 
 
 \begin{table}
 \renewcommand\arraystretch{1.3}

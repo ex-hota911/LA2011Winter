@@ -151,7 +151,7 @@ such that $\phi(X) = 1$ if and only if $\phi(X)$ is true.
 This ``counting quantifier'' $\quantC ^m$ generalizes 
 the usual quantifiers $\exists$ and $\forall$, 
 because $\quantC^1 = \exists$ and $\quantC^{2^l} = \forall$.
-For lists $X _1$, ldots, $X _n$ of variables 
+For lists $X _1$, \ldots, $X _n$ of variables 
 and a formula $\phi(X_1, \dots, X_n)$ with all free variables listed, 
 we define
 \begin{equation}
@@ -258,7 +258,7 @@ We have
  \end{equation}
 where we write $\overline U$ for the number represented by string $U$ as binary expression.
 For each $V < \overline{T_{[s_{i+1}+1, s_n]} 0 \cdots 0}$ in \eqref{eq:summation},
-the term $\phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]})$ and
+the terms $\phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]})$ and
  $- \phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]}) = 0$ cancel each other out. Then 
  \begin{equation}
   H_u(i+1, T) = \sum_{X \in \{0,1\}^{l_i}}
@@ -392,47 +392,48 @@ and omit the analogous and easier proof of Lemma~\ref{DifferentiableFamily}.
 Let $L$, $(G_u)_u$ and $(H_u)_u$ be as in Lemma~\ref{DIVPlogIsCHhard},
 and let a function family $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
 
-By a similar argument to the beginning of the proof\cite[Lemma 4.1]{kawamura2010lipschitz},
+By a similar argument to the beginning of the proof of \cite[Lemma 4.1]{kawamura2010lipschitz},
 we may assume that there exist polynomial-time functions $p$, $j_u$
-and polynomial $q$, $r$ satisfying following properties:
+and polynomials $q$, $r$ satisfying the following properties:
 \begin{gather}
- G_u \colon [p(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\};
+ G_u \colon [p(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\},
  \\
  H_u(i, 2^{q(|u|)}) = \begin{cases}
-		       L(u) & (i=p(|u|)) \\
-		       0 & (i<p(|u|))
-		      \end{cases};
+		       L(u) & \text{if} \ i=p(|u|), \\
+		       0 & \text{if} \ i<p(|u|), 
+		      \end{cases}
  \\
  i \not = j_u(T)  \to G_u(i, T, Y) = 0.
 \end{gather}
 Since $G_u$ has logarithmic height,
-there exists polynomial $\sigma$ such that $(k+1)^{p(x)} \le \sigma(x)$
+there exists a polynomial $\sigma$ such that $(k+1)^{p(x)} \le \sigma(x)$
 
 
-We construct the families real functions $(g_u)_u$ and $(h_u)_u$ simulating $G _u$ and $H _u$,
-in particular, $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i = 0}H_u(i, T)/B^{d_u(i)}$.
-We define the constant $B$ and the function $d_u \colon [p(|u|)+1] \to \N$ as
+We construct the families of real functions $(g_u)_u$ and $(h_u)_u$ simulating $G _u$ and $H _u$ 
+in the sense that $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i = 0}H_u(i, T)/B^{d_u(i)}$, 
+where the constant $B$ and the function $d_u \colon [p(|u|)+1] \to \N$ are 
+defined by
   \begin{align}
-   B &= 2^{\gamma(|u|) + r(|u|) + s(k) + k + 3}
+   B &= 2^{\gamma(|u|) + r(|u|) + s(k) + k + 3}, 
    &
    d_u(i) &= 
    \begin{cases}
-    \sigma(|u|) & (i=p(|u|)) 
+    \sigma(|u|) & (i=p(|u|)), 
     \\
     (k+1)^i & (i<p(|u|)).
    \end{cases}
   \end{align}
 For each $(t, y) \in [0,1] \times [-1, 1]$,
-there exists unique $N \in \N$, $\theta \in [0,1)$, $Y \in \Z$ and $\eta \in [-1/4, 3/4)$
+there exist unique $N \in \N$, $\theta \in [0,1)$, $Y \in \Z$ and $\eta \in [-1/4, 3/4)$
 such that $t = (T + \theta)2^{-q(|u|)}$ and $y = (Y + \eta)B^{-d_u(j_u(T))}$.
-Let $f$ and a polynomial $s$ be as in Lemma~\ref{SmoothFunction},
+Using $f$ and a polynomial $s$ of Lemma~\ref{SmoothFunction},
 we define 
 $\delta_{u,Y} \colon [0,1] \to \R$,
 $
 g _u \colon [0, 1] \times [-1, 1] \to \R
 $ and $
 h _u \colon [0, 1] \to [-1, 1]
-$ as
+$ by
   \begin{align}
     \label{eq:delta}
    \delta_{u, Y} (t) &= \frac{2^{q(|u|)} \D f(\theta)}{B^{d_u(j_u(T)+1)}} 
@@ -442,11 +443,11 @@ $ as
   g_u(t,y) 
   &= \begin{cases}
      \delta_{u, Y}(t)
-     & (\eta \le \frac 1 4)
+     & \text{if} \ \eta \le \frac 1 4, 
      \\
      ( 1-f ( \frac{4\eta-1}{2})) \delta_{u, Y}(t)
      + f ( \frac{4\eta-1}{2}) \delta_{u,Y+1}(t)
-     & (\eta > \frac 1 4),
+     & \text{if} \ \eta > \frac 1 4,
     \end{cases}
    \\
   h_u(t) 
@@ -456,48 +457,49 @@ $ as
   \end{align}
 
 We will verify that $(g_u)_u$ and $(h_u)_u$ defined above satisfy all the conditions stated in Lemma~\ref{KTimesFamily}.
-The condition(\ref{enum:equation}) are verified by applying the same argument of
+The condition~(\ref{enum:equation}) are verified by the same argument as
 \cite[Lemma 4.1]{kawamura2010lipschitz}.
 
-We will show that the condition(\ref{enum:differentiability}) holds, that is, $g _u$ is $(\infty, k)$-times continuously differentiable.
+We will show that the condition~(\ref{enum:differentiability}) holds, that is, $g _u$ is $(\infty, k)$-times continuously differentiable.
 For each $i \in \N$,
   \begin{align}
    \D^i \delta_{u,Y}(t) 
 &
     = \frac{2^{(i+1)q(|u|)} \D^{i+1}f(\theta)}{B^{d_u(j_u(T)+1)}}
-    G_u\left( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \right),
+    G_u\bigl( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \bigr),
 \\
    \label{eq:derivativeofgu}
     \D^{(i,0)} g_u(t, y)
 &
      = \begin{cases}
  	\D^i \delta_{u, Y}(t) 
-	& (- \frac 1 4 < \eta < \frac 1 4) \\
+	& \text{if} \ - \frac 1 4 < \eta < \frac 1 4, \\
 	\left( 1-f \left(\frac{4\eta-1}{2}\right)\right) 
 	\D^i \delta_{u, Y}(t)
 	+ f \left(\frac{4\eta-1}{2}\right) \D^i \delta_{u,Y+1}(t) 
-	& (\frac 1 4 < \eta < \frac 3 4),
+	& \text{if} \ \frac 1 4 < \eta < \frac 3 4,
        \end{cases}
   \end{align}
 and for each  $j \in \{1, \dots , k\}$,
   \begin{equation}
     \D^{(i,j)} g_u(t, y)
      = \begin{cases}
-	0 & (- \frac 1 4 < \eta < \frac 1 4) \\
+	0 & \text{if} \ - \frac 1 4 < \eta < \frac 1 4, \\
 	(2B^{d_u(j_u(T))})^j \D^j f(\frac{4\eta - 1}2)
 	(\D^i \delta_{u,Y+1}(t)-\D^i \delta_{u, Y}(t)) 
-	& (\frac 1 4 < \eta < \frac 3 4).
+	& \text{if} \ \frac 1 4 < \eta < \frac 3 4.
        \end{cases}
   \end{equation}
-It is easy to check that they are also continuous on the boundary($\theta = 0$, $\eta = -1/4, 3/4$).
+It is easy to check that they are also continuous on the boundaries 
+($\theta = 0$ and $\eta = -1/4, 3/4$).
 Hence $g _u$ is $(\infty, j)$-times continuously differentiable.
 Substituting $t = 0, 1$ ($\theta = 0$) into \eqref{eq:derivativeofgu},
 we get $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$, 
 so the condition (\ref{enum:boundary}) holds.
 
 We show that the condition (\ref{enum:smooth}) holds with $\mu(x, y) = (x+1)q(y) + s(x+1)$.
-Note that $\mu$ is a polynomial independent from $k$ or $\gamma$.
-Since $|\D^i \delta_{u,Y}(t)| \le 2^{(i+1)q(|u|) + s(i+1)}B^{-d_u(j_u(|u|)+1)}$ by \eqref{eq:delta}, for all $i \in \N$ and $j \in \{0, \dots, k\}$,
+Note that $\mu$ is a polynomial independent of $k$ and $\gamma$.
+Since $|\D^i \delta_{u,Y}(t)| \le 2^{(i+1)q(|u|) + s(i+1)}B^{-d_u(j_u(|u|)+1)}$ by \eqref{eq:delta}, for all $i \in \N$ and $j \in \{0, \dots, k\}$, we have
  \begin{equation}
   |\D^{(i,j)} g_u| 
    \le 
@@ -511,7 +513,7 @@ Since $|\D^i \delta_{u,Y}(t)| \le 2^{(i+1)q(|u|) + s(i+1)}B^{-d_u(j_u(|u|)+1)}$ 
  by our choice of $B$.
 
 We have (\ref{enum:kf:end}) with
-  $\rho(x) = \sigma(x) \cdot (\gamma(x)+r(x)+s(k)+k+3)$ because
+  $\rho(x) = \sigma(x) \cdot (\gamma(x)+r(x)+s(k)+k+3)$, because
   \begin{equation}
    h_u(1) = \frac{H_u(p(|u|), 2^{q(|u|)})}{B^{d_u(p(|u|))}} 
           = \frac{L(u)}{2^{\sigma(|u|) \cdot (\gamma(|u|)+r(|u|)+s(k)+k+3)}}
@@ -523,14 +525,14 @@ We have (\ref{enum:kf:end}) with
 
  To prove Lemma~\ref{DifferentiableFamily}, 
  let a function family $(G_u)_u$ be as Lemma~\ref{DIVPpolyIsPSPACEhard}
- and a function family $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$,
+ and let $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$,
  and define $(g_u)_u$ and $(h_u)_u$ as \eqref{eq:gu} and \eqref{eq:hu}
  with $d_u(i) = i$.
- It is shown in the same way above that they match all the conditions
+ It is shown in the same way as above that they meet all the conditions
  stated in Lemma~\ref{DifferentiableFamily}.
 
 
-\subsection{The Proof of Main Theorems}
+\subsection{Proof of the Main Theorems}
 \label{subsection: proof of theorems}
 We describe the sketch of proof.
 Let $(g_u)_u$ and $(h_u)_u$ be as lemmas in the previous section,
