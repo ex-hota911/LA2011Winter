@@ -175,10 +175,10 @@ We show that $\quantC_{\log} B_{be}$
 is $\classCH$-hard and recognized by a logarithmic-height uniform function family,
 as required in Lemma~\ref{DIVPlogIsCHhard}. 
 
-\begin{proof}[\textup{Proof of Lemma \ref{DIVPlogIsCHhard}}]
+\begin{proof}[\textup{Proof of Lemma~\ref{DIVPlogIsCHhard}}]
 First we prove that $\quantC_{\log} B_{be}$ is $\classCH$-hard.
 For each problem $A$ in $\classCH$, there is a constant $n$ such that $A \in \quantC_n \classP$.
-From Lemma \ref{lemma:CnP-complete}, for each $u \in \{0,1\}^*$
+From Lemma~\ref{lemma:CnP-complete}, for each $u \in \{0,1\}^*$
 there is a polynomial-time function $f_n$ such that
 $u \in A \leftrightarrow f_n(u) \in \quantC_n B_{be}$. So
 \begin{align}
@@ -297,7 +297,7 @@ the language class accepted by uniform function families of logarithmic height
 coincided with languages Karp-reducible to $\quantC_{\log} B_{be}$
 and with those accepted by an extended alternating Turing machine with logarithmic alternations.
 Since this class contains $\classCH$,
-we only state $\classCH$-hard in Lemma \ref{KTimesFamily} and Theorem $\ref{KTimesIsCH}$,
+we only state $\classCH$-hard in Lemma~\ref{KTimesFamily} and Theorem $\ref{KTimesIsCH}$,
 but it is not known such class how hard the class is between $\classCH$ and $\classPSPACE$.
 
 
@@ -307,7 +307,7 @@ but it is not known such class how hard the class is between $\classCH$ and $\cl
 We show that families of smooth differential equations can simulate 
 $\classPSPACE$-hard or $\classCH$-hard difference equations stated in previous section.
 
-Before stating Lemma \ref{KTimesFamily} and Lemma \ref{DifferentiableFamily},
+Before stating Lemma~\ref{KTimesFamily} and Lemma~\ref{DifferentiableFamily},
 we extend the definition of polynomial-time computability of real function
 to families of real functions.
 A machine $M$ \emph{computes} a family $(f_u)_u$ of functions $f _u \colon A \to \R$ 
@@ -349,11 +349,11 @@ a polynomial-time machine computing $(f_u)_u$.
  such that for all polynomials $\gamma$,
  there are a polynomial $\rho$ and families $(g_u)_u$, $(h_u)_u$ of real functions
  such that $(g_u)_u$ is polynomial-time computable and for any string $u$
- satisfying (\ref{enum:kf:start})--(\ref{enum:kf:end}) of Lemma \ref{KTimesFamily} with $k = 1$.
+ satisfying (\ref{enum:kf:start})--(\ref{enum:kf:end}) of Lemma~\ref{KTimesFamily} with $k = 1$.
 \end{lemma}
 
 We will prove Lemma~\ref{KTimesFamily} using Lemma~\ref{DIVPlogIsCHhard} as follows.
-Let a function family $(G_u)_u$ be as in Lemma \ref{DIVPlogIsCHhard},
+Let a function family $(G_u)_u$ be as in Lemma~\ref{DIVPlogIsCHhard},
 and let $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
 For each $T = 0$, \ldots, $2^{q(|u|)}$,
 we construct $h_u$ and $g_u$ from $H_u$ and $G_u$ 
@@ -361,7 +361,7 @@ such that $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i = 0} H_u(i, T)/B^{d_u(i)}$ and $
 The polynomial-time computability of $(g_u)_u$ follows from that of $(G_u)_u$.
 We will prove Lemma~\ref{DifferentiableFamily} from Lemma~\ref{DIVPpolyIsPSPACEhard} in the same way.
 
-In Lemma \ref{KTimesFamily}, 
+In Lemma~\ref{KTimesFamily}, 
 we have the new conditions (\ref{enum:differentiability})--(\ref{enum:smooth}) 
 about the smoothness and the derivatives of $g_u$ 
 that were not present in \cite[Lemma 4.1]{kawamura2010lipschitz}.
@@ -385,11 +385,11 @@ using the smooth function $f$ in following lemma.
 Although the existence of the polynomial~$s$ satisfying the condition (\ref{enum:polynomial-size}) is not stated in \cite[Lemma 3.6]{ko1991complexity},
 it can be shown easily.
 
-We only prove Lemma \ref{KTimesFamily} here
-and omit the analogous and easier proof of Lemma \ref{DifferentiableFamily}.
+We only prove Lemma~\ref{KTimesFamily} here
+and omit the analogous and easier proof of Lemma~\ref{DifferentiableFamily}.
 
-\begin{proof}[Proof of Lemma \ref{KTimesFamily}]
-Let a function family $(G_u)_u$ be as in Lemma \ref{DIVPlogIsCHhard},
+\begin{proof}[Proof of Lemma~\ref{KTimesFamily}]
+Let a function family $(G_u)_u$ be as in Lemma~\ref{DIVPlogIsCHhard},
 and let a function family $(H_u)_u$ be the solution of difference equation given by $(G_u)_u$.
 
 By the same argument as at the beginning of the proof\cite[Lemma 4.1]{kawamura2010lipschitz},
@@ -425,7 +425,7 @@ We define the constant $B$ and the function $d_u \colon [p(|u|)+1] \to \N$ as
 For each $(t, y) \in [0,1] \times [-1, 1]$,
 there exists unique $N \in \N$, $\theta \in [0,1)$ and $Y \in \Z$
 such that $t = (T + \theta)2^{-q(|u|)}$ and $y = (Y + \eta)B^{-d_u(j_u(T))}$.
-Let $f$ and a polynomial $s$ be as in Lemma \ref{SmoothFunction},
+Let $f$ and a polynomial $s$ be as in Lemma~\ref{SmoothFunction},
 we define 
 $\delta_{u,Y} \colon [0,1] \to \R$,
 $
@@ -455,7 +455,7 @@ $ as
   \label{eq:hu}
   \end{align}
 
-We will verify that $(g_u)_u$ and $(h_u)_u$ defined above satisfy all the conditions stated in Lemma \ref{KTimesFamily}.
+We will verify that $(g_u)_u$ and $(h_u)_u$ defined above satisfy all the conditions stated in Lemma~\ref{KTimesFamily}.
 
 The condition(\ref{enum:equation}) are verified by applying the same argument of
 \cite[Lemma 4.1]{kawamura2010lipschitz}.
@@ -522,13 +522,13 @@ We have (\ref{enum:kf:end}) with
 
 
 
- To prove Lemma \ref{DifferentiableFamily}, 
- let a function family $(G_u)_u$ be as Lemma \ref{DIVPpolyIsPSPACEhard}
+ To prove Lemma~\ref{DifferentiableFamily}, 
+ let a function family $(G_u)_u$ be as Lemma~\ref{DIVPpolyIsPSPACEhard}
  and a function family $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$,
  and define $(g_u)_u$ and $(h_u)_u$ as \eqref{eq:gu} and \eqref{eq:hu}
  with $d_u(i) = i$.
  It is shown in the same way above that they match all the conditions
- stated in Lemma \ref{DifferentiableFamily}.
+ stated in Lemma~\ref{DifferentiableFamily}.
 
 
 \subsection{The Proof of Main Theorems}
@@ -543,12 +543,12 @@ putting a horizontally reversed scaled copy of $h_u(t)$ onto $[c_u, l^+_u]$
 so that $h(l^-_u) = 0$, $h(c_u) = 2^{-\rho'(|u|)} L(u)$ and $h(l^+_u) = 0$ where $\rho'$ is a polynomial.
 In the same way, $g$ is constructed from $(g_u)_u$ so that $g$ and $h$ satisfy \eqref{eq:ode}.
 
-We omit the proof of Theorem \ref{DifferentiableIsPspace} 
-since we can get it applying the same argument as the proof of Theorem \ref{KTimesIsCH} and using Lemma \ref{DifferentiableFamily}.
+We omit the proof of Theorem~\ref{DifferentiableIsPspace} 
+since we can get it applying the same argument as the proof of Theorem~\ref{KTimesIsCH} and using Lemma~\ref{DifferentiableFamily}.
 
 
-\begin{proof}[Proof of Theorem \ref{KTimesIsCH}]
-Let $L$ and $\mu$ be as Lemma \ref{DifferentiableFamily}.
+\begin{proof}[Proof of Theorem~\ref{KTimesIsCH}]
+Let $L$ and $\mu$ be as Lemma~\ref{DifferentiableFamily}.
 Define
  \begin{align}
   \lambda(x) &= 2x + 2,&
@@ -564,7 +564,7 @@ and for each $u$
  &= c_u\mp\frac{1}{\Lambda_u}
 \end{align}  
  where $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ is the number represented by $u$ as binary expression.
-Let $\rho$, $(g_u)_u$, $(h_u)_u$ be as Lemma \ref{KTimesFamily} with $\gamma$.
+Let $\rho$, $(g_u)_u$, $(h_u)_u$ be as Lemma~\ref{KTimesFamily} with $\gamma$.
 
 We define
  \begin{align} \label{eq:g}
@@ -605,9 +605,9 @@ for $t \in (0, 1)$ and $y \in [-\Lambda_u, \Lambda_u]$ where $y \neq -1, 1$.
 It is continuous where $t \in (0,1)$ and $y \not = -1, 1$
 since each $\D^{(i,j)}g_u$ is continuous.
 We can verify that it is continuous on the boundary($t = 0, 1$ or $y = -1, 1$)
-by the definition and Lemma \ref{KTimesFamily} (\ref{enum:boundary}).
+by the definition and Lemma~\ref{KTimesFamily} (\ref{enum:boundary}).
 Finally we show that it is continuous at 1 for the first variable.
-By Lemma \ref{KTimesFamily} (\ref{enum:smooth}),
+By Lemma~\ref{KTimesFamily} (\ref{enum:smooth}),
  \begin{align}
   \left|\D^{(i, j)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
   \frac{y}{\Lambda_u}\right)\right|
