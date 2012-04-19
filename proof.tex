@@ -355,11 +355,11 @@ a polynomial-time machine computing $(f_u)_u$.
 We will prove Lemma~\ref{KTimesFamily} using Lemma~\ref{DIVPlogIsCHhard} as follows.
 Let a function family $(G_u)_u$ be as in Lemma~\ref{DIVPlogIsCHhard},
 and let $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
-For each $T = 0$, \ldots, $2^{q(|u|)}$,
-we construct $h_u$ and $g_u$ from $H_u$ and $G_u$ 
-such that $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i = 0} H_u(i, T)/B^{d_u(i)}$ and $\D h_u(t) = g_u(t, h_u(t))$.
+We construct $h_u$ and $g_u$ from $H_u$ and $G_u$ 
+such that $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i = 0} H_u(i, T)/B^{d_u(i)}$ for each $T = 0$, \ldots, $2^{q(|u|)}$
+and $\D h_u(t) = g_u(t, h_u(t))$.
 The polynomial-time computability of $(g_u)_u$ follows from that of $(G_u)_u$.
-We will prove Lemma~\ref{DifferentiableFamily} from Lemma~\ref{DIVPpolyIsPSPACEhard} in the same way.
+We can prove Lemma~\ref{DifferentiableFamily} from Lemma~\ref{DIVPpolyIsPSPACEhard} in the same way.
 
 In Lemma~\ref{KTimesFamily}, 
 we have the new conditions (\ref{enum:differentiability})--(\ref{enum:smooth}) 
@@ -390,9 +390,9 @@ and omit the analogous and easier proof of Lemma~\ref{DifferentiableFamily}.
 
 \begin{proof}[Proof of Lemma~\ref{KTimesFamily}]
 Let a function family $(G_u)_u$ be as in Lemma~\ref{DIVPlogIsCHhard},
-and let a function family $(H_u)_u$ be the solution of difference equation given by $(G_u)_u$.
+and let a function family $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
 
-By the same argument as at the beginning of the proof\cite[Lemma 4.1]{kawamura2010lipschitz},
+By a similar argument to the beginning of the proof\cite[Lemma 4.1]{kawamura2010lipschitz},
 we may assume that there exist polynomial-time functions $p$, $j_u$
 and polynomial $q$, $r$ satisfying following properties:
 \begin{gather}
@@ -423,7 +423,7 @@ We define the constant $B$ and the function $d_u \colon [p(|u|)+1] \to \N$ as
    \end{cases}
   \end{align}
 For each $(t, y) \in [0,1] \times [-1, 1]$,
-there exists unique $N \in \N$, $\theta \in [0,1)$ and $Y \in \Z$
+there exists unique $N \in \N$, $\theta \in [0,1)$, $Y \in \Z$ and $\eta \in [-1/4, 3/4)$
 such that $t = (T + \theta)2^{-q(|u|)}$ and $y = (Y + \eta)B^{-d_u(j_u(T))}$.
 Let $f$ and a polynomial $s$ be as in Lemma~\ref{SmoothFunction},
 we define 
@@ -456,11 +456,10 @@ $ as
   \end{align}
 
 We will verify that $(g_u)_u$ and $(h_u)_u$ defined above satisfy all the conditions stated in Lemma~\ref{KTimesFamily}.
-
 The condition(\ref{enum:equation}) are verified by applying the same argument of
 \cite[Lemma 4.1]{kawamura2010lipschitz}.
 
-We will verify that the condition(\ref{enum:differentiability}) holds, that is, $g _u$ is $(\infty, k)$-times continuously differentiable.
+We will show that the condition(\ref{enum:differentiability}) holds, that is, $g _u$ is $(\infty, k)$-times continuously differentiable.
 For each $i \in \N$,
   \begin{align}
    \D^i \delta_{u,Y}(t) 
@@ -490,7 +489,7 @@ and for each  $j \in \{1, \dots , k\}$,
 	& (\frac 1 4 < \eta < \frac 3 4).
        \end{cases}
   \end{equation}
-They are all continuous on the boundary($\theta = 0$, $\eta = -1/4, 3/4$).
+It is easy to check that they are also continuous on boundaries($\theta = 0$, $\eta = -1/4, 3/4$).
 Hence $g _u$ is $(\infty, j)$-times continuously differentiable.
 Substituting $t = 0, 1$ ($\theta = 0$) into \eqref{eq:derivativeofgu},
 we get $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$, 
