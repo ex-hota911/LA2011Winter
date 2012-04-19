@@ -135,20 +135,20 @@ $\classNP$困難である\cite[定理3.7]{ko1991complexity}%
 $g$が$(\infty, \infty)$回微分可能であると仮定したときの
 $h$の計算量については依然不明である. 
 
-\subsubsection*{記法}
-自然数の集合を $\N$, 実数の集合を $\R$, 
-有理数の集合を $\Q$と表す. 
+\subsubsection*{Notation}
+Let $\N$ denote the set of natural numbers,
+$\Q$ denote the set of rational numbers 
+and $\R$ denote the set of real numbers.
 
-$A, B$ を $\R$ の有界閉区間とする. 
-実関数 $f \colon A \to \R$ に対して $|f| = \sup_{x \in A} f(x)$ と書く.
+Let $A$ and $B$ be bounded closed interval in $\R$.
+We denote $|f|$ as $\sup_{x \in A} f(x)$ where $f \colon A \to \R$.
 
-連続な一変数関数 $f\colon A \to \R$ が $i$ 回連続微分可能であるとは,
-導関数$\D f, \D^2 f, \dots, \D^i f$が存在し, すべて連続であることと定義する.
-連続な二変数関数 $g \colon A \times B \to \R$ が
-\emph{$(i, j)$ 回連続微分可能}であるとは,
-導関数$\D_1^n \D_2^m g$が, 任意の$0 \le n \le i$, $0 \le m \le j$を満たす
-$n,m$において存在し連続であることと定義する.
-$g$が$(i,j)$回連続微分可能であるとき,
-その導関数$\D_1^i \D_2^j g$を$\D^{(i,j)}g$と表記する.
-また任意の $i$ について $g$ が $(i, j)$ 回連続微分可能であるとき,
-$g$ は $(\infty, j)$ 回連続微分可能であると定義する.
+A function $f \colon A \to \R$ is \emph{$i$-times continuously differentiable}
+if there exist the derivatives $\D f, \D^2 f, \dots, \D^i f$ and all of them are continuous.
+A function $g \colon A \times B \to \R$ is \emph{$(i, j)$-times continuously  differentiable}
+if for each $n \in \{0, \dots, i\}$ and $m \in \{0, \dots j\}$,
+there exists the derivative $\D_1^n \D_2^m g$ and it is continuous.
+When a function $g$ is $(i, j)$-times continuously differentiable,
+we write $\D^{(i,j)}g$ for the derivatives $\D_1^i \D_2^j g$.
+A function $g$ is \emph{$(\infty, j)$-times continuously differentiable}
+if $g$ is $(i, j)$-times continuously differentiable for all $i \in \N$,
