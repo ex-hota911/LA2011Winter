@@ -15,7 +15,7 @@ Real numbers are represented by functions from string to string.
 In effect, a name of a real number $x$ receive $n$ and return approximation of $x$ with precision $2^{-n}$.
 
 We use \emph{oracle Turing machines}(henceforth just machines)
-to work on names of real numbers(Figure \ref{fig:model-of-function}).
+to work on names of real numbers(Figure~\ref{fig:model-of-function}).
 
  \begin{figure}
   \begin{center}
@@ -72,7 +72,7 @@ $L \colon \{0, 1\} ^* \to \{0, 1\}$ such that $L (u) = 1$ if and only if $u \in 
 
 \begin{definition}[Reduction]
  A Language $L$ reduces to a real function $f \colon [0, 1] \to \R$
- if there exists a polynomial-time function $S$ and a polynomial-time oracle Turing machine $M$ (Figure \ref{fig:reduction})
+ if there exists a polynomial-time function $S$ and a polynomial-time oracle Turing machine $M$ (Figure~\ref{fig:reduction})
  such that for any string $u$:
  \begin{figure}
   \begin{center}

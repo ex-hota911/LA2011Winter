@@ -1,25 +1,25 @@
-\section{証明}
+\section{Proof of The Theorems}
 \label{section:differentiable}
 
-本節では次の手順で定理\ref{DifferentiableIsPspace}, \ref{KTimesIsCH}を示す. 
-まずある種の差分方程式の族が, 
-$\classPSPACE$困難ないし$\classCH$困難であることを示す
-(\ref{section:divp}節, \ref{subsection: counting hierarchy}節).
-そしてこの差分方程式が, 
-滑らかさの条件を満たす\eqref{eq:ode}の形の微分方程式の族により模倣されることを示す
-(\ref{subsection: ode family}節). 
-この族を一つの滑らかな微分方程式へ埋め込むことで, 
-定理にいう$g$, $h$を構成する(\ref{subsection: proof of theorems}節).
+We give a proof sketch of Theorem~\ref{DifferentiableIsPspace} and Theorem~\ref{KTimesIsCH}.
+First we define a discrete version of differential equations in Section~\ref{section:divp},
+and show $\classPSPACE$-hardness or $\classCH$-hardness of the problem with 
+restrictions similar to once differentiable or $k$-times differentiable
+in Section~\ref{subsection: counting hierarchy}.
+In Section~\ref{subsection: ode family}, 
+we show that these discrete problems is simulatable
+by certain families of smooth differential equations.
+We construct the smooth differential equations stated in theorems
+putting one family into one real function
+in Section~\ref{subsection: proof of theorems}.
+Henceforth we call the discrete version of differential equations as difference equations.
 
-このように微分方程式で差分方程式を模倣する考え方は, 
-既にLipschitz条件の場合の証明
-\cite{kawamura2010lipschitz}にも本質的には現れていたものであるが, 
-本稿ではより精密に, 滑らかさの条件が与える影響を調べるため, 
-差分方程式の構造に着目する. 
-その結果, 
-$2$回以上連続微分可能という制限の下でも, 
-差分方程式族の「深さ」が小さければ模倣できることが判り, 
-そのことから$\classCH$困難性が従う. 
+The idea to simulate difference equations with differential equations
+is essentially from the proof of Lipschitz version \cite{kawamura2010lipschitz}.
+In this paper we focus on the structure of difference equations
+to analyze precisely the effect of the smoothness restriction.
+Consequently we show with the restriction differentiable more than once
+differential equations can simulate difference equations whose height is enough small, and it gives the $\classCH$-hardness of smooth differential equations.
 
 \subsection{差分方程式}
 \label{section:divp}
