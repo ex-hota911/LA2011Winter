@@ -60,51 +60,44 @@ $G_u \colon [P_u] \times [Q_u] \times [R_u] \to \{-1, 0, 1\}$
 let $(H_u)_u$ be as the solution of the difference equation given by $G_u$
 $H_u(P_u, Q_u) = L(u)$.
 A family $(G_u)_u$ is \emph{uniform} 
-if functions from $u$ to its height and width and cell size 
-$G_u$の段数, 列数, 欄の大きさそれぞれを$u$を入力とする関数と見做したとき
-それらが多項式時間計算可能であり,
-かつ与えられた$(u, i, T, Y)$から多項式時間で$G_u(i, T, Y)$が
-計算できることと定義する.
-そのようなとき$G _u$の段数, 列数及び欄の大きさは,
-$|u|$の多項式の指数($2^{\mathrm{poly} (|u|)}$)で抑えられる.
-$G_u$の段数を$P_u$と置くとき, 多項式$p$が存在して$P_u \le p(|u|)$が成立つとき,
-族 $(G_u) _u$は\emph{多項式段}であるという.
-また定数$c,d$が存在して$P_u \le c \log(|u|)+d$が成立つとき,
-族 $(G_u) _u$は\emph{対数段}であるという. 
-この用語を使うと, 
-河村がLipschitz連続な場合の解析に用いた補題
-\cite[補題4.7]{kawamura2010lipschitz}は次のように書ける. 
-
+if the height and width and cell size of $G_u$ are polynomial-time computable from $u$
+and $G_u(i, T, Y)$ is polynomial-time computable from $(u, i, T, Y)$.
+Note that height, width and cell size of a uniform $G_u$ is bounded by $2^{p(|u|)}$ where $p$ is some polynomial.
+A family $(G_u)_u$ has \emph{polynomial height} if the height $P_u$ is bounded by some polynomial $p(|u|)$.
+A family $(G_u)_u$ has \emph{logarithmic height} if the height $P_u$ is bounded by $c \log |u| + d$ where some constants $c$ and $d$.
+In terms of these definition,
+\cite[補題4.7]{kawamura2010lipschitz}, which proved by Kawamura to show 
+that $\classPSPACE$-hardness of Lipschitz version,
+can be written in following form:
 \begin{lemma}
  \label{DIVPpolyIsPSPACEhard}
- 多項式段の一様な差分方程式族によって認識される$\classPSPACE$困難な言語が存在する
- \footnote{差分方程式によって認識される言語のクラスはカープ帰着において閉じており,
-多項式段一様な関数族によって認識される言語は$\classPSPACE$と一致する.}.
+ There exists a $\classPSPACE$-hard language such that it is recognized by some uniform family of functions with polynomial height.
+ \footnote{The language class recognized by difference equations
+ is closed under Karp reduction and the language class recognized by 
+ uniform families with polynomial height coincides $\classPSPACE$.
+ }.
 \end{lemma}
 
-河村\cite{kawamura2010lipschitz}は
-この多項式段の一様な差分方程式族をLipschitz連続な微分方程式で模倣することで, 
-表\ref{table:related}第三行の結果を得た. 
-本稿の定理\ref{DifferentiableIsPspace}はこの構成に手を加えて, 
-$(\infty, 1)$回微分可能な模倣に
-作り替えることにより
-(\ref{subsection: ode family}, \ref{subsection: proof of theorems}節), 
-やはり補題\ref{DIVPpolyIsPSPACEhard}から得られる. 
+By simulating this difference equation using certain Lipschitz differential equation,
+Kawamura obtained the result at the third row in Table \ref{table:related}.
+Also Theorem \ref{DifferentiableIsPspace} follows from Lemma \ref{DIVPpolyIsPSPACEhard},
+by arranging the construction of $g$ and $h$ so that $g$ is 
+$(\infty, 1)$-times differential(Section \ref{subsection: ode family} and Section \ref{subsection: proof of theorems}).
 
-本稿では更に, 対象とする差分方程式族を対数段に制限すれば, 
-$(\infty, 2)$回以上微分可能な関数によっても
-模倣できることを示し
-(\ref{subsection: ode family}, \ref{subsection: proof of theorems}節), 
-これと次の補題から定理\ref{KTimesIsCH}を得る. 
-
+In this paper, we show real functions differentiable more than once in $x$ can simulate
+difference equations restricted to have logarithmic height
+(Section~\ref{subsection: ode family} and Section~\ref{subsection: proof of theorems}).
+Theorem \ref{KTimesIsCH} follows from the above argument with the following lemma.
 \begin{lemma}
  \label{DIVPlogIsCHhard}
- 対数段の一様な差分方程式族によって認識される$\classCH$困難な言語が存在する.
+ There exists a $\classCH$-hard language such that it is recognized by some uniform family of functions with logarithmic height.
 \end{lemma}
 
-計数階層$\classCH$の定義と差分方程式の関係及び
-補題\ref{DIVPlogIsCHhard}の証明は
-\ref{subsection: counting hierarchy}節にて述べる.
+
+In the next section we provide 
+the definition of the counting hierarchy($\classCH$),
+its connection with difference equations and 
+the proof of this lemma.
 
 
 \subsection{The Counting Hierarchy and Difference Equations of Logarithmic Height}
@@ -535,8 +528,8 @@ We have (\ref{enum:kf:end}) with
 \subsection{Proof of the Main Theorems}
 \label{subsection: proof of theorems}
 We describe the sketch of proof.
-Let $(g_u)_u$ and $(h_u)_u$ be as lemmas in the previous section,
-the real functions $g$ and $h$ in theorems are constructed from $(g_u)_u$ and $(h_u)_u$ as follows.
+Let $(g_u)_u$ and $(h_u)_u$ be as Lemma~\ref{KTimesFamily} or Lemma~\ref{DifferentiableFamily}.
+The real functions $g$ and $h$ in theorems are constructed from $(g_u)_u$ and $(h_u)_u$ as follows.
 Divide $[0,1)$ into infinity many subintervals $[l^-_u, l^+_u]$,
 with midpoints $c_u$.
 We construct $h$ putting a scaled copy of $h_u$ onto $[l^-_u, c_u]$ and
