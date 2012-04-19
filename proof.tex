@@ -21,17 +21,17 @@ to analyze precisely the effect of the smoothness restriction.
 Consequently we show with the restriction differentiable more than once
 differential equations can simulate difference equations whose height is enough small, and it gives the $\classCH$-hardness of smooth differential equations.
 
-\subsection{差分方程式}
+\subsection{Difference Equations}
 \label{section:divp}
 
-この節では微分方程式\eqref{eq:ode}の離散版ともいうべき差分方程式を定義し, 
-それが深さの制限に応じて
-$\classPSPACE$困難ないし$\classCH$困難であることを示す.
+This section we define difference equations, which is a discrete version of differential,
+and show that $\classPSPACE$-hardness or $\classCH$-hardness depending on restrictions on height.
 
-$[n] = \{0, \dots , n-1\}$と書く.
-関数$G \colon [P] \times [Q] \times [R] \to \{-1, 0, 1\}$と
-$H \colon [P + 1] \times [Q+1] \to [R]$が
-任意の$i \in [P]$, $T \in [Q]$について以下を満たすとき(図\ref{fig:divp}), 
+Let $[n]$ denote $\{0, \dots , n-1\}$.
+Let $G \colon [P] \times [Q] \times [R] \to \{-1, 0, 1\}$ and
+$H \colon [P + 1] \times [Q+1] \to [R]$,
+$H$ is the solution of the \emph{difference equation} given by $G$
+if for all $i \in [P]$ and $T \in [Q]$(Figure~\ref{fig:divp}), 
 \begin{figure}
  \begin{center}
   \includegraphics[height=0.15\textheight]{image/divp.eps}
@@ -39,28 +39,28 @@ $H \colon [P + 1] \times [Q+1] \to [R]$が
  \caption{差分方程式$G$とその解$H$}
  \label{fig:divp}
 \end{figure}
-$H$を\emph{差分方程式}\kern\xkanjiskip$G$の解と呼ぶ.
 \begin{gather}
    H(i, 0) = H(0, T) = 0 \label{eq:initial value}
 \\
-   H(i + 1, T + 1) - H(i+1, T) = G(i, T, H(i, T))  \label{eq:divp}
+   H(i + 1, T + 1) - H(i+1, T) = G(i, T, H(i, T)).  \label{eq:divp}
 \end{gather}
-$P$, $Q$, $R$をそれぞれこの差分方程式の
-\emph{段数}, \emph{列数}, \emph{欄の大きさ}と呼ぶ.
-\eqref{eq:ode}の初期条件$h(0) = 0$と方程式$\D h(t) = g(t, h(t))$が
-それぞれ式\eqref{eq:initial value}, \eqref{eq:divp}に似ており, 
-\ref{subsection: ode family}節ではこれを用いて
-微分方程式で差分方程式を模倣する. 
+We call $P$, $Q$ and $R$ as \emph{height}, \emph{width}, \emph{cell size} of
+the difference equation.
+The equation \eqref{eq:initial value} is similar to 
+the initial condition $h(0) = 0$,
+and \eqref{eq:divp} is similar to $\D h(t) = g(t, h(t))$
+in \eqref{eq:ode}.
+In Section~\ref{subsection: ode family}, we simulate difference equations by differential equations using this similarity.
 
-
-文字列$u$ごとに一つの差分方程式$G _u$を与え,
-$u$が言語$L$に属するかをその差分方程式によって計算することを考える.
-各 $u$ に対して $G_u$ の段数と列数, 解をそれぞれ $P_u, Q_u, H_u$ としたとき,
-言語$L$が関数族$(G_u)_u$によって
-\emph{認識}されるとは,
-$H_u(P_u, Q_u) = L(u)$ を満たすこととする.
-
-族$(G_u)_u$が\emph{一様}であるとは,
+We regard a family of difference equations $(G_u)_u$ computing $L$,
+by regarding the value of the bottom right cell as $L(u)$ for each $u$.
+A family $(G_u)_u$ of functions 
+$G_u \colon [P_u] \times [Q_u] \times [R_u] \to \{-1, 0, 1\}$
+\emph{recognizes} a language $L$ if
+let $(H_u)_u$ be as the solution of the difference equation given by $G_u$
+$H_u(P_u, Q_u) = L(u)$.
+A family $(G_u)_u$ is \emph{uniform} 
+if functions from $u$ to its height and width and cell size 
 $G_u$の段数, 列数, 欄の大きさそれぞれを$u$を入力とする関数と見做したとき
 それらが多項式時間計算可能であり,
 かつ与えられた$(u, i, T, Y)$から多項式時間で$G_u(i, T, Y)$が
@@ -389,7 +389,7 @@ We only prove Lemma~\ref{KTimesFamily} here
 and omit the analogous and easier proof of Lemma~\ref{DifferentiableFamily}.
 
 \begin{proof}[Proof of Lemma~\ref{KTimesFamily}]
-Let a function family $(G_u)_u$ be as in Lemma~\ref{DIVPlogIsCHhard},
+Let $L$, $(G_u)_u$ and $(H_u)_u$ be as in Lemma~\ref{DIVPlogIsCHhard},
 and let a function family $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
 
 By a similar argument to the beginning of the proof\cite[Lemma 4.1]{kawamura2010lipschitz},
@@ -489,7 +489,7 @@ and for each  $j \in \{1, \dots , k\}$,
 	& (\frac 1 4 < \eta < \frac 3 4).
        \end{cases}
   \end{equation}
-It is easy to check that they are also continuous on boundaries($\theta = 0$, $\eta = -1/4, 3/4$).
+It is easy to check that they are also continuous on the boundary($\theta = 0$, $\eta = -1/4, 3/4$).
 Hence $g _u$ is $(\infty, j)$-times continuously differentiable.
 Substituting $t = 0, 1$ ($\theta = 0$) into \eqref{eq:derivativeofgu},
 we get $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$, 
