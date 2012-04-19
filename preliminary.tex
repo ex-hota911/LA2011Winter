@@ -8,10 +8,10 @@ Real numbers are represented by functions from string to string.
  A function $\phi \colon \{0\} ^* \to \{0, 1\}^*$ is a \emph{name} of a real number $x$ 
  if for all $n \in \N$,
   $\phi(0^n)$ is the binary representation of $\lfloor x \cdot 2^n \rfloor$ or
-  $\lceil x \cdot 2^n \rceil$.
+  $\lceil x \cdot 2^n \rceil$,
+ where $\lfloor \cdot \rfloor$ and $\lceil \cdot \rceil$ are 
+ rounding down and up functions.
  \end{definition}
-Where $\lfloor \cdot \rfloor$ and $\lceil \cdot \rceil$ are 
-rounding down and up functions.
 In effect, a name of a real number $x$ receive $n$ and return approximation of $x$ with precision $2^{-n}$.
 
 We use \emph{oracle Turing machines}(henceforth just machines)
@@ -72,9 +72,8 @@ $L \colon \{0, 1\} ^* \to \{0, 1\}$ such that $L (u) = 1$ if and only if $u \in 
 
 \begin{definition}[Reduction]
  A Language $L$ reduces to a real function $f \colon [0, 1] \to \R$
- if there exists a polynomial-time function $S$ and a polynomial-time oracle Turing machine $M$ 
+ if there exists a polynomial-time function $S$ and a polynomial-time oracle Turing machine $M$ (Figure \ref{fig:reduction})
  such that for any string $u$:
-  任意の文字列 $u$ に対して以下を満たすことをいう(図\ref{fig:reduction}). 
  \begin{figure}
   \begin{center}
   \includegraphics[scale=0.25]{image/reduction.eps}
@@ -82,13 +81,10 @@ $L \colon \{0, 1\} ^* \to \{0, 1\}$ such that $L (u) = 1$ if and only if $u \in 
   \label{fig:reduction}
   \end{center}
  \end{figure}
-  \begin{itemize}
+  \begin{enumerate}
    \item $S(u, \cdot)$ is a name of $x_u$;
-   \item for any name $\phi$ of $f(x_u)$,
-	 \[
-	  M^\phi(u) \text{accepts} \leftrightarrow L(u) = 1.
-	 \]
-  \end{itemize}
+   \item $M^\phi(u)$ accepts if and only if $u \in L$ for any name $\phi$ of $f(x_u)$.
+  \end{enumerate}
 \end{definition}
 As a matter of form this definition is different from 
 that by Kawamura but they have same power as reduction.
