@@ -34,21 +34,23 @@ the smoothness of $g$.
 \begin{table}
 \renewcommand\arraystretch{1.3}
 \begin{center}
- \caption{$g$が多項式時間計算可能であるときの常微分方程式\eqref{eq:ode}の解$h$の計算量}
+ \caption{The complexity of the solution $h$ of \eqref{eq:ode}
+ assuming $g$ is polynomial-time computable.}
  \label{table:related}
  \begin{tabular}{lll}
-  制限 & 上界 & 下界 \\
+  Assumptions & Upper bounds & Lower bounds \\
   \hline
-   --- & --- & 計算不可能になりうる \cite{pour1979computable} \\
-  $h$ が $g$ の唯一解 & 計算可能 \cite{coddington1955theory}
-  & 任意の時間がかかりうる \cite{ko1983computational, miller1970recursive} \\
-  $g$ が Lipschitz 条件を満たす & 多項式領域計算可能 \cite{ko1983computational}
-      &	$\classPSPACE$ 困難になりうる \cite{kawamura2010lipschitz}\\
-  $g$ が $(\infty, 1)$ 回連続微分可能 & 多項式領域計算可能 & \parbox[t]{14zw}{$\classPSPACE$ 困難になりうる\\{}(定理\ref{DifferentiableIsPspace})} \\
-  \parbox[t]{14zw}{$g$ が $(\infty, k)$ 回連続微分可能\\{}($k$は任意の定数)}
-  & 多項式領域計算可能 & \parbox[t]{14zw}{$\classCH$ 困難になりうる\\{}(定理\ref{KTimesIsCH})} \\
-  $g$ が解析的 
-  & 多項式時間計算可能 \cite{muller1987uniform, ko1988computing, kawamura2010complexity} 
+   --- & --- & can be all non-computable \cite{pour1979computable} \\
+  $h$ is the unique solution & computable \cite{coddington1955theory}
+  & can take arbitrarily long time \cite{ko1983computational, miller1970recursive} \\
+  the Lipschitz condition  & polynomial-space \cite{ko1983computational}
+      &	can be$\classPSPACE$-hard \cite{kawamura2010lipschitz}\\
+  $(\infty, 1)$-times differentiable & polynomial-space 
+      & \parbox[t]{14zw}{can be $\classPSPACE$-hard\\{}(Theorem~\ref{DifferentiableIsPspace})} \\
+  \parbox[t]{14zw}{$(\infty, k)$-times differentiable\\{}(for any constant $k$)}
+  & polynomial-space & \parbox[t]{14zw}{can be $\classCH$-hard\\{}(Theorem~\ref{KTimesIsCH})} \\
+  $g$ is analytic
+  & polynomial-time \cite{muller1987uniform, ko1988computing, kawamura2010complexity} 
   & ---
  \end{tabular}
 \end{center}
