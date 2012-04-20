@@ -1,21 +1,25 @@
 \section{Proof of The Theorems}
 \label{section:differentiable}
 
-We give a sketch of proofs of Theorem~\ref{DifferentiableIsPspace} and Theorem~\ref{KTimesIsCH}.
-First we define a discrete version of differential equations in Section~\ref{section:divp},
-and show $\classPSPACE$-hardness or $\classCH$-hardness of this problem with 
-restrictions similar to once differentiable or $k$-times differentiable
-in Section~\ref{subsection: counting hierarchy}.
+The proofs of Theorems \ref{DifferentiableIsPspace} and \ref{KTimesIsCH}
+proceed as follows. 
+In Section~\ref{section:divp}, 
+we define \emph{difference equations}, 
+a discrete version of the differential equations. 
+In Section~\ref{subsection: counting hierarchy}, 
+we show the $\classPSPACE$- and $\classCH$-hardness of 
+difference equations with certain restrictions. 
 In Section~\ref{subsection: ode family}, 
-we show that these discrete problems is simulatable
-by certain families of smooth differential equations.
-We construct the smooth differential equations stated in theorems
-putting one family into one real function
-in Section~\ref{subsection: proof of theorems}.
-Henceforth we call the discrete version of differential equations as difference equations.
+we show that these classes of difference equations are simulable 
+by certain families of differential equations
+given by $(\infty, 1)$- nad $(\infty, k)$-times differentiable functions. 
+In Section~\ref{subsection: proof of theorems}, 
+we put these families of functions together into one real function
+to obtain the smooth differential equations stated in the theorems. 
 
-The idea to simulate difference equations with differential equations
-is essentially from the proof of Lipschitz version \cite{kawamura2010lipschitz}.
+The idea of simulating difference equations with differential equations
+is essentially from the proof of 
+the Lipschitz version \cite{kawamura2010lipschitz}.
 In this paper we focus on the structure of difference equations
 to analyze precisely the effect of smoothness assumptions.
 Consequently we show differential equations with the assumption that it is differentiable more than once
