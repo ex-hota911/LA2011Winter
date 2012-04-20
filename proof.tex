@@ -527,18 +527,20 @@ We have (\ref{enum:kf:end}) with
 
 \subsection{Proof of the Main Theorems}
 \label{subsection: proof of theorems}
-We describe the sketch of proof.
-Let $(g_u)_u$ and $(h_u)_u$ be as Lemma~\ref{KTimesFamily} or Lemma~\ref{DifferentiableFamily}.
-The real functions $g$ and $h$ in theorems are constructed from $(g_u)_u$ and $(h_u)_u$ as follows.
-Divide $[0,1)$ into infinity many subintervals $[l^-_u, l^+_u]$,
+Using the function families $(g_u)_u$ and $(h_u)_u$ 
+obtained from Lemmas \ref{KTimesFamily} or \ref{DifferentiableFamily}, 
+we construct the functions $g$ and $h$ in 
+Theorems \ref{DifferentiableIsPspace} and \ref{KTimesIsCH} as follows. 
+Divide $[0,1)$ into infinitely many subintervals $[l^-_u, l^+_u]$,
 with midpoints $c_u$.
-We construct $h$ putting a scaled copy of $h_u$ onto $[l^-_u, c_u]$ and
-putting a horizontally reversed scaled copy of $h_u(t)$ onto $[c_u, l^+_u]$ 
+We construct $h$ by putting a scaled copy of $h_u$ onto $[l^-_u, c_u]$ and
+putting a horizontally reversed scaled copy of $h_u$ onto $[c_u, l^+_u]$ 
 so that $h(l^-_u) = 0$, $h(c_u) = 2^{-\rho'(|u|)} L(u)$ and $h(l^+_u) = 0$ where $\rho'$ is a polynomial.
 In the same way, $g$ is constructed from $(g_u)_u$ so that $g$ and $h$ satisfy \eqref{eq:ode}.
-
-We omit the proof of Theorem~\ref{DifferentiableIsPspace} 
-since we can get it applying the same argument as the proof of Theorem~\ref{KTimesIsCH} and using Lemma~\ref{DifferentiableFamily}.
+We give the details of the proof of 
+Theorem~\ref{KTimesIsCH} from Lemma~\ref{KTimesFamily}, 
+and omit the analogous proof of Theorem~\ref{DifferentiableIsPspace} 
+from Lemma~\ref{DifferentiableFamily}. 
 
 
 \begin{proof}[Proof of Theorem~\ref{KTimesIsCH}]
