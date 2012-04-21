@@ -463,8 +463,10 @@ The condition~(\ref{enum:kf:start}) is immediate from \eqref{eq:gu} and
 the condition~(\ref{enum:equation}) is verified by the same argument as
 \cite[Lemma 4.1]{kawamura2010lipschitz}.
 
-We will show that the condition~(\ref{enum:differentiability}) holds, i.e., $g _u \in \classC^{(\infty, k)}[[0,1] \times [-1, 1]]$.
-For each $i \in \N$,
+We will prove that the condition~(\ref{enum:differentiability}) holds, i.e., $g _u \in \classC^{(\infty, k)}[[0,1] \times [-1, 1]]$.
+This condition follows from that $\D_2^j \D_1^i g_u$ exists and is continuous for each $i \in \N$ and $j \in \{0, \dots, k\}$, and we will show it by induction on $i$ and $j$.
+For $j=i=0$, it follows immediately from the definition of $g_u$ that $g_u$ is continuous.
+Assuming $g_u \in \classC^{(i-1, 0)}$, 
   \begin{align}
    \D^i \delta_{u,Y}(t) 
 &
@@ -472,7 +474,7 @@ For each $i \in \N$,
     G_u\bigl( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \bigr),
 \\
    \label{eq:derivativeofgu}
-    \D^{(i,0)} g_u(t, y)
+    \D_1^i g_u(t, y)
 &
      = \begin{cases}
  	\D^i \delta_{u, Y}(t) 
@@ -480,10 +482,16 @@ For each $i \in \N$,
 	\left( 1-f \left(\frac{4\eta-1}{2}\right)\right) 
 	\D^i \delta_{u, Y}(t)
 	+ f \left(\frac{4\eta-1}{2}\right) \D^i \delta_{u,Y+1}(t) 
-	& \text{if} \ \frac 1 4 < \eta < \frac 3 4,
+	& \text{if} \ \frac 1 4 < \eta < \frac 3 4.
        \end{cases}
   \end{align}
-and for each  $j \in \{1, \dots , k\}$,
+By definition of $f$ (Lemma~\ref{SmoothFunction}),
+$\D_1^i g$ exists and continuous at inner points for each interval.
+Since it can be verified easily that it are also continuous on the boundaries 
+($\theta = 0$ and $\eta = -1/4, 3/4$), $g_u \in \classC^{(i, j)}$.
+Hence by induction on $i$, we get that for all $i \in \N$ with $j=0$, $g_u \in \classC^{(i, 0)}$.
+
+Assuming $g_u \in \classC^{(i, j-1)}$ where $j \in \{1, \dots, k\}$,
   \begin{equation}
     \D^{(i,j)} g_u(t, y)
      = \begin{cases}
@@ -493,9 +501,12 @@ and for each  $j \in \{1, \dots , k\}$,
 	& \text{if} \ \frac 1 4 < \eta < \frac 3 4.
        \end{cases}
   \end{equation}
-It is easy to check that they are also continuous on the boundaries 
-($\theta = 0$ and $\eta = -1/4, 3/4$).
-Hence $g _u \in \classC^{(\infty, j)}[[0,1] \times [-1,1]]$.
+By definition of $f$ (Lemma~\ref{SmoothFunction}),
+$\D_2^j \D_1^i g$ exists and continuous at inner points for each interval.
+Since it can be verified easily that it are also continuous on the boundaries 
+($\theta = 0$ and $\eta = -1/4, 3/4$),  $g_u \in \classC^{(i, j)}$.
+Hence by induction on $j$, we get that $g_u \in \classC^{(i, j)}$ for all $i \in \N$ and $j \in \{0, \dots, k\}$.
+
 Substituting $t = 0, 1$ ($\theta = 0$) into \eqref{eq:derivativeofgu},
 we get $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$, 
 so the condition (\ref{enum:boundary}) holds.
