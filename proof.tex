@@ -320,10 +320,10 @@ a polynomial-time machine computing $(f_u)_u$.
 
  \begin{lemma}
   \label{KTimesFamily}
-  There exist a $\classCH$-hard language $L$ and a polynomial $\mu$ 
-  such that for all $k \ge 1$ and polynomials $\gamma$,
+  There exist a $\classCH$-hard language $L$ and a polynomial $\mu$,
+  such that for any $k \ge 1$ and polynomials $\gamma$,
   there are a polynomial $\rho$ and families $(g_u)_u$, $(h_u)_u$ of real functions
-  having following properties that $(g_u)_u$ is polynomial-time computable and for any string $u$:
+  such that $(g_u)_u$ is polynomial-time computable and for any string $u$:
   \begin{enumerate}
    \item \label{enum:kf:start}
 	 $g_u\colon [0,1] \times [-1,1]\to \R$, $h_u\colon [0,1] \to [-1,1]$;
@@ -371,7 +371,7 @@ using the smooth function $f$ in following lemma.
 
 \begin{lemma}[{\cite[Lemma 3.6]{ko1991complexity}}]
  \label{SmoothFunction}
- There exist a polynomial-time infinitely differentiable function  $f \colon [0,1] \to \R$ 
+ There exist a polynomial-time function  $f \in \classC^\infty [0, 1]$
  and a polynomial $s$ such that
   \begin{enumerate}
    \item $f(0) = 0$ and $f(1) = 1$;
@@ -390,7 +390,7 @@ We only prove Lemma~\ref{KTimesFamily} here
 and omit the analogous and easier proof of Lemma~\ref{DifferentiableFamily}.
 
 \begin{proof}[Proof of Lemma~\ref{KTimesFamily}]
-Let $L$, $(G_u)_u$ and $(H_u)_u$ be as in Lemma~\ref{DIVPlogIsCHhard},
+Let $L$ and $(G_u)_u$ be as in Lemma~\ref{DIVPlogIsCHhard},
 and let a function family $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
 
 By a similar argument to the beginning of the proof of \cite[Lemma 4.1]{kawamura2010lipschitz},
@@ -404,7 +404,7 @@ and polynomials $q$, $r$ satisfying the following properties:
 		       0 & \text{if} \ i<p(|u|), 
 		      \end{cases}
  \\
- i \not = j_u(T)  \to G_u(i, T, Y) = 0.
+ G_u(i, T, Y) \neq 0 \to i = j_u(T).
 \end{gather}
 Since $G_u$ has logarithmic height,
 there exists a polynomial $\sigma$ such that $(k+1)^{p(x)} \le \sigma(x)$
@@ -458,7 +458,9 @@ $ by
   \end{align}
 
 We will verify that $(g_u)_u$ and $(h_u)_u$ defined above satisfy all the conditions stated in Lemma~\ref{KTimesFamily}.
-The condition~(\ref{enum:equation}) are verified by the same argument as
+Polynomial-time computability of $(g_u)_u$ can be verified using Lemma~\ref{lem:type1representation}.
+The condition~(\ref{enum:kf:start}) is immediate from \eqref{eq:gu} and
+the condition~(\ref{enum:equation}) is verified by the same argument as
 \cite[Lemma 4.1]{kawamura2010lipschitz}.
 
 We will show that the condition~(\ref{enum:differentiability}) holds, i.e., $g _u \in \classC^{(\infty, k)}[[0,1] \times [-1, 1]]$.
