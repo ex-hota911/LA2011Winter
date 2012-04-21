@@ -237,7 +237,7 @@ and for $i \neq 0$, we define
  \end{equation}
 Define $H_u$ from $G_u$ by \eqref{eq:initial value} and \eqref{eq:divp}.
 
-We prove by induction on $i$ that $H_u(i, T) \in [2^{l_u}]$ for all $T$, and that
+We prove by induction on $i$ that $H_u(i, T) \in [2^{l_i}]$ for all $T$, and that
  \begin{equation} \label{eq:subformula}
   G_u(i,T,H_u(i,V)) = (-1)^{V_{s_{i+1}}} 
    \phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]})
@@ -251,25 +251,30 @@ We have
  \begin{equation} \label{eq:summation}
   H_u(i+1, T) 
   = \sum_{V = 0}^{T-1} G_u(i, V, H_u(i, V)) 
-  = \sum_{V} (-1)^{V_{s_{i+1}}} \phi_i(V_{[s_i+1, s_{i+1}]}, 
-   \dots, V_{[s_{n-1}+1, s_n]}),
  \end{equation}
 where we write $\overline U$ for the number represented by string $U$ in binary.
-For each $V < \overline{T_{[s_{i+1}+1, s_n]} 0 \cdots 0}$ in \eqref{eq:summation},
-the terms $\phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]})$ and
- $- \phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]}) = 0$ cancel each other out. Then 
+Since the assumption \eqref{eq:subformula} implies that flipping the bit $V_{s_{i+1}}$ of
+any $V$ reverses the sign of $G_u(i, V, H_u(i, V))$,
+most of the summands in \eqref{eq:summation} cancel out.
+Since The only terms that can survive are those that 
+$V_{[1, s_i+1]} = 10 \cdots 0$ and
+$V$ is between $\overline{T_{s_n} \dots T_{s_{i+1}+1} 00 \dots 0}$ and 
+$\overline{T_{s_n} \dots T_{s_{i+1}+1} 01 \dots 1}$.
+This proves $H_u(i+1, T) \in [2^{l_i}]$ since these terms are all $0$ or $1$.
+Then if $T_{[1,s_{i+1}+1]} = 10 \cdots 0$,
  \begin{equation}
   H_u(i+1, T) = \sum_{X \in \{0,1\}^{l_i}}
   \phi_i(X, T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]}).
  \end{equation}
- From this equation and \eqref{eq:phi-step}, it follows that
+By this equation and \eqref{eq:phi-step},
  \begin{align}
   G_u(i+1,T,H_u(i+1,T)) 
   &= (-1)^{T_{s_{i+2}}} C^{m_{i+1}} (H_u(i+1, T))
-\notag
-\\
-  &= (-1)^{T_{s_{i+2}}} \phi_{i+1}(T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]}).
+  \notag
+  \\
+  &= (-1)^{T_{s_{i+2}}} \phi_{i+1}(T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]}),
  \end{align}
+completing the induction steps.
 
 
 By substituting $n$ for $i$ and $2^{s_n}$ for $T$ in \eqref{eq:subformula},
