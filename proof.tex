@@ -590,41 +590,85 @@ It can be shown similarly to the Lipschitz version
 that $g$ and $h$ satisfy \eqref{eq:ode} and $g$ is polynomial-time computable.
 We only show that $g \in \classC^{(\infty, k)}[[0,1] \times [-1, 1]]$.
 
-For each $i \in \N$ and $j \in \{0, \dots, k\}$, 
-the $(i,j)$th derivative of \eqref{eq:g} is given by 
+We prove that for each $i \in \N$, $j \in \{0, \dots, k\}$,
+there exists the derivative $\D_1^i \D_2^j g$ and it is continuous
+by induction on $i$ and $j$.
+
+For $i=j=0$, it is follows that $g$ is continuous on $[0,1) \times [-1,1]$
+from the definition of g \eqref{eq:g} and Lemma~\ref{KTimesFamily} (\ref{enum:boundary}).
+It follows from Lemma~\ref{KTimesFamily} (\ref{enum:smooth}) that
+\begin{align}
+ \left|g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
+ \frac{y}{\Lambda_u}\right)\right|
+ &\le 
+ \sum^{k}_{l=0} |\D^{(0,l)} g_u | (\Lambda_u + 1)^l 
+ \notag
+ \\
+ &\le
+ k \cdot 2^{\mu(0, |u|) - \gamma(|u|)} \cdot (2\Lambda_u)^k
+ \notag
+ \\
+ & 
+ \le  2^{k\lambda(|u|) + 2k + \mu(0, |u|)  - \gamma(|u|)}. 
+ \label{eq:sizeofderivative}
+\end{align}
+By our choice of $\gamma$, 
+(\ref{eq:sizeofderivative}) converges to $0$ when $|u| \to \infty$.
+Hence $\lim_{t \to 1-0} g(t,y) = g(1, y) = 0$.
+Here we have proven $g$ is continuous.
+
+We show the induction steps on $j$ (resp. $i$).
+Assuming that the derivative $\D_1^{i'} \D_2^{j'} g$ exists and is continuous,
+we show  the derivative $\D_1^{i} \D_2^{j} g$ exists and is continuous 
+where $j, j' \in \{0, \dots k\}$, $i=i'=0$ and $j=j'+1$ (resp. $i=i'+1$ and $j=j'$).
+Each branch of \eqref{eq:g} is in $\classC^k$
+and the derivative $\D_1^{i} \D_2^{j} g$ exists at interior points of each interval.
+Since $\D_1^{i'} \D_2^{j'} g$ is continuous by the introduction hypothesis,
+we can prove the existence and contiousness of $\D_1^{i} \D_2^{j} g$ 
+by showing that it is continuous 
+in boundaries ($t=0,1$, $y = -1, 1$) and the area where the first variable is $1$.
+For each $t \in (0, 1)$, $y \neq -1, 1$,
 \begin{equation}
-   \D^{(i, j)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
+   \D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
    = \begin{cases}
       \pm \Lambda_u^{(i, j)} \sum^{k}_{l=j} \frac{\D^{(i,l)} g_u(t,1)}{(l-j)!}
-      (y - 1)^l &  \text{if} \ 1<y, 
+      (y - 1)^l &  (1<y)
       \\
-      \pm \Lambda_u^{(i,j)} \D^{(i, j)} g_u(t, y) & \text{if} \ {-1} < y < 1, 
+      \pm \Lambda_u^{(i,j)} \D^{(i, j)} g_u(t, y) & (-1 < y < 1)
       \\
       \pm \Lambda_u^{(i, j)} \sum^{k}_{l=j} 
-      \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l & \text{if} \ 1<y
+      \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l &  (1<y).
     \end{cases}
 \end{equation}
-for each $t \in (0, 1)$ and $y \in [-\Lambda_u, \Lambda_u]$ where $y \neq -1, 1$.
-It is continuous where $t \in (0,1)$ and $y \not = -1, 1$
-since each $\D^{(i,j)}g_u$ is continuous.
-We can verify that it is continuous on the boundary($t = 0, 1$ or $y = -1, 1$)
-by the definition and Lemma~\ref{KTimesFamily} (\ref{enum:boundary}).
-Finally we show that it is continuous at 1 for the first variable.
-By Lemma~\ref{KTimesFamily} (\ref{enum:smooth}),
+Hence
+\begin{align*}
+ \lim_{y \to -1-0}\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right) &
+ = \lim_{y \to -1+0}\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
+ \\
+ \lim_{y \to 1-0}\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right) 
+ &= \lim_{y \to 1+0}\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right),
+\end{align*}
+so $\D_1^{i} \D_2^{j} g$ is continuous in boundaries ($y = 1,-1$).
+The continuousness in $t = 0, 1$ follows from \ref{KTimesFamily} (\ref{enum:boundary}).
+We will show that the derivative exists and is continuous in the area where the first variable is $1$.
+From \ref{KTimesFamily} (\ref{enum:smooth}), we get
  \begin{align}
-  \left|\D^{(i, j)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
+  \left|\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
   \frac{y}{\Lambda_u}\right)\right|
   &\le 
   \Lambda_u^{i+j} \sum^{k}_{l=j} |\D^{(i,l)} g_u | (\Lambda_u + 1)^l 
   \notag
   \\
-  & \le \Lambda_u^{i+j+k}  2^{k + \mu(i, |u|) - \gamma(|u|)}
-   =  2^{(i+j+k)\lambda(|u|) + k + \mu(i, |u|)  - \gamma(|u|)}. 
+  &\le
+  \Lambda_u^{i+j}  \cdot k \cdot 2^{\mu(i, |u|) - \gamma(|u|)} \cdot (2\Lambda_u)^k
+  \notag
+  \\
+  & 
+  \le  2^{(i+j+k)\lambda(|u|) + 2k + \mu(i, |u|)  - \gamma(|u|)}. 
   \label{eq:sizeofderivative}
  \end{align}
-As $|u| \to \infty$, the right-hand side approaches $0$ by our choice of $\gamma$.
-Hence $\lim_{t \to 1-0}\D^{(i,j)} g(t,y) = g(1, y) = 0$.
-We have shown that $g \in \classC^{(\infty, k)}[[0,1] \times [-1,1]]$.
+By our choice of $\gamma$, 
+it converges to $0$ when $|u| \to \infty$, i.e.,
+$\lim_{t \to 1-0} g(t,y) = g(1, y) = 0$.
+Here we complete the induction steps.
 \end{proof}
-
-
