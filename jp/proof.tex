@@ -587,7 +587,7 @@ $を次で定義する.
  任意の $[0,1)$ の実数は, 或る文字列 $u$, $\pm$, $t\in [0,1]$ を以って
  $l^\mp_u \pm \frac{t}{\Lambda_u}$ と書ける.
  関数 $g, h$ を $t \in [0,1)$, $y \in [-1, 1]$ に対して,
- \begin{align}
+ \begin{align} \label{eq:g}
  g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
   &= \begin{cases}
       \pm \displaystyle \sum_{l=0}^k \frac{\D^{(0,l)}g_u(t,1)}{l!} (y-1)^l 
@@ -607,24 +607,18 @@ $を次で定義する.
  河村による証明を参照されたし\cite[定理3.2]{kawamura2010lipschitz}.
  ここでは特に$g$が$(\infty, k)$回連続微分可能であることのみ示す.
 
- $i \in \N$, $j \in \{0, \dots, k\}$, $t \in (0, 1)$ において
-\begin{equation}
-   \D^{(i, j)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
-   = \begin{cases}
-      \pm \Lambda_u^{(i, j)} \sum^{k}_{l=j} \frac{\D^{(i,l)} g_u(t,1)}{(l-j)!}
-      (y - 1)^l &  (1<y)
-      \\
-      \pm \Lambda_u^{(i,j)} \D^{(i, j)} g_u(t, y) & (-1 < y < 1)
-      \\
-      \pm \Lambda_u^{(i, j)} \sum^{k}_{l=j} 
-      \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l &  (1<y)
-    \end{cases}
-\end{equation}
- $\D^{(i,j)}g_u$ は連続であるため 
- $t \in (0,1)$, $y \not = -1, 1$ において連続.
- 境界($t = 0, 1$または$y = -1, 1$)において連続であることは,
- 定義および補題 \ref{KTimesFamily} (\ref{enum:boundary})により示される.
- 第一変数について $1$ の周辺で連続であることを示す.
+式\eqref{eq:g}の各場合分けの中の式は$(\infty, k)$回連続微分可能であり,
+場合分けの区間の内部の点においては微分係数が定まる.
+つまり導関数$\D^{(i, j)}g \left(l^\mp_u \pm {t}/{\Lambda_u}, {y}/{\Lambda_u}\right)$
+は, 任意の $i \in \N$, $j \in \{0, \dots, k\}$, $t \in (0, 1)$ に対して,
+$y<-1$ ならば $\pm \Lambda_u^{(i, j)} \sum^{k}_{l=j} \frac{\D^{(i,l)} g_u(t,1)}{(l-j)!} (y - 1)^l$,
+$-1 < y < 1$ ならば $\pm \Lambda_u^{(i,j)} \D^{(i, j)} g_u(t, y)$,
+$1<y$ ならば $\pm \Lambda_u^{(i, j)} \sum^{k}_{l=j} \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l$.
+また$\lim_{y \to -1-0}\D^{(i, j)}g \left(l^\mp_u \pm {t}/{\Lambda_u}, {y}/{\Lambda_u}\right) = \lim_{y \to -1+0}\D^{(i, j)}g \left(l^\mp_u \pm {t}/{\Lambda_u}, {y}/{\Lambda_u}\right)$,
+$\lim_{y \to 1-0}\D^{(i, j)}g \left(l^\mp_u \pm {t}/{\Lambda_u}, {y}/{\Lambda_u}\right) = \lim_{y \to 1+0}\D^{(i, j)}g \left(l^\mp_u \pm {t}/{\Lambda_u}, {y}/{\Lambda_u}\right)$より, 境界$y = 1,-1$においても
+導関数が存在し連続である.
+境界$t = 0, 1$において導関数が存在し連続であることは補題 \ref{KTimesFamily} (\ref{enum:boundary})により示される.
+第一変数について $1$ の周辺で導関数が存在し連続であることを示す.
  補題 \ref{KTimesFamily} の(\ref{enum:smooth})より
  \begin{align}
   \left|\D^{(i, j)}g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
@@ -639,7 +633,7 @@ $を次で定義する.
  \end{align}
  $\gamma$ のとり方により, $|u| \to \infty$ のとき 
  式 (\ref{eq:sizeofderivative}) は$0$に収束する.
- よって  $\lim_{t \to 1-0}\D^{(i,j)} g(t,y) = g(1, y) = 0$.
+ よって  $\lim_{t \to 1-0}\D^{(i,j)} g(t,y) = \D^{(i,j)} g(1, y) = 0$.
  以上により$g$は$(\infty, k)$回連続微分可能.
 \end{proof}
 
