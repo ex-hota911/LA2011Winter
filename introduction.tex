@@ -44,38 +44,49 @@ the smoothness of $g$.
   $h$ is the unique solution & computable \cite{coddington1955theory}
   & can take arbitrarily long time \cite{ko1983computational, miller1970recursive} \\
   the Lipschitz condition  & polynomial-space \cite{ko1983computational}
-      &	can be$\classPSPACE$-hard \cite{kawamura2010lipschitz}\\
-  $(\infty, 1)$-times differentiable & polynomial-space 
+      &	can be $\classPSPACE$-hard \cite{kawamura2010lipschitz}\\
+  $g$ is of class $\classC ^{(\infty, 1)}$ & polynomial-space 
       & \parbox[t]{14zw}{can be $\classPSPACE$-hard\\{}(Theorem~\ref{DifferentiableIsPspace})} \\
-  \parbox[t]{14zw}{$(\infty, k)$-times differentiable\\{}(for any constant $k$)}
+  \parbox[t]{14zw}{$g$ is of class $\classC ^{(\infty, k)}$\\{}(for any constant $k$)}
   & polynomial-space & \parbox[t]{14zw}{can be $\classCH$-hard\\{}(Theorem~\ref{KTimesIsCH})} \\
   $g$ is analytic
-  & polynomial-time \cite{muller1987uniform, ko1988computing, kawamura2010complexity} 
+  & polynomial-time \cite{muller1987uniform, ko1988computing} 
   & ---
  \end{tabular}
 \end{center}
 \end{table}
 
-In general, assumptions about some smoothness of given functions (e.g. differentiable enough times) 
-is sometimes beneficial in numerical calculation to apply some algorithm or to analyze simply.
-However it is not theoretical meaning but only experimental,
-it has been not discussed enough about the effect of assumptions about smoothness on how complex can the solution be in terms of Computable Complexity.
+In numerical analysis, 
+knowledge about smoothness of the input function 
+(such as being differentiable enough times) 
+is often beneficial 
+in applying certain algorithms or simplifying their analysis.
+However, to our knowledge
+this casual understanding that smoothness is good 
+has not been 
+rigorously substantiated in terms of 
+computational complexity theory. 
+This motivates us to ask whether, 
+for our differential equation \eqref{eq:ode}, 
+smoothness helps to reduce the complexity of the solution. 
 
-本稿で扱う微分方程式についていえば, 
-極端なのは$g$が解析的である場合であり, 
-このときにはテイラー級数による解法により, 
-表の最下列にあるように$h$は$g$と同じく多項式時間計算可能になる. 
-本稿ではLipschitz条件より強いが解析的よりは弱い滑らかさの仮定を考える
-(表の第4, 5行). 
-ここで$(i, j)$回連続微分可能とは, 
-第一, 第二変数についてそれぞれ$i$回, $j$回微分でき, 
-その導関数が連続であることである
+At the extreme is the case where $g$ is analytic: 
+as the last row of the table shows, 
+$h$ can then be shown to be polynomial-time computable 
+by the Taylor series methods. 
+Thus our interest is in 
+the cases between Lipschitz and analytic 
+(the fourth and fifth rows in the table). 
+We say that $g$ is of class $\classC ^{(i, j)}$
+if the partial derivative $\D ^{(i, j)} g$ 
+(often also denoted $\partial ^{i + j} g (t, y) / \partial t ^i \partial y ^j$)
+exists and is continuous%
 \footnote{%
-二変数関数$g$が
-$i+j \le k$を満たす任意の自然数$i$, $j$について
-$(i,j)$回連続微分可能であることを
-$k$回連続微分可能と言うこともあるが, 
-本稿では各変数について微分できる回数をこのように分けて書く.}.
+A common terminology is to say that $g$ is of class $\classC ^k$
+if it is of class $\classC ^{(i,j)}$ 
+for all $i$, $j$ with $i + j \leq k$.}; 
+it is said to be of class $\classC ^{(\infty, j)}$ if
+it is of class $\classC ^{(i, j)}$ for all $i \in \N$. 
 
  \begin{theorem}
   \label{DifferentiableIsPspace}
