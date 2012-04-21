@@ -41,7 +41,7 @@ if for all $i \in [P]$ and $T \in [Q]$(Figure~\ref{fig:divp}),
  \begin{center}
   \includegraphics[height=0.15\textheight]{image/divp.eps}
  \end{center}
- \caption{差分方程式$G$とその解$H$}
+ \caption{The solution $H$ of the difference equation given by $G$}
  \label{fig:divp}
 \end{figure}
 \begin{gather}
@@ -57,26 +57,26 @@ and \eqref{eq:divp} is similar to $\D h(t) = g(t, h(t))$
 in \eqref{eq:ode}.
 In Section~\ref{subsection: ode family}, we simulate difference equations by differential equations using this similarity.
 
-We regard a family of difference equations $(G_u)_u$ computing $L$,
-by regarding the value of the bottom right cell as $L(u)$ for each $u$.
+We regard a family $(G_u)_u$ of difference equations computing $L$,
+by interpreting the value of the bottom right cell (the gray cell in Figure~\ref{fig:divp}) as $L(u)$ for each $u$.
 A family $(G_u)_u$ of functions 
 $G_u \colon [P_u] \times [Q_u] \times [R_u] \to \{-1, 0, 1\}$
-\emph{recognizes} a language $L$ if
-let $(H_u)_u$ be as the solution of the difference equation given by $G_u$
-$H_u(P_u, Q_u) = L(u)$.
+\emph{recognizes} a language $L$ if for each $u$,
+the solution $H_u$ of the difference equation given by $G_u$ exists 
+and $H_u(P_u, Q_u) = L(u)$.
 A family $(G_u)_u$ is \emph{uniform} 
 if the height and width and cell size of $G_u$ are polynomial-time computable from $u$
 and $G_u(i, T, Y)$ is polynomial-time computable from $(u, i, T, Y)$.
 Note that height, width and cell size of a uniform $G_u$ is bounded by $2^{p(|u|)}$ where $p$ is some polynomial.
 A family $(G_u)_u$ has \emph{polynomial height} if the height $P_u$ is bounded by some polynomial $p(|u|)$.
-A family $(G_u)_u$ has \emph{logarithmic height} if the height $P_u$ is bounded by $c \log |u| + d$ where some constants $c$ and $d$.
+A family $(G_u)_u$ has \emph{logarithmic height} if the height $P_u$ is bounded by $c \log |u| + d$ with some constants $c$ and $d$.
 In terms of these definition,
-\cite[補題4.7]{kawamura2010lipschitz}, which proved by Kawamura to show 
+\cite[Lemma 4.7]{kawamura2010lipschitz}, which proved by Kawamura to show 
 that $\classPSPACE$-hardness of Lipschitz version,
 can be written in following form:
 \begin{lemma}
  \label{DIVPpolyIsPSPACEhard}
- There exists a $\classPSPACE$-hard language such that it is recognized by some uniform family of functions with polynomial height.
+ There exists a $\classPSPACE$-hard language $L$ such that it is recognized by some uniform family of functions with polynomial height%
  \footnote{The language class recognized by difference equations
  is closed under Karp reduction and the language class recognized by 
  uniform families with polynomial height coincides $\classPSPACE$.
@@ -95,7 +95,7 @@ difference equations restricted to have logarithmic height
 Theorem \ref{KTimesIsCH} follows from the above argument with the following lemma.
 \begin{lemma}
  \label{DIVPlogIsCHhard}
- There exists a $\classCH$-hard language such that it is recognized by some uniform family of functions with logarithmic height.
+ There exists a $\classCH$-hard language $L$ such that it is recognized by some uniform family of functions with logarithmic height.
 \end{lemma}
 
 
