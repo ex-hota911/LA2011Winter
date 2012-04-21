@@ -3,32 +3,34 @@
 
 \subsection{Computation of Real Function}
 
-Real numbers are represented by functions from string to string.
+We start by fixing a way to encode real numbers 
+by functions from strings to strings.
 \begin{definition}
  A function $\phi \colon \{0\} ^* \to \{0, 1\}^*$ is a \emph{name} of a real number $x$ 
  if for all $n \in \N$,
   $\phi(0^n)$ is the binary representation of $\lfloor x \cdot 2^n \rfloor$ or
   $\lceil x \cdot 2^n \rceil$,
- where $\lfloor \cdot \rfloor$ and $\lceil \cdot \rceil$ are 
- rounding down and up functions.
+ where $\lfloor \cdot \rfloor$ and $\lceil \cdot \rceil$ mean
+ rounding down and up to the nearest integer.
  \end{definition}
-In effect, a name of a real number $x$ receive $n$ and return approximation of $x$ with precision $2^{-n}$.
+In effect, a name of a real number $x$ receives $0 ^n$ and returns an approximation of $x$ with precision $2^{-n}$.
 
-We use \emph{oracle Turing machines}(henceforth just machines)
-to work on names of real numbers(Figure~\ref{fig:model-of-function}).
+We use \emph{oracle Turing machines} (henceforth just machines)
+to work on names of real numbers (Figure~\ref{fig:model-of-function}).
 
  \begin{figure}
   \begin{center}
    \includegraphics[height=0.15\textheight]{image/model-of-function.eps}
   \end{center}
-  \caption{A machine $M$ computing a real function $f$}
+  \caption{A machine $M$ computing a real function $f$.}
   \label{fig:model-of-function}
  \end{figure}
 
-Let $M$ be a machine and $\phi$ be a function from string to string,
-We write $M ^\phi (0 ^n)$ as the output string by computation of $M$ given
+Let $M$ be a machine and $\phi$ be a function from strings to strings. 
+We write $M ^\phi (0 ^n)$ for the output string 
+when $M$ is given
 $\phi$ as oracle and string $0^n$ as input.
-So we also regard $M^\phi$ as a function from string to string.
+Thus we also regard $M^\phi$ as a function from strings to strings.
 
 \begin{definition}
 Let $A$ be a bounded closed interval of $\R$.
