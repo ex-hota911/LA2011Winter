@@ -1,4 +1,4 @@
-\section{序論}
+\section{Introduction}
 
 Let $g \colon [0,1] \times \R \to \R$ be continuous 
 and consider the following differential equation: 
@@ -82,28 +82,31 @@ if the partial derivative $\D ^{(i, j)} g$
 (often also denoted $\partial ^{i + j} g (t, y) / \partial t ^i \partial y ^j$)
 exists and is continuous%
 \footnote{%
-A common terminology is to say that $g$ is of class $\classC ^k$
+Another common terminology is to say that $g$ is of class $\classC ^k$
 if it is of class $\classC ^{(i,j)}$ 
 for all $i$, $j$ with $i + j \leq k$.}; 
 it is said to be of class $\classC ^{(\infty, j)}$ if
 it is of class $\classC ^{(i, j)}$ for all $i \in \N$. 
 
- \begin{theorem}
-  \label{DifferentiableIsPspace}
-  多項式時間計算可能かつ $(\infty, 1)$ 回連続微分可能な
-  実関数 $g \colon [0,1] \times [-1,1] \to \R$ であって, 
-  方程式\eqref{eq:ode}が
-  $\classPSPACE$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
+\begin{theorem}
+ \label{DifferentiableIsPspace}
+There is a polynomial-time computable function
+$g \colon [0,1] \times [-1,1] \to \R$ 
+of class $\classC ^{(\infty, 1)}$ such that
+the equation \eqref{eq:ode} has a 
+$\classPSPACE$-hard solution $h \colon [0, 1] \to \R$. 
  \end{theorem}
 
  \begin{theorem}
   \label{KTimesIsCH}
-  任意の自然数 $k$ に対して, 
-  多項式時間計算可能かつ $(\infty, k)$ 回連続微分可能な
-  実関数 $g \colon [0,1] \times [-1,1] \to \R$ であって, 
-  方程式(\ref{eq:ode})が
-  $\classCH$ 困難な解 $h \colon [0, 1] \to \R$ を持つものが存在する.
-但し$\classCH \subseteq \classPSPACE$は計数階層(\ref{subsection: counting hierarchy}節)である.
+Let $k$ be a positive integer. 
+There is a polynomial-time computable function
+$g \colon [0,1] \times [-1,1] \to \R$ 
+of class $\classC ^{(\infty, k)}$ such that
+the equation \eqref{eq:ode} has a 
+$\classCH$-hard solution $h \colon [0, 1] \to \R$, 
+where $\classCH \subseteq \classPSPACE$ is the 
+Counting Hierarchy (see Section~\ref{subsection: counting hierarchy}). 
  \end{theorem}
 
 ここで $g \colon [0,1] \times \R \to \R$ でなく
