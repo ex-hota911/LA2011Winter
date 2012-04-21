@@ -463,7 +463,7 @@ The condition~(\ref{enum:kf:start}) is immediate from \eqref{eq:gu} and
 the condition~(\ref{enum:equation}) is verified by the same argument as
 \cite[Lemma 4.1]{kawamura2010lipschitz}.
 
-We will prove that the condition~(\ref{enum:differentiability}) holds, i.e., $g _u \in \classC^{(\infty, k)}[[0,1] \times [-1, 1]]$.
+We prove that the condition~(\ref{enum:differentiability}) holds, i.e., $g _u \in \classC^{(\infty, k)}[[0,1] \times [-1, 1]]$.
 This condition follows from that $\D_2^j \D_1^i g_u$ exists and is continuous for each $i \in \N$ and $j \in \{0, \dots, k\}$, and we will show it by induction on $i$ and $j$.
 For $j=i=0$, it follows immediately from the definition of $g_u$ that $g_u$ is continuous.
 Assuming $g_u \in \classC^{(i-1, 0)}$, 
@@ -472,8 +472,7 @@ Assuming $g_u \in \classC^{(i-1, 0)}$,
 &
     = \frac{2^{(i+1)q(|u|)} \D^{i+1}f(\theta)}{B^{d_u(j_u(T)+1)}}
     G_u\bigl( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \bigr),
-\\
-   \label{eq:derivativeofgu}
+\\ 
     \D_1^i g_u(t, y)
 &
      = \begin{cases}
@@ -483,7 +482,7 @@ Assuming $g_u \in \classC^{(i-1, 0)}$,
 	\D^i \delta_{u, Y}(t)
 	+ f \left(\frac{4\eta-1}{2}\right) \D^i \delta_{u,Y+1}(t) 
 	& \text{if} \ \frac 1 4 < \eta < \frac 3 4.
-       \end{cases}
+       \end{cases} \label{eq:d(i,0)g_u}
   \end{align}
 By definition of $f$ (Lemma~\ref{SmoothFunction}),
 $\D_1^i g$ exists and continuous at inner points for each interval.
@@ -492,8 +491,8 @@ Since it can be verified easily that it are also continuous on the boundaries
 Hence by induction on $i$, we get that for all $i \in \N$ with $j=0$, $g_u \in \classC^{(i, 0)}$.
 
 Assuming $g_u \in \classC^{(i, j-1)}$ where $j \in \{1, \dots, k\}$,
-  \begin{equation}
-    \D^{(i,j)} g_u(t, y)
+  \begin{equation} \label{eq:d(i,j)g_u}
+    \D_2^j \D_1^i g_u(t, y)
      = \begin{cases}
 	0 & \text{if} \ {-\frac 1 4} < \eta < \frac 1 4, \\
 	(2B^{d_u(j_u(T))})^j \D^j f(\frac{4\eta - 1}2)
@@ -507,12 +506,12 @@ Since it can be verified easily that it are also continuous on the boundaries
 ($\theta = 0$ and $\eta = -1/4, 3/4$),  $g_u \in \classC^{(i, j)}$.
 Hence by induction on $j$, we get that $g_u \in \classC^{(i, j)}$ for all $i \in \N$ and $j \in \{0, \dots, k\}$.
 
-Substituting $t = 0, 1$ ($\theta = 0$) into \eqref{eq:derivativeofgu},
+Substituting $t = 0, 1$ ($\theta = 0$) into \eqref{eq:d(i,0)g_u}
 we get $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$, 
 so the condition (\ref{enum:boundary}) holds.
 
 We show that the condition (\ref{enum:smooth}) holds with $\mu(x, y) = (x+1)q(y) + s(x+1)$.
-Note that $\mu$ is a polynomial independent of $k$ and $\gamma$.
+Note that $\mu$ is a polynomial and independent of $k$ and $\gamma$.
 Since $|\D^i \delta_{u,Y}(t)| \le 2^{(i+1)q(|u|) + s(i+1)}B^{-d_u(j_u(|u|)+1)}$ by \eqref{eq:delta}, for all $i \in \N$ and $j \in \{0, \dots, k\}$, we have
  \begin{equation}
   |\D^{(i,j)} g_u| 
@@ -524,7 +523,7 @@ Since $|\D^i \delta_{u,Y}(t)| \le 2^{(i+1)q(|u|) + s(i+1)}B^{-d_u(j_u(|u|)+1)}$ 
    \le
    2^{\mu(i, |u|) - \gamma(|u|)}
  \end{equation}
- by our choice of $B$.
+by \eqref{eq:d(i,0)g_u}, \eqref{eq:d(i,j)g_u} and our choice of $B$.
 
 We have (\ref{enum:kf:end}) with
   $\rho(x) = \sigma(x) \cdot (\gamma(x)+r(x)+s(k)+k+3)$, because
@@ -538,9 +537,9 @@ We have (\ref{enum:kf:end}) with
 
 
  To prove Lemma~\ref{DifferentiableFamily}, 
- let a function family $(G_u)_u$ be as Lemma~\ref{DIVPpolyIsPSPACEhard}
- and let $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$,
- and define $(g_u)_u$ and $(h_u)_u$ as \eqref{eq:gu} and \eqref{eq:hu}
+ let $L$ and $(G_u)_u$ be as Lemma~\ref{DIVPpolyIsPSPACEhard},
+ and let $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
+ Define $(g_u)_u$ and $(h_u)_u$ as \eqref{eq:gu} and \eqref{eq:hu}
  with $d_u(i) = i$.
  It is shown in the same way as above that they meet all the conditions
  stated in Lemma~\ref{DifferentiableFamily}.
@@ -599,7 +598,7 @@ We define
   & = \frac{h_u(t)}{\Lambda_u}
 \end{align}
 for each string $u$ and $t \in [0,1)$, $y \in [-1, 1]$.
-Let $g(1,y) = 0$ and $h(1) = 0$ for any $y \in [-1,1]$
+Let $\D_1^i g(1,y) = 0$ and $h(1) = 0$ for any $y \in [-1,1]$ and $i \in \N$.
 
 It can be shown similarly to the Lipschitz version 
 \cite[Theorem 3.2]{kawamura2010lipschitz}
@@ -637,36 +636,28 @@ We show the induction steps on $j$ (resp. $i$).
 Assuming that the derivative $\D_1^{i'} \D_2^{j'} g$ exists and is continuous,
 we show  the derivative $\D_1^{i} \D_2^{j} g$ exists and is continuous 
 where $j, j' \in \{0, \dots k\}$, $i=i'=0$ and $j=j'+1$ (resp. $i=i'+1$ and $j=j'$).
-Each branch of \eqref{eq:g} is in $\classC^k$
+Each branch of \eqref{eq:g} is in $\classC^{(\infty, k)}$
 and the derivative $\D_1^{i} \D_2^{j} g$ exists at interior points of each interval.
 Since $\D_1^{i'} \D_2^{j'} g$ is continuous by the introduction hypothesis,
 we can prove the existence and contiousness of $\D_1^{i} \D_2^{j} g$ 
 by showing that it is continuous 
-in boundaries ($t=0,1$, $y = -1, 1$) and the area where the first variable is $1$.
+in boundaries ($t=0,1$, $y = -1, 1$) and in the area where the first variable is $1$.
 For each $t \in (0, 1)$, $y \neq -1, 1$,
 \begin{equation}
    \D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
    = \begin{cases}
       \pm \Lambda_u^{(i, j)} \sum^{k}_{l=j} \frac{\D^{(i,l)} g_u(t,1)}{(l-j)!}
-      (y - 1)^l &  (1<y)
+      (y - 1)^l &  \text{if } y < -1,
       \\
-      \pm \Lambda_u^{(i,j)} \D^{(i, j)} g_u(t, y) & (-1 < y < 1)
+      \pm \Lambda_u^{(i,j)} \D^{(i, j)} g_u(t, y) & \text{if } -1 < y < 1,
       \\
       \pm \Lambda_u^{(i, j)} \sum^{k}_{l=j} 
-      \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l &  (1<y).
+      \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l &  \text{if } 1<y.
     \end{cases}
 \end{equation}
-Hence
-\begin{align*}
- \lim_{y \to -1-0}\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right) &
- = \lim_{y \to -1+0}\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
- \\
- \lim_{y \to 1-0}\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right) 
- &= \lim_{y \to 1+0}\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right),
-\end{align*}
-so $\D_1^{i} \D_2^{j} g$ is continuous in boundaries ($y = 1,-1$).
+We get that $\D_1^{i} \D_2^{j} g$ is continuous in boundaries ($y = 1,-1$).
 The continuousness in $t = 0, 1$ follows from \ref{KTimesFamily} (\ref{enum:boundary}).
-We will show that the derivative exists and is continuous in the area where the first variable is $1$.
+We verify that $\D_1^{i} \D_2^{j} g$ exists and is continuous when $|u|$ goes to infinity, i.e., when the first variable moves arbitrarily close to $1$.
 From \ref{KTimesFamily} (\ref{enum:smooth}), we get
  \begin{align}
   \left|\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
@@ -685,6 +676,6 @@ From \ref{KTimesFamily} (\ref{enum:smooth}), we get
  \end{align}
 By our choice of $\gamma$, 
 it converges to $0$ when $|u| \to \infty$, i.e.,
-$\lim_{t \to 1-0} g(t,y) = g(1, y) = 0$.
+$\lim_{t \to 1-0} \D_1^i \D_2^j g(t,y) = \D_1^i \D_2^j g(1, y) = 0$.
 Here we complete the induction steps.
-\end{proof}
+\end{proof} 
