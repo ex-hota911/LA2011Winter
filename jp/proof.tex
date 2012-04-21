@@ -602,17 +602,48 @@ $を次で定義する.
 \end{align}
  $t=1$のとき $g(1,y) = 0$, $h(1) = 0$ と定義する.
 
- この $g$ が多項式時間計算可能であり$g$と$h$が方程式(\ref{eq:ode})を満たすことは,
- Lipschitz条件の場合と同様に示されるため,
- 河村による証明を参照されたし\cite[定理3.2]{kawamura2010lipschitz}.
- ここでは特に$g$が$(\infty, k)$回連続微分可能であることのみ示す.
+この $g$ が多項式時間計算可能であり$g$と$h$が方程式(\ref{eq:ode})を満たすことは,
+Lipschitz条件の場合と同様に示されるため,
+河村による証明を参照されたし\cite[定理3.2]{kawamura2010lipschitz}.
+ここでは特に$g$が$(\infty, k)$回連続微分可能であることのみ示す.
 
 $(\infty, k)$回連続微分可能を示すため,
 任意の$i \in \N$, $j \in \{0, \dots, k\}$にたいして
-導関数$\D_1^i \D_2^j g$が存在し連続であることを示す.
+導関数$\D_1^i \D_2^j g$が存在し連続であることを$i$と$j$の帰納法により示す.
+
+$i=j=0$のとき, $g$が$[0,1) \times [-1,1]$の範囲で連続であることは
+その定義\eqref{eq:g}と補題 \ref{KTimesFamily} (\ref{enum:boundary})により示される.
+補題 \ref{KTimesFamily} の(\ref{enum:smooth})より
+\begin{align}
+ \left|g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
+ \frac{y}{\Lambda_u}\right)\right|
+ &\le 
+ \sum^{k}_{l=0} |\D^{(0,l)} g_u | (\Lambda_u + 1)^l 
+ \notag
+ \\
+ &\le
+ k \cdot 2^{\mu(0, |u|) - \gamma(|u|)} \cdot (2\Lambda_u)^k
+ \notag
+ \\
+ & 
+ \le  2^{k\lambda(|u|) + 2k + \mu(0, |u|)  - \gamma(|u|)}. 
+ \label{eq:sizeofderivative}
+\end{align}
+$\gamma$ のとり方により, $|u| \to \infty$ のとき 
+式 (\ref{eq:sizeofderivative}) は$0$に収束する.
+よって  $\lim_{t \to 1-0} g(t,y) = g(1, y) = 0$.
+以上により$g$は連続.
+
+$j$に対する帰納法のステップと$i$に対する帰納法のステップを同時に示す.
+つまり導関数$\D_1^{i'} \D_2^{j'} g$が存在し連続であることを仮定して
+$i=i'=0$, $j=j'+1$ (resp. $i=i'+1$, $j=j'$) としたとき,
+導関数$\D_1^{i} \D_2^{j} g$が存在し連続であることを示す.
 式\eqref{eq:g}の各場合分けの中の式は$(\infty, k)$回連続微分可能であり,
 場合分けの区間の内部の点においては微分係数が定まる.
-よって $i \in \N$, $j \in \{0, \dots, k\}$, $t \in (0, 1)$, $y \neq -1, 1$ において
+帰納法の仮定により導関数$\D_1^{i'} \D_2^{j'} g$が存在し連続であるため,
+各境界($t=0,1$, $y = -1, 1$)及び第一変数が$1$である領域において連続であることを示せば,
+導関数$\D_1^{i} \D_2^{j} g$は存在し連続であることが示される.
+ $t \in (0, 1)$, $y \neq -1, 1$ において
 \begin{equation}
    \D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
    = \begin{cases}
@@ -622,11 +653,10 @@ $(\infty, k)$回連続微分可能を示すため,
       \pm \Lambda_u^{(i,j)} \D^{(i, j)} g_u(t, y) & (-1 < y < 1)
       \\
       \pm \Lambda_u^{(i, j)} \sum^{k}_{l=j} 
-      \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l &  (1<y)
+      \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l &  (1<y).
     \end{cases}
 \end{equation}
-
-また上の式より
+よって
 \begin{align*}
  \lim_{y \to -1-0}\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right) &
  = \lim_{y \to -1+0}\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right),
@@ -634,11 +664,9 @@ $(\infty, k)$回連続微分可能を示すため,
  \lim_{y \to 1-0}\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right) 
  &= \lim_{y \to 1+0}\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
 \end{align*}
-が成立つため境界$y = 1,-1$においても導関数が存在し連続である.
+が成立つため境界$y = 1,-1$においても導関数が存在し連続.
 境界$t = 0, 1$において導関数が存在し連続であることは補題 \ref{KTimesFamily} (\ref{enum:boundary})により示される.
-任意の$[0,1)$の点は$l^\mp_u \pm t/\Lambda_u$と書けることから,
-第一変数について $1$ の周辺以外の点において導関数が存在し連続であることが示された.
-第一変数が $1$ である点において導関数が存在し連続であることを示す.
+第一変数が $1$ である領域において導関数が存在し連続であることを示す.
  補題 \ref{KTimesFamily} の(\ref{enum:smooth})より
  \begin{align}
   \left|\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
@@ -647,13 +675,18 @@ $(\infty, k)$回連続微分可能を示すため,
   \Lambda_u^{i+j} \sum^{k}_{l=j} |\D^{(i,l)} g_u | (\Lambda_u + 1)^l 
   \notag
   \\
-  & \le \Lambda_u^{i+j+k}  2^{k + \mu(i, |u|) - \gamma(|u|)}
-   =  2^{(i+j+k)\lambda(|u|) + k + \mu(i, |u|)  - \gamma(|u|)}. 
+  &\le
+  \Lambda_u^{i+j}  \cdot k \cdot 2^{\mu(i, |u|) - \gamma(|u|)} \cdot (2\Lambda_u)^k
+  \notag
+  \\
+  & 
+  \le  2^{(i+j+k)\lambda(|u|) + 2k + \mu(i, |u|)  - \gamma(|u|)}. 
   \label{eq:sizeofderivative}
  \end{align}
  $\gamma$ のとり方により, $|u| \to \infty$ のとき 
  式 (\ref{eq:sizeofderivative}) は$0$に収束する.
  よって  $\lim_{t \to 1-0}\D^{(i,j)} g(t,y) = \D^{(i,j)} g(1, y) = 0$.
+
  以上により$g$は$(\infty, k)$回連続微分可能.
 \end{proof}
 
