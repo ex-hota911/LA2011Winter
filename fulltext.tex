@@ -1,7 +1,8 @@
-%\documentclass[11pt,a4paper]{jsarticle}
 \documentclass{llncs}
 
 \makeatletter
+
+% \usepackage[scale={.74, .79},marginratio={1:1, 5:4}]{geometry}
 
 %% 個人設定 
 \usepackage{amsmath,amssymb}
@@ -37,8 +38,6 @@
 \newcommand{\classLip}{\mathrm C _{\mathrm L}}
 \newcommand{\classC}{\mathrm C}
 
-
-
 %\theoremstyle{definition}
 %\newtheorem{theorem}{Theorem}[section]
 %\newtheorem{lemma}[theorem]{Lemma}
@@ -68,21 +67,21 @@
 
 \makeatother
 
-\title{滑らかな常微分方程式の計算量}
+\title{Computational Complexity of\\Smooth Differential Equations}
 
 \author{%
-\hspace*{7zw}% 良い子は真似してはいけません！
-太田浩行\thanks{東京大学, \texttt{hota@is.s.u-tokyo.ac.jp}} 
+Akitoshi Kawamura\inst1
 \and
-河村彰星\thanks{東京大学}%
-\hspace*{7zw}% 良い子は真似してはいけません！
+Hiroyuki Ota\inst1
 \and
-マルチン・ツィーグラー\thanks{Martin Ziegler, ダルムシュタット工科大学}
+Carsten R\"osnick\inst2
 \and
-カルステン・レースニク\thanks{Carsten R\"osnick, ダルムシュタット工科大学}
+Martin Ziegler\inst2
 }
-%\和暦
-\date{}
+\institute{%
+University of Tokyo
+\and
+TU Darmstadt}
 
 \begin{document}
 
@@ -93,7 +92,7 @@
 \input{preliminary}
 \input{proof}
 \input{constructive}
-\input{acknowledgments}
+% \input{acknowledgments}
 
 \bibliography{la}
 
