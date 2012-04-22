@@ -48,9 +48,9 @@ an approximation of $f(x)$ with error less than $2^{-n}$
 is computable in time polynomial in $n$ 
 independent of real number $x$.
 
-We can characterize (polynomial-time) computability of real functions without oracle Turing machines
-by giving all approximations of a function at rational points 
-and how smooth the function is.
+Computing a real function in polynomial time, machines only know
+about $x$ by its approximation within polynomial size (with polynomial precision).
+In following lemma, \eqref{eq:modulus} is derived from this fact.
 
 \begin{lemma}
  \label{lem:type1representation}
@@ -62,9 +62,10 @@ and how smooth the function is.
  \begin{equation}
   |\phi(d, 0^n) - f(d)| \le 2^{-n},
  \end{equation}
- and for all $x, y \in [0, 1]$, $m \in \N$,
- \begin{equation}
-  |x-y| \le 2^{-p(m)} \Rightarrow |f(x) - f(y)| \le 2^{-m}.
+ and for all $x, y \in [0, 1]$, $n \in \N$,
+ \begin{equation} 
+  |x-y| \le 2^{-p(n)} \Rightarrow |f(x) - f(y)| \le 2^{-n}. 
+   \label{eq:modulus}
  \end{equation}
  where each rational number in $\Q$ is represented by a pair of integers in binary representation.
 \end{lemma}
