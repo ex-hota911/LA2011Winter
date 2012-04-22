@@ -336,7 +336,7 @@ a polynomial-time machine computing $(f_u)_u$.
    \item \label{enum:equation}
 	 $h_u(0) = 0$ and $\D h_u(t) = g_u(t, h_u(t))$ for all $t \in [0,1]$;
    \item \label{enum:differentiability}
-         $g_u \in \classC^{(\infty, k)}$;
+         $g_u$ is of class $\classC^{(\infty, k)}$;
    \item \label{enum:boundary}
 	 $
 	 \D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0
@@ -377,10 +377,8 @@ using the smooth function $f$ in following lemma.
 
 \begin{lemma}[{\cite[Lemma 3.6]{ko1991complexity}}]
  \label{SmoothFunction}
- There exist a polynomial-time function $f \colon [0, 1] \to \R$
- and a polynomial $s$ such that
+ There exist a polynomial-time function $f \colon [0, 1] \to \R$ of class $\classC^\infty$ and a polynomial $s$ such that
   \begin{enumerate}
-   \item $f \in \classC^\infty$;
    \item $f(0) = 0$ and $f(1) = 1$;
    \item $\D ^n f (0) = \D ^n f (1) = 0$ for all $n \ge 1$;
    \item $f$ is strictly increasing;
@@ -471,11 +469,11 @@ the condition~(\ref{enum:equation}) is verified by the same argument as
 \cite[Lemma 4.1]{kawamura2010lipschitz}.
 
 We prove that the condition~(\ref{enum:differentiability}) holds, 
-which states that $g _u \in \classC^{(\infty, k)}$.
+which states that $g _u$ is of class $\classC^{(\infty, k)}$.
 This condition follows from that $\D_2^j \D_1^i g_u$ exists and is continuous for each $i \in \N$ and $j \in \{0, \dots, k\}$.
 We can show it by induction on $i$ and $j$.
 For $j=i=0$, it follows immediately from the definition of $g_u$.
-For $i \neq 0$ and $j = 0$, assuming $g_u \in \classC^{(i-1, 0)}$ by the induction hypothesis, we get
+For $i \neq 0$ and $j = 0$, assuming that $g_u$ is of $\classC^{(i-1, 0)}$ by the induction hypothesis, we get
   \begin{align}
    \D^i \delta_{u,Y}(t) 
 &
@@ -496,7 +494,7 @@ For $i \neq 0$ and $j = 0$, assuming $g_u \in \classC^{(i-1, 0)}$ by the inducti
   \end{align}
 And it is continuous
 by the definition of $f$ (Lemma~\ref{SmoothFunction}).
-For $i \neq 0$ and $j \neq 0$, assuming $g_u \in \classC^{(i, j-1)}$ by the induction hypothesis, we get
+For $i \neq 0$ and $j \neq 0$, assuming that $g_u$ is $\classC^{(i, j-1)}$ by the induction hypothesis, we get
   \begin{equation} \label{eq:d(i,j)g_u}
     \D_2^j \D_1^i g_u(t, y)
      = \begin{cases}
@@ -607,7 +605,7 @@ Let $\D_1^i g(1,y) = 0$ and $h(1) = 0$ for any $y \in [-1,1]$ and $i \in \N$.
 It can be shown similarly to the Lipschitz version 
 \cite[Theorem 3.2]{kawamura2010lipschitz}
 that $g$ and $h$ satisfy \eqref{eq:ode} and $g$ is polynomial-time computable.
-Here we only prove that $g \in \classC^{(\infty, k)}$.
+Here we only prove that $g$ is of class $\classC^{(\infty, k)}$.
 
 We show that $\D_1^i \D_2^j g$ exists and is continuous 
 for each $i \in \N$ and $j \in \{0, \dots, k\}$ by induction on $i$ and $j$.
