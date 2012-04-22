@@ -14,33 +14,28 @@ We use string functions as names of elements in $\R$,
 such relation is called representation of $\R$.
 In the same way, we represent real functions as string functions
 to discuss complexity of real operators.
-つまり
-連続な実関数$h \colon [0,1] \to \R$の空間$\classC [0, 1]$や, 
-Lipschitz連続な実関数$g \colon [0, 1] \times [-1, 1] \to \R$の空間
-$\classLip [[0, 1] \times [-1, 1]]$について, 
-表現を指定すればよい. 
-The computability and complexity is depending on the representation,
-so we adopt \cite{kawamura2010operators}
-using $\deltabox$ as representation of continuous functions $f \colon [0,1] \to \R$ and $\deltaboxLip$ as representation of Lipschitz continuous 
-functions $g \colon [0, 1] \times [-1, 1] \to \R$.
-It is known that $\deltabox$ is some unique natural representation of $\classC_{[0, 1]}$ \cite{kawamura11:_funct_space_repres_and_polyn_time_comput}, 
-and $\deltaboxLip$ is a representation
-added the information about Lipschitz constants to $\deltabox$.
+So we need to define representations as string functions of
+class $\classC_{[0, 1]}$ of continuous real functions $h \colon [0,1] \to \R$ 
+and class $\classLip_{[0, 1] \times [-1, 1]}$ of Lipschitz continuous real functions.
+The choice of representations is important since the computability and complexity is depending on these representations.
+Following \cite{kawamura2010operators},
+we use $\deltabox$ as the representation of $\classC_{[0,1]}$ and $\deltaboxLip$ as the representation of $\classLip_{[0, 1] \times [-1, 1]}$.
+It is known that is some sense $\deltabox$ an unique natural representation of $\classC_{[0, 1]}$ \cite{kawamura11:_funct_space_repres_and_polyn_time_comput}.
+And $\deltaboxLip$ is a representation
+added information about the Lipschitz constant to $\deltabox$.
 
-Since the length of string functions are not finite,
-we generate the way to calculate time and space resource of oracle Turing machine
-using second order polynomial.
+Since size of string functions are not finite,
+by restricting the amount of resources (time and space) of oracle Turing machine using second order polynomial,
+we define second-order complexity classes
+(e.g. $\classFPSPACEtwo$, polynomial-space computable),
+reductions (e.g. $\redW$, polynomial-time Weihrauch reduction),
+and hardness.
+Combining it with the representations of real functions described above,
+we can write theorems of this paper in constructive form.
 
-これに基いて多項式空間$\classFPSPACEtwo$などの計算量クラスや, 
-多項式時間Weihrauch帰着$\redW$などの帰着, 
-その下での困難性を定義する\cite{kawamura2010operators}. 
-この枠組を上述の実関数の表現と組合せることで, 
-本稿の結果も以下の如く構成的な形で述べることができる. 
-
-実関数$g \in \classLip [[0, 1] \times [-1, 1]]$を, 
-\eqref{eq:ode}の解$h \in \classC [0, 1]$に対応させる演算子$\OpIVP$を考える. 
-$\OpIVP$は$\classLip [[0, 1] \times [-1, 1]]$から
-$\classC [0, 1]$への部分写像である. 
+Let $\OpIVP$ be an operator mapping a real function $g$ of class $\classLip_{[0, 1] \times [-1, 1]}$ to
+the solution $h$ of \eqref{eq:ode} of class $\classC_{[0, 1]}$.
+The operator $\OpIVP$ is a partial projection from $\classLip [[0, 1] \times [-1, 1]]$ to $\classC [0, 1]$.
 \cite[定理4.9]{kawamura2010operators}では表\ref{table:related}第三行の証明を
 構成的に書き直すことで, 
 $\OpIVP$が$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$完全であることが
