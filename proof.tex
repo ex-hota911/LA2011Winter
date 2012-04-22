@@ -607,38 +607,39 @@ It can be shown similarly to the Lipschitz version
 that $g$ and $h$ satisfy \eqref{eq:ode} and $g$ is polynomial-time computable.
 Here we only prove that $g$ is of class $\classC^{(\infty, k)}$.
 
-We show that $\D_1^i \D_2^j g$ exists and is continuous 
-for each $i \in \N$ and $j \in \{0, \dots, k\}$ by induction on $i$ and $j$.
-By the induction hypothesis, we can assume that $\D_1^n \D_2^m g$ exists and is continuous 
-for all $(n, m) \in \{0, \dots, i\} \times \{0, \dots, j\}$ 
-except the case $(n, m) = (i, j)$.
-
-
-We define for each $l_u^\mp \pm t/\Lambda_u \in [0,1)$ and $y/\Lambda_u \in [-1, 1]$,
+We claim that 
+for each $i \in \N$ and $j \in \{0, \dots, k\}$, 
+the derivative $\D _1 ^i \D _2 ^j g$ is given by 
 \begin{equation}
    \D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
    = \begin{cases}
       \pm \Lambda_u^{i+j} \sum^{k}_{l=j} \frac{\D^{(i,l)} g_u(t,1)}{(l-j)!}
       (y - 1)^l &  \text{if } y < -1,
       \\
-      \pm \Lambda_u^{i+j} \D^{(i, j)} g_u(t, y) & \text{if } -1 \le y \le 1,
+      \pm \Lambda_u^{i+j} \D^{(i, j)} g_u(t, y) & \text{if } {-1} \le y \le 1,
       \\
       \pm \Lambda_u^{i+j} \sum^{k}_{l=j} 
-      \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l &  \text{if } 1<y,
+      \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l &  \text{if } 1<y
     \end{cases}  \label{eq:d1id2jg}
 \end{equation}
-and $\D_1^i \D_2^j g(0, y) = 0$.
-For $i=j=0$, it is equal to the definition of $g$.
-We get \eqref{eq:d1id2jg} 
-for $i=0$ and $j \neq 0$ by differentiating $\D_2^{j-1} g$ with respect to the second variable, 
-and for $i \neq 0$ and $j \neq 0$ by differentiating $\D_1^{i-1} \D_2^{j} g$
-with respect to the first variable.
+for each $l_u^\mp \pm t/\Lambda_u \in [0,1)$ and $y/\Lambda_u \in [-1, 1]$, 
+and by $\D _1 ^i \D _2 ^j g (0, y) = 0$. 
+This is verified by induction on $i + j$. 
+The equation \eqref{eq:d1id2jg} follows from calculation 
+(note that this means verifying 
+that \eqref{eq:d1id2jg} follows from the definition of $g$ when $i = j = 0$, 
+from the induction hypothesis about $\D _2 ^{j - 1} g$ when $i = 0$ and $j > 0$, 
+and from the induction hypothesis about $\D _1 ^{i - 1} \D _2 ^j g$ when $i > 0$).
+That $\D _1 ^i \D _2 ^j g (0, y) = 0$ also follows 
+easily from induction hypothesis when $i = 0$. 
+When $i > 0$, 
+\ldots. (←ココ！)
 
-The continuity of \eqref{eq:d1id2jg} on $[0,1) \times [-1, 1]$ follows
-from Lemma~\ref{KTimesFamily} (\ref{enum:boundary}).
+The continuity of $\D _1 ^i \D _2 ^j g$ on $[0,1) \times [-1, 1]$ follows
+from \eqref{eq:d1id2jg} and Lemma~\ref{KTimesFamily} (\ref{enum:boundary}).
 We verify that $\D_1^{i} \D_2^{j} g$ is continuous 
-when the first variable moves arbitrarily close to $1$, 
-i.e., $|u|$ goes to infinity.
+when the first variable tends to $1$, 
+i.e., $|u|$ tends to infinity.
 From Lemma~\ref{KTimesFamily} (\ref{enum:smooth}), we get
  \begin{align}
   \left|\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
