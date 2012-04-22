@@ -1,4 +1,4 @@
-\section{演算子の計算量}
+\section{Complexity of Operations}
 
 Both Theorem~\ref{DifferentiableIsPspace} and \ref{KTimesIsCH}
 states the complexity of the solution $h$ under the assumption 
@@ -36,42 +36,29 @@ we can write theorems of this paper in constructive form.
 Let $\OpIVP$ be an operator mapping a real function $g$ of class $\classLip_{[0, 1] \times [-1, 1]}$ to
 the solution $h$ of \eqref{eq:ode} of class $\classC_{[0, 1]}$.
 The operator $\OpIVP$ is a partial projection from $\classLip [[0, 1] \times [-1, 1]]$ to $\classC [0, 1]$.
-\cite[定理4.9]{kawamura2010operators}では表\ref{table:related}第三行の証明を
-構成的に書き直すことで, 
-$\OpIVP$が$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$完全であることが
-示された. 
-本稿の定理\ref{DifferentiableIsPspace}も同じように
-構成的に書き直すことができる. 
-即ち$\OpIVP$を$(\infty, k)$回連続微分可能な入力に制限したものを
-$\OpIVP _k$と書くと, 
+In \cite[Theorem 4.9]{kawamura2010operators},
+$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$-completeness of $\OpIVP$ is proven
+by rewriting the proof of the result of the third row in Table~\ref{table:related} in the constructive form.
+In a similar way, Theorem~\ref{DifferentiableIsPspace} can be rewritten in the constructive form.
+That is, let $\OpIVP _k$ as the operator $\OpIVP$ whose input is restricted to class $\classC^{(\infty, k)}$,
 
 \begin{theorem}
 \label{theorem: C1 constructive}
-$\OpIVP _1$は$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$完全. 
+The operator $\OpIVP _1$ is $(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$-complete.
 \end{theorem}
 
-これを示すには, 
-定理\ref{DifferentiableIsPspace}の証明において
-関数の構成に使われた情報が入力から容易に得られることを確かめればよく, 
-新たな技巧を要しないから詳細は省略する. 
-この構成的な主張は非構成的な主張よりも
-強いものであり\cite[補題3.7, 3.8]{kawamura2010operators}, 
-定理\ref{DifferentiableIsPspace}は
-定理\ref{theorem: C1 constructive}の系として従う. 
+To show this theorem,
+we need to verify that the information used to construct functions in the proof of Theorem~\ref{DifferentiableIsPspace}
+can be acquired easily from inputs.
+We omit the proof since it does not need any new technique.
+This constructive theorem is stronger than non-constructive one \cite[補題3.7, 3.8]{kawamura2010operators}, 
+i.e., Theorem~\ref{DifferentiableIsPspace} follows immediately
+form Theorem~\ref{theorem: C1 constructive}.
 
-% \begin{theorem}
-% \label{theorem: Ck constructive}
-% \end{theorem}
+The constructive version of Theorem~\ref{KTimesIsCH} is also true.
+In fact for each $k \in \N$,
+$\OpIVP _k$ is $(\deltaboxLip, \deltabox)$-$\classCHtwo$-$\redW$-hard.
+We will treat it in another paper
+since we need more discussion on how to handle hierarchy
+to define $\classCHtwo$ in the flame work of \cite{kawamura2010operators}.
 
-なお定理\ref{KTimesIsCH}も同様に構成的な形で成立ち, 
-各$k \in \N$について
-$\OpIVP _k$は$(\deltaboxLip, \deltabox)$-$\classCHtwo$-$\redW$困難であるが, 
-この\cite{kawamura2010operators}の枠組における$\classCHtwo$を定義するには
-相対化の扱いについて今少しの議論を要するので別稿で扱う. 
-
-% ところで, より強い帰着である
-% 強ワイラオホ帰着を用いると
-
-% \begin{theorem}
-% $\OpIVP _\infty$は$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redSW$完全. 
-% \end{theorem}
