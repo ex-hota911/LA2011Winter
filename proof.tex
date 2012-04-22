@@ -336,7 +336,7 @@ a polynomial-time machine computing $(f_u)_u$.
    \item \label{enum:equation}
 	 $h_u(0) = 0$ and $\D h_u(t) = g_u(t, h_u(t))$ for all $t \in [0,1]$;
    \item \label{enum:differentiability}
-         $g_u$ is $(\infty, k)$-times continuously differentiable;
+         $g_u \in \classC^{(\infty, k)}$;
    \item \label{enum:boundary}
 	 $
 	 \D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0
@@ -377,9 +377,10 @@ using the smooth function $f$ in following lemma.
 
 \begin{lemma}[{\cite[Lemma 3.6]{ko1991complexity}}]
  \label{SmoothFunction}
- There exist a polynomial-time function  $f \in \classC^\infty [0, 1]$
+ There exist a polynomial-time function $f \colon [0, 1] \to \R$
  and a polynomial $s$ such that
   \begin{enumerate}
+   \item $f \in \classC^\infty$;
    \item $f(0) = 0$ and $f(1) = 1$;
    \item $\D ^n f (0) = \D ^n f (1) = 0$ for all $n \ge 1$;
    \item $f$ is strictly increasing;
@@ -606,7 +607,7 @@ Let $\D_1^i g(1,y) = 0$ and $h(1) = 0$ for any $y \in [-1,1]$ and $i \in \N$.
 It can be shown similarly to the Lipschitz version 
 \cite[Theorem 3.2]{kawamura2010lipschitz}
 that $g$ and $h$ satisfy \eqref{eq:ode} and $g$ is polynomial-time computable.
-Here we only prove that $g \in \classC^{(\infty, k)}[[0,1] \times [-1, 1]]$.
+Here we only prove that $g \in \classC^{(\infty, k)}$.
 
 We show that $\D_1^i \D_2^j g$ exists and is continuous 
 for each $i \in \N$ and $j \in \{0, \dots, k\}$ by induction on $i$ and $j$.
