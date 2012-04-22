@@ -12,7 +12,7 @@ difference equations with certain restrictions.
 In Section~\ref{subsection: ode family}, 
 we show that these classes of difference equations are simulable 
 by certain families of differential equations
-given by $(\infty, 1)$- and $(\infty, k)$-times continuously differentiable functions. 
+given by $\classC ^{(\infty, 1)}$ and $\classC ^{(\infty, k)}$ functions. 
 In Section~\ref{subsection: proof of theorems}, 
 we put these families of functions together into one real function
 to obtain the smooth differential equations stated in the theorems. 
@@ -22,20 +22,23 @@ is essentially from the proof of
 the Lipschitz version \cite{kawamura2010lipschitz}.
 In this paper we focus on the structure of difference equations
 to analyze precisely the effect of smoothness assumptions.
-Consequently we show differential equations with the assumption that it is continuously differentiable more than once
-can simulate difference equations whose height is enough small,
-and $\classCH$-hardness of smooth differential equations follows from it.
+Consequently we show differential equations 
+given by $\classC ^{(\infty, k)}$ functions
+can simulate difference equations of restricted \emph{height}, 
+and this leads to the proof of $\classCH$-hardness.
 
 \subsection{Difference Equations}
 \label{section:divp}
 
-This section we define difference equations, which is a discrete version of differential,
-and show that $\classPSPACE$-hardness or $\classCH$-hardness depending on restrictions on height.
+In this section, we define difference equations, 
+a discrete version of differential equations,
+and show the $\classPSPACE$- and $\classCH$-hardness of 
+families of difference equations with height restrictions. 
 
 Let $[n]$ denote $\{0, \dots , n-1\}$.
 Let $G \colon [P] \times [Q] \times [R] \to \{-1, 0, 1\}$ and
-$H \colon [P + 1] \times [Q+1] \to [R]$,
-$H$ is the solution of the \emph{difference equation} given by $G$
+$H \colon [P + 1] \times [Q+1] \to [R]$. 
+We say that $H$ is the solution of the \emph{difference equation} given by $G$
 if for all $i \in [P]$ and $T \in [Q]$(Figure~\ref{fig:divp}), 
 \begin{figure}
  \begin{center}
@@ -45,20 +48,19 @@ if for all $i \in [P]$ and $T \in [Q]$(Figure~\ref{fig:divp}),
  \label{fig:divp}
 \end{figure}
 \begin{gather}
-   H(i, 0) = H(0, T) = 0 \label{eq:initial value}
+   H(i, 0) = H(0, T) = 0, \label{eq:initial value}
 \\
    H(i + 1, T + 1) - H(i+1, T) = G(i, T, H(i, T)).  \label{eq:divp}
 \end{gather}
-We call $P$, $Q$ and $R$ as \emph{height}, \emph{width}, \emph{cell size} of
+We call $P$, $Q$ and $R$ the \emph{height}, \emph{width}, \emph{cell size} of
 the difference equation.
-The equation \eqref{eq:initial value} is similar to 
-the initial condition $h(0) = 0$,
-and \eqref{eq:divp} is similar to $\D h(t) = g(t, h(t))$
+The equations \eqref{eq:initial value} and \eqref{eq:divp} are similar to 
+the initial condition $h(0) = 0$ and the equation $\D h(t) = g(t, h(t))$ 
 in \eqref{eq:ode}.
-In Section~\ref{subsection: ode family}, we simulate difference equations by differential equations using this similarity.
+In Section~\ref{subsection: ode family}, we will simulate difference equations by differential equations using this similarity.
 
-We regard a family $(G_u)_u$ of difference equations computing $L$,
-by interpreting the value of the bottom right cell (the gray cell in Figure~\ref{fig:divp}) as $L(u)$ for each $u$.
+We use a family of difference equations as a computing system by
+interpreting the value of the bottom right cell (the gray cell in Figure~\ref{fig:divp}) as the output. 
 A family $(G_u)_u$ of functions 
 $G_u \colon [P_u] \times [Q_u] \times [R_u] \to \{-1, 0, 1\}$
 \emph{recognizes} a language $L$ if for each $u$,
@@ -71,38 +73,41 @@ Note that height, width and cell size of a uniform $G_u$ is bounded by $2^{p(|u|
 A family $(G_u)_u$ has \emph{polynomial height} if the height $P_u$ is bounded by some polynomial $p(|u|)$.
 A family $(G_u)_u$ has \emph{logarithmic height} if the height $P_u$ is bounded by $c \log |u| + d$ with some constants $c$ and $d$.
 In terms of these definition,
-\cite[Lemma 4.7]{kawamura2010lipschitz}, which proved by Kawamura to show 
-that $\classPSPACE$-hardness of Lipschitz version,
-can be written in following form:
+\cite[Lemma 4.7]{kawamura2010lipschitz}, proved by Kawamura to show 
+the $\classPSPACE$-hardness of the Lipschitz version,
+can be written in the following form:
 \begin{lemma}
  \label{DIVPpolyIsPSPACEhard}
- There exists a $\classPSPACE$-hard language $L$ such that it is recognized by some uniform family of functions with polynomial height%
+ There exists a $\classPSPACE$-hard language $L$ that is recognized by some uniform family of functions with polynomial height%
  \footnote{The language class recognized by difference equations
  is closed under Karp reduction and the language class recognized by 
  uniform families with polynomial height coincides $\classPSPACE$.
  }.
 \end{lemma}
 
-By simulating this difference equation using certain Lipschitz differential equation,
-Kawamura obtained the result at the third row in Table \ref{table:related}.
-Also Theorem \ref{DifferentiableIsPspace} follows from Lemma \ref{DIVPpolyIsPSPACEhard},
-by arranging the construction of $g$ and $h$ so that $g$ is 
-$(\infty, 1)$-times differential(Section \ref{subsection: ode family} and Section \ref{subsection: proof of theorems}).
+Kawamura obtained the result in the third row in Table \ref{table:related} 
+by simulating the difference equations of Lemma~\ref{DIVPpolyIsPSPACEhard}
+by Lipschitz-continuous differential equations. 
+Likewise, 
+Theorem~\ref{DifferentiableIsPspace} follows from Lemma~\ref{DIVPpolyIsPSPACEhard},
+by a modified construction that keeps 
+the function in class $\classC ^{(\infty, 1)}$ 
+(Sections \ref{subsection: ode family} and \ref{subsection: proof of theorems}).
 
-In this paper, we show real functions continuously differentiable more than once in $x$ can simulate
-difference equations restricted to have logarithmic height
-(Section~\ref{subsection: ode family} and Section~\ref{subsection: proof of theorems}).
-Theorem \ref{KTimesIsCH} follows from the above argument with the following lemma.
+We show further that $\classC ^{(\infty, k)}$ functions, for any $k$, 
+can simulate difference equations restricted to have logarithmic height
+(Sections \ref{subsection: ode family} and \ref{subsection: proof of theorems}).
+Theorem \ref{KTimesIsCH} follows from this simulation and the following lemma.
 \begin{lemma}
  \label{DIVPlogIsCHhard}
  There exists a $\classCH$-hard language $L$ such that it is recognized by some uniform family of functions with logarithmic height.
 \end{lemma}
 
+The definition of the counting hierarchy $\classCH$, 
+its connection to difference equations and 
+the proof of Lemma~\ref{DIVPlogIsCHhard} 
+will be presented in Section~\ref{subsection: counting hierarchy}. 
 
-In the next section we provide 
-the definition of the counting hierarchy($\classCH$),
-its connection with difference equations and 
-the proof of this lemma.
 
 
 \subsection{The Counting Hierarchy and Difference Equations of Logarithmic Height}
