@@ -283,6 +283,7 @@ We show that $(G_u)_u$ is uniform and has logarithmic height.
 The height $n+1$, the width $2^{s_n}+1$, and the cell size $2^{|u|}$
 of $G_u$ are polynomial-time computable from $u$, 
 and $n+1 \le \log(|0^{2^n}|) + 1 \le \log|u| + 1$.
+\qed
 \end{proof}
 
 
@@ -532,7 +533,8 @@ We have (\ref{enum:kf:end}) with
           = \frac{L(u)}{2^{\sigma(|u|) \cdot (\gamma(|u|)+r(|u|)+s(k)+k+3)}}
 	  = 2^{-\rho(|u|)} L(u).
   \end{equation}
- \end{proof}
+\qed
+\end{proof}
 
 
 
@@ -603,62 +605,41 @@ Let $\D_1^i g(1,y) = 0$ and $h(1) = 0$ for any $y \in [-1,1]$ and $i \in \N$.
 It can be shown similarly to the Lipschitz version 
 \cite[Theorem 3.2]{kawamura2010lipschitz}
 that $g$ and $h$ satisfy \eqref{eq:ode} and $g$ is polynomial-time computable.
-We only show that $g \in \classC^{(\infty, k)}[[0,1] \times [-1, 1]]$.
+Here we only prove that $g \in \classC^{(\infty, k)}[[0,1] \times [-1, 1]]$.
 
-We prove that for each $i \in \N$, $j \in \{0, \dots, k\}$,
-there exists the derivative $\D_1^i \D_2^j g$ and it is continuous
-by induction on $i$ and $j$.
+We show that $g \in \classC^{(i, j)}$ for each $i \in \N$ and $j \in \{0, \dots, k\}$ by induction on $i$ and $j$.
+By the induction hypothesis, $\D_1^n \D_2^m g$ exists and is continuous 
+for all $(n, m) \in \{0, \dots, i\} \times \{0, \dots, j\}$ 
+except the case $(n, m) = (i, j)$.
+So we can show that $g \in \classC^{(i, j)}$ only by checking that $\D_1^i \D_2^j g$ is continuous.
 
-For $i=j=0$, it is follows that $g$ is continuous on $[0,1) \times [-1,1]$
-from the definition of g \eqref{eq:g} and Lemma~\ref{KTimesFamily} (\ref{enum:boundary}).
-It follows from Lemma~\ref{KTimesFamily} (\ref{enum:smooth}) that
-\begin{align}
- \left|g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
- \frac{y}{\Lambda_u}\right)\right|
- &\le 
- \sum^{k}_{l=0} |\D^{(0,l)} g_u | (\Lambda_u + 1)^l 
- \notag
- \\
- &\le
- k \cdot 2^{\mu(0, |u|) - \gamma(|u|)} \cdot (2\Lambda_u)^k
- \notag
- \\
- & 
- \le  2^{k\lambda(|u|) + 2k + \mu(0, |u|)  - \gamma(|u|)}. 
- \label{eq:sizeofderivative}
-\end{align}
-By our choice of $\gamma$, 
-(\ref{eq:sizeofderivative}) converges to $0$ when $|u| \to \infty$.
-Hence $\lim_{t \to 1-0} g(t,y) = g(1, y) = 0$.
-Here we have proven $g$ is continuous.
 
-We show the induction steps on $j$ (resp. $i$).
-Assuming that the derivative $\D_1^{i'} \D_2^{j'} g$ exists and is continuous,
-we show  the derivative $\D_1^{i} \D_2^{j} g$ exists and is continuous 
-where $j, j' \in \{0, \dots k\}$, $i=i'=0$ and $j=j'+1$ (resp. $i=i'+1$ and $j=j'$).
-Each branch of \eqref{eq:g} is in $\classC^{(\infty, k)}$
-and the derivative $\D_1^{i} \D_2^{j} g$ exists at interior points of each interval.
-Since $\D_1^{i'} \D_2^{j'} g$ is continuous by the introduction hypothesis,
-we can prove the existence and contiousness of $\D_1^{i} \D_2^{j} g$ 
-by showing that it is continuous 
-in boundaries ($t=0,1$, $y = -1, 1$) and in the area where the first variable is $1$.
-For each $t \in (0, 1)$, $y \neq -1, 1$,
+We show that for each $l_u^\mp \pm t/\Lambda_u \in [0,1)$ and $y/\Lambda_u \in [-1, 1]$,
 \begin{equation}
    \D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u}, \frac{y}{\Lambda_u}\right)
    = \begin{cases}
-      \pm \Lambda_u^{(i, j)} \sum^{k}_{l=j} \frac{\D^{(i,l)} g_u(t,1)}{(l-j)!}
+      \pm \Lambda_u^{i+j} \sum^{k}_{l=j} \frac{\D^{(i,l)} g_u(t,1)}{(l-j)!}
       (y - 1)^l &  \text{if } y < -1,
       \\
-      \pm \Lambda_u^{(i,j)} \D^{(i, j)} g_u(t, y) & \text{if } -1 < y < 1,
+      \pm \Lambda_u^{i+j} \D^{(i, j)} g_u(t, y) & \text{if } -1 \le y \le 1,
       \\
-      \pm \Lambda_u^{(i, j)} \sum^{k}_{l=j} 
-      \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l &  \text{if } 1<y.
-    \end{cases}
+      \pm \Lambda_u^{i+j} \sum^{k}_{l=j} 
+      \frac{\D^{(i,l)} g_u(t, -1)}{(l-j)!} (y + 1)^l &  \text{if } 1<y,
+    \end{cases}  \label{eq:d1id2jg}
 \end{equation}
-We get that $\D_1^{i} \D_2^{j} g$ is continuous in boundaries ($y = 1,-1$).
-The continuousness in $t = 0, 1$ follows from \ref{KTimesFamily} (\ref{enum:boundary}).
-We verify that $\D_1^{i} \D_2^{j} g$ exists and is continuous when $|u|$ goes to infinity, i.e., when the first variable moves arbitrarily close to $1$.
-From \ref{KTimesFamily} (\ref{enum:smooth}), we get
+and $\D_1^i \D_2^j g(0, y) = 0$.
+For $i=j=0$, it is equal to the definition of $g$.
+We get \eqref{eq:d1id2jg} 
+for $i=0$ and $j \neq 0$ by differentiating $\D_2^{j-1} g$ with respect to the second variable, 
+and for $i \neq 0$ and $j \neq 0$ by differentiating $\D_1^{i-1} \D_2^{j} g$
+with respect to the first variable.
+
+The continuousness of \eqref{eq:d1id2jg} on $[0,1) \times [-1, 1]$ follows
+from Lemma~\ref{KTimesFamily} (\ref{enum:boundary}).
+We verify that $\D_1^{i} \D_2^{j} g$ is continuous 
+when the first variable moves arbitrarily close to $1$, 
+i.e., $|u|$ goes to infinity.
+From Lemma~\ref{KTimesFamily} (\ref{enum:smooth}), we get
  \begin{align}
   \left|\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
   \frac{y}{\Lambda_u}\right)\right|
@@ -675,7 +656,9 @@ From \ref{KTimesFamily} (\ref{enum:smooth}), we get
   \label{eq:sizeofderivative}
  \end{align}
 By our choice of $\gamma$, 
-it converges to $0$ when $|u| \to \infty$, i.e.,
-$\lim_{t \to 1-0} \D_1^i \D_2^j g(t,y) = \D_1^i \D_2^j g(1, y) = 0$.
+it converges to $0$ when $|u| \to \infty$.
+Hence $\lim_{t \to 1-0} \D_1^i \D_2^j g(t,y) = \D_1^i \D_2^j g(1, y) = 0$.
 Here we complete the induction steps.
+\qed
 \end{proof} 
+
