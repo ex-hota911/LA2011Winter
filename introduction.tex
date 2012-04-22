@@ -42,15 +42,15 @@ the smoothness of $g$.
   \hline
    --- & --- & can be all non-computable \cite{pour1979computable} \\
   $h$ is the unique solution & computable \cite{coddington1955theory}
-  & can take arbitrarily long time \cite{ko1983computational, miller1970recursive} \\
+  & can take arbitrarily long time \cite{ko1983computational,miller1970recursive} \\
   the Lipschitz condition  & polynomial-space \cite{ko1983computational}
       &	can be $\classPSPACE$-hard \cite{kawamura2010lipschitz}\\
   $g$ is of class $\classC ^{(\infty, 1)}$ & polynomial-space 
-      & \parbox[t]{14zw}{can be $\classPSPACE$-hard\\{}(Theorem~\ref{DifferentiableIsPspace})} \\
-  \parbox[t]{14zw}{$g$ is of class $\classC ^{(\infty, k)}$\\{}(for any constant $k$)}
+      & \parbox[t]{11em}{can be $\classPSPACE$-hard\\{}(Theorem~\ref{DifferentiableIsPspace})} \\
+  \parbox[t]{11em}{$g$ is of class $\classC ^{(\infty, k)}$\\{}(for any constant $k$)}
   & polynomial-space & \parbox[t]{14zw}{can be $\classCH$-hard\\{}(Theorem~\ref{KTimesIsCH})} \\
   $g$ is analytic
-  & polynomial-time \cite{muller1987uniform, ko1988computing} 
+  & polynomial-time \cite{muller1987uniform,ko1988computing} 
   & ---
  \end{tabular}
 \end{center}
@@ -73,7 +73,7 @@ smoothness helps to reduce the complexity of the solution.
 At the extreme is the case where $g$ is analytic: 
 as the last row of the table shows, 
 $h$ can then be shown to be polynomial-time computable 
-by the Taylor series methods. 
+by an argument based on Taylor series. 
 Thus our interest is in 
 the cases between Lipschitz and analytic 
 (the fourth and fifth rows in the table). 
@@ -109,42 +109,51 @@ where $\classCH \subseteq \classPSPACE$ is the
 Counting Hierarchy (see Section~\ref{subsection: counting hierarchy}). 
  \end{theorem}
 
-ここで $g \colon [0,1] \times \R \to \R$ でなく
-$g \colon [0,1] \times [-1, 1] \to \R$ と書いたのは, 
-本稿では実関数の多項式時間計算可能性を, 
-定義域が有界閉領域のときにのみ定義するからである. 
-このため $h$ が区間 $[-1, 1]$ の外に値を取ることがあると
-方程式(\ref{eq:ode})が意味をなさなくなるが, 
-定理\ref{DifferentiableIsPspace}において $h$ が解であるというのは, 
-任意の $t \in [0, 1]$ について $h (t) \in [-1, 1]$ が満たされることも含めて述べている.
-なお両定理とも Lipschitz 条件よりも強い仮定を置いているため, 
-そのような $h$ は $g$ に対して, 存在すれば唯一である. 
+We said
+$g \colon [0,1] \times [-1, 1] \to \R$ instead of 
+$g \colon [0,1] \times \R \to \R$, because
+the notion of polynomial-time computability of real functions 
+is defined in this paper only when the domain is bounded closed region. 
+This notational choice makes
+the validity of the equation~\eqref{eq:ode} ill-defined 
+in case $h$ ever takes a value outside $[-1, 1]$; 
+by saying that $h$ is a solution in Theorem~\ref{DifferentiableIsPspace}, 
+we are implicitly also claiming that 
+$h (t) \in [-1, 1]$ for all $t \in [0, 1]$. 
+In any case, 
+since we are putting stronger assumptions on $g$ than Lipschitz continuity, 
+such a solution $h$, if it exists, is unique. 
 
-本稿のように対象を滑らかな関数に制限することによる計算量の変化について,
-常微分方程式以外の問題では次のような否定的な結果がある.
-多項式時間計算可能な関数から積分により得られる関数は, 
-もとの関数を無限回微分可能なものに限っても
-なお一般の場合と同じく$\classNumberP$困難である. 
-\cite[定理5.33]{ko1991complexity}.
-最大化でも同様に, 
-無限回微分可能な関数に限っても一般の場合と同じく
-$\classNP$困難である\cite[定理3.7]{ko1991complexity}%
+The questions of whether smoothness of the input function 
+reduces the complexity of the output
+have been asked for operations other than solving differential equations, 
+and some negative results are known. 
+The integral of a polynomial-time computable real function 
+is $\classNumberP$-hard, and this does not change 
+even if the input is restricted to 
+$\classC ^\infty$ (infinitely differentiable) functions
+\cite[Theorem~5.33]{ko1991complexity}. 
+Similarly, the function obtained by maximization 
+from a polynomial-time computable real function 
+is $\classNP$-hard, and this is still so
+even if the input function is restricted to $\classC ^\infty$ 
+\cite[Theorem~3.7]{ko1991complexity}%
 \footnote{%
-ただし葛\cite[定理3.7]{ko1991complexity}の証明において関数$f$を
+The proof of this fact in \cite[Theorem 3.7]{ko1991complexity}
+needs to be fixed by redefining 
 \[f(x) = 
 \begin{cases}
- u_s & \text{if not } R(s,t) \\
- u_s + 2^{-(p(n)+2n+1)\cdot n} \cdot h_1(2^{p(n)+2n+1} (x - y_{s,t})) & \text{if } R(s,t)
+ u_s & \text{if not } R(s,t), \\
+ u_s + 2^{-(p(n)+2n+1)\cdot n} \cdot h_1(2^{p(n)+2n+1} (x - y_{s,t})) & \text{if } R(s,t). 
 \end{cases}\]
-に修正する必要がある.
-}
-(なお対象を解析的な関数に限ると, 
-やはり級数を用いた議論により, 
-これらは多項式時間計算可能になる). 
-一方常微分方程式については, 
-定理\ref{KTimesIsCH}は各$k$についてそれぞれ成立つが, 
-$g$が$(\infty, \infty)$回微分可能であると仮定したときの
-$h$の計算量については依然不明である. 
+}. 
+(Restricting to analytic inputs 
+renders the output polynomial-time computable, 
+again because of the argument based on Taylor series.)
+In contrast, 
+although we have shown Theorem~\ref{KTimesIsCH} for each $k$, 
+we do not know about the complexity of 
+$h$ when $g$ is assumed to be infinitely differentiable. 
 
 \subsubsection*{Notation}
 Let $\N$ denote the set of natural numbers,
