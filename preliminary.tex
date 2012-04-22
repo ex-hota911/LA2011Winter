@@ -42,14 +42,15 @@ $M^{\phi_x}$ is a name of $f(x)$.
 When $A$ is a bounded closed interval of $\R ^2$,
 we define a machine computing $f \colon A \to \R$ in a similar way using machines with two oracles.
 A real function is (\emph{polynomial-time}) \emph{computable} if there exists some machine that computes it (in polynomial time).
+Polynomial-time computability of a real function $f$ implies that
+for any precision $n$, 
+an approximation of $f(x)$ with error less than $2^{-n}$
+is computable in time polynomial in $n$ 
+independent of real number $x$.
 
-When a machine $M$ computes a real function $f$,
-for each demanded precision $2^{-n}$,
- precision $2^{-m}$.
-Computable real functions are continuous.
-Giving all approximations of functions at rational points an relation between $n$ and $m$,
-we can characterize (polynomial-time) computability of real function
-without oracle Turing machines
+We can characterize (polynomial-time) computability of real functions without oracle Turing machines
+by giving all approximations of a function at rational points 
+and how smooth the function is.
 
 \begin{lemma}
  \label{lem:type1representation}
