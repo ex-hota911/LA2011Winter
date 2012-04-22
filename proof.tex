@@ -622,22 +622,17 @@ the derivative $\D _1 ^i \D _2 ^j g$ is given by
     \end{cases}  \label{eq:d1id2jg}
 \end{equation}
 for each $l_u^\mp \pm t/\Lambda_u \in [0,1)$ and $y/\Lambda_u \in [-1, 1]$, 
-and by $\D _1 ^i \D _2 ^j g (0, y) = 0$. 
+and by $\D _1 ^i \D _2 ^j g (1, y) = 0$. 
 This is verified by induction on $i + j$. 
 The equation \eqref{eq:d1id2jg} follows from calculation 
 (note that this means verifying 
 that \eqref{eq:d1id2jg} follows from the definition of $g$ when $i = j = 0$, 
 from the induction hypothesis about $\D _2 ^{j - 1} g$ when $i = 0$ and $j > 0$, 
 and from the induction hypothesis about $\D _1 ^{i - 1} \D _2 ^j g$ when $i > 0$).
-That $\D _1 ^i \D _2 ^j g (0, y) = 0$ also follows 
+That $\D _1 ^i \D _2 ^j g (1, y) = 0$ also follows 
 easily from induction hypothesis when $i = 0$. 
-When $i > 0$, 
-\ldots. (←ココ！)
-
-The continuity of $\D _1 ^i \D _2 ^j g$ on $[0,1) \times [-1, 1]$ follows
-from \eqref{eq:d1id2jg} and Lemma~\ref{KTimesFamily} (\ref{enum:boundary}).
-We verify that $\D_1^{i} \D_2^{j} g$ is continuous 
-when the first variable tends to $1$, 
+When $i > 0$, we verify the existence of $\D_1^i \D_2^j g(1, y)$
+by the existence of $\D_1^i \D_2^j g(t, y)$ when $t$ tends to $1$, 
 i.e., $|u|$ tends to infinity.
 From Lemma~\ref{KTimesFamily} (\ref{enum:smooth}), we get
  \begin{align}
@@ -657,8 +652,18 @@ From Lemma~\ref{KTimesFamily} (\ref{enum:smooth}), we get
  \end{align}
 By our choice of $\gamma$, 
 it converges to $0$ when $|u| \to \infty$.
-Hence $\lim_{t \to 1-0} \D_1^i \D_2^j g(t,y) = \D_1^i \D_2^j g(1, y) = 0$.
+Hence $\D_1^i \D_2^j g(1, y)$ exists and 
+\begin{equation}
+ \D_1^i \D_2^j g(1, y) = \lim_{t \to 1-0} \D_1^i \D_2^j g(t,y) = 0.
+  \label{eq:continuityat1}
+\end{equation}
+
+The continuity of $\D _1 ^i \D _2 ^j g$ on $[0,1) \times [-1, 1]$ follows
+from \eqref{eq:d1id2jg} and Lemma~\ref{KTimesFamily} (\ref{enum:boundary}).
+Since \eqref{eq:sizeofderivative} holds for any $i \in \N$ and $j \in \{0, \dots, k\}$,
+it is follows from \eqref{eq:continuityat1} that $\D_1^{i} \D_2^{j} g$ is continuous when the first variable is $1$.
 Here we complete the induction steps.
+
 \qed
 \end{proof} 
 
