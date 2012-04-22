@@ -125,8 +125,8 @@ In the same way, the counting hierarchy~$\classCH$
 \cite{wagner1986complexity} 
 is defined
 using probabilistic polynomial-time oracle Turing machines%
-\footnote{This characterization, introduced by Tor{\'a}n 
-in \cite{toran1991complexity}, is different from Wagner's original one.
+\footnote{This characterization, introduced by Tor{\'a}n~%
+\cite{toran1991complexity}, is different from Wagner's.
 }: 
 \begin{align} \label{eq:CH}
  \quantC_0 \classP  &= \classP,
@@ -178,7 +178,7 @@ We show that $\quantC_{\log} B_{be}$
 is $\classCH$-hard and recognized by a logarithmic-height uniform function family,
 as required in Lemma~\ref{DIVPlogIsCHhard}. 
 
-\begin{proof}[\textup{Proof of Lemma~\ref{DIVPlogIsCHhard}}]
+\begin{proof}[Lemma~\ref{DIVPlogIsCHhard}]
 First we prove that $\quantC_{\log} B_{be}$ is $\classCH$-hard.
 For each problem $A$ in $\classCH$, there is a constant $n$ such that $A \in \quantC_n \classP$.
 From Lemma~\ref{lemma:CnP-complete}, for each $u \in \{0,1\}^*$
@@ -271,13 +271,12 @@ Then if $T_{[1,s_{i+1}+1]} = 10 \cdots 0$,
   \phi_i(X, T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]}).
  \end{equation}
 By this equation and \eqref{eq:phi-step},
- \begin{align}
+ \begin{multline}
   G_u(i+1,T,H_u(i+1,T)) 
-  &= (-1)^{T_{s_{i+2}}} C^{m_{i+1}} (H_u(i+1, T))
-  \notag
+  = (-1)^{T_{s_{i+2}}} C^{m_{i+1}} (H_u(i+1, T))
   \\
-  &= (-1)^{T_{s_{i+2}}} \phi_{i+1}(T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]}),
- \end{align}
+  = (-1)^{T_{s_{i+2}}} \phi_{i+1}(T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]}),
+ \end{multline}
 completing the induction steps.
 
 By substituting $n$ for $i$ and $2^{s_n}$ for $T$ in \eqref{eq:subformula},
@@ -287,7 +286,7 @@ Hence $H_u(n+1, 2^{s_n}+1) = \quantC_{\log} B_{be}(u)$.
 We show that $(G_u)_u$ is uniform and has logarithmic height. 
 The height $n+1$, the width $2^{s_n}+1$, and the cell size $2^{|u|}$
 of $G_u$ are polynomial-time computable from $u$, 
-and $n+1 \le \log(|0^{2^n}|) + 1 \le \log|u| + 1$.
+and $n+1 \le \log |0^{2^n}| + 1 \le \log|u| + 1$.
 \qed
 \end{proof}
 
@@ -394,7 +393,7 @@ it can be shown easily.
 We only prove Lemma~\ref{KTimesFamily} here
 and omit the analogous and easier proof of Lemma~\ref{DifferentiableFamily}.
 
-\begin{proof}[Proof of Lemma~\ref{KTimesFamily}]
+\begin{proof}[Lemma~\ref{KTimesFamily}]
 Let $L$ and $(G_u)_u$ be as in Lemma~\ref{DIVPlogIsCHhard},
 and let a function family $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
 
@@ -565,21 +564,21 @@ and omit the analogous proof of Theorem~\ref{DifferentiableIsPspace}
 from Lemma~\ref{DifferentiableFamily}. 
 
 
-\begin{proof}[Proof of Theorem~\ref{KTimesIsCH}]
+\begin{proof}[Theorem~\ref{KTimesIsCH}]
 Let $L$ and $\mu$ be as Lemma~\ref{DifferentiableFamily}.
 Define
  \begin{align}
   \lambda(x) &= 2x + 2,&
-  \gamma(x) &= x \mu(x, x) + x \lambda(x).
+  \gamma(x) &= x \mu(x, x) + x \lambda(x),
  \end{align}
-and for each $u$
+and for each $u$ let
 \begin{align}
  \Lambda_u 
  &= 2^{\lambda(|u|)}, &
  c_u 
  &= 1-\frac{1}{2^{|u|}}+\frac{2\bar{u}+1}{\Lambda_u}, &
  l_u^\mp 
- &= c_u\mp\frac{1}{\Lambda_u}
+ &= c_u\mp\frac{1}{\Lambda_u},
 \end{align}  
  where $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ is the number represented by $u$ in binary notation.
 Let $\rho$, $(g_u)_u$, $(h_u)_u$ be as in Lemma~\ref{KTimesFamily} 
