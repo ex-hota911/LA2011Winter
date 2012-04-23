@@ -38,6 +38,29 @@ completing the induction steps.
 \section{Proofs of Lemmas~\ref{KTimesFamily} and \ref{DifferentiableFamily}}
 \label{appendix:proof-family}
 
+In Lemma~\ref{KTimesFamily}, 
+we have the new conditions (\ref{enum:differentiability})--(\ref{enum:smooth})
+about the smoothness and the derivatives of $g_u$ 
+that were not present in \cite[Lemma 4.1]{kawamura2010lipschitz}.
+To satisfy these conditions,
+we construct $g_u$ using the smooth function $f$ in following lemma.
+
+\begin{lemma}[{\cite[Lemma 3.6]{ko1991complexity}}]
+ \label{SmoothFunction}
+ There exist a polynomial-time function $f \colon [0, 1] \to \R$ of class $\classC^\infty$ and a polynomial $s$ such that
+  \begin{enumerate}
+   \item $f(0) = 0$ and $f(1) = 1$;
+   \item $\D ^n f (0) = \D ^n f (1) = 0$ for all $n \ge 1$;
+   \item $f$ is strictly increasing;
+   \item $\D ^n f$ is polynomial-time computable for all $n \ge 1$;
+   \item \label{enum:polynomial-size}
+	 $|\D^n f| \le s(n)$ for all $n \ge 1$. 
+  \end{enumerate}
+ \end{lemma}
+
+Although the existence of the polynomial~$s$ satisfying the condition~(\ref{enum:polynomial-size}) is not stated in \cite[Lemma 3.6]{ko1991complexity},
+it can be shown easily.
+
 We prove Lemma~\ref{KTimesFamily} 
 and omit the analogous and easier proof of Lemma~\ref{DifferentiableFamily}.
 
