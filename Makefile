@@ -8,6 +8,7 @@ FILE=fulltext
 EFILE=fulltext.euc
 # 分割され、インクルードされているファイル
 SRC=abstract.euc.tex proof.euc.tex introduction.euc.tex preliminary.euc.tex acknowledgments.euc.tex constructive.euc.tex
+IMG=image/divp.eps  image/model-of-function.eps  image/reduction.eps
 #文献データベース
 REF=la.euc.bib
 #走らせるTeXプログラム
@@ -31,7 +32,7 @@ $(FILE).pdf: $(EFILE).dvi
 	$(DVIPDF) -o $(FILE).pdf $(EFILE).dvi
 $(EFILE).dvi: $(EFILE).aux $(EFILE).bbl
 	(while $(REFGREP) $(EFILE).log; do $(TEX) $(EFILE); done)
-$(EFILE).aux: $(EFILE).tex $(SRC)
+$(EFILE).aux: $(EFILE).tex $(SRC) $(IMG)
 	$(TEX) $(EFILE)
 $(EFILE).bbl: $(REF)
 	$(BIBTEX) $(EFILE)
@@ -43,6 +44,9 @@ $(EFILE).bbl: $(REF)
 
 %.euc.tex: %.tex
 	$(RESOLVEINPUT) $< | $(NKF) > $@
+
+%.eps: %.svg
+	inkscape -z -f $< -E $@
 
 # 依存関係にかかわらず作成
 .PHONY: force
