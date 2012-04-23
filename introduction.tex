@@ -47,7 +47,7 @@ the smoothness of $g$.
       &	can be $\classPSPACE$-hard \cite{kawamura2010lipschitz}\\
   $g$ is of class $\classC ^{(\infty, 1)}$ & polynomial-space 
       & can be $\classPSPACE$-hard (Theorem~\ref{DifferentiableIsPspace}) \\
-  \parbox[t]{11em}{$g$ is of class $\classC ^{(\infty, k)}$\\{}(for any constant $k$)}
+  \parbox[t]{11em}{$g$ is of class $\classC ^{(\infty, k)}$\\{}(for each constant $k$)}
   & polynomial-space & can be $\classCH$-hard (Theorem~\ref{KTimesIsCH}) \\
   $g$ is analytic
   & polynomial-time \cite{muller1987uniform,ko1988computing} 
@@ -71,8 +71,8 @@ for our differential equation \eqref{eq:ode},
 smoothness really reduces the complexity of the solution. 
 
 At the extreme is the case where $g$ is analytic: 
-$h$ can then be shown to be polynomial-time computable 
-(the last row of the table), 
+$h$ is then shown to be polynomial-time computable 
+(the last row of the table) 
 by an argument based on Taylor series. 
 Thus our interest is in 
 the cases between Lipschitz and analytic 
@@ -167,12 +167,11 @@ A function $f \colon A \to \R$ is \emph{of class $\classC^i$}
 ($i$-times continuously differentiable)
 if all the derivatives $\D f, \D^2 f, \dots, \D^i f$ exist and are continuous.
 
-Let $g$ be a differentiable function of two variables. 
-We write $\D _1 g$ and $\D _2 g$ for the derivatives of $g$ 
+For a differentiable function $g$ of two variables, 
+we write $\D _1 g$ and $\D _2 g$ for the derivatives of $g$ 
 with respect to the first and the second variable,
 respectively.
 A function $g \colon A \times B \to \R$ is of \emph{class $\classC^{(i, j)}$}
-($(i, j)$-times continuously  differentiable)
 if for each $n \in \{0, \dots, i\}$ and $m \in \{0, \dots j\}$,
 the derivative $\D_1^n \D_2^m g$ exists and is continuous.
 A function $g$ is of \emph{class $\classC^{(\infty, j)}$}

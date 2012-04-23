@@ -91,11 +91,11 @@ $L \colon \{0, 1\} ^* \to \{0, 1\}$ such that $L (u) = 1$ if and only if $u \in 
  \end{figure}
 
 \begin{definition}
- A Language $L$ \emph{reduces} to a function $f \colon [0, 1] \to \R$
+ A language $L$ \emph{reduces} to a function $f \colon [0, 1] \to \R$
  if there exists a polynomial-time function $S$ and a polynomial-time oracle Turing machine $M$ (Figure~\ref{fig:reduction})
- such that for any string $u$:
+ such that for any string $u$, 
   \begin{enumerate}
-   \item $S(u, \cdot)$ is a name of $x_u$;
+   \item $S(u, \cdot)$ is a name of a real number $x_u$, and 
    \item $M^\phi(u)$ accepts if and only if $u \in L$ for any name $\phi$ of $f(x_u)$.
   \end{enumerate}
 \end{definition}
