@@ -1,17 +1,17 @@
 \section{Complexity of Operations}
 
-Both Theorem~\ref{DifferentiableIsPspace} and \ref{KTimesIsCH}
-states the complexity of the solution $h$ under the assumption 
+Both Theorems \ref{DifferentiableIsPspace} and \ref{KTimesIsCH}
+state the complexity of the solution $h$ under the assumption 
 that $g$ is polynomial-time computable.
-How complex can it be to ``solve'' differential equations,
-i.e., how complex is the operator computing $h$ by given $g$?
-To make an answer to this problem,
-we need to define complexity of operators from real functions to real functions.
+But how hard is it to ``solve'' differential equations,
+i.e., how complex is the operator that takes $g$ to $h$? 
+To make this question precise,
+we need to define the complexity of operators from real functions to real functions.
 
 To discuss complexity of real functions,
-we encode real numbers by functions from string to string.
-We use string functions as names of elements in $\R$,
-such relation is called representation of $\R$.
+we encoded real numbers by functions from strings to strings.
+We used string functions as names of elements in $\R$. 
+Such an encoding is called a \emph{representation} of $\R$.
 In the same way, we represent real functions as string functions
 to discuss complexity of real operators.
 So we need to define representations as string functions of
