@@ -10,22 +10,29 @@ In Section~\ref{subsection: counting hierarchy},
 we show the $\classPSPACE$- and $\classCH$-hardness of 
 difference equations with certain restrictions. 
 In Section~\ref{subsection: ode family}, 
-we show that these classes of difference equations are simulable 
+we show that these classes of difference equations can be simulated
 by certain families of differential equations
 given by $\classC ^{(\infty, 1)}$ and $\classC ^{(\infty, k)}$ functions. 
 In Section~\ref{subsection: proof of theorems}, 
-we put these families of functions together into one real function
-to obtain the smooth differential equations stated in the theorems. 
+we put these families of functions together 
+to obtain one smooth differential equation stated in the theorems. 
 
-The idea of simulating difference equations with differential equations
-is essentially from the proof of 
-the Lipschitz version \cite{kawamura2010lipschitz}.
-In this paper we focus on the structure of difference equations
-to analyze precisely the effect of smoothness assumptions.
-Consequently we show differential equations 
-given by $\classC ^{(\infty, k)}$ functions
-can simulate difference equations of restricted \emph{height}, 
-and this leads to the proof of $\classCH$-hardness.
+The idea of simulating a discrete system of limited feedback capability
+by differential equations
+was essentially already present in the proof of 
+the Lipschitz version \cite{kawamura2010lipschitz}. 
+% As explained there, the main idea 
+% was to simulate $\classPSPACE$ computation by a discrete system 
+% whose feedback capability is limited
+% so that it could be simulated by a trajectory of 
+% a Lipschitz continuous differential equation. 
+We look more closely at this limited feedback mechanism, 
+and observe that this restriction is one on the \emph{height}
+of the difference equation. 
+We show that a stronger height restriction makes
+the difference equation simulable by 
+smoother differential equations, 
+leading to the $\classCH$-hardness for $\classC ^{(\infty, k)}$ functions.
 
 \subsection{Difference Equations}
 \label{section:divp}
@@ -33,7 +40,7 @@ and this leads to the proof of $\classCH$-hardness.
 In this section, we define difference equations, 
 a discrete version of differential equations,
 and show the $\classPSPACE$- and $\classCH$-hardness of 
-families of difference equations with height restrictions. 
+families of difference equations with different height restrictions. 
 
 Let $[n]$ denote $\{0, \dots , n-1\}$.
 Let $G \colon [P] \times [Q] \times [R] \to \{-1, 0, 1\}$ and
@@ -52,40 +59,40 @@ if for all $i \in [P]$ and $T \in [Q]$ (Figure~\ref{fig:divp}),
 \\
    H(i + 1, T + 1) - H(i+1, T) = G(i, T, H(i, T)).  \label{eq:divp}
 \end{gather}
-We call $P$, $Q$ and $R$ the \emph{height}, \emph{width}, \emph{cell size} of
+We call $P$, $Q$ and $R$ the \emph{height}, \emph{width} and \emph{cell size} of
 the difference equation.
 The equations \eqref{eq:initial value} and \eqref{eq:divp} are similar to 
 the initial condition $h(0) = 0$ and the equation $\D h(t) = g(t, h(t))$ 
 in \eqref{eq:ode}.
 In Section~\ref{subsection: ode family}, we will simulate difference equations by differential equations using this similarity.
 
-We use a family of difference equations as a computing system by
-interpreting the value of the bottom right cell (the gray cell in Figure~\ref{fig:divp}) as the output. 
+We view a family of difference equations as a computing system by
+regarding the value of the bottom right cell (the gray cell in Figure~\ref{fig:divp}) as the output. 
 A family $(G_u)_u$ of functions 
 $G_u \colon [P_u] \times [Q_u] \times [R_u] \to \{-1, 0, 1\}$
 \emph{recognizes} a language $L$ if for each $u$,
-the solution $H_u$ of the difference equation given by $G_u$ exists 
+the difference equation given by $G_u$ has a solution $H_u$ 
 and $H_u(P_u, Q_u) = L(u)$.
 A family $(G_u)_u$ is \emph{uniform} 
-if the height and width and cell size of $G_u$ are polynomial-time computable from $u$
+if the height, width and cell size of $G_u$ are 
+polynomial-time computable from $u$ (in particular, 
+they must be bounded by $2^{p(|u|)}$, for some polynomial~$p$)
 and $G_u(i, T, Y)$ is polynomial-time computable from $(u, i, T, Y)$.
-Note that height, width and cell size of a uniform $G_u$ is bounded by $2^{p(|u|)}$ where $p$ is some polynomial.
 A family $(G_u)_u$ has \emph{polynomial height} if the height $P_u$ is bounded by some polynomial $p(|u|)$.
 A family $(G_u)_u$ has \emph{logarithmic height} if the height $P_u$ is bounded by $c \log |u| + d$ with some constants $c$ and $d$.
-In terms of these definition,
-\cite[Lemma 4.7]{kawamura2010lipschitz}, proved by Kawamura to show 
-the $\classPSPACE$-hardness of the Lipschitz version,
-can be written in the following form:
+With this terminology,
+the key lemma in 
+\cite[Lemma 4.7]{kawamura2010lipschitz} 
+can be written as follows:
 \begin{lemma}
  \label{DIVPpolyIsPSPACEhard}
  There exists a $\classPSPACE$-hard language $L$ that is recognized by some uniform family of functions with polynomial height%
- \footnote{In \cite[Lemma 4.7]{kawamura2010lipschitz}
- it is stated that the language class recognized by 
- uniform families with polynomial height coincides $\classPSPACE$.
- }.
+ \footnote{In fact, the languages recognized by 
+ uniform families with polynomial height coincide with $\classPSPACE$.
+}.
 \end{lemma}
 
-Kawamura obtained the result in the third row in Table \ref{table:related} 
+Kawamura obtained the hardness result in the third row in Table \ref{table:related} 
 by simulating the difference equations of Lemma~\ref{DIVPpolyIsPSPACEhard}
 by Lipschitz-continuous differential equations. 
 Likewise, 
@@ -94,13 +101,14 @@ by a modified construction that keeps
 the function in class $\classC ^{(\infty, 1)}$ 
 (Sections \ref{subsection: ode family} and \ref{subsection: proof of theorems}).
 
-We show further that $\classC ^{(\infty, k)}$ functions, for any $k$, 
-can simulate difference equations restricted to have logarithmic height
+We show further that 
+difference equations restricted to have logarithmic height can be simulated by
+$\classC ^{(\infty, k)}$ functions for each $k$ 
 (Sections \ref{subsection: ode family} and \ref{subsection: proof of theorems}).
 Theorem \ref{KTimesIsCH} follows from this simulation and the following lemma.
 \begin{lemma}
  \label{DIVPlogIsCHhard}
- There exists a $\classCH$-hard language $L$ such that it is recognized by some uniform family of functions with logarithmic height.
+ There exists a $\classCH$-hard language $L$ that is recognized by some uniform family of functions with logarithmic height.
 \end{lemma}
 
 The definition of the counting hierarchy $\classCH$, 
@@ -260,20 +268,20 @@ and $n+1 \le \log |0^{2^n}| + 1 \le \log|u| + 1$.
 \end{proof}
 
 
-The language class recognized by uniform function families with $i$ rows
+The class of languages recognized by uniform function families with $i$ rows
 contains $\quantC_i \classP$ (the $i$th level of the counting hierarchy)
 and is contained in $\quantC_{i+1} \classP$.
 While the class $\quantC_i \classP$ is defined by \eqref{eq:CH} using oracle Turing machines,
-it is also characterized as those languages Karp-reducible to $\quantC_i B_{be}$, or 
+it can be also characterized as those languages Karp-reducible to $\quantC_i B_{be}$, or 
 as those accepted by a polynomial-time alternating Turing machine 
 extended with ``threshold states'' and having at most $i$ alternations.
 Likewise, 
-the language class accepted by uniform function families of logarithmic height
-coincided with languages Karp-reducible to $\quantC_{\log} B_{be}$
-and with those accepted by an extended alternating Turing machine with logarithmic alternations.
-Since this class contains $\classCH$,
-we only state $\classCH$-hard in Lemma~\ref{KTimesFamily} and Theorem $\ref{KTimesIsCH}$,
-but it is not known such class how hard the class is between $\classCH$ and $\classPSPACE$.
+the languages accepted by uniform function families of logarithmic height
+coincide with those Karp-reducible to $\quantC_{\log} B_{be}$
+and with those accepted by the extended alternating Turing machine with logarithmic alternations.
+% Since this class contains $\classCH$,
+% we only state $\classCH$-hardness in Lemma~\ref{KTimesFamily} and Theorem $\ref{KTimesIsCH}$,
+% but it is not known such class how hard the class is between $\classCH$ and $\classPSPACE$.
 
 
 
