@@ -1,7 +1,7 @@
 \section{Introduction}
 
 Let $g \colon [0,1] \times \R \to \R$ be continuous 
-and consider the following differential equation: 
+and consider the differential equation 
 \begin{align}
  \label{eq:ode}
  h(0) & = 0, &
@@ -10,19 +10,19 @@ and consider the following differential equation:
 where $\D h$ denotes the derivative of $h$. 
 How complex can the solution~$h$ be, 
 assuming that $g$ is polynomial-time computable? 
-Here, the polynomial-time computability 
+Here, polynomial-time computability 
 and other notions of complexity 
 are from the field of 
 \emph{Computable Analysis}~\cite{weihrauch00:_comput_analy}
 and measure how hard it is to 
-approximate real functions with specified precisions 
+approximate real functions with specified precision 
 (Section~\ref{section: preliminaries}). 
 
 If we put no assumption on $g$ other than being polynomial-time computable, 
 the solution~$h$ (which is not unique in general) can be non-computable. 
 Table~\ref{table:related} summarizes known results about 
-the complexity of $h$ under various assumptions on $g$, 
-with the assumptions getting stronger as we go down. 
+the complexity of $h$ under various assumptions 
+(that get stronger as we go down the table). 
 In particular, if $g$ is (globally) Lipschitz continuous, 
 then the (unique) solution $h$ is known to be 
 polynomial-space computable but still can be 
@@ -61,22 +61,22 @@ knowledge about smoothness of the input function
 (such as being differentiable enough times) 
 is often beneficial 
 in applying certain algorithms or simplifying their analysis.
-However, to our knowledge
+However, 
+to our knowledge, 
 this casual understanding that smoothness is good 
-has not been 
-rigorously substantiated in terms of 
-computational complexity theory. 
+has not been rigorously substantiated 
+in terms of computational complexity theory. 
 This motivates us to ask whether, 
 for our differential equation \eqref{eq:ode}, 
-smoothness helps to reduce the complexity of the solution. 
+smoothness really reduces the complexity of the solution. 
 
 At the extreme is the case where $g$ is analytic: 
-as the last row of the table shows, 
 $h$ can then be shown to be polynomial-time computable 
+(the last row of the table), 
 by an argument based on Taylor series. 
 Thus our interest is in 
 the cases between Lipschitz and analytic 
-(the fourth and fifth rows in the table). 
+(the fourth and fifth rows). 
 We say that $g$ is of class $\classC ^{(i, j)}$
 if the partial derivative $\D ^{(i, j)} g$ 
 (often also denoted $\partial ^{i + j} g (t, y) / \partial t ^i \partial y ^j$)
@@ -115,10 +115,10 @@ $g \colon [0,1] \times \R \to \R$, because
 the notion of polynomial-time computability of real functions 
 is defined in this paper only when the domain is bounded closed region. 
 This notational choice makes
-the validity of the equation~\eqref{eq:ode} ill-defined 
+the equation~\eqref{eq:ode} ill-defined 
 in case $h$ ever takes a value outside $[-1, 1]$; 
 by saying that $h$ is a solution in Theorem~\ref{DifferentiableIsPspace}, 
-we are implicitly also claiming that 
+we are also claiming that 
 $h (t) \in [-1, 1]$ for all $t \in [0, 1]$. 
 In any case, 
 since we are putting stronger assumptions on $g$ than Lipschitz continuity, 
@@ -127,15 +127,15 @@ such a solution $h$, if it exists, is unique.
 The questions of whether smoothness of the input function 
 reduces the complexity of the output
 have been asked for operations other than solving differential equations, 
-and some negative results are known. 
+and the following negative results are known. 
 The integral of a polynomial-time computable real function 
-is $\classNumberP$-hard, and this does not change 
-even if the input is restricted to 
+can be $\classNumberP$-hard, and this does not change 
+by restricting the input to 
 $\classC ^\infty$ (infinitely differentiable) functions
 \cite[Theorem~5.33]{ko1991complexity}. 
 Similarly, the function obtained by maximization 
 from a polynomial-time computable real function 
-is $\classNP$-hard, and this is still so
+can be $\classNP$-hard, and this is still so
 even if the input function is restricted to $\classC ^\infty$ 
 \cite[Theorem~3.7]{ko1991complexity}%
 \footnote{%
@@ -151,31 +151,31 @@ needs to be fixed by redefining
 renders the output polynomial-time computable, 
 again because of the argument based on Taylor series.)
 In contrast, 
-although we have shown Theorem~\ref{KTimesIsCH} for each $k$, 
+although we have Theorem~\ref{KTimesIsCH} for each $k$, 
 we do not know about the complexity of 
 $h$ when $g$ is assumed to be infinitely differentiable. 
 
 \subsubsection*{Notation}
-Let $\N$ denote the set of natural numbers,
-$\Z$ denote the set of integer numbers,
-$\Q$ denote the set of rational numbers 
-and $\R$ denote the set of real numbers.
+Let $\N$, $\Z$, $\Q$, $\R$ denote the set of natural numbers,
+integers,
+rational numbers and 
+real numbers, respectively.
 
 Let $A$ and $B$ be bounded closed intervals in $\R$.
-We denote $|f|$ as $\sup_{x \in A} f(x)$ where $f \colon A \to \R$.
-A function $f \colon A \to \R$ is \emph{class $\classC^i$}
+We write $|f| = \sup_{x \in A} f(x)$ for $f \colon A \to \R$.
+A function $f \colon A \to \R$ is \emph{of class $\classC^i$}
 ($i$-times continuously differentiable)
-if there exist the derivatives $\D f, \D^2 f, \dots, \D^i f$ and all of them are continuous.
-A function $g$ is of \emph{class $\classC^k$} if it is $k$-times continuously differentiable.
+if all the derivatives $\D f, \D^2 f, \dots, \D^i f$ exist and are continuous.
 
-Let $g$ be a differentiable function of two variable,
-we denote $\D_1 g$ as the derivative of $g$ with respect to the first variable,
-and $\D_2 g$ as the derivative of $g$ with respect to the second variable.
+Let $g$ be a differentiable function of two variables. 
+We write $\D _1 g$ and $\D _2 g$ for the derivatives of $g$ 
+with respect to the first and the second variable,
+respectively.
 A function $g \colon A \times B \to \R$ is of \emph{class $\classC^{(i, j)}$}
 ($(i, j)$-times continuously  differentiable)
 if for each $n \in \{0, \dots, i\}$ and $m \in \{0, \dots j\}$,
-there exists the derivative $\D_1^n \D_2^m g$ and it is continuous.
+the derivative $\D_1^n \D_2^m g$ exists and is continuous.
 A function $g$ is of \emph{class $\classC^{(\infty, j)}$}
-if $g$ is of class $\classC^{(i, j)}$ for all $i \in \N$.
-When a function $g$ is of class $\classC^{(i,j)}$,
+if it is of class $\classC^{(i, j)}$ for all $i \in \N$.
+When $g$ is of class $\classC^{(i,j)}$,
 we write $\D^{(i,j)}g$ for the derivative $\D_1^i \D_2^j g$.
