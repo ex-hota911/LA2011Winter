@@ -147,7 +147,7 @@ we write
 \end{equation}
 where $\phi(X)$ is identified with the function 
 $\phi \colon \{0,1\}^l \to \{0,1\}$
-such that $\phi(X) = 1$ if and only if $\phi(X)$ is true.
+such that $\phi(X) = 1$ when $\phi(X)$ is true.
 This ``counting quantifier'' $\quantC ^m$ generalizes 
 the usual quantifiers $\exists$ and $\forall$, 
 because $\quantC^1 = \exists$ and $\quantC^{2^l} = \forall$.
@@ -460,13 +460,13 @@ $ by
 
 We will verify that $(g_u)_u$ and $(h_u)_u$ defined above satisfy all the conditions stated in Lemma~\ref{KTimesFamily}.
 Polynomial-time computability of $(g_u)_u$ can be verified using Lemma~\ref{lem:type1representation}.
-The condition~(\ref{enum:kf:start}) is immediate from \eqref{eq:gu} and
-the condition~(\ref{enum:equation}) is verified by the same argument as
+The condition~(\ref{enum:kf:start}) is immediate from \eqref{eq:gu} and \eqref{eq:hu}.
+The condition~(\ref{enum:equation}) is verified by a similar argument to
 \cite[Lemma 4.1]{kawamura2010lipschitz}.
 
 It is easy to verify that $g_u$ is of class $\classC^{(\infty, \infty)}$ 
 since we construct $\delta_u$ from $G_u$ and $g_u$ from $\delta_u$ by connecting them with $f$ of class $\classC^{(\infty, \infty)}$.
-This means the condition~(\ref{enum:differentiability}) holds.
+This means that the condition~(\ref{enum:differentiability}) holds.
 The derivative $\D^i \delta$ is given by for each $i \in \N$,
 \begin{equation}
     \D^i \delta_{u,Y}(t) 
