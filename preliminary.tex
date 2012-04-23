@@ -1,10 +1,12 @@
 \section{Computational Complexity of Real Functions}
 \label{section: preliminaries}
 
-\subsection{Computation of Real Functions}
-
+This section reviews the complexity notions 
+in Computable Analysis~%
+\cite{ko1991complexity,weihrauch00:_comput_analy}. 
 We start by fixing an encoding of real numbers 
 by string functions.
+
 \begin{definition}
  A function $\phi \colon \{0\} ^* \to \{0, 1\}^*$ is a \emph{name} of a real number $x$ 
  if for all $n \in \N$,
@@ -17,7 +19,7 @@ by string functions.
 In effect, a name of a real number $x$ receives $0 ^n$ and 
 returns an approximation of $x$ with precision $2 ^{-n}$.
 
-We use \emph{oracle Turing machines} (henceforth just machines)
+We use \emph{oracle Turing machines} (henceforth just \emph{machines})
 to work on these names (Figure~\ref{fig:model-of-function}).
  \begin{figure}
   \begin{center}
@@ -78,9 +80,9 @@ as a fraction whose numerator and denominator
 are integers in binary.
 \end{lemma}
 
-\subsection{Reduction and Hardness}
+To talk about hardness, we define reduction. 
 A language $L \subseteq \{0, 1\} ^*$ is identified with the function
-$L \colon \{0, 1\} ^* \to \{0, 1\}$ such that $L (u) = 1$ if and only if $u \in L$.
+$L \colon \{0, 1\} ^* \to \{0, 1\}$ such that $L (u) = 1$ when $u \in L$.
 
  \begin{figure}
   \begin{center}
@@ -99,8 +101,8 @@ $L \colon \{0, 1\} ^* \to \{0, 1\}$ such that $L (u) = 1$ if and only if $u \in 
    \item $M^\phi(u)$ accepts if and only if $u \in L$ for any name $\phi$ of $f(x_u)$.
   \end{enumerate}
 \end{definition}
-This definition looks different from 
+This definition may look stronger than
 the one in Kawamura~\cite{kawamura2010lipschitz}, 
-but they have the same power.
+but is easily seen to have the same power.
 For a complexity class~$C$, a function $f$ is \emph{$C$-hard}
-if all languages in $C$ reduces to $f$.
+if all languages in $C$ reduce to $f$.
