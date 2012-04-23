@@ -155,7 +155,7 @@ we write
 \end{equation}
 where $\phi(X)$ is identified with the function 
 $\phi \colon \{0,1\}^l \to \{0,1\}$
-such that $\phi(X) = 1$ if and only if $\phi(X)$ is true.
+such that $\phi(X) = 1$ when $\phi(X)$ is true.
 This ``counting quantifier'' $\quantC ^m$ generalizes 
 the usual quantifiers $\exists$ and $\forall$, 
 because $\quantC^1 = \exists$ and $\quantC^{2^l} = \forall$.
@@ -244,12 +244,13 @@ and for $i \neq 0$, we define
     & \text{if} \ T_{[1,s_i+1]} = 10 \cdots 0, \\
     0 & \text{otherwise}.
    \end{cases} 
+   \label{eq:def-Gu:case-nonzero}
  \end{equation}
 Define $H_u$ from $G_u$ by \eqref{eq:initial value} and \eqref{eq:divp}.
 
 We prove by induction on $i$ that $H_u(i, T) \in [2^{l_i}]$ for all $T$, and that 
  \begin{equation} \label{eq:subformula}
-  G_u(i,T,H_u(i,V)) = (-1)^{V_{s_{i+1}}} 
+  G_u(i,V,H_u(i,V)) = (-1)^{V_{s_{i+1}}} 
    \phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]})
  \end{equation}
 if $V_{[1, s_i +1]} = 10 \cdots 0$ 
@@ -268,14 +269,14 @@ most of the summands in \eqref{eq:summation} cancel out.
 The terms that can survive satisfy that $V_{[1, s_i+1]} = 10 \cdots 0$ and
 that $V$ is between $\overline{T_{s_n} \dots T_{s_{i+1}+1} 00 \dots 0}$ and 
 $\overline{T_{s_n} \dots T_{s_{i+1}+1} 01 \dots 1}$,
-where we write $\overline U$ for the number represented by string $U$ in binary.
+where $\overline U$ is the number represented by string $U$ in binary.
 Since these terms are $0$ or $1$, $H_u(i+1, T) \in [2^{l_i}]$.
 Then if $T_{[1,s_{i+1}+1]} = 10 \cdots 0$,
  \begin{equation}
   H_u(i+1, T) = \sum_{X \in \{0,1\}^{l_i}}
   \phi_i(X, T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]}).
  \end{equation}
-By this equation and \eqref{eq:phi-step},
+By this equation, \eqref{eq:phi-step} and \eqref{eq:def-Gu:case-nonzero},
  \begin{multline}
   G_u(i+1,T,H_u(i+1,T)) 
   = (-1)^{T_{s_{i+2}}} C^{m_{i+1}} (H_u(i+1, T))
@@ -316,9 +317,9 @@ but it is not known such class how hard the class is between $\classCH$ and $\cl
 \subsection{Families of Real Functions Simulating Difference Equations}
 \label{subsection: ode family}
 We show that certain families of smooth differential equations can simulate 
-$\classPSPACE$-hard or $\classCH$-hard difference equations stated in previous section.
+$\classPSPACE$- or $\classCH$-hard difference equations stated in previous section.
 
-Before stating Lemma~\ref{KTimesFamily} and Lemma~\ref{DifferentiableFamily},
+Before stating Lemmas~\ref{KTimesFamily} and \ref{DifferentiableFamily},
 we extend the definition of polynomial-time computability of real function
 to families of real functions.
 A machine $M$ \emph{computes} a family $(f_u)_u$ of functions $f _u \colon A \to \R$ 
@@ -365,7 +366,7 @@ a polynomial-time machine computing $(f_u)_u$.
 
 We will prove Lemma~\ref{KTimesFamily} using Lemma~\ref{DIVPlogIsCHhard} as follows.
 Let a function family $(G_u)_u$ be as in Lemma~\ref{DIVPlogIsCHhard},
-and let $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
+and let $(H_u)_u$ be the family of the solutions of the difference equations given by $(G_u)_u$.
 We construct $h_u$ and $g_u$ from $H_u$ and $G_u$ 
 such that $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i = 0} H_u(i, T)/B^{d_u(i)}$ for each $T = 0$, \ldots, $2^{q(|u|)}$
 and $\D h_u(t) = g_u(t, h_u(t))$.
@@ -392,7 +393,7 @@ using the smooth function $f$ in following lemma.
   \end{enumerate}
  \end{lemma}
 
-Although the existence of the polynomial~$s$ satisfying the condition (\ref{enum:polynomial-size}) is not stated in \cite[Lemma 3.6]{ko1991complexity},
+Although the existence of the polynomial~$s$ satisfying the condition~(\ref{enum:polynomial-size}) is not stated in \cite[Lemma 3.6]{ko1991complexity},
 it can be shown easily.
 
 We only prove Lemma~\ref{KTimesFamily} here
@@ -468,13 +469,13 @@ $ by
 
 We will verify that $(g_u)_u$ and $(h_u)_u$ defined above satisfy all the conditions stated in Lemma~\ref{KTimesFamily}.
 Polynomial-time computability of $(g_u)_u$ can be verified using Lemma~\ref{lem:type1representation}.
-The condition~(\ref{enum:kf:start}) is immediate from \eqref{eq:gu} and
-the condition~(\ref{enum:equation}) is verified by the same argument as
+The condition~(\ref{enum:kf:start}) is immediate from \eqref{eq:gu} and \eqref{eq:hu}.
+The condition~(\ref{enum:equation}) is verified by a similar argument to
 \cite[Lemma 4.1]{kawamura2010lipschitz}.
 
 It is easy to verify that $g_u$ is of class $\classC^{(\infty, \infty)}$ 
 since we construct $\delta_u$ from $G_u$ and $g_u$ from $\delta_u$ by connecting them with $f$ of class $\classC^{(\infty, \infty)}$.
-This means the condition~(\ref{enum:differentiability}) holds.
+This means that the condition~(\ref{enum:differentiability}) holds.
 The derivative $\D^i \delta$ is given by for each $i \in \N$,
 \begin{equation}
     \D^i \delta_{u,Y}(t) 
@@ -506,9 +507,9 @@ and for each $i \in \N$ and $j \in \{1, \dots, k\}$,
   \end{equation}
 Substituting $t = 0, 1$ ($\theta = 0$) into \eqref{eq:d(i,0)g_u},
 we get $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$, 
-so the condition (\ref{enum:boundary}) holds.
+so the condition~(\ref{enum:boundary}) holds.
 
-We show that the condition (\ref{enum:smooth}) holds with $\mu(x, y) = (x+1)q(y) + s(x+1)$.
+We show that the condition~(\ref{enum:smooth}) holds with $\mu(x, y) = (x+1)q(y) + s(x+1)$.
 Note that $\mu$ is a polynomial and independent of $k$ and $\gamma$.
 Since $|\D^i \delta_{u,Y}(t)| \le 2^{(i+1)q(|u|) + s(i+1)}B^{-d_u(j_u(|u|)+1)}$ by \eqref{eq:delta}, for all $i \in \N$ and $j \in \{0, \dots, k\}$, we have
  \begin{equation}
