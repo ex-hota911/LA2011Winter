@@ -245,37 +245,8 @@ We prove by induction on $i$ that $H_u(i, T) \in [2^{l_i}]$ for all $T$, and tha
   G_u(i,V,H_u(i,V)) = (-1)^{V_{s_{i+1}}} 
    \phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]})
  \end{equation}
-if $V_{[1, s_i +1]} = 10 \cdots 0$ 
-(otherwise it is immediate from the definition that $G_u(i, V, H_u(n, V)) = 0$).
-
-For $i=0$, the claims follows from \eqref{eq:def-Gu:case0}.
-For the induction step, assume \eqref{eq:subformula}. 
-We have
- \begin{equation} \label{eq:summation}
-  H_u(i+1, T) 
-  = \sum_{V = 0}^{T-1} G_u(i, V, H_u(i, V)).
- \end{equation}
-Since the assumption \eqref{eq:subformula} implies that flipping the bit $V_{s_{i+1}}$ of
-any $V$ reverses the sign of $G_u(i, V, H_u(i, V))$,
-most of the summands in \eqref{eq:summation} cancel out.
-The terms that can survive satisfy that $V_{[1, s_i+1]} = 10 \cdots 0$ and
-that $V$ is between $\overline{T_{s_n} \dots T_{s_{i+1}+1} 00 \dots 0}$ and 
-$\overline{T_{s_n} \dots T_{s_{i+1}+1} 01 \dots 1}$,
-where $\overline U$ is the number represented by string $U$ in binary.
-Since these terms are $0$ or $1$, $H_u(i+1, T) \in [2^{l_i}]$.
-Then if $T_{[1,s_{i+1}+1]} = 10 \cdots 0$,
- \begin{equation}
-  H_u(i+1, T) = \sum_{X \in \{0,1\}^{l_i}}
-  \phi_i(X, T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]}).
- \end{equation}
-By this equation, \eqref{eq:phi-step} and \eqref{eq:def-Gu:case-nonzero},
- \begin{multline}
-  G_u(i+1,T,H_u(i+1,T)) 
-  = (-1)^{T_{s_{i+2}}} C^{m_{i+1}} (H_u(i+1, T))
-  \\
-  = (-1)^{T_{s_{i+2}}} \phi_{i+1}(T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]}),
- \end{multline}
-completing the induction steps.
+if $V_{[1, s_i +1]} = 10 \cdots 0$.
+We put the detail in Appendix \ref{appendix:proof-subformula}.
 
 By substituting $n$ for $i$ and $2^{s_n}$ for $T$ in \eqref{eq:subformula},
 we get $G_u(n, 2^{s_n}, H_u(n,2^{s_n})) = \phi_n() = \quantC_{\log} B_{be}(u)$.
@@ -388,153 +359,8 @@ using the smooth function $f$ in following lemma.
 Although the existence of the polynomial~$s$ satisfying the condition~(\ref{enum:polynomial-size}) is not stated in \cite[Lemma 3.6]{ko1991complexity},
 it can be shown easily.
 
-We only prove Lemma~\ref{KTimesFamily} here
-and omit the analogous and easier proof of Lemma~\ref{DifferentiableFamily}.
-
-\begin{proof}[Lemma~\ref{KTimesFamily}]
-Let $L$ and $(G_u)_u$ be as in Lemma~\ref{DIVPlogIsCHhard},
-and let a function family $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
-
-By a similar argument to the beginning of the proof of \cite[Lemma 4.1]{kawamura2010lipschitz},
-we may assume that there exist polynomial-time functions $p$, $j_u$
-and polynomials $q$, $r$ satisfying the following properties:
-\begin{gather}
- G_u \colon [p(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\},
- \\
- H_u(i, 2^{q(|u|)}) = \begin{cases}
-		       L(u) & \text{if} \ i=p(|u|), \\
-		       0 & \text{if} \ i<p(|u|), 
-		      \end{cases}
- \\
- G_u(i, T, Y) \neq 0 \to i = j_u(T).
-\end{gather}
-Since $G_u$ has logarithmic height,
-there exists a polynomial $\sigma$ such that $(k+1)^{p(x)} \le \sigma(x)$
-
-
-We construct the families of real functions $(g_u)_u$ and $(h_u)_u$ simulating $G _u$ and $H _u$ 
-in the sense that $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i = 0}H_u(i, T)/B^{d_u(i)}$, 
-where the constant $B$ and the function $d_u \colon [p(|u|)+1] \to \N$ are 
-defined by
-  \begin{align}
-   B &= 2^{\gamma(|u|) + r(|u|) + s(k) + k + 3}, 
-   &
-   d_u(i) &= 
-   \begin{cases}
-    \sigma(|u|) & \text{if} \ i=p(|u|), 
-    \\
-    (k+1)^i & \text{if} \ i<p(|u|).
-   \end{cases}
-  \end{align}
-For each $(t, y) \in [0,1] \times [-1, 1]$,
-there exist unique $N \in \N$, $\theta \in [0,1)$, $Y \in \Z$ and $\eta \in [-1/4, 3/4)$
-such that $t = (T + \theta)2^{-q(|u|)}$ and $y = (Y + \eta)B^{-d_u(j_u(T))}$.
-Using $f$ and a polynomial $s$ of Lemma~\ref{SmoothFunction},
-we define 
-$\delta_{u,Y} \colon [0,1] \to \R$,
-$
-g _u \colon [0, 1] \times [-1, 1] \to \R
-$ and $
-h _u \colon [0, 1] \to [-1, 1]
-$ by
-  \begin{align}
-    \label{eq:delta}
-   \delta_{u, Y} (t) &= \frac{2^{q(|u|)} \D f(\theta)}{B^{d_u(j_u(T)+1)}} 
-   G_u \bigl( j_u(T), T, Y \bmod 2^{r(|u|)} \bigr),
-   \\
-  \label{eq:gu}
-  g_u(t,y) 
-  &= \begin{cases}
-     \delta_{u, Y}(t)
-     & \text{if} \ \eta \le \frac 1 4, 
-     \\
-     ( 1-f ( \frac{4\eta-1}{2})) \delta_{u, Y}(t)
-     + f ( \frac{4\eta-1}{2}) \delta_{u,Y+1}(t)
-     & \text{if} \ \eta > \frac 1 4,
-    \end{cases}
-   \\
-  h_u(t) 
-   &= \sum^{p(|u|)}_{i=0} \frac{H_u(i, T)}{B^{d_u(i)}}  
-  + \frac{f(\theta)}{B^{d_u(j_u(T)+1)}} G_u \bigl( j_u(T), T, H_u(j_u(T), T) \bigr) .
-  \label{eq:hu}
-  \end{align}
-
-We will verify that $(g_u)_u$ and $(h_u)_u$ defined above satisfy all the conditions stated in Lemma~\ref{KTimesFamily}.
-Polynomial-time computability of $(g_u)_u$ can be verified using Lemma~\ref{lem:type1representation}.
-The condition~(\ref{enum:kf:start}) is immediate from \eqref{eq:gu} and \eqref{eq:hu}.
-The condition~(\ref{enum:equation}) is verified by a similar argument to
-\cite[Lemma 4.1]{kawamura2010lipschitz}.
-
-It is easy to verify that $g_u$ is of class $\classC^{(\infty, \infty)}$ 
-since we construct $\delta_u$ from $G_u$ and $g_u$ from $\delta_u$ by connecting them with $f$ of class $\classC^{(\infty, \infty)}$.
-This means that the condition~(\ref{enum:differentiability}) holds.
-The derivative $\D^i \delta$ is given by for each $i \in \N$,
-\begin{equation}
-    \D^i \delta_{u,Y}(t) 
-    = \frac{2^{(i+1)q(|u|)} \D^{i+1}f(\theta)}{B^{d_u(j_u(T)+1)}}
-    G_u\bigl( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \bigr).
-\end{equation}
-The derivative $\D^{(i,j)} g$ is given by for each $i \in \N$ and $j=0$,
-\begin{equation}
-     \D^{(i, 0)} g_u(t, y)
-     = \begin{cases}
- 	\D^i \delta_{u, Y}(t) 
-	& \text{if} \ \eta \le \frac 1 4, 
-	\\
-	\left( 1-f \left(\frac{4\eta-1}{2}\right)\right) 
-	\D^i \delta_{u, Y}(t)
-	+ f \left(\frac{4\eta-1}{2}\right) \D^i \delta_{u,Y+1}(t) 
-	& \text{if} \ \frac 1 4 < \eta,
-       \end{cases} \label{eq:d(i,0)g_u}
-\end{equation}
-and for each $i \in \N$ and $j \in \{1, \dots, k\}$,
-  \begin{equation} \label{eq:d(i,j)g_u}
-    \D^{(i, j)} g_u(t, y)
-     = \begin{cases}
-	0 & \text{if} \ {-\frac 1 4} < \eta < \frac 1 4, \\
-	(2B^{d_u(j_u(T))})^j \D^j f(\frac{4\eta - 1}2)
-	(\D^i \delta_{u,Y+1}(t)-\D^i \delta_{u, Y}(t)) 
-	& \text{if} \ \frac 1 4 < \eta < \frac 3 4.
-       \end{cases}
-  \end{equation}
-Substituting $t = 0, 1$ ($\theta = 0$) into \eqref{eq:d(i,0)g_u},
-we get $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$, 
-so the condition~(\ref{enum:boundary}) holds.
-
-We show that the condition~(\ref{enum:smooth}) holds with $\mu(x, y) = (x+1)q(y) + s(x+1)$.
-Note that $\mu$ is a polynomial and independent of $k$ and $\gamma$.
-Since $|\D^i \delta_{u,Y}(t)| \le 2^{(i+1)q(|u|) + s(i+1)}B^{-d_u(j_u(|u|)+1)}$ by \eqref{eq:delta}, for all $i \in \N$ and $j \in \{0, \dots, k\}$, we have
- \begin{equation}
-  |\D^{(i,j)} g_u| 
-   \le 
-   2^k B^{k \cdot j_u(T)} 2^{s(k)} \cdot 2 \cdot 
-   \frac{2^{(i+1)q(|u|) + s(i+1)}}{B^{d_u(j_u(|u|)+1)}} 
-   \le
-   \frac{2^{\mu(i, |u|) + s(k) + k + 1}}{B}
-   \le
-   2^{\mu(i, |u|) - \gamma(|u|)}
- \end{equation}
-by \eqref{eq:d(i,0)g_u}, \eqref{eq:d(i,j)g_u} and our choice of $B$.
-
-We have (\ref{enum:kf:end}) with
-  $\rho(x) = \sigma(x) \cdot (\gamma(x)+r(x)+s(k)+k+3)$, because
-  \begin{equation}
-   h_u(1) = \frac{H_u(p(|u|), 2^{q(|u|)})}{B^{d_u(p(|u|))}} 
-          = \frac{L(u)}{2^{\sigma(|u|) \cdot (\gamma(|u|)+r(|u|)+s(k)+k+3)}}
-	  = 2^{-\rho(|u|)} L(u).
-  \end{equation}
-\qed
-\end{proof}
-
-
-
- To prove Lemma~\ref{DifferentiableFamily}, 
- let $L$ and $(G_u)_u$ be as Lemma~\ref{DIVPpolyIsPSPACEhard},
- and let $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
- Define $(g_u)_u$ and $(h_u)_u$ as \eqref{eq:gu} and \eqref{eq:hu}
- with $d_u(i) = i$.
- It is shown in the same way as above that they meet all the conditions
- stated in Lemma~\ref{DifferentiableFamily}.
+We put detailed proofs of Lemmas~\ref{KTimesFamily} and \ref{DifferentiableFamily}}
+in Appendix~\ref{appendix:proof-family}.
 
 
 \subsection{Proof of the Main Theorems}
@@ -558,19 +384,19 @@ from Lemma~\ref{DifferentiableFamily}.
 \begin{proof}[Theorem~\ref{KTimesIsCH}]
 Let $L$ and $\mu$ be as Lemma~\ref{KTimesFamily}.
 Define
- \begin{align}
-  \lambda(x) &= 2x + 2,&
-  \gamma(x) &= \mu(x, x) + x \lambda(x),
- \end{align}
+$
+  \lambda(x) = 2x + 2
+$, $
+  \gamma(x) = \mu(x, x) + x \lambda(x)
+$
 and for each $u$ let
-\begin{align}
- \Lambda_u 
- &= 2^{\lambda(|u|)}, &
- c_u 
- &= 1-\frac{1}{2^{|u|}}+\frac{2\bar{u}+1}{\Lambda_u}, &
- l_u^\mp 
- &= c_u\mp\frac{1}{\Lambda_u},
-\end{align}  
+$
+ \Lambda_u = 2^{\lambda(|u|)}
+$, $
+ c_u = 1-{2^{-|u|}}+{2\bar{u}+1}/{\Lambda_u}
+$, $
+ l_u^\mp = c_u\mp{1}/{\Lambda_u}
+$,
  where $\bar u \in \{0, \dots, 2^{|u|} - 1\}$ is the number represented by $u$ in binary notation.
 Let $\rho$, $(g_u)_u$, $(h_u)_u$ be as in Lemma~\ref{KTimesFamily} 
 corresponding to the above $\gamma$.
@@ -625,7 +451,6 @@ If $i > 0$, the derivative
 $\D_1^i \D_2^j g (1, y)$ is by definition the limit 
 \begin{equation}
 \lim_{s \to 1 - 0} \frac{\D_1^{i-1} \D_2^j g(1, y) - \D_1^{i-1} \D_2^j g (s, y)}{1 - s}.
-% = \lim_{s \to 1-0} \frac{- \D_1^{i-1} \D_2^j g (s, y)}{1 - s}. 
 \label{eq:limitofderivative}
 \end{equation}
 This can be shown to exist and equal $0$, 
