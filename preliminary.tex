@@ -1,10 +1,10 @@
 \section{Computational Complexity of Real Functions}
 \label{section: preliminaries}
 
-\subsection{Computation of Real Function}
+\subsection{Computation of Real Functions}
 
-We start by fixing a way to encode real numbers 
-by functions from strings to strings.
+We start by fixing an encoding of real numbers 
+by string functions.
 \begin{definition}
  A function $\phi \colon \{0\} ^* \to \{0, 1\}^*$ is a \emph{name} of a real number $x$ 
  if for all $n \in \N$,
@@ -13,11 +13,12 @@ by functions from strings to strings.
  where $\lfloor \cdot \rfloor$ and $\lceil \cdot \rceil$ mean
  rounding down and up to the nearest integer.
  \end{definition}
-In effect, a name of a real number $x$ receives $0 ^n$ and returns an approximation of $x$ with precision $2^{-n}$.
+
+In effect, a name of a real number $x$ receives $0 ^n$ and 
+returns an approximation of $x$ with precision $2 ^{-n}$.
 
 We use \emph{oracle Turing machines} (henceforth just machines)
-to work on names of real numbers (Figure~\ref{fig:model-of-function}).
-
+to work on these names (Figure~\ref{fig:model-of-function}).
  \begin{figure}
   \begin{center}
    \includegraphics[height=0.15\textheight]{image/model-of-function.eps}
@@ -25,7 +26,6 @@ to work on names of real numbers (Figure~\ref{fig:model-of-function}).
   \caption{A machine $M$ computing a real function $f$.}
   \label{fig:model-of-function}
  \end{figure}
-
 Let $M$ be a machine and $\phi$ be a function from strings to strings. 
 We write $M ^\phi (0 ^n)$ for the output string 
 when $M$ is given
@@ -33,29 +33,35 @@ $\phi$ as oracle and string $0^n$ as input.
 Thus we also regard $M^\phi$ as a function from strings to strings.
 
 \begin{definition}
-Let $A$ be a bounded closed interval of $\R$.
+Let $A$ be a bounded closed interval of\/ $\R$.
 A machine $M$ \emph{computes} a real function $f \colon A \to \R$ 
 if for any $x \in A$ and any name $\phi_x$ of it,
 $M^{\phi_x}$ is a name of $f(x)$.
 \end{definition}
 
-When $A$ is a bounded closed interval of $\R ^2$,
-we define a machine computing $f \colon A \to \R$ in a similar way using machines with two oracles.
+Computation of a function $f \colon A \to \R$ on
+a two-dimensional bounded closed region $A \subseteq \R ^2$ 
+is defined in a similar way using machines with two oracles.
 A real function is (\emph{polynomial-time}) \emph{computable} if there exists some machine that computes it (in polynomial time).
-Polynomial-time computability of a real function $f$ implies that
+Polynomial-time computability of a real function $f$ means that
 for any $n \in \N$, 
-an approximation of $f(x)$ with error less than $2^{-n}$
+an approximation of $f(x)$ with error bound $2^{-n}$
 is computable in time polynomial in $n$ 
-independent of real number $x$.
+independent of the real number $x$.
 
-Computing a real function in polynomial time, machines only know
-about $x$ by its approximation within polynomial size (with polynomial precision).
-This fact yields in \eqref{eq:modulus} in the following lemma.
+By the time the machine outputs the approximation of $f (x)$ of precision~$2 ^{-n}$, 
+it knows $x$ only with some precision $2 ^{-m}$, 
+and this $m$ is bounded polynomially in $n$ 
+if the machine runs in polynomial time. 
+This implies \eqref{eq:modulus} in the following lemma, 
+which characterizes polynomial-time real functions
+by the usual polynomial-time computability of string functions 
+without using oracle machines. 
 
 \begin{lemma}
  \label{lem:type1representation}
- A real function is (polynomial-time) computable if and only if
- there exist a (polynomial-time) computable function 
+ A real function is polynomial-time computable if and only if
+ there exist a polynomial-time computable function 
  $\phi \colon (\Q \cap [0, 1]) \times \{0\} ^* \to \Q$ and 
  polynomial $p \colon \N \to \N$ such that
  for all $d \in \Q \cap [0,1]$ and $n \in \N$,
@@ -67,17 +73,15 @@ This fact yields in \eqref{eq:modulus} in the following lemma.
   |x-y| \le 2^{-p(n)} \Rightarrow |f(x) - f(y)| \le 2^{-n},
    \label{eq:modulus}
  \end{equation}
- where each rational number in $\Q$ is represented by a pair of integers in binary representation.
+where each rational number is written
+as a fraction whose numerator and denominator
+are integers in binary.
 \end{lemma}
 
 \subsection{Reduction and Hardness}
 A language $L \subseteq \{0, 1\} ^*$ is identified with the function
 $L \colon \{0, 1\} ^* \to \{0, 1\}$ such that $L (u) = 1$ if and only if $u \in L$.
 
-\begin{definition}[Reduction]
- A Language $L$ reduces to a real function $f \colon [0, 1] \to \R$
- if there exists a polynomial-time function $S$ and a polynomial-time oracle Turing machine $M$ (Figure~\ref{fig:reduction})
- such that for any string $u$:
  \begin{figure}
   \begin{center}
   \includegraphics[scale=0.25]{image/reduction.eps}
@@ -85,12 +89,18 @@ $L \colon \{0, 1\} ^* \to \{0, 1\}$ such that $L (u) = 1$ if and only if $u \in 
   \label{fig:reduction}
   \end{center}
  \end{figure}
+
+\begin{definition}
+ A Language $L$ \emph{reduces} to a function $f \colon [0, 1] \to \R$
+ if there exists a polynomial-time function $S$ and a polynomial-time oracle Turing machine $M$ (Figure~\ref{fig:reduction})
+ such that for any string $u$:
   \begin{enumerate}
    \item $S(u, \cdot)$ is a name of $x_u$;
    \item $M^\phi(u)$ accepts if and only if $u \in L$ for any name $\phi$ of $f(x_u)$.
   \end{enumerate}
 \end{definition}
-As a matter of form this definition is different from 
-that by Kawamura but they have same power as reduction.
-Let $C$ be a complexity class, a function $f$ is \emph{$C$-hard}
-if for all language in $C$ is reducible to $f$.
+This definition looks different from 
+the one in Kawamura~\cite{kawamura2010lipschitz}, 
+but they have the same power.
+For a complexity class~$C$, a function $f$ is \emph{$C$-hard}
+if all languages in $C$ reduces to $f$.
