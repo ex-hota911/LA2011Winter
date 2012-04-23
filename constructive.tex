@@ -1,4 +1,4 @@
-\section{Complexity of Operations}
+\section{Complexity of Operators}
 
 Both Theorems \ref{DifferentiableIsPspace} and \ref{KTimesIsCH}
 state the complexity of the solution $h$ under the assumption 
@@ -8,39 +8,45 @@ i.e., how complex is the operator that takes $g$ to $h$?
 To make this question precise,
 we need to define the complexity of operators from real functions to real functions.
 
-To discuss complexity of real functions,
-we encoded real numbers by functions from strings to strings.
-We used string functions as names of elements in $\R$. 
+Recall that, to discuss complexity of real functions,
+we used string functions as names of elements in $\R$. 
 Such an encoding is called a \emph{representation} of $\R$.
-In the same way, we represent real functions as string functions
-to discuss complexity of real operators.
-So we need to define representations as string functions of
-class $\classC_{[0, 1]}$ of continuous real functions $h \colon [0,1] \to \R$ 
-and class $\classLip_{[0, 1] \times [-1, 1]}$ of Lipschitz continuous real functions.
-The choice of representations is important since the computability and complexity is depending on these representations.
+In the same way, 
+we now want to encode real functions as string functions
+to discuss complexity of real operators. 
+In other words, we need to define representations of
+the class $\classC _{[0, 1]}$ of continuous functions $h \colon [0,1] \to \R$ 
+and class $\classLip _{[0, 1] \times [-1, 1]}$ of Lipschitz continuous functions $g \colon [0, 1] \times [-1, 1] \to \R$. 
+The notions of computability and complexity depend on these representations.
 Following \cite{kawamura2010operators},
 we use $\deltabox$ as the representation of $\classC_{[0,1]}$ and $\deltaboxLip$ as the representation of $\classLip_{[0, 1] \times [-1, 1]}$.
-It is known that is some sense $\deltabox$ an unique natural representation of $\classC_{[0, 1]}$ \cite{kawamura11:_funct_space_repres_and_polyn_time_comput}.
-And $\deltaboxLip$ is a representation
-added information about the Lipschitz constant to $\deltabox$.
+It is known that 
+$\deltabox$ is a unique canonical representation of $\classC_{[0, 1]}$ 
+in a certain sense \cite{kawamura11:_funct_space_repres_and_polyn_time_comput}, 
+and $\deltaboxLip$ is the representation defined by adding to $\deltabox$
+the information on the Lipschitz constant.
 
-Since size of string functions are not finite,
-by restricting the amount of resources (time and space) of oracle Turing machine using second order polynomial,
-we define second-order complexity classes
+Since these representations use string functions 
+whose values have variable lengths,
+we use \emph{second order polynomials}
+to bound the amount of resources (time and space) of machines
+\cite{kawamura2010operators}, 
+and this leads to the definitions of second-order complexity classes
 (e.g. $\classFPSPACEtwo$, polynomial-space computable),
-reductions (e.g. $\redW$, polynomial-time Weihrauch reduction),
+reductions (e.g. $\redW$, polynomial-time Weihrauch reduction), 
 and hardness.
-Combining it with the representations of real functions described above,
-we can write theorems of this paper in constructive form.
+Combining them with the representations of real functions described above,
+we can restate the theorems in this paper in the constructive form as follows.
 
-Let $\OpIVP$ be an operator mapping a real function $g$ of class $\classLip_{[0, 1] \times [-1, 1]}$ to
-the solution $h$ of \eqref{eq:ode} of class $\classC_{[0, 1]}$.
-The operator $\OpIVP$ is a partial projection from $\classLip [[0, 1] \times [-1, 1]]$ to $\classC [0, 1]$.
-In \cite[Theorem 4.9]{kawamura2010operators},
+Let $\OpIVP$ be the operator mapping a real function $g \in \classLip_{[0, 1] \times [-1, 1]}$ to
+the solution $h \in \classC_{[0, 1]}$ of \eqref{eq:ode}.
+The operator $\OpIVP$ is a partial function from $\classLip _{[0, 1] \times [-1, 1]}$ to $\classC _{[0, 1]}$.
+In \cite[Theorem 4.9]{kawamura2010operators}, the
 $(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$-completeness of $\OpIVP$ is proven
-by rewriting the proof of the result of the third row in Table~\ref{table:related} in the constructive form.
+by rewriting 
+the proof of the results in the third row of Table~\ref{table:related} in the constructive form.
 In a similar way, Theorem~\ref{DifferentiableIsPspace} can be rewritten in the constructive form.
-That is, let $\OpIVP _k$ as the operator $\OpIVP$ whose input is restricted to class $\classC^{(\infty, k)}$,
+That is, let $\OpIVP _k$ as the operator $\OpIVP$ whose input is restricted to class $\classC^{(\infty, k)}$. Then we have: 
 
 \begin{theorem}
 \label{theorem: C1 constructive}
@@ -51,14 +57,15 @@ To show this theorem,
 we need to verify that the information used to construct functions in the proof of Theorem~\ref{DifferentiableIsPspace}
 can be acquired easily from inputs.
 We omit the proof since it does not need any new technique.
-This constructive theorem is stronger than non-constructive one \cite[Lemma 3.7 and 3.8]{kawamura2010operators}, 
-i.e., Theorem~\ref{DifferentiableIsPspace} follows immediately
-form Theorem~\ref{theorem: C1 constructive}.
+This constructive form implies the non-constructive form \cite[Lemma 3.7 and 3.8]{kawamura2010operators}; 
+thus, Theorem~\ref{DifferentiableIsPspace} is a corollary of 
+Theorem~\ref{theorem: C1 constructive}.
 
-The constructive version of Theorem~\ref{KTimesIsCH} is also true.
-In fact for each $k \in \N$,
-$\OpIVP _k$ is $(\deltaboxLip, \deltabox)$-$\classCHtwo$-$\redW$-hard.
-We will treat it in another paper
-since we need more discussion on how to handle hierarchy
-to define $\classCHtwo$ in the flame work of \cite{kawamura2010operators}.
-
+The constructive version of Theorem~\ref{KTimesIsCH} is also true: 
+for each $k \in \N$,
+the restricted operator $\OpIVP _k$ is 
+$(\deltaboxLip, \deltabox)$-$\classCHtwo$-$\redW$-hard.
+But the formulation of this 
+second-order version $\classCHtwo$ of the counting hierarchy 
+requires some discussion on relativized computation, 
+which will appear in a forthcoming paper. 
