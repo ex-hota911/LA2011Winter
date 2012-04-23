@@ -629,36 +629,38 @@ and from the induction hypothesis about $\D _1 ^{i - 1} \D _2 ^j g$ when $i > 0$
 That $\D _1 ^i \D _2 ^j g (1, y) = 0$ is 
 immediate from the induction hypothesis if $i = 0$. 
 If $i > 0$, we verify the existence of $\D_1^i \D_2^j g(1, y)$
-by the existence of $\D_1^i \D_2^j g(t, y)$ when $t$ tends to $1$, 
-i.e., $|u|$ tends to infinity.
+by differentiate $\D_1^{i-1} \D_2^j g$ with respect to the first variable:
+\begin{align}
+\lim_{s \to 1-0} \frac{\D_1^{i-1} \D_2^j g(1, y) - \D_1^{i-1} \D_2^j g (s, y)}{1 - s}
+&= \lim_{s \to 1-0} \frac{- \D_1^{i-1} \D_2^j g (s, y)}{1 - s}. \label{eq:limitofderivative}
+\end{align}
 From Lemma~\ref{KTimesFamily} (\ref{enum:smooth}), we get
  \begin{align}
-  \left|\D_1^i \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
+  \left|\D_1^{i-1} \D_2^j g \left(l^\mp_u \pm \frac{t}{\Lambda_u},
   \frac{y}{\Lambda_u}\right)\right|
   &\le 
-  \Lambda_u^{i+j} \sum^{k}_{l=j} |\D^{(i,l)} g_u | (\Lambda_u + 1)^l 
+  \Lambda_u^{i-1+j} \sum^{k}_{l=j} |\D^{(i-1,l)} g_u | (\Lambda_u + 1)^l 
   \notag
   \\
   &\le
-  \Lambda_u^{i+j}  \cdot k \cdot 2^{\mu(i, |u|) - \gamma(|u|)} \cdot (2\Lambda_u)^k
+  \Lambda_u^{i-1+j}  \cdot k \cdot 2^{\mu(i-1, |u|) - \gamma(|u|)} \cdot (2\Lambda_u)^k
   \notag
   \\
   & 
-  \le  2^{(i+j+k)\lambda(|u|) + 2k + \mu(i, |u|)  - \gamma(|u|)}. 
+  \le  2^{(i-1+j+k)\lambda(|u|) + 2k + \mu(i-1, |u|)  - \gamma(|u|)}.
   \label{eq:sizeofderivative}
  \end{align}
-By our choice of $\gamma$, 
-it converges to $0$ when $|u| \to \infty$.
-Hence $\D_1^i \D_2^j g(1, y)$ exists and 
-\begin{equation}
- \D_1^i \D_2^j g(1, y) = \lim_{t \to 1-0} \D_1^i \D_2^j g(t,y) = 0.
-  \label{eq:continuityat1}
-\end{equation}
+By our choice of $\gamma$ and the fact that $|1-s| \ge |1-l_u^+| \ge 2^{-|u|-1}$,
+\eqref{eq:limitofderivative} converges to $0$ when $|u| \to \infty$.
+Hence $\D_1^i \D_2^j g(1, y)$ exists and is $0$.
 
 The continuity of $\D _1 ^i \D _2 ^j g$ on $[0,1) \times [-1, 1]$ follows
 from \eqref{eq:d1id2jg} and Lemma~\ref{KTimesFamily} (\ref{enum:boundary}).
-Since \eqref{eq:sizeofderivative} holds for any $i \in \N$ and $j \in \{0, \dots, k\}$,
-it is follows from \eqref{eq:continuityat1} that $\D_1^{i} \D_2^{j} g$ is continuous when the first variable is $1$.
+Replaced $i-1$ with $i$, \eqref{eq:sizeofderivative} holds for any $i \in \N$ and $j \in \{0, \dots, k\}$.
+It yields that  $\D_1^{i} \D_2^{j} g$ is continuous when the first variable is $1$, because
+$
+ \lim_{t \to 1-0} \D_1^i \D_2^j g(t,y) = 0 = \D_1^i \D_2^j g(1, y).
+$
 Here we complete the induction steps.
 
 \qed
