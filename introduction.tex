@@ -47,10 +47,10 @@ the smoothness of $g$.
       &	can be $\classPSPACE$-hard \cite{kawamura2010lipschitz}\\
   $g$ is of class $\classC ^{(\infty, 1)}$ & polynomial-space 
       & can be $\classPSPACE$-hard (Theorem~\ref{DifferentiableIsPspace}) \\
-  \parbox[t]{11em}{$g$ is of class $\classC ^{(\infty, k)}$\\{}(for each constant $k$)}
+  \parbox[t]{10.55em}{$g$ is of class $\classC ^{(\infty, k)}$\\{}(for each constant $k$)}
   & polynomial-space & can be $\classCH$-hard (Theorem~\ref{KTimesIsCH}) \\
   $g$ is analytic
-  & polynomial-time \cite{muller1987uniform,ko1988computing} 
+  & polynomial-time \cite{muller1987uniform,ko1988computing,kawamura2010complexity} 
   & ---
  \end{tabular}
 \end{center}
@@ -70,10 +70,26 @@ This motivates us to ask whether,
 for our differential equation \eqref{eq:ode}, 
 smoothness really reduces the complexity of the solution. 
 
-At the extreme is the case where $g$ is analytic: 
-$h$ is then shown to be polynomial-time computable 
+One extreme is the case where $g$ is analytic: 
+$h$ is then polynomial-time computable 
 (the last row of the table) 
-by an argument based on Taylor series. 
+by an argument based on Taylor series\footnote{
+As shown by M\"uller \cite{muller1987uniform} and 
+Ko and Friedman \cite{ko1988computing}, 
+polynomial-time computability of an analytic function 
+on a compact interval is 
+equivalent to that of its Taylor sequence at a point 
+(although the latter is a local property, 
+polynomial-time computability on the whole interval is implied 
+by analytic continuation; 
+see \cite[Corollary~4.5]{muller1987uniform}
+or \cite[Theorem~11]{kawamura2010complexity}). 
+This implies the polynomial-time computability of $h$, 
+since we can efficiently compute the 
+Taylor sequence of $h$ from that of $g$. 
+} (this does not necessarily mean that 
+computing the values of $h$ from those of $g$ is easy; 
+see the last paragraph of Section~\ref{section: constructive}). 
 Thus our interest is in 
 the cases between Lipschitz and analytic 
 (the fourth and fifth rows). 
@@ -113,20 +129,19 @@ We said
 $g \colon [0,1] \times [-1, 1] \to \R$ instead of 
 $g \colon [0,1] \times \R \to \R$, because
 the notion of polynomial-time computability of real functions 
-is defined in this paper only when the domain is a bounded closed region. 
-This notational choice makes
-the equation~\eqref{eq:ode} ill-defined 
-in case $h$ ever takes a value outside $[-1, 1]$; 
-by saying that $h$ is a solution in Theorem~\ref{DifferentiableIsPspace}, 
+in this paper is defined only when the domain is a bounded closed region. 
+This makes the equation~\eqref{eq:ode} ill-defined 
+in case $h$ ever takes a value outside $[-1, 1]$. 
+By saying that $h$ is a solution in Theorem~\ref{DifferentiableIsPspace}, 
 we are also claiming that 
 $h (t) \in [-1, 1]$ for all $t \in [0, 1]$. 
 In any case, 
 since we are putting stronger assumptions on $g$ than Lipschitz continuity, 
 such a solution $h$, if it exists, is unique. 
 
-The questions of whether smoothness of the input function 
+Whether smoothness of the input function 
 reduces the complexity of the output
-have been asked for operations other than solving differential equations, 
+has been studied for operators other than solving differential equations, 
 and the following negative results are known. 
 The integral of a polynomial-time computable real function 
 can be $\classNumberP$-hard, and this does not change 
@@ -149,11 +164,17 @@ needs to be fixed by redefining
 }. 
 (Restricting to analytic inputs 
 renders the output polynomial-time computable, 
-again because of the argument based on Taylor series.)
-In contrast, 
-although we have Theorem~\ref{KTimesIsCH} for each $k$, 
-we do not know about the complexity of 
-$h$ when $g$ is assumed to be infinitely differentiable. 
+again by the argument based on Taylor series.)
+In contrast, for the differential equation
+we only have Theorem~\ref{KTimesIsCH} for each $k$, 
+and do not have any hardness result 
+when $g$ is assumed to be infinitely differentiable. 
+
+Theorems \ref{DifferentiableIsPspace} and \ref{KTimesIsCH} 
+are about the complexity of each solution $h$. 
+We can also talk about 
+the complexity of the operator that maps $g$ to $h$; 
+see Section~\ref{section: constructive}. 
 
 \subsubsection*{Notation}
 Let $\N$, $\Z$, $\Q$, $\R$ denote the set of natural numbers,

@@ -1,4 +1,5 @@
 \section{Complexity of Operators}
+\label{section: constructive}
 
 Both Theorems \ref{DifferentiableIsPspace} and \ref{KTimesIsCH}
 state the complexity of the solution $h$ under the assumption 
@@ -6,20 +7,23 @@ that $g$ is polynomial-time computable.
 But how hard is it to ``solve'' differential equations,
 i.e., how complex is the operator that takes $g$ to $h$? 
 To make this question precise,
-we need to define the complexity of operators from real functions to real functions.
+we need to define the complexity of operators 
+taking real functions to real functions.
 
 Recall that, to discuss complexity of real functions,
 we used string functions as names of elements in $\R$. 
 Such an encoding is called a \emph{representation} of $\R$.
-In the same way, 
-we now want to encode real functions as string functions
+Likewise, 
+we now want to encode real functions by string functions
 to discuss complexity of real operators. 
 In other words, we need to define representations of
 the class $\classC _{[0, 1]}$ of continuous functions $h \colon [0,1] \to \R$ 
 and class $\classLip _{[0, 1] \times [-1, 1]}$ of Lipschitz continuous functions $g \colon [0, 1] \times [-1, 1] \to \R$. 
 The notions of computability and complexity depend on these representations.
 Following \cite{kawamura2010operators},
-we use $\deltabox$ as the representation of $\classC_{[0,1]}$ and $\deltaboxLip$ as the representation of $\classLip_{[0, 1] \times [-1, 1]}$.
+we use $\deltabox$ and $\deltaboxLip$ as the 
+representations of $\classC_{[0,1]}$ and $\classLip_{[0, 1] \times [-1, 1]}$, 
+respectively.
 It is known that 
 $\deltabox$ is a unique canonical representation of $\classC_{[0, 1]}$ 
 in a certain sense \cite{kawamura11:_funct_space_repres_and_polyn_time_comput}, 
@@ -36,13 +40,19 @@ and this leads to the definitions of second-order complexity classes
 reductions (e.g. $\redW$, polynomial-time Weihrauch reduction), 
 and hardness.
 Combining them with the representations of real functions described above,
-we can restate the theorems in this paper in the constructive form as follows.
+we can restate our theorems in the constructive form as follows.
 
-Let $\OpIVP$ be the operator mapping a real function $g \in \classLip_{[0, 1] \times [-1, 1]}$ to
+Let $\OpIVP$ be the operator 
+mapping a real function $g \in \classLip_{[0, 1] \times [-1, 1]}$ to
 the solution $h \in \classC_{[0, 1]}$ of \eqref{eq:ode}.
-The operator $\OpIVP$ is a partial function from $\classLip _{[0, 1] \times [-1, 1]}$ to $\classC _{[0, 1]}$.
+The operator $\OpIVP$ is a partial function 
+from $\classLip _{[0, 1] \times [-1, 1]}$ to $\classC _{[0, 1]}$
+(it is partial because, 
+as pointed out in the paragraph following Theorem~\ref{KTimesIsCH}, 
+the trajectory may fall out of the interval $[-1, 1]$).
 In \cite[Theorem 4.9]{kawamura2010operators}, the
-$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$-completeness of $\OpIVP$ is proven
+$(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$-completeness of $\OpIVP$ 
+was proved
 by rewriting 
 the proof of the results in the third row of Table~\ref{table:related} in the constructive form.
 In a similar way, Theorem~\ref{DifferentiableIsPspace} can be rewritten in the constructive form.
@@ -55,17 +65,36 @@ The operator $\OpIVP _1$ is $(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\red
 
 To show this theorem,
 we need to verify that the information used to construct functions in the proof of Theorem~\ref{DifferentiableIsPspace}
-can be acquired easily from inputs.
-We omit the proof since it does not need any new technique.
-This constructive form implies the non-constructive form \cite[Lemmas 3.7 and 3.8]{kawamura2010operators}; 
-thus, Theorem~\ref{DifferentiableIsPspace} is a corollary of 
-Theorem~\ref{theorem: C1 constructive}.
+can be acquired easily from the inputs.
+We omit the proof since it does not require any new technique.
+Theorem~\ref{theorem: C1 constructive}
+automatically implies Theorem~\ref{DifferentiableIsPspace} 
+because of \cite[Lemmas 3.7 and 3.8]{kawamura2010operators}. 
 
-The constructive version of Theorem~\ref{KTimesIsCH} is also true: 
-for each $k \in \N$,
-the restricted operator $\OpIVP _k$ is 
-$(\deltaboxLip, \deltabox)$-$\classCHtwo$-$\redW$-hard.
-But the formulation of this 
-second-order version $\classCHtwo$ of the counting hierarchy 
-requires some discussion on relativized computation, 
-which will appear in a forthcoming paper. 
+% The constructive version of Theorem~\ref{KTimesIsCH} is also true: 
+% for each $k \in \N$,
+% the restricted operator $\OpIVP _k$ is 
+% $(\deltaboxLip, \deltabox)$-$\classCHtwo$-$\redW$-hard.
+% But the formulation of this 
+% second-order version $\classCHtwo$ of the counting hierarchy 
+% requires some discussion on relativized computation, 
+% which will appear in a forthcoming paper. 
+
+In contrast, 
+the polynomial-time computability in the analytic case
+(the last row of Table~\ref{table:related})
+is \emph{not} a consequence of a constructive statement based on $\deltabox$. 
+It is based on the calculation of the Taylor coefficients, 
+and hence we only know how 
+to convert the Taylor sequence of $g$ at a point to that of $h$. 
+In other words, 
+the operator $\OpIVP$ restricted to the analytic functions
+is not $(\deltaboxLip, \deltabox)$-$\classFPtwo$-computable, 
+but $(\deltaTaylor, \deltaTaylor)$-$\classFPtwo$-computable, 
+where $\deltaTaylor$ is the representation that 
+encodes an analytic function using its Taylor coefficients at a point 
+in a suitable way. 
+More discussion on the representation of analytic functions 
+and the complexity of operators on them 
+can be found in 
+\cite{cca2012}. 
