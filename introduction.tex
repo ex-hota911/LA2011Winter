@@ -129,7 +129,22 @@ We said
 $g \colon [0,1] \times [-1, 1] \to \R$ instead of 
 $g \colon [0,1] \times \R \to \R$, because
 the notion of polynomial-time computability of real functions 
-in this paper is defined only when the domain is a bounded closed region. 
+in this paper is defined only when the domain is a bounded closed region.%
+\footnote{%
+Although we could extend our definition to 
+functions with unbounded domain~%
+\cite[Section~4.1]{kawamura2010operators}, 
+the results in Table~\ref{table:related} 
+do not hold as they are, 
+because polynomial-time compubable functions $g$, 
+such as $g (t, y) = y$, 
+could yield functions~$h$, such as $h (t) = \exp t$, 
+that grow too fast to be polynomial-time (or even polynomial-space) computable. 
+Bournez, Gra\c ca and Pouly~%
+\cite[Theorem~2]{bournez11:_solvin_analy_differ_equat_in}
+report that the statement about the analytic case holds true 
+if we restrict the growth of $h$ appropriately. 
+} 
 This makes the equation~\eqref{eq:ode} ill-defined 
 in case $h$ ever takes a value outside $[-1, 1]$. 
 By saying that $h$ is a solution in Theorem~\ref{DifferentiableIsPspace}, 
