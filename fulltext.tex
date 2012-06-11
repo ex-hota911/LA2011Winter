@@ -38,30 +38,12 @@
 \newcommand{\classLip}{\mathrm{CL}}
 \newcommand{\classC}{\mathrm C}
 
-%\usepackage{amsthm}
-%\theoremstyle{definition}
-%\newtheorem{theorem}{Theorem}[section]
-%\newtheorem{lemma}[theorem]{Lemma}
-%\newtheorem{definition}[theorem]{Definition}
-
 %\renewcommand{\Lambda}{\varLambda}
 %\renewcommand{\Gamma}{\varGamma}
 
 %%% (i), (ii), (iii), (iv)
 \def\theenumi{\roman{enumi}}
 \def\labelenumi{\textup{(\theenumi)}}
-
-%%% 数式番号を(章.num) に
-\renewcommand{\theequation}{\thesection.\arabic{equation}}
-\@addtoreset{equation}{section}
-
-%%% 表番号を 章.num に
-\renewcommand{\thetable}{\thesection.\arabic{table}}
-\@addtoreset{table}{section}
-
-%%% 図番号を 章.num に
-\renewcommand{\thefigure}{\thesection.\arabic{figure}}
-\@addtoreset{figure}{section}
 
 \makeatother
 
