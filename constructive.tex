@@ -25,7 +25,7 @@ we use $\deltabox$ and $\deltaboxLip$ as the
 representations of $\classC_{[0,1]}$ and $\classLip_{[0, 1] \times [-1, 1]}$, 
 respectively.
 It is known that 
-$\deltabox$ is a unique canonical representation of $\classC_{[0, 1]}$ 
+$\deltabox$ is the canonical representation of $\classC_{[0, 1]}$ 
 in a certain sense \cite{kawamura11:_funct_space_repres_and_polyn_time_comput}, 
 and $\deltaboxLip$ is the representation defined by adding to $\deltabox$
 the information on the Lipschitz constant.
@@ -39,7 +39,7 @@ and this leads to the definitions of second-order complexity classes
 (e.g. $\classFPSPACEtwo$, polynomial-space computable),
 reductions (e.g. $\redW$, polynomial-time Weihrauch reduction), 
 and hardness.
-Combining them with the representations of real functions described above,
+Combining them with the representations of real functions mentioned above,
 we can restate our theorems in the constructive form as follows.
 
 Let $\OpIVP$ be the operator 
@@ -47,15 +47,14 @@ mapping a real function $g \in \classLip_{[0, 1] \times [-1, 1]}$ to
 the solution $h \in \classC_{[0, 1]}$ of \eqref{eq:ode}.
 The operator $\OpIVP$ is a partial function 
 from $\classLip _{[0, 1] \times [-1, 1]}$ to $\classC _{[0, 1]}$
-(it is partial because, 
-as pointed out in the paragraph following Theorem~\ref{KTimesIsCH}, 
-the trajectory may fall out of the interval $[-1, 1]$).
+(it is partial because the trajectory may fall out of the interval $[-1, 1]$, 
+see the paragraph following Theorem~\ref{KTimesIsCH}).
 In \cite[Theorem 4.9]{kawamura2010operators}, the
 $(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$-completeness of $\OpIVP$ 
 was proved
-by rewriting 
-the proof of the results in the third row of Table~\ref{table:related} in the constructive form.
-In a similar way, Theorem~\ref{DifferentiableIsPspace} can be rewritten in the constructive form.
+by modifying
+the proof of the results in the third row of Table~\ref{table:related}.
+Theorem~\ref{DifferentiableIsPspace} can be rewritten in a similar way. 
 That is, let $\OpIVP _k$ be the operator $\OpIVP$ whose input is restricted to class $\classC^{(\infty, k)}$. Then we have: 
 
 \begin{theorem}
@@ -65,7 +64,7 @@ The operator $\OpIVP _1$ is $(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\red
 
 To show this theorem,
 we need to verify that the information used to construct functions in the proof of Theorem~\ref{DifferentiableIsPspace}
-can be acquired easily from the inputs.
+can be obtained easily from the inputs.
 We omit the proof since it does not require any new technique.
 Theorem~\ref{theorem: C1 constructive}
 automatically implies Theorem~\ref{DifferentiableIsPspace} 
@@ -83,7 +82,7 @@ because of \cite[Lemmas 3.7 and 3.8]{kawamura2010operators}.
 In contrast, 
 the polynomial-time computability in the analytic case
 (the last row of Table~\ref{table:related})
-is \emph{not} a consequence of a constructive statement based on $\deltabox$. 
+is \emph{not} a consequence of a statement based on $\deltabox$. 
 It is based on the calculation of the Taylor coefficients, 
 and hence we only know how 
 to convert the Taylor sequence of $g$ at a point to that of $h$. 
