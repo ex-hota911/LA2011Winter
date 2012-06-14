@@ -199,32 +199,44 @@ $u \in A \leftrightarrow f_n(u) \in \quantC_n B_{be}$. So
 Since $\langle 0^{2^n}, f_n(\cdot) \rangle$ is polynomial time computable,
 $A$ is reducible to $\quantC_{\log} B_{be}$.
 
-%Next we construct a logarithmic-height uniform function family $(G_u)_u$
-%recognizing $\quantC_{\log} B_{be}$
-%by showing the following claim.
-%\begin{claim} For each formula $\phi$, there exists a uniform family $(G_u)_u$ of fanctions
-%such that
-%\begin{equation} 
-%  G_u(i,V,H_u(i,V)) = (-1)^{V_{s_{i+1}}} 
-%   \phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]})
-%\end{equation}
-%if $V = \overline{S_n V_n \cdots S_{i+1} V_{i+1} S_i V_i 10 \cdots 0}$.
-%\end{claim}
-\qed
+Next we sketch out construction of
+a difference equation such that its height is $n+1$
+and it computes (i.e. the value of the bottom right cell is)
+the value of each formula with $n$ counting quantifiers.
+Once we had such differential equations, 
+we can construct a logarithmic-height uniform function family
+recognizing $\quantC_{\log} B_{be}$ since
+we add a padding $0^{2^n}$ to the input and
+the number of quantifiers is less than logarithmic of its input length.
+For $n = 0$, value of a formula without any quantifiers is
+polynomial-time computable.
+Assume that for each formula with $i$ counting quantifiers,
+there exists a difference equation with $(i+1)$ height.
+For each formula $\phi$ with $i+1$ counting quantifiers,
+let $\psi$ be a formula such that $\phi = \quantC^m X \psi(X)$.
+By assumption for every $Y \in \{0,1\}^{|X|}$
+there exists a differential equation with $(i+1)$ height which computes $\psi(Y)$.
+We construct a new differential equation which computes 
+by connecting these equations in $T$-axis
+(i.e. arranging tables like Figure~\ref{fig:divp} horizontally),
+$\sum_Y \psi(Y)$ at $(i+1)$th row,
+and it can compute the value of $\phi = \quantC^m X \psi(X)$
+at the next row.
 \end{proof}
 
 
-The class of languages recognized by uniform function families with $i$ rows
-contains $\quantC_i \classP$ (the $i$th level of the counting hierarchy)
-and is contained in $\quantC_{i+1} \classP$.
-While the class $\quantC_i \classP$ is defined by \eqref{eq:CH} using oracle Turing machines,
-it can be also characterized as those languages Karp-reducible to $\quantC_i B_{be}$, or 
-as those accepted by a polynomial-time alternating Turing machine 
-extended with ``threshold states'' and having at most $i$ alternations.
-Likewise, 
-the languages accepted by uniform function families of logarithmic height
-coincide with those Karp-reducible to $\quantC_{\log} B_{be}$
-and with those accepted by the extended alternating Turing machine with logarithmic alternations.
+%The class of languages recognized by uniform function families with $i$ rows
+%contains $\quantC_i \classP$ (the $i$th level of the counting hierarchy)
+%and is contained in $\quantC_{i+1} \classP$.
+%While the class $\quantC_i \classP$ is defined by \eqref{eq:CH} using oracle Turing machines,
+%it can be also characterized as those languages Karp-reducible to $\quantC_i B_{be}$, or 
+%as those accepted by a polynomial-time alternating Turing machine 
+%extended with ``threshold states'' and having at most $i$ alternations.
+
+%Likewise, 
+%the languages accepted by uniform function families of logarithmic height
+%coincide with those Karp-reducible to $\quantC_{\log} B_{be}$
+%and with those accepted by the extended alternating Turing machine with logarithmic alternations.
 % Since this class contains $\classCH$,
 % we only state $\classCH$-hardness in Lemma~\ref{KTimesFamily} and Theorem $\ref{KTimesIsCH}$,
 % but it is not known such class how hard the class is between $\classCH$ and $\classPSPACE$.
