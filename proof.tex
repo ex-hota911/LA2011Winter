@@ -64,7 +64,7 @@ if for all $i \in [P]$ and $T \in [Q]$ (Figure~\ref{fig:divp}),
 \end{gather}
 We call $P$, $Q$ and $R$ the \emph{height}, \emph{width} and \emph{cell size} of
 the difference equation.
-The equations \eqref{eq:initial value} and \eqref{eq:divp} are similar to 
+The equations \eqref{eq:initial value} and \eqref{eq:divp} are respectively similar to 
 the initial condition $h(0) = 0$ and the equation $\D h(t) = g(t, h(t))$ 
 in \eqref{eq:ode}.
 In Section~\ref{subsection: ode family}, we will simulate difference equations by differential equations using this similarity.
@@ -199,29 +199,30 @@ $u \in A \leftrightarrow f_n(u) \in \quantC_n B_{be}$. So
 Since $\langle 0^{2^n}, f_n(\cdot) \rangle$ is polynomial time computable,
 $A$ is reducible to $\quantC_{\log} B_{be}$.
 
-Next we sketch out construction of
-a difference equation such that its height is $n+1$
+Next we sketch out the construction of
+a difference equation for each formula with $n$ counting quantifiers
+such that its height is $n+1$
 and it computes (i.e. the value of the bottom right cell is)
-the value of each formula with $n$ counting quantifiers.
+the value of the formula.
 Once we had such differential equations, 
 we can construct a logarithmic-height uniform function family
 recognizing $\quantC_{\log} B_{be}$ since
-we add a padding $0^{2^n}$ to the input and
-the number of quantifiers is less than logarithmic of its input length.
-For $n = 0$, value of a formula without any quantifiers is
+an element of $\quantC_{\log} B_{be}$ is a pair of a formula with n counting quantifiers
+and a padding $0^{2^n}$ so that its length is less than logarithm of $n$.
+For $n = 0$, it is obvious because
+the value of a formula without any quantifiers is
 polynomial-time computable.
 Assume that for each formula with $i$ counting quantifiers,
 there exists a difference equation with $(i+1)$ height.
 For each formula $\phi$ with $i+1$ counting quantifiers,
-let $\psi$ be a formula such that $\phi = \quantC^m X \psi(X)$.
-By assumption for every $Y \in \{0,1\}^{|X|}$
-there exists a differential equation with $(i+1)$ height which computes $\psi(Y)$.
-We construct a new differential equation which computes 
-by connecting these equations in $T$-axis
+let $\psi(X)$ be a formula such that $\phi = \quantC^m X \psi(X)$.
+For each string $Y \in \{0,1\}^{l}$
+there exists a differential equation with $(i+1)$ height which computes $\psi(Y)$ by assumption.
+We construct a new differential equation by connecting these equations in $T$-axis
 (i.e. arranging tables like Figure~\ref{fig:divp} horizontally),
-$\sum_Y \psi(Y)$ at $(i+1)$th row,
-and it can compute the value of $\phi = \quantC^m X \psi(X)$
-at the next row.
+which computes $\sum_Y \psi(Y)$ at $(i+1)$th row
+and $\phi = \quantC^m X \psi(X)$ at the next row.
+\qed
 \end{proof}
 
 
@@ -308,8 +309,6 @@ such that $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i = 0} H_u(i, T)/B^{d_u(i)}$ for e
 and $\D h_u(t) = g_u(t, h_u(t))$.
 The polynomial-time computability of $(g_u)_u$ follows from that of $(G_u)_u$.
 We can prove Lemma~\ref{DifferentiableFamily} from Lemma~\ref{DIVPpolyIsPSPACEhard} in the same way.
-We put detailed proofs of Lemmas~\ref{KTimesFamily} and \ref{DifferentiableFamily}
-in Appendix~\ref{appendix:proof-family}.
 
 
 \subsection{Proof of the Main Theorems}
@@ -317,7 +316,7 @@ in Appendix~\ref{appendix:proof-family}.
 Using the function families $(g_u)_u$ and $(h_u)_u$ 
 obtained from Lemmas \ref{KTimesFamily} or \ref{DifferentiableFamily}, 
 we construct the functions $g$ and $h$ in 
-Theorems \ref{DifferentiableIsPspace} and \ref{KTimesIsCH} as follows. 
+Theorems \ref{DifferentiableIsPspace} or \ref{KTimesIsCH} respectively as follows. 
 Divide $[0,1)$ into infinitely many subintervals $[l^-_u, l^+_u]$,
 with midpoints $c_u$.
 We construct $h$ by putting a scaled copy of $h_u$ onto $[l^-_u, c_u]$ and
