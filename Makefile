@@ -10,7 +10,7 @@ SRC=abstract.tex proof.tex introduction.tex preliminary.tex acknowledgments.tex 
 TMP=divp.eps  model-of-function.eps  reduction.eps
 IMG=$(TMP:%=image/%)
 #文献データベース
-REF=la.bib
+REF=bibliography.bib
 #走らせるTeXプログラム
 TEX=platex --halt-on-error
 BIBTEX=bibtex
