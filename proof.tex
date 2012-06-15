@@ -176,8 +176,9 @@ we define
  the problem $\quantC_n B_{be}$ is $\quantC_n\classP$-complete.
 \end{lemma}
 
-We define a problem $\quantC_{\log} B_{be}$ by
+We define the problem $\quantC_{\log} B_{be}$ by
 \begin{equation}
+\label{equation: definition of padded CQBF}
  \langle 0^{2^n}, u \rangle \in \quantC_{\log} B_{be}
  \longleftrightarrow
  u \in \quantC_n B_{be}.
@@ -199,32 +200,39 @@ $u \in A \leftrightarrow f_n(u) \in \quantC_n B_{be}$. So
 Since $\langle 0^{2^n}, f_n(\cdot) \rangle$ is polynomial time computable,
 $A$ is reducible to $\quantC_{\log} B_{be}$.
 
-Next we sketch out the construction of
-a difference equation for each formula with $n$ counting quantifiers
-such that its height is $n+1$,
-the output of its computation, i.e., 
-the bottom right cell is equal to the formula,
-and other cells in the last column are $0$.
-Once we had such difference equations,
+Next we sketch 
+(the details will be given in the full version of this paper) 
+how to construct, 
+for each formula with $n$ counting quantifiers, 
+a difference equation of height $n+1$ 
+such that 
+the output of its computation (i.e., the number in the bottom right cell)
+is equal to the value of the formula, 
+and other cells in the last column contain $0$.
+Once we have such a difference equation, 
 we can construct a logarithmic-height uniform function family
-recognizing $\quantC_{\log} B_{be}$ 
-since an element of $\quantC_{\log} B_{be}$ is a pair of a formula with n counting quantifiers
-and a padding $0^{2^n}$ so that $n$ is less than logarithm of the input length.
-We build up the difference equations recursively.
+recognizing $\quantC_{\log} B_{be}$, 
+since 
+$n$ is logarithmic in the length of the input of $\quantC_{\log} B_{be}$
+because of the padding $0^{2^n}$
+in \eqref{equation: definition of padded CQBF}. 
+We build up the difference equation recursively.
 For $n = 0$, it is easy because
-the value of a formula without any quantifiers is
+the value of a formula without quantifiers is
 polynomial-time computable.
-For each formula $\phi$ with $i+1$ counting quantifiers,
-let $\psi(X)$ be a formula such that $\phi = \quantC^m X \psi(X)$.
-For each string $Y \in \{0,1\}^{l}$
-there exists a differential equation with $(i+1)$ height 
-that compute $\psi(Y)$ by the assumption of recursive.
-We construct a new differential equation by connecting these equations in $T$-axis
-(i.e., arranging tables like Figure~\ref{fig:divp} horizontally),
-which computes $\sum_Y \psi(Y)$ at $(i+1)$th row
-so that it can compute $\phi = \quantC^m X \psi(X)$ at the next row.
-We cancel out the value in $(i+1)$th row by connecting difference equations computing $\neg \psi(Y)$ for all $Y \in \{0, 1\}^l$,
-and other cells in the last column are $0$ by the assumption of recursive.
+Consider the formula $\quantC^m X \psi(X)$, 
+where $\psi(X)$ has $i$ counting quantifiers, 
+and assume that for each $Y \in \{0, 1\} ^l$, 
+there exists a difference equation of height $i+1$
+that computes $\psi(Y)$.
+By connecting these equations along the $T$-axis
+(i.e., arranging tables like Figure~\ref{fig:divp} horizontally), 
+we construct a new difference equation
+that computes $\sum_Y \psi(Y)$ in the $(i+1)$th row
+and thereby computes $\quantC^m X \psi(X)$ in the next row. 
+We cancel out the value in the $(i+1)$st row 
+by further connecting the difference equation 
+computing $\neg \psi(Y)$ for each $Y \in \{0, 1\}^l$. 
 \qed
 \end{proof}
 
