@@ -201,27 +201,30 @@ $A$ is reducible to $\quantC_{\log} B_{be}$.
 
 Next we sketch out the construction of
 a difference equation for each formula with $n$ counting quantifiers
-such that its height is $n+1$
-and it computes (i.e. the value of the bottom right cell is)
-the value of the formula.
-Once we had such difference equations, 
+such that its height is $n+1$,
+the output of its computation, i.e., 
+the bottom right cell is equal to the formula,
+and other cells in the last column are $0$.
+Once we had such difference equations,
 we can construct a logarithmic-height uniform function family
-recognizing $\quantC_{\log} B_{be}$ since
-an element of $\quantC_{\log} B_{be}$ is a pair of a formula with n counting quantifiers
-and a padding $0^{2^n}$ so that its length is less than logarithm of $n$.
-For $n = 0$, it is obvious because
+recognizing $\quantC_{\log} B_{be}$ 
+since an element of $\quantC_{\log} B_{be}$ is a pair of a formula with n counting quantifiers
+and a padding $0^{2^n}$ so that $n$ is less than logarithm of the input length.
+We build up the difference equations recursively.
+For $n = 0$, it is easy because
 the value of a formula without any quantifiers is
 polynomial-time computable.
-Assume that for each formula with $i$ counting quantifiers,
-there exists a difference equation with $(i+1)$ height.
 For each formula $\phi$ with $i+1$ counting quantifiers,
 let $\psi(X)$ be a formula such that $\phi = \quantC^m X \psi(X)$.
 For each string $Y \in \{0,1\}^{l}$
-there exists a differential equation with $(i+1)$ height which computes $\psi(Y)$ by assumption.
+there exists a differential equation with $(i+1)$ height 
+that compute $\psi(Y)$ by the assumption of recursive.
 We construct a new differential equation by connecting these equations in $T$-axis
-(i.e. arranging tables like Figure~\ref{fig:divp} horizontally),
+(i.e., arranging tables like Figure~\ref{fig:divp} horizontally),
 which computes $\sum_Y \psi(Y)$ at $(i+1)$th row
-and $\phi = \quantC^m X \psi(X)$ at the next row.
+so that it can compute $\phi = \quantC^m X \psi(X)$ at the next row.
+We cancel out the value in $(i+1)$th row by connecting difference equations computing $\neg \psi(Y)$ for all $Y \in \{0, 1\}^l$,
+and other cells in the last column are $0$ by the assumption of recursive.
 \qed
 \end{proof}
 
