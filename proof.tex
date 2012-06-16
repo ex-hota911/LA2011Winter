@@ -228,11 +228,12 @@ that computes $\psi(Y)$.
 By connecting these equations along the $T$-axis
 (i.e., arranging tables like Figure~\ref{fig:divp} horizontally), 
 we construct a new difference equation
-that computes $\sum_Y \psi(Y)$ in the $(i+1)$th row
-and thereby computes $\quantC^m X \psi(X)$ in the next row. 
-We cancel out the value in the $(i+1)$st row 
-by further connecting the difference equation 
-computing $- \psi(Y)$ for each $Y \in \{0, 1\}^l$. 
+that computes $\sum_Y \psi(Y)$ in the $(i+1)$st row
+and then uses this sum to compute $\quantC^m X \psi(X)$ in the next row. 
+To bring the value in the $(i+1)$st row back to $0$, 
+we further connect the difference equation 
+computing $-\sum_Y \psi(Y)$, 
+which can be constructed similarly by changing the signs. 
 \qed
 \end{proof}
 
