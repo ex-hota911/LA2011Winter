@@ -50,13 +50,6 @@ Let $G \colon [P] \times [Q] \times [R] \to \{-1, 0, 1\}$ and
 $H \colon [P + 1] \times [Q+1] \to [R]$. 
 We say that $H$ is the solution of the \emph{difference equation} given by $G$
 if for all $i \in [P]$ and $T \in [Q]$ (Fig.~\ref{fig:divp}), 
-\begin{figure}[tb]
- \begin{center}
-  \includegraphics[height=0.15\textheight]{image/divp.eps}
- \end{center}
- \caption{The solution $H$ of the difference equation given by $G$}
- \label{fig:divp}
-\end{figure}
 \begin{gather}
    H(i, 0) = H(0, T) = 0 \enspace , \label{eq:initial value}
 \\
@@ -68,6 +61,14 @@ The equations \eqref{eq:initial value} and \eqref{eq:divp} are similar to
 the initial condition $h(0) = 0$ and the equation $\D h(t) = g(t, h(t))$ 
 in \eqref{eq:ode}, respectively.
 In Sect.~\ref{subsection: ode family}, we will simulate difference equations by differential equations using this similarity.
+
+\begin{figure}
+ \begin{center}
+  \includegraphics[height=0.15\textheight]{image/divp.eps}
+ \end{center}
+ \caption{The solution $H$ of the difference equation given by $G$}
+ \label{fig:divp}
+\end{figure}
 
 We view a family of difference equations as a computing system by
 regarding the value of the bottom right cell (the gray cell in Fig.~\ref{fig:divp}) as the output. 

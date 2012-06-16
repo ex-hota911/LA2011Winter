@@ -21,18 +21,19 @@ returns an approximation of $x$ with precision $2 ^{-n}$.
 
 We use \emph{oracle Turing machines} (henceforth just \emph{machines})
 to work on these names (Fig.~\ref{fig:model-of-function}).
- \begin{figure}[tb]
-  \begin{center}
-   \includegraphics[height=0.15\textheight]{image/model-of-function.eps}
-  \end{center}
-  \caption{A machine $M$ computing a real function $f$.}
-  \label{fig:model-of-function}
- \end{figure}
 Let $M$ be a machine and $\phi$ be a function from strings to strings. 
 We write $M ^\phi (0 ^n)$ for the output string 
 when $M$ is given
 $\phi$ as oracle and string $0^n$ as input.
 Thus we also regard $M^\phi$ as a function from strings to strings.
+
+\begin{figure}
+% \begin{center}
+  \includegraphics[height=0.15\textheight]{image/model-of-function.eps}
+% \end{center}
+ \caption{A machine $M$ computing a real function $f$.}
+ \label{fig:model-of-function}
+\end{figure}
 
 \begin{definition}
 Let $A$ be a bounded closed interval of\/ $\R$.
@@ -90,14 +91,6 @@ To talk about hardness, we define reduction.
 A language $L \subseteq \{0, 1\} ^*$ is identified with the function
 $L \colon \{0, 1\} ^* \to \{0, 1\}$ such that $L (u) = 1$ when $u \in L$.
 
- \begin{figure}[tb]
-  \begin{center}
-  \includegraphics[scale=0.20]{image/reduction.eps}
-  \caption{Reduction from a language $L$ to a function $f \colon [0,1] \to \R$}
-  \label{fig:reduction}
-  \end{center}
- \end{figure}
-
 \begin{definition}
  A language $L$ \emph{reduces} to a function $f \colon [0, 1] \to \R$
  if there exists a polynomial-time function $S$ and a polynomial-time oracle Turing machine $M$ (Fig.~\ref{fig:reduction})
@@ -112,3 +105,12 @@ the one in Kawamura~\cite{kawamura2010lipschitz},
 but is easily seen to have the same power.
 For a complexity class~$C$, a function $f$ is \emph{$C$-hard}
 if all languages in $C$ reduce to $f$.
+
+ \begin{figure}
+  \begin{center}
+  \includegraphics[scale=0.20]{image/reduction.eps}
+  \caption{Reduction from a language $L$ to a function $f \colon [0,1] \to \R$}
+  \label{fig:reduction}
+  \end{center}
+ \end{figure}
+
