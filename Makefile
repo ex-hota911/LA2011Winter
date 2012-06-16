@@ -12,7 +12,7 @@ IMG=$(TMP:%=image/%)
 #文献データベース
 REF=bibliography.bib
 #走らせるTeXプログラム
-TEX=platex --halt-on-error
+TEX=latex --halt-on-error
 BIBTEX=bibtex
 # EUCへ変換
 NKF=nkf -e
@@ -27,7 +27,7 @@ all: $(FILE).pdf
 
 $(FILE).pdf: $(FILE).dvi
 	$(DVIPDF) $(FILE)
-$(FILE).dvi: $(FILE).aux $(FILE).bbl
+$(FILE).dvi: $(FILE).aux #$(FILE).bbl
 	(while $(REFGREP) $(FILE).log; do $(TEX) $(FILE); done)
 $(FILE).aux: $(FILE).tex $(SRC) $(IMG)
 	$(TEX) $(FILE)
