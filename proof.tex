@@ -3,17 +3,17 @@
 
 The proofs of Theorems \ref{DifferentiableIsPspace} and \ref{KTimesIsCH}
 proceed as follows. 
-In Section~\ref{section:divp}, 
+In Sect.~\ref{section:divp}, 
 we define \emph{difference equations}, 
 a discrete version of the differential equations. 
-In Section~\ref{subsection: counting hierarchy}, 
+In Sect.~\ref{subsection: counting hierarchy}, 
 we show the $\classPSPACE$- and $\classCH$-hardness of 
 difference equations with certain restrictions. 
-In Section~\ref{subsection: ode family}, 
+In Sect.~\ref{subsection: ode family}, 
 we show that these classes of difference equations can be simulated
 by families of differential equations 
 satisfying certain uniform bounds on higher-order derivatives. 
-In Section~\ref{subsection: proof of theorems}, 
+In Sect.~\ref{subsection: proof of theorems}, 
 we prove the theorems by
 putting these families of functions together 
 to obtain one differential equation 
@@ -49,7 +49,7 @@ Let $[n]$ denote $\{0, \dots , n-1\}$.
 Let $G \colon [P] \times [Q] \times [R] \to \{-1, 0, 1\}$ and
 $H \colon [P + 1] \times [Q+1] \to [R]$. 
 We say that $H$ is the solution of the \emph{difference equation} given by $G$
-if for all $i \in [P]$ and $T \in [Q]$ (Figure~\ref{fig:divp}), 
+if for all $i \in [P]$ and $T \in [Q]$ (Fig.~\ref{fig:divp}), 
 \begin{figure}[tb]
  \begin{center}
   \includegraphics[height=0.15\textheight]{image/divp.eps}
@@ -67,10 +67,10 @@ the difference equation.
 The equations \eqref{eq:initial value} and \eqref{eq:divp} are similar to 
 the initial condition $h(0) = 0$ and the equation $\D h(t) = g(t, h(t))$ 
 in \eqref{eq:ode}, respectively.
-In Section~\ref{subsection: ode family}, we will simulate difference equations by differential equations using this similarity.
+In Sect.~\ref{subsection: ode family}, we will simulate difference equations by differential equations using this similarity.
 
 We view a family of difference equations as a computing system by
-regarding the value of the bottom right cell (the gray cell in Figure~\ref{fig:divp}) as the output. 
+regarding the value of the bottom right cell (the gray cell in Fig.~\ref{fig:divp}) as the output. 
 A family $(G_u)_u$ of functions 
 $G_u \colon [P_u] \times [Q_u] \times [R_u] \to \{-1, 0, 1\}$
 \emph{recognizes} a language $L$ if for each $u$,
@@ -102,12 +102,12 @@ Likewise,
 Theorem~\ref{DifferentiableIsPspace} follows from Lemma~\ref{DIVPpolyIsPSPACEhard},
 by a modified construction that keeps 
 the function in class $\classC ^{(\infty, 1)}$ 
-(Sections \ref{subsection: ode family} and \ref{subsection: proof of theorems}).
+(Sects. \ref{subsection: ode family} and \ref{subsection: proof of theorems}).
 
 We show further that 
 difference equations restricted to have logarithmic height can be simulated by
 $\classC ^{(\infty, k)}$ functions for each $k$ 
-(Sections \ref{subsection: ode family} and \ref{subsection: proof of theorems}).
+(Sects. \ref{subsection: ode family} and \ref{subsection: proof of theorems}).
 Theorem \ref{KTimesIsCH} follows from this simulation and the following lemma.
 \begin{lemma}
  \label{DIVPlogIsCHhard}
@@ -117,7 +117,7 @@ Theorem \ref{KTimesIsCH} follows from this simulation and the following lemma.
 The definition of the counting hierarchy $\classCH$, 
 its connection to difference equations and 
 the proof of Lemma~\ref{DIVPlogIsCHhard} 
-will be presented in Section~\ref{subsection: counting hierarchy}. 
+will be presented in Sect.~\ref{subsection: counting hierarchy}. 
 
 
 
@@ -226,7 +226,7 @@ and assume that for each $Y \in \{0, 1\} ^l$,
 there exists a difference equation of height $i+1$
 that computes $\psi(Y)$.
 By connecting these equations along the $T$-axis
-(i.e., arranging tables like Figure~\ref{fig:divp} horizontally), 
+(i.e., arranging tables like Fig.~\ref{fig:divp} horizontally), 
 we construct a new difference equation
 that computes $\sum_Y \psi(Y)$ in the $(i+1)$st row
 and then uses this sum to compute $\quantC^m X \psi(X)$ in the next row. 
