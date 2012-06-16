@@ -3,19 +3,19 @@
 \label{appendix:proof-subformula}
 
 We construct a logarithmic-height uniform function family $(G_u)_u$
-recognizing $\quantC_{\log} B_{be}$.
+recognizing $\quantC_{\log} B_{\mathrm{be}}$.
 Let $u  = \langle 0^{2^n}, 
 \langle \phi(X_1, \dots, X_n), m_1, \dots, m_n \rangle \rangle$, 
 where $n$, $m_1, \dots, m_n$ are nonnegative integers 
 and $\phi$ is a formula. 
-(If $u$ is not of this form, then $u \notin \quantC_{\log} B_{be}$.)
+(If $u$ is not of this form, then $u \notin \quantC_{\log} B_{\mathrm{be}}$.)
  
 We write $l_i = |X_i|$ and $s_i = i + \sum^i_{j=1}l_j$.
 For each $i \in \{0, \dots, n\}$ and
 $Y_{i+1} \in \{0,1\}^{l_{i+1}}, \dots, Y_n \in \{0,1\}^{l_n}$,
 we write $\phi_i(Y_{i+1}, \dots, Y_n)$ for the truth value of the subformula
 $\quantC^{m_{i}}{X_i} \cdots \quantC^{m_1}{X_1} \phi(X_1, \dots, X_i, Y_{i+1}, \dots, Y_n)$,
-so that $\phi_0 = \phi$ and $\phi_n() = \quantC_{\log} B_{be} (u)$.
+so that $\phi_0 = \phi$ and $\phi_n() = \quantC_{\log} B_{\mathrm{be}} (u)$.
 We regard the quantifier $\quantC^m$ as a function from $\N$ to $\{0,1\}$:
 \begin{equation}
  C^m(x) 
@@ -91,8 +91,8 @@ By this equation, \eqref{eq:phi-step} and \eqref{eq:def-Gu:case-nonzero},
 completing the induction steps.
 
 By substituting $n$ for $i$ and $2^{s_n}$ for $T$ in \eqref{eq:subformula},
-we get $G_u(n, 2^{s_n}, H_u(n,2^{s_n})) = \phi_n() = \quantC_{\log} B_{be}(u)$.
-Hence $H_u(n+1, 2^{s_n}+1) = \quantC_{\log} B_{be}(u)$.
+we get $G_u(n, 2^{s_n}, H_u(n,2^{s_n})) = \phi_n() = \quantC_{\log} B_{\mathrm{be}}(u)$.
+Hence $H_u(n+1, 2^{s_n}+1) = \quantC_{\log} B_{\mathrm{be}}(u)$.
  
 We show that $(G_u)_u$ is uniform and has logarithmic height. 
 The height $n+1$, the width $2^{s_n}+1$, and the cell size $2^{|u|}$
