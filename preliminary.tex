@@ -57,35 +57,30 @@ it knows $x$ only with some precision $2 ^{-m}$.
 This implies that all computable real functions are continuous.
 If the machine runs in polynomial time,
 this $m$ is bounded polynomially in $n$.
-Hence for every polynomial-time computable real function,
-there is a polynomial $p$ such that 
-$|f(x) - f(y)| \le 2^{-n}$ for all $x, y \in \mathrm{dom} f$ and $n \in \N$
-with $|x - y| \le 2^{-p(n)}$.
+This implies \eqref{eq:modulus} in the following lemma, 
+which characterizes polynomial-time real functions
+by the usual polynomial-time computability of string functions 
+without using oracle machines. 
 
-%This implies \eqref{eq:modulus} in the following lemma, 
-%which characterizes polynomial-time real functions
-%by the usual polynomial-time computability of string functions 
-%without using oracle machines. 
-%
-%\begin{lemma}
-% \label{lem:type1representation}
-% A real function is polynomial-time computable if and only if
-% there exist a polynomial-time computable function 
-% $\phi \colon (\Q \cap [0, 1]) \times \{0\} ^* \to \Q$ and 
-% polynomial $p \colon \N \to \N$ such that
-% for all $d \in \Q \cap [0,1]$ and $n \in \N$,
-% \begin{equation}
-%  |\phi(d, 0^n) - f(d)| \le 2^{-n},
-% \end{equation}
-% and for all $x, y \in [0, 1]$, $n \in \N$,
-% \begin{equation} 
-%  |x-y| \le 2^{-p(n)} \Rightarrow |f(x) - f(y)| \le 2^{-n},
-%   \label{eq:modulus}
-% \end{equation}
-%where each rational number is written
-%as a fraction whose numerator and denominator
-%are integers in binary.
-%\end{lemma}
+\begin{lemma}
+ \label{lem:type1representation}
+ A real function is polynomial-time computable if and only if
+ there exist a polynomial-time computable function 
+ $\phi \colon (\Q \cap [0, 1]) \times \{0\} ^* \to \Q$ and 
+ polynomial $p \colon \N \to \N$ such that
+ for all $d \in \Q \cap [0,1]$ and $n \in \N$,
+ \begin{equation}
+  |\phi(d, 0^n) - f(d)| \le 2^{-n},
+ \end{equation}
+ and for all $x, y \in [0, 1]$, $n \in \N$,
+ \begin{equation} 
+  |x-y| \le 2^{-p(n)} \Rightarrow |f(x) - f(y)| \le 2^{-n},
+   \label{eq:modulus}
+ \end{equation}
+where each rational number is written
+as a fraction whose numerator and denominator
+are integers in binary.
+\end{lemma}
 
 To talk about hardness, we define reduction. 
 A language $L \subseteq \{0, 1\} ^*$ is identified with the function
