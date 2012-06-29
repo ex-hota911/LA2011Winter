@@ -448,3 +448,27 @@ estimating $\D_1^{i} \D_2^{j} g$ similarly to \eqref{eq:sizeofderivative}.
 \qed
 \end{proof} 
 
+
+
+\subsection{Complexity of the Final Value}
+
+\begin{theorem}
+For any tally language $L \in \classPSPACE$,
+there are a polynomial-time computable function
+$g \colon [0,1] \times [-1,1] \to \R$ 
+of class $\classC ^{(\infty, 1)}$ and 
+a function $h \colon [0,1] \to \R$
+satisfying \eqref{eq:ode} 
+such that $L$ reduces to $h(1)$.
+\end{theorem}
+
+\begin{theorem}
+Let $k$ be a positive integer. 
+For any tally language $L \in \classCH$,
+there are a polynomial-time computable function
+$g \colon [0,1] \times [-1,1] \to \R$ 
+of class $\classC ^{(\infty, k)}$ and 
+a function $h \colon [0,1] \to \R$
+satisfying \eqref{eq:ode} 
+such that $L$ reduces to $h(1)$.
+\end{theorem}
