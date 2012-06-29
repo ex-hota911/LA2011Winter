@@ -201,40 +201,137 @@ $u \in A \leftrightarrow f_n(u) \in \quantC_n B_{\mathrm{be}}$. So
 Since $\langle 0^{2^n}, f_n(\cdot) \rangle$ is polynomial time computable,
 $A$ is reducible to $\quantC_{\log} B_{\mathrm{be}}$.
 
-Next we sketch 
-(the details will be given in the full version of this paper) 
-how to construct, 
-for each formula with $n$ counting quantifiers, 
-a difference equation of height $n+1$ 
-such that 
-the output of its computation (i.e., the number in the bottom right cell)
-is equal to the value of the formula, 
-and other cells in the last column contain $0$.
-Once we have such a difference equation, 
-we can construct a logarithmic-height uniform function family
-recognizing $\quantC_{\log} B_{\mathrm{be}}$, 
-since 
-$n$ is logarithmic in the length of the input of $\quantC_{\log} B_{\mathrm{be}}$
-because of the padding $0^{2^n}$
-in \eqref{equation: definition of padded CQBF}. 
-We build up the difference equation recursively.
-For $n = 0$, it is easy because
-the value of a formula without quantifiers is
-polynomial-time computable.
-Consider the formula $\quantC^m X \psi(X)$, 
-where $\psi(X)$ has $i$ counting quantifiers, 
-and assume that for each $Y \in \{0, 1\} ^l$, 
-there exists a difference equation of height $i+1$
-that computes $\psi(Y)$.
-By connecting these equations along the $T$-axis
-(i.e., arranging tables like Fig.~\ref{fig:divp} horizontally), 
-we construct a new difference equation
-that computes $\sum_Y \psi(Y)$ in the $(i+1)$st row
-and then uses this sum to compute $\quantC^m X \psi(X)$ in the next row. 
-To bring the value in the $(i+1)$st row back to $0$, 
-we further connect the difference equation 
-computing $-\sum_Y \psi(Y)$, 
-which can be constructed similarly by changing the signs. 
+%Next we sketch 
+%(the details will be given in the full version of this paper) 
+%how to construct, 
+%for each formula with $n$ counting quantifiers, 
+%a difference equation of height $n+1$ 
+%such that 
+%the output of its computation (i.e., the number in the bottom right cell)
+%is equal to the value of the formula, 
+%and other cells in the last column contain $0$.
+%Once we have such a difference equation, 
+%we can construct a logarithmic-height uniform function family
+%recognizing $\quantC_{\log} B_{\mathrm{be}}$, 
+%since 
+%$n$ is logarithmic in the length of the input of $\quantC_{\log} B_{\mathrm{be}}$
+%because of the padding $0^{2^n}$
+%in \eqref{equation: definition of padded CQBF}. 
+%We build up the difference equation recursively.
+%For $n = 0$, it is easy because
+%the value of a formula without quantifiers is
+%polynomial-time computable.
+%Consider the formula $\quantC^m X \psi(X)$, 
+%where $\psi(X)$ has $i$ counting quantifiers, 
+%and assume that for each $Y \in \{0, 1\} ^l$, 
+%there exists a difference equation of height $i+1$
+%that computes $\psi(Y)$.
+%By connecting these equations along the $T$-axis
+%(i.e., arranging tables like Fig.~\ref{fig:divp} horizontally), 
+%we construct a new difference equation
+%that computes $\sum_Y \psi(Y)$ in the $(i+1)$st row
+%and then uses this sum to compute $\quantC^m X \psi(X)$ in the next row. 
+%To bring the value in the $(i+1)$st row back to $0$, 
+%we further connect the difference equation 
+%computing $-\sum_Y \psi(Y)$, 
+%which can be constructed similarly by changing the signs. 
+%\qed
+We construct a logarithmic-height uniform function family $(G_u)_u$
+recognizing $\quantC_{\log} B_{\mathrm{be}}$.
+Let $u  = \langle 0^{2^n}, 
+\langle \phi(X_1, \dots, X_n), m_1, \dots, m_n \rangle \rangle$, 
+where $n$, $m_1, \dots, m_n$ are nonnegative integers 
+and $\phi$ is a formula. 
+(If $u$ is not of this form, then $u \notin \quantC_{\log} B_{\mathrm{be}}$.)
+ 
+We write $l_i = |X_i|$ and $s_i = i + \sum^i_{j=1}l_j$.
+For each $i \in \{0, \dots, n\}$ and
+$Y_{i+1} \in \{0,1\}^{l_{i+1}}, \dots, Y_n \in \{0,1\}^{l_n}$,
+we write $\phi_i(Y_{i+1}, \dots, Y_n)$ for the truth value of the subformula
+$\quantC^{m_{i}}{X_i} \cdots \quantC^{m_1}{X_1} \phi(X_1, \dots, X_i, Y_{i+1}, \dots, Y_n)$,
+so that $\phi_0 = \phi$ and $\phi_n() = \quantC_{\log} B_{\mathrm{be}} (u)$.
+We regard the quantifier $\quantC^m$ as a function from $\N$ to $\{0,1\}$:
+\begin{equation}
+ C^m(x) 
+  = \begin{cases}
+     1 & \text{if} \ x \ge m, \\
+     0 & \text{if} \ x < m.
+    \end{cases}
+\end{equation}
+Thus,
+\begin{equation} \label{eq:phi-step}
+ \phi_{i+1}(Y_{i+2}, \dots, Y_n) 
+  = C^{m_{i+1}}\left(\sum_{X_{i+1} \in \{ 0,1 \} ^{l_i}}
+		\phi_i(X_{i+1}, Y_{i+2}, \dots, Y_{n})\right).
+\end{equation}
+For $T \in \N$, we write $T_i$ for the $i$th digit of $T$ written in binary,
+and $T_{[i,j]}$ for the string $T_{j-1} T_{j-2} \cdots T_{i+1} T_{i}$.
+
+For each $(i, T, Y) \in [n+1] \times [2^{s_n}+1] \times [2^{|u|}]$,
+we define $G_u (i, T, Y)$ as follows.
+The first row is given by
+ \begin{equation}\label{eq:def-Gu:case0}
+  G_u(0,T,Y) = 
+   (-1)^{T_{s_1}}\phi(T_{[1,s_1]}, T_{[s_1+1,s_2]},
+    \dots, T_{[s_{n-1}+1,s_n]}), 
+ \end{equation}
+and for $i \neq 0$, we define 
+ \begin{equation} 
+  G_u(i,T,Y) = 
+   \begin{cases}
+    (-1)^{T_{s_{i+1}}} C^{m_i}(Y) 
+    & \text{if} \ T_{[1,s_i+1]} = 10 \cdots 0, \\
+    0 & \text{otherwise}.
+   \end{cases} 
+   \label{eq:def-Gu:case-nonzero}
+ \end{equation}
+Define $H_u$ from $G_u$ by \eqref{eq:initial value} and \eqref{eq:divp}.
+
+We prove by induction on $i$ that $H_u(i, T) \in [2^{l_i}]$ for all $T$, and that 
+ \begin{equation} \label{eq:subformula}
+  G_u(i,V,H_u(i,V)) = (-1)^{V_{s_{i+1}}} 
+   \phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]})
+ \end{equation}
+if $V_{[1, s_i +1]} = 10 \cdots 0$.
+(otherwise it is immediate from the definition that $G_u(i, V, H_u(n, V)) = 0$).
+
+For $i=0$, the claims follows from \eqref{eq:def-Gu:case0}.
+For the induction step, assume \eqref{eq:subformula}. 
+We have
+ \begin{equation} \label{eq:summation}
+  H_u(i+1, T) 
+  = \sum_{V = 0}^{T-1} G_u(i, V, H_u(i, V)).
+ \end{equation}
+Since the assumption \eqref{eq:subformula} implies that flipping the bit $V_{s_{i+1}}$ of
+any $V$ reverses the sign of $G_u(i, V, H_u(i, V))$,
+most of the summands in \eqref{eq:summation} cancel out.
+The terms that can survive satisfy that $V_{[1, s_i+1]} = 10 \cdots 0$ and
+that $V$ is between $\overline{T_{s_n} \dots T_{s_{i+1}+1} 00 \dots 0}$ and 
+$\overline{T_{s_n} \dots T_{s_{i+1}+1} 01 \dots 1}$,
+where $\overline U$ is the number represented by string $U$ in binary.
+Since these terms are $0$ or $1$, $H_u(i+1, T) \in [2^{l_i}]$.
+Then if $T_{[1,s_{i+1}+1]} = 10 \cdots 0$,
+ \begin{equation}
+  H_u(i+1, T) = \sum_{X \in \{0,1\}^{l_i}}
+  \phi_i(X, T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]}).
+ \end{equation}
+By this equation, \eqref{eq:phi-step} and \eqref{eq:def-Gu:case-nonzero},
+ \begin{multline}
+  G_u(i+1,T,H_u(i+1,T)) 
+  = (-1)^{T_{s_{i+2}}} C^{m_{i+1}} (H_u(i+1, T))
+  \\
+  = (-1)^{T_{s_{i+2}}} \phi_{i+1}(T_{[s_{i+1}+1, s_{i+2}]}, \dots, T_{[s_{n-1}+1, s_n]}),
+ \end{multline}
+completing the induction steps.
+
+By substituting $n$ for $i$ and $2^{s_n}$ for $T$ in \eqref{eq:subformula},
+we get $G_u(n, 2^{s_n}, H_u(n,2^{s_n})) = \phi_n() = \quantC_{\log} B_{\mathrm{be}}(u)$.
+Hence $H_u(n+1, 2^{s_n}+1) = \quantC_{\log} B_{\mathrm{be}}(u)$.
+ 
+We show that $(G_u)_u$ is uniform and has logarithmic height. 
+The height $n+1$, the width $2^{s_n}+1$, and the cell size $2^{|u|}$
+of $G_u$ are polynomial-time computable from $u$, 
+and $n+1 \le \log |0^{2^n}| + 1 \le \log|u| + 1$.
 \qed
 \end{proof}
 
@@ -448,3 +545,27 @@ estimating $\D_1^{i} \D_2^{j} g$ similarly to \eqref{eq:sizeofderivative}.
 \qed
 \end{proof} 
 
+
+
+\subsection{Complexity of the Final Value}
+
+\begin{theorem}
+For any tally language $L \in \classPSPACE$,
+there are a polynomial-time computable function
+$g \colon [0,1] \times [-1,1] \to \R$ 
+of class $\classC ^{(\infty, 1)}$ and 
+a function $h \colon [0,1] \to \R$
+satisfying \eqref{eq:ode} 
+such that $L$ reduces to $h(1)$.
+\end{theorem}
+
+\begin{theorem}
+Let $k$ be a positive integer. 
+For any tally language $L \in \classCH$,
+there are a polynomial-time computable function
+$g \colon [0,1] \times [-1,1] \to \R$ 
+of class $\classC ^{(\infty, k)}$ and 
+a function $h \colon [0,1] \to \R$
+satisfying \eqref{eq:ode} 
+such that $L$ reduces to $h(1)$.
+\end{theorem}
