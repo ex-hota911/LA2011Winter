@@ -6,7 +6,7 @@
 # 主となる原稿
 FILE=fulltext
 # 分割され、インクルードされているファイル
-SRC=abstract.tex proof.tex introduction.tex preliminary.tex acknowledgments.tex constructive.tex appendix.tex
+SRC=abstract.tex proof.tex introduction.tex preliminary.tex acknowledgments.tex constructive.tex #appendix.tex
 TMP=divp.eps  model-of-function.eps  reduction.eps
 IMG=$(TMP:%=image/%)
 #文献データベース
