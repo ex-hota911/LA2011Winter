@@ -732,3 +732,33 @@ a function $h \colon [0,1] \to \R$
 satisfying \eqref{eq:ode} 
 such that $L$ reduces to $h(1)$.
 \end{theorem}
+
+\begin{proof}
+We may assume that Lemma~\ref{KTimesFamily} holds for for each $L \in \classCH$, 
+i.e., there exists a polynomial $\mu$ for any $k \ge 1$ and polynomial $\gamma$,
+ there are a polynomial $\rho$ and families $(g_u)_u$, $(h_u)_u$ of real functions
+ such that $(g_u)_u$ is polynomial-time computable and for any string $u$
+ satisfying (\ref{enum:kf:start})--(\ref{enum:kf:end}) of Lemma~\ref{KTimesFamily}.
+Let $L'$ and $\mu'$ be $L$ and $\mu'$ in Lemma~\ref{KTimesFamily}.
+Since $L'$ is $\classCH$-complete,
+there are a polynomial-time function $f$ and a polynomial $p$ such that for all string $u$,
+\begin{gather}
+ u \in L \leftrightarrow f(u) \in L' \enspace ,
+ \\
+ |f(u)| \le p(|u|) \enspace .
+\end{gather}
+We define that $\mu(x) = \mu(p(x))$.
+For any $k \ge 1$ and polynomial $\gamma$,
+let $\rho^*$, $(g^*_u)_u$ and $(h^*_u)_u$ be 
+$\rho$, $(g_u)_u$ and $(h_u)_u$ in Lemma~\ref{KTimesFamily}.
+We define $(g_u)_u$, $(h_u)_u$ and $\rho$ as follows.
+\begin{align}
+ g_u &= g^*_{f(u)}
+ \\
+ h_u &= h^*_{f(u)}
+ \\
+ \rho(x) &= \rho^*(p(x))
+\end{align}
+We can verify that $(g_u)_u$ is polynomial-time computable and 
+for any $u$ they satisfy (\ref{enum:kf:start})--(\ref{enum:kf:end}) .
+\end{proof}
