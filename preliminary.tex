@@ -86,7 +86,7 @@ To talk about hardness, we define reduction.
 A language $L \subseteq \{0, 1\} ^*$ is identified with the function
 $L \colon \{0, 1\} ^* \to \{0, 1\}$ such that $L (u) = 1$ when $u \in L$.
 
-\begin{definition}
+\begin{definition} \label{definition: reduction}
  A language $L$ \emph{reduces} to a function $f \colon [0, 1] \to \R$
  if there exists a polynomial-time function $S$ and a polynomial-time oracle Turing machine $M$ (Fig.~\ref{fig:reduction})
  such that for any string $u$, 

@@ -711,6 +711,15 @@ estimating $\D_1^{i} \D_2^{j} g$ similarly to \eqref{eq:sizeofderivative}.
 
 
 \subsection{Complexity of the Final Value}
+Until the previous section, we consider the complexity of the solutions of ODEs,
+but here we consider the complexity of the final value of ODEs and
+tally languages (subsets of $\{0\}^*$).
+
+We extend Definition~\ref{definition: reduction} 
+to multi-variable functions $f \colon [0, 1]^d \to \R$ naturally.
+When $d = 0$, since $f$ is a constant function,
+it defines reduction to a real number.
+
 
 \begin{theorem}
 For any tally language $L \in \classPSPACE$,
@@ -733,9 +742,6 @@ satisfying \eqref{eq:ode}
 such that $L$ reduces to $h(1)$.
 \end{theorem}
 
-
-
-
 \begin{proof}
 Let $L'$ be any tally language in $\classCH$ and $k$ be any positive integer,
 and let $L$ and $\mu$ be as Lemma~\ref{KTimesFamily}.
@@ -746,9 +752,9 @@ $, $
 $ and let $\rho$, $(g_u)_u$, $(h_u)_u$ be  as in Lemma~\ref{KTimesFamily} 
 corresponding to the $\gamma$.
 Since $L$ is $\classCH$-complete,
-there are a polynomial-time function $f$ such that for all string $u$,
+there are a polynomial-time function $F$ such that for all string $u$,
 \begin{equation}
- L'(u) =  L(f(u)) \enspace .
+ L'(u) =  L(F(u)) \enspace .
 \end{equation}
 Let $
 l_n = 1 - 2^n
@@ -756,11 +762,11 @@ $ and define $g$ and $h$ as when the first variable in  $[0,1)$,
 \begin{align}
  g \left(l_n + \frac{t}{2^{n+1}}, \frac{2m+(-1)^m y}{2^{2n+\gamma(n)+\bar{\rho}(n)}} \right)
  &=
- \frac{g_{f(0^n)}(t, y)}{2^{n-1+\gamma(n)+\bar{\rho}(n)}} \enspace ,
+ \frac{g_{F(0^n)}(t, y)}{2^{n-1+\gamma(n)+\bar{\rho}(n)}} \enspace ,
  \\
  h \left( l_n + \frac{t}{2^{n+1}} \right)
  &=
- \frac{h_{f(0^n)}(t)}{2^{2n+\gamma(n)+\bar{\rho}(n)}}
+ \frac{h_{F(0^n)}(t)}{2^{2n+\gamma(n)+\bar{\rho}(n)}}
  + \sum^{n-1}_{\kappa = 0} \frac{L'(0^\kappa)}{2^{2\kappa+\gamma(\kappa)+\bar{\rho}(\kappa+1)}}
 \end{align}
 for each $n \in \N$, $t \in [0,1]$, $y \in [-1, 1]$ and $m \in \Z$,
@@ -772,7 +778,7 @@ $g(1, y) = 0$,
 \end{equation}
 where
 \begin{equation}
-\bar{\rho}(n) = \sum^{n-1}_{\kappa = 0} \rho(|f(0^{\kappa})|) \enspace .
+\bar{\rho}(n) = \sum^{n-1}_{\kappa = 0} \rho(|F(0^{\kappa})|) \enspace .
 \end{equation}
 
 It is proven similarly to the proof of Theorem~\ref{KTimesIsCH} 
