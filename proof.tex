@@ -294,7 +294,7 @@ We prove by induction on $i$ that $H_u(i, T) \in [2^{l_i}]$ for all $T$, and tha
   G_u(i,V,H_u(i,V)) = (-1)^{V_{s_{i+1}}} 
    \phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]})
 \end{equation}
-if $V_{[1, s_i +1]} = 10 \cdots 0$.
+if $V_{[1, s_i +1]} = 10 \cdots 0$
 (otherwise it is immediate from the definition that $G_u(i, V, H_u(n, V)) = 0$).
 
 For $i=0$, the claims follows from \eqref{eq:def-Gu:case0}.
@@ -442,6 +442,7 @@ We omit the analogous and easier proof of Lemma~\ref{DifferentiableFamily}.
 \begin{proof}[Lemma~\ref{KTimesFamily}]
 Let $L$ and $(G_u)_u$ be as in Lemma~\ref{DIVPlogIsCHhard},
 and let a function family $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
+Let $f$ and $s$ be as in Lemma~\ref{SmoothFunction}.
 
 By a similar argument to the beginning of the proof of \cite[Lemma 4.1]{kawamura2010lipschitz},
 we may assume that there exist polynomial-time functions $p$, $j_u$
