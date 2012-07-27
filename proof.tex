@@ -192,13 +192,13 @@ as required in Lemma~\ref{DIVPlogIsCHhard}.
 First we prove that $\quantC_{\log} B_{\mathrm{be}}$ is $\classCH$-hard.
 For each problem $A$ in $\classCH$, there is a constant $n$ such that $A \in \quantC_n \classP$.
 From Lemma~\ref{lemma:CnP-complete}, for each $u \in \{0,1\}^*$
-there is a polynomial-time function $f_n$ such that
-$u \in A \leftrightarrow f_n(u) \in \quantC_n B_{\mathrm{be}}$. So
+there is a polynomial-time function $F_n$ such that
+$u \in A \leftrightarrow F_n(u) \in \quantC_n B_{\mathrm{be}}$. So
 \begin{align}
  u \in A 
- & \longleftrightarrow \langle 0^{2^n}, f_n(u) \rangle \in \quantC_{\log} B_{\mathrm{be}} \enspace .
+ & \longleftrightarrow \langle 0^{2^n}, F_n(u) \rangle \in \quantC_{\log} B_{\mathrm{be}} \enspace .
 \end{align}
-Since $\langle 0^{2^n}, f_n(\cdot) \rangle$ is polynomial time computable,
+Since $\langle 0^{2^n}, F_n(\cdot) \rangle$ is polynomial time computable,
 $A$ is reducible to $\quantC_{\log} B_{\mathrm{be}}$.
 
 %Next we sketch 
