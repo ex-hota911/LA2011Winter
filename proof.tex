@@ -759,13 +759,13 @@ $, $
 $ and let $\rho$, $(g_u)_u$, $(h_u)_u$ be  as in Lemma~\ref{KTimesFamily} 
 corresponding to the $\gamma$.
 Since $L$ is $\classCH$-complete,
-there are a polynomial-time function $F$ such that for all string $u$,
-\begin{equation}
- L'(u) =  L(F(u)) \enspace .
-\end{equation}
+there are a polynomial-time function $F$ such that 
+$L'(u) =  L(F(u))$ for all strings~$u$. 
+
 Let $
 l_n = 1 - 2^n
-$ and define $g$ and $h$ as when the first variable in  $[0,1)$,
+$ and define $g$ and $h$ as follows: 
+when the first variable is in $[0,1)$, let
 \begin{align}
  g \left(l_n + \frac{t}{2^{n+1}}, \frac{2m+(-1)^m y}{2^{2n+\gamma(n)+\bar{\rho}(n)}} \right)
  &=
@@ -774,25 +774,23 @@ $ and define $g$ and $h$ as when the first variable in  $[0,1)$,
  h \left( l_n + \frac{t}{2^{n+1}} \right)
  &=
  \frac{h_{F(0^n)}(t)}{2^{2n+\gamma(n)+\bar{\rho}(n)}}
- + \sum^{n-1}_{\kappa = 0} \frac{L'(0^\kappa)}{2^{2\kappa+\gamma(\kappa)+\bar{\rho}(\kappa+1)}}
+ + \sum^{n-1}_{k = 0} \frac{L'(0^k)}{2^{2 k + \gamma (k) + \bar{\rho} (k + 1)}}
 \end{align}
-for each $n \in \N$, $t \in [0,1]$, $y \in [-1, 1]$ and $m \in \Z$,
-and when the first variable is $1$,
-$g(1, y) = 0$,
+for each $n \in \N$, $t \in [0,1]$, $y \in [-1, 1]$ and $m \in \Z$; 
+when the first variable is $1$,
+let $g(1, y) = 0$ and 
 \begin{equation} \label{equation: final value of h}
  h(1) = 
  \sum^\infty_{n = 0} \frac{L'(0^n)}{2^{2n+\gamma(n)+\bar{\rho}(n+1)}} \enspace ,
 \end{equation}
 where
 \begin{equation}
-\bar{\rho}(n) = \sum^{n-1}_{\kappa = 0} \rho(|F(0^{\kappa})|) \enspace .
+\bar{\rho}(n) = \sum^{n-1}_{k = 0} \rho(|F(0 ^k)|) \enspace .
 \end{equation}
-
-It is proven similarly to the proof of Theorem~\ref{KTimesIsCH} 
-that $g$ is polynomial-time computable and of class $(\infty, k)$
+It can be proved similarly to the proof of Theorem~\ref{KTimesIsCH} 
+that $g$ is polynomial-time computable and of class $\classC ^{(\infty, k)}$
 and $g$ and $h$ satisfy \eqref{eq:ode}.
 The equation \eqref{equation: final value of h} implies 
-that $L$ is reducible to $h(1)$
-since $\bar{\rho}(x)$ is bounded by the polynomial $x \rho(x)$.
+that $L'$ is reducible to $h(1)$. 
 \qed
 \end{proof}
