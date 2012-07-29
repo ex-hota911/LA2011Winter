@@ -774,7 +774,7 @@ when the first variable is in $[0,1)$, let
  h \left( l_n + \frac{t}{2^{n+1}} \right)
  &=
  \frac{h_{F(0^n)}(t)}{2^{2n+\gamma(n)+\bar{\rho}(n)}}
- + \sum^{n-1}_{k = 0} \frac{L'(0^k)}{2^{2 k + \gamma (k) + \bar{\rho} (k + 1)}}
+ + \sum^{n-1}_{i = 0} \frac{L'(0^i)}{2^{2 i + \gamma (i) + \bar{\rho} (i + 1)}}
 \end{align}
 for each $n \in \N$, $t \in [0,1]$, $y \in [-1, 1]$ and $m \in \Z$; 
 when the first variable is $1$,
@@ -785,7 +785,7 @@ let $g(1, y) = 0$ and
 \end{equation}
 where
 \begin{equation}
-\bar{\rho}(n) = \sum^{n-1}_{k = 0} \rho(|F(0 ^k)|) \enspace .
+\bar{\rho}(n) = \sum^{n-1}_{i = 0} \rho(|F(0 ^i)|) \enspace .
 \end{equation}
 It can be proved similarly to the proof of Theorem~\ref{KTimesIsCH} 
 that $g$ is polynomial-time computable and of class $\classC ^{(\infty, k)}$
