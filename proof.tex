@@ -719,16 +719,29 @@ estimating $\D_1^{i} \D_2^{j} g$ similarly to \eqref{eq:sizeofderivative}.
 
 \subsection{Complexity of the Final Value}
 Until the previous section, we consider the complexity of the solutions of ODEs,
-but here we consider the complexity of the final value of ODEs and
+however here we consider the complexity of the final value of ODEs and
 tally languages (subsets of $\{0\}^*$).
+Ko discussed the complexity of the final value of ODEs in \cite{ko1983computational},
+and  Kawamura showed that the final value of some Lipschitz ODE is at least as hard as
+tally languages (subsets of $\{0\}^*$) in $\classPSPACE$ \cite[Theorem~5.1]{kawamura2010complexity}.
+%i.e., for any tally language $L \in \classPSPACE$,
+%there exist functions $g$ and $h$ satisfying \eqref{eq:ode}
+%such that $g$ is Lipschitz continuous and polynomial-time computable,
+%and $L$ reduces to $h(1)$.
+We show that the final value of ODEs of
+once differentiable functions and fixed times differentiable functions
+are at least as hard as tally $\classPSPACE$ and tally $\classCH$, respectively.
 
-We extend Definition~\ref{definition: reduction} 
-to multi-variable functions $f \colon [0, 1]^d \to \R$ naturally.
-When $d = 0$, since $f$ is a constant function,
-it defines reduction to a real number.
+Before stating the theorems, we define reduction to a real number as polynomial-time Turing reduction to any name of it:
+a Language $L$ reduces to a real number $x$ 
+if there is a polynomial-time oracle Turing machine $M$ 
+such that for any name $\phi$ of $x$, $M^\phi$ accepts $L$.
+Note that this definition is same as the reduction to a constant function
+by Definition~\ref{definition: reduction}.
 
 
 \begin{theorem}
+\label{theorem: final value of once}
 For any tally language $L \in \classPSPACE$,
 there are a polynomial-time computable function
 $g \colon [0,1] \times [-1,1] \to \R$ 
@@ -739,6 +752,7 @@ such that $L$ reduces to $h(1)$.
 \end{theorem}
 
 \begin{theorem}
+\label{theorem: final value of fixed}
 Let $k$ be a positive integer. 
 For any tally language $L \in \classCH$,
 there are a polynomial-time computable function
@@ -748,6 +762,11 @@ a function $h \colon [0,1] \to \R$
 satisfying \eqref{eq:ode} 
 such that $L$ reduces to $h(1)$.
 \end{theorem}
+
+We can prove Theorem~\ref{theorem: final value of fixed} from Lemma~\ref{KTimesFamily}.
+in the same way as the proof of \cite[Theorem~5.1]{kawamura2010complexity}.
+We skip the proof of Theorem~\ref{theorem: final value of fixed}
+since it is almost same as following.
 
 \begin{proof}
 Let $L'$ be any tally language in $\classCH$ and $k$ be any positive integer,
