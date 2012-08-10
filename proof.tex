@@ -98,7 +98,7 @@ can be written as follows:
 
 Kawamura obtained the hardness result in the third row in Table \ref{table:related} 
 by simulating the difference equations of Lemma~\ref{DIVPpolyIsPSPACEhard}
-by Lipschitz-continuous differential equations. 
+by Lipschitz continuous differential equations. 
 Likewise, 
 Theorem~\ref{DifferentiableIsPspace} follows from Lemma~\ref{DIVPpolyIsPSPACEhard},
 by a modified construction that keeps 
@@ -718,31 +718,33 @@ estimating $\D_1^{i} \D_2^{j} g$ similarly to \eqref{eq:sizeofderivative}.
 
 
 \subsection{Complexity of the Final Value}
-Until the previous section, we consider the complexity of the solutions of ODEs,
-however here we consider the complexity of the final value of ODEs and
-tally languages (subsets of $\{0\}^*$).
-Ko discussed the complexity of the final value of ODEs in \cite{ko1983computational},
-and  Kawamura showed that the final value of some Lipschitz ODE is at least as hard as
-tally languages (subsets of $\{0\}^*$) in $\classPSPACE$ \cite[Theorem~5.1]{kawamura2010complexity}.
+In previous sections, 
+we considered the complexity of the solution~$h$ of the ODE as a real function. 
+Here we discuss the complexity of the final value $h (1)$ and
+relate it to tally languages (subsets of $\{0\}^*$), 
+as did 
+Ko~\cite{ko1983computational} and 
+Kawamura~\cite[Theorem~5.1]{kawamura2010complexity}
+for the Lipschitz continuous case.
 %i.e., for any tally language $L \in \classPSPACE$,
 %there exist functions $g$ and $h$ satisfying \eqref{eq:ode}
 %such that $g$ is Lipschitz continuous and polynomial-time computable,
 %and $L$ reduces to $h(1)$.
-We show that the final value of ODEs of
-once differentiable functions and fixed times differentiable functions
-are at least as hard as tally $\classPSPACE$ and tally $\classCH$, respectively.
+% We show that the final value of ODEs of
+% once differentiable functions and fixed times differentiable functions
+% are at least as hard as tally $\classPSPACE$ and tally $\classCH$, respectively.
 
-Before stating the theorems, we define reduction to a real number as polynomial-time Turing reduction to any name of it:
-a Language $L$ reduces to a real number $x$ 
+We say that a language~$L$ \emph{reduces to} a real number $x$ 
 if there is a polynomial-time oracle Turing machine $M$ 
-such that for any name $\phi$ of $x$, $M^\phi$ accepts $L$.
-Note that this definition is same as the reduction to a constant function
-by Definition~\ref{definition: reduction}.
+such that $M^\phi$ accepts $L$ for any name $\phi$ of $x$.
+Note that this is the same as 
+the reduction in Definition~\ref{definition: reduction}
+to a constant function with value~$x$. 
 
 
 \begin{theorem}
 \label{theorem: final value of once}
-For any tally language $L \in \classPSPACE$,
+For any tally language $T \in \classPSPACE$,
 there are a polynomial-time computable function
 $g \colon [0,1] \times [-1,1] \to \R$ 
 of class $\classC ^{(\infty, 1)}$ and 
@@ -754,7 +756,7 @@ such that $L$ reduces to $h(1)$.
 \begin{theorem}
 \label{theorem: final value of fixed}
 Let $k$ be a positive integer. 
-For any tally language $L \in \classCH$,
+For any tally language $T \in \classCH$,
 there are a polynomial-time computable function
 $g \colon [0,1] \times [-1,1] \to \R$ 
 of class $\classC ^{(\infty, k)}$ and 
@@ -763,13 +765,14 @@ satisfying \eqref{eq:ode}
 such that $L$ reduces to $h(1)$.
 \end{theorem}
 
-We can prove Theorem~\ref{theorem: final value of fixed} from Lemma~\ref{KTimesFamily}.
+We can prove Theorem~\ref{theorem: final value of fixed} 
+from Lemma~\ref{KTimesFamily}
 in the same way as the proof of \cite[Theorem~5.1]{kawamura2010complexity}.
-We skip the proof of Theorem~\ref{theorem: final value of fixed}
-since it is almost same as following.
+We skip the proof of Theorem~\ref{theorem: final value of once}
+since it is similar.
 
 \begin{proof}
-Let $L'$ be any tally language in $\classCH$ and $k$ be any positive integer,
+Let $T$ be any tally language in $\classCH$ and $k$ be any positive integer,
 and let $L$ and $\mu$ be as Lemma~\ref{KTimesFamily}.
 Define $
 \lambda(x) = x + 1
@@ -779,11 +782,13 @@ $ and let $\rho$, $(g_u)_u$, $(h_u)_u$ be  as in Lemma~\ref{KTimesFamily}
 corresponding to the $\gamma$.
 Since $L$ is $\classCH$-complete,
 there are a polynomial-time function $F$ such that 
-$L'(u) =  L(F(u))$ for all strings~$u$. 
+$T (0 ^i) =  L(F(0 ^i))$ for all $i$. 
 
 Let $
 l_n = 1 - 2^n
-$ and define $g$ and $h$ as follows: 
+$ and $
+\bar{\rho}(n) = \sum^{n-1}_{i = 0} \rho(|F(0 ^i)|)
+$.  Define $g$ and $h$ as follows: 
 when the first variable is in $[0,1)$, let
 \begin{align}
  g \left(l_n + \frac{t}{2^{n+1}}, \frac{2m+(-1)^m y}{2^{2n+\gamma(n)+\bar{\rho}(n)}} \right)
@@ -793,23 +798,27 @@ when the first variable is in $[0,1)$, let
  h \left( l_n + \frac{t}{2^{n+1}} \right)
  &=
  \frac{h_{F(0^n)}(t)}{2^{2n+\gamma(n)+\bar{\rho}(n)}}
- + \sum^{n-1}_{i = 0} \frac{L'(0^i)}{2^{2 i + \gamma (i) + \bar{\rho} (i + 1)}}
+ + \sum^{n-1}_{i = 0} \frac{T (0^i)}{2^{2 i + \gamma (i) + \bar{\rho} (i + 1)}}
 \end{align}
 for each $n \in \N$, $t \in [0,1]$, $y \in [-1, 1]$ and $m \in \Z$; 
 when the first variable is $1$,
-let $g(1, y) = 0$ and 
-\begin{equation} \label{equation: final value of h}
- h(1) = 
- \sum^\infty_{n = 0} \frac{L'(0^n)}{2^{2n+\gamma(n)+\bar{\rho}(n+1)}} \enspace ,
-\end{equation}
-where
-\begin{equation}
-\bar{\rho}(n) = \sum^{n-1}_{i = 0} \rho(|F(0 ^i)|) \enspace .
-\end{equation}
+let 
+\begin{align} 
+  g(1, y) 
+&
+ =
+  0 \enspace, 
+\\
+\label{equation: final value of h}
+  h(1) 
+&
+ = 
+ \sum^\infty_{n = 0} \frac{T (0^n)}{2^{2n+\gamma(n)+\bar{\rho}(n+1)}} \enspace. 
+\end{align}
 It can be proved similarly to the proof of Theorem~\ref{KTimesIsCH} 
 that $g$ is polynomial-time computable and of class $\classC ^{(\infty, k)}$
-and $g$ and $h$ satisfy \eqref{eq:ode}.
+and that $g$ and $h$ satisfy \eqref{eq:ode}.
 The equation \eqref{equation: final value of h} implies 
-that $L'$ is reducible to $h(1)$. 
+that $T$ reduces to $h(1)$. 
 \qed
 \end{proof}
