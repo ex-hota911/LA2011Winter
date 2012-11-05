@@ -29,7 +29,7 @@ Thus we also regard $M^\phi$ as a function from strings to strings.
 
 \begin{figure}
  \begin{center}
-  \includegraphics[height=0.15\textheight]{image/model-of-function.eps}
+  \includegraphics[height=0.17\textheight]{image/model-of-function.eps}
  \end{center}
  \caption{A machine $M$ computing a real function $f$.}
  \label{fig:model-of-function}
@@ -95,15 +95,20 @@ $L \colon \{0, 1\} ^* \to \{0, 1\}$ such that $L (u) = 1$ when $u \in L$.
    \item $M^\phi(u)$ accepts if and only if $u \in L$ for any name $\phi$ of $f(x_u)$.
   \end{enumerate}
 \end{definition}
-This definition may look stronger than
-the one in Kawamura~\cite{kawamura2010lipschitz}, 
-but is easily seen to be equivalent.
+This reduction may look stronger (and hence the reducibility weaker) than
+the one in Kawamura~\cite{kawamura2010lipschitz} 
+in that $M$ can make multiple queries adaptively, 
+but this makes no difference, 
+because the lengths of these queries 
+are bounded by a polynomial in $\lvert u \rvert$, 
+and the longest query gets all the information that any shorter query gets. 
+
 For a complexity class~$C$, a function $f$ is \emph{$C$-hard}
 if all languages in $C$ reduce to $f$.
 
  \begin{figure}
   \begin{center}
-  \includegraphics[scale=0.20]{image/reduction.eps}
+  \includegraphics[scale=0.24]{image/reduction.eps}
   \caption{Reduction from a language $L$ to a function $f \colon [0,1] \to \R$}
   \label{fig:reduction}
   \end{center}

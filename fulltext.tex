@@ -1,10 +1,19 @@
-\documentclass[envcountsame]{llncs}
-
-\makeatletter
+\documentclass[12pt,a4paper]{article}
 
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage[scaled]{helvet}
+\usepackage[scale={.738, .773},marginratio={1:1, 1:1}]{geometry}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}%[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+% \newtheorem{example}[theorem]{Example}
+% \newtheorem{remark}[theorem]{Remark}
 
 \newcommand{\R}{\mathbf R}
 \newcommand{\N}{\mathbf N}
@@ -33,31 +42,35 @@
 \newcommand{\classLip}{\mathrm{CL}}
 \newcommand{\classC}{\mathrm C}
 
-%\renewcommand{\Lambda}{\varLambda}
-%\renewcommand{\Gamma}{\varGamma}
-
 %%% (i), (ii), (iii), (iv)
 \def\theenumi{\roman{enumi}}
 \def\labelenumi{\textup{(\theenumi)}}
 
-\makeatother
-
-\title{Computational Complexity of\\Smooth Differential Equations}
+\title{Computational Complexity of\\Smooth Differential Equations\footnote{%
+Some of the results in this paper were reported at the 
+10th EATCS/LA Workshop on Theoretical Computer Science 
+and the 37th International Symposium on 
+Mathematical Foundations of Computer Science. 
+This work was supported in part 
+by \emph{Kakenhi} (Grant-in-Aid for Scientific Research, Japan) 23700009 
+and by the \emph{Marie Curie International Research
+Staff Exchange Scheme Fellowship}~294962
+within the 7th European Community Framework Programme. }}
 
 \author{%
-Akitoshi Kawamura\inst{1}
+Akitoshi Kawamura
 \and
-Hiroyuki Ota\inst{1}
+Hiroyuki Ota
 \and
-Carsten R\"osnick\inst{2}
+Carsten R\"osnick
 \and
-Martin Ziegler\inst{2}
+Martin Ziegler
 }
-\institute{%
-University of Tokyo,  Tokyo, Japan\\
-%\email{\{kawamura, hota\}@is.s.u-tokyo.ac.jp}
-\and
-Technische Universit\"at Darmstadt, Darmstadt, Germany}
+% \institute{%
+% University of Tokyo,  Tokyo, Japan\\
+% %\email{\{kawamura, hota\}@is.s.u-tokyo.ac.jp}
+% \and
+% Technische Universit\"at Darmstadt, Darmstadt, Germany}
 
 \begin{document}
 
@@ -68,9 +81,9 @@ Technische Universit\"at Darmstadt, Darmstadt, Germany}
 \input{preliminary}
 \input{proof}
 \input{constructive}
-\input{acknowledgments}
+% \input{acknowledgments}
 
-\bibliographystyle{splncs}
+\bibliographystyle{plain}
 \bibliography{bibliography}
 %\input{appendix}
 
