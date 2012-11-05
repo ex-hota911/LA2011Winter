@@ -35,9 +35,10 @@ the smoothness of $g$.
 \begin{table}
 \renewcommand\arraystretch{1.3}
 \begin{center}
- \caption{The complexity of the solution $h$ of \eqref{eq:ode}
- assuming $g$ is polynomial-time computable.}
+ \caption{Complexity of the solution $h$ of \eqref{eq:ode}
+ assuming $g$ is polynomial-time computable}
  \label{table:related}
+\small\vspace{3pt}
  \begin{tabular}{lll}
   Assumptions & Upper bounds & Lower bounds \\
   \noalign{\smallskip}
@@ -147,7 +148,7 @@ that grow too fast to be polynomial-time (or even polynomial-space) computable.
 Bournez, Gra\c ca and Pouly~%
 \cite[Theorem~2]{bournez11:_solvin_analy_differ_equat_in}
 report that the statement about the analytic case holds true 
-if we restrict the growth of $h$ (and its extention to the complex plane) 
+if we restrict the growth of $h$ %(and its extention to the complex plane) 
 appropriately. 
 } 
 This makes the equation~\eqref{eq:ode} ill-defined 
@@ -199,12 +200,12 @@ when $g$ is assumed to be infinitely differentiable.
 
 Theorems \ref{DifferentiableIsPspace} and \ref{KTimesIsCH} 
 are about the complexity of each solution $h$. 
-We can also talk about 
+We will also discuss
 the complexity of the final value $h(1)$ and
 the complexity of the operator that maps $g$ to $h$; 
 see Sect.~\ref{section: final value} and \ref{section: constructive}. 
 
-\subsubsection*{Notation}
+\paragraph{Notation}
 Let $\N$, $\Z$, $\Q$, $\R$ denote the set of natural numbers,
 integers,
 rational numbers and 
@@ -216,8 +217,8 @@ polynomial-time computable or polynomial-space computable.
 
 Let $A$ and $B$ be bounded closed intervals in $\R$.
 We write $|f| = \sup_{x \in A} f(x)$ for $f \colon A \to \R$.
-A function $f \colon A \to \R$ is \emph{of class $\classC^i$}
-($i$-times continuously differentiable)
+A function $f \colon A \to \R$ is of \emph{class $\classC^i$}
+(or \emph{$i$-times continuously differentiable})
 if all the derivatives $\D f, \D^2 f, \dots, \D^i f$ exist and are continuous.
 
 For a differentiable function $g$ of two variables, 
