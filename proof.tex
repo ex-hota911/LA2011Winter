@@ -14,10 +14,10 @@ we show that these classes of difference equations can be simulated
 by families of differential equations 
 satisfying certain uniform bounds on higher-order derivatives. 
 In Sect.~\ref{subsection: proof of theorems}, 
-we prove the theorems by
+we prove Theorems \ref{DifferentiableIsPspace} and \ref{KTimesIsCH} by
 putting these families of functions together 
 to obtain one differential equation 
-having the desired smoothness 
+with the desired smoothness 
 ($\classC ^{(\infty, 1)}$ and $\classC ^{(\infty, k)}$). 
 
 The idea of simulating a discrete system of limited feedback capability
@@ -32,8 +32,8 @@ the Lipschitz version \cite{kawamura2010lipschitz}.
 We look more closely at this limited feedback mechanism, 
 and observe that this restriction is one on the \emph{height}
 of the difference equation. 
-We show that a stronger height restriction makes
-the difference equation simulable by 
+We show that a stronger height restriction allows
+the difference equation to be simulated by 
 smoother differential equations, 
 leading to the $\classCH$-hardness for $\classC ^{(\infty, k)}$ functions.
 
@@ -60,7 +60,8 @@ the difference equation.
 The equations \eqref{eq:initial value} and \eqref{eq:divp} are similar to 
 the initial condition $h(0) = 0$ and the equation $\D h(t) = g(t, h(t))$ 
 in \eqref{eq:ode}, respectively.
-In Sect.~\ref{subsection: ode family}, we will simulate difference equations by differential equations using this similarity.
+In Sect.~\ref{subsection: ode family}, 
+we will use this similarity to simulate difference equations by differential equations.
 
 \begin{figure}
  \begin{center}
@@ -82,8 +83,10 @@ if the height, width and cell size of $G_u$ are
 polynomial-time computable from $u$ (in particular, 
 they must be bounded by $2^{p(|u|)}$, for some polynomial~$p$)
 and $G_u(i, T, Y)$ is polynomial-time computable from $(u, i, T, Y)$.
-A family $(G_u)_u$ has \emph{polynomial height} if the height $P_u$ is bounded by some polynomial $p(|u|)$.
-A family $(G_u)_u$ has \emph{logarithmic height} if the height $P_u$ is bounded by $c \log |u| + d$ with some constants $c$ and $d$.
+A family $(G_u)_u$ has \emph{polynomial height} 
+(and \emph{logarithmic height}, respectively)
+if the height $P_u$ is bounded by $|u| ^{\mathrm O (1)}$
+(and by $\mathrm O (\log |u|)$, respectively).
 With this terminology,
 the key lemma in 
 \cite[Lemma 4.7]{kawamura2010lipschitz} 
@@ -91,22 +94,24 @@ can be written as follows:
 \begin{lemma}
  \label{DIVPpolyIsPSPACEhard}
  There exists a $\classPSPACE$-hard language $L$ that is recognized by some uniform family of functions with polynomial height%
- \footnote{In fact, the languages recognized by 
- uniform families with polynomial height coincide with $\classPSPACE$.
+ \footnote{In fact, 
+this language~$L$ is in $\classPSPACE$, 
+because a uniform family with polynomial height 
+can be simulated in polynomial space.
 }.
 \end{lemma}
 
-Kawamura obtained the hardness result in the third row in Table \ref{table:related} 
+Kawamura obtained the hardness result in the third row of Table \ref{table:related} 
 by simulating the difference equations of Lemma~\ref{DIVPpolyIsPSPACEhard}
 by Lipschitz continuous differential equations. 
 Likewise, 
-Theorem~\ref{DifferentiableIsPspace} follows from Lemma~\ref{DIVPpolyIsPSPACEhard},
+Theorem~\ref{DifferentiableIsPspace} follows from Lemma~\ref{DIVPpolyIsPSPACEhard}
 by a modified construction that keeps 
 the function in class $\classC ^{(\infty, 1)}$ 
 (Sects. \ref{subsection: ode family} and \ref{subsection: proof of theorems}).
 
 We show further that 
-difference equations restricted to have logarithmic height can be simulated by
+difference equations restricted to logarithmic height can be simulated by
 $\classC ^{(\infty, k)}$ functions for each $k$ 
 (Sects. \ref{subsection: ode family} and \ref{subsection: proof of theorems}).
 Theorem~\ref{KTimesIsCH} follows from this simulation and the following lemma.
@@ -160,9 +165,9 @@ we write
 where $\phi(X)$ is identified with the function 
 $\phi \colon \{0,1\}^l \to \{0,1\}$
 such that $\phi(X) = 1$ when $\phi(X)$ is true.
-This ``counting quantifier'' $\quantC ^m$ generalizes 
-the usual quantifiers $\exists$ and $\forall$, 
-because $\quantC^1 = \exists$ and $\quantC^{2^l} = \forall$.
+% This counting quantifier $\quantC ^m$ generalizes 
+% the usual quantifiers $\exists$ and $\forall$, 
+% because $\quantC^1 = \exists$ and $\quantC^{2^l} = \forall$.
 For lists $X _1$, \ldots, $X _n$ of variables 
 and a formula $\phi(X_1, \dots, X_n)$ with all free variables listed, 
 we define
@@ -184,23 +189,25 @@ We define the problem $\quantC_{\log} B_{\mathrm{be}}$ by
  \longleftrightarrow
  u \in \quantC_n B_{\mathrm{be}} \enspace .
 \end{equation}
-We show that $\quantC_{\log} B_{\mathrm{be}}$ 
-is $\classCH$-hard and recognized by a logarithmic-height uniform function family,
-as required in Lemma~\ref{DIVPlogIsCHhard}. 
+This problem $\quantC_{\log} B_{\mathrm{be}}$ is $\classCH$-hard, 
+because any problem $A$ in some level $\quantC_n \classP$ 
+of the counting hierarchy
+reduces to $\quantC_n B_{\mathrm{be}}$ 
+via some polynomial-time function $F _n$
+by Lemma~\ref{lemma:CnP-complete}, 
+and hence to $\quantC_{\log} B_{\mathrm{be}}$ by 
+\begin{equation}
+  u \in A 
+ \longleftrightarrow
+  F_n(u) \in \quantC_n B_{\mathrm{be}}
+ \longleftrightarrow
+  \langle 0^{2^n}, F_n(u) \rangle \in \quantC_{\log} B_{\mathrm{be}} \enspace .
+\end{equation}
+
+We use $\quantC_{\log} B_{\mathrm{be}}$ 
+as the language $L$ in Lemma~\ref{DIVPlogIsCHhard}: 
 
 \begin{proof}[Proof of Lemma~\ref{DIVPlogIsCHhard}]
-First we prove that $\quantC_{\log} B_{\mathrm{be}}$ is $\classCH$-hard.
-For each problem $A$ in $\classCH$, there is a constant $n$ such that $A \in \quantC_n \classP$.
-From Lemma~\ref{lemma:CnP-complete}, for each $u \in \{0,1\}^*$
-there is a polynomial-time function $F_n$ such that
-$u \in A \leftrightarrow F_n(u) \in \quantC_n B_{\mathrm{be}}$. So
-\begin{align}
- u \in A 
- & \longleftrightarrow \langle 0^{2^n}, F_n(u) \rangle \in \quantC_{\log} B_{\mathrm{be}} \enspace .
-\end{align}
-Since $\langle 0^{2^n}, F_n(\cdot) \rangle$ is polynomial time computable,
-$A$ is reducible to $\quantC_{\log} B_{\mathrm{be}}$.
-
 %Next we sketch 
 %(the details will be given in the full version of this paper) 
 %how to construct, 
@@ -265,7 +272,9 @@ Thus,
   = C^{m_{i+1}}\left(\sum_{X_{i+1} \in \{ 0,1 \} ^{l_i}}
 		\phi_i(X_{i+1}, Y_{i+2}, \dots, Y_{n})\right) \enspace .
 \end{equation}
-For $T \in \N$, we write $T_i$ for the $i$th digit of $T$ written in binary,
+For $T \in \N$, we write $T_i$ for the 
+$i$th digit of $T$ written in binary 
+($T _0$ being the least significant digit),
 and $T_{[i,j]}$ for the string $T_{j-1} T_{j-2} \cdots T_{i+1} T_{i}$.
 
 For each $(i, T, Y) \in [n+1] \times [2^{s_n}+1] \times [2^{|u|}]$,
@@ -287,9 +296,14 @@ and for $i \neq 0$, we define
    \end{cases} 
    \label{eq:def-Gu:case-nonzero}
  \end{equation}
-Define $H_u$ from $G_u$ by \eqref{eq:initial value} and \eqref{eq:divp}.
+This family $(G_u)_u$ is clearly uniform, 
+and its height $n + 1$ is logarithmic in $|u|$.
 
-We prove by induction on $i$ that $H_u(i, T) \in [2^{l_i}]$ for all $T$, and that 
+Let $H_u$ be the solution (as defined in 
+\eqref{eq:initial value} and \eqref{eq:divp}) 
+of the difference equation given by $G_u$. 
+We prove by induction on $i$ 
+that $H_u(i, T) \in [2^{l_i}]$ for all $T$, and that 
 \begin{equation} \label{eq:subformula}
   G_u(i,V,H_u(i,V)) = (-1)^{V_{s_{i+1}}} 
    \phi_i(V_{[s_i+1, s_{i+1}]}, \dots, V_{[s_{n-1}+1, s_n]})
@@ -297,8 +311,8 @@ We prove by induction on $i$ that $H_u(i, T) \in [2^{l_i}]$ for all $T$, and tha
 if $V_{[1, s_i +1]} = 10 \cdots 0$
 (otherwise it is immediate from the definition that $G_u(i, V, H_u(n, V)) = 0$).
 
-For $i=0$, the claims follows from \eqref{eq:def-Gu:case0}.
-For the induction step, assume \eqref{eq:subformula}. 
+For $i=0$, the claims follow from \eqref{eq:def-Gu:case0}.
+For $i > 0$, assume \eqref{eq:subformula}. 
 We have
  \begin{equation} \label{eq:summation}
   H_u(i+1, T) 
@@ -308,9 +322,10 @@ Since the assumption \eqref{eq:subformula} implies that flipping the bit $V_{s_{
 any $V$ reverses the sign of $G_u(i, V, H_u(i, V))$,
 most of the summands in \eqref{eq:summation} cancel out.
 The terms that can survive satisfy that $V_{[1, s_i+1]} = 10 \cdots 0$ and
-that $V$ is between $\overline{T_{s_n} \dots T_{s_{i+1}+1} 00 \dots 0}$ and 
-$\overline{T_{s_n} \dots T_{s_{i+1}+1} 01 \dots 1}$,
-where $\overline U$ is the number represented by string $U$ in binary.
+that $V$ is between 
+the numbers whose binary representations are
+$T_{s_n} \dots T_{s_{i+1}+1} 00 \dots 0$ and 
+$T_{s_n} \dots T_{s_{i+1}+1} 01 \dots 1$. 
 Since these terms are $0$ or $1$, $H_u(i+1, T) \in [2^{l_i}]$.
 Then if $T_{[1,s_{i+1}+1]} = 10 \cdots 0$,
  \begin{equation}
@@ -329,11 +344,6 @@ completing the induction steps.
 By substituting $n$ for $i$ and $2^{s_n}$ for $T$ in \eqref{eq:subformula},
 we get $G_u(n, 2^{s_n}, H_u(n,2^{s_n})) = \phi_n() = \quantC_{\log} B_{\mathrm{be}}(u)$.
 Hence $H_u(n+1, 2^{s_n}+1) = \quantC_{\log} B_{\mathrm{be}}(u)$.
- 
-We show that $(G_u)_u$ is uniform and has logarithmic height. 
-The height $n+1$, the width $2^{s_n}+1$, and the cell size $2^{|u|}$
-of $G_u$ are polynomial-time computable from $u$, 
-and $n+1 \le \log |0^{2^n}| + 1 \le \log|u| + 1$.
 \end{proof}
 
 
