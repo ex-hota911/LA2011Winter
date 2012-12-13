@@ -159,7 +159,7 @@ For every formula $\phi(X)$ with the list $X$ of $l$ free propositional variable
 we write 
 \begin{equation}
  \quantC^m X \phi(X) 
-  \longleftrightarrow 
+  \iff 
   \sum_{X \in \{0,1\}^l} \phi(X) \ge m \enspace ,
 \end{equation}
 where $\phi(X)$ is identified with the function 
@@ -173,7 +173,7 @@ and a formula $\phi(X_1, \dots, X_n)$ with all free variables listed,
 we define
 \begin{equation}
  \langle \phi(X_1, \dots, X_n), m_1, \dots, m_n \rangle \in \quantC_n B_{\mathrm{be}}
- \longleftrightarrow
+ \iff
  \quantC^{m_n}{X_n} \cdots \quantC^{m_1}{X_1} \phi(X_1, \dots, X_n) \enspace .
 \end{equation}
 
@@ -186,7 +186,7 @@ We define the problem $\quantC_{\log} B_{\mathrm{be}}$ by
 \begin{equation}
 \label{equation: definition of padded CQBF}
  \langle 0^{2^n}, u \rangle \in \quantC_{\log} B_{\mathrm{be}}
- \longleftrightarrow
+ \iff
  u \in \quantC_n B_{\mathrm{be}} \enspace .
 \end{equation}
 This problem $\quantC_{\log} B_{\mathrm{be}}$ is $\classCH$-hard, 
@@ -198,12 +198,11 @@ by Lemma~\ref{lemma:CnP-complete},
 and hence to $\quantC_{\log} B_{\mathrm{be}}$ by 
 \begin{equation}
   u \in A 
- \longleftrightarrow
+ \iff
   F_n(u) \in \quantC_n B_{\mathrm{be}}
- \longleftrightarrow
+ \iff
   \langle 0^{2^n}, F_n(u) \rangle \in \quantC_{\log} B_{\mathrm{be}} \enspace .
 \end{equation}
-
 We use $\quantC_{\log} B_{\mathrm{be}}$ 
 as the language $L$ in Lemma~\ref{DIVPlogIsCHhard}: 
 
@@ -363,7 +362,16 @@ Hence $H_u(n+1, 2^{s_n}+1) = \quantC_{\log} B_{\mathrm{be}}(u)$.
 % we only state $\classCH$-hardness in Lemma~\ref{KTimesFamily} and Theorem $\ref{KTimesIsCH}$,
 % but it is not known such class how hard the class is between $\classCH$ and $\classPSPACE$.
 
-
+Note that for the problem $\quantC_{\log} B_{\mathrm{be}}$ to be 
+$\classCH$-hard, 
+we could have used a faster growing function than $2 ^n$ in
+\eqref{equation: definition of padded CQBF}. 
+This corresponds to having height smaller than logarithmic in 
+Lemma~\ref{DIVPlogIsCHhard}. 
+We stated Lemma~\ref{DIVPlogIsCHhard} with logarithmic height, 
+simply because this was the highest possible difference equations
+that we could simulate by $\classC ^{(\infty, k)}$ functions
+(in the proof of Lemma~\ref{KTimesFamily} below). 
 
 \subsection{Families of Real Functions Simulating Difference Equations}
 \label{subsection: ode family}
@@ -586,8 +594,8 @@ We have (\ref{enum:kf:end}) with
 
 
 
- To prove Lemma~\ref{DifferentiableFamily}, 
- let $L$ and $(G_u)_u$ be as Lemma~\ref{DIVPpolyIsPSPACEhard},
+ The proof of Lemma~\ref{DifferentiableFamily} is analogous. 
+ Let $L$ and $(G_u)_u$ be as Lemma~\ref{DIVPpolyIsPSPACEhard},
  and let $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
  Define $(g_u)_u$ and $(h_u)_u$ as \eqref{eq:gu} and \eqref{eq:hu}
  with $d_u(i) = i$.
