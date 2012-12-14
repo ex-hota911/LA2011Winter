@@ -571,10 +571,11 @@ We show that the condition~(\ref{enum:smooth}) holds with $\mu(x, y) = (x+1)q(y)
 Note that $\mu$ is a polynomial and independent of $k$ and $\gamma$.
 Since $|\D^i \delta_{u,Y}(t)| \le 2^{(i+1)q(|u|) + s(i+1)}B^{-d_u(j_u(|u|)+1)}$ by \eqref{eq:delta}, for all $i \in \N$ and $j \in \{0, \dots, k\}$, we have
 \begin{equation}
+\label{equation: upperbound of differences}
   |\D^{(i,j)} g_u| 
    \le 
-   2^k B^{k \cdot j_u(T)} 2^{s(k)} \cdot 2 \cdot 
-   \frac{2^{(i+1)q(|u|) + s(i+1)}}{B^{d_u(j_u(|u|)+1)}}  \notag
+   2^k B^{k \cdot d_u(j_u(T))} 2^{s(k)} \cdot 2 \cdot 
+   \frac{2^{(i+1)q(|u|) + s(i+1)}}{B^{d_u(j_u(|u|)+1)}} 
    \le
    \frac{2^{\mu(i, |u|) + s(k) + k + 1}}{B}
    \le
@@ -602,6 +603,17 @@ We have (\ref{enum:kf:end}) with
  It is shown in the same way as above that they meet all the conditions
  stated in Lemma~\ref{DifferentiableFamily}.
 
+While the positioning function $d_u(i)$ is an exponential function 
+when $g$ is of class $\classC^{(\infty, k)}$ and $k \ge 2$,
+it is polynomial when $k=1$
+because $d_u(i)$ should satisfy $k \cdot d_u(i) < d_u(i+1)$ for all $i \le p(|u|)$
+to make \eqref{equation: upperbound of differences} holds.
+This difference of $d_u(i)$ causes the difference between Theorems \ref{DifferentiableIsPspace} and \ref{KTimesIsCH}.
+When reducing a language $L$ to a function $h$,
+only digits of $h(x)$ in polynomial depth for some $x$ can be used.
+So reducing difference equations to differential equations, 
+$d_u(p(|u|))$, the position of the answer, should be bounded by some polynomial.
+Hence the height $p$ is polynomial when $k=1$ and logarithmic when $k \ge 2$.
 
 
 \subsection{Proof of the Main Theorems}
