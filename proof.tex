@@ -370,7 +370,7 @@ This corresponds to having height smaller than logarithmic in
 Lemma~\ref{DIVPlogIsCHhard}. 
 We stated Lemma~\ref{DIVPlogIsCHhard} with logarithmic height, 
 simply because this was the highest possible difference equations
-that we could simulate by $\classC ^{(\infty, k)}$ functions
+that we were able to simulate by $\classC ^{(\infty, k)}$ functions
 (in the proof of Lemma~\ref{KTimesFamily} below). 
 
 \subsection{Families of Real Functions Simulating Difference Equations}
@@ -458,46 +458,60 @@ We omit the analogous and easier proof of Lemma~\ref{DifferentiableFamily}.
 
 \begin{proof}[Proof of Lemma~\ref{KTimesFamily}]
 Let $L$ and $(G_u)_u$ be as in Lemma~\ref{DIVPlogIsCHhard},
-and let a function family $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
+and let $H_u$ be the solutions of 
+the difference equations given by $G_u$.
 Let $f$ and $s$ be as in Lemma~\ref{SmoothFunction}.
 
-By a similar argument to the beginning of the proof of \cite[Lemma 4.1]{kawamura2010lipschitz},
-we may assume that there exist polynomial-time functions $p$, $j_u$
-and polynomials $q$, $r$ satisfying the following properties:
+We may assume that 
+$G_u \colon [p(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\}$
+for some $p$, $q$, $r \colon \N \to \N$, 
+where $p$ has logarithmic growth and $q$ and $r$ are polynomials. 
+We may also assume, similarly to the beginning of the proof of \cite[Lemma 4.1]{kawamura2010lipschitz},
+that 
 \begin{gather}
- G_u \colon [p(|u|)] \times [2^{q(|u|)}] \times [2^{r(|u|)}] \to \{-1, 0, 1\} \enspace ,
- \\
  H_u(i, 2^{q(|u|)}) = \begin{cases}
 		       L(u) & \text{if} \ i=p(|u|) \enspace , \\
 		       0 & \text{if} \ i<p(|u|) \enspace , 
 		      \end{cases}
- \\
- G_u(i, T, Y) \neq 0 \to i = j_u(T) \enspace .
+\\
+ G_u(i, T, Y) \neq 0 \to i = j_u(T) \enspace 
 \end{gather}
-Since $G_u$ has logarithmic height,
-there exists a polynomial $\sigma$ such that $(k+1)^{p(x)} \le \sigma(x)$.
+for some $
+j _u \colon [2 ^{q (\lvert u \rvert)}] \to [p (\lvert u \rvert)]
+$. 
 
-
-We construct the families of real functions $(g_u)_u$ and $(h_u)_u$ simulating $G _u$ and $H _u$ 
+We construct families of real functions $(g_u)_u$ and $(h_u)_u$ 
+that simulate $G _u$ and $H _u$ 
 in the sense that $h_u(T/2^{q(|u|)}) = \sum^{p(|u|)}_{i = 0}H_u(i, T)/B^{d_u(i)}$, 
-where the constant $B$ and the function $d_u \colon [p(|u|)+1] \to \N$ are 
+where the constant $B$ and the 
+(increasing) function $d_u \colon [p(|u|)+1] \to \N$ are 
 defined by
   \begin{align}
+   \label{eq:positioning}
    B &= 2^{\gamma(|u|) + r(|u|) + s(k) + k + 3} \enspace , 
    &
    d_u(i) &= 
    \begin{cases}
-    \sigma(|u|) & \text{if} \ i=p(|u|) \enspace , 
+    (k+1)^i & \text{if} \ i<p(|u|) \enspace , 
     \\
-    (k+1)^i & \text{if} \ i<p(|u|) \enspace .
+    \sigma(|u|) & \text{if} \ i=p(|u|) \enspace , 
    \end{cases}
   \end{align}
+where $\sigma$ is a polynomial satisfying $(k+1)^{p(x)} \le \sigma(x)$
+(which exists because $p$ is logarithmic). 
+Thus, the value $H _u (i, T) \in [2 ^{r (\lvert u \rvert)}]$ will be stored 
+in the $d _u (i)$th digit of the base-$B$ expansion of 
+the real number $h _u (T / 2 ^{q (\lvert u \rvert)})$. 
+This exponential spacing described by $d _u$ will be needed
+when we bound the derivative $\D ^{(i, j)} g _u$ 
+in \eqref{equation: upperbound of differences} below. 
+
 For each $(t, y) \in [0,1] \times [-1, 1]$,
 there exist unique $N \in \N$, $\theta \in [0,1)$, $Y \in \Z$ and $\eta \in [-1/4, 3/4)$
 such that $t = (T + \theta)2^{-q(|u|)}$ and $y = (Y + \eta)B^{-d_u(j_u(T))}$.
 Using $f$ and a polynomial $s$ of Lemma~\ref{SmoothFunction},
 we define 
-$\delta_{u,Y} \colon [0,1] \to \R$,
+$\tilde g_{u,Y} \colon [0,1] \to \R$,
 $
 g _u \colon [0, 1] \times [-1, 1] \to \R
 $ and $
@@ -505,17 +519,17 @@ h _u \colon [0, 1] \to [-1, 1]
 $ by
   \begin{align}
     \label{eq:delta}
-   \delta_{u, Y} (t) &= \frac{2^{q(|u|)} \D f(\theta)}{B^{d_u(j_u(T)+1)}} 
+   \tilde g_{u, Y} (t) &= \frac{2^{q(|u|)} \D f(\theta)}{B^{d_u(j_u(T)+1)}} 
    G_u \bigl( j_u(T), T, Y \bmod 2^{r(|u|)} \bigr) \enspace ,
    \\
   \label{eq:gu}
   g_u(t,y) 
   &= \begin{cases}
-     \delta_{u, Y}(t)
+     \tilde g_{u, Y}(t)
      & \text{if } \eta \le \frac{1}{4} \enspace , 
      \\
-     ( 1-f ( \frac{4\eta-1}{2})) \delta_{u, Y}(t)
-     + f ( \frac{4\eta-1}{2}) \delta_{u,Y+1}(t)
+     ( 1-f ( \frac{4\eta-1}{2})) \tilde g_{u, Y}(t)
+     + f ( \frac{4\eta-1}{2}) \tilde g_{u,Y+1}(t)
      & \text{if } \eta > \frac{1}{4} \enspace ,
     \end{cases}
    \\
@@ -527,65 +541,85 @@ $ by
 
 We will verify that $(g_u)_u$ and $(h_u)_u$ defined above satisfy all the conditions stated in Lemma~\ref{KTimesFamily}.
 Polynomial-time computability of $(g_u)_u$ can be verified using Lemma~\ref{lem:type1representation}.
-The condition~(\ref{enum:kf:start}) is immediate from \eqref{eq:gu} and \eqref{eq:hu}.
-The condition~(\ref{enum:equation}) is verified by a similar argument to
-\cite[Lemma 4.1]{kawamura2010lipschitz}.
+The condition~(\ref{enum:kf:start}) is immediate, 
+and (\ref{enum:equation}) follows from the relation between $G _u$ and $H _u$ 
+(by a similar argument to \cite[Lemma 4.1]{kawamura2010lipschitz}).
 
-It is easy to verify that $g_u$ is of class $\classC^{(\infty, \infty)}$ 
-since we construct $\delta_u$ from $G_u$ and $g_u$ from $\delta_u$ by connecting them with $f$ of class $\classC^{(\infty, \infty)}$.
-This means that the condition~(\ref{enum:differentiability}) holds.
-The derivative $\D^i \delta$ is given by for each $i \in \N$,
+Since $g _u$ is constructed by interpolating between 
+the (finitely many) values of $G _u$ 
+using a $\classC^{(\infty, \infty)}$ function~$f$, 
+it is of class $\classC^{(\infty, \infty)}$ 
+and thus satisfies (\ref{enum:differentiability}).
+Calculating from \eqref{eq:delta}, 
+we have 
 \begin{equation}
-    \D^i \delta_{u,Y}(t) 
+ \label{eq: derivatives of delta}
+    \D^i \tilde g_{u,Y}(t) 
     = \frac{2^{(i+1)q(|u|)} \D^{i+1}f(\theta)}{B^{d_u(j_u(T)+1)}}
-    G_u\bigl( j_u(T),\ T,\ Y \bmod 2^{r(|u|)} \bigr) \enspace .
+    G_u\bigl( j_u(T), T, Y \bmod 2^{r(|u|)} \bigr) 
 \end{equation}
-The derivative $\D^{(i,j)} g$ is given by for each $i \in \N$ and $j=0$,
+for each $i \in \N$. 
+By this and \eqref{eq:gu}, 
+we have
 \begin{equation}
      \D^{(i, 0)} g_u(t, y)
      = \begin{cases}
- 	\D^i \delta_{u, Y}(t) 
+ 	\D^i \tilde g_{u, Y}(t) 
 	& \text{if} \ \eta \le \frac 1 4 \enspace , 
 	\\
-	\left( 1-f \left(\frac{4\eta-1}{2}\right)\right) 
-	\D^i \delta_{u, Y}(t)
-	+ f \left(\frac{4\eta-1}{2}\right) \D^i \delta_{u,Y+1}(t) 
-	& \text{if} \ \frac 1 4 < \eta \enspace ,
+	\bigl( 1-f \bigl( \frac{4\eta-1}{2} \bigr) \bigr) 
+	\D^i \tilde g_{u, Y}(t)
+	+ f \bigl( \frac{4\eta-1}{2} \bigr) \D^i \tilde g_{u,Y+1}(t) 
+	& \text{if} \ \frac 1 4 < \eta 
        \end{cases} \label{eq:d(i,0)g_u}
 \end{equation}
-and for each $i \in \N$ and $j \in \{1, \dots, k\}$,
+for each $i \in \N$ and 
   \begin{equation} \label{eq:d(i,j)g_u}
     \D^{(i, j)} g_u(t, y)
      = \begin{cases}
 	0 & \text{if} \ {-\frac 1 4} < \eta < \frac 1 4 \enspace , \\
-	(2B^{d_u(j_u(T))})^j \D^j f(\frac{4\eta - 1}2)
-	(\D^i \delta_{u,Y+1}(t)-\D^i \delta_{u, Y}(t)) 
-	& \text{if} \ \frac 1 4 < \eta < \frac 3 4 \enspace .
+	\bigl( 2B^{d_u(j_u(T))} \bigr)^j \cdot \D^j f \bigl( \frac{4\eta - 1}2 \bigr) \cdot
+	(\D^i \tilde g_{u,Y+1}(t)-\D^i \tilde g_{u, Y}(t)) 
+	& \text{if} \ \frac 1 4 < \eta < \frac 3 4 
        \end{cases}
   \end{equation}
+for each $i \in \N$ and $j \in \{1, \dots, k\}$. 
 Substituting $t = 0, 1$ ($\theta = 0$) into \eqref{eq:d(i,0)g_u},
 we get $\D^{(i, 0)} g_u(0,y) = \D^{(i, 0)} g_u(1,y) = 0$, 
-so the condition~(\ref{enum:boundary}) holds.
+as required in (\ref{enum:boundary}).
 
-We show that the condition~(\ref{enum:smooth}) holds with $\mu(x, y) = (x+1)q(y) + s(x+1)$.
-Note that $\mu$ is a polynomial and independent of $k$ and $\gamma$.
-Since $|\D^i \delta_{u,Y}(t)| \le 2^{(i+1)q(|u|) + s(i+1)}B^{-d_u(j_u(|u|)+1)}$ by \eqref{eq:delta}, for all $i \in \N$ and $j \in \{0, \dots, k\}$, we have
-\begin{equation}
+We show that (\ref{enum:smooth}) holds with $\mu(x, y) = (x+1)q(y) + s(x+1)$.
+Note that $\mu$ is a polynomial independent of $k$ and $\gamma$, 
+and that $
+ |\D^i \tilde g_{u,Y}(t)| 
+\leq
+ 2 ^{\mu (i, \lvert u \rvert)} / B ^{d _u (j _u (T) + 1)}
+$ by \eqref{eq: derivatives of delta}. 
+Hence, 
+\begin{align}
 \label{equation: upperbound of differences}
-  |\D^{(i,j)} g_u| 
-   \le 
-   2^k B^{k \cdot d_u(j_u(T))} 2^{s(k)} \cdot 2 \cdot 
-   \frac{2^{(i+1)q(|u|) + s(i+1)}}{B^{d_u(j_u(|u|)+1)}} 
-   \le
-   \frac{2^{\mu(i, |u|) + s(k) + k + 1}}{B}
-   \le
+  |\D^{(i,j)} g _u (t, y)| 
+&
+ \le 
+    \bigl( 2 B^{d_u (j _u (T))} \bigr) ^k \cdot 2^{s(k)}
+   \cdot 
+    2 \cdot \frac{2 ^{\mu (i, \lvert u \rvert)}}{B ^{d _u (j _u (T) + 1)}} 
+ =
+   \frac{2 ^{\mu (i, \lvert u \rvert)} \cdot 2^{s(k) + k + 1}}{B ^{d _u (j _u (T) + 1) - k \cdot d _u (j _u (T))}} 
+\notag
+\\
+&
+ \le
+   2 ^{\mu (i, \lvert u \rvert)} \cdot \frac{2^{s(k) + k + 1}}{B}
+ \le
    2^{\mu(i, |u|) - \gamma(|u|)}
-\end{equation}
+\end{align}
 by \eqref{eq:d(i,0)g_u}, \eqref{eq:d(i,j)g_u} and our choice of $B$.
 
 We have (\ref{enum:kf:end}) with
   $\rho(x) = \sigma(x) \cdot (\gamma(x)+r(x)+s(k)+k+3)$, because
   \begin{equation}
+\label{eq: rho}
    h_u(1) 
    = \frac{H_u(p(|u|), 2^{q(|u|)})}{B^{d_u(p(|u|))}} 
    = \frac{L(u)}{2^{\sigma(|u|) \cdot (\gamma(|u|)+r(|u|)+s(k)+k+3)}} 
@@ -593,28 +627,20 @@ We have (\ref{enum:kf:end}) with
   \end{equation}
 \end{proof}
 
+We used the exponential positioning function $d _u$ 
+defined at \eqref{eq:positioning}, 
+so that we have $d _u (i + 1) > k \cdot d _u (i)$ for the 
+second inequality of \eqref{equation: upperbound of differences}
+for $k \geq 2$. 
+Because of this, we had to restrict $p$ to be logarithmic, 
+because otherwise the function $\sigma$ in \eqref{eq:positioning}
+would have to be superpolynomial and so would $\rho$ in \eqref{eq: rho}. 
 
-
- The proof of Lemma~\ref{DifferentiableFamily} is analogous. 
- Let $L$ and $(G_u)_u$ be as Lemma~\ref{DIVPpolyIsPSPACEhard},
- and let $(H_u)_u$ be the solution of the difference equation given by $(G_u)_u$.
- Define $(g_u)_u$ and $(h_u)_u$ as \eqref{eq:gu} and \eqref{eq:hu}
- with $d_u(i) = i$.
- It is shown in the same way as above that they meet all the conditions
- stated in Lemma~\ref{DifferentiableFamily}.
-
-While the positioning function $d_u(i)$ is an exponential function 
-when $g$ is of class $\classC^{(\infty, k)}$ and $k \ge 2$,
-it is polynomial when $k=1$
-because $d_u(i)$ should satisfy $k \cdot d_u(i) < d_u(i+1)$ for all $i \le p(|u|)$
-to make \eqref{equation: upperbound of differences} holds.
-This difference of $d_u(i)$ causes the difference between Theorems \ref{DifferentiableIsPspace} and \ref{KTimesIsCH}.
-When reducing a language $L$ to a function $h$,
-only digits of $h(x)$ in polynomial depth for some $x$ can be used.
-So reducing difference equations to differential equations, 
-$d_u(p(|u|))$, the position of the answer, should be bounded by some polynomial.
-Hence the height $p$ is polynomial when $k=1$ and logarithmic when $k \ge 2$.
-
+The proof of Lemma~\ref{DifferentiableFamily} is analogous, 
+starting with the $L$ and $(G_u)_u$ of Lemma~\ref{DIVPpolyIsPSPACEhard}. 
+The only difference is that $p$ is now a polynomial 
+and therefore we use $d _u (i) = i$ in \eqref{eq:positioning}
+(and $\sigma = p$ in \eqref{eq: rho}). 
 
 \subsection{Proof of the Main Theorems}
 \label{subsection: proof of theorems}
