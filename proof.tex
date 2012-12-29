@@ -20,7 +20,7 @@ to obtain one differential equation
 with the desired smoothness 
 ($\classC ^{(\infty, 1)}$ and $\classC ^{(\infty, k)}$). 
 
-The idea of simulating a discrete system of limited feedback capability
+The idea of simulating a discrete system with limited feedback 
 by differential equations
 was essentially already present in the proof of 
 the Lipschitz version \cite{kawamura2010lipschitz}. 
@@ -29,20 +29,21 @@ the Lipschitz version \cite{kawamura2010lipschitz}.
 % whose feedback capability is limited
 % so that it could be simulated by a trajectory of 
 % a Lipschitz continuous differential equation. 
-We look more closely at this limited feedback mechanism, 
-and observe that this restriction is one on the \emph{height}
+We look more closely at this limitation on feedback, 
+and express it as a restriction on the \emph{height}
 of the difference equation. 
 We show that a stronger height restriction allows
 the difference equation to be simulated by 
-smoother differential equations, 
+smoother differential equations 
+(see the proof of Lemma~\ref{KTimesFamily} and the discussion after it), 
 leading to the $\classCH$-hardness for $\classC ^{(\infty, k)}$ functions.
 
 \subsection{Difference Equations}
 \label{section:divp}
 
 In this section, we define difference equations, 
-a discrete version of differential equations,
-and show the $\classPSPACE$- and $\classCH$-hardness of 
+which are a discrete version of differential equations. 
+Then we show the $\classPSPACE$- and $\classCH$-hardness of 
 families of difference equations with different height restrictions. 
 
 Let $[n]$ denote $\{0, \dots , n-1\}$.
