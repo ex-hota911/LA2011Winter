@@ -1,17 +1,17 @@
 \section{Computational Complexity of Real Functions}
 \label{section: preliminaries}
 
-This section reviews the complexity notions 
+This section reviews some complexity notions 
 in Computable Analysis~%
 \cite{ko1991complexity,weihrauch00:_comput_analy}. 
 We start by fixing an encoding of real numbers 
 by string functions.
 
 \begin{definition}
- A function $\phi \colon \{0\} ^* \to \{0, 1\}^*$ is a \emph{name} of a real number $x$ 
+ A function $\phi \colon \{0, 1\} ^* \to \{0, 1\}^*$ is a \emph{name} of a real number $x$ 
  if for all $n \in \N$,
-  $\phi(0^n)$ is the binary representation of $\lfloor x \cdot 2^n \rfloor$ or
-  $\lceil x \cdot 2^n \rceil$,
+ $\phi(0^n)$ is the binary representation of $\lfloor x \cdot 2^n \rfloor$ or
+ $\lceil x \cdot 2^n \rceil$,
  where $\lfloor \cdot \rfloor$ and $\lceil \cdot \rceil$ mean
  rounding down and up to the nearest integer.
  \end{definition}
@@ -66,7 +66,7 @@ without using oracle machines.
  \label{lem:type1representation}
  A real function is polynomial-time computable if and only if
  there exist a polynomial-time computable function 
- $\phi \colon (\Q \cap [0, 1]) \times \{0\} ^* \to \Q$ and 
+ $\phi \colon (\Q \cap [0, 1]) \times \{0, 1\} ^* \to \Q$ and 
  polynomial $p \colon \N \to \N$ such that
  for all $d \in \Q \cap [0,1]$ and $n \in \N$,
  \begin{equation}
@@ -82,17 +82,20 @@ as a fraction whose numerator and denominator
 are integers in binary.
 \end{lemma}
 
-To talk about hardness, we define reduction. 
-A language $L \subseteq \{0, 1\} ^*$ is identified with the function
+To speak about hardness of a real function, 
+we define the notion of a language to it. 
+A language $L \subseteq \{0, 1\} ^*$ is identified with the function 
 $L \colon \{0, 1\} ^* \to \{0, 1\}$ such that $L (u) = 1$ when $u \in L$.
 
 \begin{definition} \label{definition: reduction}
  A language $L$ \emph{reduces} to a function $f \colon [0, 1] \to \R$
- if there exists a polynomial-time function $S$ and a polynomial-time oracle Turing machine $M$ (Fig.~\ref{fig:reduction})
+ if there exist a polynomial-time function $S$ and 
+ a polynomial-time oracle Turing machine $M$ (Fig.~\ref{fig:reduction})
  such that for any string $u$, 
   \begin{enumerate}
-   \item $S(u, \cdot)$ is a name of a real number $x_u$, and 
-   \item $M^\phi(u)$ accepts if and only if $u \in L$ for any name $\phi$ of $f(x_u)$.
+   \item $S (u, \cdot)$ is a name of a real number $x _u$, and 
+   \item for any name $\phi$ of $f (x _u)$, we have that 
+    $M ^\phi (u)$ accepts if and only if $u \in L$.
   \end{enumerate}
 \end{definition}
 This reduction may look stronger (and hence the reducibility weaker) than
