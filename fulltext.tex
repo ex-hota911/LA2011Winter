@@ -221,7 +221,7 @@ $\classPSPACE$-hard solution $h \colon [0, 1] \to \R$.
 The complexity notions (computability and hardness) in this and the following theorems 
 will be explained in Sect.~\ref{section: preliminaries}. 
 When $g$ is more than once differentiable, 
-we did not quite succeed in proving that $h$ is $\classPSPACE$-complete
+we did not quite succeed in proving that $h$ is $\classPSPACE$-hard
 in the same sense, 
 but we will prove it $\classCH$-hard, 
 where $\classCH \subseteq \classPSPACE$ is the 
@@ -652,16 +652,16 @@ Theorem~\ref{KTimesIsCH} follows from this simulation and the following lemma.
 \end{lemma}
 
 \begin{proof}
-We define the problem~$L$ claimed in the lemma by
+We define the claimed language~$L$ by
 \begin{equation}
 \label{equation: definition of padded CQBF}
- \langle 0^{2^n}, w \rangle \in \quantC_{\log} B_{\mathrm{be}}
+ \langle 0^{2^n}, w \rangle \in L
  \iff
  w \in \quantC_n B_{\mathrm{be}} \enspace , 
 \end{equation}
-using the $\quantC _n \classP$-complete problem $\quantC_n B_{\mathrm{be}}$ 
+using the $\quantC _n \classP$-hard language $\quantC_n B_{\mathrm{be}}$ 
 from Lemma~\ref{lemma:CnP-complete}. 
-This $L$ is obviously $\classCH$-hard. 
+Then $L$ is obviously $\classCH$-hard. 
 
 %Next we sketch 
 %(the details will be given in the full version of this paper) 
@@ -1304,7 +1304,7 @@ $, $
 \gamma(x) = \mu(x, x) + x \lambda(x)
 $ and let $\rho$, $(g_u)_u$, $(h_u)_u$ be  as in Lemma~\ref{KTimesFamily} 
 corresponding to the $\gamma$.
-Since $L$ is $\classCH$-complete,
+Since $L$ is $\classCH$-hard,
 there are a polynomial-time function $F$ such that 
 $T (0 ^i) =  L(F(0 ^i))$ for all $i$. 
 
@@ -1521,12 +1521,12 @@ N.T. M{\"u}ller.
 \newblock {\em Automata, Languages and Programming}, pages 435--444, 1987.
 
 \bibitem{eatcs-la}
-太田，河村，ツィーグラー，レースニク．滑らかな微分方程式の計算量．
+太田，河村，ツィーグラー，レースニク．滑らかな常微分方程式の計算量．
 (H.~Ota, A.~Kawamura, M. Ziegler, and C. R{\"o}snick. 
 \newblock Complexity of smooth ordinary differential equations.) 
 \newblock Presented at the 
 Tenth EATCS/LA Workshop on Theoretical Computer Science, Kyoto, 2012. 
-In Japanese. 
+\newblock In Japanese. 
 
 \bibitem{pour1979computable}
 M.B. Pour-El and I.~Richards.
@@ -1536,6 +1536,9 @@ M.B. Pour-El and I.~Richards.
 
 \bibitem{toda}
 S.~Toda. 
+\newblock PP is as hard as the polynomial-time hierarchy. 
+\newblock \emph{SIAM Journal on Computing}, 20(5):865–-877, 1991.
+
 
 \bibitem{toran1991complexity}
 J.~Tor{\'a}n.
@@ -1550,6 +1553,11 @@ K.W. Wagner.
 
 \bibitem{wegener-book}
 I.~Wegener. 
+\newblock \emph{Komplexit\"atstheorie: Grenzen der Effizienz von Algorithmen}. 
+\newblock Springer, 2003. 
+\newblock In German.
+\newblock English translation by R.~Pruim: 
+\emph{Complexity Theory: Exploring the Limits of Efficient Algorithms}, Springer, 2005. 
 
 \bibitem{weihrauch00:_comput_analy}
 K. Weihrauch.
