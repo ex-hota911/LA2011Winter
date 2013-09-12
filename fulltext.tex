@@ -145,7 +145,7 @@ the smoothness of $g$.
   the Lipschitz condition  & polynomial-space \cite{ko1983computational}
       &	can be $\classPSPACE$-hard \cite{kawamura2010lipschitz}\\
   $g$ is of class $\classC ^{(\infty, 1)}$ & polynomial-space 
-      & \parbox[t]{12em}{can be $\classPSPACE$-hard\\(Theorem~\ref{DifferentiableIsPspace})} \\
+      & \parbox[t]{14em}{can be $\classPSPACE$-hard\\(Theorem~\ref{DifferentiableIsPspace})} \\
   \parbox[t]{10.55em}{$g$ is of class $\classC ^{(\infty, k)}$\\{}(for each constant $k$)}
   & polynomial-space 
   & can be $\classCH$-hard (Theorem~\ref{KTimesIsCH}) \\
@@ -225,7 +225,7 @@ we did not quite succeed in proving that $h$ is $\classPSPACE$-hard
 in the same sense, 
 but we will prove it $\classCH$-hard, 
 where $\classCH \subseteq \classPSPACE$ is the 
-Counting Hierarchy (see Sect.~\ref{section: counting hierarchy}): 
+counting hierarchy (see Sect.~\ref{section: counting hierarchy}): 
 
  \begin{theorem}
   \label{KTimesIsCH}
@@ -412,9 +412,11 @@ and thus in the second level of the counting hierarchy.
 \section{Computational Complexity of Real Functions}
 \label{section: preliminaries}
 
-This section reviews some complexity notions 
-in Computable Analysis~%
-\cite{ko1991complexity,weihrauch00:_comput_analy}. 
+We review some complexity notions 
+from Computable Analysis~%
+\cite{ko1991complexity,weihrauch00:_comput_analy}
+(our class of polynomial-time computable real functions defined below
+is equivalent to the one in these books). 
 We start by fixing an encoding of real numbers 
 by string functions.
 
@@ -455,7 +457,8 @@ $M^{\phi_x}$ is a name of $f(x)$.
 
 Computation of a function $f \colon A \to \R$ on
 a two-dimensional bounded closed region $A \subseteq \R ^2$ 
-is defined in a similar way using machines with two oracles.
+is defined similarly using machines with two oracles.
+
 A real function is (\emph{polynomial-time}) \emph{computable} if there exists some machine that computes it (in polynomial time).
 Polynomial-time computability of a real function $f$ means that
 for any $n \in \N$, 
@@ -512,10 +515,10 @@ $L \colon \{0, 1\} ^* \to \{0, 1\}$ such that $L (u) = 1$ when $u \in L$.
 This reduction may superficially look stronger (and hence the reducibility weaker) than
 the one in Kawamura~\cite{kawamura2010lipschitz} 
 in that $M$ can make multiple queries adaptively, 
-but this makes no difference, 
-because the lengths of these queries 
-are bounded by a polynomial in $\lvert u \rvert$, 
-and the longest query gets all the information that any shorter query gets. 
+but it is not hard to see that this makes no difference. 
+%% because the lengths of these queries 
+%% are bounded by a polynomial in $\lvert u \rvert$, 
+%% and the longest query gets all the information that any shorter query gets. 
 
 For a complexity class~$C$, a function $f$ is \emph{$C$-hard}
 if all languages in $C$ reduce to $f$.
@@ -1404,11 +1407,12 @@ was proved
 by modifying
 the proof of the results in the third row of Table~\ref{table:related}.
 Theorem~\ref{DifferentiableIsPspace} can be rewritten in a similar way. 
-That is, let $\OpIVP _k$ be the operator $\OpIVP$ whose input is restricted to class $\classC^{(\infty, k)}$. Then we have: 
+That is, let $\OpIVP \mathord\upharpoonright ^{\classC ^{(\infty, 1)}}$ be the operator $\OpIVP$ 
+restricted to class $\classC^{(\infty, 1)}$. Then we have: 
 
 \begin{theorem}
 \label{theorem: C1 constructive}
-The operator $\OpIVP _1$ is $(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$-complete.
+The operator $\OpIVP \mathord\upharpoonright ^{\classC ^{(\infty, 1)}}$ is $(\deltaboxLip, \deltabox)$-$\classFPSPACEtwo$-$\redW$-complete.
 \end{theorem}
 
 To show this theorem,
@@ -1417,7 +1421,8 @@ can be obtained easily from the inputs.
 We omit the proof since it does not require any new technique.
 Theorem~\ref{theorem: C1 constructive}
 automatically implies Theorem~\ref{DifferentiableIsPspace} 
-because of \cite[Lemmas 3.7 and 3.8]{kawamura2010operators}. 
+because of \cite[Lemmas 4.7 and 4.8]{kawamura2010operators} and 
+the $\redW$ versions of \cite[Lemmas 3.11 and 3.12]{kawamura2010operators}. 
 
 % The constructive version of Theorem~\ref{KTimesIsCH} is also true: 
 % for each $k \in \N$,
