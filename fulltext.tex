@@ -1,9 +1,7 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass{lmcs}
 
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
-\usepackage[scaled]{helvet}
-\usepackage[scale={.738, .7796},marginratio={1:1, 1:1}]{geometry}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}%[section]
@@ -46,33 +44,26 @@
 \def\theenumi{\roman{enumi}}
 \def\labelenumi{\textup{(\theenumi)}}
 
-\title{Computational Complexity of\\Smooth Differential Equations\footnote{%
+\begin{document}
+
+\title{Computational Complexity of\\Smooth Differential Equations}
+\titlecomment{%
 Some of the results in this paper have been reported at a workshop and a conference
 \cite{eatcs-la, mfcs}. 
 This work was supported in part 
 by \emph{Kakenhi} (Grant-in-Aid for Scientific Research, Japan) 23700009 and 24106002
 and by the \emph{Marie Curie International Research
 Staff Exchange Scheme Fellowship}~294962
-within the 7th European Community Framework Programme. }}
+within the 7th European Community Framework Programme.}
 
-\author{%
-Akitoshi Kawamura
-\hspace{1.7em}
-Hiroyuki Ota 
-\\
-Carsten R\"osnick
-\hspace{2.75em}
-Martin Ziegler
-}
-% \institute{%
-% University of Tokyo,  Tokyo, Japan\\
-% %\email{\{kawamura, hota\}@is.s.u-tokyo.ac.jp}
-% \and
-% Technische Universit\"at Darmstadt, Darmstadt, Germany}
-
-\begin{document}
-
-\maketitle
+\author{Akitoshi Kawamura}
+\address{University of Tokyo}
+\author{Hiroyuki Ota}
+\address{University of Tokyo}
+\author{Carsten R\"osnick}
+\address{Technische Universit\"at Darmstadt}
+\author{Martin Ziegler}
+\address{Technische Universit\"at Darmstadt}
 
 \begin{abstract}
 The computational complexity of the solution~$h$ to 
@@ -90,6 +81,8 @@ for each $k \geq 2$,
 the solution~$h$ can be hard for the counting hierarchy 
 if $g$ is of class $\classC ^k$. 
 \end{abstract}
+
+\maketitle
 
 \section{Introduction}
 
