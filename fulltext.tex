@@ -46,20 +46,19 @@
 
 \begin{document}
 
-\title{Computational Complexity of\\Smooth Differential Equations}
+\title[Computational Complexity of Smooth Differential Equations]{Computational Complexity of\\Smooth Differential Equations}
 \titlecomment{%
 Some of the results in this paper have been reported at a workshop and a conference
 \cite{eatcs-la, mfcs}. 
-This work was supported in part 
-by \emph{Kakenhi} (Grant-in-Aid for Scientific Research, Japan) 23700009 and 24106002
-and by the \emph{Marie Curie International Research
-Staff Exchange Scheme Fellowship}~294962
-within the 7th European Community Framework Programme.}
+This work was supported in part by: 
+\emph{Kakenhi} (Grant-in-Aid for Scientific Research, Japan) 23700009 and 24106002; 
+\emph{Marie Curie International Research Staff Exchange Scheme Fellowship}~294962, 
+the 7th European Community Framework Programme; and 
+\emph{German Research Foundation} with project DFG Zi\,1009/4-1.}
 
 \author{Akitoshi Kawamura}
 \address{University of Tokyo}
-\author{Hiroyuki Ota}
-\address{University of Tokyo}
+\author{Hiroyuki Ota} % has left the University of Tokyo in April 2013
 \author{Carsten R\"osnick}
 \address{Technische Universit\"at Darmstadt}
 \author{Martin Ziegler}
@@ -69,8 +68,8 @@ within the 7th European Community Framework Programme.}
 The computational complexity of the solution~$h$ to 
 the ordinary differential equation 
 $h(0)=0$, $h'(t) = g(t, h(t))$ 
-has been investigated
-under various assumptions on the function $g$. 
+under various assumptions on the function $g$
+has been investigated. 
 Kawamura showed in 2010 that the solution~$h$ can be $\classPSPACE$-hard
 even if $g$ is assumed to be Lipschitz continuous and polynomial-time computable. 
 We place further requirements on the smoothness of $g$ 
@@ -380,6 +379,8 @@ we write
 where formula $\phi$ is identified with the function 
 $\phi \colon \{0,1\}^l \to \{0,1\}$
 such that $\phi(X) = 1$ when $\phi(X)$ is true.
+
+\cite{parberry-schnitger}
 
 \begin{lemma}[{\cite[Theorem 7]{wagner1986complexity}}] \label{lemma:CnP-complete}
  For every $n \ge 1$, 
@@ -1519,12 +1520,16 @@ N.T. M{\"u}ller.
 \newblock {\em Automata, Languages and Programming}, pages 435--444, 1987.
 
 \bibitem{eatcs-la}
-太田，河村，ツィーグラー，レースニク．滑らかな常微分方程式の計算量．
-(H.~Ota, A.~Kawamura, M. Ziegler, and C. R{\"o}snick. 
-\newblock Complexity of smooth ordinary differential equations.) 
+H.~Ota, A.~Kawamura, M. Ziegler, and C. R{\"o}snick. 
+\newblock Complexity of smooth ordinary differential equations. 
 \newblock Presented at the 
 Tenth EATCS/LA Workshop on Theoretical Computer Science, Kyoto, 2012. 
 \newblock In Japanese. 
+
+\bibitem{parberry-schnitger}
+I.~Parberry and G.~Schnitger. 
+\newblock Parallel computation with threshold functions. 
+\newblock {\em Journal of Computer and System Sciences}, 36(3):278–-302, 1988. 
 
 \bibitem{pour1979computable}
 M.B. Pour-El and I.~Richards.
